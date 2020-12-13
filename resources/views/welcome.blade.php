@@ -124,7 +124,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="slider-content">
-                                    <h1 class="title">Bienvenue à <b style="">SAAMP Space</b> </h1>
+                                    <h1 class="title">Bienvenue à <b style="color:#f2ba01">SAAMP Space</b> </h1>
                                     <p class="text">Gérez vos produits en métaux précieux </p>
                                     <ul class="slider-btn rounded-buttons">
                                         @guest
