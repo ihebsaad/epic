@@ -1,0 +1,74 @@
+type Query {
+    users: [User!]! @paginate(defaultCount: 10)
+    user(id: ID @eq): User @find
+    product(DP_IDENT: ID @eq): Product @find
+    products: [Product!]! @all
+	client(cl_ident: ID @eq): Client @find
+	clients: [Client!]! @all
+	order(cmde_ident: ID @eq): Order @find
+	orders: [Order!]! @all
+
+
+
+
+ }
+ 
+  
+ 
+ 
+ 
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+
+type Product {
+    DP_IDENT: ID!
+    REFCO: String!
+    CODEFAM1: String!
+    CODEFAM2: String!
+    CODEFAM3: String!
+	VOLUME_U: String!
+	NAT_MESURE1: String!
+	MESURE1: Float!
+	NAT_MESURE2: String!
+	MESURE2: Float!
+
+  }
+  
+  
+type Client {
+    cl_ident: ID!
+    siret: String!
+    num_tva: String!
+    ape: String!
+	type_client_ident: Int!
+    raison_sociale: String!
+    type_societe: String!
+    enseigne: String!
+    adresse1: String!
+    adresse2: String!
+
+  }
+  
+type Order {
+    cmde_ident: ID!
+    cl_ident: Int!
+    cmde_date: String!
+    total_qte: Float!
+    total_poids: Float!
+	estim_au: Float!
+	estim_ag: Float!
+	estim_pt: Float!
+	estim_pd: Float!
+	cmde_canal: String!
+	cmde_etat: String!
+	cmde_valide: String!
+	cmde_facon_e: Float!
+
+  }

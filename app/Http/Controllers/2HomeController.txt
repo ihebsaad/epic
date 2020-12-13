@@ -1,0 +1,1147 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use DB ;
+class HomeController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+   public function __construct()
+    {
+      //  $this->middleware('auth');
+    }
+ 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+    }
+	
+	
+	  public function filtres($code)
+    { 
+	   DB::select("SET @p0='$code'  ;");
+	  $result=  DB::select (" CALL `sp_filtre_produit`(@p0);");
+ 
+     if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+      } else{
+	 	 return 'Error';
+
+           } 
+ 
+    }
+	
+	
+	
+	 public function filtres2($code)
+    { 
+ 	$result= response()->json( DB::table('type_famille')->where('CODEPRO',$code)->get(),200,array(),JSON_PRETTY_PRINT);
+		if ($result!= null){
+	 return $result;
+		} else{
+	 	 return 'Error';
+
+			} 
+ 
+    }
+	 
+	
+     public function catalogue($code)
+    { /*
+   $result=  DB::select("call  `sp_catalogue_produit`();  ") ;
+	  
+   if ($result!= null){
+	 return  response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+		} else{
+	 	 return 'Error';
+
+		} 
+  
+ 
+ */
+		$code= trim(  strtoupper($code)); 	   
+	   $result=null;
+	   
+	   if(  $code =='S' || $code =='B' || $code =='G'  )
+	   { DB::select("SET @p0='$code'  ;");
+		$result=  DB::select (" CALL `sp_catalogue_produit`(@p0);");
+		}
+	   if(  $code =='D'    )
+	   { $result=  DB::select (" CALL `sp_catalogue_demi_produit`();  ") ;}
+		
+ 
+     if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+      } else{
+	 	 return 'Error';
+
+           } 
+    }
+		
+		
+	 public function metal_demi_produit($type,$fam)
+    { 
+ 	   DB::select("SET @p0='$type' ;");
+	   DB::select("SET @p1='$fam'  ;");
+
+ 	  $result=  DB::select ("  CALL `sp_metal_demi_produit`(@p0, @p1); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }	
+		
+	
+	  public function tarif_article()
+    { 
+ 
+ 	  $result=  DB::select (" CALL `sp_tarif_article(); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+		 
+	 	
+		
+	 
+	
+	
+	   public function catalogue2($code,$fam1,$fam2,$fam3)
+    {
+	 	$result=  DB::select('call sp_filtre_produit(?)',array('B') ) ;
+		return $result;
+/*
+
+	
+	if(trim($code)=='D')
+	{
+		$liste= DB::table('demi_produit')->where('CODEFAM1',$fam1)->get();
+	}
+	
+	//$result= response()->json( DB::table('type_famille')->where('CODEPRO',$code)->pluck('CODEFAM1','LIBFAM1','CODEFAM2','LIBFAM2','CODEFAM3','LIBFAM3'),200,array(),JSON_PRETTY_PRINT);
+	$result= response()->json( DB::table('type_famille')->where('CODEPRO',$code)->get(),200,array(),JSON_PRETTY_PRINT);
+ if ($result!= null){
+	 return $result;
+ } else{
+	 	 return 'Error';
+
+ } 
+*/
+	}
+	
+	  /**
+     * @SWG\Get(
+     *   path="/referentiel/",
+     *   summary="Liste des référentiels",
+     *   operationId="referentiels",
+	 *   tags={"Référentiels"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */
+	 
+	  public function referentiel ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel0`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+	/**
+     * @SWG\Get(
+     *   path="/referentiel1/",
+     *   summary="identifiant et libellé des familles 1, leur affiliation avec un type de produit, la photo éventuelle",
+     *   operationId="referentiels1",
+	 *   tags={"Référentiels"},	 
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */
+	 
+
+	  public function referentiel1 ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel1`(); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+
+	/**
+     * @SWG\Get(
+     *   path="/referentiel2/",
+     *   summary="donne la liste des familles 2, leur affiliation avec une famille 1 et la photo éventuelle",
+     *   operationId="referentiels2",
+	 *   tags={"Référentiels"},	 
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */
+	 
+	  public function referentiel2 ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel2`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+	
+	
+	 /**
+     * @SWG\Get(
+     *   path="/referentiel3/",
+     *   summary="donne la liste des familles 3, leur affiliation avec une famille 2 et la photo",
+     *   operationId="referentiels3",
+	 *   tags={"Référentiels"},	 
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */
+	
+		  public function referentiel3 ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel3`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+	
+   
+   /**
+     * @SWG\Get(
+     *   path="/referentielmetal/",
+     *   summary="identifiant et libellé des métaux purs",
+     *   operationId="referentielmet",
+	 *   tags={"Référentiels"},	 
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */
+	  public function referentielmetal ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel_metal`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+
+
+
+   /**
+     * @SWG\Get(
+     *   path="/referentielphoto/",
+     *   summary="identifiant et libellé des métaux purs",
+     *   operationId="referentielph",
+	 *   tags={"Référentiels"},	 
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */	
+	  public function referentielphoto ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel_photo`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+	
+	
+   /**
+     * @SWG\Get(
+     *   path="/referentielunite/",
+     *   summary="identifiant et libellé des unités de conditionnement",
+     *   operationId="referentielunite",
+	 *   tags={"Référentiels"},	 
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */	
+		  public function referentielunite ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel_unite`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+	
+	
+   /**
+     * @SWG\Get(
+     *   path="/referentieletat/",
+     *   summary="identifiant et libellé des états",
+     *   operationId="referentielet",
+	 *   tags={"Référentiels"},	 
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */		
+	
+	
+		  public function referentieletat ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel_etat`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }	
+	
+	
+   /**
+     * @SWG\Get(
+     *   path="/referentielcomplement/",
+     *   summary="identifiant et libellé des compléments",
+     *   operationId="referentielcomp",
+	 *   tags={"Référentiels"},	 
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */			
+	
+	  public function referentielcomplement ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel_complement`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+	
+   /**
+     * @SWG\Get(
+     *   path="/referentielmodefacturation/",
+     *   summary="identifiant du mode de facturation, libellé long et libellé court",
+     *   operationId="referentielmode",
+     *   tags={"Référentiels"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */		
+	
+	  public function referentielmodefacturation ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel_mode_facturation`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+
+	
+	
+	
+	
+	  public function referentieltitre ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel_titre`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+
+	  public function referentielcouleur ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `sp_referentiel_couleur`();");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+
+
+	/*
+		  public function referentiel_0 ()
+    { 
+ 
+ 	  $data=  DB::select ("CALL `sp_referentiel0`();");
+ 
+  if ($data!= null){
+	 return response()->json(  $data ,200,array(),JSON_PRETTY_PRINT);
+	 
+	 $response='{
+		 "type"
+		 {
+		 ';
+	 foreach ($data as $d)
+		$response.='' $data["type"];	
+	 
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+	*/
+	
+   public function requete1 ($id)
+   {
+	 $article=  DB::table('demi_produit')->where('DP_IDENT',$id)->first();
+	// $typefamille=  DB::table('type_famille')->where('type_id',$type_id)->orderBy('page_cat', 'ordre')->first();
+	// $typefamille =  $typefamille->unique();
+	 
+	// if($article!=null)
+	 {$typefamille=  DB::table('type_famille')->where('type_id',$article->typeid)->first();}
+ 
+	 
+	 $results=array();
+	 $results['art_ident']=$article->DP_IDENT;
+	 $results['codepro']=$article->CODEPRO;
+	 $results['libpro']=$typefamille->LIBPRO;
+	 $results['Codefam1']=$article->CODEFAM1;
+	 $results['Codefam2']=$article->CODEFAM2;
+	 $results['Codefam3']=$article->CODEFAM3;
+	 $results['nat_mesure1']=$article->NAT_MESURE1;
+	 $results['mesure1']=$article->MESURE1;
+	 $results['nat_mesure2']=$article->NAT_MESURE2;
+	 $results['photo_ident']=$typefamille->photo_id;
+	// $results['metal_ident']=$article->metal_ident;
+	 
+	   
+	 if($typefamille!= null){
+		// return $result;
+		 return response()->json(  $results ,200,array(),JSON_PRETTY_PRINT);
+	 }else{
+	  return 'Error';
+
+	 }
+	 
+   }
+   
+   
+   
+   /**
+     * @SWG\Get(
+     *   path="/referentielalliage/",
+     *   summary="identifiant et libellé des alliages",
+     *   operationId="referentielalg",
+     *   tags={"Référentiels"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+     * )
+     *
+     */
+    public function referentielalliage ()
+    { 
+ 
+ 	  $result=  DB::select ("CALL `Sp_referentiel_alliage`(); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+	
+	
+	    public function requete2 ()
+    { 
+ 
+ 	  $data=  DB::select ("CALL `Sp_referentiel1`(); ");
+
+  if ($data!= null){
+
+$result=array();
+$i=-1;
+  foreach($data as $d)
+  { $i++;
+  $famille=$d->famille1;
+  $type_id=$d->type_id;
+ // DB::select("SET @p0=$type_id  ;");
+ // DB::select("SET @p1=$famille ;");
+
+ 	//  $data2=  DB::select ("  CALL `sp_referentiel1_alliage`(@p0, @p1); ");
+	/*  'SELECT DISTINCT  
+lien_alliage_produit.ALLIAGE_IDENT alliage
+from lien_alliage_produit
+where lien_alliage_produit.type_id=@p0
+AND (lien_alliage_produit.fam1_id=@p1 OR lien_alliage_produit.fam1_id=0)'
+*/
+
+ 	  
+
+
+
+ $data2=\App\Lien_alliage_produit::where(function ($query) use($type_id )   {
+                      $query->where('type_id', $type_id );
+                        
+                  })->where(function ($query) use($famille)  {
+                      $query->where('fam1_id' , $famille)
+                          ->orWhere('fam1_id', 0);
+   
+                  })->pluck('ALLIAGE_IDENT');
+
+
+
+
+
+	//  $data2=$data2['alliage'];
+  
+  $result[$i]['famille1']=$famille;
+  $result[$i]['libelle']=$d->libelle;
+  $result[$i]['type_id']=$type_id;
+  $result[$i]['photo_id']=$d->photo_id;
+
+ $result[$i]['alliage']=$data2;
+  }
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+
+  } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+   
+   
+   
+   
+   
+   /*************  Produits   *************/
+   
+   
+   
+      /**
+     * @SWG\Get(
+     *   path="/produit/",
+     *   summary="Fiche du produit",
+     *   description="<b>En entrée</b> : identifiant type, famille 1, 2, 3 <br><b>En sortie</b> :  libellé, nature de mesure1, nature de mesure 2, unité, choix ou non de l’état",
+     *   operationId="fiche_produit",
+     *   tags={"Produits"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+	 *		@SWG\Parameter(
+     *          name="typeid",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam1",
+	 *          description="Famille 1",	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam2",
+	 *          description="Famille 2",	 	 
+     *          in="path",
+     *          required=false, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam3",
+	 *          description="Famille 3",	 	 
+     *          in="path",
+     *          required=false, 
+     *          type="string" 
+     *      ),
+     * )
+     *
+     */
+   
+   	 public function produit($typeid,$fam1,$fam2,$fam3)
+    { 
+ 	   DB::select("SET @p0='$typeid' ;");
+	   DB::select("SET @p1='$fam1'  ;");
+	   DB::select("SET @p2='$fam2'  ;");
+	   DB::select("SET @p3='$fam3'  ;");
+
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit`(@p0,@p1,@p2,@p3); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+			} else{
+	 	 return 'Error';
+
+			} 
+ 
+    }
+   
+   
+      /**
+     * @SWG\Get(
+     *   path="/produitcomplement/",
+     *   summary="Complément de la fiche du produit ",
+     *   description="<b>En entrée</b> : identifiant type, famille 1, 2, 3 <br><b>En sortie</b> :  identifiant du complément ou 0",
+     *   operationId="produit_complement",
+     *   tags={"Produits"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+	 *		@SWG\Parameter(
+     *          name="typeid",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam1",
+	 *          description="Famille 1",	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam2",
+	 *          description="Famille 2",	 	 
+     *          in="path",
+     *          required=false, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam3",
+	 *          description="Famille 3",	 	 
+     *          in="path",
+     *          required=false, 
+     *          type="string" 
+     *      ),
+     * )
+     *
+     */
+   
+   	 public function produitcomplement($typeid,$fam1,$fam2,$fam3)
+    { 
+ 	   DB::select("SET @p0='$typeid' ;");
+	   DB::select("SET @p1='$fam1'  ;");
+	   DB::select("SET @p2='$fam2'  ;");
+	   DB::select("SET @p3='$fam3'  ;");
+
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_complement`(@p0,@p1,@p2,@p3); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+			} else{
+	 	 return 'Error';
+
+			} 
+ 
+    }   
+   
+       /**
+     * @SWG\Get(
+     *   path="/produitmesure1/",
+     *   summary="Mesure 1 de la fiche du produit",
+     *   description="<b>En entrée</b> : identifiant type, famille 1, 2, 3 <br><b>En sortie</b> : valeurs de mesure 1",
+     *   operationId="produit_mesure1",
+     *   tags={"Produits"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+	 *		@SWG\Parameter(
+     *          name="typeid",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam1",
+	 *          description="Famille 1",	 	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam2",
+	 *          description="Famille 2",	 
+     *          in="path",
+     *          required=false, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam3",
+	 *          description="Famille 3",	 	 
+     *          in="path",
+     *          required=false, 
+     *          type="string" 
+     *      ),
+     * )
+     *
+     */
+   
+   	 public function produitmesure1($typeid,$fam1,$fam2,$fam3)
+    { 
+ 	   DB::select("SET @p0='$typeid' ;");
+	   DB::select("SET @p1='$fam1'  ;");
+	   DB::select("SET @p2='$fam2'  ;");
+	   DB::select("SET @p3='$fam3'  ;");
+
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_val_mesure1`(@p0,@p1,@p2,@p3); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+			} else{
+	 	 return 'Error';
+
+			} 
+ 
+    }
+
+	
+ 
+     /**
+     * @SWG\Get(
+     *   path="/produitmesure2/",
+     *   summary="Mesure 2 de la fiche du produit",
+     *   description="<b>En entrée</b> : identifiant type, famille 1, 2, 3, mesure1 <br><b>En sortie</b> : valeurs de mesure 2",
+     *   operationId="produit_mesure2",
+     *   tags={"Produits"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+	 *		@SWG\Parameter(
+     *          name="typeid",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam1",
+	 *          description="Famille 1",	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam2",
+	 *          description="Famille 2",	 	 
+     *          in="path",
+     *          required=false, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam3",
+	 *          description="Famille 3",	 	 
+     *          in="path",
+     *          required=false, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="mes1",
+	 *          description="Mesure 1",	 	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ), 
+	 * )
+     *
+     */
+   
+   	 public function produitmesure2($typeid,$fam1,$fam2,$fam3,$mes1)
+    { 
+ 	   DB::select("SET @p0='$typeid' ;");
+	   DB::select("SET @p1='$fam1'  ;");
+	   DB::select("SET @p2='$fam2'  ;");
+	   DB::select("SET @p3='$fam3'  ;");
+	   DB::select("SET @p4='$mes1'  ;");
+
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_val_mesure2`(@p0,@p1,@p2,@p3,@p4); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+			} else{
+	 	 return 'Error';
+
+			} 
+ 
+    }       
+   
+ 
+     /**
+     * @SWG\Get(
+     *   path="/produitpoids/",
+     *   summary="Poids ID de la fiche du produit",
+     *   description="<b>En entrée</b> : identifiant type, famille 1, 2, 3, valeur mesure1 et mesure2, identifiant alliage<br><b>En sortie</b> : identifiant article et poids unitaire",
+     *   operationId="produitpoids",
+     *   tags={"Produits"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+	 *		@SWG\Parameter(
+     *          name="typeid",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam1",
+     *          description="Famille 1",	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam2",
+     *          description="Famille 2",	 
+     *          in="path",
+     *          required=false, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="fam3",
+     *          description="Famille 3",
+     *          in="path",
+     *          required=false, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="mes1",
+     *          description="Mesure 1",	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ), 
+	 *		@SWG\Parameter(
+     *          name="mes2",
+     *          description="Mesure 2",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),	 
+	 *		@SWG\Parameter(
+     *          name="alliage",
+     *          description=" ID de l'alliage",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),	 * )
+     *
+     */
+   
+   	 public function produitpoids($typeid,$fam1,$fam2,$fam3,$mes1,$mes2,$all)
+    { 
+ 	   DB::select("SET @p0='$typeid' ;");
+	   DB::select("SET @p1='$fam1'  ;");
+	   DB::select("SET @p2='$fam2'  ;");
+	   DB::select("SET @p3='$fam3'  ;");
+	   DB::select("SET @p4='$mes1'  ;");
+	   DB::select("SET @p5='$mes2'  ;");
+	   DB::select("SET @p6='$all'  ;");
+
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_poids_id `(@p0,@p1,@p2,@p3,@p4,@p5,@p6); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+			} else{
+	 	 return 'Error';
+
+			} 
+ 
+    }       
+   
+
+   
+   
+      /**
+     * @SWG\Get(
+     *   path="/tarif/",
+     *   summary="Complément du tarif de la fiche du produit",
+     *   description="<b>En entrée</b> : identifiant du complément, valeur du complément, id client <br><b>En sortie</b> : Tarif, mode de facturation, mini à la ligne",
+     *   operationId="tarif",
+     *   tags={"Produits"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+	 *		@SWG\Parameter(
+     *          name="id_comp",
+	 *          description="ID du complément",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="val_comp",
+	 *          description="Valeur du complément",	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="id_cl",
+	 *          description="ID du client",	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+     * )
+     *
+     */
+   
+   	 public function tarif($id_comp,$val_comp,$id_cl)
+    { 
+ 	   DB::select("SET @p0='$id_comp' ;");
+	   DB::select("SET @p1='$val_comp'  ;");
+	   DB::select("SET @p2='$id_cl'  ;");
+ 
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_compl_tarif`(@p0,@p1,@p2); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+			} else{
+	 	 return 'Error';
+
+			} 
+ 
+    }   
+   
+
+      
+     /**
+     * @SWG\Get(
+     *   path="/compprix/",
+     *   summary="Complément du prix de la fiche du produit",
+     *   description="<b>En entrée</b> : identifiant du complément, quantité, poids, id client, valeur du complément <br><b>En sortie</b> : montant",
+     *   operationId="compprix",
+     *   tags={"Produits"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+	 *		@SWG\Parameter(
+     *          name="id_comp",
+     *          in="path",
+     *          description="ID du complément",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="qte",
+     *          description="Quantité",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="poids",
+	 *          description="Poids",	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="id_cl",
+     *          description="ID du client",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="val_comp",
+     *          description="Valeur du complément",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+     * )
+     *
+     */
+   
+   	 public function compprix($id_comp,$qte,$poids,$id_cl,$val_comp )
+    { 
+ 	   DB::select("SET @p0='$id_comp' ;");
+ 	   DB::select("SET @p1='$qte' ;");
+ 	   DB::select("SET @p2='$poids' ;");
+	   DB::select("SET @p3='$id_cl'  ;");
+	   DB::select("SET @p4='$val_comp'  ;");
+ 
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_compl_prix`(@p0,@p1,@p2,@p3,@p4); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+			} else{
+	 	 return 'Error';
+
+			} 
+ 
+    }
+
+	
+     /**
+     * @SWG\Get(
+     *   path="/prix/",
+     *   summary="Prix et métaux ",
+     *   description="<b>En entrée</b> : identifiant type, article, alliage, quantité et poids, identifiant du client<br><b>En sortie</b> : prix unitaire, identifiant du mode de facturation, montant en euro et poids des métaux précieux 1 2 3 4",
+     *   operationId="prix",
+     *   tags={"Produits"},
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error"),
+	 *		@SWG\Parameter(
+     *          name="typeid",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="articleid",
+     *          name="ID de l'article",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="alliageid",
+     *          description="ID de l'alliage",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="qte",
+     *          description="Quantité",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="poids",
+	 *          description="Poids",	 	 
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+	 *		@SWG\Parameter(
+     *          name="id_cl",
+     *          description="ID du client",
+     *          in="path",
+     *          required=true, 
+     *          type="string" 
+     *      ),
+     * )
+     *
+     */
+   
+   	 public function prix($typeid,$articleid,$alliageid,$qte,$poids,$id_cl )
+    { 
+ 	   DB::select("SET @p0='$typeid' ;");
+ 	   DB::select("SET @p1='$articleid' ;");
+ 	   DB::select("SET @p2='$alliageid' ;");
+	   DB::select("SET @p3='$qte'  ;");
+	   DB::select("SET @p4='$poids'  ;");
+	   DB::select("SET @p5='$id_cl'  ;");
+ 
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_prix`(@p0,@p1,@p2,@p3,@p4,@p5); ");
+ 
+  if ($result!= null){
+	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+			} else{
+	 	 return 'Error';
+
+			} 
+ 
+    }	
+	
+	
+	
+	
+}

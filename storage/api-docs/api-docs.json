@@ -1,0 +1,1783 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Saamp",
+        "description": "Documentation pour l'API de SAAMP  ",
+        "contact": {
+            "email": "ihebsaad@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://mysaamp.com/myapi",
+            "description": "L5 Swagger OpenApi dynamic host server"
+        }
+    ],
+    "paths": {
+        "/referentiels/{lg}": {
+            "get": {
+                "tags": [
+                    "Référentiels"
+                ],
+                "summary": "Liste des référentiels",
+                "operationId": "referentiels",
+                "parameters": [
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "description": "Langue",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/produit/{type_id}/{fam1}/{fam2}/{fam3}/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Produits"
+                ],
+                "summary": "Fiche du produit",
+                "description": "<b>En entrée</b> : identifiant type, famille 1, 2, 3 <br><b>En sortie</b> :  libellé, nature de mesure1, nature de mesure 2, unité, choix ou non de l’état",
+                "operationId": "fiche_produit",
+                "parameters": [
+                    {
+                        "name": "type_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fam1",
+                        "in": "path",
+                        "description": "Famille 1",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fam2",
+                        "in": "path",
+                        "description": "Famille 2",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fam3",
+                        "in": "path",
+                        "description": "Famille 3",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "description": "ID du client",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "description": "Langue",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/detailsproduit/{type_id}/{fam1}/{fam2}/{fam3}/{mes1}/{mes2}/{alliage}/{qte}/{id_comp}/{val_comp}/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Produits"
+                ],
+                "summary": "détails du poids, prix et tarif du produit",
+                "description": "<b>En entrée</b> : identifiant type, famille 1, 2, 3, valeur mesure1 et mesure2, identifiant alliage...",
+                "operationId": "detproduit",
+                "parameters": [
+                    {
+                        "name": "type_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "fam1",
+                        "in": "path",
+                        "description": "Famille 1",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "fam2",
+                        "in": "path",
+                        "description": "Famille 2",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "fam3",
+                        "in": "path",
+                        "description": "Famille 3",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "mes1",
+                        "in": "path",
+                        "description": "Mesure 1",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "mes2",
+                        "in": "path",
+                        "description": "Mesure 2",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "alliage",
+                        "in": "path",
+                        "description": " ID de l'alliage",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "qte",
+                        "in": "path",
+                        "description": "Quantité",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "id_comp",
+                        "in": "path",
+                        "description": "ID du complément",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "val_comp",
+                        "in": "path",
+                        "description": "Valeur du complément",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "description": "ID du client",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "description": "Langue",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/prix/{type_id}/{article_id}/{alliage_id}/{qte}/{poids}/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Produits"
+                ],
+                "summary": "détails du prix du produit",
+                "description": "<b>En entrée</b> : identifiant type, famille 1, 2, 3, valeur mesure1 et mesure2, identifiant alliage...",
+                "operationId": "prix_produit",
+                "parameters": [
+                    {
+                        "name": "type_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "article_id",
+                        "in": "path",
+                        "description": "ID du produit",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "alliage_id",
+                        "in": "path",
+                        "description": " ID de l'alliage",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "qte",
+                        "in": "path",
+                        "description": "Quantité",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "poids",
+                        "in": "path",
+                        "description": "Poids (Qté * poid unitaire)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "description": "ID du client",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "description": "Langue",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/checkclient/{siren}/{lg}": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Vérifier le client par numéro siren (8 chiffres)",
+                "operationId": "contacts",
+                "parameters": [
+                    {
+                        "name": "siren",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "description": "Langue",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/agences/{code_pays}/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Liste des agences par pays",
+                "operationId": "agence",
+                "parameters": [
+                    {
+                        "name": "code_pays",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "description": "ID du client",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "description": "Langue",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/detailsclient/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Détails du clinet",
+                "operationId": "detailcl",
+                "parameters": [
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "description": "Langue",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/commande": {
+            "post": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Ajouter une commande",
+                "operationId": "commande",
+                "requestBody": {
+                    "description": "Data packet for Test",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "client_id": {
+                                        "type": "number",
+                                        "example": "10099"
+                                    },
+                                    "langue": {
+                                        "type": "string",
+                                        "example": "fr_FR"
+                                    },
+                                    "quantite": {
+                                        "type": "number",
+                                        "example": "10"
+                                    },
+                                    "poids": {
+                                        "type": "number",
+                                        "example": "20"
+                                    },
+                                    "or": {
+                                        "type": "number",
+                                        "example": "15"
+                                    },
+                                    "argent": {
+                                        "type": "number",
+                                        "example": "2.5"
+                                    },
+                                    "platine": {
+                                        "type": "number",
+                                        "example": "0"
+                                    },
+                                    "palladium": {
+                                        "type": "number",
+                                        "example": "0"
+                                    },
+                                    "facon": {
+                                        "type": "number",
+                                        "example": "35"
+                                    },
+                                    "adresse": {
+                                        "type": "number",
+                                        "example": "0"
+                                    },
+                                    "agence": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "produits": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "produit_id": {
+                                                    "type": "number",
+                                                    "example": ""
+                                                },
+                                                "type_id": {
+                                                    "type": "number",
+                                                    "example": ""
+                                                },
+                                                "alliage_id": {
+                                                    "type": "number",
+                                                    "example": ""
+                                                },
+                                                "etat_id": {
+                                                    "type": "number",
+                                                    "example": ""
+                                                },
+                                                "complement_id": {
+                                                    "type": "number",
+                                                    "example": ""
+                                                },
+                                                "complement_val": {
+                                                    "type": "number",
+                                                    "example": ""
+                                                },
+                                                "quantite": {
+                                                    "type": "number",
+                                                    "example": ""
+                                                },
+                                                "poids": {
+                                                    "type": "number",
+                                                    "example": ""
+                                                },
+                                                "tarif": {
+                                                    "type": "number",
+                                                    "example": ""
+                                                },
+                                                "mode_facturation": {
+                                                    "type": "number",
+                                                    "example": ""
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "example": [
+                                            {
+                                                "produit_id": "1",
+                                                "type_id": "1",
+                                                "alliage_id": "1",
+                                                "etat_id": "1",
+                                                "complement_id": "1",
+                                                "complement_val": "1",
+                                                "quantite": "1",
+                                                "poids": "1",
+                                                "tarif": "1",
+                                                "mode_facturation": "1"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/entetecommande": {
+            "post": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Ajouter l'entête de commande",
+                "operationId": "entetecommande",
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "langue",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "quantite",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "poids",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "or",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "argent",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "platine",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "palladium",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "façon",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "adresse",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "agence",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/lignecommande": {
+            "post": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Ajouter une ligne de commande",
+                "operationId": "lignecommande",
+                "parameters": [
+                    {
+                        "name": "produit_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "type_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "alliage_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "etat_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "complement_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "complement_val",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "quantite",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "poids",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "mode_facturation",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "commande_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/listecommandes/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher la liste des commandes pour un client",
+                "operationId": "listecommandes",
+                "parameters": [
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/listemodeles/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher la liste des modèles pour un client",
+                "operationId": "listemodeles",
+                "parameters": [
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/detailscommande/{id_cmd}/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher les détails d'une commande",
+                "operationId": "detailscommande",
+                "parameters": [
+                    {
+                        "name": "id_cmd",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/tarifdetails/{nature_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{poids}/{poids_cendres}/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher le tarif en détails",
+                "operationId": "tarifdetails",
+                "parameters": [
+                    {
+                        "name": "nature_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_or",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_argent",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_platine",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_palladium",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "poids",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "poids_cendres",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/tarifforfait/{nature_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{poids}/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher le tarif en forfait",
+                "operationId": "tarifforfait",
+                "parameters": [
+                    {
+                        "name": "nature_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_or",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_argent",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_platine",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_palladium",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "poids",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/listeprestations/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher la liste des prestations",
+                "operationId": "listeprestations",
+                "parameters": [
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/listecommandeslabo/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher la liste des commandes du laboratoire pour un client",
+                "operationId": "listecommandeslabo",
+                "parameters": [
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/listemodeleslabo/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher la liste des modèles du laboratoire pour un client",
+                "operationId": "listemodeleslabo",
+                "parameters": [
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/detailscommandelabo/{id_cmd}/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher les détails d'une commande du laboratoire",
+                "operationId": "detailscommandelabo",
+                "parameters": [
+                    {
+                        "name": "id_cmd",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/tariflabo/{id_cl}/{choix_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher le tarif du laboratoire",
+                "operationId": "tariflabo",
+                "parameters": [
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "choix_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_or",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_argent",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_platine",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_palladium",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/listecommandesrmp/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher la liste des commandes RMP pour un client",
+                "operationId": "listecommandesrmp",
+                "parameters": [
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/listemodelesrmp/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher la liste des modèles RMP pour un client",
+                "operationId": "listemodelesrmp",
+                "parameters": [
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/detailscommandermp/{id_cmd}/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher les détails d'une commande RMP",
+                "operationId": "detailscommandermp",
+                "parameters": [
+                    {
+                        "name": "id_cmd",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        },
+        "/tarifrmp/{nature_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{poids}/{id_cl}/{lg}": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Afficher le tarif RMP",
+                "operationId": "tarifrmp",
+                "parameters": [
+                    {
+                        "name": "nature_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_or",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_argent",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_platine",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "titre_palladium",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "poids",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_cl",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lg",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opération exécutée avec succès"
+                    },
+                    "404": {
+                        "description": "non trouvé"
+                    },
+                    "500": {
+                        "description": "Erreur interne"
+                    }
+                },
+                "security": [
+                    {
+                        "passwords": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "responses": {
+            "200": {
+                "description": "opération exécutée avec succès"
+            },
+            "404": {
+                "description": "non trouvé"
+            },
+            "500": {
+                "description": "Erreur interne"
+            }
+        },
+        "parameters": {
+            "id_comp": {
+                "name": "id_comp",
+                "in": "path",
+                "description": "ID du complément",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "qte": {
+                "name": "qte",
+                "in": "path",
+                "description": "Quantité",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "poids": {
+                "name": "poids",
+                "in": "path",
+                "description": "Poids",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "id_cl": {
+                "name": "id_cl",
+                "in": "path",
+                "description": "ID du client",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "val_comp": {
+                "name": "val_comp",
+                "in": "path",
+                "description": "Valeur du complément",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "lg": {
+                "name": "lg",
+                "in": "path",
+                "description": "Langue",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "securitySchemes": {
+            "passwords": {
+                "type": "oauth2",
+                "description": "Use a global client_id / client_secret and your username / password combo to obtain a token",
+                "in": "header",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "/myapi/oauth/authorize",
+                        "tokenUrl": "/myapi/oauth/token",
+                        "refreshUrl": "/oauth/token/refresh",
+                        "scopes": {}
+                    }
+                },
+                "scheme": "https"
+            }
+        }
+    },
+    "security": [
+        {
+            "oauth2": [
+                "read:oauth2"
+            ]
+        }
+    ]
+}
