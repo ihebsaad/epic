@@ -45,13 +45,19 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
       <!-- CSRF Token -->
  {{ csrf_field() }}
- 
- <!-- <script  src="{{ asset('public/js/jquery-3.5.1.js') }}"  type="text/javascript"></script> -->
+   <script  src="{{ asset('public/js/jquery-3.5.1.js') }}"  type="text/javascript"></script>  
+
+ <!--<script src="{{ URL::asset('public/sbadmin/vendor/jquery/jquery.min.js')}}"></script>-->
+ <!-- Bootstrap core JavaScript -->
+ <script src="{{ URL::asset('public/sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+ <!-- Core plugin JavaScript -->
+ <script src="{{ URL::asset('public/sbadmin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
 <!-- --------->
 
-<?php if  ($view_name != 'messagechat-messagerie')   { ?>
+<?php /*if  ($view_name != 'messagechat-messagerie')   { ?>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<?php }?>
+<?php }*/?>
        <!-- CSS DAtatable  
 
 <link rel="stylesheet" type="text/css" href="{{ asset('resources/assets/datatables/css/dataTables.bootstrap.css') }}" />
@@ -65,15 +71,18 @@
   
  <link href="{{ URL::asset('public/css/datepicker.css') }}" rel="stylesheet">
   
+  <link rel="stylesheet" href="{{ URL::asset('public/front/css/default.css') }}">
+
     <!-- include alertify css -->
 
 <link rel="stylesheet" href="{{ URL::asset('resources/assets/css/alertify.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('resources/assets/css/alertify-bootstrap.css') }}">
 
-<link rel="stylesheet" href="{{ URL::asset('public/front/css/default.css') }}">
 
-<!-- include alertify script -->
+<!-- include alertify script
 <script src="{{ URL::asset('resources/assets/js/alertify.js') }}"></script>
+ <!-- include notify script -->
+
 
   
  <link href="{{ asset('public/js/select2/css/select2.css') }}" rel="stylesheet" type="text/css"/>

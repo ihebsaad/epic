@@ -25,26 +25,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    { 
-	 //dd(App::getLocale());
-        return view('home');
-    }
-	
-	    public function orders()
-    { 
-	 //dd(App::getLocale());
-        return view('orders');
-    }
-	
-		    public function test()
-    { 
-	 //dd(App::getLocale());
-        return view('test');
-    }
-	
-	
-	
+
+	 
 	
 	    public function setlanguage(Request $request)
     {
@@ -277,7 +259,7 @@ class HomeController extends Controller
  
 	 
 
-	  public function referentiel1 ()
+	  public static function referentiel1 ()
     { 
  
  	  $result=  DB::select ("CALL `sp_referentiel1`(); ");

@@ -47,24 +47,24 @@ $user_type=$user->user_type;
       </div>
       <hr class="sidebar-divider">
 
-      <li class="nav-item   <?php  ?>">
-        <a class="nav-link" href="">
+      <li class="nav-item   "  <?php if(isset($type)){if($type==101){echo 'style="font-weight:800"'; }}   if($view_name=='products-products' ){echo 'style="font-weight:800"'; } ?>>
+        <a class="nav-link" href="{{route('products')}}">
           <!--<i class="fas fa-fw fa-folder-open"></i>-->
           <span>{{__('msg.Half Products')}}</span></a>
       </li>
 	  
 	  <li class="nav-item   <?php  ?>">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('findings')}}"  <?php if(isset($type)){if($type==103){echo 'style="font-weight:800"'; }}  if($view_name=='products-findings' ){echo 'style="font-weight:800"'; } ?>  >
           <!--<i class="fas fa-fw fa-folder-open"></i>-->
           <span> {{__('msg.Findings')}}</span></a>
       </li>
 
 	  <li class="nav-item   <?php  ?>">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('jewelry')}}"  <?php if(isset($type)){if($type==104){echo 'style="font-weight:800"'; }} if($view_name=='products-jewelry' ){echo 'style="font-weight:800"'; } ?>>
            <span> {{__('msg.Jewelry')}}</span></a>
       </li>
 	  <li class="nav-item   <?php  ?>">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('galvano')}}"  <?php if(isset($type)){if($type==102){echo 'style="font-weight:800"'; }} if($view_name=='products-galvano' ){echo 'style="font-weight:800"'; } ?>>
            <span> {{__('msg.Galvano')}}</span></a>
       </li>	
 	  

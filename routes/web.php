@@ -16,8 +16,16 @@ Route::get('/', function () {
 });
 
 
-Route::get('/orders', 'HomeController@orders')->name('orders');
-Route::get('/test', 'HomeController@test')->name('test');
+Route::get('/orders', 'PagesController@orders')->name('orders');
+Route::get('/test', 'PagesController@test')->name('test');
+Route::get('/findings', 'PagesController@findings')->name('findings');
+Route::get('/products', 'PagesController@products')->name('products');
+Route::get('/jewelry', 'PagesController@jewelry')->name('jewelry');
+Route::get('/galvano', 'PagesController@galvano')->name('galvano');
+Route::get('/refining', 'PagesController@refining')->name('refining');
+Route::get('/laboratory', 'PagesController@laboratory')->name('laboratory');
+Route::get('/catalog/{type}/{famille1}', 'PagesController@catalog')->name('catalog');
+/* Route::get('/products', 'PagesController@test')->name('products');*/
 
 
 
@@ -47,6 +55,10 @@ $this->post('password/reset/{token}', 'Auth\ResetPasswordController@reset');
 Auth::routes();
 
 Route::post('/setlanguage', 'HomeController@setlanguage')->name('setlanguage');
+
+
+Route::get('/profile', 'UsersController@profile')->name('profile');
+Route::post('/users/updating','UsersController@updating')->name('users.updating');
 
 
 
@@ -80,7 +92,7 @@ Route::get('/doc', 'SwaggerController@index');
 */
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PagesController@index')->name('home');
  Route::get('api/documentation', '\L5Swagger\Http\Controllers\SwaggerController@api')->name('l5swagger.api');
 
  
@@ -89,8 +101,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 	
 //Route::group(['middleware' => 'web'], function () {
+	/*
 Route::group(['middleware' => ['client', 'web']], function () {
-	
+	*/
 	
 	
 
@@ -160,9 +173,9 @@ Route::get('/detailscommandermp/{id_cmd}/{id_cl}/{lg}', 'HomeController@detailsc
 Route::get('/tarifrmp/{nature_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{poids}/{id_cl}/{lg}', 'HomeController@tarifrmp')->name('tarifrmp');
 
 
-
+/*
 
 });
 
-
+*/
  
