@@ -54,6 +54,89 @@ class HomeController extends Controller
     }
 	
 	
+					 function data(Request $request) { 	
+					   
+					   $type= $request->get('type');
+					   $famille1= $request->get('famille1');
+					   $famille2= $request->get('famille2');
+					   $famille3= $request->get('famille3');
+					   $metal= $request->get('metal');
+						if(($famille2)!='' &&  ($famille3 !='')){
+					 $products = DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->where('fam3_id',$famille3)->limit(16)->get();
+							
+						}else{
+					 if(  ($famille2!='') ){
+					 $products = DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->limit(16)->get();
+						}else{
+					 $products = DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam3_id',$famille3)->limit(16)->get();
+							
+						}
+						}					 
+					 
+					 $data='';
+					 foreach($products as $prod)
+					 { 
+					 $titre= $prod->LIBFAM1.' '.$prod->LIBFAM2 .' '.$prod->LIBFAM3;
+					 $titre=strtolower($titre);
+					 $image=DB::table('photo')->where('photo_id',$prod->photo_id)->first();
+					 if(isset($image)){ $img=$image->url;}
+					// $img=(substr($img,32,strlen($img)));
+					 
+						 $data.=
+						 '
+						  
+                         <div class="col-lg-4 col-md-12 mb-4">
+
+                            <!--Card-->
+                            <div class="card card-ecommerce">
+
+                                <!--Card image-->
+                                <div class="view overlay">
+                                    <center><img style="max-height:200px" src="'.$img.'" class="img-fluid" alt=""></center>
+                                    <a>
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+                                <!--Card image-->
+
+                                <!--Card content-->
+                                <div class="card-body">
+                                    <!--Category & Title-->
+
+                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">'.$titre.'</a></strong></h5>
+									<!--<span class="badge badge-danger mb-2">famille2</span>-->
+ 
+
+                                    <!--Card footer-->
+                                    <div class="card-footer pb-0">
+                                        <div class="row mb-0">
+                                          <!--  <span class="float-left"><strong>1439$</strong></span>-->
+                                            <span class="float-right">
+
+                                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
+                                        </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--Card content-->
+
+                            </div>
+                            <!--Card-->
+
+                        </div>
+												  
+						 
+						 
+						 ';
+					 }
+					 return $data;
+
+				}					 
+	
+	
+	
+	
 	  public function filtres($code)
     { 
 	   DB::select("SET @p0='$code'  ;");
@@ -291,7 +374,7 @@ class HomeController extends Controller
  
     }
 	
-  public function req_referentiel2 ()
+  public static function req_referentiel2 ()
     { 
  
    $data=  DB::select ("CALL `sp_referentiel2`(); ");
@@ -326,7 +409,7 @@ $i=-1;
 	
 	
 	
-		  public function referentiel3 ()
+		  public static function referentiel3 ()
     { 
  
  	  $result=  DB::select ("CALL `sp_referentiel3`();");

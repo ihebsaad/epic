@@ -14,7 +14,64 @@ use App\Http\Controllers\HomeController ;
  if($type==102){$Type=  __('msg.Galvano') ;}
  if($type==103){$Type=  __('msg.Findings') ;}
  if($type==104){$Type= __('msg.Jewelry') ;}
+
+$familles2=  HomeController::req_referentiel2() ;
+ $fams2=array();
+ $fams3=array();
+foreach ($familles2 as $fam2)
+    {
+         $parents=  (array) json_decode (json_encode($fam2['parents'])) ;
+
+          if(in_array($famille1,$parents)){
+            array_push($fams2,$fam2['famille2']);
+         }
+    }
+
+$alliages=\App\Lien_alliage_produit::where(function ($query) use($type )   {
+                      $query->where('type_id', $type);
+                        
+                  })->where(function ($query) use($famille1)  {
+                      $query->where('fam1_id' , $famille1)
+                          ->orWhere('fam1_id', 0);
+   
+                  })->pluck('ALLIAGE_IDENT');
+				  
  
+/*
+$data=  DB::select ("CALL `sp_referentiel2`(); ");
+
+if ($data!= null){
+
+$result=array();
+ foreach($data as $d)
+{
+$famille=$d->id;
+//$libelle=$d->libelle;
+ $parents=array();
+ $familles2=array();
+
+// 	   DB::select("SET @p0='$famille' ;");
+
+//   $data2=  DB::select ("CALL `sp_referentiel2_parent`(@p0)");
+$data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id')->pluck('fam1_id');
+ $parents=array($data2);
+ /*
+ if(in_array($famille1,$parents)){
+     array_push($familles2,$famille);
+ }
+
+ foreach ($parents as $p)
+     {if ($p==$famille1){
+         echo 'Famille : '.$famille;
+     }}
+ }
+
+ }
+
+ echo json_encode($familles2);
+*/
+
+
 ?>
   
 					
@@ -31,117 +88,113 @@ use App\Http\Controllers\HomeController ;
                     <div class="row card pl-30 pt-20">
                       <div class="col-md-6 col-lg-12 mb-5">
 				        <h5 class="font-weight-bold  text-primary"> <?php echo $Type;?></strong></h3>
-						<hr style="width:150px" class="ml-20">
+						<hr style="width:120px" class="ml-20 mb-30 mt-20">
 						<h5 class="font-weight-bold dark-grey-text"><strong>Famille 1 </strong></h3>
-						<label><?php echo $libelle .' <small>'.$famille1; ?></small></label>
-						<hr style="width:150px" class="ml-20">
-
-
-				 
+						<label><?php echo $famille1  .' - '.$libelle; ?> </label>
+						<hr style="width:120px" class="ml-20 mb-30">
+ 
                             <h5 class="font-weight-bold dark-grey-text"><strong>Famille 2</strong></h3>
-                                <div class="divider"></div>
-
+                                 <div class="pl-30">
+							  <div class="form-group ">
+                                    <input class="form-check-input" name="groupfam2" type="radio" id="groupfam2" onclick="Famille2('')" checked > 
+                                    <label for="groupfam2" class="form-check-label dark-grey-text">{{__('mg.All')}}</label>
+                                </div>	
+								
+                                <?php
+                                foreach ($fams2 as $fam2)
+                                {
+                                $Fam=  DB::table('type_famille')->where('fam2_id',$fam2)->first();
+                               // echo $Fam->LIBFAM2 .'<br>';
+							   $referentiel3= HomeController::referentiel3();
+								foreach($referentiel3 as $fam3 ){
+									if($fam3->famille_id == $fam2){
+									 array_push($fams3,$fam3->id);
+	
+									}
+								}
+                               echo 
+							   '<div class="form-group "  onclick="Famille2('.$fam2.')">
+                                <input class="form-check-input" name="groupfam2" type="radio" id="radio'.$fam2.'"   >
+                                <label for="radio'.$fam2.'" class="form-check-label dark-grey-text">'.$fam2.' - '.$Fam->LIBFAM2.'</label>
+                                </div>';
+								}?>
                                 <!--Radio group-->
-                                <div class="form-group ">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio100">
-                                    <label for="radio100" class="form-check-label dark-grey-text">All</label>
-                                </div>
+								</div>
 
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio101" checked>
-                                    <label for="radio101" class="form-check-label dark-grey-text">Laptop</label>
-                                </div>
 
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio102">
-                                    <label for="radio102" class="form-check-label dark-grey-text">Smartphone</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio103">
-                                    <label for="radio103" class="form-check-label dark-grey-text">Tablet</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio104">
-                                    <label for="radio104" class="form-check-label dark-grey-text">Headphones</label>
-                                </div>
-                                <!--Radio group-->
-                        </div>
+                      
+						<hr style="width:120px" class="ml-20 mb-30 mt-20">
 
                         <!-- Filter by category-->
-                        <div class="col-md-6 col-lg-12 mb-5">
-                            <h5 class="font-weight-bold dark-grey-text"><strong>Famille 3</strong></h3>
+                             <h5 class="font-weight-bold dark-grey-text"><strong>Famille 3</strong></h3>
                                 <div class="divider"></div>
+                              <div class="pl-30">
+							  <div class="form-group ">
+                                    <input class="form-check-input" name="groupfam3" type="radio" id="radio100" onclick="Famille3(null)" checked > 
+                                    <label for="groupfam3" class="form-check-label dark-grey-text">{{__('mg.All')}}</label>
+                                </div>	
+								<?php
+								foreach ($fams3 as $fam3)
+                                {  
+								  $Fam3=  DB::table('type_famille')->where('fam3_id',$fam3)->first();
+								echo '<div class="form-group "  onclick="Famille3('.$fam3.')">
+                                <input class="form-check-input" name="groupfam3" type="radio" id="radio'.$fam3.'">
+                                <label for="radio'.$fam3.'" class="form-check-label dark-grey-text">'.$fam3.' - '.$Fam3->LIBFAM3.'</label>
+                                </div>';
+								}
+ 								
+								?>
+                                <!--Radio group-->
+                       
+                              </div>
+
+                                
+                         <!-- /Filter by category-->
+						<hr style="width:120px" class="ml-20 mb-30 mt-20">
+
+                             <h5 class="font-weight-bold dark-grey-text"><strong>Métal</strong></h3>
+                                <div class="divider"></div>
+                                 <div class="pl-30">
 
                                 <!--Radio group-->
                                 <div class="form-group ">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio100">
-                                    <label for="radio100" class="form-check-label dark-grey-text">All</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio101" checked>
-                                    <label for="radio101" class="form-check-label dark-grey-text">Laptop</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio102">
-                                    <label for="radio102" class="form-check-label dark-grey-text">Smartphone</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio103">
-                                    <label for="radio103" class="form-check-label dark-grey-text">Tablet</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio104">
-                                    <label for="radio104" class="form-check-label dark-grey-text">Headphones</label>
-                                </div>
-                                <!--Radio group-->
-                        </div>
-                        <!-- /Filter by category-->
-						
-						<div class="col-md-6 col-lg-12 mb-5">
-                            <h5 class="font-weight-bold dark-grey-text"><strong>Métal</strong></h3>
-                                <div class="divider"></div>
-
-                                <!--Radio group-->
+                                    <input class="form-check-input" name="group100" type="radio" id="radio100" onclick="Metal(null)" checked > 
+                                    <label for="radio100" class="form-check-label dark-grey-text">{{__('mg.All')}}</label>
+                                </div>								
                                 <div class="form-group ">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio100">
+                                    <input class="form-check-input" name="group100" type="radio" id="radio100" onclick="Metal(1)"  > 
                                     <label for="radio100" class="form-check-label dark-grey-text">OR</label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radiom1"  >
+                                    <input class="form-check-input" name="group100" type="radio" id="radiom1" onclick="Metal(2)"  >
                                     <label for="radiom1" class="form-check-label dark-grey-text">ARGENT</label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radiom2">
+                                    <input class="form-check-input" name="group100" type="radio" id="radiom2"  onclick="Metal(3)" >
                                     <label for="radiom2" class="form-check-label dark-grey-text">PLATINE</label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radiom3">
+                                    <input class="form-check-input" name="group100" type="radio" id="radiom3"  onclick="Metal(4)" >
                                     <label for="radiom3" class="form-check-label dark-grey-text">PALLADIUM</label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radiom4">
+                                    <input class="form-check-input" name="group100" type="radio" id="radiom4"  onclick="Metal(5)" >
                                     <label for="radiom4" class="form-check-label dark-grey-text">RHODIUM</label>
                                 </div>
 								
                                 <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radiom5">
+                                    <input class="form-check-input" name="group100" type="radio" id="radiom5"  onclick="Metal(9)" >
                                     <label for="radiom5" class="form-check-label dark-grey-text">NON PRECIEUX</label>
                                 </div>								
                                 <!--Radio group-->
-                        </div>
-                    </div>
+                                </div>
+                     </div>
                     <!-- /Grid row -->
-
+					</div>
                     <!-- Grid row -->
                     <div class="row">
 
@@ -199,17 +252,31 @@ use App\Http\Controllers\HomeController ;
                 <section class="section pt-4">
 
                     <!-- Grid row -->
-                    <div class="row">
+                    <div class="row"   id="data-products">
 
-                        <!--Grid column-->
-                        <div class="col-lg-4 col-md-12 mb-4">
+                     <?php 
+					 $products = DB::table('type_famille')->where('fam1_id',$famille1)->limit(16)->get();
+					 
+					 
+					 foreach($products as $prod)
+					 { 
+					 $titre= $prod->LIBFAM1.' '.$prod->LIBFAM2 .' '.$prod->LIBFAM3;
+					 $titre=strtolower($titre);
+					 $image=DB::table('photo')->where('photo_id',$prod->photo_id)->first();
+					 if(isset($image)){ $img=$image->url;}
+					// $img=(substr($img,32,strlen($img)));
+					 
+						 echo
+						 '
+						  
+                         <div class="col-lg-4 col-md-12 mb-4">
 
                             <!--Card-->
                             <div class="card card-ecommerce">
 
                                 <!--Card image-->
                                 <div class="view overlay">
-                                    <center><img style="max-height:200px" src="http://mysaamp.com/myapi/images/grenamo0.gif" class="img-fluid" alt=""></center>
+                                    <center><img style="max-height:200px" src="'.$img.'" class="img-fluid" alt=""></center>
                                     <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
@@ -220,13 +287,14 @@ use App\Http\Controllers\HomeController ;
                                 <div class="card-body">
                                     <!--Category & Title-->
 
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">iPad</a></strong></h5><span class="badge badge-danger mb-2">bestseller</span>
+                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">'.$titre.'</a></strong></h5>
+									<!--<span class="badge badge-danger mb-2">famille2</span>-->
  
 
                                     <!--Card footer-->
                                     <div class="card-footer pb-0">
                                         <div class="row mb-0">
-                                            <span class="float-left"><strong>1439$</strong></span>
+                                          <!--  <span class="float-left"><strong>1439$</strong></span>-->
                                             <span class="float-right">
 
                                         <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
@@ -241,352 +309,19 @@ use App\Http\Controllers\HomeController ;
                             <!--Card-->
 
                         </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <!--Card-->
-                            <div class="card card-ecommerce">
-
-                                <!--Card image-->
-                                <div class="view overlay">
-                                 <center>  <img style="max-height:200px" src="http://mysaamp.com/myapi/images/GREFONP1.gif" class="img-fluid" alt=""></center>
-                                    <a>
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-                                <!--Card image-->
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Category & Title-->
-
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Sony T56-v</a></strong></h5><span class="badge badge-info mb-2">new</span>
- 
-
-                                    <!--Card footer-->
-                                    <div class="card-footer pb-0">
-                                        <div class="row mb-0">
-                                            <span class="float-left"><strong>1439$</strong></span>
-                                            <span class="float-right">
-
-                                                <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
-                                                </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--Card content-->
-
-                            </div>
-                            <!--Card-->
-
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-4 col-md-6 mb-4">
-
-                            <!--Card-->
-                            <div class="card card-ecommerce">
-
-                                <!--Card image-->
-                                <div class="view overlay">
-                                    <center><img style="max-height:200px" src="http://mysaamp.com/myapi/images/grenaa0.gif" class="img-fluid" alt=""></center>
-                                    <a>
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-                                <!--Card image-->
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Category & Title-->
-
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Headphones</a></strong></h5><span class="badge badge-danger mb-2">bestseller</span>
- 
-
-                                    <!--Card footer-->
-                                    <div class="card-footer pb-0">
-                                        <div class="row mb-0">
-                                            <span class="float-left"><strong>1439$</strong></span>
-                                            <span class="float-right">
-
-                                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--Card content-->
-
-                            </div>
-                            <!--Card-->
-
-                        </div>
-                        <!--Grid column-->
-
+												  
+						 
+						 
+						 ';
+					 }
+					 ?>   
+						
+						
                     </div>
                     <!--Grid row-->
 
-                    <!-- Grid row -->
-                    <div class="row">
-
-                        <!--Grid column-->
-                        <div class="col-lg-4 col-md-12 mb-4">
-
-                            <!--Card-->
-                            <div class="card card-ecommerce">
-
-                                <!--Card image-->
-                                <div class="view overlay">
-                                   <center> <img style="max-height:200px" src="http://mysaamp.com/myapi/images/GRENAGD13.gif" class="img-fluid" alt=""></center>
-                                    <a>
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-                                <!--Card image-->
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Category & Title-->
-
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Samsung CT-567</a></strong></h5><span class="badge grey mb-2">best rated</span>
- 
-
-                                    <!--Card footer-->
-                                    <div class="card-footer pb-0">
-                                        <div class="row mb-0">
-                                            <span class="float-left"><strong>1439$</strong></span>
-                                            <span class="float-right">
-                                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--Card content-->
-
-                            </div>
-                            <!--Card-->
-
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <!--Card-->
-                            <div class="card card-ecommerce">
-
-                                <!--Card image-->
-                                <div class="view overlay">
-                                   <center> <img style="max-height:200px" src="http://mysaamp.com/myapi/images/BFDO10CDJ.gif" class="img-fluid" alt=""></center>
-                                    <a>
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-                                <!--Card image-->
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Category & Title-->
-
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Sony TV-675</a></strong></h5><span class="badge badge-danger mb-2">bestseller</span>
- 
-
-                                    <!--Card footer-->
-                                    <div class="card-footer pb-0">
-                                        <div class="row mb-0">
-                                            <span class="float-left"><strong>1439$</strong></span>
-                                            <span class="float-right">
-                                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--Card content-->
-
-                            </div>
-                            <!--Card-->
-
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-4 col-md-6 mb-4">
-
-                            <!--Card-->
-                            <div class="card card-ecommerce">
-
-                                <!--Card image-->
-                                <div class="view overlay">
-                                    <center><img style="max-height:200px" src="http://mysaamp.com/myapi/images/FIMV05J3.gif" class="img-fluid" alt=""></center>
-                                    <a>
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-                                <!--Card image-->
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Category & Title-->
-
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Dell V-964i</a></strong></h5><span class="badge badge-info mb-2">new</span>
- 
-
-                                    <!--Card footer-->
-                                    <div class="card-footer pb-0">
-                                        <div class="row mb-0">
-                                            <span class="float-left"><strong>1439$</strong></span>
-                                            <span class="float-right">
-
-                                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--Card content-->
-
-                            </div>
-                            <!--Card-->
-
-                        </div>
-                        <!--Grid column-->
-
-                    </div>
-                    <!--Grid row-->
-
-                    <!-- Grid row -->
-                    <div class="row mb-3">
-
-                        <!--Grid column-->
-                        <div class="col-lg-4 col-md-12 mb-4">
-
-                            <!--Card-->
-                            <div class="card card-ecommerce">
-
-                                <!--Card image-->
-                                <div class="view overlay">
-                                    <center><img style="max-height:200px" src="http://mysaamp.com/myapi/images/FIC.gif" class="img-fluid" alt=""></center>
-                                    <a>
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-                                <!--Card image-->
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Category & Title-->
-
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Samsung V54</a></strong></h5><span class="badge grey mb-2">best rated</span>
- 
-
-                                    <!--Card footer-->
-                                    <div class="card-footer pb-0">
-                                        <div class="row mb-0">
-                                            <span class="float-left"><strong>1439$</strong></span>
-                                            <span class="float-right">
-                                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--Card content-->
-
-                            </div>
-                            <!--Card-->
-
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <!--Card-->
-                            <div class="card card-ecommerce">
-
-                                <!--Card image-->
-                                <div class="view overlay">
-                                    <center><img style="max-height:200px" src="http://mysaamp.com/myapi/images/GAJ3.gif" class="img-fluid" alt=""></center>
-                                    <a>
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-                                <!--Card image-->
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Category & Title-->
-
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Dell 786i</a></strong></h5><span class="badge badge-info mb-2">new</span>
- 
-
-                                    <!--Card footer-->
-                                    <div class="card-footer pb-0">
-                                        <div class="row mb-0">
-                                            <span class="float-left"><strong>1439$</strong></span>
-                                            <span class="float-right">
-                                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--Card content-->
-
-                            </div>
-                            <!--Card-->
-
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-4 col-md-6 mb-4">
-
-                            <!--Card-->
-                            <div class="card card-ecommerce">
-
-                                <!--Card image-->
-                                <div class="view overlay">
-                                    <center><img style="max-height:200px" src="http://mysaamp.com/myapi/images/GUACPM.gif" class="img-fluid" alt=""></center>
-                                    <a>
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-                                <!--Card image-->
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Category & Title-->
-
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Canon 675-D</a></strong></h5><span class="badge badge-info mb-2">new</span>
- 
-
-                                    <!--Card footer-->
-                                    <div class="card-footer pb-0">
-                                        <div class="row mb-0">
-                                            <span class="float-left"><strong>1439$</strong></span>
-                                            <span class="float-right">
-                                            <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--Card content-->
-
-                            </div>
-                            <!--Card-->
-
-                        </div>
-                        <!--Grid column-->
-
-                    </div>
-                    <!--Grid row-->
-
-                    <!--Grid row-->
+    
+            
                     <div class="row justify-content-center mb-4">
 
                      
@@ -603,7 +338,54 @@ use App\Http\Controllers\HomeController ;
     </div>
     <!-- /.Main Container -->
 					
-					
-					
+<style>
+#loading
+{
+	text-align:center; 
+	background: url('loader.gif') no-repeat center; 
+	height: 150px;
+}
+</style>					
+<script>
+var metal='';					
+var famille2='';					
+var famille3='';		
+
+function Famille2(fam2)
+{
+	famille2=fam2;
+	filter();
+}
+function Famille3(fam3)
+{
+	famille3=fam3;
+    filter();
+
+}
+function Metal(metal)
+{
+	metal=metal;
+	filter();
+
+}	
+
+function filter()
+{
+	        $('#data-products').html('<div id="loading" style="" ></div>');
+
+	        var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{ route('home.data') }}",
+                method: "POST",
+                data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: famille2, famille3: famille3, metal: metal, _token: _token},
+                success: function (data) {
+                $('#data-products').html(data);
+				
+                }
+            });
+	
+	
+}		
+ </script>					
 					
 @endsection
