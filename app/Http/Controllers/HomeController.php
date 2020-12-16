@@ -59,20 +59,36 @@ class HomeController extends Controller
 					   $type= $request->get('type');
 					   $famille1= $request->get('famille1');
 					   $famille2= $request->get('famille2');
+					  // dd($famille2);
 					   $famille3= $request->get('famille3');
 					   $metal= $request->get('metal');
-						if(($famille2)!='' &&  ($famille3 !='')){
+
+
+
+						if(($famille2)!=null &&  ($famille3 !=null)){
 					 $products = DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->where('fam3_id',$famille3)->limit(16)->get();
 							
 						}else{
-					 if(  ($famille2!='') ){
+					 if(  ($famille2!=null) ){
 					 $products = DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->limit(16)->get();
 						}else{
 					 $products = DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam3_id',$famille3)->limit(16)->get();
 							
 						}
-						}					 
-					 
+						}
+
+                         if(   $famille2==null  ){
+						    if($famille3==null)
+                            {
+                                $products = DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->limit(16)->get();
+
+                            }else{
+                                $products = DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam3_id',$famille3)->limit(16)->get();
+
+
+                            }
+                         }
+
 					 $data='';
 					 foreach($products as $prod)
 					 { 
