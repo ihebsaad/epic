@@ -16,7 +16,9 @@ Route::get('/', function () {
 });
 
 
-Route::post('/sata', 'HomeController@data')->name('home.data');
+Route::post('/data', 'HomeController@data')->name('home.data');
+Route::get('/single/{type}/{famille1}/{famille2}/{famille3}', 'HomeController@single')->name('single');
+
 
 Route::get('/orders', 'PagesController@orders')->name('orders');
 Route::get('/test', 'PagesController@test')->name('test');

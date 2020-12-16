@@ -194,6 +194,30 @@ return [
 	'My Models'=>'My Models',
 	'My Weight Account'=>'My Weight Account',
 	'My Profile'=>'My Profile',
-	 
+	
+	'Do you really want to log out?'=>'Do you really want to log out?',
+	'Add to cart'=>'Add to cart',
+	'View product'=>'View product',
+	'Cart'=>'Panier',	
+	'Order'=>'Order',	
+	'Cancel'=>'Cancel',
+ 	'Home'=>'Home',
+	'Product Page'=>'Product Page',
+	'My Documents'=>'My Documents',
+	'All'=>'All',
+	'Gold'=>'Gold',
+	'Silver'=>'Silver',
+	'Platinum'=>'Platinum',
+	'Palladium'=>'Palladium',
+	'Rhodium'=>'Rhodium',
+	'Metal'=>'Metal',
+	'Not precious'=>'Not precious',
+	'Family'=>'Family',
+	'Select a category'=>'Select a category',
+	'In Progress'=>'In Progress',
+	'Finished'=>'Finished',
+	'Product details'=>'Product details',
+	'My Order'=>'My Order',
+ 	 
 	
  ];

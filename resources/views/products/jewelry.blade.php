@@ -12,7 +12,7 @@ $referentiels=  HomeController::referentiel1() ;
 <h2> {{__('msg.Jewelry')}}</h2> 
 
 <div class="card shadow mb-4 pt-10 pl-10 pr-10 pb-20">
- {{__('Select a category')}}<br><br>
+ {{__('msg.Select a category')}}<br><br>
 
 	<div class="row">
 	<?php $i=0;

@@ -82,15 +82,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Au revoir?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{__('msg.Logout')}}?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Vous voulez vraiment fermer votre session ?</div>
+        <div class="modal-body">{{__('msg.Do you really want to log out?') }}</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-          <a class="btn btn-primary" href="{{route('logout')}}">Déconnexion</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">{{__('msg.Cancel')}}</button>
+          <a class="btn btn-primary" href="{{route('logout')}}">{{__('msg.Logout')}}</a>
         </div>
       </div>
     </div>

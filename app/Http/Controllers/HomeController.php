@@ -100,15 +100,14 @@ class HomeController extends Controller
 					 
 						 $data.=
 						 '
-						  
-                         <div class="col-lg-4 col-md-12 mb-4">
+ <div class="col-lg-4 col-md-12 mb-4">
 
                             <!--Card-->
                             <div class="card card-ecommerce">
 
                                 <!--Card image-->
-                                <div class="view overlay">
-                                    <center><img style="max-height:200px" src="'.$img.'" class="img-fluid" alt=""></center>
+                                <div class="view overlay" style="min-height:180px">
+                                    <center><img style="max-height:180px" src="'.$img.'" class="img-fluid" alt=""></center>
                                     <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
@@ -119,21 +118,29 @@ class HomeController extends Controller
                                 <div class="card-body">
                                     <!--Category & Title-->
 
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">'.$titre.'</a></strong></h5>
+                                    <h5 class="card-title mb-1" style="min-height:72px"><strong><a href="" class="dark-grey-text">'.$titre.'</a></strong></h5>
 									<!--<span class="badge badge-danger mb-2">famille2</span>-->
  
 
                                     <!--Card footer-->
-                                    <div class="card-footer pb-0">
+                                    <div class="card-footer pb-4 bg-primary mt-20 mb-10" style="color:white;height:40px;padding-bottom:4px">
                                         <div class="row mb-0">
                                           <!--  <span class="float-left"><strong>1439$</strong></span>-->
                                             <span class="float-right">
 
-                                        <a class="" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart ml-3"></i></a>
+                                        <center><a style="color:white" href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'" class="pb-5" data-toggle="tooltip" data-placement="top" title="'.__("msg.View product").'"><i class="fas fa-eye ml-3"></i> '.__("msg.View product").'</a></center>
                                         </span>
                                         </div>
                                     </div>
+                                    <div class="card-footer pb-4  bg-info" style="color:white;height:40px;">
+                                        <div class="row mb-0">
+                                          <!--  <span class="float-left"><strong>1439$</strong></span>-->
+                                            <span class="float-right">
 
+                                        <a class="" data-toggle="tooltip" data-placement="top" title="'.__("msg.Add to cart").'"><i class="fas fa-shopping-cart ml-3"></i> '.__("msg.Add to cart").'</a>
+                                        </span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!--Card content-->
 
@@ -141,8 +148,6 @@ class HomeController extends Controller
                             <!--Card-->
 
                         </div>
-												  
-						 
 						 
 						 ';
 					 }
@@ -151,7 +156,15 @@ class HomeController extends Controller
 				}					 
 	
 	
-	
+	public function single($type,$famille1,$famille2,$famille3)
+    {
+        $produit=  DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->where('fam3_id',$famille3)->first();
+
+
+        //$this->produit($type,$famille1,$famille2,$famille3);
+
+        return view('products.single',['produit'=>$produit,'type'=>$type,'famille1'=>$famille1]);
+    }
 	
 	  public function filtres($code)
     { 
@@ -760,15 +773,15 @@ $i=-1;
   $NAT_MESURE1=$d->NAT_MESURE1;
   $NAT_MESURE2=$d->NAT_MESURE2;
    $UNIT_IDENT=$d->UNIT_IDENT;
- // $choix_etat=$d->etatid;
-  $choix_etat=$d->choix_etat;
+  // $choix_etat=$d->etatid;
+ // $choix_etat=$d->choix_etat;
  
  
    $result[$i]['libelle']=$libelle;
    $result[$i]['NAT_MESURE1']=$NAT_MESURE1;
    $result[$i]['NAT_MESURE2']=$NAT_MESURE2;
     $result[$i]['UNIT_IDENT']=$UNIT_IDENT;
-   $result[$i]['choix_etat']=$choix_etat;
+  // $result[$i]['choix_etat']=$choix_etat;
    
    $produitmesure1 =$this->produitmesure1($typeid,$fam1,$fam2,$fam3);
     $result[$i]['mesures']=$produitmesure1 ;
