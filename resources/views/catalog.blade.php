@@ -73,9 +73,11 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 
 
 ?>
-  
+  <style>
+  .form-check-label , .form-check-input{cursor:pointer;}
+  </style>
 					
-    <div class="">
+    <div class="filtres mb-10">
 	
     <div class="row pt-4">
 
@@ -97,7 +99,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                                  <div class="pl-30">
 							  <div class="form-group ">
                                     <input class="form-check-input" name="groupfam2" type="radio" id="groupfam2" onclick="Famille2('')" checked > 
-                                    <label for="groupfam2" class="form-check-label dark-grey-text">{{__('mg.All')}}</label>
+                                    <label for="groupfam2" class="form-check-label dark-grey-text">{{__('msg.All')}}</label>
                                 </div>	
 								
                                 <?php
@@ -131,7 +133,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                               <div class="pl-30">
 							  <div class="form-group ">
                                     <input class="form-check-input" name="groupfam3" type="radio" id="radio100" onclick="Famille3(null)" checked > 
-                                    <label for="groupfam3" class="form-check-label dark-grey-text">{{__('mg.All')}}</label>
+                                    <label for="groupfam3" class="form-check-label dark-grey-text">{{__('msg.All')}}</label>
                                 </div>	
 								<?php
 								foreach ($fams3 as $fam3)
