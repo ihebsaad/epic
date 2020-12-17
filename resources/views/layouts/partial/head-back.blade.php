@@ -45,7 +45,7 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
       <!-- CSRF Token -->
  {{ csrf_field() }}
-   <script  src="{{ asset('public/js/jquery-3.5.1.js') }}"  type="text/javascript"></script>  
+ 
 
  <!--<script src="{{ URL::asset('public/sbadmin/vendor/jquery/jquery.min.js')}}"></script>-->
  <!-- Bootstrap core JavaScript -->
