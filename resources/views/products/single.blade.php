@@ -57,13 +57,13 @@ use App\Http\Controllers\HomeController ;
 									?>									
 									<div class="row mb-10 mt-10">
 										<div class="col-md-4">
-											Mesure 1: </br><b><?php   echo $product[0]['NAT_MESURE1'] ; ?></b>
+											 </br><b><?php   echo $product[0]['NAT_MESURE1'] ; ?></b>
 										</div>
 										<div class="col-md-4">
-											Mesure 2: </br><b><?php  echo $product[0]['NAT_MESURE2'] ; ?></b>
+											 </br><b><?php  echo $product[0]['NAT_MESURE2'] ; ?></b>
 										</div>	
 										<div class="col-md-4">
-											Unité : </br><b><?php  echo $unite->UNIT_LIB_LONG; ?></b>
+											{{__('msg.Unit')}} : </br><b><?php  echo $unite->UNIT_LIB_LONG; ?></b>
 										</div>											
 									</div>
 									
@@ -71,20 +71,35 @@ use App\Http\Controllers\HomeController ;
 									<?php $mesures= $product[0]['mesures'];
 									//dd($mesures);
  									?>
-									<div class="row pl-10">
-									  Mesures :  <br> 
+									  
+									 <div class="row pl-10">
+									 <div class="col-md-4">
+
                                       <select class="form-control">
   									   <?php
  									   foreach ($mesures as $mesure) {
 									    //dd($mesure->MESURE2[0]->MESURE2 );
 									   ?>
-									  <option value="<?php 	echo $mesure->MESURE1.' '.$mesure->MESURE2[0]->MESURE2  ; ?>"> Mesure 1 : <?php 	echo $mesure->MESURE1  ; ?>   Mesure 2 : <?php 	echo $mesure->MESURE2[0]->MESURE2 ; ?></option>
+									  <option value="<?php 	echo $mesure->MESURE1   ; ?>">   <?php 	echo $mesure->MESURE1  ; ?> </option>
+									   <?php } ?>	
+									   		  </select>
+
+ 									</div>	
+									 <div class="col-md-4">
+
+                                      <select class="form-control">
+  									   <?php
+ 									   foreach ($mesures as $mesure) {
+									    //dd($mesure->MESURE2[0]->MESURE2 );
+									   ?>
+									  <option value="<?php 	echo  $mesure->MESURE2[0]->MESURE2  ; ?>">   <?php 	echo $mesure->MESURE2[0]->MESURE2 ; ?></option>
 									   <?php } ?>	
 									   		  </select>
 
  									</div>									
+ 									</div>									
 									  <?php } ?>										
-									<div class="row mt-10">
+<!--									<div class="row mt-10">
 									 <div class="col-md-4">{{__('msg.Metal')}}<br>
 									 <select class="form-control">
 									 <option value="or">{{__('msg.Gold')}}</option>
@@ -101,7 +116,7 @@ use App\Http\Controllers\HomeController ;
 									 </select>
 									 </div> 
 									</div>
-
+--->
 									
 									</div>									
 								</div>

@@ -223,6 +223,8 @@ return [
 	'Unit'=>'Unit',
 	'Measurement'=>'Measurement',
 	'Measurements'=>'Measurements',
+	'Category'=>'Category',
+	'Sub category'=>'Sub category',
  	 
 	
  ];

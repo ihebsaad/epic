@@ -132,15 +132,7 @@ class HomeController extends Controller
                                         </span>
                                         </div>
                                     </div>
-                                    <div class="card-footer pb-4  bg-info" style="color:white;height:40px;">
-                                        <div class="row mb-0">
-                                          <!--  <span class="float-left"><strong>1439$</strong></span>-->
-                                            <span class="float-right">
-
-                                        <a class="" data-toggle="tooltip" data-placement="top" title="'.__("msg.Add to cart").'"><i class="fas fa-shopping-cart ml-3"></i> '.__("msg.Add to cart").'</a>
-                                        </span>
-                                        </div>
-                                    </div>
+ 
                                 </div>
                                 <!--Card content-->
 

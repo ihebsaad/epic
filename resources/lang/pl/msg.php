@@ -232,5 +232,8 @@ return [
 	'Unit'=>'Jednostka',
 	'Measurement'=>'Pomiary',	
 	'Measurements'=>'Pomiary',	
+	'Category'=>'Kategoria',
+	'Sub category'=>'podkategoria',
+	
 	 
  ];

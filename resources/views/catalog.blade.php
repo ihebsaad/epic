@@ -91,11 +91,11 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                       <div class="col-md-6 col-lg-12 mb-5">
 				        <h5 class="font-weight-bold  text-primary"> <?php echo $Type;?></strong></h3>
 						<hr style="width:120px" class="ml-20 mb-30 mt-20">
-						<h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Family')}} 1 </strong></h3>
-						<label><?php echo $famille1  .' - '.$libelle; ?> </label>
+						<h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Category')}} </strong></h3>
+						<label><?php echo  $libelle; ?> </label>
 						<hr style="width:120px" class="ml-20 mb-30">
  
-                            <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Family')}} 2</strong></h3>
+                            <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Sub category')}} </strong></h3>
                                  <div class="pl-30">
 							  <div class="form-group ">
                                     <input class="form-check-input" name="groupfam2" type="radio" id="groupfam2" onclick="Famille2('')" checked > 
@@ -117,25 +117,24 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                                echo 
 							   '<div class="form-group "  onclick="Famille2('.$fam2.')">
                                 <input class="form-check-input" name="groupfam2" type="radio" id="radio'.$fam2.'"   >
-                                <label for="radio'.$fam2.'" class="form-check-label dark-grey-text">'.$fam2.' - '.$Fam->LIBFAM2.'</label>
+                                <label for="radio'.$fam2.'" class="form-check-label dark-grey-text">'.$Fam->LIBFAM2.'</label>
                                 </div>';
 								}?>
                                 <!--Radio group-->
 								</div>
 
 
-                      
+                      <!--
 						<hr style="width:120px" class="ml-20 mb-30 mt-20">
 
-                        <!-- Filter by category-->
-                             <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Family')}} 3</strong></h3>
+                              <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Family')}} 3</strong></h3>
                                 <div class="divider"></div>
                               <div class="pl-30">
 							  <div class="form-group ">
                                     <input class="form-check-input" name="groupfam3" type="radio" id="radiofam3" onclick="Famille3(null)" checked > 
                                     <label for="radiofam3" class="form-check-label dark-grey-text">{{__('msg.All')}}</label>
                                 </div>	
-								<?php
+								<?php /*
 								foreach ($fams3 as $fam3)
                                 {  
 								  $Fam3=  DB::table('type_famille')->where('fam3_id',$fam3)->first();
@@ -144,12 +143,11 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                                 <label for="radio'.$fam3.'" class="form-check-label dark-grey-text">'.$fam3.' - '.$Fam3->LIBFAM3.'</label>
                                 </div>';
 								}
- 								
+ 								*/
 								?>
-                                <!--Radio group-->
-                       
+                        
                               </div>
-
+								--->
                                 
                          <!-- /Filter by category-- 
 						<hr style="width:120px" class="ml-20 mb-30 mt-20">
@@ -270,7 +268,6 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 					 
 						 echo
 						 '
-						  
                          <div class="col-lg-4 col-md-12 mb-4">
 
                             <!--Card-->
@@ -303,15 +300,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                                         </span>
                                         </div>
                                     </div>
-                                    <div class="card-footer pb-4  bg-info" style="color:white;height:40px;">
-                                        <div class="row mb-0">
-                                          <!--  <span class="float-left"><strong>1439$</strong></span>-->
-                                            <span class="float-right">
-
-                                        <a class="" data-toggle="tooltip" data-placement="top" title="'.__("msg.Add to cart").'"><i class="fas fa-shopping-cart ml-3"></i> '.__("msg.Add to cart").'</a>
-                                        </span>
-                                        </div>
-                                    </div>
+                       
                                 </div>
                                 <!--Card content-->
 
