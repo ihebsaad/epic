@@ -217,7 +217,12 @@ return [
 	'In Progress'=>'In Progress',
 	'Finished'=>'Finished',
 	'Product details'=>'Product details',
-	'My Order'=>'My Order',
+	'My order'=>'My order',
+	'Title'=>'Title',
+	'Color'=>'Color',
+	'Unit'=>'Unit',
+	'Measurement'=>'Measurement',
+	'Measurements'=>'Measurements',
  	 
 	
  ];

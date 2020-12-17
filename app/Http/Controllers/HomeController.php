@@ -161,9 +161,9 @@ class HomeController extends Controller
         $produit=  DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->where('fam3_id',$famille3)->first();
 
 
-        //$this->produit($type,$famille1,$famille2,$famille3);
+        $product=app('App\Http\Controllers\HomeController')->produit($type,$famille1,$famille2,$famille3);
 
-        return view('products.single',['produit'=>$produit,'type'=>$type,'famille1'=>$famille1]);
+        return view('products.single',['product'=>$product,'produit'=>$produit,'type'=>$type,'famille1'=>$famille1]);
     }
 	
 	  public function filtres($code)
@@ -755,7 +755,7 @@ $i=-1;
      */
 	 
  
-      	 public function produit($typeid,$fam1,$fam2,$fam3)
+      	 public   function produit($typeid,$fam1,$fam2,$fam3)
     { 
 //	try {
  	   DB::select("SET @p0='$typeid' ;");
@@ -789,19 +789,21 @@ $i=-1;
    $result[$i]['complements']=$this->produitcomplement($typeid,$fam1,$fam2,$fam3);
    
   }
-	
-	  if ($data!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+
+if ($data!= null){
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	  return $result  ;
 	  }
 	  else{
-		  
+		  /*
   $error = array(
     "status" => "error",
     "error_code" => 404,
     "error_message" => "Aucun résultat trouvé",
 );
 		return response()->json(  $error ,404,array(),JSON_PRETTY_PRINT);
-
+*/
+		  return 'error' ;
 		}
 	
 /*	 }catch (\Exception $e){

@@ -151,14 +151,14 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                               </div>
 
                                 
-                         <!-- /Filter by category-->
+                         <!-- /Filter by category-- 
 						<hr style="width:120px" class="ml-20 mb-30 mt-20">
 
                              <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Metal')}}</strong></h3>
                                 <div class="divider"></div>
                                  <div class="pl-30">
 
-                                <!--Radio group-->
+                                <!--Radio group-- 
                                 <div class="form-group ">
                                     <input class="form-check-input" name="group100" type="radio" id="radio100" onclick="Metal(null)" checked > 
                                     <label for="radio100" class="form-check-label dark-grey-text">{{__('msg.All')}}</label>
@@ -192,8 +192,8 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                                     <input class="form-check-input" name="group100" type="radio" id="radiom5"  onclick="Metal(9)" >
                                     <label for="radiom5" class="form-check-label dark-grey-text">{{__('msg.Rhodium')}}</label>
                                 </div>								
-                                <!--Radio group-->
-                                </div>
+                                 </div>
+								--->
                      </div>
                     <!-- /Grid row -->
 					</div>

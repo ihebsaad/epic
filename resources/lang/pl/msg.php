@@ -225,8 +225,12 @@ return [
 	'Select a category'=>'Wybierz kategorię',
 	'In Progress'=>'W toku',
 	'Finished'=>'Gotowe',
-	'Product details'=>'Szczegóły Produktu',
-	'My Order'=>'Moje polecenie',
-	
+	'Product details'=>'Szczegóły produktu',
+	'My order'=>'Moje polecenie',
+	'Title'=>'Tytuł',
+	'Color'=>'Kolor',	
+	'Unit'=>'Jednostka',
+	'Measurement'=>'Pomiary',	
+	'Measurements'=>'Pomiary',	
 	 
  ];

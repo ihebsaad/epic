@@ -227,6 +227,11 @@ return [
 	'In Progress'=>'En Cours',
 	'Finished'=>'Terminés',	
 	'Product details'=>'Détails du produit',
-	'My Order'=>'Ma Commander ',
+	'My order'=>'Ma commande',
+	'Title'=>'Titre',
+	'Color'=>'Couleur',
+	'Unit'=>'Unité',
+	'Measurement'=>'Mesure',
+	'Measurements'=>'Mesures',
 	
  ];
