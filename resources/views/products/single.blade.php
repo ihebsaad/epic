@@ -75,26 +75,29 @@ use App\Http\Controllers\HomeController ;
 									 <div class="row pl-10">
 									 <div class="col-md-4">
 
-                                      <select class="form-control">
+                                      <select onchange="showmesure2()" id="mesure1" class="form-control">
   									   <?php
  									   foreach ($mesures as $mesure) {
 									    //dd($mesure->MESURE2[0]->MESURE2 );
 									   ?>
-									  <option value="<?php 	echo $mesure->MESURE1   ; ?>">   <?php 	echo $mesure->MESURE1  ; ?> </option>
+									  <option   value="<?php 	echo $mesure->MESURE1   ; ?>">   <?php 	echo $mesure->MESURE1  ; ?> </option>
 									   <?php } ?>	
-									   		  </select>
+									   </select>
 
  									</div>	
 									 <div class="col-md-4">
 
-                                      <select class="form-control">
+                                      <select disabled id="mesure2" class="form-control" required  >
+									  <option></option>
   									   <?php
  									   foreach ($mesures as $mesure) {
+ 									   foreach ($mesure->MESURE2 as $m2) {
 									    //dd($mesure->MESURE2[0]->MESURE2 );
 									   ?>
-									  <option value="<?php 	echo  $mesure->MESURE2[0]->MESURE2  ; ?>">   <?php 	echo $mesure->MESURE2[0]->MESURE2 ; ?></option>
+									  <option class="mesure2 mesure-<?php echo $mesure->MESURE1; ?>" value="<?php 	echo  $m2->MESURE2  ; ?>">   <?php 	echo $m2->MESURE2  ; ?></option>
 									   <?php } ?>	
-									   		  </select>
+									   <?php } ?>	
+									  </select>
 
  									</div>									
  									</div>									
@@ -151,4 +154,23 @@ use App\Http\Controllers\HomeController ;
  				
    </div>
 
+   <script>
+   function toggle(className, displayState){
+            var elements = document.getElementsByClassName(className);
+            for (var i = 0; i < elements.length; i++){
+                elements[i].style.display = displayState;
+             }
+        }
+		
+	function showmesure2( ){
+		 toggle('mesure2','none');
+		  mesure=$("#mesure1").val();
+		 alert(mesure);
+        $("#mesure2").prop('disabled', false);
+       //document.getElementsById('mesure2').disabled=false;
+	 	toggle('mesure-'+mesure,'block');
+		
+		
+	}	
+   </script>
 @endsection					

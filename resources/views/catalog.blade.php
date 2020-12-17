@@ -7,7 +7,7 @@
  
 use App\Http\Controllers\HomeController ;
 
-//$referentiels1=  HomeController::referentiel1() ;
+ $referentiels1=  HomeController::referentiel1() ;
  $Fam1 =DB::table('type_famille')->where('fam1_id',$famille1)->where('type_id',$type)->first();
  $libelle=$Fam1->LIBFAM1;
  if($type==101){$Type=  __('msg.Half Products') ;}
@@ -36,7 +36,8 @@ $alliages=\App\Lien_alliage_produit::where(function ($query) use($type )   {
    
                   })->pluck('ALLIAGE_IDENT');
 				  
- 
+ $user = auth()->user();  
+$alliage_user=$user['alliage'];
 /*
 $data=  DB::select ("CALL `sp_referentiel2`(); ");
 
@@ -149,23 +150,40 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                               </div>
 								--->
                                 
-                         <!-- /Filter by category-- 
+                         <!-- /Filter by category-->
 						<hr style="width:120px" class="ml-20 mb-30 mt-20">
 
                              <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Metal')}}</strong></h3>
                                 <div class="divider"></div>
                                  <div class="pl-30">
 
-                                <!--Radio group-- 
+                                <!--Radio group 
                                 <div class="form-group ">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio100" onclick="Metal(null)" checked > 
-                                    <label for="radio100" class="form-check-label dark-grey-text">{{__('msg.All')}}</label>
-                                </div>								
-                                <div class="form-group ">
+                                    <input class="form-check-input" name="group100" type="radio" id="radioalliages" onclick="Metal(null)" checked > 
+                                    <label for="radioalliages" class="form-check-label dark-grey-text">{{__('msg.None')}}</label>
+                                </div>	-->							
+                                <?php foreach ($alliages as $alliage)
+									{
+									 $Alliage= DB::table('alliage')->where('ALLIAGE_IDENT',$alliage)->first();  
+								     $label= $Alliage->ALLIAGE_LIB;
+									
+									?>
+								<div class="form-group " onclick="changing(<?php echo $alliage ;?>)">
+                                    <input class="form-check-input" name="group100" type="radio" id="radioa-<?php echo $alliage ;?>"   <?php if($alliage_user==$alliage ){echo 'checked';}?> > 
+                                    <label for="radioa-<?php echo $alliage ;?>" class="form-check-label dark-grey-text"><?php echo $label ;?></label>
+                                </div>										
+										
+										
+								<?php
+									}
+									
+								  ?>
+								<!--			
+								<div class="form-group ">
                                     <input class="form-check-input" name="group100" type="radio" id="radio100" onclick="Metal(1)"  > 
                                     <label for="radio100" class="form-check-label dark-grey-text">{{__('msg.Gold')}}</label>
                                 </div>
-
+								
                                 <div class="form-group">
                                     <input class="form-check-input" name="group100" type="radio" id="radiom1" onclick="Metal(2)"  >
                                     <label for="radiom1" class="form-check-label dark-grey-text">{{__('msg.Silver')}}</label>
@@ -189,9 +207,9 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                                 <div class="form-group">
                                     <input class="form-check-input" name="group100" type="radio" id="radiom5"  onclick="Metal(9)" >
                                     <label for="radiom5" class="form-check-label dark-grey-text">{{__('msg.Rhodium')}}</label>
-                                </div>								
+                                </div>-->							
                                  </div>
-								--->
+								 
                      </div>
                     <!-- /Grid row -->
 					</div>
@@ -385,6 +403,24 @@ function filter()
 	
 	
 }		
+
+
+   function changing(val) {
+           
+             //if ( (val != '')) {
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{ route('users.updating') }}",
+                method: "POST",
+                data: {user: <?php echo $user->id; ?>, champ: 'alliage', val: val, _token: _token},
+                success: function (data) {
+        
+
+
+                }
+            });
+
+        }
  </script>					
 					
 @endsection

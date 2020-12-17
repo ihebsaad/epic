@@ -47,7 +47,7 @@
  {{ csrf_field() }}
  
 
- <!--<script src="{{ URL::asset('public/sbadmin/vendor/jquery/jquery.min.js')}}"></script>-->
+ <script src="{{ URL::asset('public/sbadmin/vendor/jquery/jquery.min.js')}}"></script> 
  <!-- Bootstrap core JavaScript -->
  <script src="{{ URL::asset('public/sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
  <!-- Core plugin JavaScript -->
@@ -55,9 +55,11 @@
 
 <!-- --------->
 
-<?php /*if  ($view_name != 'messagechat-messagerie')   { ?>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<?php }*/?>
+<?php /*  if  ($view_name != 'home')   {  ?>
+   <script  src="{{ asset('public/js/jquery-3.5.1.js') }}"  type="text/javascript"></script>  
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+<?php } */ ?>
        <!-- CSS DAtatable  
 
 <link rel="stylesheet" type="text/css" href="{{ asset('resources/assets/datatables/css/dataTables.bootstrap.css') }}" />
