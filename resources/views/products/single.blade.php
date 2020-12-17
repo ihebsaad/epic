@@ -17,8 +17,21 @@ use App\Http\Controllers\HomeController ;
   $img=''; $image=DB::table('photo')->where('photo_id',$produit->photo_id)->first();
 	 if(isset($image)){ $img=$image->url;}
 	 
-  //echo json_encode($product);
-  //dd($product);
+$alliages=\App\Lien_alliage_produit::where(function ($query) use($type )   {
+                      $query->where('type_id', $type);
+                        
+                  })->where(function ($query) use($famille1)  {
+                      $query->where('fam1_id' , $famille1)
+                          ->orWhere('fam1_id', 0);
+   
+                  })->pluck('ALLIAGE_IDENT');
+				  
+ $user = auth()->user();  
+$alliage_user=$user['alliage'];
+if($produit->choix_etat>0){
+$etats= HomeController::referentieletat();
+}
+
  ?>
  <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -69,7 +82,9 @@ use App\Http\Controllers\HomeController ;
 									
 							 
 									<?php $mesures= $product[0]['mesures'];
-									//dd($mesures);
+									//dd($mesures[0]->MESURE1 );
+									  if( $mesures[0]->MESURE1!='0.00' && $mesures[0]->MESURE2 !='0.00'    ){
+										  
  									?>
 									  
 									 <div class="row pl-10">
@@ -101,25 +116,63 @@ use App\Http\Controllers\HomeController ;
 
  									</div>									
  									</div>									
-									  <?php } ?>										
-<!--									<div class="row mt-10">
-									 <div class="col-md-4">{{__('msg.Metal')}}<br>
-									 <select class="form-control">
-									 <option value="or">{{__('msg.Gold')}}</option>
-									 <option value="argent">{{__('msg.Silver')}}</option>
-									 <option value="platine">{{__('msg.Platinum')}}</option>
+									  <?php } ?>		
+									 <?php }?>
+
+ 									<div class="row mt-10">
+									 <div class="col-md-10">Alliage<br>
+									 <select class="form-control" id="alliage_id">
+									 <option></option>
+										<?php
+ 										foreach ($alliages as $alliage)
+									{
+									 $Alliage= DB::table('alliage')->where('ALLIAGE_IDENT',$alliage)->first();  
+								     $label= $Alliage->ALLIAGE_LIB;
+									 $metalid =  $Alliage->metal_ident;
+									 $Metal=DB::table('METAL')->where('metal_ident',$metalid )->first();  
+									 $couleur =  $Alliage->COULEUR;
+									 
+									 if($alliage_user==$alliage ){$selected = 'selected="selected"';}else{$selected = '';} 
+									echo '<option  '.$selected.' value="'.$alliage.'">'.$Metal->metal_lib.' | '.$label.' | '.$couleur . '</option>';
+									}
+									?>
+									 
 									 </select>
 									 </div> 
-									 <div class="col-md-4">{{__('msg.Title')}}<br>
-									 <select class="form-control">
-									 </select>									 
-									 </div> 
-									 <div class="col-md-4">{{__('msg.Color')}}<br>
-									 <select class="form-control">
-									 </select>
-									 </div> 
+	 
 									</div>
---->
+ 									<div class="row mb-10 mt-10">
+									<div class="col-md-3 pt-10">Quantité</div><div class="col-md-6"><input id="qte" class="form-control" placeholder=""></input></div>
+									</div>
+								    <?php if($produit->choix_etat>0){ ?>
+									 <div class="row mb-10 mt-10">
+
+									<div class="col-md-2">Etat</div>
+									<div class="col-md-4"><select id="etat_id" class="form-control" placeholder="Etat"><?php foreach($etats as $etat){?><option value="<?php echo $etat->id;?>"> <?php echo $etat->libelle;?> </option> <?php } ?>   </select></div> 
+									</div>
+									<?php }else{ ?><input id="etat_id" type="hidden"  value="0" ></input> <?php }  ?>
+									<?php 
+									$complements= $product[0]['complements'];
+									 //dd($complements[0]->complement_id);
+									 if($complements[0]->complement_id!=null){ ?>
+									 <div class=="row mb-10 mt-10">
+										 <div class="col-md-2">Complémént</div>
+										 <div class="col-md-4">
+										 <select class="form-control" id="complement_id">
+									<?php	 foreach($complements as $comp)
+										 {
+											echo ' <option value="'.$comp->COMPLEMENT_DP_IDENT.'">'.$comp->COMPLEMENT_LIB.'</option>';
+										 }
+										?> </select>
+												</div>	
+									<div class="col-md-2">Valeur</div>
+									<div class="col-md-4"> <input type="text" class="form-control" id="complement_val" placeholder="mm"></input></div>									
+									</div>
+									<?php }
+									?>
+									
+							
+									
 									
 									</div>									
 								</div>
@@ -165,8 +218,7 @@ use App\Http\Controllers\HomeController ;
 	function showmesure2( ){
 		 toggle('mesure2','none');
 		  mesure=$("#mesure1").val();
-		 alert(mesure);
-        $("#mesure2").prop('disabled', false);
+         $("#mesure2").prop('disabled', false);
        //document.getElementsById('mesure2').disabled=false;
 	 	toggle('mesure-'+mesure,'block');
 		
