@@ -7,7 +7,12 @@
  
 use App\Http\Controllers\HomeController ;
 
- $referentiels1=  HomeController::referentiel1() ;
+//$referentiels=  HomeController::referentiel1() ;
+$referentiels=  DB::table('type_famille')->where('type_id',$type)->where('fam1_id','<>',0)->get();
+ $referentiels= $referentiels->unique('LIBFAM1');
+//  dd($referentiels) ;
+//HomeController::referentiel1() ;
+
  $Fam1 =DB::table('type_famille')->where('fam1_id',$famille1)->where('type_id',$type)->first();
  $libelle=$Fam1->LIBFAM1;
  if($type==101){$Type=  __('msg.Half Products') ;}
@@ -93,7 +98,15 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 				        <h5 class="font-weight-bold  text-primary"> <?php echo $Type;?></strong></h3>
 						<hr style="width:120px" class="ml-20 mb-30 mt-20">
 						<h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Category')}} </strong></h3>
-						<label><?php echo  $libelle; ?> </label>
+						<select id="fam1" class="fotm-control" onchange='reset()'>
+						<?php  
+						 	foreach($referentiels as $fam) 
+							{
+								if($fam->fam1_id==$famille1){$selected="selected='selected'";}else{ $selected="";}
+							 echo '<option value="'.$fam->fam1_id.'" '.$selected.'  > '.$fam->LIBFAM1.' </option>'	;
+							}
+						?>	
+						</select>
 						<hr style="width:120px" class="ml-20 mb-30">
  
                             <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Sub category')}} </strong></h3>
@@ -362,7 +375,13 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 	background: url('loader.gif') no-repeat center; 
 	height: 150px;
 }
-</style>					
+</style>		
+<?php
+// $urlapp="//$_SERVER[HTTP_HOST]/epic"; 
+ $urlapp=env('APP_URL');
+
+?>
+			
 <script>
 var metal='';					
 var famille2='';					
@@ -421,6 +440,13 @@ function filter()
             });
 
         }
+		
+	function reset(){
+		 var fam1 = $('#fam1').val();
+		//var url="{{ route('catalog',['type'=>,'<?php echo $type;?>'famille1'=>"+fam1+"]) }}";
+		//url= document.location.hostname+'/epic' 
+		document.location.href='<?php echo $urlapp;?>'+'/catalog/'+<?php echo $type;?>+'/'+fam1;
+	}	
  </script>					
 					
 @endsection
