@@ -26,8 +26,9 @@ $alliagesp=\App\Lien_alliage_produit::where(function ($query) use($type )   {
    
                   })->pluck('ALLIAGE_IDENT');
 				  
- 
- $alliages=HomeController::referentielalliage();
+ 	 			  
+  //alliage1
+  //$alliages=HomeController::referentielalliage();
 				  
  $user = auth()->user();  
 $alliage_user=$user['alliage'];
@@ -125,18 +126,26 @@ $etats= HomeController::referentieletat();
 									<input type="hidden" id="mesure2" value="0.00" />	  
 									 <?php } ?>
 									  
-									 <?php }?>
+									 <?php }
+									  foreach ($alliagesp as $alliagep){
+											 echo $alliagep;
+;										 }
+										 
+									 ?>
 
  									<div class="row mt-10">
 									 <div class="col-md-12">Alliage<br>
 									 <select class="form-control" id="alliage_id">
 									 <option value="0"></option>
 										<?php
- 								/*		foreach ($alliages as $alliage)
+										
+										
+
+ 								 		foreach ($alliages as $alliage)
 									{
 										foreach ($alliagesp as $alliagep)
 										{
-											if( $alliagep->ALLIAGE_IDENT ==  $alliage->id ) 
+											if( $alliagep->ALLIAGE_IDENT ==  $alliage ) 
 										{
 									/* $Alliage= DB::table('alliage')->where('ALLIAGE_IDENT',$alliage)->first();  
 								     $label= $Alliage->ALLIAGE_LIB;
@@ -146,7 +155,7 @@ $etats= HomeController::referentieletat();
 									 
 									 if($alliage_user==$alliage ){$selected = 'selected="selected"';}else{$selected = '';} 
 									echo '<option  '.$selected.' value="'.$alliage.'">'.$label. '</option>';
-									*//*
+									*/ 
 									
 									
 									 if($alliage_user==$alliage->id ){$selected = 'selected="selected"';}else{$selected = '';} 

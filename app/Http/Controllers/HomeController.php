@@ -264,7 +264,13 @@ class HomeController extends Controller
 		 
 	 	
 		
-	 
+	  public static function  alliage1($code,$fam1 )
+    {   DB::select("SET @p0='$code' ;");
+	   DB::select("SET @p1='$fam1'  ;");
+	 	$result=  DB::select('call `sp_referentiel1_alliage`(@p0,@p1,@p2,@p3); ');
+		return $result;
+ 
+	} 
 	
 	
 	   public function catalogue2($code,$fam1,$fam2,$fam3)
