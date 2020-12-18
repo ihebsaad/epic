@@ -632,7 +632,7 @@ $i=-1;
  
     
  
-    public function referentielalliage ()
+    public static function referentielalliage ()
     { 
  
  	  $result=  DB::select ("CALL `Sp_referentiel_alliage`(); ");

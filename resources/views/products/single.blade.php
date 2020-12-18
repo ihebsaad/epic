@@ -26,6 +26,9 @@ $alliages=\App\Lien_alliage_produit::where(function ($query) use($type )   {
    
                   })->pluck('ALLIAGE_IDENT');
 				  
+ 
+$alliages=HomeController::referentielalliage();
+				  
  $user = auth()->user();  
 $alliage_user=$user['alliage'];
 if($produit->choix_etat>0){
