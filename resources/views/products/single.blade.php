@@ -116,13 +116,18 @@ $etats= HomeController::referentieletat();
 
  									</div>									
  									</div>									
-									  <?php } ?>		
+									  <?php }else{ ?>
+										  
+									<input type="hidden" id="mesure1" value="0.00" />	  
+									<input type="hidden" id="mesure2" value="0.00" />	  
+									 <?php } ?>
+									  
 									 <?php }?>
 
  									<div class="row mt-10">
-									 <div class="col-md-10">Alliage<br>
+									 <div class="col-md-12">Alliage<br>
 									 <select class="form-control" id="alliage_id">
-									 <option></option>
+									 <option value="0"></option>
 										<?php
  										foreach ($alliages as $alliage)
 									{
@@ -142,34 +147,42 @@ $etats= HomeController::referentieletat();
 	 
 									</div>
  									<div class="row mb-10 mt-10">
-									<div class="col-md-3 pt-10">Quantité</div><div class="col-md-6"><input id="qte" class="form-control" placeholder=""></input></div>
+									<div class="col-md-4 pt-10">Quantité</div><div class="col-md-6"><input onchange="details()" id="qte" type="number"  value="0"  min="1" class="form-control" placeholder="" /></input></div>
 									</div>
 								    <?php if($produit->choix_etat>0){ ?>
 									 <div class="row mb-10 mt-10">
 
-									<div class="col-md-2">Etat</div>
-									<div class="col-md-4"><select id="etat_id" class="form-control" placeholder="Etat"><?php foreach($etats as $etat){?><option value="<?php echo $etat->id;?>"> <?php echo $etat->libelle;?> </option> <?php } ?>   </select></div> 
+									<div class="col-md-4">Etat</div>
+									<div class="col-md-8"><select id="etat_id" class="form-control" placeholder="Etat"><?php foreach($etats as $etat){?><option value="<?php echo $etat->id;?>"> <?php echo $etat->libelle;?> </option> <?php } ?>   </select></div> 
 									</div>
 									<?php }else{ ?><input id="etat_id" type="hidden"  value="0" ></input> <?php }  ?>
 									<?php 
 									$complements= $product[0]['complements'];
 									 //dd($complements[0]->complement_id);
-									 if($complements[0]->complement_id!=null){ ?>
-									 <div class=="row mb-10 mt-10">
-										 <div class="col-md-2">Complémént</div>
-										 <div class="col-md-4">
-										 <select class="form-control" id="complement_id">
-									<?php	 foreach($complements as $comp)
-										 {
-											echo ' <option value="'.$comp->COMPLEMENT_DP_IDENT.'">'.$comp->COMPLEMENT_LIB.'</option>';
+									 if($complements[0]->complement_id!=null){ 
+									 // echo json_encode($complements);
+
+									 ?>
+									 <div class=="row mb-10 mt-20">
+										 <div class="col-md-5">Complémént</div>
+										 <div class="col-md-7">
+										 <select class="form-control" id="comp_id">
+									<?php	
+									foreach($complements as $comp)
+										 { 
+										 $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$comp->complement_id)->first();
+											 echo ' <option value="'.$comp->complement_id.'">'.$Comp->COMPLEMENT_LIB.'</option>';
 										 }
 										?> </select>
 												</div>	
-									<div class="col-md-2">Valeur</div>
-									<div class="col-md-4"> <input type="text" class="form-control" id="complement_val" placeholder="mm"></input></div>									
+									<div class="col-md-5">Valeur</div>
+									<div class="col-md-7"> <input type="text" class="form-control" id="comp_val" placeholder="mm"></input></div>									
 									</div>
 									<?php }
-									?>
+									else{ ?>
+										<input type="hidden" id="comp_id" value="0" />
+										<input type="hidden" id="comp_val" value="0" />
+								<?php	} ?>
 									
 							
 									
@@ -221,8 +234,30 @@ $etats= HomeController::referentieletat();
          $("#mesure2").prop('disabled', false);
        //document.getElementsById('mesure2').disabled=false;
 	 	toggle('mesure-'+mesure,'block');
-		
-		
 	}	
+	
+function details()
+{ 
+	        var _token = $('input[name="_token"]').val();
+	        var mesure1 = $('#mesure1').val();
+	        var mesure2 = $('#mesure2').val();
+	        var alliage_id = $('#alliage_id').val();
+	        var qte = $('#qte').val();
+	        var comp_id = $('#comp_id').val();
+	        var comp_val = $('#comp_val').val();
+            $.ajax({
+                url: "{{ route('home.details') }}",
+                method: "POST",
+                data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,
+				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val, _token: _token},
+                success: function (data) {
+				alert( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif) ;
+                }
+            });
+	
+	
+}
+
+	
    </script>
 @endsection					

@@ -148,6 +148,27 @@ class HomeController extends Controller
 				}					 
 	
 	
+	
+	 function details(Request $request) { 	
+					   
+					   $type= $request->get('type');
+					   $famille1= $request->get('famille1');
+					   $famille2= $request->get('famille2');
+ 					   $famille3= $request->get('famille3');
+					   $mesure1= $request->get('mesure1');
+					   $mesure2= $request->get('mesure2');
+					   $alliage_id= $request->get('alliage_id');
+					   $qte= $request->get('qte');
+					   $comp_id= $request->get('comp_id');
+					   $comp_val= $request->get('comp_val');
+ 					   
+		$data=$this->detailsproduit($type,$famille1,$famille2,$famille3,$mesure1,$mesure2,$alliage_id,$qte,$comp_id,$comp_val,1);
+		return $data;
+	 }					   
+	
+	
+	
+	
 	public function single($type,$famille1,$famille2,$famille3)
     {
         $produit=  DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->where('fam3_id',$famille3)->first();
@@ -155,7 +176,7 @@ class HomeController extends Controller
 
         $product=app('App\Http\Controllers\HomeController')->produit($type,$famille1,$famille2,$famille3);
 
-        return view('products.single',['product'=>$product,'produit'=>$produit,'type'=>$type,'famille1'=>$famille1]);
+        return view('products.single',['product'=>$product,'produit'=>$produit,'type'=>$type,'famille1'=>$famille1,'famille2'=>$famille2,'famille3'=>$famille3]);
     }
 	
 	  public function filtres($code)
@@ -493,7 +514,7 @@ $i=-1;
 	
 	 
 	
-		  public function referentieletat ()
+		  public static function referentieletat ()
     { 
  
  	  $result=  DB::select ("CALL `sp_referentiel_etat`();");
@@ -1037,7 +1058,8 @@ if ($data!= null){
 		
 		  if ($results['prix']!= null){
 	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
-	 return response()->json(  $results ,200,array(),JSON_PRETTY_PRINT);
+	// return response()->json(  $results ,200,array(),JSON_PRETTY_PRINT);
+	 return    $results  ;
 
 	 } else{
 
