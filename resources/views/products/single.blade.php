@@ -135,7 +135,8 @@ $etats= HomeController::referentieletat();
  										foreach ($alliages as $alliage)
 									{
 										foreach ($alliagesp as $alliagep)
-										{if( $alliagep->ALLIAGE_IDENT ==  $alliage->id ) 
+										{
+											if( $alliagep->ALLIAGE_IDENT ==  $alliage->id ) 
 										{
 									/* $Alliage= DB::table('alliage')->where('ALLIAGE_IDENT',$alliage)->first();  
 								     $label= $Alliage->ALLIAGE_LIB;
