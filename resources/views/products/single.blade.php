@@ -126,11 +126,7 @@ $etats= HomeController::referentieletat();
 									<input type="hidden" id="mesure2" value="0.00" />	  
 									 <?php } ?>
 									  
-									 <?php }
-									  foreach ($alliagesp as $alliagep){
-											 echo $alliagep;
-;										 }
-										 
+									 <?php } 
 									 ?>
 
  									<div class="row mt-10">
@@ -142,22 +138,12 @@ $etats= HomeController::referentieletat();
 										
 
  								 		foreach ($alliages as $alliage)
-									{
+										{
 										foreach ($alliagesp as $alliagep)
 										{
 											if( $alliage->id ==  $alliagep ) 
 										{
-									/* $Alliage= DB::table('alliage')->where('ALLIAGE_IDENT',$alliage)->first();  
-								     $label= $Alliage->ALLIAGE_LIB;
-									 $metalid =  $Alliage->metal_ident;
-									 $Metal=DB::table('METAL')->where('metal_ident',$metalid )->first();  
-									 $couleur =  $Alliage->COULEUR;
-									 
-									 if($alliage_user==$alliage ){$selected = 'selected="selected"';}else{$selected = '';} 
-									echo '<option  '.$selected.' value="'.$alliage.'">'.$label. '</option>';
-									*/ 
-									
-									
+							 
 									 if($alliage_user==$alliagep  ){$selected = 'selected="selected"';}else{$selected = '';} 
 									echo '<option  '.$selected.' value="'.$alliage->id .'">'.$alliage->libelle. '</option>';
 								
