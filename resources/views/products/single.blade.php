@@ -138,7 +138,7 @@ $etats= HomeController::referentieletat();
 									 $couleur =  $Alliage->COULEUR;
 									 
 									 if($alliage_user==$alliage ){$selected = 'selected="selected"';}else{$selected = '';} 
-									echo '<option  '.$selected.' value="'.$alliage.'">'.$Metal->metal_lib.' | '.$label.' | '.$couleur . '</option>';
+									echo '<option  '.$selected.' value="'.$alliage.'">'.$label. '</option>';
 									}
 									?>
 									 
