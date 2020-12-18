@@ -28,7 +28,7 @@ $alliagesp=\App\Lien_alliage_produit::where(function ($query) use($type )   {
 				  
  	 			  
   //alliage1
-  //$alliages=HomeController::referentielalliage();
+  $alliages=HomeController::referentielalliage();
 				  
  $user = auth()->user();  
 $alliage_user=$user['alliage'];
@@ -145,7 +145,7 @@ $etats= HomeController::referentieletat();
 									{
 										foreach ($alliagesp as $alliagep)
 										{
-											if( $alliagep->ALLIAGE_IDENT ==  $alliage ) 
+											if( $alliage->ALLIAGE_IDENT ==  $alliagep ) 
 										{
 									/* $Alliage= DB::table('alliage')->where('ALLIAGE_IDENT',$alliage)->first();  
 								     $label= $Alliage->ALLIAGE_LIB;
@@ -158,8 +158,8 @@ $etats= HomeController::referentieletat();
 									*/ 
 									
 									
-									 if($alliage_user==$alliage->id ){$selected = 'selected="selected"';}else{$selected = '';} 
-									echo '<option  '.$selected.' value="'.$alliage->id.'">'.$alliage->libelle. '</option>';
+									 if($alliage_user==$alliagep  ){$selected = 'selected="selected"';}else{$selected = '';} 
+									echo '<option  '.$selected.' value="'.$alliage->id .'">'.$alliage->libelle. '</option>';
 								
 									}
 									}
