@@ -17,7 +17,7 @@ use App\Http\Controllers\HomeController ;
   $img=''; $image=DB::table('photo')->where('photo_id',$produit->photo_id)->first();
 	 if(isset($image)){ $img=$image->url;}
 	 
-$alliages=\App\Lien_alliage_produit::where(function ($query) use($type )   {
+$alliagesp=\App\Lien_alliage_produit::where(function ($query) use($type )   {
                       $query->where('type_id', $type);
                         
                   })->where(function ($query) use($famille1)  {
@@ -27,7 +27,7 @@ $alliages=\App\Lien_alliage_produit::where(function ($query) use($type )   {
                   })->pluck('ALLIAGE_IDENT');
 				  
  
-$alliages=HomeController::referentielalliage();
+ $alliages=HomeController::referentielalliage();
 				  
  $user = auth()->user();  
 $alliage_user=$user['alliage'];
@@ -134,6 +134,9 @@ $etats= HomeController::referentieletat();
 										<?php
  										foreach ($alliages as $alliage)
 									{
+										foreach ($alliagesp as $alliagep)
+										{if( $alliagep->ALLIAGE_IDENT ==  $alliage->id ) 
+										{
 									/* $Alliage= DB::table('alliage')->where('ALLIAGE_IDENT',$alliage)->first();  
 								     $label= $Alliage->ALLIAGE_LIB;
 									 $metalid =  $Alliage->metal_ident;
@@ -149,6 +152,9 @@ $etats= HomeController::referentieletat();
 									echo '<option  '.$selected.' value="'.$alliage->id.'">'.$alliage->libelle. '</option>';
 								
 									}
+									}
+									}
+									
 									?>
 									 
 									 </select>
