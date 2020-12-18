@@ -132,7 +132,7 @@ $etats= HomeController::referentieletat();
 									 <select class="form-control" id="alliage_id">
 									 <option value="0"></option>
 										<?php
- 										foreach ($alliages as $alliage)
+ 								/*		foreach ($alliages as $alliage)
 									{
 										foreach ($alliagesp as $alliagep)
 										{
@@ -146,7 +146,7 @@ $etats= HomeController::referentieletat();
 									 
 									 if($alliage_user==$alliage ){$selected = 'selected="selected"';}else{$selected = '';} 
 									echo '<option  '.$selected.' value="'.$alliage.'">'.$label. '</option>';
-									*/
+									*//*
 									
 									
 									 if($alliage_user==$alliage->id ){$selected = 'selected="selected"';}else{$selected = '';} 
@@ -155,7 +155,7 @@ $etats= HomeController::referentieletat();
 									}
 									}
 									}
-									
+									*/
 									?>
 									 
 									 </select>
