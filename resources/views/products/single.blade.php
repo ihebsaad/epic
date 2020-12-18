@@ -27,7 +27,7 @@ $alliages=\App\Lien_alliage_produit::where(function ($query) use($type )   {
                   })->pluck('ALLIAGE_IDENT');
 				  
  
-//$alliages=HomeController::referentielalliage();
+$alliages=HomeController::referentielalliage();
 				  
  $user = auth()->user();  
 $alliage_user=$user['alliage'];
@@ -134,7 +134,7 @@ $etats= HomeController::referentieletat();
 										<?php
  										foreach ($alliages as $alliage)
 									{
-									 $Alliage= DB::table('alliage')->where('ALLIAGE_IDENT',$alliage)->first();  
+									/* $Alliage= DB::table('alliage')->where('ALLIAGE_IDENT',$alliage)->first();  
 								     $label= $Alliage->ALLIAGE_LIB;
 									 $metalid =  $Alliage->metal_ident;
 									 $Metal=DB::table('METAL')->where('metal_ident',$metalid )->first();  
@@ -142,6 +142,12 @@ $etats= HomeController::referentieletat();
 									 
 									 if($alliage_user==$alliage ){$selected = 'selected="selected"';}else{$selected = '';} 
 									echo '<option  '.$selected.' value="'.$alliage.'">'.$label. '</option>';
+									*/
+									
+									
+									 if($alliage_user==$alliage->id ){$selected = 'selected="selected"';}else{$selected = '';} 
+									echo '<option  '.$selected.' value="'.$alliage->id.'">'.$aliage->label. '</option>';
+								
 									}
 									?>
 									 
