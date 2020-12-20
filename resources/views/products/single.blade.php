@@ -94,7 +94,7 @@ $etats= HomeController::referentieletat();
 									 <div class="row pl-10">
 									 <div class="col-md-4">
 
-                                      <select onchange="showmesure2()" id="mesure1" class="form-control">
+                                      <select onchange="showmesure2()"  id="mesure1" class="form-control">
   									   <?php
  									   foreach ($mesures as $mesure) {
 									    //dd($mesure->MESURE2[0]->MESURE2 );
@@ -203,11 +203,52 @@ $etats= HomeController::referentieletat();
 							  <div class="col-md-5" id="poids_u"></div>
 							  </div>
 							  <div class="row mb-10  ">
-							  <div class="col-md-5  ">{{__('msg.Product')}} :</div>
+							  <div class="col-md-5  ">Article :</div>
 							  <div class="col-md-5" id="produit"></div>
 							  </div>
-									
-									</div>									
+							  <div class="row mb-10  ">
+							  <b>PRIX</b>
+							  </div>
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">Prix :</div>
+							  <div class="col-md-5" id="prix"></div>
+							  </div>							  
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">Mode ID :</div>
+							  <div class="col-md-5" id="modeid"></div>
+							  </div>
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">Montant :</div>
+							  <div class="col-md-5" id="montant"></div>
+							  </div>
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">Mini :</div>
+							  <div class="col-md-5" id="mini"></div>
+							  </div>
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">Debits :</div>
+							  <div class="col-md-5" id="debits"><span id="debit_1"></span> | <span id="debit_2"></span> | <span id="debit_3"></span> | <span id="debit_4"></span> </div>
+							  </div>
+							  <div class="row mb-10  ">
+							  <b>TARIF</b>
+							  </div>
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">Prix :</div>
+							  <div class="col-md-5" id="tprix"></div>
+							  </div>							  
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">Mode ID :</div>
+							  <div class="col-md-5" id="tmodeid"></div>
+							  </div>
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">Montant :</div>
+							  <div class="col-md-5" id="tmontant"></div>
+							  </div>
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">Mini :</div>
+							  <div class="col-md-5" id="tmini"></div>
+							  </div>							  
+ 							 </div>									
 								</div>
 								
 								
@@ -255,7 +296,15 @@ $etats= HomeController::referentieletat();
        //document.getElementsById('mesure2').disabled=false;
 	 	toggle('mesure-'+mesure,'block');
 	}	
-	
+ 	
+	var getKeys = function(obj){
+   var keys = [];
+   for(var key in obj){
+      keys.push(key);
+   }
+   return keys;
+}
+ 
 function details()
 { 
 	        var _token = $('input[name="_token"]').val();
@@ -273,8 +322,26 @@ function details()
 				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val, _token: _token},
                 success: function (data) {
 				alert( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif) ;
-				 $('#poids_u').html( data.poids_u);
+				alert(data.prix[0].prix);
+				console.log(data);
+				console.log(data.prix);
+				$('#poids_u').html( data.poids_u);
 				 $('#produit').html( data.produit);
+				 $('#prix').html( data.prix[0].prix);
+				 $('#modeid').html( data.prix[0].modeid);
+				 $('#montant').html( data.prix[0].montant);
+				 $('#mini').html( data.prix[0].mini);
+				 $('#debit_1').html( data.prix[0].debit_1);
+				 $('#debit_2').html( data.prix[0].debit_2);
+				 $('#debit_3').html( data.prix[0].debit_3);
+				 $('#debit_4').html( data.prix[0].debit_4);
+				 $('#debit_4').html( data.prix[0].debit_4);
+				 $('#debit_4').html( data.prix[0].debit_4);
+				 
+ 				 $('#tprix').html( data.tarif[0].prix);
+				 $('#tmodeid').html( data.tarif[0].modeid);
+				 $('#tmontant').html( data.tarif[0].montant);
+				 $('#tmini').html( data.tarif[0].mini);				 
                 }
             });
 	
