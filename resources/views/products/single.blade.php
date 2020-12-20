@@ -130,7 +130,7 @@ $etats= HomeController::referentieletat();
 									 ?>
 
  									<div class="row mt-10">
-									 <div class="col-md-12">Alliage<br>
+									 <div class="col-md-12">{{__('msg.Alloy')}}<br>
 									 <select class="form-control" id="alliage_id">
 									 <option value="0"></option>
 										<?php
@@ -157,13 +157,13 @@ $etats= HomeController::referentieletat();
 									 </div> 
 	 
 									</div>
- 									<div class="row mb-10 mt-10">
-									<div class="col-md-4 pt-10">Quantité</div><div class="col-md-6"><input onchange="details()" id="qte" type="number"  value="0"  min="1" class="form-control" placeholder="" /></input></div>
+ 									<div class="row mb-10 mt-20">
+									<div class="col-md-4 pt-10">{{__('msg.Quantity')}}</div><div class="col-md-8"><input onchange="details()" id="qte" type="number"  value="0"  min="1" class="form-control" placeholder="" /></input></div>
 									</div>
 								    <?php if($produit->choix_etat>0){ ?>
 									 <div class="row mb-10 mt-10">
 
-									<div class="col-md-4">Etat</div>
+									<div class="col-md-4 pt-10">{{__('msg.State')}}</div>
 									<div class="col-md-8"><select id="etat_id" class="form-control" placeholder="Etat"><?php foreach($etats as $etat){?><option value="<?php echo $etat->id;?>"> <?php echo $etat->libelle;?> </option> <?php } ?>   </select></div> 
 									</div>
 									<?php }else{ ?><input id="etat_id" type="hidden"  value="0" ></input> <?php }  ?>
@@ -174,10 +174,9 @@ $etats= HomeController::referentieletat();
 									 // echo json_encode($complements);
 
 									 ?>
-									 <div class=="row mb-10 mt-20">
-										 <div class="col-md-5">Complémént</div>
-										 <div class="col-md-7">
-										 <select class="form-control" id="comp_id">
+									 <div class="row mb-10 mt-20">
+										 <div class="col-md-4 pt-10">{{__('msg.Complement')}}</div>							  
+										 <div class="col-md-8 "><select class="form-control" id="comp_id">
 									<?php	
 									foreach($complements as $comp)
 										 { 
@@ -185,9 +184,12 @@ $etats= HomeController::referentieletat();
 											 echo ' <option value="'.$comp->complement_id.'">'.$Comp->COMPLEMENT_LIB.'</option>';
 										 }
 										?> </select>
-												</div>	
-									<div class="col-md-5">Valeur</div>
-									<div class="col-md-7"> <input type="text" class="form-control" id="comp_val" placeholder="mm"></input></div>									
+										 </div>	
+										 </div>	
+									  <div class="row mb-10 mt-10">
+
+									<div class="col-md-4 pt-10">{{__('msg.Value')}}</div>
+									<div class="col-md-8"><input type="text" class="form-control" id="comp_val" placeholder="mm"></input></div>									
 									</div>
 									<?php }
 									else{ ?>
@@ -196,7 +198,14 @@ $etats= HomeController::referentieletat();
 								<?php	} ?>
 									
 							
-									
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">{{__('msg.Unit weight')}} :</div>
+							  <div class="col-md-5" id="poids_u"></div>
+							  </div>
+							  <div class="row mb-10  ">
+							  <div class="col-md-5  ">{{__('msg.Product')}} :</div>
+							  <div class="col-md-5" id="produit"></div>
+							  </div>
 									
 									</div>									
 								</div>
@@ -256,6 +265,7 @@ function details()
 	        var qte = $('#qte').val();
 	        var comp_id = $('#comp_id').val();
 	        var comp_val = $('#comp_val').val();
+			if(comp_val==''){comp_val=0;comp_id=0;}
             $.ajax({
                 url: "{{ route('home.details') }}",
                 method: "POST",
@@ -263,12 +273,14 @@ function details()
 				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val, _token: _token},
                 success: function (data) {
 				alert( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif) ;
+				 $('#poids_u').html( data.poids_u);
+				 $('#produit').html( data.produit);
                 }
             });
 	
 	
 }
-
+//http://localhost/Epic/single/101/1003/2003/3004
 	
    </script>
 @endsection					

@@ -225,6 +225,13 @@ return [
 	'Measurements'=>'Measurements',
 	'Category'=>'Category',
 	'Sub category'=>'Sub category',
- 	 
+ 	'Alloy'=>'Alloy',
+ 	'Quantity'=>'Quantity',
+ 	'State'=>'State',
+ 	'Complement'=>'Complement',
+ 	'Value'=>'Value',
+ 	'Product'=>'Product',
+ 	'Unit weight'=>'Unit weight',
+
 	
  ];

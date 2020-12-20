@@ -235,6 +235,12 @@ return [
 	'Measurements'=>'Mesures',
 	'Category'=>'Catégorie',
 	'Sub category'=>'Sous catégorie',
-	
+ 	'Alloy'=>'Alliage',
+ 	'Quantity'=>'Quantité',
+ 	'State'=>'État',
+ 	'Complement'=>'Complément',
+ 	'Value'=>'Valeur',
+ 	'Product'=>'Produit',
+ 	'Unit weight'=>'Poids unitaire',	
 	
  ];
