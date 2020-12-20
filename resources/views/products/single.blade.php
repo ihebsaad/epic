@@ -321,11 +321,11 @@ function details()
                 data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,
 				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val, _token: _token},
                 success: function (data) {
-				alert( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif) ;
-				alert(data.prix[0].prix);
-				console.log(data);
-				console.log(data.prix);
-				$('#poids_u').html( data.poids_u);
+				console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif) ;
+				console.log(data);				
+				console.log(data.prix[0].prix);
+				console.log(data.prix[0].tarif);
+ 				$('#poids_u').html( data.poids_u);
 				 $('#produit').html( data.produit);
 				 $('#prix').html( data.prix[0].prix);
 				 $('#modeid').html( data.prix[0].modeid);
