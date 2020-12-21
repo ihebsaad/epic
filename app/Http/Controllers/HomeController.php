@@ -107,7 +107,7 @@ class HomeController extends Controller
 
                                 <!--Card image-->
                                 <div class="view overlay" style="min-height:180px">
-                                    <center><img style="max-height:180px" src="'.$img.'" class="img-fluid" alt=""></center>
+                                    <center><a href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'"><img style="max-height:180px" src="'.$img.'" class="img-fluid" alt=""></a></center>
                                     <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
@@ -118,7 +118,7 @@ class HomeController extends Controller
                                 <div class="card-body">
                                     <!--Category & Title-->
 
-                                    <h5 class="card-title mb-1" style="min-height:72px"><strong><a href="" class="dark-grey-text">'.$titre.'</a></strong></h5>
+                                    <h5 class="card-title mb-1" style="min-height:72px"><strong><a href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'" class="dark-grey-text">'.$titre.'</a></strong></h5>
 									<!--<span class="badge badge-danger mb-2">famille2</span>-->
  
 

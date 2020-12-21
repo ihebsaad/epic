@@ -93,23 +93,25 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 				        <h5 class="font-weight-bold  text-primary"> <?php echo $Type;?></strong></h3>
 						<hr style="width:120px" class="ml-20 mb-30 mt-20">
 						<h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Category')}} </strong></h3>
-						<select id="fam1" class="fotm-control" onchange='reset()'>
+ 						<div class="pl-30">
 						<?php  
 						 	foreach($referentiels as $fam) 
 							{
-								if($fam->fam1_id==$famille1){$selected="selected='selected'";}else{ $selected="";}
-							 echo '<option value="'.$fam->fam1_id.'" '.$selected.'  > '.$fam->LIBFAM1.' </option>'	;
+								if($fam->fam1_id==$famille1){$selected="checked";}else{ $selected="";}
+							// echo '<option value="'.$fam->fam1_id.'" '.$selected.'  > '.$fam->LIBFAM1.' </option>'	;
+							  echo '
+								<div class="form-group "  onclick="reset('.$fam->fam1_id.')"   >
+                                <input class="form-check-input" name="groupfam2" type="radio" id="radio'.$fam->fam1_id.'"   '.$selected.' >
+                                <label for="radio'.$fam->fam1_id.'" class="form-check-label dark-grey-text">'.$fam->LIBFAM1.'</label>
+                                </div>		';					 
 							}
 						?>	
-						</select>
-						<hr style="width:120px" class="ml-20 mb-30">
+						</div>
+ 						<hr style="width:120px" class="ml-20 mb-30">
  
                             <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Sub category')}} </strong></h3>
                                  <div class="pl-30">
-							  <div class="form-group ">
-                                    <input class="form-check-input" name="groupfam2" type="radio" id="groupfam2" onclick="Famille2('')" checked > 
-                                    <label for="groupfam2" class="form-check-label dark-grey-text">{{__('msg.All')}}</label>
-                                </div>	
+					 
 								
                                 <?php
                                 foreach ($fams2 as $fam2)
@@ -306,7 +308,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 
                                 <!--Card image-->
                                 <div class="view overlay" style="min-height:180px">
-                                    <center><img style="max-height:180px" src="'.$img.'" class="img-fluid" alt=""></center>
+                                    <center><a href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'"><img style="max-height:180px" src="'.$img.'" class="img-fluid" alt=""></a></center>
                                     <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
@@ -317,7 +319,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                                 <div class="card-body">
                                     <!--Category & Title-->
 
-                                    <h5 class="card-title mb-1" style="min-height:72px"><strong><a href="" class="dark-grey-text">'.$titre.'</a></strong></h5>
+                                    <h5 class="card-title mb-1" style="min-height:72px"><strong><a href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'" class="dark-grey-text">'.$titre.'</a></strong></h5>
 									<!--<span class="badge badge-danger mb-2">famille2</span>-->
  
 
@@ -441,8 +443,8 @@ function filter()
 
         }
 		
-	function reset(){
-		 var fam1 = $('#fam1').val();
+	function reset(fam1){
+		// var fam1 = $('#fam1').val();
 		//var url="{{ route('catalog',['type'=>,'<?php echo $type;?>'famille1'=>"+fam1+"]) }}";
 		//url= document.location.hostname+'/epic' 
 		document.location.href='<?php echo $urlapp;?>'+'/catalog/'+<?php echo $type;?>+'/'+fam1;
