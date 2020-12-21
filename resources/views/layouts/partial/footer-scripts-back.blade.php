@@ -3,14 +3,13 @@
 <!--<script src="{{--  URL::asset('public/js/jquery-ui/jquery.ui.min.js') --}}" type="text/javascript"></script>-->
 {{ csrf_field() }}
 
- 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.2/umd/popper.min.js" type="text/javascript"></script>
 
 
 <script src="{{ URL::asset('public/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
  
  
-    <script src="{{ URL::asset('public/sbadmin/vendor/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="{{ URL::asset('public/sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript -->

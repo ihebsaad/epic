@@ -27,7 +27,7 @@ app()->setLocale($lg);
 			src="{{ URL::asset('public/img/pl.png')}}" 
 			<?php } ?>			
 			style="width:25px;margin-right:5px"   title="<?php echo $langue;?>" >
-            <?php echo $langue;?>
+            <span class="lang"><?php echo $langue;?></span>
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu   dropdown-menu-right shadow animated--grow-in"  style="padding-left:20px;padding-top:10px;">
