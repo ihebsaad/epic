@@ -103,11 +103,11 @@ class HomeController extends Controller
  <div class="col-lg-4 col-md-12 mb-4">
 
                             <!--Card-->
-                            <div class="card card-ecommerce">
+                            <div class="card card-ecommerce border-bottom-primary">
 
                                 <!--Card image-->
                                 <div class="view overlay" style="min-height:180px">
-                                    <center><a href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'"><img style="max-height:180px" src="'.$img.'" class="img-fluid" alt=""></a></center>
+                                    <center><a title="'.__("msg.View product").'" href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'"><img style="max-height:180px" src="'.$img.'" class="img-fluid" alt=""></a></center>
                                     <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
@@ -118,20 +118,10 @@ class HomeController extends Controller
                                 <div class="card-body">
                                     <!--Category & Title-->
 
-                                    <h5 class="card-title mb-1" style="min-height:72px"><strong><a href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'" class="dark-grey-text">'.$titre.'</a></strong></h5>
+                                    <h5 title="'.__("msg.View product").'" class="card-title mb-1" style="min-height:72px"><strong><a href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'" class="dark-grey-text">'.$titre.'</a></strong></h5>
 									<!--<span class="badge badge-danger mb-2">famille2</span>-->
  
-
-                                    <!--Card footer-->
-                                    <div class="card-footer pb-4 bg-primary mt-20 mb-10" style="color:white;height:40px;padding-bottom:4px">
-                                        <div class="row mb-0">
-                                          <!--  <span class="float-left"><strong>1439$</strong></span>-->
-                                            <span class="float-right">
-
-                                        <center><a style="color:white" href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'" class="pb-5" data-toggle="tooltip" data-placement="top" title="'.__("msg.View product").'"><i class="fas fa-eye ml-3"></i> '.__("msg.View product").'</a></center>
-                                        </span>
-                                        </div>
-                                    </div>
+ 
  
                                 </div>
                                 <!--Card content-->

@@ -101,10 +101,10 @@ $user_type=$user->user_type;
 								.metal{height:50px;padding-top:15px;margin-bottom:10px;color:white;}
 								</style>
                                 <div id="div4" class="card-body">
-									<div style="width:300px;" class="metal text-center bg-gradient-warning"> OR </div>
-									<div style="width:250px; " class="metal text-center bg-gradient-light"> ARGENT </div>
-									<div style="width:300px;" class="metal text-center bg-gradient-secondary"> PLATINE </div>
-									<div style="width:200px;" class="metal text-center bg-gray-500"> PALLADIUM </div>
+									<div style="width:150px;" class="metal text-center bg-gradient-warning"> OR </div>
+									<div style="width:125px; " class="metal text-center bg-gradient-light"> ARGENT </div>
+									<div style="width:80px;" class="metal text-center bg-gradient-secondary"> PLATINE </div>
+									<div style="width:100px;" class="metal text-center bg-gray-500"> PALLADIUM </div>
 								
                                 </div>
                             </div>
