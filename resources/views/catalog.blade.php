@@ -32,15 +32,10 @@ foreach ($familles2 as $fam2)
          }
     }
 
-$alliages=\App\Lien_alliage_produit::where(function ($query) use($type )   {
-                      $query->where('type_id', $type);
-                        
-                  })->where(function ($query) use($famille1)  {
-                      $query->where('fam1_id' , $famille1)
-                          ->orWhere('fam1_id', 0);
-   
-                  })->pluck('ALLIAGE_IDENT');
-				  
+ 
+ $alliagesp= HomeController::alliage1($type,$famille1);			  
+  //alliage1
+  $alliages=HomeController::referentielalliage();			  
  $user = auth()->user();  
 $alliage_user=$user['alliage'];
 /*
@@ -175,22 +170,27 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                                     <input class="form-check-input" name="group100" type="radio" id="radioalliages" onclick="Metal(null)" checked > 
                                     <label for="radioalliages" class="form-check-label dark-grey-text">{{__('msg.None')}}</label>
                                 </div>	-->							
-                                <?php foreach ($alliages as $alliage)
-									{
-									 $Alliage= DB::table('alliage')->where('ALLIAGE_IDENT',$alliage)->first();  
-								     $label= $Alliage->ALLIAGE_LIB;
-									
-									?>
-								<div class="form-group " onclick="changing(<?php echo $alliage ;?>)">
-                                    <input class="form-check-input" name="group100" type="radio" id="radioa-<?php echo $alliage ;?>"   <?php if($alliage_user==$alliage ){echo 'checked';}?> > 
-                                    <label for="radioa-<?php echo $alliage ;?>" class="form-check-label dark-grey-text"><?php echo $label ;?></label>
-                                </div>										
-										
-										
-								<?php
+                                <?php 
+								
+ 								 		foreach ($alliages as $alliage)
+										{
+										foreach ($alliagesp as $alliagep)
+										{
+											if( $alliage->id ==  $alliagep->id ) 
+										{
+							 
+								 ?>
+									<div class="form-group " onclick="changing(<?php echo  $alliage->id ;?>)">
+                                    <input class="form-check-input" name="group100" type="radio" id="radioa-<?php echo $alliage->id ;?>"   <?php if($alliage_user==$alliagep->id  ){echo 'checked';}  ?> > 
+                                    <label for="radioa-<?php echo $alliage->id ;?>" class="form-check-label dark-grey-text"><?php echo $alliage->libelle ;?></label>
+                                </div>	<?php
+								
+								
 									}
-									
-								  ?>
+									}
+									}
+									  ?>
+								 
 								<!--			
 								<div class="form-group ">
                                     <input class="form-check-input" name="group100" type="radio" id="radio100" onclick="Metal(1)"  > 
