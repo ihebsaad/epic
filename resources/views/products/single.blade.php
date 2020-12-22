@@ -217,7 +217,7 @@ $etats= HomeController::referentieletat();
 <hr>									
 							  <div class="row pl-10   ">
 							  <label class=" ">{{__('msg.Unit weight')}} :</label>
-							  <label class="pl-10 mr-10 " style="font-weight:bold" id="poids_u">... </label> <label class="ml-10 mr-10">Prix :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €
+							  <label class="pl-10 mr-10 " style="font-weight:bold" id="poids_u"> </label> <label class="ml-10 mr-10">Prix :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €
 							  <div class="col-md-2" id="prix"></div>
 							  <input type="hidden" id="produit" ></input>
 							  
@@ -322,7 +322,7 @@ function details()
 				 montant=parseFloat(data.prix[0].montant);
 				 montantt=parseFloat(data.tarif[0].montant);
 				 minit=parseFloat(data.tarif[0].mini);
-				  mini=parseFloat(data.prix[0].mini);
+				 mini=parseFloat(data.prix[0].mini);
 
 			     if(montantt< minit){montantt=minit;}				 
 				 if(montant< mini){montant=mini;}
