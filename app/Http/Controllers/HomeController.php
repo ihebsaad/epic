@@ -591,7 +591,14 @@ $i=-1;
  
     }
 
- 
+    public function modelabel (Request $request)
+    {
+       $id= $request->get('id');
+	 $article=  DB::table('mode_facturation')->where('MODE_FACT_IDENT',$id)->first();
+	 return $article->MODE_FACT_LIBC ;
+   }
+   
+   
    public function requete1 ($id)
    {
 	 $article=  DB::table('demi_produit')->where('DP_IDENT',$id)->first();

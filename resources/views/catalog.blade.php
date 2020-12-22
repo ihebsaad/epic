@@ -165,15 +165,15 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 
                              <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Metal')}}</strong></h3>
                                 <div class="divider"></div>
-                                 <div class="pl-30">
+                                 <div class="">
 
-                                <!--Radio group 
-                                <div class="form-group ">
-                                    <input class="form-check-input" name="group100" type="radio" id="radioalliages" onclick="Metal(null)" checked > 
-                                    <label for="radioalliages" class="form-check-label dark-grey-text">{{__('msg.None')}}</label>
-                                </div>	-->							
-                                <?php 
-								
+								 
+								 <select class="form-control" id="alliage_id"  onchange="changing()"  >
+									 <option value="0"></option>
+										<?php
+										
+										
+
  								 		foreach ($alliages as $alliage)
 										{
 										foreach ($alliagesp as $alliagep)
@@ -181,18 +181,18 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 											if( $alliage->id ==  $alliagep->id ) 
 										{
 							 
-								 ?>
-									<div class="form-group " onclick="changing(<?php echo  $alliage->id ;?>)">
-                                    <input class="form-check-input" name="group100" type="radio" id="radioa-<?php echo $alliage->id ;?>"   <?php if($alliage_user==$alliagep->id  ){echo 'checked';}  ?> > 
-                                    <label for="radioa-<?php echo $alliage->id ;?>" class="form-check-label dark-grey-text"><?php echo $alliage->libelle ;?></label>
-                                </div>	<?php
-								
+									 if($alliage_user==$alliagep->id  ){$selected = 'selected="selected"';}else{$selected = '';} 
+									echo '<option  '.$selected.' value="'.$alliage->id .'">'.$alliage->libelle. '</option>';
 								
 									}
 									}
 									}
-									  ?>
-								 
+									 
+									?>
+									 
+									 </select>
+						 					
+                                
 								<!--			
 								<div class="form-group ">
                                     <input class="form-check-input" name="group100" type="radio" id="radio100" onclick="Metal(1)"  > 
@@ -416,8 +416,8 @@ function filter()
 }		
 
 
-   function changing(val) {
-           
+   function changing() {
+           val=$('#alliage_id').val();
              //if ( (val != '')) {
             var _token = $('input[name="_token"]').val();
             $.ajax({
