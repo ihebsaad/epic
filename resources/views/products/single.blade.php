@@ -13,7 +13,7 @@ use App\Http\Controllers\HomeController ;
  $libelle=$Fam1->LIBFAM1;
  //dd($produit);
   $titre= $produit->LIBFAM1.' '.$produit->LIBFAM2 .' '.$produit->LIBFAM3;
-  $titre=strtolower($titre);
+  
   $img=''; $image=DB::table('photo')->where('photo_id',$produit->photo_id)->first();
 	 if(isset($image)){ $img=$image->url;}
 	/* 
@@ -80,11 +80,10 @@ $etats= HomeController::referentieletat();
 										  
  									?>
 									  
-									 <div class="row pl-10">
-									 <div class="col-md-4 pt-10"><b><?php   echo $product[0]['NAT_MESURE1'] ; ?></b></div>
-									 <div class="col-md-6">
-
-                                      <select onchange="showmesure2()"  id="mesure1" class="form-control">
+									 <div class="row pl-10 pb-10">
+									 <label class=" pt-10"><b><?php   echo $product[0]['NAT_MESURE1'] ; ?></b></label>
+ 
+                                      <select onchange="showmesure2()"  id="mesure1" class="form-control ml-20" style="max-width:100px;">
   									   <?php
  									   foreach ($mesures as $mesure) {
 									    //dd($mesure->MESURE2[0]->MESURE2 );
@@ -93,28 +92,26 @@ $etats= HomeController::referentieletat();
 									   <?php } ?>	
 									   </select>
 
- 									</div>	
- 									</div>	
+  									</div>	
 									 <div class="row pl-10">									
-									 <div class="col-md-4 pt-10"><b><?php   echo $product[0]['NAT_MESURE2'] ; ?></b></div>
-									 <div class="col-md-4">
-									<?php if($product[0]['NAT_MESURE2']!=''){?>
-                                      <select disabled id="mesure2" class="form-control" required  >
+									 <label class="  pt-10"><b><?php   echo $product[0]['NAT_MESURE2'] ; ?></b></label>
+ 									<?php if($product[0]['NAT_MESURE2']!=''){?>
+                                      <select   id="mesure2" class="form-control ml-20" required style="max-width:100px;" >
 									  <option></option>
-  									   <?php
+  									   <?php $i=0; $selected='';
  									   foreach ($mesures as $mesure) {
  									   foreach ($mesure->MESURE2 as $m2) {
+										   $i++; if($i==1){$selected='selected ="selected"';}
 									    //dd($mesure->MESURE2[0]->MESURE2 );
 									   ?>
-									  <option class="mesure2 mesure-<?php echo $mesure->MESURE1; ?>" value="<?php 	echo  $m2->MESURE2  ; ?>">   <?php 	echo $m2->MESURE2  ; ?></option>
+									  <option <?php echo $selected ;?> class="mesure2 mesure-<?php echo $mesure->MESURE1; ?>" value="<?php 	echo  $m2->MESURE2  ; ?>">   <?php 	echo $m2->MESURE2  ; ?></option>
 									   <?php } ?>	
 									   <?php } ?>	
 									  </select>
 									   <?php }else{ ?>
 										<input id="mesure2"	type="hidden" value="0.00"		/>						  
 										<?php } ?>
- 									</div>									
- 									</div>									
+  									</div>									
 									  <?php }else{ ?>
 										  
 									<input type="hidden" id="mesure1" value="0.00" />	  
@@ -124,9 +121,9 @@ $etats= HomeController::referentieletat();
 									 <?php } 
 									 ?>
 
- 									<div class="row mt-10">
-									 <div class="col-md-12">{{__('msg.Alloy')}}<br>
-									 <select class="form-control" id="alliage_id">
+ 									<div class="row pl-10 mt-10">
+									 <label class="mr-10 pt-10">{{__('msg.Alloy')}} :</label>
+									 <select class="form-control" id="alliage_id" style="max-width:270px;">
 									 <option value="0"></option>
 										<?php
 										
@@ -149,63 +146,16 @@ $etats= HomeController::referentieletat();
 									?>
 									 
 									 </select>
-									 </div> 
-	 
+ 	 
 									</div>
 
 							
-									
 		
  							 </div>	<!---- colonne 2----->								
 							 </div>
 								
-								  <div class="row mb-10 mt-20">
-									<div class="col-md-3 pt-10">{{__('msg.Quantity')}}</div>
-									<div class="col-md-3"><input onchange="details()" id="qte" type="number"  value="0"  min="1" class="form-control" placeholder=""   /></input></div>
-									<div class="col-md-2 pt-10"><?php  echo $unite->UNIT_LIB_LONG; ?></div>
-									
-								    <?php if($produit->choix_etat>0){ ?>
- 
- 									<div class="col-md-4">
-									<select id="etat_id" class="form-control" placeholder="Etat">
-									<?php foreach($etats as $etat){?><option value="<?php echo $etat->id;?>">
-									<?php echo $etat->libelle;?> </option> <?php } ?> 
-									</select>
-									</div> 
-								 
-									<?php }else{ ?>
-									<input id="etat_id" type="hidden"  value="0" ></input>
-									<?php }  ?>
-									</div>
+					
 								
-								 
-							
-							  <div class="row    ">
-							  <div class="col-md-3  ">{{__('msg.Unit weight')}} :</div>
-							  <div class="col-md-2" id="poids_u"></div>
-							  </div>
-							 <input type="hidden" id="produit" ></input>
-							  								
-				 
-							  <div class="row    ">
-							  <div class="col-md-2  ">Prix :</div>
-							  <div class="col-md-2" id="prix"></div>
-						 
- 							  <div class="col-md-2" id="modeid" style="font-weight:bld"></div>
-							 
-							  <div class="col-md-2  ">Mini :</div>
-							  <div class="col-md-2" id="mini"></div>
-							  </div>
-							  <div class="row   " style="display:none">
-							  <div class="col-md-5  ">Debits :</div>
-							  <div class="col-md-5" id="debits"><span id="debit_1"></span> | <span id="debit_2"></span> | <span id="debit_3"></span> | <span id="debit_4"></span> </div>
-							  </div>
-							  							 
-							  <div class="row   ">
-							  <div class="col-md-2  ">Montant :</div>
-							  <div class="col-md-2" id="montant"></div>
-							  </div>
-						
 								<?php 
 									$complements= $product[0]['complements'];
 									 //dd($complements[0]->complement_id);
@@ -213,10 +163,9 @@ $etats= HomeController::referentieletat();
 									 // echo json_encode($complements);
 
 									 ?>
-							 <div class="row mb-10 mt-20">
-										 <div class="col-md-3 pt-10">{{__('msg.Complement')}}</div>							  
-										 <div class="col-md-3 "><input onchange="details()" type="text" class="form-control" id="comp_val" placeholder="mm" style="width:100px" onchange='$("#comp_id").prop("disabled", false);'></input></div>
-										 <div class="col-md-4 "><select class="form-control" id="comp_id"  disabled>
+							        <div class="row mb-10 mt-20 pl-10 ">
+										 <label class=" pt-10 pr-10">OPTION :</label>
+										  <select class="form-control" id="comp_id"  disabled style="width:200px">
 									<?php	
 									foreach($complements as $comp)
 										 { 
@@ -224,35 +173,65 @@ $etats= HomeController::referentieletat();
 											 echo ' <option value="'.$comp->complement_id.'">'.$Comp->COMPLEMENT_LIB.'</option>';
 										 }
 										?> </select>
+										 <input onchange='$("#comp_id").prop("disabled", false);$("#option").show("slow") ;details()' type="text" class="ml-10 form-control" id="comp_val" placeholder="mm" style="width:100px" onchange='$("#comp_id").prop("disabled", false);'></input>
+ 											
+
+                                    <?php if($produit->choix_etat>0){ ?>
+ 
+                                     
+                                    <select id="etat_id" class="form-control ml-10" placeholder="Etat"  style="width:120px;">
+                                    <?php foreach($etats as $etat){?><option value="<?php echo $etat->id;?>">
+                                    <?php echo $etat->libelle;?> </option> <?php } ?> 
+                                    </select>
+                                      
+                                 
+                                    <?php }else{ ?>
+                                    <input id="etat_id" type="hidden"  value="0" ></input>
+                                    <?php }  ?>
+
+
+
+											
 										 </div>	
- 																			 
-										 </div>	
-								 
-								 
-							<div class="row    ">
-							  <div class="col-md-2  ">Prix :</div>
-							  <div class="col-md-2" id="tprix"></div>
-							   
- 							  <div class="col-md-2" id="tmodeid"></div>
- 							  <div class="col-md-2  ">Mini :</div>
-							  <div class="col-md-2" id="tmini"></div>
+							 <div id="option" style="display:none;">
+ 							  <div class="row pl-10   ">
+							  <label class="  ">PRIX OPTION :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
 							  </div>
-							  <div class="row    ">							  
- 							  <div class="col-md-2  ">Montant :</div>
-							  <div class="col-md-2" id="tmontant"></div>
-							  </div>									 
-								 
-								 
-								 
-									<?php }
+							  <div class="row pl-10   ">							  
+ 							  <label class="  ">Montant :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
+							  </div>
+							  </div>								 
+								<?php }
 									else{ ?>
 										<input type="hidden" id="comp_id" value="0" />
 										<input type="hidden" id="comp_val" value="0" />
-								<?php	} ?>						
-						
-										
-							
+								<?php	} ?>
 								
+<hr>
+	
+									 <div class="row mb-10 mt-20 pl-10">
+									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input onchange="details()" id="qte" type="number"  style="width:80px" value="0"  min="1" class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">Poids Total :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold"></label> 
+									
+
+									</div>	
+<hr>									
+							  <div class="row pl-10   ">
+							  <label class=" ">{{__('msg.Unit weight')}} :</label>
+							  <label class="pl-10 mr-10 " style="font-weight:bold" id="poids_u">... </label> <label class="ml-10 mr-10">Prix :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €
+							  <div class="col-md-2" id="prix"></div>
+							  <input type="hidden" id="produit" ></input>
+							  
+							  </div>
+							  
+							  <div class="row pl-10  ">
+							  <label class="   " >Montant :</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
+							  </div>							
+				   
+							  <div class="row   "  >
+ 							  <div class=" " id="debits"><label id='labelm1' style="width:100px;display:none" class="metal text-center bg-gradient-warning">{{__('msg.Gold')}} : </label><span class="ml-10 mr-10 " style="font-weight:bold" id="debit_1"></span><label id='labelm2' style="width:100px;display:none" class="metal text-center bg-gradient-light"> {{__('msg.Silver')}} : </label><span class="ml-10 mr-10 " id="debit_2" style="font-weight:bold" ></span><label id='labelm3' style="width:100px;display:none" class="metal text-center bg-gradient-secondary"> {{__('msg.Platinum')}} : </label><span class="ml-10 mr-10 " id="debit_3" style="font-weight:bold" ></span><label id='labelm4' style="width:100px;display:none" class="metal text-center  bg-gray-500">  {{__('msg.Palladium')}} :  </label><span class="ml-10 mr-10 " id="debit_4" style="font-weight:bold"></span> </div>
+							  </div>
+							  							 
+					 
 								
                                 </div>
                             </div>
@@ -316,6 +295,11 @@ function details()
 	        var qte = $('#qte').val();
 	        var comp_id = $('#comp_id').val();
 	        var comp_val = $('#comp_val').val();
+			var debit1=0;var debit2=0;var debit3=0;	var debit4=0;
+			var mini=0;	var minit=0;
+			var montant=0;var montantt=0;
+			var poids=0;
+			var prix=0;var prixt=0;
 			if(comp_val==''){comp_val=0;comp_id=0;}
             $.ajax({
                 url: "{{ route('home.details') }}",
@@ -327,23 +311,38 @@ function details()
 				console.log(data);				
 				console.log(data.prix[0].prix);
 				console.log(data.prix[0].tarif);
- 				$('#poids_u').html( data.poids_u);
+				poids=parseFloat(data.poids_u);
+ 				$('#poids_u').html( poids+' g' );
+				poidst= poids * qte;
+ 				$('#poidst').html(poidst +' g');
 				 $('#produit').html( data.produit);
-				 $('#prix').html( data.prix[0].prix);
+				 prix=parseFloat(data.prix[0].prix);
+				 $('#prix').html(  prix);
 				 //$('#modeid').html( data.prix[0].modeid);
-				 $('#montant').html( data.prix[0].montant);
-				 $('#mini').html( data.prix[0].mini);
-				 $('#debit_1').html( data.prix[0].debit_1);
-				 $('#debit_2').html( data.prix[0].debit_2);
-				 $('#debit_3').html( data.prix[0].debit_3);
-				 $('#debit_4').html( data.prix[0].debit_4);
-				 $('#debit_4').html( data.prix[0].debit_4);
-				 $('#debit_4').html( data.prix[0].debit_4);
-				 
- 				 $('#tprix').html( data.tarif[0].prix);
+				 montant=parseFloat(data.prix[0].montant);
+				 montantt=parseFloat(data.tarif[0].montant);
+				 minit=parseFloat(data.tarif[0].mini);
+				  mini=parseFloat(data.prix[0].mini);
+
+			     if(montantt< minit){montantt=minit;}				 
+				 if(montant< mini){montant=mini;}
+				 if(montantt>0){montant=montant+montantt;}
+				 $('#montant').html(  montant);
+				 $('#mini').html(mini );
+				 debit1=data.prix[0].debit_1;
+				 debit2=data.prix[0].debit_2;
+				 debit3=data.prix[0].debit_3;
+				 debit4=data.prix[0].debit_4;
+				if(parseFloat(debit1)>0){ $('#labelm1').show(); $('#debit_1').html( debit1+' g');  } 
+				if(parseFloat( debit2)>0){ $('#labelm2').show(); $('#debit_2').html( debit2+' g'); } 
+				if(parseFloat( debit3)>0){ $('#labelm3').show(); $('#debit_3').html( debit3+' g'); } 
+				if(parseFloat( debit4)>0){ $('#labelm4').show(); $('#debit_4').html( debit4+' g'); } 
+ 				 prixt=parseFloat(data.tarif[0].prix);
+ 				 $('#tprix').html(prixt );
 				// $('#tmodeid').html( data.tarif[0].modeid);
-				 $('#tmontant').html( data.tarif[0].montant);
-				 $('#tmini').html( data.tarif[0].mini);			
+				
+				 $('#tmontant').html(montantt );
+				 $('#tmini').html(minit);			
 
 
 				$.ajax({
