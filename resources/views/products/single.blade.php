@@ -215,7 +215,7 @@ $etats= HomeController::referentieletat();
 									 ?>
 							 <div class="row mb-10 mt-20">
 										 <div class="col-md-3 pt-10">{{__('msg.Complement')}}</div>							  
-										 <div class="col-md-3 "><input type="text" class="form-control" id="comp_val" placeholder="mm" style="width:100px" onchange='$("#comp_id").prop("disabled", false);'></input></div>
+										 <div class="col-md-3 "><input onchange="details()" type="text" class="form-control" id="comp_val" placeholder="mm" style="width:100px" onchange='$("#comp_id").prop("disabled", false);'></input></div>
 										 <div class="col-md-4 "><select class="form-control" id="comp_id"  disabled>
 									<?php	
 									foreach($complements as $comp)
