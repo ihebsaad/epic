@@ -81,7 +81,7 @@ $etats= HomeController::referentieletat();
  									?>
 									  
 									 <div class="row pl-10">
-									 <div class="col-md-3 pt-10"><b><?php   echo $product[0]['NAT_MESURE1'] ; ?></b></div>
+									 <div class="col-md-4 pt-10"><b><?php   echo $product[0]['NAT_MESURE1'] ; ?></b></div>
 									 <div class="col-md-6">
 
                                       <select onchange="showmesure2()"  id="mesure1" class="form-control">
@@ -96,7 +96,7 @@ $etats= HomeController::referentieletat();
  									</div>	
  									</div>	
 									 <div class="row pl-10">									
-									 <div class="col-md-3 pt-10"><b><?php   echo $product[0]['NAT_MESURE2'] ; ?></b></div>
+									 <div class="col-md-4 pt-10"><b><?php   echo $product[0]['NAT_MESURE2'] ; ?></b></div>
 									 <div class="col-md-4">
 									<?php if($product[0]['NAT_MESURE2']!=''){?>
                                       <select disabled id="mesure2" class="form-control" required  >
