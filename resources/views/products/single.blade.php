@@ -180,8 +180,8 @@ $etats= HomeController::referentieletat();
 								
 								 
 							
-							  <div class="row mb-10  ">
-							  <div class="col-md-2  ">{{__('msg.Unit weight')}} :</div>
+							  <div class="row    ">
+							  <div class="col-md-3  ">{{__('msg.Unit weight')}} :</div>
 							  <div class="col-md-2" id="poids_u"></div>
 							  </div>
 							 <input type="hidden" id="produit" ></input>
@@ -214,7 +214,7 @@ $etats= HomeController::referentieletat();
 
 									 ?>
 							 <div class="row mb-10 mt-20">
-										 <div class="col-md-2 pt-10">{{__('msg.Complement')}}</div>							  
+										 <div class="col-md-3 pt-10">{{__('msg.Complement')}}</div>							  
 										 <div class="col-md-3 "><input type="text" class="form-control" id="comp_val" placeholder="mm" style="width:100px" onchange='$("#comp_id").prop("disabled", false);'></input></div>
 										 <div class="col-md-4 "><select class="form-control" id="comp_id"  disabled>
 									<?php	
