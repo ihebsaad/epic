@@ -250,7 +250,13 @@ $etats= HomeController::referentieletat();
 									</a>
                                 </div>
                                 <div id="div2" class="card-body">
- 
+									<table>
+									<tr class="bg-gray-200">
+									<th>Article</th><th style="text-align:center">Qté</th><th style="text-align:center">Total</th>
+									<tr>
+									<td>FIL ROND COURT  FIL DEMI JONC</td><td style="text-align:center">5</td><td style="text-align:center">150 €</td>	
+									</tr>									
+									</table>
  
                                 </div>
                             </div>
