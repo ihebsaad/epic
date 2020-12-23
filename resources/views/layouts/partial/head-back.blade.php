@@ -42,6 +42,9 @@
 }
 #mytable_length select{margin-left:5px;margin-right:5px;}
  .metal{height:50px;padding-top:15px;margin-bottom:10px;color:white;}
+ 
+ select:disabled ,  button:disabled ,.form-control:disabled{opacity:0.4!important; }
+ 
 
      </style>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
