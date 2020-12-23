@@ -136,11 +136,7 @@ $etats= HomeController::referentieletat();
 											if( $alliage->id ==  $alliagep->id ) 
 										{
 							 
-									 if($alliage_user==$alliagep->id  ){$selected = 'selected="selected"';}else{  
-									 //if($alliage->id==$alliagep->alliage_id  ){$selected = 'selected="selected"';}else{
-										 $selected = '';//} 
-									 }
-									 
+									 if($alliage_user==$alliagep->id  ){$selected = 'selected="selected"';}else{$selected = '';} 
 									echo '<option  '.$selected.' value="'.$alliage->id .'">'.$alliage->libelle. '</option>';
 								
 									}
@@ -276,7 +272,7 @@ $etats= HomeController::referentieletat();
 									<tr><td>Prix Option</td><td>100 €</td><td>Poids Option</td><td>5 g</td></tr>
 									<tr><td>Prix Produits</td><td>300 €</td><td>Poids Produits</td>20 g<td></td></tr>
 									<tr><td>Prix Total</td><td>400 €</td><td>Poids Total</td><td>25 g</td></tr>
-									<tr><td style="height:50px"><span  style="width:100px" class="pb-10  metal text-center bg-gradient-warning">{{__('msg.Gold')}}: 2 g</span></td><td></td><td style="height:50px"><span style="width:100px"  class="pb-10  metal text-center bg-gradient-light">{{__('msg.Silver')}} : 1 g</span></td><td></td></tr>
+									<tr><td style="height:50px"><span class="pb-10  metal text-center bg-gradient-warning">{{__('msg.Gold')}}: 2 g</span></td><td></td><td style="height:50px"><span style="width:100px"  class="pb-10  metal text-center bg-gradient-light">{{__('msg.Silver')}} : 1 g</span></td><td></td></tr>
 									<tr><td style="height:50px"><span  style="width:100px" class="pb-10  metal text-center bg-gray-500">{{__('msg.Palladium')}} : 0 g</span></td><td></td><td style="height:50px"><span style="width:100px" class="pb-10  metal text-center bg-gradient-secondary">{{__('msg.Platinum')}} : 1.5 g</span></td><td></td></tr>
 									</table>									
                                 </div>
