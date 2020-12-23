@@ -210,7 +210,7 @@ $etats= HomeController::referentieletat();
 <hr>
 	
 									 <div class="row mb-10 mt-20 pl-10">
-									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input onchange="details()" id="qte" type="number"  style="width:80px" value="0"  min="1" class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">Poids Total :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold"></label> 
+									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input onchange="details()" id="qte" type="number"  style="width:80px" value="0"  min="1" class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">Poids Total :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold;width: 40px; height: 40px; overflow: hidden; text-overflow: ellipsis; display: block;"></label> 
 									
 
 									</div>	
@@ -232,6 +232,16 @@ $etats= HomeController::referentieletat();
 							  </div>
 							  							 
 					 
+								<div class="row">
+								<button type="button"  class="btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </span>
+                                        <span class="text">{{__('msg.Add to cart')}}</span>
+                                    </button>
+                                </div>
+								
+								
 								
                                 </div>
                             </div>
@@ -339,6 +349,9 @@ function details()
 				 debit2=data.prix[0].debit_2;
 				 debit3=data.prix[0].debit_3;
 				 debit4=data.prix[0].debit_4;
+				  $('#labelm1').hide(); $('#labelm2').hide(); $('#labelm3').hide(); $('#labelm4').hide();
+				  $('#debit_1').html('');$('#debit_2').html('');$('#debit_3').html('');$('#debit_4').html('');
+				  
 				if(parseFloat(debit1)>0){ $('#labelm1').show(); $('#debit_1').html( debit1+' g');  } 
 				if(parseFloat( debit2)>0){ $('#labelm2').show(); $('#debit_2').html( debit2+' g'); } 
 				if(parseFloat( debit3)>0){ $('#labelm3').show(); $('#debit_3').html( debit3+' g'); } 
@@ -350,7 +363,7 @@ function details()
 				 $('#tmontant').html(montantt );
 				 $('#tmini').html(minit);			
 
-
+				if(parseFloat(data.prix[0].modeid) > 0){
 				$.ajax({
                 url: "{{ route('modelabel') }}",
                 method: "POST",
@@ -359,7 +372,9 @@ function details()
 				$('#modeid').html( data);				 
                 }
 				});
+				}
 				
+				if(parseFloat(data.tarif[0].modeid) > 0){
 				$.ajax({
                 url: "{{ route('modelabel') }}",
                 method: "POST",
@@ -367,7 +382,8 @@ function details()
                 success: function (data) {	
 				$('#tmodeid').html( data);				 
                 }
-				});				
+				});	
+				}				
 	
 			}
 		 });
