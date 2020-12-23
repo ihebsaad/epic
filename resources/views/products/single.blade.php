@@ -138,7 +138,7 @@ $etats= HomeController::referentieletat();
 							 
 									 if($alliage_user==$alliagep->id  ){$selected = 'selected="selected"';}else{  
 									 //if($alliage->id==$alliagep->alliage_id  ){$selected = 'selected="selected"';}else{
-										 $selected = '';} 
+										 $selected = '';//} 
 									 }
 									 
 									echo '<option  '.$selected.' value="'.$alliage->id .'">'.$alliage->libelle. '</option>';
