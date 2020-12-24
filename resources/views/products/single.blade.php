@@ -16,16 +16,7 @@ use App\Http\Controllers\HomeController ;
   
   $img=''; $image=DB::table('photo')->where('photo_id',$produit->photo_id)->first();
 	 if(isset($image)){ $img=$image->url;}
-	/* 
-$alliagesp=\App\Lien_alliage_produit::where(function ($query) use($type )   {
-                      $query->where('type_id', $type);
-                        
-                  })->where(function ($query) use($famille1)  {
-                      $query->where('fam1_id' , $famille1)
-                          ->orWhere('fam1_id', 0);
-   
-                  })->pluck('ALLIAGE_IDENT');
-				*/  
+  
  	$alliagesp= HomeController::alliage1($type,$famille1);			  
   //alliage1
   $alliages=HomeController::referentielalliage();
@@ -35,7 +26,32 @@ $alliage_user=$user['alliage'];
 if($produit->choix_etat>0){
 $etats= HomeController::referentieletat();
 }
-
+/*
+$order = DB::table('orders')->where('status','panier')->where('user',$user->id)->first();
+if ($order!=null){
+ $orderid=$order->id;
+$amount=$order->amount   ;
+$comp_amount=$order->comp_amount   ;
+$weight=$order->weight   ;
+$comp_weight=$order->comp_weight   ;
+$gold=$order->comp_weight   ;
+$silver=$order->silver   ;
+$palladium=$order->palladium   ;
+$platine=$order->platine   ;
+	
+ $products= DB::table('products')->where('order',$orderid)->where('user',$user->id)->get();
+	
+}else{*/
+$orderid=0;
+$amount=0;
+$comp_amount=0;
+$weight=0;
+$comp_weight=0;
+$gold=0;
+$silver=0;
+$palladium=0;
+$platine =0;
+//}
  ?>
  <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -67,7 +83,7 @@ $etats= HomeController::referentieletat();
 								
 									</div>
 									<div class="col-md-7 col-xs-12">
-									<h5 class="pt-20 pl-10 pr-10 pb-20" style="font-weight:bold;"><?php echo $titre;?></h5>
+									<h5 class="pt-20 pl-10 pr-10 pb-20 text-info" style="font-weight:bold;"><?php echo $titre;?></h5>
 									<?php if($product!= 'error') {?>
 									<?php $id_unite= $product[0]['UNIT_IDENT'];
 									$unite=DB::table('unite')->where('UNIT_IDENT',$id_unite)->first();
@@ -81,7 +97,7 @@ $etats= HomeController::referentieletat();
  									?>
 									  
 									 <div class="row pl-10 pb-10">
-									 <label class=" pt-10"><b><?php   echo $product[0]['NAT_MESURE1'] ; ?></b></label>
+									 <label style="width:120px" class=" pt-10"><b><?php   echo $product[0]['NAT_MESURE1'] ; ?></b></label>
  
                                       <select onchange="showmesure2();$('#infos').show('slow');details();"  id="mesure1" class="form-control ml-20" style="max-width:100px;"  >
   									   <?php
@@ -94,18 +110,18 @@ $etats= HomeController::referentieletat();
 
   									</div>	
 									 <div class="row pl-10">									
-									 <label class="  pt-10"><b><?php   echo $product[0]['NAT_MESURE2'] ; ?></b></label>
+									 <label style="width:120px" class="  pt-10"><b><?php   echo $product[0]['NAT_MESURE2'] ; ?></b></label>
  									<?php if($product[0]['NAT_MESURE2']!=''){?>
                                       <select onmouseover="showmesure2()"  id="mesure2" class="form-control ml-20" required style="max-width:100px;" onchange=" $('#infos').show('slow');details();" >
 									  <option></option>
-  									   <?php $i=0; $selected='';
+  									   <?php $i=0; $selected='';$j=-1;
  									   foreach ($mesures as $mesure) {
 										   $i++; if($i==1){$selected='selected ="selected"';}else{$selected='';}
 										   
  									   foreach ($mesure->MESURE2 as $m2) {
-									    //dd($mesure->MESURE2[0]->MESURE2 );
+									   $j++; //dd($mesure->MESURE2[0]->MESURE2 ); 
 									   ?>
-									  <option <?php echo $selected ;?> class="mesure2 mesure-<?php echo $mesure->MESURE1; ?>" value="<?php 	echo  $m2->MESURE2  ; ?>">   <?php 	echo $m2->MESURE2  ; ?></option>
+									  <option  title="<?php echo $j; ?>"     <?php echo $selected ;?> class="mesure2 mesure-<?php echo $mesure->MESURE1; ?>" value="<?php 	echo  $m2->MESURE2  ; ?>">   <?php 	echo $m2->MESURE2  ; ?></option>
 									   <?php } ?>	
 									   <?php } ?>	
 									  </select>
@@ -236,8 +252,8 @@ $etats= HomeController::referentieletat();
 							  </div>
 							  	 </div>						 
 					 
-								<div class="row">
-								<button type="button"  class="btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+						      <div class="row mt-30" style=" height:60px">
+								<button type="button" style="position:absolute;right:50px " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
@@ -267,23 +283,26 @@ $etats= HomeController::referentieletat();
 								th{border:1px solid lightgrey;}
 								</style>
                                 <div id="div2" class="card-body">
-									<table class="mb-30">
-									<tr class="bg-gray-200 mb-20  " style="height:40px;border:1px solid lightgrey;">
-									<th >Article</th><th style="text-align:center">Qté</th><th style="text-align:center">Poids Total</th>
-									
-									<tr><td>FIL ROND COURT  FIL DEMI JONC</td><td style="text-align:center">5</td><td style="text-align:center">150 g</td></tr>	
-									<tr><td>PLANE</td><td style="text-align:center">10</td><td style="text-align:center">200 g</td>	</tr>
-									 <tr style="height:80px"><td></td><td></td><td></td></tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b>TOTAL</b></td><td style="text-align:center"></td><td style="text-align:center"><b>350 g</b></td>	</tr>
-									<tr ><td><b>MONTANT</b></td><td style="text-align:center"></td><td style="text-align:center"><b>320.30 €</b></td>	</tr>
+									<table class="mb-10">
+									<tr class="bg-info text-white mb-20  " style="height:40px;border:1px solid lightgrey;">
+									<th class="pl-10 " >Article</th><th style="text-align:center"class="pl-10 pr-10" >Qté</th><th style="text-align:center" class="pl-10 pr-10">Poids Total</th><th class="pl-10 pr-10" style="text-align:center"><span class="fa fa-trash-alt"></th>
+									<?php /* foreach($products as $product){
+										
+									}*/ ?>
+									<tr><td class="pl-10" style="font-size:12px">FIL ROND COURT  FIL DEMI JONC</td><td style="text-align:center;font-size:13px">5</td><td style="text-align:center;font-size:13px">150 g</td><td class="text-black" style="text-align:center;font-size:13px"><span class="fa fa-trash"></span></td></tr>	
+									<tr><td class="pl-10" style="font-size:12px">PLANE</td><td style="text-align:center;font-size:13px">10</td><td style="text-align:center;font-size:13px">200 g</td><td style="text-align:center;;font-size:13px"><span class="fa fa-trash"></span></td></tr>
+									 <tr style="height:40px"><td></td><td></td><td></td><td></td></tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Façon</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Poids Total</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $weight ;?> g</b></td>	</tr>
+									<tr ><td><b class="pl-10 text-info">Montant Total</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>
-									<span class="mt-20">METAUX FINS</span><br>
+									<span class="mt-10 text-success " style="font-weight:bold" >METAUX FINS</span><br>
 									<table class="pt-20 pm-20 pl-20 pr-20" style="border:none">
-								    <tr><td style="height:50px"><span style="width:100px;height:40px" class="pb-10  metal text-center bg-gradient-warning">{{__('msg.Gold')}}: 2 g                </span></td></tr>
-									<tr><td style="height:50px"><span style="width:100px;height:40px"  class="pb-10  metal text-center bg-gradient-light">{{__('msg.Silver')}} : 1 g       </span></td></tr>
-									<tr><td style="height:50px"><span  style="width:100px;height:40px" class="pb-10  metal text-center bg-gray-500">{{__('msg.Palladium')}} : 0 g  </span></td></tr>
-									<tr><td style="height:50px"><span style="width:100px;height:40px" class="pb-10  metal text-center bg-gradient-secondary">{{__('msg.Platinum')}} : 1.5 g    </span></td></tr>
+								    <tr style="height:20px; "><td    style="height:20px">{{__('msg.Gold')}}: </span></td><td><span><?php echo floatval($gold) ;?> g</span></td></tr>
+									<tr style="height:20px"><td   style="height:20px">{{__('msg.Silver')}} : </span></td><td><span><?php echo floatval($silver) ;?> g</span></td></tr>
+									<tr style="height:20px"><td   style="height:20px">{{__('msg.Palladium')}} : </span></td><td><span><?php echo floatval($palladium) ;?> g</span></td></tr>
+									<tr style="height:20px"><td     style="height:20px">{{__('msg.Platinum')}} : </span></td><td><span><?php echo floatval($platine) ;?> g</span></td></tr>
 									</table>									
                                 </div>
                             </div>
@@ -300,7 +319,9 @@ $etats= HomeController::referentieletat();
             var elements = document.getElementsByClassName(className);
             for (var i = 0; i < elements.length; i++){
                 elements[i].style.display = displayState;
+				var index=elements[i].title;
              }
+			 return   parseInt(elements[0].title) ;
         }
 		
 	function showmesure2( ){
@@ -308,7 +329,13 @@ $etats= HomeController::referentieletat();
 		  mesure=$("#mesure1").val();
          $("#mesure2").prop('disabled', false);
        //document.getElementsById('mesure2').disabled=false;
-	 	toggle('mesure-'+mesure,'block');
+	 	var index=toggle('mesure-'+mesure,'block');
+		console.log(index);
+		//alert(index);
+		//$("#mesure2").prop('selectedIndex', index) ;
+		 //document.getElementById("mesure2").selectedIndex = index;
+		 document.getElementById("mesure2").selectedIndex = index+1;
+ 
 	}	
  	
 	var getKeys = function(obj){
@@ -327,14 +354,14 @@ function details()
 	        var alliage_id = parseInt($('#alliage_id').val());
 	        var qte = parseFloat($('#qte').val());
 	        var comp_id = parseInt($('#comp_id').val());
-	        var comp_val = parseFloat($('#comp_val').val());
+	        var comp_val = $('#comp_val').val() ;
 			var debit1=0;var debit2=0;var debit3=0;	var debit4=0;
 			var mini=0;	var minit=0;
 			var montant=0;var montantt=0;
 			var poids=0;
 			var prix=0;var prixt=0;
 			if(comp_val==''){comp_val=0;comp_id=0;}
-				if(comp_val==0 || $('#comp_val').val()=='' ){
+				if(comp_val==0   ){
 					$('#option').hide();
 				}
             $.ajax({
@@ -345,14 +372,15 @@ function details()
                 success: function (data) {
 				console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif) ;
 				console.log(data);				
-				console.log(data.prix[0].prix);
-				console.log(data.prix[0].tarif);
+				
 				poids=parseFloat(data.poids_u);
  				$('#poids_u').html( poids+' g' );
 				poidst= poids * qte;
  				$('#poidst').html(poidst +' g');
 				 $('#produit').html( data.produit);
 				 prix=parseFloat(data.prix[0].prix);
+				 console.log(data.prix[0].prix);
+				console.log(data.prix[0].tarif);
 				 $('#prix').html(  prix);
 				 //$('#modeid').html( data.prix[0].modeid);
 				 montant=parseFloat(data.prix[0].montant);
