@@ -26,32 +26,32 @@ $alliage_user=$user['alliage'];
 if($produit->choix_etat>0){
 $etats= HomeController::referentieletat();
 }
-/*
-$order = DB::table('orders')->where('status','panier')->where('user',$user->id)->first();
+$disabled='';
+$order = DB::table('orders')->where('status','cart')->where('user',$user->id)->first();
 if ($order!=null){
  $orderid=$order->id;
 $amount=$order->amount   ;
 $comp_amount=$order->comp_amount   ;
 $weight=$order->weight   ;
-$comp_weight=$order->comp_weight   ;
-$gold=$order->comp_weight   ;
-$silver=$order->silver   ;
+ $gold=$order->gold   ;
+ $silver=$order->silver   ;
 $palladium=$order->palladium   ;
 $platine=$order->platine   ;
 	
- $products= DB::table('products')->where('order',$orderid)->where('user',$user->id)->get();
-	
-}else{*/
+ $products= DB::table('products')->where('orderid',$orderid)->orderBy('id','asc')->get();
+		$count=DB::table('products')->where('orderid',$orderid)->where('libelle',trim($titre))->count();
+		if($count==1){$disabled='disabled';}
+}else{
 $orderid=0;
 $amount=0;
 $comp_amount=0;
 $weight=0;
-$comp_weight=0;
-$gold=0;
+ $gold=0;
 $silver=0;
 $palladium=0;
 $platine =0;
-//}
+$products=array();
+}
  ?>
  <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -83,7 +83,7 @@ $platine =0;
 								
 									</div>
 									<div class="col-md-7 col-xs-12">
-									<h5 class="pt-20 pl-10 pr-10 pb-20 text-info" style="font-weight:bold;"><?php echo $titre;?></h5>
+									<h5 id="title" class="pt-20 pl-10 pr-10 pb-20 text-info" style="font-weight:bold;"><?php echo $titre;?></h5>
 									<?php if($product!= 'error') {?>
 									<?php $id_unite= $product[0]['UNIT_IDENT'];
 									$unite=DB::table('unite')->where('UNIT_IDENT',$id_unite)->first();
@@ -140,7 +140,7 @@ $platine =0;
 
  									<div class="row pl-10 mt-10">
 									 <label class="mr-10 pt-10">{{__('msg.Alloy')}} :</label>
-									 <select class="form-control" id="alliage_id" style="max-width:270px;" onchange="$('#option').show('slow');$('#infos').show('slow');details();">
+									 <select class="form-control" id="alliage_id" style="max-width:270px;" onchange="changing();$('#option').show('slow');$('#infos').show('slow');details();">
 									 <option value="0"></option>
 										<?php
 										
@@ -238,7 +238,7 @@ $platine =0;
 							  <label class=" ">{{__('msg.Unit weight')}} :</label>
 							  <label class="pl-10 mr-10 " style="font-weight:bold" id="poids_u"> </label> <label class="ml-10 mr-10">Prix :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €
 							  <div class="col-md-2" id="prix"></div>
-							  <input type="hidden" id="produit" ></input>
+							  <input type="hidden" id="article" ></input>
 							  </div>
 							  
 							  
@@ -253,11 +253,11 @@ $platine =0;
 							  	 </div>						 
 					 
 						      <div class="row mt-30" style=" height:60px">
-								<button type="button" style="position:absolute;right:50px " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+								<button <?php echo $disabled ;?> type="button" style="position:absolute;right:50px " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
-                                        <span class="text">{{__('msg.Add to cart')}}</span>
+                                        <span class="text" onclick="addproduct()">{{__('msg.Add to cart')}}</span>
                                     </button>
                                 </div>
 								
@@ -285,16 +285,15 @@ $platine =0;
                                 <div id="div2" class="card-body">
 									<table class="mb-10">
 									<tr class="bg-info text-white mb-20  " style="height:40px;border:1px solid lightgrey;">
-									<th class="pl-10 " >Article</th><th style="text-align:center"class="pl-10 pr-10" >Qté</th><th style="text-align:center" class="pl-10 pr-10">Poids Total</th><th class="pl-10 pr-10" style="text-align:center"><span class="fa fa-trash-alt"></th>
-									<?php /* foreach($products as $product){
-										
-									}*/ ?>
-									<tr><td class="pl-10" style="font-size:12px">FIL ROND COURT  FIL DEMI JONC</td><td style="text-align:center;font-size:13px">5</td><td style="text-align:center;font-size:13px">150 g</td><td class="text-black" style="text-align:center;font-size:13px"><span class="fa fa-trash"></span></td></tr>	
-									<tr><td class="pl-10" style="font-size:12px">PLANE</td><td style="text-align:center;font-size:13px">10</td><td style="text-align:center;font-size:13px">200 g</td><td style="text-align:center;;font-size:13px"><span class="fa fa-trash"></span></td></tr>
-									 <tr style="height:40px"><td></td><td></td><td></td><td></td></tr>
+									<th class="pl-10 " >Article</th><th style="text-align:center"class="pl-10 pr-10" >Qté</th><th style="text-align:center" class="pl-10 pr-10">Poids</th><th class="pl-10 pr-10" style="text-align:center"><span class="fa fa-trash-alt"></th>
+									<?php foreach($products as $product){
+									echo '<tr><td class="pl-10" style="font-size:12px">'.$product->libelle.'</td><td style="text-align:center;font-size:13px">'.$product->qte.'</td><td style="text-align:center;font-size:13px">'.$product->poids.' g</td><td class="text-black" style="text-align:center;font-size:13px"><span  class="fa fa-trash" ></span></td></tr>	';
+	
+									}?>
+ 									 <tr style="height:40px"><td></td><td></td><td></td><td></td></tr>
 									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Façon</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Poids Total</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $weight ;?> g</b></td>	</tr>
-									<tr ><td><b class="pl-10 text-info">Montant Total</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Poids</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $weight ;?> g</b></td>	</tr>
+									<tr ><td><b class="pl-10 text-info">Montant</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>
 									<span class="mt-10 text-success " style="font-weight:bold" >METAUX FINS</span><br>
@@ -315,6 +314,25 @@ $platine =0;
    </div>
 
    <script>
+   
+
+   function changing() {
+           val=$('#alliage_id').val();
+             //if ( (val != '')) {
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{ route('users.updating') }}",
+                method: "POST",
+                data: {user: <?php echo $user->id; ?>, champ: 'alliage', val: val, _token: _token},
+                success: function (data) {
+        
+
+
+                }
+            });
+
+        }   
+   
    function toggle(className, displayState){
             var elements = document.getElementsByClassName(className);
             for (var i = 0; i < elements.length; i++){
@@ -338,13 +356,7 @@ $platine =0;
  
 	}	
  	
-	var getKeys = function(obj){
-   var keys = [];
-   for(var key in obj){
-      keys.push(key);
-   }
-   return keys;
-}
+ 
  
 function details()
 { 
@@ -439,6 +451,36 @@ function details()
 			}
 		 });
 }
+
+		function addproduct (){
+			var _token = $('input[name="_token"]').val();
+	        var libelle = $('#title').text() ;
+			var qte = parseFloat($('#qte').val());
+			var article =  $('#article').val() ;
+			if(article!=''){article = parseInt(article);}else{article=0;}
+	        var montant = parseFloat(  $('#montant').text()) ;
+	        var montant_compl =   $('#tmontant').text()  ;
+			 if(montant_compl!=''){montant_compl = parseFloat(montant_compl);}else{montant_compl=0;}
+
+	        var poids = parseFloat(  $('#poidst').text()) ;
+ 			
+	        var or=   $('#debit_1').text()  ; if(or!=''){or = parseFloat( or.slice(0 , or.length-2));}else{or =0;}
+	        var argent=   $('#debit_2').text()  ; if(argent!=''){argent = parseFloat(  argent.slice(0 , argent.length-2));}else{argent =0;}
+	        var palladium=   $('#debit_3').text()  ; if(palladium!=''){palladium =parseFloat(  palladium.slice(0 , palladium.length-2));}else{palladium =0;}
+	        var platine=   $('#debit_4').text()  ; if(platine!=''){platine = parseFloat( platine.slice(0 , platine.length-2));}else{platine =0;}
+
+	         
+		 
+            $.ajax({
+                url: "{{ route('addproduct') }}",
+                method: "POST",
+                data: {user:<?php echo $user->id; ?>, libelle: libelle,qte: qte,article: article,montant: montant,montant_compl: montant_compl,poids: poids,or: or,argent: argent,palladium: palladium,platine: platine, _token: _token},
+                success: function (data) {
+					location.reload();
+				}
+			});
+			
+			}
 //http://localhost/Epic/single/101/1003/2003/3004
 	
    </script>

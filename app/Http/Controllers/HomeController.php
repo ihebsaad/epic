@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB ;
 use App\User ;
-		use Illuminate\Support\Facades\App;
+use App\Order ;
+use App\Product ;
+
+use Illuminate\Support\Facades\App;
 
 
 class HomeController extends Controller
@@ -138,7 +141,83 @@ class HomeController extends Controller
 				}					 
 	
 	
-	
+	 function addproduct(Request $request) { 
+		 $user =  $request->get('user');
+		 $libelle =  $request->get('libelle');
+		 $qte =  $request->get('qte');
+		 $article =  $request->get('article');
+	     $montant = $request->get('montant'); 
+	     $montant_compl =  $request->get('montant_compl');
+	     $poids =  $request->get('poids');
+ 			
+	     $or=  $request->get('or');
+	     $argent=   $request->get('argent'); 
+	     $palladium=  $request->get('palladium'); 
+	     $platine=  $request->get('platine');
+
+		 $order = Order::where('user',$user)->where('status','cart')->first();
+		 if(isset($order)){
+ 		 $product = new Product([
+             'orderid' =>  $order->id ,
+             'libelle' =>  $libelle ,
+             'qte' =>  $qte ,
+             'article' =>  $article ,
+             'montant' =>  $montant ,
+             'montant_compl' =>  $montant_compl ,
+             'poids' =>  $poids ,
+             'gold' =>  $or ,
+             'silver' =>  $argent ,
+             'palladium' =>  $palladium ,
+             'platine' =>  $platine ,
+         
+        ]);
+
+        $product->save();
+		// increment order totals
+		
+ 		 }else{
+			 
+		// add order
+ 			$Order = new Order([
+             'user' =>  $user ,
+               'amount' =>  $montant ,
+             'comp_amount' =>  $montant_compl ,
+             'weight' =>  $poids ,
+             'gold' =>  $or ,
+             'silver' =>  $argent ,
+             'palladium' =>  $palladium ,
+             'platine' =>  $platine ,
+             'status' =>  'cart' ,
+         
+        ]);		
+		 $Order->save();
+		 $orderid=$Order->id;
+		// add product
+			$product = new Product([
+             'orderid' =>  $orderid ,
+             'libelle' =>  $libelle ,
+             'qte' =>  $qte ,
+             'article' =>  $article ,
+             'montant' =>  $montant ,
+             'montant_compl' =>  $montant_compl ,
+             'poids' =>  $poids ,
+             'gold' =>  $or ,
+             'silver' =>  $argent ,
+             'palladium' =>  $palladium ,
+             'platine' =>  $platine ,
+         
+        ]);		
+		 $product->save();
+		 
+ 		 }
+		
+      //  return  back();
+
+	         
+	 }
+	 
+	 
+	 
 	 function details(Request $request) { 	
 					   
 					   $type= $request->get('type');

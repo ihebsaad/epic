@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::post('/data', 'HomeController@data')->name('home.data');
 Route::get('/single/{type}/{famille1}/{famille2}/{famille3}', 'HomeController@single')->name('single');
 Route::post('/modelabel', 'HomeController@modelabel')->name('modelabel');
+Route::post('/addproduct', 'HomeController@addproduct')->name('addproduct');
 
 
 Route::get('/orders', 'PagesController@orders')->name('orders');
