@@ -24,7 +24,12 @@ class Product extends Model
 		'gold',		 
 		'silver',	 
 		'palladium',	 
-		'platine'
+		'platine',
+		'type',
+		'famille1',
+		'famille2',
+		'famille3',
+		'alliage'
 
     ];
 

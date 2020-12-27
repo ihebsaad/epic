@@ -64,7 +64,12 @@ class PagesController extends Controller
     { 
          return view('laboratory');
     }
-
+	
+      public function panier()
+    { 
+	return view('products.panier');
+    }
+	
 /*	 public function refining()
     { 
          return view('refining');

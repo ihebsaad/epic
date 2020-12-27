@@ -287,7 +287,10 @@ $products=array();
 									<tr class="bg-info text-white mb-20  " style="height:40px;border:1px solid lightgrey;">
 									<th class="pl-10 " >Article</th><th style="text-align:center"class="pl-10 pr-10" >Qté</th><th style="text-align:center" class="pl-10 pr-10">Poids</th><th class="pl-10 pr-10" style="text-align:center"><span class="fa fa-trash-alt"></th>
 									<?php foreach($products as $product){
-									echo '<tr><td class="pl-10" style="font-size:12px">'.$product->libelle.'</td><td style="text-align:center;font-size:13px">'.$product->qte.'</td><td style="text-align:center;font-size:13px">'.$product->poids.' g</td><td class="text-black" style="text-align:center;font-size:13px"><span  class="fa fa-trash" ></span></td></tr>	';
+									echo '<tr><td class="pl-10" style="font-size:12px">'.$product->libelle.'</td><td style="text-align:center;font-size:13px">'.$product->qte.'</td><td style="text-align:center;font-size:13px">'.$product->poids.' g</td><td class="text-black" style="text-align:center;font-size:13px">';?>
+									<a  class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs ?')"  href="{{action('ProductsController@deleteproduct', $product->id)}}"><span class="fa  fa-times-circle"></i></a>
+									<?php echo '
+									</td></tr>	';
 	
 									}?>
  									 <tr style="height:40px"><td></td><td></td><td></td><td></td></tr>
@@ -377,7 +380,7 @@ function details()
 					$('#option').hide();
 				}
             $.ajax({
-                url: "{{ route('home.details') }}",
+                url: "{{ route('details') }}",
                 method: "POST",
                 data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,
 				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val, _token: _token},
@@ -454,6 +457,7 @@ function details()
 
 		function addproduct (){
 			var _token = $('input[name="_token"]').val();
+	        var alliage = parseInt(  $('#alliage_id').val()) ;
 	        var libelle = $('#title').text() ;
 			var qte = parseFloat($('#qte').val());
 			var article =  $('#article').val() ;
@@ -474,7 +478,7 @@ function details()
             $.ajax({
                 url: "{{ route('addproduct') }}",
                 method: "POST",
-                data: {user:<?php echo $user->id; ?>, libelle: libelle,qte: qte,article: article,montant: montant,montant_compl: montant_compl,poids: poids,or: or,argent: argent,palladium: palladium,platine: platine, _token: _token},
+                data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,user:<?php echo $user->id; ?>, libelle: libelle,qte: qte,article: article,montant: montant,montant_compl: montant_compl,poids: poids,or: or,argent: argent,palladium: palladium,platine: platine,alliage:alliage, _token: _token},
                 success: function (data) {
 					location.reload();
 				}

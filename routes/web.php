@@ -16,10 +16,12 @@ Route::get('/', function () {
 });
 
 
-Route::post('/data', 'HomeController@data')->name('home.data');
-Route::get('/single/{type}/{famille1}/{famille2}/{famille3}', 'HomeController@single')->name('single');
-Route::post('/modelabel', 'HomeController@modelabel')->name('modelabel');
-Route::post('/addproduct', 'HomeController@addproduct')->name('addproduct');
+Route::post('/data', 'ProductsController@data')->name('data');
+Route::get('/single/{type}/{famille1}/{famille2}/{famille3}', 'ProductsController@single')->name('single');
+Route::post('/modelabel', 'ProductsController@modelabel')->name('modelabel');
+Route::post('/addproduct', 'ProductsController@addproduct')->name('addproduct');
+Route::get('/deleteproduct/{id}', 'ProductsController@deleteproduct')->name('deleteproduct');
+Route::post('/details', 'ProductsController@details')->name('details');
 
 
 Route::get('/orders', 'PagesController@orders')->name('orders');
@@ -31,7 +33,7 @@ Route::get('/galvano', 'PagesController@galvano')->name('galvano');
 Route::get('/refining', 'PagesController@refining')->name('refining');
 Route::get('/laboratory', 'PagesController@laboratory')->name('laboratory');
 Route::get('/catalog/{type}/{famille1}', 'PagesController@catalog')->name('catalog');
-Route::post('/details', 'HomeController@details')->name('home.details');
+Route::get('/panier', 'PagesController@panier')->name('panier');
 
 
 

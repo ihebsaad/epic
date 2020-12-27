@@ -159,13 +159,21 @@ app()->setLocale($lg);
               <!--  <a class="dropdown-item text-center small text-gray-500" href="#">Show All </a>-->
               </div>
             </li>
-
+<?php 
+$myorder = DB::table('orders')->where('status','cart')->where('user',$user->id)->first();
+if ($myorder!=null){
+ $Orderid=$myorder->id;
+$prods= DB::table('products')->where('orderid',$Orderid)->count();
+}else{
+	$prods=0;
+}
+?>
             <!-- Nav Item - Messages --> 
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 			<li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="{{route('panier')}}"  >
                 <i class="fas fa-shopping-cart fa-fw"></i>
                 <!-- Counter - Messages --> 
-                <span class="badge badge-danger badge-counter">7</span>
+                <span class="badge badge-danger badge-counter"><?php if($prods>0){echo $prods;}?></span>
               </a>
               <!-- Dropdown - Messages  
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
@@ -214,7 +222,7 @@ app()->setLocale($lg);
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
               </div>---->
-            </li>
+            </li> 
  
             <div class="topbar-divider d-none d-sm-block"></div>
 

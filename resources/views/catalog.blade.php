@@ -403,7 +403,7 @@ function filter()
 
 	        var _token = $('input[name="_token"]').val();
             $.ajax({
-                url: "{{ route('home.data') }}",
+                url: "{{ route('data') }}",
                 method: "POST",
                 data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: famille2, famille3: famille3, metal: metal, _token: _token},
                 success: function (data) {
