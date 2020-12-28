@@ -22,6 +22,7 @@ Route::post('/modelabel', 'ProductsController@modelabel')->name('modelabel');
 Route::post('/addproduct', 'ProductsController@addproduct')->name('addproduct');
 Route::get('/deleteproduct/{id}', 'ProductsController@deleteproduct')->name('deleteproduct');
 Route::post('/details', 'ProductsController@details')->name('details');
+Route::post('/updatecart', 'ProductsController@updatecart')->name('updatecart');
 
 
 Route::get('/orders', 'PagesController@orders')->name('orders');

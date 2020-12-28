@@ -190,7 +190,7 @@ $products=array();
 											 echo ' <option value="'.$comp->complement_id.'">'.$Comp->COMPLEMENT_LIB.'</option>';
 										 }
 										?> </select>
-										 <input onchange='$("#comp_id").prop("disabled", false);$("#option").show("slow") ;details()' type="text" class="ml-10 form-control" id="comp_val" placeholder="mm" style="width:80px;float:right;margin-bottom:20px;" onchange='$("#comp_id").prop("disabled", false);'></input>
+										 <input onchange='$("#comp_id").prop("disabled", false);$("#option").show("slow") ;details()' type="number" min="0" class="ml-10 form-control" id="comp_val" placeholder="mm" style="width:80px;float:right;margin-bottom:20px;" onchange='$("#comp_id").prop("disabled", false);'></input>
  											
 
                                     <?php if($produit->choix_etat>0){ ?>
@@ -227,7 +227,7 @@ $products=array();
 <hr>
 	
 									 <div class="row mb-10 mt-20 pl-10">
-									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?> value="0.50"  step="0.01"  <?php }else{ ?> value="1"  step="1"  <?php  } ?> onchange="$('#infos').show('slow');details()" id="qte" type="number"  style="width:80px" value="0"    class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">Poids Total :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold;width: 40px; height: 40px; overflow: hidden; text-overflow: ellipsis; display: block;"></label> 
+									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?> value="0.50"  step="0.01"  <?php }else{ ?> value="1"  step="1"  <?php  } ?> onchange="$('#infos').show('slow');details()" id="qte" type="number"  style="width:80px" value="0"    class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">Poids Total :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold;"></label> 
 									
 
 									</div>	
@@ -288,7 +288,7 @@ $products=array();
 									<th class="pl-10 " >Article</th><th style="text-align:center"class="pl-10 pr-10" >Qté</th><th style="text-align:center" class="pl-10 pr-10">Poids</th><th class="pl-10 pr-10" style="text-align:center"><span class="fa fa-trash-alt"></th>
 									<?php foreach($products as $product){
 									echo '<tr><td class="pl-10" style="font-size:12px">'.$product->libelle.'</td><td style="text-align:center;font-size:13px">'.$product->qte.'</td><td style="text-align:center;font-size:13px">'.$product->poids.' g</td><td class="text-black" style="text-align:center;font-size:13px">';?>
-									<a  class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs ?')"  href="{{action('ProductsController@deleteproduct', $product->id)}}"><span class="fa  fa-times-circle"></i></a>
+									<a  class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce produit ?')"  href="{{action('ProductsController@deleteproduct', $product->id)}}"><span class="fa  fa-times-circle"></i></a>
 									<?php echo '
 									</td></tr>	';
 	
@@ -391,6 +391,8 @@ function details()
 				poids=parseFloat(data.poids_u);
  				$('#poids_u').html( poids+' g' );
 				poidst= poids * qte;
+				poidst= poidst.toFixed(2);
+				poidst= parseFloat(poidst);
  				$('#poidst').html(poidst +' g');
 				 $('#produit').html( data.produit);
 				 prix=parseFloat(data.prix[0].prix);
@@ -398,7 +400,7 @@ function details()
 				console.log(data.prix[0].tarif);
 				 $('#prix').html(  prix);
 				 //$('#modeid').html( data.prix[0].modeid);
-				 montant=parseFloat(data.prix[0].montant);
+				 montant=parseFloat(data.prix[0].montant *qte);
 				 montantt=parseFloat(data.tarif[0].montant);
 				 minit=parseFloat(data.tarif[0].mini);
 				 mini=parseFloat(data.prix[0].mini);
@@ -406,6 +408,8 @@ function details()
 			     if(montantt< minit){montantt=minit;}				 
 				 if(montant< mini){montant=mini;}
 				 if(montantt>0){montant=montant+montantt;}
+				 montant= montant.toFixed(2);
+				 montant= parseFloat(montant);
 				 $('#montant').html(  montant);
 				 $('#mini').html(mini );
 				 debit1=data.prix[0].debit_1;
@@ -461,7 +465,15 @@ function details()
 	        var libelle = $('#title').text() ;
 			var qte = parseFloat($('#qte').val());
 			var article =  $('#article').val() ;
+			var mesure1 =  $('#mesure1').val() ;
+			var mesure2 =  $('#mesure2').val() ;
+			var comp_id =  $('#comp_id').val() ;
+			var comp_val =  $('#comp_val').val() ;
 			if(article!=''){article = parseInt(article);}else{article=0;}
+			if(mesure1!=''){mesure1 = parseFloat(mesure1);}else{mesure1=0;}
+			if(mesure2!=''){mesure2 = parseFloat(mesure2);}else{mesure2=0;}
+			if(comp_val!=''){comp_val = parseFloat(comp_val);}else{comp_val=0;}
+			if(comp_id!=''){comp_id = parseInt(comp_id);}else{comp_id=0;}
 	        var montant = parseFloat(  $('#montant').text()) ;
 	        var montant_compl =   $('#tmontant').text()  ;
 			 if(montant_compl!=''){montant_compl = parseFloat(montant_compl);}else{montant_compl=0;}
@@ -478,7 +490,9 @@ function details()
             $.ajax({
                 url: "{{ route('addproduct') }}",
                 method: "POST",
-                data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,user:<?php echo $user->id; ?>, libelle: libelle,qte: qte,article: article,montant: montant,montant_compl: montant_compl,poids: poids,or: or,argent: argent,palladium: palladium,platine: platine,alliage:alliage, _token: _token},
+                data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,user:<?php echo $user->id; ?>, libelle: libelle,
+				qte: qte,article: article,montant: montant,montant_compl: montant_compl,poids: poids,or: or,argent: argent,palladium: palladium
+				,platine: platine,alliage:alliage ,mesure1:mesure1,mesure2:mesure2,comp_id:comp_id,comp_val:comp_val , _token: _token},
                 success: function (data) {
 					location.reload();
 				}

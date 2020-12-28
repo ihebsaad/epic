@@ -29,7 +29,11 @@ class Product extends Model
 		'famille1',
 		'famille2',
 		'famille3',
-		'alliage'
+		'alliage',
+		'mesure1',
+		'mesure2',
+		'comp_id',
+		'comp_val',
 
     ];
 

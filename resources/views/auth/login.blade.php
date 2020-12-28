@@ -31,8 +31,6 @@
 								<strong>{{ $errors->first('username') ?: $errors->first('email') }}</strong>
 									</span>
                                 @endif                                     
-
-
 									   </div>
                                         <div class="form-group">
                                             <input type="password" name="password"  class="form-control form-control-user"

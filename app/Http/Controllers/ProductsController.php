@@ -116,6 +116,10 @@ class ProductsController extends Controller
 	     $montant_compl =  $request->get('montant_compl');
 	     $poids =  $request->get('poids');
 	     $alliage =  $request->get('alliage');
+	     $mesure1 =  $request->get('mesure1');
+	     $mesure2 =  $request->get('mesure2');
+	     $comp_id =  $request->get('comp_id');
+	     $comp_val =  $request->get('comp_val');
  			
 	     $or=  $request->get('or');
 	     $argent=   $request->get('argent'); 
@@ -141,6 +145,10 @@ class ProductsController extends Controller
              'famille2' =>  $famille2 ,
              'famille3' =>  $famille3 ,
              'alliage' =>  $alliage ,
+             'mesure1' =>  $mesure1 ,
+             'mesure2' =>  $mesure2 ,
+             'comp_id' =>  $comp_id ,
+             'comp_val' =>  $comp_val 
          
         ]);
 	      $product->save();
@@ -199,6 +207,10 @@ class ProductsController extends Controller
              'famille2' =>  $famille2 ,
              'famille3' =>  $famille3 ,
              'alliage' =>  $alliage ,
+             'mesure1' =>  $mesure1 ,
+             'mesure2' =>  $mesure2 ,
+             'comp_id' =>  $comp_id ,
+             'comp_val' =>  $comp_val 
         ]);		
 		 $product->save();
 		 
@@ -245,8 +257,40 @@ class ProductsController extends Controller
 		
 		));
 		
-		DB::table('products')->where('id', $id)->delete();
+		 $product=Product::where('id', $id)->first();
 
+		DB::table('products')->where('id', $id)->delete();
+ 
+		$products=Product::where('orderid', $product->orderid)->get();	
+		
+		$amount=0; 		$weight=0; 		$comp_amount=0; 
+		$gold=0; 		$silver=0; 		$palladium=0; 		$platine=0;
+		// parcours produit et calcul totaux
+		foreach($products as $prod){
+			$amount=$amount+$prod->montant  ;
+			$weight=$weight+ floatval($prod->poids    );
+			$comp_amount=$comp_amount+ floatval($prod->montant_compl    );
+			$gold=$gold+ floatval($prod->gold    );
+			$silver=$silver+ floatval($prod->silver    );
+			$palladium=$palladium+ floatval($prod->palladium    );
+			$platine=$platine+ floatval($prod->platine    );
+		}
+		// mise à jour de la commande
+		Order::where('id',$product->orderid)->update(array(
+		'amount' => $amount,
+		'weight' => $weight,
+		'comp_amount' => $comp_amount,
+		'gold' => $gold,
+		'silver' => $silver,
+		'palladium' => $palladium,
+		'platine' => $platine,
+ 		
+		));
+
+		
+		
+		
+		
 	return back();
 
 	}
@@ -291,4 +335,49 @@ class ProductsController extends Controller
 	 return $article->MODE_FACT_LIBC ;
    }
 
+   
+       public function updatecart(Request $request)
+    {
+        $id= $request->get('idprod');
+        $poids= floatval($request->get('poids')) ;
+        $montant= $request->get('montant') ;
+         $qte= $request->get('qte') ;
+        
+        Product::where('id', $id)->update(array(
+		'poids' => $poids,
+		'montant' => $montant,
+		'qte' => $qte
+		
+		));
+		
+		$product=Product::where('id', $id)->first();
+		$products=Product::where('orderid', $product->orderid)->get();		
+		$amount=0; 		$weight=0; 		$comp_amount=0; 
+		$gold=0; 		$silver=0; 		$palladium=0; 		$platine=0;
+		// parcours produit et calcul totaux
+		foreach($products as $prod){
+			$amount=$amount+$prod->montant  ;
+			$weight=$weight+ floatval($prod->poids    );
+			$comp_amount=$comp_amount+ floatval($prod->montant_compl    );
+			$gold=$gold+ floatval($prod->gold    );
+			$silver=$silver+ floatval($prod->silver    );
+			$palladium=$palladium+ floatval($prod->palladium    );
+			$platine=$platine+ floatval($prod->platine    );
+		}
+		// mise à jour de la commande
+		Order::where('id',$product->orderid)->update(array(
+		'amount' => $amount,
+		'weight' => $weight,
+		'comp_amount' => $comp_amount,
+		'gold' => $gold,
+		'silver' => $silver,
+		'palladium' => $palladium,
+		'platine' => $platine,
+ 		
+		));
+
+		
+		
+    }
+   
 }
