@@ -143,10 +143,27 @@ class ProductsController extends Controller
              'alliage' =>  $alliage ,
          
         ]);
-
-        $product->save();
+	      $product->save();
 		// increment order totals
-		
+		$amount = $montant  +	$order->amount;
+		$weight = $poids  +	$order->weight;
+		$comp_amount =	$montant_compl+ $order->comp_amount;
+		$gold =	$or + $order->gold;
+		$silver =	$argent+ $order->silver;
+		$pallad  =	$palladium+ $order->palladium;
+		$plat  =	$platine+ $order->platine;
+		Order::where('id', $order->id)->update(array(
+		'amount' => $amount,
+		'weight' => $weight,
+		'comp_amount' => $comp_amount,
+		'gold' => $gold,
+		'silver' => $silver,
+		'palladium' => $pallad ,
+		'platine' => $plat 
+ 		
+		));
+
+  
  		 }else{
 			 
 		// add order
@@ -177,7 +194,11 @@ class ProductsController extends Controller
              'silver' =>  $argent ,
              'palladium' =>  $palladium ,
              'platine' =>  $platine ,
-         
+             'type' =>  $type ,
+             'famille1' =>  $famille1 ,
+             'famille2' =>  $famille2 ,
+             'famille3' =>  $famille3 ,
+             'alliage' =>  $alliage ,
         ]);		
 		 $product->save();
 		 
@@ -191,8 +212,41 @@ class ProductsController extends Controller
 	 	
      public function deleteproduct($id)
     {
-	DB::table('products')->where('id', $id)->delete();
 	// decrement order details
+		$product=Product::where('id', $id)->first();
+
+		$montant =  	$product->montant;
+		$poids =  	$product->poids;
+		$montant_compl =	  $product->montant_compl;
+		$gold =	  $product->gold;
+		$silver =	  $product->silver;
+		$palladium =	  $product->palladium;
+		$platine =	  $product->platine;
+		
+		$orderid =	  $product->orderid;
+		$Order=Order::where('id', $orderid)->first();
+		
+		$amount = $Order->amount - $montant;
+		$weight= $Order->weight - $poids;
+		$comp_amount = $Order->comp_amount - $montant_compl ;
+		$gold = $Order->gold - $gold ;
+		$silver = $Order->silver - $silver ;
+		$palladium = $Order->palladium - $palladium ;
+		$platine = $Order->platine - $platine ;
+		
+		Order::where('id', $orderid)->update(array(
+		'amount' => $amount,
+		'weight' => $weight,
+		'comp_amount' => $comp_amount,
+		'gold' => $gold,
+		'silver' => $silver,
+		'palladium' => $palladium,
+		'platine' => $platine
+		
+		));
+		
+		DB::table('products')->where('id', $id)->delete();
+
 	return back();
 
 	}

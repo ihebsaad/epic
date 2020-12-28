@@ -253,7 +253,7 @@ $products=array();
 							  	 </div>						 
 					 
 						      <div class="row mt-30" style=" height:60px">
-								<button <?php echo $disabled ;?> type="button" style="position:absolute;right:50px " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+								<button <?php echo $disabled ;?>  type="button" style="position:absolute;right:50px " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
@@ -474,7 +474,7 @@ function details()
 	        var platine=   $('#debit_4').text()  ; if(platine!=''){platine = parseFloat( platine.slice(0 , platine.length-2));}else{platine =0;}
 
 	         
-		 
+		 if(qte >0 && montant>0 ){
             $.ajax({
                 url: "{{ route('addproduct') }}",
                 method: "POST",
@@ -483,7 +483,9 @@ function details()
 					location.reload();
 				}
 			});
-			
+			}else{
+				alert('Modifier les données pour obtenir votre produit');
+			}
 			}
 //http://localhost/Epic/single/101/1003/2003/3004
 	
