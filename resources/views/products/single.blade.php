@@ -212,10 +212,10 @@ $products=array();
 										 </div>	
 							 <div id="option" style="display:none;">
  							  <div class="row pl-10   ">
-							  <label class="  ">PRIX OPTION :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
+							  <label class="  ">Prix option :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
 							  </div>
 							  <div class="row pl-10   ">							  
- 							  <label class="  ">Montant :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
+ 							  <label class="  ">Façon option :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
 							  </div>
 							  </div>								 
 								<?php }
@@ -243,7 +243,7 @@ $products=array();
 							  
 							  
 							  <div class="row pl-10  ">
-							  <label class="   " >Montant :</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
+							  <label class="   " >Façon totale:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
 							  </div>							
 				   							 
 
@@ -294,14 +294,14 @@ $products=array();
 	
 									}?>
  									 <tr style="height:40px"><td></td><td></td><td></td><td></td></tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Façon</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Poids</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $weight ;?> g</b></td>	</tr>
-									<tr ><td><b class="pl-10 text-info">Montant</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Façon option</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Poids total</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  number_format($weight, 2) ;?> g</b></td>	</tr>
+									<tr ><td><b class="pl-10 text-info">Façon totale</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>
 									<span class="mt-10 text-success " style="font-weight:bold" >METAUX FINS</span><br>
 									<table class="pt-20 pm-20 pl-20 pr-20" style="border:none">
-								    <tr style="height:20px; "><td    style="height:20px">{{__('msg.Gold')}}: </span></td><td><span><?php echo floatval($gold) ;?> g</span></td></tr>
+								    <tr style="height:20px; "><td    style="height:20px">{{__('msg.Gold')}}: </span></td><td><span><?php echo floatval($gold ) ;?> g</span></td></tr>
 									<tr style="height:20px"><td   style="height:20px">{{__('msg.Silver')}} : </span></td><td><span><?php echo floatval($silver) ;?> g</span></td></tr>
 									<tr style="height:20px"><td   style="height:20px">{{__('msg.Palladium')}} : </span></td><td><span><?php echo floatval($palladium) ;?> g</span></td></tr>
 									<tr style="height:20px"><td     style="height:20px">{{__('msg.Platinum')}} : </span></td><td><span><?php echo floatval($platine) ;?> g</span></td></tr>
