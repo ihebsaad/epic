@@ -70,11 +70,11 @@ class PagesController extends Controller
 	return view('products.panier');
     }
 	
-/*	 public function refining()
+ 	 public function livraison()
     { 
-         return view('refining');
+         return view('livraison');
     }
-*/
+ 
 
 
 }

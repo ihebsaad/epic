@@ -22,7 +22,7 @@ $palladium=$order->palladium   ;
 $platine=$order->platine   ;
 	
  $products= DB::table('products')->where('orderid',$orderid)->orderBy('id','asc')->get();
- 
+ $pieces=count( $products);
 }else{
 $orderid=0;
 $amount=0;
@@ -33,6 +33,7 @@ $silver=0;
 $palladium=0;
 $platine =0;
 $products=array();
+ $pieces=0;
 }
 
 ?>
@@ -130,6 +131,7 @@ if($product->alliage >0){
  
 									<table class="mb-10">
 								 
+ 									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Pièces</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $pieces ;?></b></td>	</tr>
  									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Poids</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $weight ;?> g</b></td>	</tr>
 									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Façon</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
 									<tr ><td><b class="pl-10 text-info">Montant</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>

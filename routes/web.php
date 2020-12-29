@@ -35,6 +35,10 @@ Route::get('/refining', 'PagesController@refining')->name('refining');
 Route::get('/laboratory', 'PagesController@laboratory')->name('laboratory');
 Route::get('/catalog/{type}/{famille1}', 'PagesController@catalog')->name('catalog');
 Route::get('/panier', 'PagesController@panier')->name('panier');
+Route::get('/livraison', 'PagesController@livraison')->name('livraison');
+
+
+Route::post('/agence', 'HomeController@agence')->name('agence');
 
 
 

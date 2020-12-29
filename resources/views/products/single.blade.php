@@ -106,7 +106,7 @@ $products=array();
 									   ?>
 									  <option   value="<?php 	echo $mesure->MESURE1   ; ?>">   <?php 	echo $mesure->MESURE1  ; ?> </option>
 									   <?php } ?>	
-									   </select>
+									   </select>  <span class="pt-10 pl-10"><?php if(isset($product[0]['unite1'])){ echo $product[0]['unite1']; } ?></span>
 
   									</div>	
 									 <div class="row pl-10">									
@@ -124,7 +124,7 @@ $products=array();
 									  <option  title="<?php echo $j; ?>"     <?php echo $selected ;?> class="mesure2 mesure-<?php echo $mesure->MESURE1; ?>" value="<?php 	echo  $m2->MESURE2  ; ?>">   <?php 	echo $m2->MESURE2  ; ?></option>
 									   <?php } ?>	
 									   <?php } ?>	
-									  </select>
+									  </select> <span class="pt-10 pl-10"><?php if(isset($product[0]['unite2'])){ echo $product[0]['unite2'];}  ?></span>
 									   <?php }else{ ?>
 										<input id="mesure2"	type="hidden" value="0.00"		/>						  
 										<?php } ?>
