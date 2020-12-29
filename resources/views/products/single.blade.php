@@ -15,7 +15,7 @@ use App\Http\Controllers\HomeController ;
   $titre= $produit->LIBFAM1.' '.$produit->LIBFAM2 .' '.$produit->LIBFAM3;
   
   $img=''; $image=DB::table('photo')->where('photo_id',$produit->photo_id)->first();
-	 if(isset($image)){ $img=$image->url;}
+	 if(isset($image)){ $img=trim($image->url);}
   
  	$alliagesp= HomeController::alliage1($type,$famille1);			  
   //alliage1
@@ -79,7 +79,7 @@ $products=array();
 								
 								<div class="row">
 									<div class="col-md-5  col-xs-12">
-                                    <center><img style="max-height:180px" src="<?php echo $img; ?>" class="img-fluid pt-20" alt=""></center>
+                                    <center><img style="max-height:180px"  src="<?php echo URL::asset('images/'.$img);?>" class="img-fluid pt-20" alt=""></center>
 								
 									</div>
 									<div class="col-md-7 col-xs-12">

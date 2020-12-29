@@ -72,7 +72,7 @@ class ProductsController extends Controller
 
                                 <!--Card image-->
                                 <div class="view overlay" style="min-height:180px">
-                                    <center><a title="'.__("msg.View product").'" href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'"><img style="max-height:180px" src="'.$img.'" class="img-fluid" alt=""></a></center>
+                                    <center><a title="'.__("msg.View product").'" href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'"><img style="max-height:180px" src="'.   URL::asset('images/'.$img).'" class="img-fluid" alt=""></a></center>
                                     <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
