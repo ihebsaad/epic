@@ -19,6 +19,8 @@ use App\Http\Controllers\HomeController ;
 //	foreach($referentiels->famille1 as $famille1) 
 	foreach($referentiels as $famille1) 
 { 
+  $img=''; $image=DB::table('photo')->where('photo_id',$famille1->photo_id)->first();
+	 if(isset($image)){ $img=trim($image->url);}
 // 101 = half products
  	if($famille1->type_id==101){
 		
@@ -33,12 +35,14 @@ if($i==5 ||$i==10 || $i== 15 ){$color='danger';}
 		 <div class="col-xl-3 col-md-6 mb-4">
                             <a href="'. route('catalog',['type'=>101,'famille1'=>$famille1->id]).'">
 							 <div class="card border-left-'.$color.' shadow h-100 py-2">
-                                <div class="card-body">
+                                <div class="card-body" style="min-height:200px">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="h5 font-weight-bold text-primary text-uppercase mb-0">
-                                               '.$famille1->libelle.'</div>
- 									 </div>
+                                               '.$famille1->libelle.'
+											</div>
+											<center><img style="max-height:180px"  src="'. URL::asset('images/'.$img).'" class="img-fluid pt-20" alt=""></center>
+ 									     </div>
                                     </div>
                                 </div>
                              </div>
