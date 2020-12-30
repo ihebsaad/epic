@@ -685,10 +685,10 @@ $i=-1;
   $NAT_MESURE1=$d->NAT_MESURE1;
   $NAT_MESURE2=$d->NAT_MESURE2;
    $UNIT_IDENT=$d->UNIT_IDENT;
-   $unite1=$d->unite1;
-   $unite2=$d->unite2;
+   $mesure1=$d->mesure1;
+   $mesure2=$d->mesure2;
    $valeur_defaut=$d->valeur_defaut;
-   $etatid=$d->etatid;
+  // $etatid=$d->etatid;
  // $choix_etat=$d->choix_etat;
  
  
@@ -696,10 +696,10 @@ $i=-1;
    $result[$i]['NAT_MESURE1']=$NAT_MESURE1;
    $result[$i]['NAT_MESURE2']=$NAT_MESURE2;
     $result[$i]['UNIT_IDENT']=$UNIT_IDENT;
-    $result[$i]['unite1']=$unite1;
-    $result[$i]['unite2']=$unite2;
+    $result[$i]['unite1']=$mesure1;
+    $result[$i]['unite2']=$mesure2;
    $result[$i]['valeur_defaut']=$valeur_defaut;
-   $result[$i]['etatid']=$etatid;
+  // $result[$i]['etatid']=$etatid;
    
    $produitmesure1 =$this->produitmesure1($typeid,$fam1,$fam2,$fam3);
     $result[$i]['mesures']=$produitmesure1 ;
