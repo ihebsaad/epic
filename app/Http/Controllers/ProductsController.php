@@ -8,6 +8,7 @@ use App\User ;
 use App\Product ;
 use App\Order ;
 use DB ;
+use URL;
 
 class ProductsController extends Controller
 {
