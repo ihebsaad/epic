@@ -97,7 +97,7 @@ $agences=DB::table('agence')->get();
 							 
 							 </div>		<!-- agency 1-->					 
 
-							 <div id="agency2">
+							 <div id="agency2"  style="display:none">
  							 <h5>Adresse de livraison</h5>
 							 <div class="row pt-10 pb-20">
 							 
