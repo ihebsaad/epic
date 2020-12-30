@@ -87,8 +87,10 @@ $products=array();
 									<?php if($product!= 'error') {?>
 									<?php $id_unite= $product[0]['UNIT_IDENT'];
 									$unite=DB::table('unite')->where('UNIT_IDENT',$id_unite)->first();
+									
 									?>									
-							 
+							 		 <input type="hidden" id="unite" value="<?php echo $unite->UNIT_LIB_COURT; ?>"   >
+
 									
 							 
 									<?php $mesures= $product[0]['mesures'];
@@ -227,12 +229,11 @@ $products=array();
 <hr>
 	
 									 <div class="row mb-10 mt-20 pl-10">
-									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?> value="0.50"  step="0.01"  <?php }else{ ?> value="1"  step="1"  <?php  } ?> onchange="$('#infos').show('slow');details()" id="qte" type="number"  style="width:80px" value="0"    class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">Poids Total :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold;"></label> 
-									
+									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    step="0.01"  <?php }else{ ?>   step="1"  <?php  } ?> value="<?php echo $product[0]['valeur_defaut']; ?>" onchange="details()" id="qte" type="number"  style="width:80px" value="0"    class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">Poids Total :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold;"></label> 
 
 									</div>	
 <hr>							
-							  <div id="infos" style="display:none;">		
+							  <div id="infos"  >		
 
 							  <div class="row pl-10   ">
 							  <label class=" ">{{__('msg.Unit weight')}} :</label>
@@ -287,7 +288,7 @@ $products=array();
 									<tr class="bg-info text-white mb-20  " style="height:40px;border:1px solid lightgrey;">
 									<th class="pl-10 " >Article</th><th style="text-align:center"class="pl-10 pr-10" >Qté</th><th style="text-align:center" class="pl-10 pr-10">Poids</th><th class="pl-10 pr-10" style="text-align:center"><span class="fa fa-trash-alt"></th>
 									<?php foreach($products as $product){
-									echo '<tr><td class="pl-10" style="font-size:12px">'.$product->libelle.'</td><td style="text-align:center;font-size:13px">'.$product->qte.'</td><td style="text-align:center;font-size:13px">'.$product->poids.' g</td><td class="text-black" style="text-align:center;font-size:13px">';?>
+									echo '<tr><td class="pl-10" style="font-size:12px">'.$product->libelle.'</td><td style="text-align:center;font-size:13px">'.$product->qte.' '.$product->unite.'</td><td style="text-align:center;font-size:13px">'.number_format($product->poids, 2).' g</td><td class="text-black" style="text-align:center;font-size:13px">';?>
 									<a  class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce produit ?')"  href="{{action('ProductsController@deleteproduct', $product->id)}}"><span class="fa  fa-times-circle"></i></a>
 									<?php echo '
 									</td></tr>	';
@@ -464,6 +465,7 @@ function details()
 	        var alliage = parseInt(  $('#alliage_id').val()) ;
 	        var libelle = $('#title').text() ;
 			var qte = parseFloat($('#qte').val());
+			var unite =  $('#unite').val() ;
 			var article =  $('#article').val() ;
 			var mesure1 =  $('#mesure1').val() ;
 			var mesure2 =  $('#mesure2').val() ;
@@ -491,7 +493,7 @@ function details()
                 url: "{{ route('addproduct') }}",
                 method: "POST",
                 data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,user:<?php echo $user->id; ?>, libelle: libelle,
-				qte: qte,article: article,montant: montant,montant_compl: montant_compl,poids: poids,or: or,argent: argent,palladium: palladium
+				qte: qte,unite:unite,article: article,montant: montant,montant_compl: montant_compl,poids: poids,or: or,argent: argent,palladium: palladium
 				,platine: platine,alliage:alliage ,mesure1:mesure1,mesure2:mesure2,comp_id:comp_id,comp_val:comp_val , _token: _token},
                 success: function (data) {
 					location.reload();
@@ -502,6 +504,6 @@ function details()
 			}
 			}
 //http://localhost/Epic/single/101/1003/2003/3004
-	
+	details();
    </script>
 @endsection					

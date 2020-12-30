@@ -111,6 +111,7 @@ class ProductsController extends Controller
 		 $user =  $request->get('user');
 		 $libelle =  $request->get('libelle');
 		 $qte =  $request->get('qte');
+		 $unite =  $request->get('unite');
 		 $article =  $request->get('article');
 	     $montant = $request->get('montant'); 
 	     $montant_compl =  $request->get('montant_compl');
@@ -132,6 +133,7 @@ class ProductsController extends Controller
              'orderid' =>  $order->id ,
              'libelle' =>  $libelle ,
              'qte' =>  $qte ,
+             'unite' =>  $unite ,
              'article' =>  $article ,
              'montant' =>  $montant ,
              'montant_compl' =>  $montant_compl ,
@@ -194,6 +196,7 @@ class ProductsController extends Controller
              'orderid' =>  $orderid ,
              'libelle' =>  $libelle ,
              'qte' =>  $qte ,
+             'unite' =>  $unite ,
              'article' =>  $article ,
              'montant' =>  $montant ,
              'montant_compl' =>  $montant_compl ,

@@ -18,6 +18,7 @@ class Product extends Model
 		'article',	 
 		'libelle',
 		'qte',		 
+		'unite',		 
 		'poids',	 
 		'montant',		 
 		'montant_compl',	 
