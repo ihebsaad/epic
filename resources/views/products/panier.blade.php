@@ -101,7 +101,7 @@ if($product->alliage >0){
 <div class="col-md-4"  >
   <div class="pb-40  pl-10 pt-15" style="border-left:1px solid lightgrey">
    <b>Poids Total :  <span id="poidst-<?php echo $i;?>"><?php echo $product->poids ; ?></span> g<br>
-   Façon : <span id="tmontant-<?php echo $i;?>"><?php echo $product->montant_compl ; ?></span>  €</b>
+   Façon option : <span id="tmontant-<?php echo $i;?>"><?php echo $product->montant_compl ; ?></span>  €</b>
    <br>
    <a  style="position:absolute;right:25px;bottom:25px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce produit ?')"  href="{{action('ProductsController@deleteproduct', $product->id)}}"><span class="fa  fa-times-circle"></i></a>
   </div>
