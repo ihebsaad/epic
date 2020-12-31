@@ -1490,7 +1490,7 @@ $i=-1;
 	}	
 	
 	
-	   public function listeclients2($contact_id  )
+	   public static function listeclients2($contact_id  )
     { 
    	   DB::select("SET @p0='$contact_id' ;");
 
@@ -1534,7 +1534,7 @@ $i=-1;
 	
 	
 	
-	  public function adresse2($client_id  )
+	  public static function adresse2($client_id  )
     { 
    	   DB::select("SET @p0='$client_id' ;");
 
@@ -1553,7 +1553,7 @@ $i=-1;
 	
 	
 	
-	  public function  liste_contact($client_id  )
+	  public static function  liste_contact($client_id  )
     { 
    	   DB::select("SET @p0='$client_id' ;");
 
@@ -1611,7 +1611,7 @@ $i=-1;
 
 		
 	
-	  public function detailsclient($client_id  )
+	  public static function detailsclient($client_id  )
     { 
 	// try {
 	$liste=$this->listeclients2($client_id);

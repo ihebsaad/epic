@@ -8,8 +8,7 @@
 <?php
  $user = auth()->user();  
  use App\Http\Controllers\HomeController ;
- $alliages=HomeController::referentielalliage();			  
-  
+   
 $order = DB::table('orders')->where('status','cart')->where('user',$user->id)->first();
 if ($order!=null){
  $orderid=$order->id;
@@ -38,6 +37,14 @@ $products=array();
 
 
 $agences=DB::table('agence')->get();
+
+//$details=HomeController::detailsclient($user['client_id']);
+$liste=HomeController::listeclients2($user['client_id']);
+	$adresses=HomeController::adresse2($user['client_id']);
+	$contact=HomeController::liste_contact($user['client_id']);
+	
+$pays_code = $liste[0]->pays_code ;
+$agence_defaut= $liste[0]->agence_defaut  ;
 ?>
 <style>
 .box{border:1px solid black; background-color:#f8f9fc;opacity:0.4;cursor:pointer;}
@@ -56,7 +63,7 @@ $agences=DB::table('agence')->get();
                                 <div class="card-body">
  							 <h5>Choisir un mode de livraison</h5>
 							 <div class="row pt-10 pb-20">
-							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');">
+							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');details()">
 								<center>  Click & Collect 
 								<img src="{{ URL::asset('public/img/box.png')}}" style="width:80px" class="mt-20"/></center>
 							 </div>
@@ -77,8 +84,10 @@ $agences=DB::table('agence')->get();
 							 <?php
 							 foreach($agences as $agence)
 							 {
-								 echo '<option value="'.$agence->agence_ident.'" >'.$agence->agence_lib .'   |    <small>'.$agence->adresse1 .'</small></option>';
-								 
+								  if($agence->pays_code ==  $pays_code ){
+								 if($agence->agence_ident ==  $agence_defaut ){$selected="selected='selected'" ;}else{ $selected="";}
+								 echo '<option '.$selected.' value="'.$agence->agence_ident.'" >'.$agence->agence_lib .'   |    <small>'.$agence->adresse1 .'</small></option>';
+														}
 							 }
 							 ?>
 							 
@@ -103,25 +112,35 @@ $agences=DB::table('agence')->get();
 							 
 							 <div class="col-md-8">
 							 
-							 <select class="form-control" style="" id="" onchange=" ">
+							 <select class="form-control" style="" id="livraison" onchange="setadresse()">
 							 <option></option>
 							 <?php
-							/* foreach($agences as $agence)
+							  foreach($adresses as $adresse)
 							 {
-								 echo '<option value="'.$agence->agence_ident.'" >'.$agence->agence_lib .'   |    <small>'.$agence->adresse1 .'</small></option>';
+								 echo '<option value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
 								 
-							 }*/
+							 } 
 							 ?>
 							 
 							 </select>
+							<?php  
+							foreach($adresses as $adresse)
+							 { ?>
+							 <div class="pl-10 pr-10 pt-10 pt-10" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
+ 							 <b>Agence :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
+							 <b>Adresse :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
+							  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
+							 <b>Pays :</b> <span  >
+							 <?php 
+							 if($adresse->pays_code=='FR'){echo 'France';}   
+							 if($adresse->pays_code=='PL'){echo 'Pologne';}   
+							 if($adresse->pays_code=='GF'){echo 'Guyane française';}   
 							 
-							 <div class="pl-10 pr-10 pt-10 pt-10" >
- 							 <b>Agence :</b>  <span id="lib"></span><br>
-							 <b>Adresse :</b> <span id="adresse"></span><br>
-							  <span id="zip"></span> <span id="ville"></span><br>
-							 <b>Pays :</b> <span id="country"></span>
+							 ?>
+							 </span>
 							 </div>
-							 
+							
+							<?php } ?>
 							 </div>	
 
 							 
@@ -213,7 +232,19 @@ function details()
 	  
 	  
 	}			
-				
+	
+function setadresse	(){
+ var adresse = $('#livraison').val() ;
+ 
+ $('#adresse-'+adresse).show( );
+	
+	
+}
+
+<?php if($agence_defaut>0){?>
+//init default
+details();
+<?php }?>
 </script>					
 					
 
