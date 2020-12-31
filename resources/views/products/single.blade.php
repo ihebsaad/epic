@@ -101,7 +101,7 @@ $products=array();
 									 <div class="row pl-10 pb-10">
 									 <label style="width:120px" class=" pt-10"><b><?php   echo $product[0]['NAT_MESURE1'] ; ?></b></label>
  
-                                      <select onchange="showmesure2();$('#infos').show('slow');details();"  id="mesure1" class="form-control ml-20" style="max-width:80px;"  >
+                                      <select onchange=";details();showmesure2();$('#infos').show('slow');"  id="mesure1" class="form-control ml-20" style="max-width:80px;"  >
   									   <?php
  									   foreach ($mesures as $mesure) {
 									    //dd($mesure->MESURE2[0]->MESURE2 );
