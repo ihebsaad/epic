@@ -79,7 +79,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 
 							 <div class="col-md-8">
 							 
-							 <select class="form-control" style="" id="agence" onchange="details()">
+							 <select class="form-control mb-20" style="" id="agence" onchange="details()">
 							 <option></option>
 							 <?php
 							 foreach($agences as $agence)
@@ -93,7 +93,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 
 							 </select>
 							 
-							 <div class="pl-10 pr-10 pt-10 pt-10" >
+							 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:200px" >
  							 <b>Agence :</b>  <span id="lib"></span><br>
 							 <b>Adresse :</b> <span id="adresse"></span><br>
 							  <span id="zip"></span> <span id="ville"></span><br>
@@ -106,13 +106,13 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 
 							 </div>		<!-- agency 1-->					 
 
-							 <div id="agency2"  style="display:none">
+							 <div id="agency2"  style="display:none"  >
  							 <h5>Adresse de livraison</h5>
 							 <div class="row pt-10 pb-20">
 							 
 							 <div class="col-md-8">
 							 
-							 <select class="form-control" style="" id="livraison" onchange="setadresse()">
+							 <select class="form-control mb-20"  id="livraison" onchange="setadresse()">
 							 <option></option>
 							 <?php
 							  foreach($adresses as $adresse)
@@ -123,10 +123,11 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 ?>
 							 
 							 </select>
+							 <div style="min-height:200px">
 							<?php  
 							foreach($adresses as $adresse)
 							 { ?>
-							 <div class="pl-10 pr-10 pt-10 pt-10" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
+							 <div class="pl-10 pr-10 pt-10 pt-10 adresses" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
  							 <b>Agence :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
 							 <b>Adresse :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
 							  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
@@ -138,6 +139,9 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 
 							 ?>
 							 </span>
+							 </div>
+							 
+							 
 							 </div>
 							
 							<?php } ?>
@@ -232,10 +236,18 @@ function details()
 	  
 	  
 	}			
-	
+	   function toggle(className, displayState){
+            var elements = document.getElementsByClassName(className);
+            for (var i = 0; i < elements.length; i++){
+                elements[i].style.display = displayState;
+				var index=elements[i].title;
+             }
+			 return   parseInt(elements[0].title) ;
+        }
+		
 function setadresse	(){
  var adresse = $('#livraison').val() ;
- 
+ toggle('adresses','none');
  $('#adresse-'+adresse).show( );
 	
 	
