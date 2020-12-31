@@ -685,9 +685,10 @@ $i=-1;
   $NAT_MESURE1=$d->NAT_MESURE1;
   $NAT_MESURE2=$d->NAT_MESURE2;
    $UNIT_IDENT=$d->UNIT_IDENT;
-   $mesure1=$d->unite1;
-   $mesure2=$d->unite2;
-   $valeur_defaut=$d->valeur_defaut;
+   if(isset($d->unite1)){$mesure1=$d->unite1;}else{$mesure1=''; }
+   if(isset($d->unite2)){$mesure2=$d->unite2;}else{$mesure2=''; }
+   
+    $valeur_defaut=$d->valeur_defaut;
   // $etatid=$d->etatid;
  // $choix_etat=$d->choix_etat;
  
