@@ -412,10 +412,10 @@ function details()
 				 montant= parseFloat(montant);
 				 $('#montant').html(  montant);
 				 $('#mini').html(mini );
-				 debit1=data.prix[0].debit_1;
-				 debit2=data.prix[0].debit_2;
-				 debit3=data.prix[0].debit_3;
-				 debit4=data.prix[0].debit_4;
+				 debit1=data.prix[0].debit_1 *qte;
+				 debit2=data.prix[0].debit_2 *qte;
+				 debit3=data.prix[0].debit_3 *qte;
+				 debit4=data.prix[0].debit_4 *qte;
 				  $('#labelm1').hide(); $('#labelm2').hide(); $('#labelm3').hide(); $('#labelm4').hide();
 				  $('#debit_1').html('');$('#debit_2').html('');$('#debit_3').html('');$('#debit_4').html('');
 				  
