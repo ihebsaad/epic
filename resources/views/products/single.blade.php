@@ -143,8 +143,7 @@ $products=array();
  									<div class="row pl-10 mt-10">
 									 <label class="mr-10 pt-10">{{__('msg.Alloy')}} :</label>
 									 <select class="form-control" id="alliage_id" style="max-width:270px;" onchange="changing();$('#option').show('slow');$('#infos').show('slow');details();">
-									 <option value="0"></option>
-										<?php
+ 										<?php
 										
 										
 
