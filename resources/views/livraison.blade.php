@@ -214,7 +214,11 @@ function details()
 	{ 
 	var agence = $('#agence').val() ;
 	var _token = $('input[name="_token"]').val();
-	
+		 $('#lib').html( '');
+		 $('#adresse').html( '');
+		 $('#ville').html( '');
+		 $('#zip').html( '');
+		 $('#country').html('');
 	$.ajax({
        url: "{{ route('agence') }}",
        method: "POST",
