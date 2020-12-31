@@ -303,7 +303,8 @@ class ProductsController extends Controller
 	 
 	 
 	 function details(Request $request) { 	
-					   
+			 $user = auth()->user();  
+		   
 					   $type= $request->get('type');
 					   $famille1= $request->get('famille1');
 					   $famille2= $request->get('famille2');
@@ -315,7 +316,7 @@ class ProductsController extends Controller
 					   $comp_id= $request->get('comp_id');
 					   $comp_val= $request->get('comp_val');
  					   
-		$data= app('App\Http\Controllers\HomeController')->detailsproduit($type,$famille1,$famille2,$famille3,$mesure1,$mesure2,$alliage_id,$qte,$comp_id,$comp_val,1);
+		$data= app('App\Http\Controllers\HomeController')->detailsproduit($type,$famille1,$famille2,$famille3,$mesure1,$mesure2,$alliage_id,$qte,$comp_id,$comp_val,$user['client_id']);
 		return $data;
 	 }					   
 	

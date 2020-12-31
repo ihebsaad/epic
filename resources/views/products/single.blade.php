@@ -229,7 +229,7 @@ $products=array();
 <hr>
 	
 									 <div class="row mb-10 mt-20 pl-10">
-									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    step="0.01"  <?php }else{ ?>   step="1"  <?php  } ?> value="<?php echo $product[0]['valeur_defaut']; ?>" onchange="details()" id="qte" type="number"  style="width:80px" value="0"    class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">Poids Total :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold;"></label> 
+									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    step="0.01"  <?php }else{ ?>   step="1"  <?php  } ?> value="<?php echo $product[0]['valeur_defaut']; ?>" onchange="details()" id="qte" type="number"  style="width:95px" value="0"    class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">Poids Total :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold;"></label> 
 
 									</div>	
 <hr>							
