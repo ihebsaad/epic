@@ -69,12 +69,12 @@ $user_type=$user->user_type;
       </li>	
 	  
  	  <li class="nav-item   <?php  ?>">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('affinage')}}">
            <span> {{__('msg.Industrial refining')}} </span></a>
       </li>
 	  
  	  <li class="nav-item   <?php  ?>">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('laboratoire')}}">
            <span> {{__('msg.Laboratory')}} </span></a>
       </li>	 
 	  

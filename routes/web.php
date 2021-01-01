@@ -34,8 +34,21 @@ Route::get('/galvano', 'PagesController@galvano')->name('galvano');
 Route::get('/refining', 'PagesController@refining')->name('refining');
 Route::get('/laboratory', 'PagesController@laboratory')->name('laboratory');
 Route::get('/catalog/{type}/{famille1}', 'PagesController@catalog')->name('catalog');
+
+
+
 Route::get('/panier', 'PagesController@panier')->name('panier');
 Route::get('/livraison', 'PagesController@livraison')->name('livraison');
+Route::get('/affinage', 'PagesController@affinage')->name('affinage');
+Route::get('/laboratoire', 'PagesController@laboratoire')->name('laboratoire');
+Route::get('/trading', 'PagesController@trading')->name('trading');
+Route::get('/virement', 'PagesController@virement')->name('virement');
+Route::get('/orders', 'PagesController@orders')->name('orders');
+Route::get('/euros', 'PagesController@euros')->name('euros');
+Route::get('/poids', 'PagesController@poids')->name('poids');
+Route::get('/modeles', 'PagesController@modeles')->name('modeles');
+
+
 
 
 Route::post('/agence', 'HomeController@agence')->name('agence');

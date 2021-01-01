@@ -70,11 +70,48 @@ class PagesController extends Controller
 	return view('products.panier');
     }
 	
+	
  	 public function livraison()
     { 
          return view('livraison');
     }
- 
+	
+ 	 public function affinage()
+    { 
+         return view('affinage');
+    }
 
+ 	 public function laboratoire()
+    { 
+         return view('laboratoire');
+    }
+
+ 	 public function trading()
+    { 
+         return view('trading');
+    }
+
+ 	 public function virement()
+    { 
+         return view('virement');
+    }
+	
+  	 public function euros()
+    { 
+         return view('euros');
+    }
+	
+  	 public function poids()
+    { 
+         return view('poids');
+    }
+	
+  	 public function modeles()
+    { 
+         return view('modeles');
+    }
+	
+	
+	
 
 }

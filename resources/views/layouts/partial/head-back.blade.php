@@ -44,7 +44,9 @@
  .metal{height:50px;padding-top:15px;margin-bottom:10px;color:white;}
  
  select:disabled ,  button:disabled ,.form-control:disabled{opacity:0.4!important; }
- 
+ .searchfield{width:100px;}
+		 #mytable{width:100%!important;margin-top:10px !important;}
+
 
      </style>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>

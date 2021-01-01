@@ -2232,7 +2232,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function listecommandes($cli_id,$lg )
+		 public static function listecommandes($cli_id,$lg )
     { 
  // try {
   DB::select("SET @p0='$cli_id' ;");
@@ -2240,7 +2240,9 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_affinage_cmde_liste`(@p0); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return  $result  ;
+	 
 	  }
 	  else{
 		  
@@ -2304,7 +2306,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function listemodeles($cli_id,$lg )
+		 public static function listemodeles($cli_id,$lg )
     { 
 //	try {
    	   DB::select("SET @p0='$cli_id' ;");
@@ -2312,7 +2314,8 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_affinage_modele_liste`(@p0); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return $result;
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
 	  }
 	  else{
 		  
