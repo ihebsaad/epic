@@ -125,7 +125,7 @@ $modeles=HomeController::listemodeles($user['client_id'],'');
 								<div class="row pb-15" >
 								
 								<div class="col-md-6">
-								Commande : <b><?php echo   $commande->cmde_aff ;?></b><br>																
+								Commande : <b><a href="#"><?php echo   $commande->cmde_aff ;?></a></b><br>																
 								</div>
 								<div class="col-md-6">
 								
@@ -165,7 +165,7 @@ $modeles=HomeController::listemodeles($user['client_id'],'');
 								<div class="row pb-15">
 								
 								<div class="col-md-6">
-								Commande : <b><?php echo   $commande->cmde_aff ;?></b><br>																
+								Commande : <b><a href="#"><?php echo   $commande->cmde_aff ;?></a></b><br>																
 								</div>
 								<div class="col-md-6">
 								
