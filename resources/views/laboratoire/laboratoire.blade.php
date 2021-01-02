@@ -34,7 +34,7 @@ foreach($natures as $nature)
 						<div class="row">
 
                         <!-- Content Column -->
-                        <div class="col-lg-8 mb-4">
+                        <div class="col-lg-9 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -56,13 +56,12 @@ foreach($natures as $nature)
         <table id="mytable" class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
-                <th style="width:25%">Nom</th>
-                <th style="width:10%">Lot</th>
-                <th style="width:10%">Lab</th>
-                <th style="width:10%">Type</th>
-                <th style="width:10%">Qté</th>
-                <th style="width:10%">Poids</th>
-                <th style="width:25%">Métaux</th>
+                <th style="width:15%">Nom</th>
+                <th style="width:8%">Lot</th>
+                <th style="width:8%">Lab</th>
+                 <th style="width:5%">Qté</th>
+                <th style="width:5%">Poids</th>
+                <th style="width:10%">Métaux</th>
                  <th style="width:10%">Actions</th>
               </tr>
             </thead>
@@ -72,8 +71,7 @@ foreach($natures as $nature)
 				<td><?php echo $modele->nom; ?></td>
 				<td><?php echo $Natures[$modele->nature_id];?></td>
 				<td><?php echo $PrestLibs[$modele->type_lab_ident];?></td>
-				<td><?php //echo $PrestTypes[$modele->choix_lab_ident];?></td>
-				<td><?php echo $modele->qte;?></td>
+ 				<td><?php echo $modele->qte;?></td>
 				<td><?php echo $modele->poids;?></td>
 				<td>
 				<?php if ($modele->or > 0){  ?>
@@ -108,7 +106,7 @@ foreach($natures as $nature)
                         </div>
 
                          <!-- Content Column -->
-                        <div class="col-lg-4 mb-4">
+                        <div class="col-lg-3 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -131,7 +129,7 @@ foreach($natures as $nature)
                                 @foreach($commandes as $commande)
 								<?php $i++;
 								if ($i <6){    
-								if ($commande->etat!='En cours'){   ?>
+								if ($commande->etat=='En cours'){   ?>
 								<div class="row pb-10">
 								
 								<div class="col-md-6">
