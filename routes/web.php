@@ -47,6 +47,8 @@ Route::get('/orders', 'PagesController@orders')->name('orders');
 Route::get('/euros', 'PagesController@euros')->name('euros');
 Route::get('/poids', 'PagesController@poids')->name('poids');
 Route::get('/modeles', 'PagesController@modeles')->name('modeles');
+Route::get('/modele', 'PagesController@modele')->name('modele');
+Route::get('/commande/{id}', 'PagesController@commande')->name('commande');
 
 
 

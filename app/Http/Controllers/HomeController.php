@@ -137,7 +137,25 @@ class HomeController extends Controller
  } 
  
     }	
-		
+	
+		  public static function natures()
+    { 
+ 
+ 	  $result=  DB::select (" CALL `sp_affinage_nature_lot`(); ");
+ 
+  if ($result!= null){
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return  $result ;
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+	
+	
+	 
+	
 	
 	  public function tarif_article()
     { 
@@ -2385,7 +2403,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function detailscommande($id_cmd ,$id_cl ,$lg  )
+		 public static function detailscommande($id_cmd    )
     {
 	//	try {		
    	   DB::select("SET @p0='$id_cmd' ;");
@@ -2393,7 +2411,8 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_affinage_cmde_detail`(@p0); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return  $result  ;
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
 	  }
 	  else{
 		  

@@ -9,7 +9,13 @@ use App\Http\Controllers\HomeController ;
 
 $commandes=HomeController::listecommandes($user['client_id'],'');
 $modeles=HomeController::listemodeles($user['client_id'],'');
-//dd($modeles);
+$natures=HomeController::natures( );
+//dd($natures );
+$Natures=array();
+foreach($natures as $nature)
+{
+	$Natures[$nature->nature_lot]=$nature->libelle;
+}
 
 ?>
 <style>
@@ -30,7 +36,7 @@ $modeles=HomeController::listemodeles($user['client_id'],'');
 			<div class="row mb-15">
                 <div class="col-lg-8"></div>
                 <div class="col-lg-4">
-                    <a   class="btn btn-md btn-success"    href=" " ><b><i class="fas fa-plus"></i> Nouveau Modèle</b></a>
+                    <a   class="btn btn-md btn-success"    href="{{route('modele')}} " ><b><i class="fas fa-plus"></i> Nouveau Modèle</b></a>
                 </div>
             </div>                                      
 						<style>	
@@ -52,7 +58,7 @@ $modeles=HomeController::listemodeles($user['client_id'],'');
             @foreach($modeles as $modele)
 				<tr>
 				<td><?php echo $modele->nom; ?></td>
-				<td><?php echo $modele->nature_lot_ident;?></td>
+				<td><?php echo $Natures[$modele->nature_lot_ident];?></td>
 				<td><?php echo $modele->poids;?></td>
 				<td>
 				<?php if ($modele->or > 0){  ?>
@@ -64,11 +70,11 @@ $modeles=HomeController::listemodeles($user['client_id'],'');
                   Arg 
                  </span>
 				<?php }  if ($modele->platine > 0){    ?>				 
-				 <span class="btn text-center text-dark bg-gradient-secondary btn-circle btn-sm">
+				 <span class="btn text-center text-white bg-gradient-secondary btn-circle btn-sm">
                   Plat 
                  </span>
 				<?php }  if ($modele->palladium > 0){    ?>				 				 
-				<span class="btn text-center text-dark btn-gray-500 btn-circle btn-sm">
+				<span class="btn text-center text-white bg-gray-500 btn-circle btn-sm">
                   Pall 
                  </span>
 				 <?php }   ?>	
@@ -125,7 +131,7 @@ $modeles=HomeController::listemodeles($user['client_id'],'');
 								<div class="row pb-15" >
 								
 								<div class="col-md-6">
-								Commande : <b><a href="#"><?php echo   $commande->cmde_aff ;?></a></b><br>																
+								Commande : <b><a href="<?php echo URL("commande/".$commande->cmde_aff);?>"><?php echo   $commande->cmde_aff ;?></a></b><br>																
 								</div>
 								<div class="col-md-6">
 								
@@ -165,7 +171,7 @@ $modeles=HomeController::listemodeles($user['client_id'],'');
 								<div class="row pb-15">
 								
 								<div class="col-md-6">
-								Commande : <b><a href="#"><?php echo   $commande->cmde_aff ;?></a></b><br>																
+								Commande : <b><a href="<?php echo URL("commande/".$commande->cmde_aff);?>"><?php echo   $commande->cmde_aff ;?></a></b><br>																
 								</div>
 								<div class="col-md-6">
 								

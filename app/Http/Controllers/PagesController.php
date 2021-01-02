@@ -76,10 +76,7 @@ class PagesController extends Controller
          return view('livraison');
     }
 	
- 	 public function affinage()
-    { 
-         return view('affinage');
-    }
+ 	
 
  	 public function laboratoire()
     { 
@@ -106,9 +103,25 @@ class PagesController extends Controller
          return view('poids');
     }
 	
+	/**** Affinage ***/
+	 public function affinage()
+    { 
+         return view('affinage.affinage');
+    }
+	
   	 public function modeles()
     { 
-         return view('modeles');
+         return view('affinage.modeles');
+    }
+	
+	 public function modele()
+    { 
+         return view('affinage.modele');
+    }
+	
+	public function commande($id)
+    { 
+         return view('affinage.commande',['id'=>$id]);
     }
 	
 	
