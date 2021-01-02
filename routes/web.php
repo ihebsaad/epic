@@ -40,7 +40,6 @@ Route::get('/catalog/{type}/{famille1}', 'PagesController@catalog')->name('catal
 Route::get('/panier', 'PagesController@panier')->name('panier');
 Route::get('/livraison', 'PagesController@livraison')->name('livraison');
 Route::get('/affinage', 'PagesController@affinage')->name('affinage');
-Route::get('/laboratoire', 'PagesController@laboratoire')->name('laboratoire');
 Route::get('/trading', 'PagesController@trading')->name('trading');
 Route::get('/virement', 'PagesController@virement')->name('virement');
 Route::get('/orders', 'PagesController@orders')->name('orders');
@@ -50,7 +49,9 @@ Route::get('/modeles', 'PagesController@modeles')->name('modeles');
 Route::get('/modele', 'PagesController@modele')->name('modele');
 Route::get('/commande/{id}', 'PagesController@commande')->name('commande');
 
-
+Route::get('/laboratoire', 'PagesController@laboratoire')->name('laboratoire');
+Route::get('/modelelab', 'PagesController@modelelab')->name('modelelab');
+Route::get('/commandelab/{id}', 'PagesController@commandelab')->name('commandelab');
 
 
 Route::post('/agence', 'HomeController@agence')->name('agence');

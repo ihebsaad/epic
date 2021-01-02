@@ -78,10 +78,7 @@ class PagesController extends Controller
 	
  	
 
- 	 public function laboratoire()
-    { 
-         return view('laboratoire');
-    }
+
 
  	 public function trading()
     { 
@@ -124,6 +121,21 @@ class PagesController extends Controller
          return view('affinage.commande',['id'=>$id]);
     }
 	
+	
+ 	 public function laboratoire()
+    { 
+         return view('laboratoire.laboratoire');
+    }	
+	
+	 public function modelelab()
+    { 
+         return view('laboratoire.modele');
+    }
+	
+	public function commandelab($id)
+    { 
+         return view('laboratoire.commande',['id'=>$id]);
+    }	
 	
 	
 

@@ -152,7 +152,20 @@ class HomeController extends Controller
  } 
  
     }
-	
+			  public static function natures2()
+    { 
+ 
+ 	  $result=  DB::select (" CALL `sp_accueil_liste_nature_lot`(); ");
+ 
+  if ($result!= null){
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return  $result ;
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
 	
 	 
 	
@@ -2737,13 +2750,14 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function listeprestations($cli_id,$lg )
+		 public static function listeprestations($cli_id  )
     { 
 //	try {
  	  $result=  DB::select ("  CALL `sp_labo_choix`(); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 //return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return   $result  ;
 	  }
 	  else{
 		  
@@ -2807,7 +2821,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function listecommandeslabo($cli_id,$lg )
+		 public static function listecommandeslabo($cli_id  )
     { 
 //	try { 
    	   DB::select("SET @p0='$cli_id' ;");
@@ -2815,7 +2829,8 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_labo_cmde_liste`(@p0); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 //return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return    $result  ;
 	  }
 	  else{
 		  
@@ -2879,7 +2894,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function listemodeleslabo($cli_id,$lg )
+		 public static function listemodeleslabo($cli_id  )
     { 
 	//try {
    	   DB::select("SET @p0='$cli_id' ;");
@@ -2887,7 +2902,8 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_labo_modele_liste`(@p0); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return  $result  ;
 	  }
 	  else{
 		  
@@ -2958,7 +2974,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function detailscommandelabo($id_cmd ,$id_cl ,$lg  )
+		 public function detailscommandelabo($id_cmd    )
     { 
 	// try {
    	   DB::select("SET @p0='$id_cmd' ;");
@@ -2966,7 +2982,7 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_labo_cmde_detail`(@p0); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return   $result   ;
 	  }
 	  else{
 		  

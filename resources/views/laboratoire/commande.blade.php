@@ -14,7 +14,7 @@ foreach($natures as $nature)
 	$Natures[$nature->nature_lot]=$nature->libelle;
 }
  
-  $commande=HomeController::detailscommandelabo($id);
+  $commande=HomeController::detailscommande($id);
   
 
 ?>
