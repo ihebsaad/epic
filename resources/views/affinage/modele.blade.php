@@ -181,10 +181,10 @@ $('#nature').tooltip();
                             align: "right"
                         },
                     });
-							/*setTimeout(function(){
+							 setTimeout(function(){
 							location.reload();
 							   }, 3000);  //3 secds
-							}*/
+							} 
 				
 				});
 			
