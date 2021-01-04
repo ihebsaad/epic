@@ -233,5 +233,18 @@ return [
  	'Product'=>'Product',
  	'Unit weight'=>'Unit weight',
 
-	
+	'Option'=>'Option',
+ 	'Price'=>'Price',
+ 	'Total way'=>'Total way',
+ 	'Way option'=>'Way option',
+ 	'Total weight'=>'Total weight',
+ 	'FINE METALS'=>'FINE METALS',
+ 	'Article'=>'Article',
+ 	'Qty'=>'Qty',
+ 	'Weight'=>'Weight',
+ 	'Product details'=>'Product details',
+	'My order'=>'My order',
+ 	'Add Model'=>'Add Model',
+ 	 
+
  ];

@@ -240,7 +240,19 @@ return [
  	'Complement'=>'Komplement',
  	'Value'=>'Wartość',
  	'Product'=>'Produkt',
- 	'Unit weight'=>'Waga jednostkowa',		
-	
+ 	'Unit weight'=>'Waga jednostkowa',
+	'Option'=>'Opcja',
+ 	'Price'=>'Cena',
+ 	'Total way'=>'Całkowity sposób',
+ 	'Way option'=>'Opcja drogi',
+ 	'Total weight'=>'aga całkowita',
+ 	'FINE METALS'=>'DROBNE METALE',
+ 	'Article'=>'Artykuł',
+ 	'Qty'=>'Ilo',	
+ 	'Weight'=>'Waga',
+  	'Product details'=>'Szczegóły produktu',
+	'My order'=>'Moje zamówienie',
+	'Add Model'=>'Dodaj model',
+
 	 
  ];

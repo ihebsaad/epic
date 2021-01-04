@@ -169,6 +169,58 @@ class HomeController extends Controller
 	
 	 
 	
+
+
+
+
+ public function addmodele(Request $request)
+{
+ // try{
+$client_id  = intval($request->get('client'));	
+$nom   = $request->get('nom');	
+$nature_id = intval($request->get('nature'));	
+$poids  = floatval($request->get('poids'));	
+$or  = floatval($request->get('or'));	
+$argent  = floatval($request->get('argent'));	
+$platine  = floatval($request->get('platine'));	
+$palladium  = floatval($request->get('palladium'));	
+$assiste   = floatval($request->get('assiste'));	
+   
+ DB::select("SET @p0='$client_id' ;");
+ DB::select("SET @p1='$nom' ;");
+ DB::select("SET @p2='$nature_id' ;");
+ DB::select("SET @p3='$poids' ;");
+ DB::select("SET @p4='$or' ;");
+ DB::select("SET @p5='$argent' ;");
+ DB::select("SET @p6='$platine' ;");
+ DB::select("SET @p7='$palladium' ;");
+ DB::select("SET @p8='$assiste' ;");
+   
+   DB::select ("  CALL `sp_affinage_modele_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9  ); ");
+  $result= DB::select ("SELECT @p9 AS `modele_id` ");
+	return $result ;
+
+ 
+	  
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	  public function tarif_article()
     { 

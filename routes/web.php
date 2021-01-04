@@ -52,6 +52,7 @@ Route::get('/commande/{id}', 'PagesController@commande')->name('commande');
 Route::get('/laboratoire', 'PagesController@laboratoire')->name('laboratoire');
 Route::get('/modelelab', 'PagesController@modelelab')->name('modelelab');
 Route::get('/commandelab/{id}', 'PagesController@commandelab')->name('commandelab');
+Route::post('/addmodele', 'HomeController@addmodele')->name('addmodele');
 
 
 Route::post('/agence', 'HomeController@agence')->name('agence');

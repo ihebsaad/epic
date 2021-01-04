@@ -182,7 +182,7 @@ $products=array();
 
 									 ?>
 							        <div class="row mb-10 mt-20 pl-10 ">
-										 <label class=" pt-10 pr-10">OPTION :</label>
+										 <label class=" pt-10 pr-10">{{__('msg.Option')}} :</label>
 										  <select class="form-control" id="comp_id"  disabled style="width:200px"  onchange="$('#option').show('slow');$('#infos').show('slow');details();">
 									<?php	
 									foreach($complements as $comp)
@@ -213,10 +213,10 @@ $products=array();
 										 </div>	
 							 <div id="option" style="display:none;">
  							  <div class="row pl-10   ">
-							  <label class="  ">Prix option :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
+							  <label class="  ">{{__('msg.Option price')}} :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
 							  </div>
 							  <div class="row pl-10   ">							  
- 							  <label class="  ">Façon option :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
+ 							  <label class="  ">{{__('msg.Way option')}} :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
 							  </div>
 							  </div>								 
 								<?php }
@@ -228,7 +228,7 @@ $products=array();
 <hr>
 	
 									 <div class="row mb-10 mt-20 pl-10">
-									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    step="0.01"  <?php }else{ ?>   step="1"  <?php  } ?> value="<?php echo $product[0]['valeur_defaut']; ?>" onchange="details()" id="qte" type="number"  style="width:95px" value="0"    class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">Poids Total :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold;"></label> 
+									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    step="0.01"  <?php }else{ ?>   step="1"  <?php  } ?> value="<?php echo $product[0]['valeur_defaut']; ?>" onchange="details()" id="qte" type="number"  style="width:95px" value="0"    class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">{{__('msg.Total weight')}} :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold;"></label> 
 
 									</div>	
 <hr>							
@@ -236,14 +236,14 @@ $products=array();
 
 							  <div class="row pl-10   ">
 							  <label class=" ">{{__('msg.Unit weight')}} :</label>
-							  <label class="pl-10 mr-10 " style="font-weight:bold" id="poids_u"> </label> <label class="ml-10 mr-10">Prix :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €
+							  <label class="pl-10 mr-10 " style="font-weight:bold" id="poids_u"> </label> <label class="ml-10 mr-10">{{__('msg.Price')}} :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €
 							  <div class="col-md-2" id="prix"></div>
 							  <input type="hidden" id="article" ></input>
 							  </div>
 							  
 							  
 							  <div class="row pl-10  ">
-							  <label class="   " >Façon totale:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
+							  <label class="   " >{{__('msg.Total way')}}:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
 							  </div>							
 				   							 
 
@@ -285,7 +285,7 @@ $products=array();
                                 <div id="div2" class="card-body">
 									<table class="mb-10">
 									<tr class="bg-info text-white mb-20  " style="height:40px;border:1px solid lightgrey;">
-									<th class="pl-10 " >Article</th><th style="text-align:center"class="pl-10 pr-10" >Qté</th><th style="text-align:center" class="pl-10 pr-10">Poids</th><th class="pl-10 pr-10" style="text-align:center"><span class="fa fa-trash-alt"></th>
+									<th class="pl-10 " >{{__('msg.Article')}}</th><th style="text-align:center"class="pl-10 pr-10" >{{__('msg.Qty')}}</th><th style="text-align:center" class="pl-10 pr-10">{{__('msg.Weight')}}</th><th class="pl-10 pr-10" style="text-align:center"><span class="fa fa-trash-alt"></th>
 									<?php foreach($products as $product){
 									echo '<tr><td class="pl-10" style="font-size:12px">'.$product->libelle.'</td><td style="text-align:center;font-size:13px">'.$product->qte.' '.$product->unite.'</td><td style="text-align:center;font-size:13px">'.number_format($product->poids, 2).' g</td><td class="text-black" style="text-align:center;font-size:13px">';?>
 									<a  class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce produit ?')"  href="{{action('ProductsController@deleteproduct', $product->id)}}"><span class="fa  fa-times-circle"></i></a>
@@ -294,12 +294,12 @@ $products=array();
 	
 									}?>
  									 <tr style="height:40px"><td></td><td></td><td></td><td></td></tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Façon option</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Poids total</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  number_format($weight, 2) ;?> g</b></td>	</tr>
-									<tr ><td><b class="pl-10 text-info">Façon totale</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Way option')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Total weight')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  number_format($weight, 2) ;?> g</b></td>	</tr>
+									<tr ><td><b class="pl-10 text-info">{{__('msg.Total way')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>
-									<span class="mt-10 text-success " style="font-weight:bold" >METAUX FINS</span><br>
+									<span class="mt-10 text-success " style="font-weight:bold" >{{__('msg.FINE METALS')}}</span><br>
 									<table class="pt-20 pm-20 pl-20 pr-20" style="border:none">
 								    <tr style="height:20px; "><td    style="height:20px">{{__('msg.Gold')}}: </span></td><td><span><?php echo floatval($gold ) ;?> g</span></td></tr>
 									<tr style="height:20px"><td   style="height:20px">{{__('msg.Silver')}} : </span></td><td><span><?php echo floatval($silver) ;?> g</span></td></tr>

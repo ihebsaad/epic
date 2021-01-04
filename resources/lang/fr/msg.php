@@ -242,5 +242,20 @@ return [
  	'Value'=>'Valeur',
  	'Product'=>'Produit',
  	'Unit weight'=>'Poids unitaire',	
+
+	'Option'=>'Option',
+ 	'Price'=>'Prix',
+ 	'Total way'=>'Total option',
+ 	'Way option'=>'Façon option',
+ 	'Total weight'=>'Total poids',
+ 	'FINE METALS'=>'MÉTAUX FINS',
+ 	'Article'=>'Article',
+ 	'Qty'=>'Qté',
+ 	'Weight'=>'Poids',
+	'My order'=>'Ma commande',
+ 	'Product details'=>'Détails du produit',
+ 	'Add Model'=>'Ajouter le modèle',
+	
+	
 	
  ];
