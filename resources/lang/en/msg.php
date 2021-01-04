@@ -245,6 +245,7 @@ return [
  	'Product details'=>'Product details',
 	'My order'=>'My order',
  	'Add Model'=>'Add Model',
+ 	'Update Model'=>'Update Model',
  	 
 
  ];

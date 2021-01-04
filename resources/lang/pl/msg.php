@@ -253,6 +253,7 @@ return [
   	'Product details'=>'Szczegóły produktu',
 	'My order'=>'Moje zamówienie',
 	'Add Model'=>'Dodaj model',
+ 	'Update Model'=>'Zaktualizuj model',
 
 	 
  ];

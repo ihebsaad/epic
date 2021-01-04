@@ -57,7 +57,7 @@ foreach($natures as $nature)
             <tbody>
             @foreach($modeles as $modele)
 				<tr>
-				<td><?php echo $modele->nom; ?></td>
+				<td><a href="<?php echo URL("viewmodele/".$modele->id);?>"><?php echo $modele->nom; ?></a></td>
 				<td><?php echo $Natures[$modele->nature_lot_ident];?></td>
 				<td><?php echo $modele->poids;?></td>
 				<td>

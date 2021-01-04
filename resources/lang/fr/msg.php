@@ -255,6 +255,7 @@ return [
 	'My order'=>'Ma commande',
  	'Product details'=>'Détails du produit',
  	'Add Model'=>'Ajouter le modèle',
+ 	'Update Model'=>'Modifier le modèle',
 	
 	
 	
