@@ -35,7 +35,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											<label>Nom du modèle: </label>
 										</div>
 									    <div class="col-lg-9  " style="display:inline!important">
-											 <input  class="form-control"  id="nom"  type="text"  value="<?php echo $modele->modele_nom; ?>"  />
+											 <input  class="form-control"  id="modele_nom"  type="text" onchange="changing(this)" value="<?php echo $modele->modele_nom; ?>"  />
 											  
 									   </div>
 									   
@@ -46,7 +46,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											<label>Nature du lot: </label>
 										</div>
 									    <div class="col-lg-9">
-											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" >
+											<select id="nature_lot_ident"  onchange="changing(this)" class="form-control" data-toggle="tooltip" data-placement="bottom" >
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
@@ -64,7 +64,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											<label>Poids en grammes: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"  id="poids"  type="number" step="0.01" min="0.01" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   />
+											 <input  class="form-control" onchange="changing(this)"  id="pds_lot"  type="number" step="0.01" min="0.01" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   />
 											  
 									   </div>
 									   
@@ -84,29 +84,29 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											<label>Mes estimations en millièmes: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control" value="<?php echo $modele->estim_titre_au; ?>" id="or" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <input class="form-control" onchange="changing(this)" value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  value="<?php echo $modele->estim_titre_ag; ?>" id="argent" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <input class="form-control" onchange="changing(this)"  value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control" value="<?php echo $modele->estim_titre_pt; ?>" id="platine" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <input class="form-control" onchange="changing(this)" value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control" value="<?php echo $modele->estim_titre_pd; ?>" id="palladium" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <input class="form-control" onchange="changing(this)" value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
 									    </div>										
 									      
 									 </div>										 
 									 
-
-						      <div class="row mt-30" style=" height:60px">
+<br><br>
+					<!--	      <div class="row mt-30" style=" height:60px">
 								<button    type="button" style="position:absolute;right:50px " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
                                         <span class="text" onclick="updatemodele(); ">{{__('msg.Update Model')}}</span>
                                     </button>
-                                </div>									 
+                                </div>		-->							 
 									 
 									 
 									 
@@ -117,10 +117,9 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 
                         </div>
 
-                        <div class="col-lg-5 mb-4">
+                     <!--   <div class="col-lg-5 mb-4">
 
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
+                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">  </h6>
                                 </div>
@@ -132,7 +131,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 
                
 
-                        </div>
+                        </div>-->
                     </div>
 
 					
@@ -189,7 +188,46 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 			
 			
 			
-			}					
+			}	
+
+
+  function changing(elm) {
+            var champ = elm.id;
+
+            var val = document.getElementById(champ).value;
+
+             //if ( (val != '')) {
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{ route('updatemodele') }}",
+                method: "POST",
+                data: {modele: <?php echo $id; ?>, champ: champ, val: val, _token: _token},
+                success: function (data) {
+                    $('#' + champ).animate({
+                        opacity: '0.1',
+                    });
+                    $('#' + champ).animate({
+                        opacity: '1',
+                    });
+
+                    $.notify({
+                        message: 'Modifié avec succès',
+                        icon: 'glyphicon glyphicon-check'
+                    },{
+                        type: 'success',
+                        delay: 3000,
+                        timer: 1000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    });
+
+                }
+            });
+
+        }
+			
 </script>					
 					
 @endsection

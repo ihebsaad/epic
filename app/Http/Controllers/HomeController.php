@@ -206,7 +206,7 @@ $assiste   = floatval($request->get('assiste'));
 
 
 
- public function updatemodele(Request $request)
+ public function updatemodele1(Request $request)
 {
  // try{
 $id  = intval($request->get('id'));	
@@ -239,7 +239,17 @@ $assiste   = floatval($request->get('assiste'));
 
 
 
+ public function updatemodele(Request $request)
+    {
+        $id= $request->get('modele');
+        $champ= strval($request->get('champ'));
+      
+         $val= $request->get('val');
 
+        
+         DB::table('modele_affinage')->where('modele_affinage_ident', $id)->update(array($champ => $val));
+
+    }
 
 
 

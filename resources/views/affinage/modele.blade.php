@@ -35,7 +35,7 @@ $('#nature').tooltip();
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Nouveau modèle</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouveau modèle</h6>
                                 </div>
                                 <div class="card-body">
 								
@@ -124,10 +124,9 @@ $('#nature').tooltip();
 
                         </div>
 
-                        <div class="col-lg-5 mb-4">
+                    <!--    <div class="col-lg-5 mb-4">
 
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
+                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">  </h6>
                                 </div>
@@ -139,7 +138,7 @@ $('#nature').tooltip();
 
                
 
-                        </div>
+                        </div>-->
                     </div>
 
 					
@@ -169,7 +168,7 @@ $('#nature').tooltip();
                 method: "POST",
                 data: {client:<?php echo $user['client_id']; ?>, nom:nom, nature: nature,assiste: assiste, poids: poids,or: or,argent: argent,palladium: palladium,platine: platine  , _token: _token},
                 success: function (data) {
-					
+					alert(data);
 	                    $.notify({
                         message: 'Modèle ajouté avec succès',
                         icon: 'glyphicon glyphicon-check'
@@ -182,10 +181,10 @@ $('#nature').tooltip();
                             align: "right"
                         },
                     });
-							setTimeout(function(){
+							/*setTimeout(function(){
 							location.reload();
 							   }, 3000);  //3 secds
-							}
+							}*/
 				
 				});
 			
