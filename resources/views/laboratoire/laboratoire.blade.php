@@ -34,7 +34,7 @@ foreach($natures as $nature)
 						<div class="row">
 
                         <!-- Content Column -->
-                        <div class="col-lg-9 mb-4">
+                        <div class="col-lg-12 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -106,7 +106,7 @@ foreach($natures as $nature)
                         </div>
 
                          <!-- Content Column -->
-                        <div class="col-lg-3 mb-4">
+                        <div class="col-lg-12 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
