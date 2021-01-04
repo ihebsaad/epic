@@ -7,6 +7,7 @@ use DB ;
 use App\User ;
 use App\Order ;
 use App\Product ;
+use App\Modele_affinage ;
 
 use Illuminate\Support\Facades\App;
 
@@ -170,10 +171,93 @@ class HomeController extends Controller
 	 
 	
 
-
-
-
  public function addmodele(Request $request)
+{
+ // try{
+$cl_ident  = intval($request->get('cl_ident'));	
+$modele_nom   = $request->get('modele_nom');	
+$nature_lot_ident = intval($request->get('nature_lot_ident'));	
+$pds_lot  = floatval($request->get('pds_lot'));	
+$estim_titre_au  = floatval($request->get('estim_titre_au'));	
+$estim_titre_ag  = floatval($request->get('estim_titre_ag'));	
+$estim_titre_pt  = floatval($request->get('estim_titre_pt'));	
+$estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
+$assiste   =  $request->get('assiste') ;	
+ 
+ 		if($assiste=="on" || $assiste==1 ){
+			$assiste=1;
+		}else{
+			$assiste=0;			
+		}
+   	 
+        $affinage  = new Modele_affinage([
+              'cl_ident' => $cl_ident,
+             'modele_nom' => $modele_nom ,
+             'nature_lot_ident' => $nature_lot_ident ,
+             'pds_lot' => $pds_lot ,
+             'estim_titre_au' => $estim_titre_au ,
+             'estim_titre_ag' => $estim_titre_ag ,
+             'estim_titre_pt' => $estim_titre_pt ,
+             'estim_titre_pd' => $estim_titre_pd ,
+             'assiste' => $assiste  
+              
+        ]);
+
+        if($affinage->save()){
+		  $id=$affinage->modele_affinage_ident;
+		  return redirect('/viewmodele/'.$id)->with('success', ' ajouté avec succès');
+		
+		}
+		
+ 
+ }
+
+ 
+ 
+ 
+ public function updatemodele(Request $request)
+{
+ // try{
+$id  = intval($request->get('id'));	
+$cl_ident  = intval($request->get('cl_ident'));	
+$modele_nom   = $request->get('modele_nom');	
+$nature_lot_ident = intval($request->get('nature_lot_ident'));	
+$pds_lot  = floatval($request->get('pds_lot'));	
+$estim_titre_au  = floatval($request->get('estim_titre_au'));	
+$estim_titre_ag  = floatval($request->get('estim_titre_ag'));	
+$estim_titre_pt  = floatval($request->get('estim_titre_pt'));	
+$estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
+$assiste   =  $request->get('assiste') ;	
+ 
+ 		if($assiste=="on" || $assiste==1 ){
+			$assiste=1;
+		}else{
+			$assiste=0;			
+		}
+   	 
+    
+	    Modele_affinage::where('modele_affinage_ident',$id)->update(
+		array(
+              'cl_ident' => $cl_ident,
+             'modele_nom' => $modele_nom ,
+             'nature_lot_ident' => $nature_lot_ident ,
+             'pds_lot' => $pds_lot ,
+             'estim_titre_au' => $estim_titre_au ,
+             'estim_titre_ag' => $estim_titre_ag ,
+             'estim_titre_pt' => $estim_titre_pt ,
+             'estim_titre_pd' => $estim_titre_pd ,
+             'assiste' => $assiste  
+              
+			)
+		);
+ 
+		  return redirect('/affinage/')->with('success', ' Modifié avec succès');
+		 
+		 
+ }
+
+ 
+ public function addmodelePS(Request $request)
 {
  // try{
 $client_id  = intval($request->get('client'));	
@@ -206,7 +290,7 @@ $assiste   = floatval($request->get('assiste'));
 
 
 
- public function updatemodele1(Request $request)
+ public function updatemodelePS(Request $request)
 {
  // try{
 $id  = intval($request->get('id'));	
@@ -217,7 +301,7 @@ $or  = floatval($request->get('or'));
 $argent  = floatval($request->get('argent'));	
 $platine  = floatval($request->get('platine'));	
 $palladium  = floatval($request->get('palladium'));	
-$assiste   = floatval($request->get('assiste'));	
+$assiste   =  $request->get('assiste') ;	
    
  DB::select("SET @p0='$id' ;");
  DB::select("SET @p1='$nom' ;");
@@ -239,7 +323,7 @@ $assiste   = floatval($request->get('assiste'));
 
 
 
- public function updatemodele(Request $request)
+ public function updatemodele0(Request $request)
     {
         $id= $request->get('modele');
         $champ= strval($request->get('champ'));
@@ -3064,7 +3148,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function detailscommandelabo($id_cmd    )
+		 public static function detailscommandelabo($id_cmd    )
     { 
 	// try {
    	   DB::select("SET @p0='$id_cmd' ;");

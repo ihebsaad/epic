@@ -14,13 +14,19 @@ foreach($natures as $nature)
 	$Natures[$nature->nature_lot]=$nature->libelle;
 }
  
-  $commande=HomeController::detailscommandelabo($id);
+  $commande=HomeController::detailscommande($id);
   
 
 ?>
  
 						<div class="row">
-
+ <nav aria-label="breadcrumb" style="width:100%">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('affinage')}}">Affinage</a></li>
+    <li class="breadcrumb-item"><a href="#">Commande</a></li>
+	</ol>
+ </nav>
                         <!-- Content Column -->
                         <div class="col-lg-7 mb-4">
 

@@ -15,20 +15,16 @@ foreach($natures as $nature)
 }
 
 ?>
-<script src="{{ URL::asset('public/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
-
-<script>
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-
-$('#nature').tooltip();
-
-
-</script>
+ 
 
 						<div class="row">
-
+ <nav aria-label="breadcrumb" style="width:100%">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('affinage')}}">Affinage</a></li>
+    <li class="breadcrumb-item"><a href="#">Nouveau Modèle</a></li>
+	</ol>
+ </nav>
                         <!-- Content Column -->
                         <div class="col-lg-7 mb-4">
 
@@ -38,13 +34,16 @@ $('#nature').tooltip();
                                     <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouveau modèle</h6>
                                 </div>
                                 <div class="card-body">
-								
+								   <form method="post" action="{{ route('addmodele') }}"  enctype="multipart/form-data">
+										{{ csrf_field() }}
+									  <input  class="form-control"  id="cl_ident"  type="hidden"  name="cl_ident" value="<?php echo $user['client_id']; ?>" />
+
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
 											<label>Nom du modèle: </label>
 										</div>
 									    <div class="col-lg-9  " style="display:inline!important">
-											 <input  class="form-control"  id="nom"  type="text"    />
+											 <input  class="form-control"  id="nom"  type="text"  name="modele_nom"  />
 											  
 									   </div>
 									   
@@ -55,7 +54,7 @@ $('#nature').tooltip();
 											<label>Nature du lot: </label>
 										</div>
 									    <div class="col-lg-9">
-											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" >
+											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" name="nature_lot_ident"  >
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
@@ -72,7 +71,7 @@ $('#nature').tooltip();
 											<label>Poids en grammes: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"  id="poids"  type="number" step="0.01" min="0.01" style="width:130px" />
+											 <input  class="form-control"  id="poids"  type="number" step="0.01" min="0.01" style="width:130px" name="pds_lot"  />
 											  
 									   </div>
 									   
@@ -81,7 +80,7 @@ $('#nature').tooltip();
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
 											<label for="assiste">
-												<input type="checkbox" name="assiste" id="assiste" /> Je souhaite assisiter aux opération de préparation (fonte)
+												<input type="checkbox" name="assiste" id="assiste" /> Je souhaite assister aux opérations de préparation (fonte)
 											</label>
 										</div>									 
 									 </div>									 
@@ -91,31 +90,31 @@ $('#nature').tooltip();
 											<label>Mes estimations en millièmes: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="or" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <input class="form-control"  id="or" type="number" step="0.01" min="0.01" name="estim_titre_au"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="argent" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <input class="form-control"  id="argent" type="number" step="0.01" min="0.01" name="estim_titre_ag"  /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="platine" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <input class="form-control"  id="platine" type="number" step="0.01" min="0.01" name="estim_titre_pt"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="palladium" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <input class="form-control"  id="palladium" type="number" step="0.01" min="0.01" name="estim_titre_pd"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
 									    </div>										
 									      
 									 </div>										 
 									 
 
 						      <div class="row mt-30" style=" height:60px">
-								<button    type="button" style="position:absolute;right:50px " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+								<button    type="submit" style="position:absolute;right:5% " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-plus"></i>
                                         </span>
-                                        <span class="text" onclick="addmodele()">{{__('msg.Add Model')}}</span>
+                                        <span class="text"  >{{__('msg.Add Model')}}</span>
                                     </button>
                                 </div>									 
 									 
-									 
+								</form>	 
 									 
 									</div>
                               </div>
@@ -181,10 +180,10 @@ $('#nature').tooltip();
                             align: "right"
                         },
                     });
-							 setTimeout(function(){
+							/* setTimeout(function(){
 							location.reload();
-							   }, 3000);  //3 secds
-							} 
+							   }, 3000);  //3 secds*/
+                 } 
 				
 				});
 			
