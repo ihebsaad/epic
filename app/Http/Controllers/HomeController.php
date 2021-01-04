@@ -229,9 +229,8 @@ $assiste   = floatval($request->get('assiste'));
  DB::select("SET @p7='$palladium' ;");
  DB::select("SET @p8='$assiste' ;");
    
-   DB::select ("  CALL `sp_affinage_modele_update`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8  ); ");
+ $result =  DB::select ("  CALL `sp_affinage_modele_update`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8  ); ");
  	return $result ;
-
  
 	  
 	}
