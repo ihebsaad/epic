@@ -236,43 +236,14 @@ foreach($natures as $nature)
 
             var table = $('#mytable').DataTable({
                 orderCellsTop: true,
-                dom : '<Bfl<"clear">>rt<"bottom"ip<"clear">>',
+                dom : '<fl<"clear">>rt<"bottom"ip<"clear">>',
   				//dom : 'lrtip',
 				
 				//  dom: 'Blfrtip',
 				
                 responsive:true,
 				 aaSorting : [],               
-                buttons: [						 
-                    {
-                    extend: 'print',
-                    text:    '  Imprimer' ,
-                     exportOptions: {
-                    columns: [ 0,1,2  ]
-				}
-                    },
-                    {
-                    extend: 'csv',
-                    text: '  Csv',
-                     exportOptions: {
-                    columns: [ 0,1,2  ]
-                	}
-                    },
-				 {
-                    extend: 'excel',
-                    text: '  Excel',
-                     exportOptions: {
-                    columns: [ 0,1,2  ]
-               	}
-                    },				
-				{
-                    extend: 'pdf',
-                    text: '  Pdf',
-                     exportOptions: {
-                    columns: [ 0,1,2 ]
-                	}
-                    },
-                ],
+            
                 "columnDefs": [ {
                     "targets": 'no-sort',
                     "orderable": false,
