@@ -69,12 +69,12 @@ $user_type=$user->user_type;
       </li>	
 	  
  	  <li class="nav-item   <?php  ?>">
-        <a class="nav-link" href="{{route('affinage')}}"  <?php if($view_name=='affinage-affinage' ){echo 'style="font-weight:800"'; } ?> >
+        <a class="nav-link" href="{{route('affinage')}}"  <?php if( strpos($view_name  ,'affinage') !== false )  {echo 'style="font-weight:800"'; } ?> >
            <span> {{__('msg.Industrial refining')}} </span></a>
       </li>
 	  
  	  <li class="nav-item   <?php  ?>">
-        <a class="nav-link" href="{{route('laboratoire')}}"   <?php if($view_name=='laboratoire-laboratoire' ){echo 'style="font-weight:800"'; } ?> >
+        <a class="nav-link" href="{{route('laboratoire')}}"   <?php if( strpos($view_name  ,'laboratoire') !== false )  {echo 'style="font-weight:800"'; } ?> >
            <span> {{__('msg.Laboratory')}} </span></a>
       </li>	 
 	  

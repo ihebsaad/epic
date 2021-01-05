@@ -68,8 +68,7 @@ foreach($natures as $nature)
                  <th style="width:5%">Qté</th>
                 <th style="width:5%">Poids</th>
                 <th style="width:10%">Métaux</th>
-                 <th style="width:10%">Actions</th>
-              </tr>
+               </tr>
             </thead>
             <tbody>
             @foreach($modeles as $modele)
@@ -98,8 +97,7 @@ foreach($natures as $nature)
                  </span>
 				 <?php }   ?>	
 				</td>
-				<td></td>
- 				</tr>
+  				</tr>
 			@endforeach
             </tbody>
         </table><br>
