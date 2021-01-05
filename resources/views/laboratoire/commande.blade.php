@@ -150,10 +150,9 @@ foreach($natures as $nature)
 
                         </div>
 
-                        <div class="col-lg-5 mb-4">
+                        <!--<div class="col-lg-5 mb-4">
 
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
+                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">  </h6>
                                 </div>
@@ -162,10 +161,11 @@ foreach($natures as $nature)
  
                                 </div>
                             </div>
+ 
 
-               
-
-                        </div>
+                        </div>-->
+						
+						
                     </div>
 
 @endsection
