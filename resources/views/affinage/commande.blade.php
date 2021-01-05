@@ -24,7 +24,7 @@ foreach($natures as $nature)
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
     <li class="breadcrumb-item"><a href="{{route('affinage')}}">Affinage</a></li>
-    <li class="breadcrumb-item"><a href="#">Commande</a></li>
+    <li class="breadcrumb-item"><a href="#">Commande <?php echo $commande[0]->cmde_aff_lg; ?></a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->

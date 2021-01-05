@@ -23,7 +23,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
     <li class="breadcrumb-item"><a href="{{route('affinage')}}">Affinage</a></li>
-    <li class="breadcrumb-item"><a href="#">Modèle</a></li>
+    <li class="breadcrumb-item"><a href="#">Modèle <?php echo $modele->modele_nom; ?></a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->

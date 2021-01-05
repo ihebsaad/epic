@@ -31,7 +31,13 @@ foreach($natures as $nature)
   
 
 ?>
- 
+  <nav aria-label="breadcrumb" style="width:100%">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">Laboratoire</a></li>
+    <li class="breadcrumb-item"><a href="#">Commande <?php echo $commande[0]->id; ?></a></li>
+	</ol>
+ </nav>
 						<div class="row">
 
                         <!-- Content Column -->

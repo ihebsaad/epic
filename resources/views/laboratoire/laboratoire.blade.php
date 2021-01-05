@@ -31,6 +31,12 @@ foreach($natures as $nature)
  .btn-default{ border:1px solid lightgrey!important;}
  .dt-buttons{background-color:#f8f9fc;margin-bottom:10px;}
 </style>
+ <nav aria-label="breadcrumb" style="width:100%">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">Laboratoire</a></li>
+	</ol>
+ </nav>
 						<div class="row">
 
                         <!-- Content Column -->
