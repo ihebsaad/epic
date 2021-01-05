@@ -71,7 +71,7 @@ foreach($natures as $nature)
             <tbody>
             @foreach($modeles as $modele)
 				<tr>
-				<td><a href=""><?php echo $modele->nom; ?></a><br><?php echo $Natures[$modele->nature_id];?></td>
+				<td><a href="<?php echo URL("viewmodelelab/".$modele->id);?>"><?php echo $modele->nom; ?></a><br><?php echo $Natures[$modele->nature_id];?></td>
  				<td><?php echo $PrestLibs[$modele->type_lab_ident];?></td>
  				<td><?php echo $modele->qte;?></td>
  				<td><?php echo $modele->poids;?> g<br>

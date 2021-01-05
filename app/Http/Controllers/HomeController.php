@@ -8,6 +8,7 @@ use App\User ;
 use App\Order ;
 use App\Product ;
 use App\Modele_affinage ;
+use App\Modele_lab ;
 
 use Illuminate\Support\Facades\App;
 
@@ -213,45 +214,87 @@ $assiste   =  $request->get('assiste') ;
  }
 
  
- 
- 
- public function updatemodele(Request $request)
+  public function addmodelelab(Request $request)
 {
  // try{
-$id  = intval($request->get('id'));	
 $cl_ident  = intval($request->get('cl_ident'));	
 $modele_nom   = $request->get('modele_nom');	
 $nature_lot_ident = intval($request->get('nature_lot_ident'));	
-$pds_lot  = floatval($request->get('pds_lot'));	
-$estim_titre_au  = floatval($request->get('estim_titre_au'));	
-$estim_titre_ag  = floatval($request->get('estim_titre_ag'));	
-$estim_titre_pt  = floatval($request->get('estim_titre_pt'));	
-$estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
-$assiste   =  $request->get('assiste') ;	
+$poids  = floatval($request->get('poids'));	
+$titrage_au  = floatval($request->get('titrage_au'));	
+$titrage_ag  = floatval($request->get('titrage_ag'));	
+$titrage_pt  = floatval($request->get('titrage_pt'));	
+$titrage_pd  = floatval($request->get('titrage_pd'));	
+$qte   =  $request->get('qte') ;	
+$valeur   =  $request->get('valeur') ;	
+$type_lab_ident   =  $request->get('type_lab_ident') ;	
+$choix_lab_ident   =  $request->get('choix_lab_ident') ;	
  
- 		if($assiste=="on" || $assiste==1 ){
-			$assiste=1;
-		}else{
-			$assiste=0;			
-		}
+ 
    	 
-    
-	    Modele_affinage::where('modele_affinage_ident',$id)->update(
-		array(
+        $modele  = new Modele_lab([
               'cl_ident' => $cl_ident,
              'modele_nom' => $modele_nom ,
-             'nature_lot_ident' => $nature_lot_ident ,
-             'pds_lot' => $pds_lot ,
-             'estim_titre_au' => $estim_titre_au ,
-             'estim_titre_ag' => $estim_titre_ag ,
-             'estim_titre_pt' => $estim_titre_pt ,
-             'estim_titre_pd' => $estim_titre_pd ,
-             'assiste' => $assiste  
+             'poids' => $poids ,
+             'titrage_au' => $titrage_au ,
+             'titrage_ag' => $titrage_ag ,
+             'titrage_pt' => $titrage_pt ,
+             'titrage_pd' => $titrage_pd ,
+             'nature_lot_ident' => $nature_lot_ident ,			 
+             'type_lab_ident' => $type_lab_ident ,
+             'choix_lab_ident' => $choix_lab_ident ,
+             'qte' => $qte ,
+             'valeur' => $valeur ,
+              
+        ]);
+
+        if($modele->save()){
+		  $id=$modele->modele_lab_ident;
+		  return redirect('/viewmodelelab/'.$id)->with('success', ' ajouté avec succès');
+		
+		}
+		
+ 
+ }
+ 
+ public function updatemodelelab(Request $request)
+{
+ // try{
+$cl_ident  = intval($request->get('cl_ident'));	
+$modele_nom   = $request->get('modele_nom');	
+$nature_lot_ident = intval($request->get('nature_lot_ident'));	
+$poids  = floatval($request->get('poids'));	
+$titrage_au  = floatval($request->get('titrage_au'));	
+$titrage_ag  = floatval($request->get('titrage_ag'));	
+$titrage_pt  = floatval($request->get('titrage_pt'));	
+$titrage_pd  = floatval($request->get('titrage_pd'));	
+$qte   =  $request->get('qte') ;	
+$valeur   =  $request->get('valeur') ;	
+$type_lab_ident   =  $request->get('type_lab_ident') ;	
+$choix_lab_ident   =  $request->get('choix_lab_ident') ;	
+ 
+ 
+   	 
+    
+	    Modele_lab::where('modele_affinage_ident',$id)->update(
+		array(
+               'cl_ident' => $cl_ident,
+             'modele_nom' => $modele_nom ,
+             'poids' => $poids ,
+             'titrage_au' => $titrage_au ,
+             'titrage_ag' => $titrage_ag ,
+             'titrage_pt' => $titrage_pt ,
+             'titrage_pd' => $titrage_pd ,
+             'nature_lot_ident' => $nature_lot_ident ,			 
+             'type_lab_ident' => $type_lab_ident ,
+             'choix_lab_ident' => $choix_lab_ident ,
+             'qte' => $qte ,
+             'valeur' => $valeur ,
               
 			)
 		);
  
-		  return redirect('/affinage/')->with('success', ' Modifié avec succès');
+		  return redirect('/laboratoire/')->with('success', ' Modifié avec succès');
 		 
 		 
  }

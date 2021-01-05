@@ -14,7 +14,7 @@ foreach($natures as $nature)
 	$Natures[$nature->nature_lot]=$nature->libelle;
 }
 
-$modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first();
+$modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 ?>
  
 
@@ -23,7 +23,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
     <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">laboratoire</a></li>
-    <li class="breadcrumb-item"><a href="#">Nouveau Modèle</a></li>
+    <li class="breadcrumb-item"><a href="#">Modèle <?php echo $modele->modele_nom; ?></a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->
@@ -32,13 +32,13 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouveau modèle</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Détails du modèle</h6>
                                 </div>
                                 <div class="card-body">
-								   <form method="post" action="{{ route('addmodelelab') }}"    >
+								   <form method="post" action="{{ route('updatemodelelab') }}"    >
 										{{ csrf_field() }}
 									  <input  class="form-control"  id="cl_ident"  type="hidden"  name="cl_ident" value="<?php echo $user['client_id']; ?>" />
-									  <input  class="form-control"  id="id"  type="hidden"  name="id" value="<?php echo $modele->modele_lab_ident; ?>" />
+									  <input  class="form-control"  id="id"  type="hidden"  name="id" value="<?php echo $id; ?>" />
 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
@@ -118,7 +118,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
-                                        <span class="text" >{{__('msg.Add Model')}}</span>
+                                        <span class="text" >{{__('msg.Update Model')}}</span>
                                     </button>
                                 </div>		 					 
 									 

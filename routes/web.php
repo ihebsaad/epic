@@ -48,6 +48,7 @@ Route::get('/poids', 'PagesController@poids')->name('poids');
 Route::get('/modeles', 'PagesController@modeles')->name('modeles');
 Route::get('/modele', 'PagesController@modele')->name('modele');
 Route::get('/viewmodele/{id}', 'PagesController@viewmodele')->name('viewmodele');
+Route::get('/viewmodelelab/{id}', 'PagesController@viewmodelelab')->name('viewmodelelab');
 Route::get('/commande/{id}', 'PagesController@commande')->name('commande');
 
 Route::get('/laboratoire', 'PagesController@laboratoire')->name('laboratoire');
@@ -55,7 +56,8 @@ Route::get('/modelelab', 'PagesController@modelelab')->name('modelelab');
 Route::get('/commandelab/{id}', 'PagesController@commandelab')->name('commandelab');
 Route::post('/addmodele', 'HomeController@addmodele')->name('addmodele');
 Route::post('/updatemodele', 'HomeController@updatemodele')->name('updatemodele');
-
+Route::post('/addmodelelab', 'HomeController@addmodelelab')->name('addmodelelab');
+Route::post('/updatemodelelab', 'HomeController@updatemodelelab')->name('updatemodelelab');
 
 Route::post('/agence', 'HomeController@agence')->name('agence');
 
