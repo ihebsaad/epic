@@ -43,7 +43,7 @@ foreach($natures as $nature)
 											<label>Nom du modèle: </label>
 										</div>
 									    <div class="col-lg-9  " style="display:inline!important">
-											 <input  class="form-control"  id="nom"  type="text"  name="modele_nom"  />
+											 <input  class="form-control"  id="nom"  type="text" required name="modele_nom"  />
 											  
 									   </div>
 									   
@@ -54,7 +54,7 @@ foreach($natures as $nature)
 											<label>Nature du lot: </label>
 										</div>
 									    <div class="col-lg-9">
-											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" name="nature_lot_ident"  >
+											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" name="nature_lot_ident" required >
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
@@ -71,7 +71,7 @@ foreach($natures as $nature)
 											<label>Poids en grammes: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"  id="poids"  type="number" step="0.01" min="0.01" style="width:130px" name="pds_lot"  />
+											 <input  class="form-control"  id="poids"  type="number" step="0.01" min="0.01" style="width:130px" name="pds_lot" required />
 											  
 									   </div>
 									   
@@ -90,16 +90,16 @@ foreach($natures as $nature)
 											<label>Mes estimations en millièmes: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="or" type="number" step="0.01" min="0.01" name="estim_titre_au"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <input class="form-control"  id="or" type="number" step="0.01" min="0" name="estim_titre_au"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="argent" type="number" step="0.01" min="0.01" name="estim_titre_ag"  /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <input class="form-control"  id="argent" type="number" step="0.01" min="0" name="estim_titre_ag"  /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="platine" type="number" step="0.01" min="0.01" name="estim_titre_pt"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <input class="form-control"  id="platine" type="number" step="0.01" min="0" name="estim_titre_pt"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="palladium" type="number" step="0.01" min="0.01" name="estim_titre_pd"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <input class="form-control"  id="palladium" type="number" step="0.01" min="0" name="estim_titre_pd"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
 									    </div>										
 									      
 									 </div>										 

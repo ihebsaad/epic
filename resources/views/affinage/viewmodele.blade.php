@@ -74,7 +74,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											<label>Poids en grammes: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0.01" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   />
+											 <input  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   />
 											  
 									   </div>
 									   
@@ -94,16 +94,16 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											<label>Mes estimations en millièmes: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <input class="form-control"   value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"    value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <input class="form-control"    value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <input class="form-control"   value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0.01" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <input class="form-control"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
 									    </div>										
 									      
 									 </div>										 
