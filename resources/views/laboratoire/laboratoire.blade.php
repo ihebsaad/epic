@@ -62,40 +62,37 @@ foreach($natures as $nature)
         <table id="mytable" class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
-                <th style="width:15%">Nom</th>
-                <th style="width:8%">Lot</th>
-                <th style="width:8%">Lab</th>
+                <th style="width:12%">Nom</th>
+                 <th style="width:10%">Laboratoire</th>
                  <th style="width:5%">Qté</th>
-                <th style="width:5%">Poids</th>
-                <th style="width:10%">Métaux</th>
+                 <th style="width:15%">Métaux</th>
                </tr>
             </thead>
             <tbody>
             @foreach($modeles as $modele)
 				<tr>
-				<td><?php echo $modele->nom; ?></td>
-				<td><?php echo $Natures[$modele->nature_id];?></td>
-				<td><?php echo $PrestLibs[$modele->type_lab_ident];?></td>
+				<td><a href=""><?php echo $modele->nom; ?></a><br><?php echo $Natures[$modele->nature_id];?></td>
+ 				<td><?php echo $PrestLibs[$modele->type_lab_ident];?></td>
  				<td><?php echo $modele->qte;?></td>
-				<td><?php echo $modele->poids;?></td>
-				<td>
-				<?php if ($modele->or > 0){  ?>
-				<span class="btn text-center text-white bg-gradient-warning btn-circle btn-sm">
-                  Or
+ 				<td><?php echo $modele->poids;?> g<br>
+				<?php $w1=0; if ($modele->or > 0){ $w1=intval($modele->or / 10 ) ;?>
+                <span class="mr-10 btn text-center text-white bg-gradient-warning   btn-sm" style="width:<?php echo $w1;?>px;max-width:100px!important" >
+                  Or 
                  </span>
-				<?php }  if ($modele->argent > 0){    ?>
-				<span class="btn text-center text-dark bg-gradient-light btn-circle btn-sm">
+				<?php }$w2=0;  if ($modele->argent > 0){ $w2=intval($modele->argent / 10 ) ;   ?>
+                <span class="mr-10 btn text-center text-dark bg-gradient-light   btn-sm" style="width:<?php echo $w2;?>px;max-width:100px!important" >
                   Arg 
                  </span>
-				<?php }  if ($modele->platine > 0){    ?>				 
-				 <span class="btn text-center text-white bg-gradient-secondary btn-circle btn-sm">
-                  Plat 
+                <?php }  
+				$w3=0;  if ($modele->platine > 0){ $w3=intval($modele->platine / 10 );   ?>                 
+                 <span class="mr-10 btn text-center text-white bg-gradient-secondary btn-sm" style="width:<?php echo $w3;?>px;max-width:100px!important" >
+                  Plat
                  </span>
-				<?php }  if ($modele->palladium > 0){    ?>				 				 
-				<span class="btn text-center text-white bg-gray-500 btn-circle btn-sm">
-                  Pall 
+				<?php } $w4=0;  if ($modele->palladium > 0){  $w4=intval($modele->palladium  / 10 ) ;  ?>                                  
+                <span class="mr-10 btn text-center text-white bg-gray-500  btn-sm"  style="width:<?php echo $w4;?>px;max-width:100px!important" >
+                  Pall
                  </span>
-				 <?php }   ?>	
+                 <?php }   ?>  
 				</td>
   				</tr>
 			@endforeach
