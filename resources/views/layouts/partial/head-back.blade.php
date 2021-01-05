@@ -16,7 +16,7 @@
     padding-top: 5px!important;
 }
 
- #mytable_filter{right:10px!important;position:absolute!important;}
+ #mytable_filter{right:30px!important;position:absolute!important;}
      #swal2-content{font-size:15px;}
 	 .editor{width:800px;}
 	table, #mytable{display:table !important;width:100%!important;margin-top:10px !important;border:1px solid lightgrey;}

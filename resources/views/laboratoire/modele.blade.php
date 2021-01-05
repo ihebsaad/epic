@@ -6,16 +6,28 @@
 <?php
 use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
-
-  $natures=HomeController::natures( );
- $Natures=array();
+$prestations=HomeController::listeprestations($user['client_id'] );
+$PrestLibs=array();
+$PrestTypes=array();
+ 
+ foreach($prestations as $prest)
+{
+	$PrestLibs[$prest->id]=$prest->lib;
+	$PrestTypes[$prest->type_id]=$prest->type_lib;
+ }
+  //dd($PrestTypes);
+//sp_accueil_liste_nature_lot
+$natures=HomeController::natures2( );
+//dd($natures );
+$Natures=array();
 foreach($natures as $nature)
 {
-	$Natures[$nature->nature_lot]=$nature->libelle;
+	if($nature->metier_CODE=='LAB'){
+	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
+	}
 }
 
-$modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first();
-?>
+ ?>
  
 
 						<div class="row">
@@ -38,14 +50,13 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 								   <form method="post" action="{{ route('addmodelelab') }}"    >
 										{{ csrf_field() }}
 									  <input  class="form-control"  id="cl_ident"  type="hidden"  name="cl_ident" value="<?php echo $user['client_id']; ?>" />
-									  <input  class="form-control"  id="id"  type="hidden"  name="id" value="<?php echo $modele->modele_lab_ident; ?>" />
-
+ 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
 											<label>Nom du modèle: </label>
 										</div>
 									    <div class="col-lg-9  " style="display:inline!important">
-											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  />
+											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   required   />
 											  
 									   </div>
 									   
@@ -56,46 +67,93 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											<label>Nature du lot: </label>
 										</div>
 									    <div class="col-lg-9">
-											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" >
+											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" required >
 											<option></option>
-												<?php foreach($natures as $nature)
+												<?php foreach($Natures as $key => $val)
 												{  
-												if(  $modele->nature_lot_ident== $nature->nature_lot ){$selected='selected="selected"';}else{$selected=''; }
-												echo '<option  '.$selected.'   data-toggle="tooltip" data-placement="bottom" value="'.$nature->nature_lot.'" title="'.$nature->commentaire.'" >'.$nature->libelle.'</option>';
+ 												echo '<option     data-toggle="tooltip" data-placement="bottom" value="'.$key.'"   >'.$val.'</option>';
 									 
 												}  ?>
 											</select>
 									   </div>
 									  
 									 </div>
-  
+
+                                   <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-9">
+											<label>Laboratoire: </label>
+										</div>
+									    <div class="col-lg-9">
+											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" required >
+											<option></option>
+												<?php $i=0; foreach($PrestLibs   as $key => $val)
+												{ $i++; 
+										 
+												echo '<option      value="'.($key).'"   >'.$val.'</option>';
+									 
+												}  ?>
+											</select>
+									   </div>
+									  
+								    </div>									 
+ 
+                                   <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-9">
+											<label>Type de Laboratoire: </label>
+										</div>
+									    <div class="col-lg-9">
+											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom"   required>
+											<option></option>
+												<?php $i=0; foreach($PrestTypes as $key => $val)
+												{ $i++; 
+											 
+												echo '<option        value="'.($key).'"   >'.$val.'</option>';
+									 
+												}  ?>
+											</select>
+									   </div>
+									  
+								    </div>
+
+
+									 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
 											<label>Poids en grammes: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->poids; ?>"   />
+											 <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:130px"  required   />
 											  
 									   </div>
 									   
 									 </div>		
  								 
+                                     <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-12">
+											<label>Quantité: </label>
+										</div>
+									    <div class="col-lg-12  " style="display:inline!important">
+											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:130px" value="1"  required  />
+											  
+									   </div>
+									   
+									 </div>	
 									 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
 											<label>Titrages: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->titrage_au; ?>" id="titrage_au" name="titrage_au"  type="number" step="1" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <label for="titrage_au" ><input class="form-control"     id="titrage_au" name="titrage_au"  type="checkbox"  style="width:25px" value="1" /> <span class="  mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span></label>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"    value="<?php echo $modele->titrage_ag; ?>" id="titrage_ag" name="titrage_ag" type="number" step="1" min="0" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <label for="titrage_ag" ><input class="form-control"      id="titrage_ag" name="titrage_ag" type="checkbox" style="width:25px" value="1"  /> <span class="  mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span></label>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->titrage_pt; ?>" id="titrage_pt" name="titrage_pt" type="number" step="1" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <label for="titrage_pt" ><input class="form-control"    id="titrage_pt" name="titrage_pt" type="checkbox"  style="width:25px"  value="1" /> <span class="  mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span></label>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  value="<?php echo $modele->titrage_pd; ?>" id="titrage_pd" name="titrage_pd" type="number" step="1" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <label for="titrage_pd" ><input class="form-control"    id="titrage_pd" name="titrage_pd" type="checkbox"  style="width:25px" value="1"  /> <span class="  mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span></label>
 									    </div>										
 									      
 									 </div>		
@@ -105,7 +163,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											<label>Valeur: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->valeur; ?>"   />
+											 <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:130px"     />
 											  
 									   </div>
 									   
@@ -114,7 +172,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 									 
 <br><br>
 				 	      <div class="row mt-30" style=" height:60px">
-								<button  disabled  type="submit" style="position:absolute;right:5% " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+								<button     type="submit" style="position:absolute;right:5% " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>

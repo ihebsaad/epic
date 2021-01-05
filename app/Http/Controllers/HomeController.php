@@ -260,6 +260,7 @@ $choix_lab_ident   =  $request->get('choix_lab_ident') ;
  public function updatemodelelab(Request $request)
 {
  // try{
+$id  = intval($request->get('id'));	
 $cl_ident  = intval($request->get('cl_ident'));	
 $modele_nom   = $request->get('modele_nom');	
 $nature_lot_ident = intval($request->get('nature_lot_ident'));	
@@ -276,7 +277,7 @@ $choix_lab_ident   =  $request->get('choix_lab_ident') ;
  
    	 
     
-	    Modele_lab::where('modele_affinage_ident',$id)->update(
+	    Modele_lab::where('modele_lab_ident',$id)->update(
 		array(
                'cl_ident' => $cl_ident,
              'modele_nom' => $modele_nom ,
