@@ -7,14 +7,27 @@
 use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
 
-  $natures=HomeController::natures( );
- $Natures=array();
+$commandes=HomeController::listecommandeslabo($user['client_id'] );
+$modeles=HomeController::listemodeleslabo($user['client_id'] );
+$prestations=HomeController::listeprestations($user['client_id'] );
+//dd($natures );
+$PrestLibs=array();
+$PrestTypes=array();
+ foreach($prestations as $prest)
+{
+	$PrestLibs[$prest->id]=$prest->lib;
+	$PrestTypes[$prest->type_id]=$prest->type_lib;
+ }
+//sp_accueil_liste_nature_lot
+$natures=HomeController::natures2( );
+//dd($natures );
+$Natures=array();
 foreach($natures as $nature)
 {
-	$Natures[$nature->nature_lot]=$nature->libelle;
+	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
 }
  
-  $commande=HomeController::detailscommande($id);
+  $commande=HomeController::detailscommandelabo($id);
   
 
 ?>
@@ -35,7 +48,7 @@ foreach($natures as $nature)
 											<label>Commande: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->cmde_aff_lg; ?></b>
+										<b><?php echo $commande[0]->id; ?></b>
 										</div>
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
@@ -48,66 +61,81 @@ foreach($natures as $nature)
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
-											<label>Poids Annonce: </label>
+											<label>Poids : </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->poids_annonce; ?> g</b>
+										<b><?php echo $commande[0]->poids; ?> g</b>
 										</div>
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
-											<label>Poids Reçu: </label>
+											<label>Type de Laboratoire: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->poids_recu; ?> g</b>
+										<b><?php echo $commande[0]->type_lab_lib; ?> </b>
 										</div>
 									</div>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
-											<label>Poids Après Fonte: </label>
+											<label>Choix de Laboratoire: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->poids_apres_fonte; ?> g</b>
+										<b><?php echo $commande[0]->choix_lab_lib; ?> </b>
 										</div>
 									</div>
-									<?php   if($commande[0]->titre_or !='') { ?>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
-											<label>Titre Or: </label>
+											<label>Montant: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->titre_or; ?></b>
+										<b><?php echo $commande[0]->montant; ?> </b>
 										</div>
-									</div>
-									<?php } if($commande[0]->titre_ag !='') { ?>									
+									</div>									
+									<?php    ?>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
-											<label>Titre Argent: </label>
+											<label>Titrage Or: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->titre_ag; ?></b>
+										<b><?php echo $commande[0]->titrage_or; ?></b>
 										</div>
 									</div>
-									<?php } if($commande[0]->titre_pt !='') { ?>									
+									<?php    ?>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
-											<label>Titre Platine: </label>
+											<label>Titrage Argent: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->titre_pt; ?></b>
+										<b><?php echo $commande[0]->titrage_argent; ?></b>
 										</div>
 									</div>
-									<?php } if($commande[0]->titre_pd !='') { ?>
+									<?php   ?>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
-											<label>Titre Palladium: </label>
+											<label>Titrage Platine: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->titre_pd; ?></b>
+										<b><?php echo $commande[0]->titrage_platine; ?></b>
 										</div>
 									</div>
-									<?php } ?>
-									
+									<?php    ?>
+									<div class="row pl-20 pr-20 pb-10">
+										<div class="col-lg-9">
+											<label>Titrage Palladium: </label>
+										</div>
+									    <div class="col-lg-9">
+										<b><?php echo $commande[0]->titrage_palladium; ?></b>
+										</div>
+									</div>
+									<?php   ?>
+									<div class="row pl-20 pr-20 pb-10">
+										<div class="col-lg-9">
+											<label>Commentaire: </label>
+										</div>
+									    <div class="col-lg-9">
+										<b><?php echo $commande[0]->cmde_lab_comment; ?></b>
+										</div>
+									</div>									
 									
 								</div>
                               </div>
