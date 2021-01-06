@@ -246,6 +246,29 @@ return [
 	'My order'=>'My order',
  	'Add Model'=>'Add Model',
  	'Update Model'=>'Update Model',
+	
+ 	'New Model'=>'New Model',
+ 	'Model details'=>'Model details',
+ 	'Items'=>'Items',
+ 	'My saved refining models'=>'My saved refining models',
+ 	'My saved laboratory models'=>'My saved laboratory models',
+ 	'Model name'=>'Model name',
+ 	'Type of service'=>'Type of service',
+ 	'Nature of work'=>'Nature of work',
+ 	'Nature of products'=>'Nature of products',
+ 	'Nature of the lot'=>'Nature of the lot',
+ 	'Model'=>'Model',
+ 	'in grams'=>'in grams',
+  	'Metals to be analyzed'=>'Metals to be analyzed',
+   	'My estimates in thousandths'=>'My estimates in thousandths',
+  	'I wish to attend preparation operations (melting)'=>'I wish to attend preparation operations (melting)',
+  	'attend the melting'=>'attend the melting',
+  	'order'=>'order',
+  	'Yes'=>'yes',
+  	'Date'=>'Date',
+  	'Metals'=>'Metals',
+  	'Add a new Model'=>'Add a new Model',
+	
  	 
 
  ];

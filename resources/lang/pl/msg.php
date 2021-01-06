@@ -255,5 +255,28 @@ return [
 	'Add Model'=>'Dodaj model',
  	'Update Model'=>'Zaktualizuj model',
 
+	'New Model'=>'Nowy model',
+ 	'Model details'=>'Szczegóły modelu',
+ 	'Items'=>'Przedmiotów',
+ 	'My saved refining models'=>'Moje zapisane modele udoskonalania',
+ 	'My saved laboratory models'=>'Moje zapisane modele laboratoryjne',
+ 	'Model name'=>'Nazwa modelu',
+ 	'Type of service'=>'Typ usługi',
+ 	'Nature of work'=>'Natura pracy',
+ 	'Nature of products'=>'Charakter produktów',
+ 	'Nature of the lot'=>'Charakter partii',
+ 	'Model'=>'Model',	
+ 	'in grams'=>'w gramach',
+  	'Metals to be analyzed'=>'Metale do analizy',
+   	'My estimates in thousandths'=>'Moje szacunki w tysięcznych',
+  	'I wish to attend preparation operations (melting)'=>'Chcę uczestniczyć w operacjach przygotowawczych (topienie)',
+  	'attend the melting'=>'uczestniczyć w topieniu',
+  	'order'=>'kolejność',
+  	'yes'=>'tak',
+  	'Date'=>'Data',
+  	'Metals'=>'Metale',
+  	'Add a new Model'=>'Dodaj nowy model',
 	 
+   
+   
  ];

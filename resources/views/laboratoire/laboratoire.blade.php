@@ -34,7 +34,7 @@ foreach($natures as $nature)
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
-    <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">Laboratoire</a></li>
+    <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">{{__('msg.Laboratory')}}</a></li>
 	</ol>
  </nav>
 						<div class="row">
@@ -45,13 +45,13 @@ foreach($natures as $nature)
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Mes modèles de laboratoire sauvegardés</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.My saved laboratory models')}}</h6>
                                 </div>
                                 <div class="card-body">
 			<div class="row mb-15">
                 <div class="col-lg-8"></div>
                 <div class="col-lg-4">
-                    <a   class="btn btn-md btn-success"    href="{{route('modelelab')}} " ><b><i class="fas fa-plus"></i> Nouveau Modèle</b></a>
+                    <a   class="btn btn-md btn-success"    href="{{route('modelelab')}} " ><b><i class="fas fa-plus"></i>  {{__('msg.New Model')}}</b></a>
                 </div>
             </div>                                      
 						<style>	
@@ -62,10 +62,10 @@ foreach($natures as $nature)
         <table id="mytable" class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
-                <th style="width:12%">Nom</th>
-                 <th style="width:10%">Laboratoire</th>
-                 <th style="width:5%">Qté</th>
-                 <th style="width:15%">Métaux</th>
+                <th style="width:12%">{{__('msg.Name')}}</th>
+                 <th style="width:10%">{{__('msg.Laboratory')}}</th>
+                 <th style="width:5%">{{__('msg.Qty')}}</th>
+                 <th style="width:15%">{{__('msg.Metals')}}</th>
                </tr>
             </thead>
             <tbody>
@@ -134,10 +134,10 @@ foreach($natures as $nature)
 								<div class="row pb-10">
 								
 								<div class="col-md-6">
-								Date :<br><b><?php echo  date('d/m/Y', strtotime($commande->cmde_lab_date ));?></b>
+								{{__('msg.Date')}} :<br><b><?php echo  date('d/m/Y', strtotime($commande->cmde_lab_date ));?></b>
 								</div>
 								<div class="col-md-6">
-								Commande : <b><a href="<?php echo URL("commandelab/".$commande->cmde_lab_ident);?>"><?php echo   $commande->cmde_lab_ident ;?></a></b><br>															
+								{{__('msg.order')}} : <b><a href="<?php echo URL("commandelab/".$commande->cmde_lab_ident);?>"><?php echo   $commande->cmde_lab_ident ;?></a></b><br>															
 								</div>								
 								
 								</div>
@@ -145,10 +145,10 @@ foreach($natures as $nature)
 								<div class="row pb-15" >
 								
 								<div class="col-md-6">
-								Qté : <b><?php echo  $commande->cmde_lab_qte ; ?></b>
+								{{__('msg.Qty')}} : <b><?php echo  $commande->cmde_lab_qte ; ?></b>
 								</div>
 								<div class="col-md-6">								
-								Poids Total : <b><?php echo $commande->cmde_lab_poids  ;?> g</b>
+								{{__('msg.Total weight')}} : <b><?php echo $commande->cmde_lab_poids  ;?> g</b>
 								</div>								
 								
 								</div>								
@@ -174,10 +174,10 @@ foreach($natures as $nature)
 								<div class="row pb-10">
 								
 								<div class="col-md-6">
-								Date :<br><b><?php echo  date('d/m/Y', strtotime($commande->cmde_lab_date ));?></b>
+								{{__('msg.Date')}} :<br><b><?php echo  date('d/m/Y', strtotime($commande->cmde_lab_date ));?></b>
 								</div>
 								<div class="col-md-6">
-								Commande : <b><a href="<?php echo URL("commandelab/".$commande->cmde_lab_ident);?>"><?php echo   $commande->cmde_lab_ident ;?></a></b><br>															
+								{{__('msg.order')}} : <b><a href="<?php echo URL("commandelab/".$commande->cmde_lab_ident);?>"><?php echo   $commande->cmde_lab_ident ;?></a></b><br>															
 								</div>								
 								
 								</div>
@@ -185,10 +185,10 @@ foreach($natures as $nature)
 								<div class="row pb-15" >
 								
 								<div class="col-md-6">
-								Qté : <b><?php echo  $commande->cmde_lab_qte ; ?></b>
+								{{__('msg.Qty')}} : <b><?php echo  $commande->cmde_lab_qte ; ?></b>
 								</div>
 								<div class="col-md-6">								
-								Poids Total : <b><?php echo $commande->cmde_lab_poids  ;?> g</b>
+								{{__('msg.Total weight')}} : <b><?php echo $commande->cmde_lab_poids  ;?> g</b>
 								</div>								
 								
 								</div>								
@@ -227,6 +227,16 @@ foreach($natures as $nature)
  
 
     <script type="text/javascript">
+	
+	    function toggle(className, displayState){
+            var elements = document.getElementsByClassName(className);
+            for (var i = 0; i < elements.length; i++){
+                elements[i].style.display = displayState;
+				var index=elements[i].title;
+             }
+			 return   parseInt(elements[0].title) ;
+        }
+		
         $(document).ready(function() {
 
 

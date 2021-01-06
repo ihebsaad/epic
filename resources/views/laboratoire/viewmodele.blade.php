@@ -10,12 +10,15 @@ use App\Http\Controllers\HomeController ;
 $prestations=HomeController::listeprestations($user['client_id'] );
 $PrestLibs=array();
 $PrestTypes=array();
+$PrestTypes2=array();
  
  foreach($prestations as $prest)
 {
 	$PrestLibs[$prest->id]=$prest->lib;
+	$PrestTypes2[$prest->id]=$prest->type_lib;
 	$PrestTypes[$prest->type_id]=$prest->type_lib;
  }
+// dd($PrestLibs);
   $natures=HomeController::natures2( );
  $Natures=array();
 foreach($natures as $nature)
@@ -33,8 +36,8 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
-    <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">laboratoire</a></li>
-    <li class="breadcrumb-item"><a href="#">Modèle <?php echo $modele->modele_nom; ?></a></li>
+    <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">{{__('msg.Laboratory')}}</a></li>
+    <li class="breadcrumb-item"><a href="#">{{__('msg.Model')}} <?php echo $modele->modele_nom; ?></a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->
@@ -43,7 +46,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Détails du modèle</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Model details')}}</h6>
                                 </div>
                                 <div class="card-body">
 								   <form method="post" action="{{ route('updatemodelelab') }}"    >
@@ -53,7 +56,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Nom du modèle: </label>
+											<label>{{__('msg.Model name')}}: </label>
 										</div>
 									    <div class="col-lg-9  " style="display:inline!important">
 											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  />
@@ -61,48 +64,13 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 									   </div>
 									   
 									 </div>	
-									 
-                                     <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-9">
-											<label>Nature du lot: </label>
-										</div>
-									    <div class="col-lg-9">
-											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" >
-											<option></option>
-												<?php foreach($Natures as $key => $val)
-												{  
-										 	if(  intval($modele->nature_lot_ident)== intval($key) ){$selected='selected="selected"';}else{$selected=''; }
-												echo '<option '.$selected.' value="'.$key.'"   >'.$val.'</option>';
-									 
-												}  ?>
-											</select>
-									   </div>
-									  
-									 </div>
-                                     <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-9">
-											<label>Laboratoire: </label>
-										</div>
-									    <div class="col-lg-9">
-											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" >
-											<option></option>
-												<?php $i=0; foreach($PrestLibs   as $key => $val)
-												{ $i++; 
-										if( $modele->type_lab_ident== $key ){$selected='selected="selected"';}else{$selected=''; }
-												echo '<option   '.$selected.'   value="'.($key).'"   >'.$val.'</option>';
-									 
-												}  ?>
-											</select>
-									   </div>
-									  
-								    </div>									 
  
                                    <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-9">
-											<label>Type de Laboratoire: </label>
+											<label>{{__('msg.Type of service')}}: </label>
 										</div>
 									    <div class="col-lg-9">
-											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" >
+											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" onchange="types()" >
 											<option></option>
 												<?php $i=0; foreach($PrestTypes as $key => $val)
 												{ $i++; 
@@ -116,8 +84,56 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 								    </div>
 									
                                      <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-9">
+											<label>{{__('msg.Nature of work')}}: </label>
+										</div>
+									    <div class="col-lg-9">
+											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" >
+											<option></option>
+												<?php $i=0; foreach($PrestLibs   as $key => $val)
+												{ $i++; 
+										if( $modele->type_lab_ident== $key ){$selected='selected="selected"';}else{$selected=''; }
+												echo '<option   '.$selected.'   value="'.($key).'" class="types type-'.$PrestTypes2[$i].'" >'.$val.'</option>';
+									 
+												}  ?>
+											</select>
+									   </div>
+									  
+								    </div>	
+									
+                                     <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-9">
+											<label>{{__('msg.Nature of products')}}: </label>
+										</div>
+									    <div class="col-lg-9">
+											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" >
+											<option></option>
+												<?php foreach($Natures as $key => $val)
+												{  
+										 	if(  intval($modele->nature_lot_ident)== intval($key) ){$selected='selected="selected"';}else{$selected=''; }
+												echo '<option '.$selected.' value="'.$key.'"   >'.$val.'</option>';
+									 
+												}  ?>
+											</select>
+									   </div>
+									  
+									 </div>								 
+									
+                                     <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Poids en grammes: </label>
+											<label>{{__('msg.Quantity')}}: </label>
+										</div>
+									    <div class="col-lg-12  " style="display:inline!important">
+											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:130px" value="<?php echo $modele->qte; ?>"  required  />
+											  
+									   </div>
+									   
+									 </div>	
+
+									 
+                                     <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-12">
+											<label>{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
 											 <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->poids; ?>"   />
@@ -125,21 +141,22 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 									   </div>
 									   
 									 </div>		
-
-                                     <div class="row pl-20 pr-20 mb-10">
+ 
+									 
+									<div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Quantité: </label>
+											<label>{{__('msg.Value')}}: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:130px" value="<?php echo $modele->qte; ?>"  required  />
+											 <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->valeur; ?>"   />
 											  
 									   </div>
-									   
-									 </div>										 
+									 </div>	
+									 
 									 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Titrages: </label>
+											<label>{{__('msg.Metals to be analyzed')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
 											 <label for="titrage_au" ><input class="form-control"     id="titrage_au" name="titrage_au"  type="checkbox"  style="width:25px" value="1" <?php if($modele->titrage_au==1){?> checked <?php } ?>  /> <span class="  mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span></label>
@@ -156,16 +173,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 									      
 									 </div>	
 									 
-                                     <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
-											<label>Valeur: </label>
-										</div>
-									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->valeur; ?>"   />
-											  
-									   </div>
-									   
-									 </div>	
+
 									 
 									 
 <br><br>
@@ -207,7 +215,19 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 					
 <script>
 
+	   function toggle(className, displayState){
+            var elements = document.getElementsByClassName(className);
+            for (var i = 0; i < elements.length; i++){
+                elements[i].style.display = displayState;
+              }
+			  
+        }
  
+ function types(){
+ 	var type= $( "#choix_lab_ident option:selected" ).text();
+ 	  toggle('types','none');
+	 toggle('type-'+type,'block');
+ }
 </script>					
 					
 @endsection

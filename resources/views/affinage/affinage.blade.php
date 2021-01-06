@@ -25,7 +25,7 @@ foreach($natures as $nature)
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
-    <li class="breadcrumb-item"><a href="{{route('affinage')}}">Affinage</a></li>
+    <li class="breadcrumb-item"><a href="{{route('affinage')}}">{{__('msg.Industrial refining')}}</a></li>
 	</ol>
  </nav>
 						<div class="row">
@@ -36,13 +36,13 @@ foreach($natures as $nature)
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Mes modèles d'affinage sauvegardés</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.My saved refining models')}}</h6>
                                 </div>
                                 <div class="card-body">
 			<div class="row mb-15">
                 <div class="col-lg-8"></div>
                 <div class="col-lg-4">
-                    <a   class="btn btn-md btn-success"    href="{{route('modele')}} " ><b><i class="fas fa-plus"></i> Nouveau Modèle</b></a>
+                    <a   class="btn btn-md btn-success"    href="{{route('modele')}} " ><b><i class="fas fa-plus"></i>  {{__('msg.New Model')}}</b></a>
                 </div>
             </div>                                      
 						<style>	
@@ -53,9 +53,9 @@ foreach($natures as $nature)
         <table id="mytable" class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
-                <th style="width:15%">Nom</th>
-                 <th style="width:25%">Métaux</th>
-                <th style="width:8%;font-size:11px;padding-right:5px;">Assiste à la fonte</th>
+                <th style="width:15%">{{__('msg.Name')}}</th>
+                 <th style="width:25%">{{__('msg.Metals')}}</th>
+                <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.attend the melting')}}</th>
                </tr>
             </thead>
             <tbody>
@@ -84,7 +84,7 @@ foreach($natures as $nature)
                  <?php }   ?>    
                 </td>
 
-				<td style="font-size:13px;"><?php if($modele->assiste){echo 'OUI';}?></td>
+				<td style="font-size:13px;"><?php if($modele->assiste){echo __('msg.Yes') ;}?></td>
  				</tr>
 			@endforeach
             </tbody>
@@ -125,10 +125,10 @@ foreach($natures as $nature)
 								<div class="row pb-10">
 								
 								<div class="col-md-6">
-								Date :<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
+								{{__('msg.Date')}} :<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
 								</div>
 								<div class="col-md-6">
-								Poids Total : <b><?php echo $commande->poids  ;?> g</b>
+								{{__('msg.Total weight')}} : <b><?php echo $commande->poids  ;?> g</b>
 								</div>								
 								
 								</div>
@@ -136,7 +136,7 @@ foreach($natures as $nature)
 								<div class="row pb-15" >
 								
 								<div class="col-md-6">
-								Commande : <b><a href="<?php echo URL("commande/".$commande->cmde_aff);?>"><?php echo   $commande->cmde_aff ;?></a></b><br>																
+								{{__('msg.order')}} : <b><a href="<?php echo URL("commande/".$commande->cmde_aff);?>"><?php echo   $commande->cmde_aff ;?></a></b><br>																
 								</div>
 								<div class="col-md-6">
 								
@@ -165,10 +165,10 @@ foreach($natures as $nature)
 								<div class="row pb-10 ">
 								
 								<div class="col-md-6">
-								Date :<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
+								{{__('msg.Date')}} :<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
 								</div>
 								<div class="col-md-6">
-								Poids Total : <b><?php echo $commande->poids  ;?> g</b>
+								{{__('msg.Total weight')}} : <b><?php echo $commande->poids  ;?> g</b>
 								</div>								
 								
 								</div>
@@ -176,7 +176,7 @@ foreach($natures as $nature)
 								<div class="row pb-15">
 								
 								<div class="col-md-6">
-								Commande : <b><a href="<?php echo URL("commande/".$commande->cmde_aff);?>"><?php echo   $commande->cmde_aff ;?></a></b><br>																
+								{{__('msg.order')}} : <b><a href="<?php echo URL("commande/".$commande->cmde_aff);?>"><?php echo   $commande->cmde_aff ;?></a></b><br>																
 								</div>
 								<div class="col-md-6">
 								

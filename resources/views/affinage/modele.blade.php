@@ -21,8 +21,8 @@ foreach($natures as $nature)
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
-    <li class="breadcrumb-item"><a href="{{route('affinage')}}">Affinage</a></li>
-    <li class="breadcrumb-item"><a href="#">Nouveau Modèle</a></li>
+    <li class="breadcrumb-item"><a href="{{route('affinage')}}">{{__('msg.Industrial refining')}}</a></li>
+    <li class="breadcrumb-item"><a href="#">{{__('msg.New Model')}}</a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->
@@ -31,7 +31,7 @@ foreach($natures as $nature)
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouveau modèle</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Add a new Model')}}</h6>
                                 </div>
                                 <div class="card-body">
 								   <form method="post" action="{{ route('addmodele') }}"  enctype="multipart/form-data">
@@ -40,7 +40,7 @@ foreach($natures as $nature)
 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Nom du modèle: </label>
+											<label>{{__('msg.Model name')}}: </label>
 										</div>
 									    <div class="col-lg-9  " style="display:inline!important">
 											 <input  class="form-control"  id="nom"  type="text" required name="modele_nom"  />
@@ -51,7 +51,7 @@ foreach($natures as $nature)
 									 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-9">
-											<label>Nature du lot: </label>
+											<label>{{__('msg.Nature of the lot')}}: </label>
 										</div>
 									    <div class="col-lg-9">
 											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" name="nature_lot_ident" required >
@@ -68,7 +68,7 @@ foreach($natures as $nature)
   
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Poids en grammes: </label>
+											<label>{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
 											 <input  class="form-control"  id="poids"  type="number" step="0.01" min="0.01" style="width:130px" name="pds_lot" required />
@@ -80,14 +80,14 @@ foreach($natures as $nature)
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
 											<label for="assiste">
-												<input type="checkbox" name="assiste" id="assiste" /> Je souhaite assister aux opérations de préparation (fonte)
+												<input type="checkbox" name="assiste" id="assiste" /> {{__('msg.I wish to attend preparation operations (melting)')}}
 											</label>
 										</div>									 
 									 </div>									 
 									 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Mes estimations en millièmes: </label>
+											<label>{{__('msg.My estimates in thousandths')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
 											 <input class="form-control"  id="or" type="number" step="0.01" min="0" name="estim_titre_au"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>

@@ -9,10 +9,12 @@ use App\Http\Controllers\HomeController ;
 $prestations=HomeController::listeprestations($user['client_id'] );
 $PrestLibs=array();
 $PrestTypes=array();
+$PrestTypes2=array();
  
  foreach($prestations as $prest)
 {
 	$PrestLibs[$prest->id]=$prest->lib;
+	$PrestTypes2[$prest->id]=$prest->type_lib;
 	$PrestTypes[$prest->type_id]=$prest->type_lib;
  }
   //dd($PrestTypes);
@@ -30,12 +32,12 @@ foreach($natures as $nature)
  ?>
  
 
-						<div class="row">
+ <div class="row">
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
-    <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">laboratoire</a></li>
-    <li class="breadcrumb-item"><a href="#">Nouveau Modèle</a></li>
+    <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">{{__('msg.Laboratory')}}</a></li>
+    <li class="breadcrumb-item"><a href="#">{{__('msg.New Model')}}</a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->
@@ -44,7 +46,7 @@ foreach($natures as $nature)
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouveau modèle</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Add a new Model')}}</h6>
                                 </div>
                                 <div class="card-body">
 								   <form method="post" action="{{ route('addmodelelab') }}"    >
@@ -53,7 +55,7 @@ foreach($natures as $nature)
  
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Nom du modèle: </label>
+											<label>{{__('msg.Model name')}}: </label>
 										</div>
 									    <div class="col-lg-9  " style="display:inline!important">
 											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   required   />
@@ -62,9 +64,45 @@ foreach($natures as $nature)
 									   
 									 </div>	
 									 
+                                   <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-9">
+											<label>{{__('msg.Type of service')}}: </label>
+										</div>
+									    <div class="col-lg-9">
+											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom"   required   onchange="types()">
+											<option></option>
+												<?php $i=0; foreach($PrestTypes as $key => $val)
+												{ $i++; 
+											 
+												echo '<option        value="'.($key).'"   >'.$val.'</option>';
+									 
+												}  ?>
+											</select>
+									   </div>
+									  
+								    </div>
+									
+                                   <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-9">
+											<label>{{__('msg.Nature of work')}}: </label>
+										</div>
+									    <div class="col-lg-9">
+											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" required >
+											<option></option>
+												<?php $i=0; foreach($PrestLibs   as $key => $val)
+												{ $i++; 
+										 
+												echo '<option      value="'.($key).'" class="types type-'.$PrestTypes2[$i].'"  >'.$val.'</option>';
+									 
+												}  ?>
+											</select>
+									   </div>
+									  
+								    </div>	
+									
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-9">
-											<label>Nature du lot: </label>
+											<label>{{__('msg.Nature of products')}}: </label>
 										</div>
 									    <div class="col-lg-9">
 											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" required >
@@ -79,47 +117,23 @@ foreach($natures as $nature)
 									  
 									 </div>
 
-                                   <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-9">
-											<label>Laboratoire: </label>
+								 
+                                      <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-12">
+											<label>{{__('msg.Quantity')}}: </label>
 										</div>
-									    <div class="col-lg-9">
-											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" required >
-											<option></option>
-												<?php $i=0; foreach($PrestLibs   as $key => $val)
-												{ $i++; 
-										 
-												echo '<option      value="'.($key).'"   >'.$val.'</option>';
-									 
-												}  ?>
-											</select>
+									    <div class="col-lg-12  " style="display:inline!important">
+											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:130px" value="1"  required  />
+											  
 									   </div>
-									  
-								    </div>									 
- 
-                                   <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-9">
-											<label>Type de Laboratoire: </label>
-										</div>
-									    <div class="col-lg-9">
-											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom"   required>
-											<option></option>
-												<?php $i=0; foreach($PrestTypes as $key => $val)
-												{ $i++; 
-											 
-												echo '<option        value="'.($key).'"   >'.$val.'</option>';
-									 
-												}  ?>
-											</select>
-									   </div>
-									  
-								    </div>
+									   
+									 </div>	
 
 
 									 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Poids en grammes: </label>
+											<label>{{__('msg.Weight')}} <small>{{__('msg.in grams')}}:</small> </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
 											 <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:130px"  required   />
@@ -130,10 +144,10 @@ foreach($natures as $nature)
  								 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Quantité: </label>
+											<label>{{__('msg.Value')}}: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:130px" value="1"  required  />
+											 <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:130px"     />
 											  
 									   </div>
 									   
@@ -141,7 +155,7 @@ foreach($natures as $nature)
 									 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
-											<label>Titrages: </label>
+											<label>{{__('msg.Metals to be analyzed')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
 											 <label for="titrage_au" ><input class="form-control"     id="titrage_au" name="titrage_au"  type="checkbox"  style="width:25px" value="1" /> <span class="  mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span></label>
@@ -158,16 +172,7 @@ foreach($natures as $nature)
 									      
 									 </div>		
 									 
-                                     <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
-											<label>Valeur: </label>
-										</div>
-									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:130px"     />
-											  
-									   </div>
-									   
-									 </div>	
+
 									 
 									 
 <br><br>
@@ -209,7 +214,19 @@ foreach($natures as $nature)
 					
 <script>
 
+	   function toggle(className, displayState){
+            var elements = document.getElementsByClassName(className);
+            for (var i = 0; i < elements.length; i++){
+                elements[i].style.display = displayState;
+              }
+			 
+        }
  
+ function types(){
+ 	var type= $( "#choix_lab_ident option:selected" ).text();
+ 	  toggle('types','none');
+	 toggle('type-'+type,'block');
+ }
 </script>					
 					
 @endsection
