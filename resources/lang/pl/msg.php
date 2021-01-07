@@ -276,7 +276,19 @@ return [
   	'Date'=>'Data',
   	'Metals'=>'Metale',
   	'Add a new Model'=>'Dodaj nowy model',
-	 
+
+	'Artisan'=>'Rzemieślnik',
+  	'Maker'=>'Fabrykant',
+  	'Industrial'=>'przemysłowy',
+  	'Recuperator'=>'rekuperator',
+  	'Investor'=>'Inwestor',
+  	'Last name'=>'Nazwisko',
+  	'Identifier'=>'Identyfikator',
+  	'Cell phone'=>'Telefon komórkowy',
+  	'Phone'=>'Telefon',
+  	'Password'=>'Hasło',
+  	'Password confirmation'=>'Potwierdzenie hasła',
+  	'Email address'=>'Adres e-mail',
    
    
  ];

@@ -22,12 +22,12 @@
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="text" class="form-control form-control-user" id="name" name="name"  value="{{ $user->name }}"  onchange="changing(this)"
-                                                       placeholder="Prénom*">
+                                                       placeholder="<?php echo __('msg.Name');?>*">
 
                                             </div>
                                             <div class="col-sm-6">
                                                 <input type="text" class="form-control form-control-user" id="lastname" name="lastname"  value="{{ $user->lastname }}"  onchange="changing(this)"
-                                                       placeholder="Nom*">
+                                                       placeholder="<?php echo __('msg.Last name');?>*">
                                             </div>
 
                                         </div>
@@ -40,12 +40,12 @@
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <select class="form-control  " id="activity" name="activity"  placeholder="Sélectionnez votre activité*"    onchange="changing(this)"
                                                         style="font-size: 0.8rem;border-radius: 10rem;padding-left:15px;padding-top:10px;height:50px;font-family:Nunito">
-                                                     <option value="artisan" <?php if($user->activity=='artisan'){echo 'selected="selected"';}  ?> >Artisan</option>
-                                                    <option value="fabricant" <?php if($user->activity=='fabricant'){echo 'selected="selected"';}  ?> >Fabricant</option>
-                                                    <option value="industriel" <?php if($user->activity=='industriel'){echo 'selected="selected"';}  ?> >Industriel</option>
-                                                    <option value="laboratoire" <?php if($user->activity=='laboratoire'){echo 'selected="selected"';}  ?> >Laboratoire</option>
-                                                    <option value="recuperateur" <?php if($user->activity=='recuperateur'){echo 'selected="selected"';}  ?> >Récupérateur</option>
-                                                    <option value="investisseur" <?php if($user->activity=='investisseur'){echo 'selected="selected"';}  ?> >Investisseur</option>
+                                                     <option value="artisan" <?php if($user->activity=='artisan'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Artisan');?></option>
+                                                    <option value="fabricant" <?php if($user->activity=='fabricant'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Maker');?></option>
+                                                    <option value="industriel" <?php if($user->activity=='industriel'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Industrial');?></option>
+                                                    <option value="laboratoire" <?php if($user->activity=='laboratoire'){echo 'selected="selected"';}  ?> ><?php echo __('msg.laboratory');?></option>
+                                                    <option value="recuperateur" <?php if($user->activity=='recuperateur'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Recuperator');?></option>
+                                                    <option value="investisseur" <?php if($user->activity=='investisseur'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Investor');?></option>
                                                 </select>
                                             </div>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
@@ -57,29 +57,29 @@
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="text" class="form-control form-control-user" id="mobile" name="mobile" pattern=".{10,10}" value="{{ $user->mobile }}"  onchange="changing(this)"
-                                                       placeholder="Téléphone portable*">
+                                                       placeholder="<?php echo __('msg.Cell phone');?>*">
                                             </div>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="text" class="form-control form-control-user" id="phone" name="phone"  pattern=".{0,10}" value="{{ $user->phone }}"  onchange="changing(this)"
-                                                       placeholder="Téléphone fixe">
+                                                       placeholder="<?php echo __('msg.Phone');?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="text" class="form-control form-control-user" id="username" name="username" readonly value="{{ $user->username }}"
-                                                       placeholder="Identifiant*">
+                                                       placeholder="<?php echo __('msg.Identifier');?>*">
                                             </div>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="email" class="form-control form-control-user" id="email" name="email"  readonly value="{{ $user->email }}"
-                                                       placeholder="Adresse Email*">
+                                                       placeholder="<?php echo __('msg.Email address');?>*">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="password" class="form-control form-control-user" name="password"   pattern=".{6,30}"    onchange="changing(this)"
-                                                       id="password" placeholder="Mot de passe*">
+                                                       id="password" placeholder="<?php echo __('msg.Password');?>*">
                                             </div>
 
                                         </div>

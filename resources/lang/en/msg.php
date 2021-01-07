@@ -198,7 +198,7 @@ return [
 	'Do you really want to log out?'=>'Do you really want to log out?',
 	'Add to cart'=>'Add to cart',
 	'View product'=>'View product',
-	'Cart'=>'Panier',	
+	'Cart'=>'Cart',	
 	'Order'=>'Order',	
 	'Cancel'=>'Cancel',
  	'Home'=>'Home',
@@ -269,6 +269,18 @@ return [
   	'Metals'=>'Metals',
   	'Add a new Model'=>'Add a new Model',
 	
- 	 
+  	'Artisan'=>'Artisan',
+  	'Maker'=>'Maker',
+  	'Industrial'=>'Industrial',
+  	'Recuperator'=>'Recuperator',
+  	'Investor'=>'Investor',
+  	'Last name'=>'Last name',
+  	'Identifier'=>'Identifier',
+  	'Cell phone'=>'Cell phone',
+  	'Phone'=>'Phone',
+  	'Password'=>'Password',
+  	'Password confirmation'=>'Password confirmation',
+  	'Email address'=>'Email address',
+ 
 
  ];
