@@ -61,6 +61,7 @@ Route::post('/updatemodelelab', 'HomeController@updatemodelelab')->name('updatem
 
 Route::post('/agence', 'HomeController@agence')->name('agence');
 
+Route::post('/order/updating','ProductsController@updating')->name('orders.updating');
 
 
 

@@ -384,5 +384,22 @@ class ProductsController extends Controller
 		
 		
     }
+	
+	
+	
+ public function updating(Request $request)
+    {
+        $id= $request->get('order');
+        $champ= strval($request->get('champ'));
+        $val= $request->get('val');
+
+        
+         Order::where('id', $id)->update(array($champ => $val));
+
+    }	
+	
+	
+	
+	
    
 }

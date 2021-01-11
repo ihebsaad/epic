@@ -290,5 +290,13 @@ return [
   	'Password confirmation'=>'Potwierdzenie hasła',
   	'Email address'=>'Adres e-mail',
    
-   
+    'Delivery'=>'Dostawa',	 
+  	'Choose your delivery mode'=>'Wybierz sposób dostawy',	 
+  	'Agency'=>'Agencja',	 
+  	'Address'=>'Adres',	 
+  	'Transporter'=>'Nośnik',	 
+  	'Country'=>'Kraj',	 
+  	'Direct debit address'=>'Adres do polecenia zapłaty',	 
+  	'Delivery address'=>'Adres dostawy',
+	
  ];

@@ -58,28 +58,28 @@ $agence_defaut= $liste[0]->agence_defaut  ;
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Livraison</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Delivery')}}</h6>
                                 </div>
                                 <div class="card-body">
- 							 <h5>Choisir un mode de livraison</h5>
+ 							 <h5>{{__('msg.Choose your delivery mode')}}</h5>
 							 <div class="row pt-10 pb-20">
 							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');details()">
 								<center>  Click & Collect 
 								<img src="{{ URL::asset('public/img/box.png')}}" style="width:80px" class="mt-20"/></center>
 							 </div>
 							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10" onclick="$('#agency1').hide('slow');$('#agency2').show('slow');">
-								<center>  Transporteur 
+								<center>  {{__('msg.Transporter')}} 
 								<img src="{{ URL::asset('public/img/truck.png')}}" style="width:100px"/></center>
 								
 							 </div>
 							 </div>
 							 <div id="agency1">
- 							 <h5>Adresse de prélèvement</h5>
+ 							 <h5>{{__('msg.Direct debit address')}}</h5>
 							 <div class="row pt-10 pb-20">
 							 
 							 <div class="col-md-8">
 							 
-							 <select class="form-control mb-20" style="" id="agence" onchange="details()">
+							 <select class="form-control mb-20" style="" id="agence_id" onchange="details();changing(this)">
 							 <option></option>
 							 <?php
 							 foreach($agences as $agence)
@@ -94,10 +94,10 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </select>
 							 
 							 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:200px" >
- 							 <b>Agence :</b>  <span id="lib"></span><br>
-							 <b>Adresse :</b> <span id="adresse"></span><br>
+ 							 <b>{{__('msg.Agency')}} :</b>  <span id="lib"></span><br>
+							 <b>{{__('msg.Address')}} :</b> <span id="adresse"></span><br>
 							  <span id="zip"></span> <span id="ville"></span><br>
-							 <b>Pays :</b> <span id="country"></span>
+							 <b>{{__('msg.Country')}} :</b> <span id="country"></span>
 							 </div>
 							 
 							 </div>	
@@ -107,12 +107,12 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </div>		<!-- agency 1-->					 
 
 							 <div id="agency2"  style="display:none"  >
- 							 <h5>Adresse de livraison</h5>
+ 							 <h5>{{__('msg.Delivery address')}}</h5>
 							 <div class="row pt-10 pb-20">
 							 
 							 <div class="col-md-8">
 							 
-							 <select class="form-control mb-20"  id="livraison" onchange="setadresse()">
+							 <select class="form-control mb-20"  id="adresse_id" onchange="setadresse();changing(this)">
 							 <option></option>
 							 <?php
 							  foreach($adresses as $adresse)
@@ -128,10 +128,10 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							foreach($adresses as $adresse)
 							 { ?>
 							 <div class="pl-10 pr-10 pt-10 pt-10 adresses" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
- 							 <b>Agence :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
-							 <b>Adresse :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
+ 							 <b>{{__('msg.Agency')}} :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
+							 <b>{{__('msg.Address')}} :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
 							  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
-							 <b>Pays :</b> <span  >
+							 <b>{{__('msg.Country')}} :</b> <span  >
 							 <?php 
 							 if($adresse->pays_code=='FR'){echo 'France';}   
 							 if($adresse->pays_code=='PL'){echo 'Pologne';}   
@@ -168,19 +168,19 @@ $agence_defaut= $liste[0]->agence_defaut  ;
                             <!-- Illustrations -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Cumul de la commande</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.My order')}}</h6>
                                 </div>
                                 <div class="card-body">
  
 									<table class="mb-10">
 								 
- 									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Pièces</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $pieces ;?></b></td>	</tr>
- 									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Poids total</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo number_format($weight,2) ;?> g</b></td>	</tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">Façon option</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
-									<tr ><td><b class="pl-10 text-info">Façon totale</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
+ 									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Items')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $pieces ;?></b></td>	</tr>
+ 									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Total weight')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo number_format($weight,2) ;?> g</b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Way option')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
+									<tr ><td><b class="pl-10 text-info">{{__('msg.Total way')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>
-									<span class="mt-10 text-success " style="font-weight:bold" >METAUX FINS</span><br>
+									<span class="mt-10 text-success " style="font-weight:bold" >{{__('msg.FINE METALS')}}</span><br>
 									<table class="pt-20 pm-20 pl-20 pr-20" style="border:none">
 								    <tr style="height:20px; "><td    style="height:20px">{{__('msg.Gold')}}: </span></td><td><span><?php echo floatval($gold) ;?> g</span></td></tr>
 									<tr style="height:20px"><td   style="height:20px">{{__('msg.Silver')}} : </span></td><td><span><?php echo floatval($silver) ;?> g</span></td></tr>
@@ -212,7 +212,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 
 function details()
 	{ 
-	var agence = $('#agence').val() ;
+	var agence = $('#agence_id').val() ;
 	var _token = $('input[name="_token"]').val();
 		 $('#lib').html( '');
 		 $('#adresse').html( '');
@@ -250,12 +250,32 @@ function details()
         }
 		
 function setadresse	(){
- var adresse = $('#livraison').val() ;
+ var adresse = $('#adresse_id').val() ;
  toggle('adresses','none');
  $('#adresse-'+adresse).show( );
 	
 	
 }
+
+
+  function changing(elm) {
+            var champ = elm.id;
+            var val = document.getElementById(champ).value;
+             //if ( (val != '')) {
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{ route('orders.updating') }}",
+                method: "POST",
+                data: {order: <?php echo $orderid; ?>, champ: champ, val: val, _token: _token},
+                success: function (data) {
+   
+                }
+            });
+
+        }
+
+
+
 
 <?php if($agence_defaut>0){?>
 //init default
