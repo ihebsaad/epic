@@ -39,25 +39,39 @@ Route::get('/catalog/{type}/{famille1}', 'PagesController@catalog')->name('catal
 
 Route::get('/panier', 'PagesController@panier')->name('panier');
 Route::get('/livraison', 'PagesController@livraison')->name('livraison');
-Route::get('/affinage', 'PagesController@affinage')->name('affinage');
 Route::get('/trading', 'PagesController@trading')->name('trading');
 Route::get('/virement', 'PagesController@virement')->name('virement');
 Route::get('/orders', 'PagesController@orders')->name('orders');
 Route::get('/euros', 'PagesController@euros')->name('euros');
 Route::get('/poids', 'PagesController@poids')->name('poids');
-Route::get('/modeles', 'PagesController@modeles')->name('modeles');
+
+
+Route::get('/affinage', 'PagesController@affinage')->name('affinage');
 Route::get('/modele', 'PagesController@modele')->name('modele');
 Route::get('/viewmodele/{id}', 'PagesController@viewmodele')->name('viewmodele');
-Route::get('/viewmodelelab/{id}', 'PagesController@viewmodelelab')->name('viewmodelelab');
 Route::get('/commande/{id}', 'PagesController@commande')->name('commande');
-
-Route::get('/laboratoire', 'PagesController@laboratoire')->name('laboratoire');
-Route::get('/modelelab', 'PagesController@modelelab')->name('modelelab');
-Route::get('/commandelab/{id}', 'PagesController@commandelab')->name('commandelab');
 Route::post('/addmodele', 'HomeController@addmodele')->name('addmodele');
 Route::post('/updatemodele', 'HomeController@updatemodele')->name('updatemodele');
+
+
+Route::get('/laboratoire', 'PagesController@laboratoire')->name('laboratoire');
+Route::get('/viewmodelelab/{id}', 'PagesController@viewmodelelab')->name('viewmodelelab');
+Route::get('/modelelab', 'PagesController@modelelab')->name('modelelab');
+Route::get('/commandelab/{id}', 'PagesController@commandelab')->name('commandelab');
 Route::post('/addmodelelab', 'HomeController@addmodelelab')->name('addmodelelab');
 Route::post('/updatemodelelab', 'HomeController@updatemodelelab')->name('updatemodelelab');
+
+
+Route::get('/rachat', 'PagesController@rachat')->name('rachat');
+Route::get('/modelermp', 'PagesController@modelermp')->name('modelermp');
+Route::post('/addmodelermp', 'HomeController@addmodelermp')->name('addmodelermp');
+Route::post('/updatemodelermp', 'HomeController@updatemodelermp')->name('updatemodelermp');
+Route::get('/commandermp/{id}', 'PagesController@commandermp')->name('commandermp');
+Route::get('/viewmodelermp/{id}', 'PagesController@viewmodelermp')->name('viewmodelermp');
+
+
+
+
 
 Route::post('/agence', 'HomeController@agence')->name('agence');
 

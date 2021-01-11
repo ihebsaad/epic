@@ -78,6 +78,10 @@ $user_type=$user->user_type;
            <span> {{__('msg.Laboratory')}} </span></a>
       </li>	 
 	  
+ 	  <li class="nav-item   <?php  ?>">
+        <a class="nav-link" href="{{route('rachat')}}"   <?php if( strpos($view_name  ,'rachat') !== false )  {echo 'style="font-weight:800"'; } ?> >
+           <span> {{__('msg.Buyback')}} </span></a>
+      </li>	 	  
       <!-- Divider -->
       <hr class="sidebar-divider">
        <!-- Heading -->

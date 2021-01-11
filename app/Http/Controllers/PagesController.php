@@ -121,16 +121,39 @@ class PagesController extends Controller
          return view('affinage.viewmodele',['id'=>$id]);
     }	
 	
+	public function commande($id)
+    { 
+         return view('affinage.commande',['id'=>$id]);
+    }	
+	
+		/****  Rachat (RMP) ***/
+	 public function rachat()
+    { 
+         return view('rachat.rachat');
+    }
+ 	
+	 public function modelermp()
+    { 
+         return view('rachat.modele');
+    }
+	
+	public function viewmodelermp($id)
+    { 
+         return view('rachat.viewmodele',['id'=>$id]);
+    }	
+	
+	public function commandermp($id)
+    { 
+         return view('rachat.commande',['id'=>$id]);
+    }	
+	
+	/************  Laboratoire ************/
+	
 		public function viewmodelelab($id)
     { 
          return view('laboratoire.viewmodele',['id'=>$id]);
     }
-	public function commande($id)
-    { 
-         return view('affinage.commande',['id'=>$id]);
-    }
-	
-	
+ 
  	 public function laboratoire()
     { 
          return view('laboratoire.laboratoire');

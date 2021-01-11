@@ -7,39 +7,26 @@
 use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
 
-$commandes=HomeController::listecommandeslabo($user['client_id'] );
-$modeles=HomeController::listemodeleslabo($user['client_id'] );
-$prestations=HomeController::listeprestations($user['client_id'] );
-//dd($natures );
-$PrestLibs=array();
-$PrestTypes=array();
- foreach($prestations as $prest)
-{
-	$PrestLibs[$prest->id]=$prest->lib;
-	$PrestTypes[$prest->type_id]=$prest->type_lib;
- }
-//sp_accueil_liste_nature_lot
-$natures=HomeController::natures2( );
-//dd($natures );
-$Natures=array();
+  $natures=HomeController::natures( );
+ $Natures=array();
 foreach($natures as $nature)
 {
-	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
+	$Natures[$nature->nature_lot]=$nature->libelle;
 }
  
-  $commande=HomeController::detailscommandelabo($id);
+  $commande=HomeController::detailscommande($id);
   
 
 ?>
-  <nav aria-label="breadcrumb" style="width:100%">
+ 
+						<div class="row">
+ <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
-    <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">{{__('msg.Laboratory')}}</a></li>
-    <li class="breadcrumb-item"><a href="#">{{__('msg.order')}} <?php echo $commande[0]->id; ?></a></li>
+    <li class="breadcrumb-item"><a href="{{route('affinage')}}">{{__('msg.Buyback of precious metals')}}</a></li>
+    <li class="breadcrumb-item"><a href="#">{{__('msg.order')}} <?php echo $commande[0]->cmde_aff_lg; ?></a></li>
 	</ol>
  </nav>
-						<div class="row">
-
                         <!-- Content Column -->
                         <div class="col-lg-7 mb-4">
 
@@ -54,7 +41,7 @@ foreach($natures as $nature)
 											<label>{{__('msg.order')}}: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->id; ?></b>
+										<b><?php echo $commande[0]->cmde_aff_lg; ?></b>
 										</div>
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
@@ -67,81 +54,66 @@ foreach($natures as $nature)
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
-											<label>{{__('msg.Weight')}}: </label>
+											<label>{{__('msg.Announcement weight')}}: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->poids; ?> g</b>
+										<b><?php echo $commande[0]->poids_annonce; ?> g</b>
 										</div>
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
-											<label>{{__('msg.Type of laboratory')}}: </label>
+											<label>{{__('msg.Weight received')}}: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->type_lab_lib; ?> </b>
+										<b><?php echo $commande[0]->poids_recu; ?> g</b>
 										</div>
 									</div>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
-											<label>{{__('msg.Choice of laboratory')}}: </label>
+											<label>{{__('msg.Weight after casting')}}: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->choix_lab_lib; ?> </b>
+										<b><?php echo $commande[0]->poids_apres_fonte; ?> g</b>
 										</div>
 									</div>
-									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
-											<label>{{__('msg.Amount')}}: </label>
-										</div>
-									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->montant; ?> </b>
-										</div>
-									</div>									
-									<?php    ?>									
+									<?php   if($commande[0]->titre_or !='') { ?>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
 											<label>{{__('msg.Title')}} {{__('msg.Gold')}}: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->titrage_or; ?></b>
+										<b><?php echo $commande[0]->titre_or; ?></b>
 										</div>
 									</div>
-									<?php    ?>									
+									<?php } if($commande[0]->titre_ag !='') { ?>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
 											<label>{{__('msg.Title')}} {{__('msg.Silver')}}: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->titrage_argent; ?></b>
+										<b><?php echo $commande[0]->titre_ag; ?></b>
 										</div>
 									</div>
-									<?php   ?>									
+									<?php } if($commande[0]->titre_pt !='') { ?>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
 											<label>{{__('msg.Title')}} {{__('msg.Platinum')}}: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->titrage_platine; ?></b>
+										<b><?php echo $commande[0]->titre_pt; ?></b>
 										</div>
 									</div>
-									<?php    ?>
+									<?php } if($commande[0]->titre_pd !='') { ?>
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-9">
 											<label>{{__('msg.Title')}} {{__('msg.Palladium')}}: </label>
 										</div>
 									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->titrage_palladium; ?></b>
+										<b><?php echo $commande[0]->titre_pd; ?></b>
 										</div>
 									</div>
-									<?php   ?>
-									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
-											<label>{{__('msg.Comment')}}: </label>
-										</div>
-									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->cmde_lab_comment; ?></b>
-										</div>
-									</div>									
+									<?php } ?>
+									
 									
 								</div>
                               </div>
@@ -162,8 +134,8 @@ foreach($natures as $nature)
                                 </div>
                             </div>
  
-
                         </div>-->
+						
 						
 						
                     </div>

@@ -9,6 +9,7 @@ use App\Order ;
 use App\Product ;
 use App\Modele_affinage ;
 use App\Modele_lab ;
+use App\Modele_rmp ;
 
 use Illuminate\Support\Facades\App;
 
@@ -255,6 +256,154 @@ $choix_lab_ident   =  $request->get('choix_lab_ident') ;
 		}
 		
  
+ }
+ 
+ 
+ 
+ 
+ public function addmodelermp(Request $request)
+{
+ // try{
+$cl_ident  = intval($request->get('cl_ident'));	
+$modele_nom   = $request->get('modele_nom');	
+$nature_lot_ident = intval($request->get('nature_lot_ident'));	
+$pds_lot  = floatval($request->get('pds_lot'));	
+$estim_titre_au  = floatval($request->get('estim_titre_au'));	
+$estim_titre_ag  = floatval($request->get('estim_titre_ag'));	
+$estim_titre_pt  = floatval($request->get('estim_titre_pt'));	
+$estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
+$assiste   =  $request->get('assiste') ;	
+$demande_acompte   =  $request->get('acompte') ;	
+$choix_couv_ident   =  $request->get('choix_couv_ident') ;	
+ 
+ 		if($assiste=="on" || $assiste==1 ){
+			$assiste=1;
+		}else{
+			$assiste=0;			
+		}
+		
+ 		if($demande_acompte=="on" || $demande_acompte==1 ){
+			$demande_acompte=1;
+		}else{
+			$demande_acompte=0;			
+		} 
+		
+        $rachat  = new Modele_rmp([
+              'cl_ident' => $cl_ident,
+             'modele_nom' => $modele_nom ,
+             'nature_lot_ident' => $nature_lot_ident ,
+             'pds_lot' => $pds_lot ,
+             'estim_titre_au' => $estim_titre_au ,
+             'estim_titre_ag' => $estim_titre_ag ,
+             'estim_titre_pt' => $estim_titre_pt ,
+             'estim_titre_pd' => $estim_titre_pd ,
+             'assiste' => $assiste ,
+             'demande_acompte' => $demande_acompte , 
+             'choix_couv_ident' => $choix_couv_ident  
+              
+        ]);
+
+        if($rachat->save()){
+		  $id=$rachat->modele_rmp_ident;
+		  return redirect('/viewmodelermp/'.$id)->with('success', ' ajouté avec succès');
+		
+		}
+		
+ 
+ }
+
+  public function updatemodele(Request $request)
+{
+$id  = intval($request->get('id'));	
+$cl_ident  = intval($request->get('cl_ident'));	
+$modele_nom   = $request->get('modele_nom');	
+$nature_lot_ident = intval($request->get('nature_lot_ident'));	
+$pds_lot  = floatval($request->get('pds_lot'));	
+$estim_titre_au  = floatval($request->get('estim_titre_au'));	
+$estim_titre_ag  = floatval($request->get('estim_titre_ag'));	
+$estim_titre_pt  = floatval($request->get('estim_titre_pt'));	
+$estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
+$assiste   =  $request->get('assiste') ;	
+ 
+ 		if($assiste=="on" || $assiste==1 ){
+			$assiste=1;
+		}else{
+			$assiste=0;			
+		}
+ 
+   	 
+    
+	    Modele_affinage::where('modele_affinage_ident',$id)->update(
+		array(
+              'cl_ident' => $cl_ident,
+             'modele_nom' => $modele_nom ,
+             'nature_lot_ident' => $nature_lot_ident ,
+             'pds_lot' => $pds_lot ,
+             'estim_titre_au' => $estim_titre_au ,
+             'estim_titre_ag' => $estim_titre_ag ,
+             'estim_titre_pt' => $estim_titre_pt ,
+             'estim_titre_pd' => $estim_titre_pd ,
+             'assiste' => $assiste  
+              
+			)
+		);
+ 
+		  return redirect('/affinage/')->with('success', ' Modifié avec succès');
+		 
+		 
+ }
+ 
+ 
+  public function updatemodelermp(Request $request)
+{
+ // try{
+$id  = intval($request->get('id'));	
+$cl_ident  = intval($request->get('cl_ident'));	
+$modele_nom   = $request->get('modele_nom');	
+$nature_lot_ident = intval($request->get('nature_lot_ident'));	
+$pds_lot  = floatval($request->get('pds_lot'));	
+$estim_titre_au  = floatval($request->get('estim_titre_au'));	
+$estim_titre_ag  = floatval($request->get('estim_titre_ag'));	
+$estim_titre_pt  = floatval($request->get('estim_titre_pt'));	
+$estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
+$assiste   =  $request->get('assiste') ;	
+$choix_couv_ident   =  $request->get('choix_couv_ident') ;	
+$demande_acompte   =  $request->get('acompte') ;	
+ 
+ 		if($assiste=="on" || $assiste==1 ){
+			$assiste=1;
+		}else{
+			$assiste=0;			
+		}
+		
+ 		if($demande_acompte=="on" || $demande_acompte==1 ){
+			$demande_acompte=1;
+		}else{
+			$demande_acompte=0;			
+		}		
+ 
+   	 
+    
+	    Modele_rmp::where('modele_rmp_ident',$id)->update(
+		array(
+			'cl_ident' => $cl_ident,
+             'modele_nom' => $modele_nom ,
+             'nature_lot_ident' => $nature_lot_ident ,
+             'pds_lot' => $pds_lot ,
+             'estim_titre_au' => $estim_titre_au ,
+             'estim_titre_ag' => $estim_titre_ag ,
+             'estim_titre_pt' => $estim_titre_pt ,
+             'estim_titre_pd' => $estim_titre_pd ,
+             'assiste' => $assiste , 
+             'demande_acompte' => $demande_acompte , 
+             'choix_couv_ident' => $choix_couv_ident 			 
+              
+			)
+		);
+ 
+		  return redirect('/rachat/')->with('success', ' Modifié avec succès');
+		 
+		 
  }
  
  public function updatemodelelab(Request $request)
@@ -2517,7 +2666,12 @@ $cmd_id    = intval($request->get('cmd_id'));
  }*/
  
  
-	}		
+	}	
+
+
+
+
+	
 	
 	
 
@@ -3380,7 +3534,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function listecommandesrmp($cli_id,$lg )
+		 public static function listecommandesrmp($cli_id  )
     { 
 	//try { 
    	   DB::select("SET @p0='$cli_id' ;");
@@ -3388,7 +3542,8 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_rmp_cmde_liste`(@p0); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return  $result  ;
 	  }
 	  else{
 		  
@@ -3451,7 +3606,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function listemodelesrmp($cli_id,$lg )
+		 public static function listemodelesrmp($cli_id  )
     { 
 	// try {
    	   DB::select("SET @p0='$cli_id' ;");
@@ -3459,7 +3614,8 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_rmp_modele_liste`(@p0); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return    $result  ;
 	  }
 	  else{
 		  
@@ -3529,7 +3685,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function detailscommandermp($id_cmd ,$id_cl ,$lg  )
+		 public static function detailscommandermp($id_cmd    )
     { 
 	// try {
    	   DB::select("SET @p0='$id_cmd' ;");
@@ -3537,7 +3693,8 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_rmp_cmde_detail`(@p0); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return   $result  ;
 	  }
 	  else{
 		  
@@ -3650,7 +3807,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function tarifrmp($nature_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$poids )
+		 public static function tarifrmp($nature_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$poids )
     { 
 //	try {
    	   DB::select("SET @p0='$nature_id' ;");
@@ -3663,7 +3820,8 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_rmp_tarif`(@p0,@p1,@p2,@p3,@p4,@p5); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return   $result ;
 	  }
 	  else{
 		  
