@@ -308,6 +308,8 @@ return [
   	'Demand a deposit'=>'Demand a deposit',	 
   	'Order details'=>'Order details',	 
   	'Amount'=>'Amount',	 
+  	'Credit'=>'Credit',	 
+  	'Estimation'=>'Estimation',	 
   	'Comment'=>'Comment',	 
   	'Type of laboratory'=>'Type of laboratory',	 
   	'Choice of laboratory'=>'Choice of laboratory',	 

@@ -2917,7 +2917,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-		 public function tarifdetails($nature_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$poids,$poids_cendres,$cli_id,$lg )
+		 public function tarifdetails($nature_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$poids,$poids_cendres  )
     { 
 	// try {
    	   DB::select("SET @p0='$nature_id' ;");
@@ -3043,7 +3043,7 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-  public function tarifforfait($nature_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$poids,$cli_id,$lg )
+  public function tarifforfait($nature_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$poids  )
     { 
 	//try { 
    	   DB::select("SET @p0='$nature_id' ;");
@@ -3056,8 +3056,8 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_affinage_prix_forfait`(@p0,@p1,@p2,@p3,@p4,@p5); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
-	  }
+	 return   $result  ;
+ 	  }
 	  else{
 		  
   $error = array(

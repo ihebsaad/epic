@@ -322,7 +322,37 @@ class ProductsController extends Controller
 	
 	
 	
-	
+	  function forfait(Request $request) { 	
+			 $user = auth()->user();  
+    
+					   $nature= $request->get('nature');
+					   $estim_or= $request->get('estim_or');
+					   $estim_ag= $request->get('estim_ag');
+ 					   $estim_pt= $request->get('estim_pt');
+					   $estim_pd= $request->get('estim_pd');
+					   $poids= $request->get('poids');
+					     
+		$data= app('App\Http\Controllers\HomeController')->tarifforfait($nature,$estim_or,$estim_ag,$estim_pt,$estim_pd,$poids  );
+		return $data;
+	 }	
+
+
+	  function tarifcmd(Request $request) { 	
+			 $user = auth()->user();  
+    
+					   $nature= $request->get('nature');
+					   $estim_or= $request->get('estim_or');
+					   $estim_ag= $request->get('estim_ag');
+ 					   $estim_pt= $request->get('estim_pt');
+					   $estim_pd= $request->get('estim_pd');
+					   $poids= $request->get('poids');
+					   $poids_cdr = $request->get('poids_cdr');
+					     
+		$data= app('App\Http\Controllers\HomeController')->tarifdetails($nature,$estim_or,$estim_ag,$estim_pt,$estim_pd,$poids,$poids_cdr  );
+		return $data;
+	 }	
+
+	 
 	public function single($type,$famille1,$famille2,$famille3)
     {
         $produit=  DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->where('fam3_id',$famille3)->first();

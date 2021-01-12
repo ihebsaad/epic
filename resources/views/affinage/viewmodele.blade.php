@@ -74,7 +74,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											<label>{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
 										</div>
 									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   />
+											 <input  onchange="prix()"  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   />
 											  
 									   </div>
 									   
@@ -82,28 +82,58 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 									 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
+											<label>{{__('msg.Weight')}} Cendre <small>{{__('msg.in grams')}}</small>: </label>
+										</div>
+									    <div class="col-lg-12  " style="display:inline!important">
+											 <input  onchange="prix()"  class="form-control"   id="pds_cdr" name="pds_cdr"  type="number" step="0.01" min="0" style="width:130px" value="0"   />
+											  
+									   </div>
+									   
+									 </div>		 									 
+									 
+                                     <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-12">
 											<label for="assiste">
 											<?php $check='' ; if($modele->assiste==1){$check='checked';} ?>
-												<input type="checkbox" name="assiste" id="assiste" <?php echo $check; ?> /> {{__('msg.I wish to attend preparation operations (melting)')}}
+												<input type="checkbox" name="assiste" id="assiste" <?php echo $check; ?> onchange="prix()" /> {{__('msg.I wish to attend preparation operations (melting)')}}
 											</label>
 										</div>									 
-									 </div>									 
+									 </div>
+
+                                     <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-12">
+											<label for="analyse">
+											 
+												<input type="checkbox" name="analyse" id="analyse" onchange="prix()" checked  />  Analyse
+											</label>
+										</div>									 
+									 </div>		
+
+                                     <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-12">
+											<label for="affinage">
+											 
+												<input type="checkbox" name="affinage" id="affinage" onchange="prix()" checked >  Affinage
+											</label>
+										</div>									 
+									 </div>		
+									 
 									 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
 											<label>{{__('msg.My estimates in thousandths')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <input class="form-control" onchange="prix()"  value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"    value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <input class="form-control"  onchange="prix()"   value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <input class="form-control"  onchange="prix()"  value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <input class="form-control" onchange="prix()"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
 									    </div>										
 									      
 									 </div>										 
@@ -127,22 +157,72 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 
                         </div>
 
-                     <!--   <div class="col-lg-5 mb-4">
+   <div class="col-lg-5 mb-4">
 
-                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">  </h6>
-                                </div>
-                                <div class="card-body">
+    <div class="card shadow mb-4">
+     <div class="card-header py-3">
+       <h6 class="m-0 font-weight-bold text-primary"> {{__('msg.Estimation')}} </h6>
+    </div>
+    <div class="card-body">
+	
+ <div class="row pl-10">
+	{{__('msg.Amount')}}: <b><span class="ml-10  " style=" min-width:30px" id="amount">0</span> €</b>
+ </div>
+  <div class="row  mb-20">
+  <div class="col-md-4">
+	Affinage: <b><span class="   " style=" " id="affinageval">0</span> €</b>
+ </div>
+   <div class="col-md-4">
+	Analyse: <b><span class="  " style=" " id="analyseval">0</span> €</b>
+ </div>
+   <div class="col-md-4">
+	Fonte: <b><span class="   " style=" " id="fonteval">0</span> €</b>
+ </div>
+ 
+ </div>
+ 
+  <div class="row pl-50">
+	{{__('msg.Credit')}} {{__('msg.Gold')}}:  <b><span class="ml-10  " style="min-width:30px" id="gold">0</span> €</b>
+ </div>
+  <div class="row pl-50">
+	{{__('msg.Credit')}} {{__('msg.Silver')}}:  <b><span class="ml-10  "style=" min-width:30px" id="silver">0</span> €</b>
+ </div>
+ <div class="row pl-50">
+	{{__('msg.Credit')}} {{__('msg.Platinum')}}:  <b><span class="ml-10  "style=" min-width:30px" id="platinum">0</span> €</b>
+ </div>
+  <div class="row pl-50">
+	{{__('msg.Credit')}} {{__('msg.Palladium')}}:  <b><span class="ml-10  "  style=" min-width:30px" id="palladium">0</span> €</b>
+ </div>
  
  
-                                </div>
-                            </div>
+  </div>
+    </div>
 
                
 
-                        </div>-->
-                    </div>
+    </div> 
+	
+	
+	
+	 <div class="col-lg-7 mb-4">
+        <div class="card shadow mb-4">
+         <div class="card-header py-3">
+           <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Order')}}</h6>
+          </div>
+		  
+         <div class="card-body">
+		 
+		 </div>
+		 
+		 
+     </div>
+	 
+	 
+	 
+	 
+	 
+ </div>
+
 
 					
 <script>
@@ -238,6 +318,99 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 
         }
 			
+			
+			
+		
+			
+function prix()
+{ 
+	        var _token = $('input[name="_token"]').val();
+	        var nature =  $('#nature_lot_ident').val() ;
+	        var estim_or =  $('#estim_titre_au').val() ;
+	        var estim_ag =  $('#estim_titre_ag').val() ;
+	        var estim_pt =  $('#estim_titre_pt').val() ;
+	        var estim_pd =  $('#estim_titre_pd').val() ;
+	        var poids =  $('#pds_lot').val() ;
+	        var poids_cdr =  $('#pds_cdr').val() ;
+			
+	   var  assite=0; var analyse=0; var affinage=0;
+         if ($('#assiste').is(':checked'))
+         {
+			 assiste=1;
+         }		
+         if ($('#analyse').is(':checked'))
+         {
+			 analyse=1;
+         }	 	      
+         if ($('#affinage').is(':checked'))
+         {
+			 affinage=1;
+         }	
+ 
+		 if(assiste ==1 && analyse ==1 && affinage ==1 ) {
+ 				$.ajax({
+                url: "{{ route('forfait') }}",
+                method: "POST",
+                data: {  nature: nature,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token},
+                success: function (data) {
+				 $('#amount').html('0' );
+				 $('#gold').html( '0');
+				 $('#silver').html( '0');
+				 $('#platinum').html( '0');
+				 $('#fonteval').html( '0');
+				 $('#analyseval').html( '0');
+				 $('#affinageval').html( '0');
+				 console.log(data);
+				 $('#amount').html(data[0].montant );
+				 $('#gold').html( data[0].credit_au);
+				 $('#silver').html( data[0].credit_ag);
+				 $('#platinum').html( data[0].credit_pt);
+				 $('#palladium').html( data[0].credit_pd);
+				 
+				 
+			 	}
+						});
+						
+		 }else{
+ 			//	if( parseFloat(poids_cdr)  >0){
+				$.ajax({
+                url: "{{ route('tarifcmd') }}",
+                method: "POST",
+                data: {  nature: nature,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids,poids_cdr:poids_cdr , _token: _token},
+                success: function (data) {
+				 console.log(data);
+				 $('#amount').html('0' );
+				 $('#gold').html( '0');
+				 $('#silver').html( '0');
+				 $('#platinum').html( '0');
+				 $('#fonteval').html( '0');
+				 $('#analyseval').html( '0');
+				 $('#affinageval').html( '0');				 
+				 $('#amount').html(data[0].Affinage +data[0].Analyse +data[0].Fonte );
+				 $('#gold').html( data[0].credit_au);
+				 $('#silver').html( data[0].credit_ag);
+				 $('#platinum').html( data[0].credit_pt);
+				 $('#palladium').html( data[0].credit_pd);
+				 $('#affinageval').html( data[0].Affinage);
+				 $('#fonteval').html( data[0].Fonte);
+				 $('#analayseval').html( data[0].Analyse);
+				 
+			 	}
+						});		 
+			 
+			/* }else{
+				 alert("insérez le poids de cendre");
+				 } */
+			 
+		 }			
+						
+						
+}			
+			
+			
+			
+			
+prix();				
 </script>					
 					
 @endsection

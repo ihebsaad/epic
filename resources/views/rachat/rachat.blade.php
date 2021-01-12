@@ -123,10 +123,10 @@ foreach($natures as $nature)
 								<div class="row pb-10">
 								
 								<div class="col-md-6">
-								{{__('msg.Date')}} :<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
+								{{__('msg.Date')}}:<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
 								</div>
 								<div class="col-md-6">
-								{{__('msg.Total weight')}} : <b><?php echo $commande->poids  ;?> g</b>
+								{{__('msg.Total weight')}}: <b><?php echo $commande->poids  ;?> g</b>
 								</div>								
 								
 								</div>
@@ -134,10 +134,10 @@ foreach($natures as $nature)
 								<div class="row pb-15" >
 								
 								<div class="col-md-6">
-								{{__('msg.order')}} : <b><a href="<?php echo URL("commandermp/".$commande->id);?>"><?php echo   $commande->id ;?></a></b><br>																
+								{{__('msg.order')}}: <b><a href="<?php echo URL("commandermp/".$commande->id);?>"><?php echo   $commande->id ;?></a></b><br>																
 								</div>
 								<div class="col-md-6">
-								{{__('msg.Net value')}} : <b><?php echo $commande->valeur_nette  ;?> </b>								
+								{{__('msg.Net value')}}: <b><?php echo $commande->valeur_nette  ;?> </b>								
 								</div>								
 								
 								</div>								
@@ -163,10 +163,10 @@ foreach($natures as $nature)
 								<div class="row pb-10 ">
 								
 								<div class="col-md-6">
-								{{__('msg.Date')}} :<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
+								{{__('msg.Date')}}:<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
 								</div>
 								<div class="col-md-6">
-								{{__('msg.Total weight')}} : <b><?php echo $commande->poids  ;?> g</b>
+								{{__('msg.Total weight')}}: <b><?php echo $commande->poids  ;?> g</b>
 								</div>								
 								
 								</div>
@@ -174,10 +174,10 @@ foreach($natures as $nature)
 								<div class="row pb-15">
 								
 								<div class="col-md-6">
-								{{__('msg.order')}} : <b><a href="<?php echo URL("commandermp/".$commande->id);?>"><?php echo   $commande->id ;?></a></b><br>																
+								{{__('msg.order')}}: <b><a href="<?php echo URL("commandermp/".$commande->id);?>"><?php echo   $commande->id ;?></a></b><br>																
 								</div>
 								<div class="col-md-6">
-								{{__('msg.Net value')}} : <b><?php echo $commande->valeur_nette  ;?> </b>
+								{{__('msg.Net value')}}: <b><?php echo $commande->valeur_nette  ;?> €</b>
 								
 								</div>								
 								

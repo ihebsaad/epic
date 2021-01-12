@@ -19,11 +19,11 @@ foreach($natures as $nature)
 
 ?>
  
-						<div class="row">
+ <div class="row">
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
-    <li class="breadcrumb-item"><a href="{{route('affinage')}}">{{__('msg.Buyback of precious metals')}}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('rachat')}}">{{__('msg.Buyback of precious metals')}}</a></li>
     <li class="breadcrumb-item"><a href="#">{{__('msg.order')}} <?php echo $commande[0]->cmde_aff_lg; ?></a></li>
 	</ol>
  </nav>

@@ -323,6 +323,8 @@ return [
 	'Demand a deposit'=>'Demander un acompte',	
 	'Order details'=>'Détails de la commande',	
   	'Amount'=>'Montant',	 
+  	'Credit'=>'Crédit',	 
+  	'Estimation'=>'Estimation',	 
   	'Comment'=>'Commentaire',	 
   	'Type of laboratory'=>'Type du laboratoire',	 
   	'Choice of laboratory'=>'Choix du laboratoire',	
