@@ -393,7 +393,7 @@ function prix()
 				 $('#palladium').html( data[0].credit_pd);
 				 $('#affinageval').html( data[0].Affinage);
 				 $('#fonteval').html( data[0].Fonte);
-				 $('#analayseval').html( data[0].Analyse);
+				 $('#analyseval').html( data[0].Analyse);
 				 
 			 	}
 						});		 
