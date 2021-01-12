@@ -54,7 +54,7 @@ foreach($natures as $nature)
 											<label>{{__('msg.Nature of the lot')}}: </label>
 										</div>
 									    <div class="col-lg-9">
-											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" name="nature_lot_ident" required >
+											<select id="nature" class="form-control"  onchange="check()" name="nature_lot_ident" required >
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
@@ -77,13 +77,19 @@ foreach($natures as $nature)
 									   
 									 </div>		
 									 
-                                     <div class="row pl-20 pr-20 mb-10">
+									   <div class="col-sm-6 col-lg-6 " style="display:none" id="cendre" >
+										  <!-- <label>{{__('msg.Weight')}} Cendre <small>{{__('msg.in grams')}}</small>: </label>
+	  									    <input  onchange="prix()"  class="form-control"   id="pds_cdr" name="pds_cdr"  type="number" step="0.01" min="0" style="width:130px" value="0"   />-->
+
+									   </div>
+									 
+                                     <div class="row pl-20 pr-20 mb-10" id="divassiste" style="display:none" >
 										<div class="col-lg-12">
 											<label for="assiste">
-												<input type="checkbox" name="assiste" id="assiste" /> {{__('msg.I wish to attend preparation operations (melting)')}}
+ 												<input type="checkbox" name="assiste" id="assiste"  onchange="prix()" /> <span id="assistetxt"></span>
 											</label>
 										</div>									 
-									 </div>									 
+									 </div>							 
 									 
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
@@ -194,7 +200,38 @@ foreach($natures as $nature)
 			
 			
 			
-			}					
+			}	
+
+function check()	
+{
+   var nature =  parseInt($('#nature').val()) ;
+ 	if (nature == 1 || nature == 2 || nature == 3 || nature ==4 || nature == 5 || nature ==6 || nature == 7 || nature == 8 || nature == 12 || nature ==16 || nature ==30 || nature ==31 || nature ==32 || nature == 33 )
+	{
+		$('#assistetxt').html("{{__('msg.I wish to attend preparation operations (melting)')}}") ;
+		$('#divassiste').show('slow');
+		$('#assiste').prop('checked', true);
+
+	}else{
+		
+		if (nature == 34 || nature == 36  )
+		{
+			$('#assistetxt').html("{{__('msg.I wish to attend the burning')}}") ;
+		    $('#divassiste').show('slow');
+		    $('#cendre').show('slow');			
+			$('#assiste').prop('checked', true);
+
+
+		}else{
+			$('#divassiste').hide('slow');
+			$('#assiste').prop('checked', false);
+
+		}
+	
+	}
+ 	
+  
+}
+			
 </script>					
 					
 @endsection

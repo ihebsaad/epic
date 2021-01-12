@@ -3045,7 +3045,8 @@ $cmd_id    = intval($request->get('cmd_id'));
 	
   public function tarifforfait($nature_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$poids  )
     { 
-	//try { 
+	
+ 	//try { 
    	   DB::select("SET @p0='$nature_id' ;");
    	   DB::select("SET @p1='$titre_or' ;");
    	   DB::select("SET @p2='$titre_argent' ;");
@@ -3055,31 +3056,9 @@ $cmd_id    = intval($request->get('cmd_id'));
    
  	  $result=  DB::select ("  CALL `sp_affinage_prix_forfait`(@p0,@p1,@p2,@p3,@p4,@p5); ");
  
-	  if ($result!= null){
+ 
 	 return   $result  ;
- 	  }
-	  else{
-		  
-  $error = array(
-    "status" => "error",
-    "error_code" => 404,
-    "error_message" => "Aucun résultat trouvé",
-);
-		return response()->json(  $error ,404,array(),JSON_PRETTY_PRINT);
-
-		}
-	
-	/* }catch (\Exception $e){
-	
- 		  $error = array(
-    "status" => "error",
-    "error_code" => 500,
-    "error_message" => "erreur interne",
-);
-		return response()->json(  $error ,500,array(),JSON_PRETTY_PRINT);
-		
- }
- */
+ 
  
 	}		
 			

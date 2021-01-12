@@ -314,5 +314,10 @@ return [
   	'Type of laboratory'=>'Typ laboratorium',	 
   	'Choice of laboratory'=>'Wybór laboratorium',	
   	'My saved buyback models'=>'Moje zapisane modele wykupu',	
-	
+  	'I wish to attend the burning'=>'Chcę uczestniczyć w spalaniu',	 
+   	'Full refining'=>'Rafinacja pełna',	 
+   	'Analysis only'=>'Tylko analiza',	 
+   	'Melting only'=>'Tylko topienie',	
+   	'Save as an order'=>'Zapisz jako zamówienie',		
+   	'Credit on weight account'=>'Kredyt na konto wagi',		
  ];

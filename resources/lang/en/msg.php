@@ -314,5 +314,11 @@ return [
   	'Type of laboratory'=>'Type of laboratory',	 
   	'Choice of laboratory'=>'Choice of laboratory',	 
   	'My saved buyback models'=>'My saved buyback models',	 
-  
+  	'I wish to attend the burning'=>'I wish to attend the burning',	 
+   	'Full refining'=>'Full refining',	 
+   	'Analysis only'=>'Analysis only',	 
+   	'Melting only'=>'Melting only',	 
+    'Save as an order'=>'Save as an order',		
+   	'Credit on weight account'=>'Credit on weight account',		
+	
  ];

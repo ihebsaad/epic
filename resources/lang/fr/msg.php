@@ -329,6 +329,13 @@ return [
   	'Type of laboratory'=>'Type du laboratoire',	 
   	'Choice of laboratory'=>'Choix du laboratoire',	
   	'My saved buyback models'=>'Mes modèles de rachat enregistrés',	
+  	'I wish to attend the burning'=>'Je souhaite assiter au brûlage',
+   	'Full refining'=>'Affinage complet',	 
+   	'Analysis only'=>'Analyse seulement',	 
+   	'Melting only'=>'Fonte seulement',		
+   	'Save as an order'=>'Enregistrer en tant que commande',		
+   	'Credit on weight account'=>'Crédit sur le compte poids',		
+	
 	
 
  ];
