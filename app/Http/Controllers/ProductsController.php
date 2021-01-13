@@ -353,6 +353,50 @@ class ProductsController extends Controller
 	 }	
 
 	 
+	 
+	  function tariflabo(Request $request) { 	
+			 $user = auth()->user();  
+			           $client= $request->get('client');
+					   $choix= $request->get('choix');
+					   $estim_or= $request->get('estim_or');
+					   $estim_ag= $request->get('estim_ag');
+ 					   $estim_pt= $request->get('estim_pt');
+					   $estim_pd= $request->get('estim_pd');
+  					     
+	   DB::select("SET @p0='$client' ;");
+   	   DB::select("SET @p1='$choix' ;");
+   	   DB::select("SET @p2='$estim_or' ;");
+   	   DB::select("SET @p3='$estim_ag' ;");
+   	   DB::select("SET @p4='$estim_pt' ;");
+   	   DB::select("SET @p5='$estim_pd' ;");
+    
+ 	  $result=  DB::select ("  CALL `sp_labo_tarif`(@p0,@p1,@p2,@p3,@p4,@p5); ");				 
+						 
+ 		return $result;
+	 }	
+
+
+
+
+  function tarifrmp(Request $request) { 	
+			 $user = auth()->user();  
+    
+					   $nature= $request->get('nature');
+					   $estim_or= $request->get('estim_or');
+					   $estim_ag= $request->get('estim_ag');
+ 					   $estim_pt= $request->get('estim_pt');
+					   $estim_pd= $request->get('estim_pd');
+					   $poids= $request->get('poids');
+ 					     
+		$data= app('App\Http\Controllers\HomeController')->tarifrmp($nature,$estim_or,$estim_ag,$estim_pt,$estim_pd,$poids   );
+		return $data;
+	 }	
+
+	 
+	 
+	 
+	 
+	 
 	public function single($type,$famille1,$famille2,$famille3)
     {
         $produit=  DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->where('fam3_id',$famille3)->first();

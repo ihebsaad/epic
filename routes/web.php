@@ -24,6 +24,8 @@ Route::get('/deleteproduct/{id}', 'ProductsController@deleteproduct')->name('del
 Route::post('/details', 'ProductsController@details')->name('details');
 Route::post('/forfait', 'ProductsController@forfait')->name('forfait');
 Route::post('/tarifcmd', 'ProductsController@tarifcmd')->name('tarifcmd');
+Route::post('/tarfilabo', 'ProductsController@tarfilabo')->name('tarfilabo');
+Route::post('/tarifrmp', 'ProductsController@tarifrmp')->name('tarifrmp');
 Route::post('/updatecart', 'ProductsController@updatecart')->name('updatecart');
 
 

@@ -29,6 +29,8 @@ foreach($natures as $nature)
 }
 
 $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
+
+ 
  ?>
  
 
@@ -65,7 +67,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                                    <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Type of service')}}: </label>
 									 
-											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" onchange="types()" style="width:350px" />
+											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" onchange="types();prix()" style="width:350px" />
 											<option></option>
 												<?php $i=0; foreach($PrestTypes as $key => $val)
 												{ $i++; 
@@ -215,6 +217,42 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
  	  toggle('types','none');
 	 toggle('type-'+type,'block');
  }
+ 
+ 
+ 
+ 			
+function prix()
+{ 
+	        var _token = $('input[name="_token"]').val();
+	        var choix =  $('#choix_lab_ident').val() ;
+	        var estim_or =  $('#titrage_au').val() ;
+	        var estim_ag =  $('#titrage_ag').val() ;
+	        var estim_pt =  $('#titrage_pt').val() ;
+	        var estim_pd =  $('#titrage_pd').val() ;
+ 			 
+   				$.ajax({
+                url: "{{ route('tarfilabo') }}",
+                method: "POST",
+                data: { client:<?php echo $user['client_id'] ;?>, choix: choix,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token},
+                success: function (data) {
+					console.log(data[0]);
+				 //alert(data);
+				 //$('#amount').html('');
+				   
+				 //$('#amount').html(data[0].prix  );
+				  
+				 
+			 	    }
+			     });
+						
+ 						
+ }			
+ 
+ 
+ 
+ 
+  // prix();
+ 
 </script>					
 					
 @endsection

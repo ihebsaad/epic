@@ -3449,8 +3449,10 @@ $cmd_id    = intval($request->get('cmd_id'));
      *
      */
 	
-	  public function tariflabo($cl_id,$choix_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$lg )
+	  public static function tariflabo($cl_id,$choix_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium  )
     { 
+	
+	
 	//try { 
    	   DB::select("SET @p0='$cl_id' ;");
    	   DB::select("SET @p1='$choix_id' ;");
@@ -3462,7 +3464,7 @@ $cmd_id    = intval($request->get('cmd_id'));
  	  $result=  DB::select ("  CALL `sp_labo_tarif`(@p0,@p1,@p2,@p3,@p4,@p5); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+ 	 return   $result  ;
 	  }
 	  else{
 		  
