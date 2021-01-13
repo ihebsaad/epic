@@ -96,7 +96,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
  											<label style="width:130px" class="ml-10 mt-10 mr-10" >
 											{{__('msg.Cover')}}:
  											</label>
-											  <select  class="form-control" name="choix_couv_ident" id="choix_couv_ident" style="width:300px" required > 
+											  <select  class="form-control" name="choix_couv_ident" id="choix_couv_ident" style="width:300px" required onchange="check2()"> 
 											  <option></option>
 											<?php $check='';
 											foreach( $covers as $cover)
@@ -258,17 +258,34 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
         }
 			
 		 function check(){
-		  var  acompte=0;
-         if ($('#acompte').is(':checked'))
-         {
+			var  acompte=0;
+			if ($('#acompte').is(':checked'))
+			{
 			 acompte=1;
-         }
+			}
 		 
-		 if(acompte==1){
+			if(acompte==1){
 			 $("#choix_couv_ident").val(1);
+			}
+			 else{
+			 $("#choix_couv_ident").val('');
+				}
+ 
+			}
+			
+		 function check2(){
+		  var couv = $("#choix_couv_ident").val();
+		  if (couv != 1)
+		  {$('#acompte').prop('checked', false);
+			}
+			else{
+			  $('#acompte').prop('checked', true);
+			}
+ 
 		 }
-
-}
+		 
+		 
+		 
 </script>					
 					
 @endsection
