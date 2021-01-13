@@ -321,5 +321,6 @@ return [
     'Save as an order'=>'Save as an order',		
    	'Credit on weight account'=>'Credit on weight account',		
 	'I want to receive a deposit as soon as possible'=>'I want to receive a deposit as soon as possible',	
+  	'Cover'=>'Cover',	 
 	
  ];

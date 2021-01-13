@@ -15,10 +15,13 @@ foreach($natures as $nature)
 }
 
 $modele=DB::table('modele_rmp')->where('modele_rmp_ident',$id)->first();
+
+$covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
+
 ?>
  
 
-						<div class="row">
+ <div class="row">
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
@@ -41,22 +44,15 @@ $modele=DB::table('modele_rmp')->where('modele_rmp_ident',$id)->first();
 									  <input  class="form-control"  id="id"  type="hidden"  name="id" value="<?php echo $modele->modele_rmp_ident; ?>" />
 
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
-											<label>{{__('msg.Model name')}}: </label>
-										</div>
-									    <div class="col-lg-9  " style="display:inline!important">
-											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  />
+ 											<label style="width:130px" class="ml-10 mt-10 mr-10" >{{__('msg.Model name')}}: </label>
+ 											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  style="width:350px" />
 											  
-									   </div>
-									   
+ 									   
 									 </div>	
 									 
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-9">
-											<label>{{__('msg.Nature of the lot')}}: </label>
-										</div>
-									    <div class="col-lg-9">
-											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" >
+ 											<label style="width:130px" class="ml-10 mt-10 mr-10" >{{__('msg.Nature of the lot')}}: </label>
+ 											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" style="width:350px" >
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
@@ -65,19 +61,14 @@ $modele=DB::table('modele_rmp')->where('modele_rmp_ident',$id)->first();
 									 
 												}  ?>
 											</select>
-									   </div>
-									  
+ 									  
 									 </div>
   
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
-											<label>{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
-										</div>
-									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   />
+ 											<label style="width:130px" class="ml-10 mt-10 mr-10">{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
+										 	 <input  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   />
 											  
-									   </div>
-									   
+ 									   
 									 </div>		
 									 
                                      <div class="row pl-20 pr-20 mb-10">
@@ -98,8 +89,21 @@ $modele=DB::table('modele_rmp')->where('modele_rmp_ident',$id)->first();
 										</div>									 
 									 </div>	
 
-									  <input type="hidden" name="choix_couv_ident" id="choix_couv_ident" value="1" />  
+                                     <div class="row pl-20 pr-20 mb-10">
+ 											<label style="width:130px" class="ml-10 mt-10 mr-10" >
+											{{__('msg.Cover')}}:
+ 											</label>
+											  <select  class="form-control" name="choix_couv_ident" id="choix_couv_ident" style="width:300px" required > 
+											  <option></option>
+											<?php $check='';
+											foreach( $covers as $cover)
+											  {  if($modele->choix_couv_ident==$cover->choix_couv_ident) {$check="selected='selected'"; }
+												echo ' <option  '.$check.'  value="'.$cover->choix_couv_ident.'">'.$cover->choix_ident_lib.'</option> ';
+											  }
+											?>
+												</select>
 
+ 									 </div>		
 									  
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
@@ -121,8 +125,8 @@ $modele=DB::table('modele_rmp')->where('modele_rmp_ident',$id)->first();
 									 </div>										 
 									 
 <br><br>
-				 	      <div class="row mt-30" style=" height:60px">
-								<button    type="submit" style="position:absolute;right:5% " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+				 	      <div class="row  "  >
+								<button    type="submit"   class="pull-right btn btn-primary btn-icon-split   ml-50   mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>

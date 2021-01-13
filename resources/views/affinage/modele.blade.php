@@ -39,22 +39,15 @@ foreach($natures as $nature)
 									  <input  class="form-control"  id="cl_ident"  type="hidden"  name="cl_ident" value="<?php echo $user['client_id']; ?>" />
 
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
-											<label>{{__('msg.Model name')}}: </label>
-										</div>
-									    <div class="col-lg-9  " style="display:inline!important">
-											 <input  class="form-control"  id="nom"  type="text" required name="modele_nom"  />
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Model name')}}: </label>
+										 	 <input  class="form-control"  id="nom"  type="text" required name="modele_nom" style="width:350px" />
 											  
-									   </div>
-									   
+ 									   
 									 </div>	
 									 
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-9">
-											<label>{{__('msg.Nature of the lot')}}: </label>
-										</div>
-									    <div class="col-lg-9">
-											<select id="nature" class="form-control"  onchange="check()" name="nature_lot_ident" required >
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of the lot')}}: </label>
+ 											<select id="nature" class="form-control"  onchange="check()" name="nature_lot_ident" required style="width:350px" />
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
@@ -62,19 +55,14 @@ foreach($natures as $nature)
 									 
 												}  ?>
 											</select>
-									   </div>
-									  
+ 									  
 									 </div>
   
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
-											<label>{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
-										</div>
-									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"  id="poids"  type="number" step="0.01" min="0.01" style="width:130px" name="pds_lot" required />
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10" >{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
+										  <input  class="form-control"  id="poids"  type="number" step="0.01" min="0.01" style="width:130px" name="pds_lot" required />
 											  
-									   </div>
-									   
+ 									   
 									 </div>		
 									 
 									   <div class="col-sm-6 col-lg-6 " style="display:none" id="cendre" >

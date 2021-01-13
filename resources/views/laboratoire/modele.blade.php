@@ -54,22 +54,16 @@ foreach($natures as $nature)
 									  <input  class="form-control"  id="cl_ident"  type="hidden"  name="cl_ident" value="<?php echo $user['client_id']; ?>" />
  
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
-											<label>{{__('msg.Model name')}}: </label>
-										</div>
-									    <div class="col-lg-9  " style="display:inline!important">
-											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   required   />
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Model name')}}: </label>
+ 											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   required  style="width:350px" />
 											  
-									   </div>
-									   
+ 									   
 									 </div>	
 									 
                                    <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-9">
-											<label>{{__('msg.Type of service')}}: </label>
-										</div>
-									    <div class="col-lg-9">
-											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom"   required   onchange="types()">
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Type of service')}}: </label>
+									 
+											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom"   required style="width:350px"   onchange="types()">
 											<option></option>
 												<?php $i=0; foreach($PrestTypes as $key => $val)
 												{ $i++; 
@@ -78,16 +72,13 @@ foreach($natures as $nature)
 									 
 												}  ?>
 											</select>
-									   </div>
-									  
+ 									  
 								    </div>
 									
                                    <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-9">
-											<label>{{__('msg.Nature of work')}}: </label>
-										</div>
-									    <div class="col-lg-9">
-											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" required >
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of work')}}: </label>
+								 
+											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" style="width:350px"  required >
 											<option></option>
 												<?php $i=0; foreach($PrestLibs   as $key => $val)
 												{ $i++; 
@@ -96,16 +87,13 @@ foreach($natures as $nature)
 									 
 												}  ?>
 											</select>
-									   </div>
-									  
+ 									  
 								    </div>	
 									
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-9">
-											<label>{{__('msg.Nature of products')}}: </label>
-										</div>
-									    <div class="col-lg-9">
-											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" required >
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of products')}}: </label>
+										 
+											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" style="width:350px"  required >
 											<option></option>
 												<?php foreach($Natures as $key => $val)
 												{  
@@ -113,25 +101,24 @@ foreach($natures as $nature)
 									 
 												}  ?>
 											</select>
-									   </div>
-									  
+ 									  
 									 </div>
 
 								 
                                       <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-4">
 											<label>{{__('msg.Quantity')}}: </label>
- 											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:130px" value="1"  required  />
+ 											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:120px" value="1"  required  />
 										 </div>
   
 										<div class="col-lg-4">
-											<label>{{__('msg.Weight')}} <small>{{__('msg.in grams')}}:</small> </label>
-									        <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:130px"  required   />
+											<label>{{__('msg.Weight')}}  </label>
+									        <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:120px"  required   /> g
 
 										</div>
 									  <div class="col-lg-4">
 											<label>{{__('msg.Value')}}: </label>
-										     <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:130px"     />
+										     <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:120px"     />
 
 									   </div>
 											  

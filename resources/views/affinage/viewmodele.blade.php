@@ -27,7 +27,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 	</ol>
  </nav>
                         <!-- Content Column -->
-                        <div class="col-lg-7 mb-4">
+                        <div class="col-lg-8 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -41,22 +41,15 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 									  <input  class="form-control"  id="id"  type="hidden"  name="id" value="<?php echo $modele->modele_affinage_ident; ?>" />
 
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
-											<label>{{__('msg.Model name')}}: </label>
-										</div>
-									    <div class="col-lg-9  " style="display:inline!important">
-											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  />
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Model name')}}: </label>
+									 	 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  style="width:350px" />
 											  
-									   </div>
-									   
+ 									   
 									 </div>	
 									 
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-9">
-											<label>{{__('msg.Nature of the lot')}}: </label>
-										</div>
-									    <div class="col-lg-9">
-											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" onchange="check()" >
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of the lot')}}: </label>
+										 	<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" onchange="check()" style="width:350px" />
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
@@ -65,20 +58,19 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 									 
 												}  ?>
 											</select>
-									   </div>
-									  
+ 									  
 									 </div>
   
                                      <div class="row pl-20 pr-20 mb-10">
-										<div class="col-sm-6 col-lg-6">
-											<label>{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
-										    <input  onchange="prix()"  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   />
+										<div  >
+											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Weight')}}: </label>
+										    <input  onchange="prix()"  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   /> g
 
 										</div>
 	
-									    <div class="col-sm-6 col-lg-6 " style="display:none" id="cendre" >
-										   <label>{{__('msg.Weight')}} Cendre <small>{{__('msg.in grams')}}</small>: </label>
-	  									    <input  onchange="prix()"  class="form-control"   id="pds_cdr" name="pds_cdr"  type="number" step="0.01" min="0" style="width:130px" value="0"   />
+									    <div class=" " style="display:none" id="cendre" >
+										   <label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Weight')}} Cendre: </label>
+	  									    <input  onchange="prix()"  class="form-control"   id="pds_cdr" name="pds_cdr"  type="number" step="0.01" min="0" style="width:130px" value="0"   /> g
 
 									   </div>
 									 
@@ -139,24 +131,30 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 									 </div>										 
 									 
 <br><br>
-				 	      <div class="row mt-30" style=" height:60px">
-								<button    type="submit" style="position:absolute;right:5% " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+		  <div class="row "  >
+				<div class="col-xs-12 col-sm-6 "  >
+								<button    type="submit"  class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
                                         <span class="text" >{{__('msg.Update Model')}}</span>
                                     </button>
-                                </div>
- 
-				 	      <div class="row mt-30" style=" height:60px">
-								<button  disabled  type="submit" style="position:absolute;right:5% " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+				</div>
+				
+				<div class="col-xs-12 col-sm-6 "  >
+				
+		                     	<button  disabled  type="submit"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
                                         <span class="text" >{{__('msg.Save as an order')}}</span>
                                     </button>
-                                </div>		 					 
+ 							</div>		 
 									 
+		  
+		  </div>
+ 
+ 					
 </form>									 
 									 
 									</div>
@@ -166,7 +164,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 
                         </div>
 
-   <div class="col-lg-5 mb-4">
+   <div class="col-lg-4 mb-4">
 
     <div class="card shadow mb-4">
      <div class="card-header py-3">
