@@ -171,7 +171,20 @@ class HomeController extends Controller
     }
 	
 	 
-	
+	   public static function natures3()
+    { 
+ 
+ 	  $result=  DB::select (" CALL `sp_rmp_nature_lot`(); ");
+ 
+  if ($result!= null){
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return  $result ;
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
 
  public function addmodele(Request $request)
 {

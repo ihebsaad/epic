@@ -9,12 +9,14 @@ use App\Http\Controllers\HomeController ;
 
 $commandes=HomeController::listecommandesrmp($user['client_id'],'');
 $modeles=HomeController::listemodelesrmp($user['client_id'],'');
-$natures=HomeController::natures( );
+$natures=HomeController::natures2( );
 //dd($natures );
 $Natures=array();
 foreach($natures as $nature)
 {
-	$Natures[$nature->nature_lot]=$nature->libelle;
+	if($nature->metier_CODE=='RMP'){
+	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
+	}
 }
 
 ?>

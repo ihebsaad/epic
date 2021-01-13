@@ -7,11 +7,14 @@
 use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
 
-  $natures=HomeController::natures( );
- $Natures=array();
+$natures=HomeController::natures2( );
+//dd($natures );
+$Natures=array();
 foreach($natures as $nature)
 {
-	$Natures[$nature->nature_lot]=$nature->libelle;
+	if($nature->metier_CODE=='RMP'){
+	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
+	}
 }
 $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
@@ -56,7 +59,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
-												echo '<option     data-toggle="tooltip" data-placement="bottom" value="'.$nature->nature_lot.'" title="'.$nature->commentaire.'" >'.$nature->libelle.'</option>';
+												echo '<option     data-toggle="tooltip" data-placement="bottom" value="'.$nature->nature_lot_ident.'" title="'.$nature->nature_lot_commentaire.'" >'.$nature->nature_lot_nom.'</option>';
 									 
 												}  ?>
 											</select>

@@ -7,7 +7,7 @@
 use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
 
-  $natures=HomeController::natures( );
+  $natures=HomeController::natures3( );
  $Natures=array();
 foreach($natures as $nature)
 {
