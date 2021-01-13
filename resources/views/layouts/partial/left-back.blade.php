@@ -80,7 +80,7 @@ $user_type=$user->user_type;
 	  
  	  <li class="nav-item   <?php  ?>">
         <a class="nav-link" href="{{route('rachat')}}"   <?php if( strpos($view_name  ,'rachat') !== false )  {echo 'style="font-weight:800"'; } ?> >
-           <span> {{__('msg.Buyback')}} </span></a>
+           <span> {{__('msg.Buyback of precious metals')}} </span></a>
       </li>	 	  
       <!-- Divider -->
       <hr class="sidebar-divider">
