@@ -19,6 +19,8 @@ foreach($natures as $nature)
 	}
 }
 
+$covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
+
 ?>
 <style>
  .btn-default{ border:1px solid lightgrey!important;}
@@ -56,7 +58,7 @@ foreach($natures as $nature)
             <thead>
             <tr id="headtable">
                 <th style="width:15%">{{__('msg.Name')}}</th>
-                 <th style="width:25%">{{__('msg.Metals')}}</th>
+                 <th style="width:20%">{{__('msg.Metals')}}</th>
                 <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.attend the melting')}}</th>
                 <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.Deposit')}}</th>
                 <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.Cover')}}</th>
@@ -90,7 +92,14 @@ foreach($natures as $nature)
                 </td>
 				<td style="font-size:13px;"><?php if($modele->assiste){echo __('msg.Yes') ;}?></td>
 				<td style="font-size:13px;"><?php if($modele->acompte){echo __('msg.Yes') ;}?></td>
-				<td style="font-size:13px;"> </td>
+				<td style="font-size:13px;">
+											<?php  foreach( $covers as $cover)
+											  {
+												  if($modele->choix_couv_id ==$cover->choix_couv_ident)
+												  {echo $cover->choix_ident_lib;}
+ 											  }
+											?>
+				</td>
 
   				</tr>
 			@endforeach

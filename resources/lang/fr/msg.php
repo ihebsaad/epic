@@ -313,7 +313,7 @@ return [
   	'Country'=>'Pays',
   	'Direct debit address'=>'Adresse de prélèvement',	 
   	'Delivery address'=>'Adresse de livraison',	 
-  	'Buyback of precious metals'=>'Rachat métaux précieux',	 
+  	'Buyback of precious metals'=>'Rachat Métaux Précieux',	 
   	'Buyback'=>'Rachat',	 
   	'Announcement weight'=>'Poids annonce',	 
   	'Weight received'=>'Poids reçu',	 
