@@ -41,7 +41,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 	</ol>
  </nav>
                         <!-- Content Column -->
-                        <div class="col-lg-7 mb-4">
+                        <div class="col-lg-9 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -119,38 +119,24 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 									  
 									 </div>								 
 									
-                                     <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
+                                      <div class="row pl-20 pr-20 mb-10">
+										<div class="col-lg-4">
 											<label>{{__('msg.Quantity')}}: </label>
-										</div>
-									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:130px" value="<?php echo $modele->qte; ?>"  required  />
-											  
-									   </div>
-									   
-									 </div>	
+ 											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:130px" value="1"  required  value="<?php echo $modele->qte;?>" />
+										 </div>
+  
+										<div class="col-lg-4">
+											<label>{{__('msg.Weight')}} <small>{{__('msg.in grams')}}:</small> </label>
+									        <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:130px"  required  value="<?php echo $modele->poids;?>"   />
 
-									 
-                                     <div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
-											<label>{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
 										</div>
-									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->poids; ?>"   />
-											  
-									   </div>
-									   
-									 </div>		
- 
-									 
-									<div class="row pl-20 pr-20 mb-10">
-										<div class="col-lg-12">
+									  <div class="col-lg-4">
 											<label>{{__('msg.Value')}}: </label>
-										</div>
-									    <div class="col-lg-12  " style="display:inline!important">
-											 <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->valeur; ?>"   />
-											  
+										     <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:130px"  value="<?php echo $modele->valeur;?>"     />
+
 									   </div>
+											  
+ 									   
 									 </div>	
 									 
 									 
@@ -175,19 +161,32 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 									 
 
 									 
-									 
-<br><br>
-				 	      <div class="row mt-30" style=" height:60px">
-								<button     type="submit" style="position:absolute;right:5% " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+		 
+				 	      <div class="row " style=" ">
+				 	      <div class="col-xs-12 col-sm-6 " style=" ">
+								<button     type="submit"  class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
                                         <span class="text" >{{__('msg.Update Model')}}</span>
                                     </button>
-                                </div>		 					 
+                                </div>	
+
+
+				 	          <div class="col-xs-12 col-sm-6" style=" " >
+								<button   disabled  type="submit"   class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-save"></i>
+                                        </span>
+                                        <span class="text" >{{__('msg.Save as an order')}}</span>
+                                    </button>
+                                </div>									
 									 
 </form>									 
 									 
+						 </div>
+									
+									
 									</div>
                               </div>
 

@@ -88,7 +88,7 @@ foreach($natures as $nature)
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
 											<label for="acompte">
-												<input type="checkbox" name="acompte" id="acompte" /> {{__('msg.Demand a deposit')}}
+												<input type="checkbox" name="acompte" id="acompte" /> {{__('msg.I want to receive a deposit as soon as possible')}}
 											</label>
 										</div>									 
 									 </div>		

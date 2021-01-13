@@ -319,5 +319,7 @@ return [
    	'Analysis only'=>'Tylko analiza',	 
    	'Melting only'=>'Tylko topienie',	
    	'Save as an order'=>'Zapisz jako zamówienie',		
-   	'Credit on weight account'=>'Kredyt na konto wagi',		
+   	'Credit on weight account'=>'Kredyt na konto wagi',	
+	'I want to receive a deposit as soon as possible'=>'Chcę jak najszybciej otrzymać depozyt',	
+	
  ];

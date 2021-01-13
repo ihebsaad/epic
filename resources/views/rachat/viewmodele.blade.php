@@ -93,7 +93,7 @@ $modele=DB::table('modele_rmp')->where('modele_rmp_ident',$id)->first();
 										<div class="col-lg-12">
 											<label for="acompte">
 											<?php $checked='' ; if($modele->demande_acompte==1){$checked='checked';} ?>											
-												<input type="checkbox" name="acompte" id="acompte" <?php echo $checked; ?>  /> {{__('msg.Demand a deposit')}}
+												<input type="checkbox" name="acompte" id="acompte" <?php echo $checked; ?>  /> {{__('msg.I want to receive a deposit as soon as possible')}}
 											</label>
 										</div>									 
 									 </div>	
