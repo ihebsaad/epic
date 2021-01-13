@@ -87,7 +87,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 										<div class="col-lg-12">
 											<label for="acompte">
 											<?php $checked='' ; if($modele->demande_acompte==1){$checked='checked';} ?>											
-												<input type="checkbox" name="acompte" id="acompte" <?php echo $checked; ?>  /> {{__('msg.I want to receive a deposit as soon as possible')}}
+												<input type="checkbox" name="acompte" id="acompte" <?php echo $checked; ?> onchange="check()" /> {{__('msg.I want to receive a deposit as soon as possible')}}
 											</label>
 										</div>									 
 									 </div>	
@@ -257,6 +257,18 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
         }
 			
+		 function check(){
+		  var  acompte=0;
+         if ($('#acompte').is(':checked'))
+         {
+			 acompte=1;
+         }
+		 
+		 if(acompte==1){
+			 $("#choix_couv_ident").val(1);
+		 }
+
+}
 </script>					
 					
 @endsection
