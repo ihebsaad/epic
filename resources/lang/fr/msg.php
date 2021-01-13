@@ -337,6 +337,7 @@ return [
    	'Credit on weight account'=>'Crédit sur le compte poids',		
 	'I want to receive a deposit as soon as possible'=>'Je souhaite recevoir un acompte dès que possible',	
   	'Cover'=>'Couverture',	 
+  	'Deposit'=>'Acompte',	 
 	
 	
 

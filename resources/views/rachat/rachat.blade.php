@@ -57,6 +57,10 @@ foreach($natures as $nature)
             <tr id="headtable">
                 <th style="width:15%">{{__('msg.Name')}}</th>
                  <th style="width:25%">{{__('msg.Metals')}}</th>
+                <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.attend the melting')}}</th>
+                <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.Deposit')}}</th>
+                <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.Cover')}}</th>
+				 
                 </tr>
             </thead>
             <tbody>
@@ -84,6 +88,9 @@ foreach($natures as $nature)
                  </span>
                  <?php }   ?>    
                 </td>
+				<td style="font-size:13px;"><?php if($modele->assiste){echo __('msg.Yes') ;}?></td>
+				<td style="font-size:13px;"><?php if($modele->acompte){echo __('msg.Yes') ;}?></td>
+				<td style="font-size:13px;"> </td>
 
   				</tr>
 			@endforeach
