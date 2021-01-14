@@ -119,16 +119,16 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 											<label>{{__('msg.My estimates in thousandths')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" onchange="prix()" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <input class="form-control"   value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" onchange="prix();checkt(this);" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"    value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" onchange="prix()" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <input class="form-control"    value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" onchange="prix();checkt(this);" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" onchange="prix()" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <input class="form-control"   value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" onchange="prix();checkt(this);" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" onchange="prix()" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <input class="form-control"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" onchange="prix();checkt(this);" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
 									    </div>										
 									      
 									 </div>										 
@@ -369,8 +369,36 @@ function prix()
 			     });
 						
  				
- }					 
+ }				
+
+ function checkt(elm)
+ { 	 var id =elm.id;         
+			var estim_or =  parseFloat($('#estim_titre_au').val()) ;
+	        var estim_ag =  parseFloat($('#estim_titre_ag').val()) ;
+	        var estim_pt =  parseFloat($('#estim_titre_pt').val()) ;
+	        var estim_pd =  parseFloat($('#estim_titre_pd').val()) ;
+			var total = estim_or + estim_ag+ estim_pt +estim_pd;
+		if(total >1000)	{
+ $.notify({
+   message: 'le total ne doit pas dépasser 1000',
+   icon: 'glyphicon glyphicon-remove-circle'
+   },{
+    type: 'danger',
+    delay: 3000,
+     timer: 1000,
+     placement: {
+      from: "bottom",
+        align: "right"
+      },
+         });
 	
+	$('#'+id).val(0);
+	$('#'+id).focus();
+	
+	}			
+
+	
+ }					
 	prix();
 </script>					
 					

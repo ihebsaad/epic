@@ -115,16 +115,16 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 											<label>{{__('msg.My estimates in thousandths')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="or" type="number" step="0.01" min="0" name="estim_titre_au"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <input class="form-control"  id="or" type="number" step="0.01" min="0" name="estim_titre_au" onchange="checkt(this)" value="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="argent" type="number" step="0.01" min="0" name="estim_titre_ag"  /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <input class="form-control"  id="argent" type="number" step="0.01" min="0" name="estim_titre_ag" onchange="checkt(this)" value="0" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="platine" type="number" step="0.01" min="0" name="estim_titre_pt"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <input class="form-control"  id="platine" type="number" step="0.01" min="0" name="estim_titre_pt" onchange="checkt(this)" value="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  id="palladium" type="number" step="0.01" min="0" name="estim_titre_pd"  /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <input class="form-control"  id="palladium" type="number" step="0.01" min="0" name="estim_titre_pd" onchange="checkt(this)" value="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
 									    </div>										
 									      
 									 </div>										 
@@ -247,7 +247,32 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
  
 		 }
 
+	 function checkt(elm)
+ { 	 var id =elm.id;         
+			var estim_or =  parseFloat($('#or').val()) ;
+	        var estim_ag =  parseFloat($('#argent').val()) ;
+	        var estim_pt =  parseFloat($('#platine').val()) ;
+	        var estim_pd =  parseFloat($('#palladium').val()) ;
+			var total = estim_or + estim_ag+ estim_pt +estim_pd;
+		if(total >1000)	{
+ $.notify({
+   message: 'le total ne doit pas dépasser 1000',
+   icon: 'glyphicon glyphicon-remove-circle'
+   },{
+    type: 'danger',
+    delay: 3000,
+     timer: 1000,
+     placement: {
+      from: "bottom",
+        align: "right"
+      },
+         });
 	
+	$('#'+id).val(0);
+	$('#'+id).focus();
+	
+	}	
+ }	
 </script>					
 					
 @endsection

@@ -89,20 +89,20 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 
 									 <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-4">
-											<label for="affinage" onclick="prix()" >
+											<label for="affinage"   >
 											 
-												<input type="radio" name="refining" id="affinage"   checked >   {{__('msg.Full refining')}}
+												<input type="radio" name="refining" id="affinage"  onchange="prix()"  checked >   {{__('msg.Full refining')}}
 										</div>
 										<div class="col-lg-4">
-											<label for="melting" onclick="prix()">
+											<label for="melting"  >
 											 
-												<input type="radio" name="refining" id="melting"    >  {{__('msg.Melting only')}} 
+												<input type="radio" name="refining" id="melting" onchange="prix()"   >  {{__('msg.Melting only')}} 
 											</label>
 										</div>										
 										<div class="col-lg-4">
-											<label for="analyse" onclick="prix()" >
+											<label for="analyse"  >
 											 
-												<input type="radio" name="refining" id="analyse"    />  {{__('msg.Analysis only')}} 
+												<input type="radio" name="refining" id="analyse"  onchange="prix()"  />  {{__('msg.Analysis only')}} 
 											</label>
 										</div>	
 											
@@ -116,16 +116,16 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											<label>{{__('msg.My estimates in thousandths')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control" onchange="prix()"  value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <input class="form-control" onchange="prix();checkt(this)"  value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  onchange="prix()"   value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <input class="form-control"  onchange="prix();checkt(this)"   value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  onchange="prix()"  value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <input class="form-control"  onchange="prix();checkt(this)"  value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control" onchange="prix()"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <input class="form-control" onchange="prix();checkt(this)"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
 									    </div>										
 									      
 									 </div>										 
@@ -177,10 +177,10 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
  </div>
   <div class="row  mb-20">
   
-   <div class="col-md-4" id="divfonte" style="display:none">
+   <div class="col-md-6" id="divfonte" style="display:none">
 	Fonte: <b><span class="   " style=" " id="fonteval"></span> €</b>
    </div>
-   <div class="col-md-4"  id="divanalyse"  style="display:none">
+   <div class="col-md-6"  id="divanalyse"  style="display:none">
 	Analyse: <b><span class="  " style=" " id="analyseval"></span> €</b>
    </div>
   <!-- <div class="col-md-4"  id="divaffinage"  style="display:none">
@@ -188,18 +188,19 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
  </div>-->
  
  </div>
- {{__('Credit on weight account')}}
+ 
+ <div style="display:none" id="credit" >{{__('msg.Credit weight account')}}</div>
   <div class="row mb-30">
-  <div class="col-sm-5" id="divor"  style="display:none">
+  <div class="col-sm-6" id="divor"  style="display:none">
 	{{__('msg.Gold')}}:  <b><span class="ml-10  " style="min-width:30px" id="gold"></span> g</b>
  </div>
-  <div class="col-sm-5" id="divsilv"  style="display:none">
+  <div class="col-sm-6" id="divsilv"  style="display:none">
 	{{__('msg.Silver')}}:  <b><span class="ml-10  "style=" min-width:30px" id="silver"></span> g</b>
  </div>
- <div class="col-sm-5"  id="divplat"  style="display:none">
+ <div class="col-sm-6"  id="divplat"  style="display:none">
 	Plat:  <b><span class="ml-10  "style=" min-width:30px" id="platinum"></span> g</b>
  </div>
-  <div class="col-sm-5"  id="divpall"   style="display:none">
+  <div class="col-sm-6"  id="divpall"   style="display:none">
 	Pall :  <b><span class="ml-10  "  style=" min-width:30px" id="palladium"></span> g</b>
  </div>
  </div>
@@ -337,25 +338,28 @@ function prix()
 				 $('#divpall').hide();
  				 $('#divfonte').hide();
  				 $('#divanalyse').hide();
+ 				 $('#credit').hide();
 	    var affinage=0;
    	      
          if ($('#affinage').is(':checked'))
          {
-			 affinage=1; $('#divanalyse').hide();  $('#divfonte').hide();   $('#divmont').show();
-         }	
+			 affinage=1; $('#divanalyse').hide();  $('#divfonte').hide();   $('#divmont').show();    $('#credit').show();
+          }	
 		 var analyse=0;
          if ($('#analyse').is(':checked'))
          {
 			 analyse=1;	 $('#divanalyse').show();	$('#divfonte').hide(); $('#divmont').hide();
+ 			 
 
          }	
 		  var fonte=0;  
 		 if ($('#melting').is(':checked'))
          {
 			 fonte=1;  $('#divfonte').show();	$('#divanalyse').hide();  $('#divmont').hide();
+ 			 
 
          }	
- 		 if( affinage ==1 ) {
+  		 if( affinage ==1 ) {
   				$.ajax({
                 url: "{{ route('forfait') }}",
                 method: "POST",
@@ -381,7 +385,7 @@ function prix()
 				 $('#silver').html( data[0].credit_ag );
 				 $('#platinum').html( data[0].credit_pt );
 				 $('#palladium').html( data[0].credit_pd );
-				 
+
 				 
 			 	}
 						});
@@ -405,12 +409,12 @@ function prix()
 				 $('#affinageval').html( '');	
 			 
 							  
-				 if( parseFloat(data[0].credit_au)>0)$('#divor').show();
-				 if( parseFloat(data[0].credit_ag)>0)$('#divsilv').show();
-				 if( parseFloat(data[0].credit_pt)>0)$('#divplat').show();
-				 if( parseFloat(data[0].credit_pd)>0)$('#divpall').show();
+				  $('#divor').hide();
+				  $('#divsilv').hide();
+				  $('#divplat').hide();
+				  $('#divpall').hide();
 				  							  
-				 $('#amount').html(data[0].Affinage +data[0].Analyse +data[0].Fonte );
+				// $('#amount').html(data[0].Affinage +data[0].Analyse +data[0].Fonte );
 				 $('#gold').html( data[0].credit_au.toFixed(2));
 				 $('#silver').html( data[0].credit_ag.toFixed(2));
 				 $('#platinum').html( data[0].credit_pt.toFixed(2));
@@ -460,7 +464,35 @@ function check()
  	
   
 }		
-							
+				
+
+ function checkt(elm)
+ { 	 var id =elm.id;         
+			var estim_or =  parseFloat($('#estim_titre_au').val()) ;
+	        var estim_ag =  parseFloat($('#estim_titre_ag').val()) ;
+	        var estim_pt =  parseFloat($('#estim_titre_pt').val()) ;
+	        var estim_pd =  parseFloat($('#estim_titre_pd').val()) ;
+			var total = estim_or + estim_ag+ estim_pt +estim_pd;
+		if(total >1000)	{
+ $.notify({
+   message: 'le total ne doit pas dépasser 1000',
+   icon: 'glyphicon glyphicon-remove-circle'
+   },{
+    type: 'danger',
+    delay: 3000,
+     timer: 1000,
+     placement: {
+      from: "bottom",
+        align: "right"
+      },
+         });
+	
+	$('#'+id).val(0);
+	$('#'+id).focus();
+	
+	}	
+ }
+	
 prix();				
 </script>					
 					

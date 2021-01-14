@@ -319,7 +319,7 @@ return [
    	'Analysis only'=>'Analysis only',	 
    	'Melting only'=>'Melting only',	 
     'Save as an order'=>'Save as an order',		
-   	'Credit on weight account'=>'Crédit en compte poids',		
+   	'Credit weight account'=>'Crédit compte poids',		
 	'I want to receive a deposit as soon as possible'=>'I want to receive a deposit as soon as possible',	
   	'Cover'=>'Cover',	 
   	'Deposit'=>'Cover',	 

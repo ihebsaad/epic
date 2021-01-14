@@ -25,6 +25,14 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 <style>
  .btn-default{ border:1px solid lightgrey!important;}
  .dt-buttons{background-color:#f8f9fc;margin-bottom:10px;}
+ 
+ select::-ms-expand {
+    display: none!important;
+}
+select{
+    -webkit-appearance: none;
+    appearance: none;
+}
 </style>
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
@@ -59,7 +67,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
             <tr id="headtable">
                 <th style="width:15%">{{__('msg.Name')}}</th>
                  <th style="width:20%">{{__('msg.Metals')}}</th>
-                <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.attend the melting')}}</th>
+                <th style="width:12%;font-size:10px;padding-right:5px;">{{__('msg.attend the melting')}}</th>
                 <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.Deposit')}}</th>
                 <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.Cover')}}</th>
 				 
@@ -90,15 +98,20 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
                  </span>
                  <?php }   ?>    
                 </td>
-				<td style="font-size:13px;"><?php if($modele->assiste){echo __('msg.Yes') ;}?></td>
-				<td style="font-size:13px;"><?php if($modele->acompte){echo __('msg.Yes') ;}?></td>
-				<td style="font-size:13px;">
-											<?php  foreach( $covers as $cover)
-											  {
-												  if($modele->choix_couv_id ==$cover->choix_couv_ident)
-												  {echo $cover->choix_ident_lib;}
+				<td style="font-size:13px;text-align:center"><?php if($modele->assiste){echo __('msg.Yes') ;}?></td>
+				<td style="font-size:13px;text-align:center"><?php if($modele->acompte){echo __('msg.Yes') ;}?></td>
+				<td style="font-size:13px;">  										
+			    <small><select     style="background-color:transparent;border:none;color:black; "  > 
+											  <option></option> 
+											<?php  
+											foreach( $covers as $cover)
+											  {  if($modele->choix_couv_id==$cover->choix_couv_ident) {//$check="selected='selected'"; 
+											   echo ' <option   selected="selected" value="'.$cover->choix_couv_ident.'">'.$cover->choix_ident_lib.'</option> ';
+
+											  }
  											  }
 											?>
+			     </select></small>											 
 				</td>
 
   				</tr>
