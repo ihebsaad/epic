@@ -48,14 +48,14 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:130px" class="ml-10 mt-10 mr-10" >{{__('msg.Model name')}}: </label>
- 											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  style="width:350px" />
+ 											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  style="width:350px"  onchange="prix()" />
 											  
  									   
 									 </div>	
 									 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:130px" class="ml-10 mt-10 mr-10" >{{__('msg.Nature of the lot')}}: </label>
- 											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" style="width:350px" >
+ 											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" style="width:350px" onchange="prix()" >
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
@@ -69,7 +69,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
   
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:130px" class="ml-10 mt-10 mr-10">{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
-										 	 <input  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"   />
+										 	 <input  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"  onchange="prix()"   />
 											  
  									   
 									 </div>		
@@ -96,7 +96,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
  											<label style="width:130px" class="ml-10 mt-10 mr-10" >
 											{{__('msg.Cover')}}:
  											</label>
-											  <select  class="form-control" name="choix_couv_ident" id="choix_couv_ident" style="width:300px" required onchange="check2()"> 
+											  <select  class="form-control" name="choix_couv_ident" id="choix_couv_ident" style="width:300px" required onchange="check2();prix()"> 
 											  <option></option>
 											<?php $check='';
 											foreach( $covers as $cover)
@@ -113,16 +113,16 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 											<label>{{__('msg.My estimates in thousandths')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <input class="form-control"   value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" onchange="prix()" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"    value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <input class="form-control"    value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" onchange="prix()" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <input class="form-control"   value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" onchange="prix()" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <input class="form-control"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" onchange="prix()" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
 									    </div>										
 									      
 									 </div>										 
@@ -153,7 +153,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
                                     <h6 class="m-0 font-weight-bold text-primary">Estimations  </h6>
                                 </div>
                                 <div class="card-body" style="min-height:200px">
-								<div class="pl-20">{{__('msg.Amount')}} : <span style="font-weight:bold" id="amount"></span></div>
+								<div class="pl-20">{{__('msg.Value')}} : <span style="font-weight:bold" id="amount"></span></div>
  
                                 </div>
                             </div>
@@ -312,12 +312,12 @@ function prix()
 			"content-type": "application/json"
 			},
 				success: function (data) {
-					console.log(data[0].prix);
+					console.log(data[0].valeur);
 					//alert(data[0].prix);
-					var prix=parseFloat(data[0].prix);
-				 if(   prix  > 0 ) 
+					var valeur=parseFloat(data[0].valeur);
+				 if(   valeur  > 0 ) 
 					 {
-					 $('#amount').html(prix +' €');
+					 $('#amount').html(valeur +' €');
 					 }
 			 	  
 
