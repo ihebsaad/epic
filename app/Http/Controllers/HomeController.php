@@ -3463,31 +3463,8 @@ $cmd_id    = intval($request->get('cmd_id'));
     
  	  $result=  DB::select ("  CALL `sp_labo_tarif`(@p0,@p1,@p2,@p3,@p4,@p5); ");
  
-	  if ($result!= null){
- 	 return   $result  ;
-	  }
-	  else{
-		  
-  $error = array(
-    "status" => "error",
-    "error_code" => 404,
-    "error_message" => "Aucun résultat trouvé",
-);
-		return response()->json(  $error ,404,array(),JSON_PRETTY_PRINT);
-
-		}
-	
-	/* }catch (\Exception $e){
-	
- 		  $error = array(
-    "status" => "error",
-    "error_code" => 500,
-    "error_message" => "erreur interne",
-);
-		return response()->json(  $error ,500,array(),JSON_PRETTY_PRINT);
-		
- }*/
  
+ return $result;
 	}		
 			
 		

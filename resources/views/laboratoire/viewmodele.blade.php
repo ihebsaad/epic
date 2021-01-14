@@ -5,7 +5,7 @@
 
 <?php
 use App\Http\Controllers\HomeController ;
- $user = auth()->user();  
+  $user = auth()->user();  
  
 $prestations=HomeController::listeprestations($user['client_id'] );
 $PrestLibs=array();
@@ -30,7 +30,8 @@ foreach($natures as $nature)
 
 $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
- 
+/* $tarif=HomeController::tariflabo(10099,2,100,0,0,0);
+ dd($tarif);*/
  ?>
  
 
@@ -59,7 +60,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Model name')}}: </label>
 									 
-											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>" style="width:350px" />
+											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>" style="width:350px" onchange="prix()"/>
 											  
  									   
 									 </div>	
@@ -82,7 +83,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of work')}}: </label>
 										 
-											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" style="width:350px" />
+											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" style="width:350px"  onchange="prix()" />
 											<option></option>
 												<?php $i=0; foreach($PrestLibs   as $key => $val)
 												{ $i++; 
@@ -97,7 +98,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of products')}}: </label>
 										 
-											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" style="width:350px" />
+											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" style="width:350px" onchange="prix()" />
 											<option></option>
 												<?php foreach($Natures as $key => $val)
 												{  
@@ -112,7 +113,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                                       <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-4">
 											<label >{{__('msg.Quantity')}}: </label>
- 											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:120px" value="1"  required  value="<?php echo $modele->qte;?>" />
+ 											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:120px" value="1"  required  value="<?php echo $modele->qte;?>" onchange="prix()" />
 										 </div>
   
 										<div class="col-lg-4">
@@ -135,22 +136,36 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 											<label>{{__('msg.Metals to be analyzed')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <label for="titrage_au" ><input class="form-control"     id="titrage_au" name="titrage_au"  type="checkbox"  style="width:25px" value="1" <?php if($modele->titrage_au==1){?> checked <?php } ?>  /> <span class="  mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span></label>
+											 <label for="titrage_au"  onclick="verif('au')"  ><input class="form-control"     id="titrage_au" name="titrage_au"  type="checkbox"  style="width:25px" value="1" <?php if($modele->titrage_au==1){?> checked <?php } ?>  /> <span class="  mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span></label>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <label for="titrage_ag" ><input class="form-control"      id="titrage_ag" name="titrage_ag" type="checkbox" style="width:25px" value="1" <?php if($modele->titrage_ag==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span></label>
+											 <label for="titrage_ag" onclick="verif('ag')"><input class="form-control"      id="titrage_ag" name="titrage_ag" type="checkbox" style="width:25px" value="1" <?php if($modele->titrage_ag==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span></label>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <label for="titrage_pt" ><input class="form-control"    id="titrage_pt" name="titrage_pt" type="checkbox"  style="width:25px"  value="1" <?php if($modele->titrage_pt==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span></label>
+											 <label for="titrage_pt" onclick="verif('pt')"><input class="form-control"    id="titrage_pt" name="titrage_pt" type="checkbox"  style="width:25px"  value="1" <?php if($modele->titrage_pt==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span></label>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <label for="titrage_pd" ><input class="form-control"    id="titrage_pd" name="titrage_pd" type="checkbox"  style="width:25px" value="1" <?php if($modele->titrage_pd==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span></label>
+											 <label for="titrage_pd"  onclick="verif('pd')" ><input class="form-control"    id="titrage_pd" name="titrage_pd" type="checkbox"  style="width:25px" value="1" <?php if($modele->titrage_pd==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span></label>
 									    </div>										
 									      
 									 </div>	
 									 
 
-									 
+  <label class="pl-20">{{__('Credit on weight account')}}</label>
+   <div class="row pl-20 pr-20 mb-10">
+  <div class="col-sm-3" id="divor"  <?php if($modele->titrage_au!=1){?> style="display:none"  <?php } ?>  >
+	{{__('msg.Gold')}}:  <b><input type="number" max="999" class="ml-10  form-control" style="width:70px" id="gold"  onchange="prix()"  value="0" ></input> g</b>
+ </div>
+  <div class="col-sm-3" id="divsilv" <?php if($modele->titrage_ag!=1){?> style="display:none" <?php } ?> >
+	{{__('msg.Silver')}}:  <b><input type="number" max="999" class="ml-10 form-control "style=" width:70px" id="silver"  onchange="prix()" value="0"></input> g</b>
+ </div>
+ <div class="col-sm-3"  id="divplat" <?php if($modele->titrage_pd!=1){?> style="display:none"  <?php } ?>>
+	Plat:  <b><input type="number" max="999" class="ml-10 form-control "style=" width:70px" id="platinum"  onchange="prix()" value="0"></input> g</b>
+ </div>
+  <div class="col-sm-3"  id="divpall"  <?php if($modele->titrage_pt!=1){?> style="display:none"  <?php } ?>   >
+	Pall :  <b><input type="number" max="999" class="ml-10 form-control "  style=" width:70px" id="palladium" onchange="prix()" value="0"></input> g</b>
+ </div>
+ </div>
 		 
 				 	      <div class="row " style=" ">
 				 	      <div class="col-xs-12 col-sm-6 " style=" ">
@@ -184,21 +199,21 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
                         </div>
 
-                     <!--   <div class="col-lg-5 mb-4">
+                       <div class="col-lg-4 mb-4">
 
                              <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">  </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Estimations  </h6>
                                 </div>
-                                <div class="card-body">
- 
+                                <div class="card-body" style="min-height:200px">
+								<div class="pl-20">{{__('msg.Amount')}} : <span style="font-weight:bold" id="amount"></span></div>
  
                                 </div>
                             </div>
 
                
 
-                        </div>-->
+                        </div> 
                     </div>
 
 					
@@ -220,36 +235,89 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
  
  
  
- 			
+ 	
+ 	
 function prix()
 { 
 	        var _token = $('input[name="_token"]').val();
+	          var client =  $('#cl_ident').val() ;
 	        var choix =  $('#choix_lab_ident').val() ;
-	        var estim_or =  $('#titrage_au').val() ;
-	        var estim_ag =  $('#titrage_ag').val() ;
-	        var estim_pt =  $('#titrage_pt').val() ;
-	        var estim_pd =  $('#titrage_pd').val() ;
- 			 
+	        var estim_or =  $('#gold').val() ;
+	        var estim_ag =  $('#silver').val() ;
+	        var estim_pt =  $('#platinum').val() ;
+	        var estim_pd =  $('#palladium').val() ;
+ 			  $('#amount').html('');
+
+		     var    submitData= { client:client, choix: choix,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token}
+
    				$.ajax({
-                url: "{{ route('tarfilabo') }}",
+                url: "{{ route('tariflabo') }}",
                 method: "POST",
-                data: { client:<?php echo $user['client_id'] ;?>, choix: choix,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token},
-                success: function (data) {
-					console.log(data[0]);
-				 //alert(data);
-				 //$('#amount').html('');
-				   
-				 //$('#amount').html(data[0].prix  );
-				  
-				 
-			 	    }
+				 //  "async": true,
+              //  data: { client:client, choix: choix,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token},
+                data: JSON.stringify(submitData), // stringyfy before passing
+			//	dataType: 'json', // payload is json
+			//	contentType : 'application/json',
+			 headers: {
+			'X-CSRF-TOKEN': _token,
+			"content-type": "application/json"
+			},
+				success: function (data) {
+					console.log(data[0].prix);
+					//alert(data[0].prix);
+					var prix=parseFloat(data[0].prix);
+				 if(   prix  > 0 ) 
+					 {
+					 $('#amount').html(prix +' €');
+					 }
+			 	  
+
+				  }
+					
 			     });
 						
- 						
+ 				
  }			
  
- 
- 
+ function verif(div)
+ {
+	if(div=='au') 
+	{
+		if( $('#titrage_au').is(':checked')){
+			$('#divor').show('slow');
+		}else{
+		$('#divor').hide('slow');	
+		}
+	}
+		if(div=='ag') 
+	{
+		if( $('#titrage_ag').is(':checked')){
+			$('#divsilv').show('slow');
+		}else{
+		$('#divsilv').hide('slow');	
+		}
+	}
+	
+		if(div=='pt') 
+	{
+		if( $('#titrage_pt').is(':checked')){
+			$('#divplat').show('slow');
+		}else{
+		$('#divplat').hide('slow');	
+		}
+	}
+	
+		if(div=='pd') 
+	{
+		if( $('#titrage_pd').is(':checked')){
+			$('#divpall').show('slow');
+		}else{
+		$('#divpall').hide('slow');	
+		}
+	}
+
+	
+ }
  
   // prix();
  

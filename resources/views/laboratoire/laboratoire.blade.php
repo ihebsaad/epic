@@ -5,6 +5,7 @@
 
 <?php
 use App\Http\Controllers\HomeController ;
+
  $user = auth()->user();  
 
 $commandes=HomeController::listecommandeslabo($user['client_id'] );

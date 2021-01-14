@@ -24,7 +24,7 @@ Route::get('/deleteproduct/{id}', 'ProductsController@deleteproduct')->name('del
 Route::post('/details', 'ProductsController@details')->name('details');
 Route::post('/forfait', 'ProductsController@forfait')->name('forfait');
 Route::post('/tarifcmd', 'ProductsController@tarifcmd')->name('tarifcmd');
-Route::post('/tarfilabo', 'ProductsController@tarfilabo')->name('tarfilabo');
+Route::post('/tariflabo', 'ProductsController@tariflabo')->name('tariflabo');
 Route::post('/tarifrmp', 'ProductsController@tarifrmp')->name('tarifrmp');
 Route::post('/updatecart', 'ProductsController@updatecart')->name('updatecart');
 
@@ -217,13 +217,13 @@ Route::get('/listeprestations/{id_cl}/{lg}', 'HomeController@listeprestations')-
 Route::get('/listecommandeslabo/{id_cl}/{lg}', 'HomeController@listecommandeslabo')->name('listecommandeslabo');
 Route::get('/listemodeleslabo/{id_cl}/{lg}', 'HomeController@listemodeleslabo')->name('listemodeleslabo');
 Route::get('/detailscommandelabo/{id_cmd}/{id_cl}/{lg}', 'HomeController@detailscommandelabo')->name('detailscommandelabo');
-Route::get('/tariflabo/{id_cl}/{choix_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{lg}', 'HomeController@tariflabo')->name('tariflabo');
+//Route::get('/tariflabo/{id_cl}/{choix_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{lg}', 'HomeController@tariflabo')->name('tariflabo');
 
 
 Route::get('/listecommandesrmp/{id_cl}/{lg}', 'HomeController@listecommandesrmp')->name('listecommandesrmp');
 Route::get('/listemodelesrmp/{id_cl}/{lg}', 'HomeController@listemodelesrmp')->name('listemodelesrmp');
 Route::get('/detailscommandermp/{id_cmd}/{id_cl}/{lg}', 'HomeController@detailscommandermp')->name('detailscommandermp');
-Route::get('/tarifrmp/{nature_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{poids}/{id_cl}/{lg}', 'HomeController@tarifrmp')->name('tarifrmp');
+//Route::get('/tarifrmp/{nature_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{poids}/{id_cl}/{lg}', 'HomeController@tarifrmp')->name('tarifrmp');
 
 
 /*

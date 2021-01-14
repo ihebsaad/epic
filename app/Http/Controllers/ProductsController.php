@@ -354,25 +354,28 @@ class ProductsController extends Controller
 
 	 
 	 
-	  function tariflabo(Request $request) { 	
+	    function tariflabo(Request $request) { 	
 			 $user = auth()->user();  
-			           $client= $request->get('client');
-					   $choix= $request->get('choix');
-					   $estim_or= $request->get('estim_or');
-					   $estim_ag= $request->get('estim_ag');
- 					   $estim_pt= $request->get('estim_pt');
-					   $estim_pd= $request->get('estim_pd');
-  					     
-	   DB::select("SET @p0='$client' ;");
+			           $client= intval($request->get('client'));
+					   $choix= intval($request->get('choix'));
+					   $estim_or= ($request->get('estim_or'));
+					   $estim_ag= ($request->get('estim_ag'));
+ 					   $estim_pt= ($request->get('estim_pt'));
+					   $estim_pd= ($request->get('estim_pd'));
+  					 
+
+ DB::select("SET @p0='$client' ;");
    	   DB::select("SET @p1='$choix' ;");
    	   DB::select("SET @p2='$estim_or' ;");
    	   DB::select("SET @p3='$estim_ag' ;");
    	   DB::select("SET @p4='$estim_pt' ;");
    	   DB::select("SET @p5='$estim_pd' ;");
     
- 	  $result=  DB::select ("  CALL `sp_labo_tarif`(@p0,@p1,@p2,@p3,@p4,@p5); ");				 
-						 
- 		return $result;
+ 	  $data=  DB::select ("  CALL `sp_labo_tarif`(@p0,@p1,@p2,@p3,@p4,@p5); ");
+ 					 
+	//	$data= app('App\Http\Controllers\HomeController')->tariflabo($client,$choix,$estim_or,$estim_ag,$estim_pt,$estim_pd   );
+ 
+ 		return $data;
 	 }	
 
 
