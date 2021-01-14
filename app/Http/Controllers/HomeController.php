@@ -3789,33 +3789,7 @@ $cmd_id    = intval($request->get('cmd_id'));
    	   DB::select("SET @p5='$poids' ;");
     
  	  $result=  DB::select ("  CALL `sp_rmp_tarif`(@p0,@p1,@p2,@p3,@p4,@p5); ");
- 
-	  if ($result!= null){
-	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
-	 return   $result ;
-	  }
-	  else{
-		  
-  $error = array(
-    "status" => "error",
-    "error_code" => 404,
-    "error_message" => "Aucun résultat trouvé",
-);
-		return response()->json(  $error ,404,array(),JSON_PRETTY_PRINT);
-
-		}
-	
-	/* }catch (\Exception $e){
-	
- 		  $error = array(
-    "status" => "error",
-    "error_code" => 500,
-    "error_message" => "erreur interne",
-);
-		return response()->json(  $error ,500,array(),JSON_PRETTY_PRINT);
-		
- }*/
- 
+		return $result;
  
 	}		
 

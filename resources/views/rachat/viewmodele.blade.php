@@ -21,6 +21,10 @@ $modele=DB::table('modele_rmp')->where('modele_rmp_ident',$id)->first();
 
 $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
+
+
+ /* $tarif=HomeController::tarifrmp(1,583.00,0,0,0,50.00);
+ dd($tarif);*/   
 ?>
  
 
@@ -59,9 +63,11 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
+												if($nature->metier_CODE=='RMP'){
 												if(  $modele->nature_lot_ident== $nature->nature_lot_ident ){$selected='selected="selected"';}else{$selected=''; }
 												echo '<option  '.$selected.'   data-toggle="tooltip" data-placement="bottom" value="'.$nature->nature_lot_ident.'" title="'.$nature->nature_lot_commentaire.'" >'.$nature->nature_lot_nom.'</option>';
 									 
+												   }  
 												}  ?>
 											</select>
  									  
@@ -153,7 +159,11 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
                                     <h6 class="m-0 font-weight-bold text-primary">Estimations  </h6>
                                 </div>
                                 <div class="card-body" style="min-height:200px">
-								<div class="pl-20">{{__('msg.Value')}} : <span style="font-weight:bold" id="amount"></span></div>
+								<div class=" ">{{__('msg.Value')}} : <span style="font-weight:bold" id="amount"></span></div>
+								<div id="div_au"  style="display:none"   >{{__('msg.Gold')}} : <span style="font-weight:bold" id="cours_au"></span></div>
+								<div id="div_ag"  style="display:none"   >{{__('msg.Silver')}} : <span style="font-weight:bold" id="cours_ag"></span></div>
+								<div id="div_pt"  style="display:none"  >{{__('msg.Platinum')}} : <span style="font-weight:bold" id="cours_pt"></span></div>
+								<div id="div_pd" style="display:none"    >{{__('msg.Palladium')}} : <span style="font-weight:bold" id="cours_pd"></span></div>
  
                                 </div>
                             </div>
@@ -296,15 +306,19 @@ function prix()
 	        var estim_pd =  $('#estim_titre_pd').val() ;
 	        var poids =  $('#pds_lot').val() ;
  			  $('#amount').html('');
+					 $('#div_au').hide();
+					 $('#div_ag').hide();
+					 $('#div_pt').hide();
+					 $('#div_pd').hide();
+			  
 
-		     var    submitData= { client:client, nature: nature,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token}
-
-   				$.ajax({
+		     var    submitData= {   nature: nature,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token}
+    				$.ajax({
                 url: "{{ route('tarifrmp') }}",
                 method: "POST",
 				 //  "async": true,
               //  data: { client:client, choix: choix,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token},
-                data: JSON.stringify(submitData), // stringyfy before passing
+               data: JSON.stringify(submitData), // stringyfy before passing
 			//	dataType: 'json', // payload is json
 			//	contentType : 'application/json',
 			 headers: {
@@ -312,14 +326,43 @@ function prix()
 			"content-type": "application/json"
 			},
 				success: function (data) {
-					console.log(data[0].valeur);
+					//alert(data);
+					//console.log(data[0].valeur);
+					//console.log(data[0]);
+					//console.log(data);
 					//alert(data[0].prix);
-					var valeur=parseFloat(data[0].valeur);
-				 if(   valeur  > 0 ) 
+					var valeur= (data[0].valeur);
+					var cours_au= (data[0].cours_au);
+					var cours_ag= (data[0].cours_ag);
+					var cours_pd= (data[0].cours_pd);
+					var cours_pt= (data[0].cours_pt);
+				 if(   valeur  != '' ) 
 					 {
 					 $('#amount').html(valeur +' €');
 					 }
-			 	  
+					 
+				 if(   cours_au  != '' ) 
+					 {
+					 $('#cours_au').html(cours_au );
+					 $('#div_au').show( );
+					 }	 
+
+				 if(   cours_ag  != '' ) 
+					 {
+					 $('#cours_ag').html(cours_ag );
+					 $('#div_ag').show( );
+					 }
+				 if(   cours_pt  != '' ) 
+					 {
+					 $('#cours_pt').html(cours_pt );
+					 $('#cours_pd').html(cours_pd );
+					 $('#div_pt').show( );
+					 }
+				 if(   cours_pd  != '' ) 
+					 {
+					 $('#div_pd').show( );
+					 }
+					 
 
 				  }
 					

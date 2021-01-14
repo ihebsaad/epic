@@ -58,9 +58,11 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
  											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" name="nature_lot_ident" required style="width:350px" >
 											<option></option>
 												<?php foreach($natures as $nature)
-												{  
+												{ 
+													if($nature->metier_CODE=='RMP'){												
 												echo '<option     data-toggle="tooltip" data-placement="bottom" value="'.$nature->nature_lot_ident.'" title="'.$nature->nature_lot_commentaire.'" >'.$nature->nature_lot_nom.'</option>';
 									 
+														}  
 												}  ?>
 											</select>
  									  

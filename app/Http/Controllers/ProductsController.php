@@ -382,18 +382,28 @@ class ProductsController extends Controller
 
 
   function tarifrmp(Request $request) { 	
-			 $user = auth()->user();  
+		 	 $user = auth()->user();  
     
-					   $nature= $request->get('nature');
-					   $estim_or= $request->get('estim_or');
-					   $estim_ag= $request->get('estim_ag');
- 					   $estim_pt= $request->get('estim_pt');
-					   $estim_pd= $request->get('estim_pd');
-					   $poids= $request->get('poids');
- 					     
-		$data= app('App\Http\Controllers\HomeController')->tarifrmp($nature,$estim_or,$estim_ag,$estim_pt,$estim_pd,$poids   );
-		return $data;
-	 }	
+					   $nature= intval($request->get('nature'));
+					   $estim_or= floatval($request->get('estim_or'));
+					   $estim_ag= floatval($request->get('estim_ag'));
+ 					   $estim_pt= floatval($request->get('estim_pt'));
+					   $estim_pd= floatval($request->get('estim_pd'));
+					   $poids= floatval($request->get('poids'));
+ 		/*			     
+		$result= app('App\Http\Controllers\HomeController')->tarifrmp($nature,$estim_or,$estim_ag,$estim_pt,$estim_pd,$poids   );
+		*/
+		//dd($nature.' - '. $estim_or.' - '. $estim_ag.' - '. $estim_pt.' - '. $estim_pd.' - '. $poids);
+		 DB::select("SET @p0='$nature' ;");
+       DB::select("SET @p1='$estim_or' ;");
+   	   DB::select("SET @p2='$estim_ag' ;");
+   	   DB::select("SET @p3='$estim_pt' ;");
+   	   DB::select("SET @p4='$estim_pd' ;");
+   	   DB::select("SET @p5='$poids' ;");
+    
+ 	  $result=  DB::select ("  CALL `sp_rmp_tarif`(@p0, @p1, @p2, @p3, @p4, @p5);");
+		return $result;
+ 	 }	
 
 	 
 	 
