@@ -246,6 +246,7 @@ function prix()
 	        var estim_ag =  $('#silver').val() ;
 	        var estim_pt =  $('#platinum').val() ;
 	        var estim_pd =  $('#palladium').val() ;
+	        var qte = parseFloat(  $('#qte').val()) ;
  			  $('#amount').html('');
 
 		     var    submitData= { client:client, choix: choix,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token}
@@ -268,7 +269,7 @@ function prix()
 					var prix=parseFloat(data[0].prix);
 				 if(   prix  > 0 ) 
 					 {
-					 $('#amount').html(prix +' €');
+					 $('#amount').html(prix*qte +' €');
 					 }
 			 	  
 

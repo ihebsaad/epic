@@ -146,21 +146,21 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
                         </div>
 
-                     <!--   <div class="col-lg-5 mb-4">
+                      <div class="col-lg-5 mb-4">
 
                              <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">  </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Estimations  </h6>
                                 </div>
-                                <div class="card-body">
- 
+                                <div class="card-body" style="min-height:200px">
+								<div class="pl-20">{{__('msg.Amount')}} : <span style="font-weight:bold" id="amount"></span></div>
  
                                 </div>
                             </div>
 
                
 
-                        </div>-->
+                        </div> 
                     </div>
 
 					
@@ -284,7 +284,49 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
  
 		 }
 		 
-		 
+
+function prix()
+{ 
+	        var _token = $('input[name="_token"]').val();
+	          var client =  $('#cl_ident').val() ;
+	        var nature =  $('#nature_lot_ident').val() ;
+	        var estim_or =  $('#estim_titre_au').val() ;
+	        var estim_ag =  $('#estim_titre_ag').val() ;
+	        var estim_pt =  $('#estim_titre_pt').val() ;
+	        var estim_pd =  $('#estim_titre_pd').val() ;
+	        var poids =  $('#pds_lot').val() ;
+ 			  $('#amount').html('');
+
+		     var    submitData= { client:client, nature: nature,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token}
+
+   				$.ajax({
+                url: "{{ route('tarifrmp') }}",
+                method: "POST",
+				 //  "async": true,
+              //  data: { client:client, choix: choix,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids, _token: _token},
+                data: JSON.stringify(submitData), // stringyfy before passing
+			//	dataType: 'json', // payload is json
+			//	contentType : 'application/json',
+			 headers: {
+			'X-CSRF-TOKEN': _token,
+			"content-type": "application/json"
+			},
+				success: function (data) {
+					console.log(data[0].prix);
+					//alert(data[0].prix);
+					var prix=parseFloat(data[0].prix);
+				 if(   prix  > 0 ) 
+					 {
+					 $('#amount').html(prix +' €');
+					 }
+			 	  
+
+				  }
+					
+			     });
+						
+ 				
+ }					 
 		 
 </script>					
 					
