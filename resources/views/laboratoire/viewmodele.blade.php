@@ -153,17 +153,17 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
   <label class="pl-20">{{__('Credit on weight account')}}</label>
    <div class="row pl-20 pr-20 mb-10">
-  <div class="col-sm-3" id="divor"  <?php if($modele->titrage_au!=1){?> style="display:none"  <?php } ?>  >
-	{{__('msg.Gold')}}:  <b><input type="number" max="999" class="ml-10  form-control" style="width:70px" id="gold"  onchange="prix()"  value="0" ></input> g</b>
+  <div class="col-sm-4" id="divor"  <?php if($modele->titrage_au!=1){?> style="display:none"  <?php } ?>  >
+	{{__('msg.Gold')}}:  <b><input type="number" max="999" class="ml-10 mb-10  form-control" style="width:70px" id="gold"  onchange="prix()"  value="0" ></input> g</b>
  </div>
-  <div class="col-sm-3" id="divsilv" <?php if($modele->titrage_ag!=1){?> style="display:none" <?php } ?> >
-	{{__('msg.Silver')}}:  <b><input type="number" max="999" class="ml-10 form-control "style=" width:70px" id="silver"  onchange="prix()" value="0"></input> g</b>
+  <div class="col-sm-4" id="divsilv" <?php if($modele->titrage_ag!=1){?> style="display:none" <?php } ?> >
+	{{__('msg.Silver')}}:  <b><input type="number" max="999" class="ml-10 mb-10  form-control "style=" width:70px" id="silver"  onchange="prix()" value="0"></input> g</b>
  </div>
- <div class="col-sm-3"  id="divplat" <?php if($modele->titrage_pd!=1){?> style="display:none"  <?php } ?>>
-	Plat:  <b><input type="number" max="999" class="ml-10 form-control "style=" width:70px" id="platinum"  onchange="prix()" value="0"></input> g</b>
+ <div class="col-sm-4"  id="divplat" <?php if($modele->titrage_pd!=1){?> style="display:none"  <?php } ?>>
+	Plat:  <b><input type="number" max="999" class="ml-10 form-control mb-10  "style=" width:70px" id="platinum"  onchange="prix()" value="0"></input> g</b>
  </div>
-  <div class="col-sm-3"  id="divpall"  <?php if($modele->titrage_pt!=1){?> style="display:none"  <?php } ?>   >
-	Pall :  <b><input type="number" max="999" class="ml-10 form-control "  style=" width:70px" id="palladium" onchange="prix()" value="0"></input> g</b>
+  <div class="col-sm-4"  id="divpall"  <?php if($modele->titrage_pt!=1){?> style="display:none"  <?php } ?>   >
+	Pall :  <b><input type="number" max="999" class="ml-10 form-control mb-10  "  style=" width:70px" id="palladium" onchange="prix()" value="0"></input> g</b>
  </div>
  </div>
 		 
