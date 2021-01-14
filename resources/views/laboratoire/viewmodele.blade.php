@@ -151,7 +151,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 									 </div>	
 									 
 
-  <label class="pl-20">{{__('Credit on weight account')}}</label>
+  <label class="pl-20">{{__('msg.Credit on weight account')}}</label>
    <div class="row pl-20 pr-20 mb-10">
   <div class="col-sm-4" id="divor"  <?php if($modele->titrage_au!=1){?> style="display:none"  <?php } ?>  >
 	{{__('msg.Gold')}}:  <b><input type="number" max="999" class="ml-10 mb-10  form-control" style="width:70px" id="gold"  onchange="prix()"  value="0" ></input> g</b>
