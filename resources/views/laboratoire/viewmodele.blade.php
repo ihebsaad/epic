@@ -136,36 +136,21 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 											<label>{{__('msg.Metals to be analyzed')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <label for="titrage_au"  onclick="verif('au')"  ><input class="form-control"     id="titrage_au" name="titrage_au"  type="checkbox"  style="width:25px" value="1" <?php if($modele->titrage_au==1){?> checked <?php } ?>  /> <span class="  mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span></label>
+											 <label for="titrage_au"  onclick="prix()"  ><input class="form-control"     id="titrage_au" name="titrage_au"  type="checkbox"  style="width:25px" value="1" <?php if($modele->titrage_au==1){?> checked <?php } ?>  /> <span class="  mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span></label>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <label for="titrage_ag" onclick="verif('ag')"><input class="form-control"      id="titrage_ag" name="titrage_ag" type="checkbox" style="width:25px" value="1" <?php if($modele->titrage_ag==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span></label>
+											 <label for="titrage_ag" onclick="prix()"><input class="form-control"      id="titrage_ag" name="titrage_ag" type="checkbox" style="width:25px" value="1" <?php if($modele->titrage_ag==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span></label>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <label for="titrage_pt" onclick="verif('pt')"><input class="form-control"    id="titrage_pt" name="titrage_pt" type="checkbox"  style="width:25px"  value="1" <?php if($modele->titrage_pt==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span></label>
+											 <label for="titrage_pt" onclick="prix()"><input class="form-control"    id="titrage_pt" name="titrage_pt" type="checkbox"  style="width:25px"  value="1" <?php if($modele->titrage_pt==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span></label>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <label for="titrage_pd"  onclick="verif('pd')" ><input class="form-control"    id="titrage_pd" name="titrage_pd" type="checkbox"  style="width:25px" value="1" <?php if($modele->titrage_pd==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span></label>
+											 <label for="titrage_pd"  onclick="prix()" ><input class="form-control"    id="titrage_pd" name="titrage_pd" type="checkbox"  style="width:25px" value="1" <?php if($modele->titrage_pd==1){?> checked <?php } ?> /> <span class="  mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span></label>
 									    </div>										
 									      
 									 </div>	
 									 
-
-  <label class="pl-20">{{__('msg.Credit on weight account')}}</label>
-   <div class="row pl-20 pr-20 mb-10">
-  <div class="col-sm-4" id="divor"  <?php if($modele->titrage_au!=1){?> style="display:none"  <?php } ?>  >
-	{{__('msg.Gold')}}:  <b><input type="number" max="999" class="ml-10 mb-10  form-control" style="width:70px" id="gold"  onchange="prix()"  value="0" ></input> g</b>
- </div>
-  <div class="col-sm-4" id="divsilv" <?php if($modele->titrage_ag!=1){?> style="display:none" <?php } ?> >
-	{{__('msg.Silver')}}:  <b><input type="number" max="999" class="ml-10 mb-10  form-control "style=" width:70px" id="silver"  onchange="prix()" value="0"></input> g</b>
- </div>
- <div class="col-sm-4"  id="divplat" <?php if($modele->titrage_pd!=1){?> style="display:none"  <?php } ?>>
-	Plat:  <b><input type="number" max="999" class="ml-10 form-control mb-10  "style=" width:70px" id="platinum"  onchange="prix()" value="0"></input> g</b>
- </div>
-  <div class="col-sm-4"  id="divpall"  <?php if($modele->titrage_pt!=1){?> style="display:none"  <?php } ?>   >
-	Pall :  <b><input type="number" max="999" class="ml-10 form-control mb-10  "  style=" width:70px" id="palladium" onchange="prix()" value="0"></input> g</b>
- </div>
- </div>
+ 
 		 
 				 	      <div class="row " style=" ">
 				 	      <div class="col-xs-12 col-sm-6 " style=" ">
@@ -242,10 +227,26 @@ function prix()
 	        var _token = $('input[name="_token"]').val();
 	          var client =  $('#cl_ident').val() ;
 	        var choix =  $('#choix_lab_ident').val() ;
-	        var estim_or =  $('#gold').val() ;
-	        var estim_ag =  $('#silver').val() ;
-	        var estim_pt =  $('#platinum').val() ;
-	        var estim_pd =  $('#palladium').val() ;
+	     var  estim_or=0;
+         if ($('#titrage_au').is(':checked'))
+         {
+			 estim_or=1;
+         }
+		  var  estim_ag=0;
+         if ($('#titrage_ag').is(':checked'))
+         {
+			 estim_ag=1;
+         } 
+		  var  estim_pt=0;
+         if ($('#titrage_pt').is(':checked'))
+         {
+			 estim_pt=1;
+         }
+		  var  estim_pd=0;
+         if ($('#titrage_pd').is(':checked'))
+         {
+			 estim_pd=1;
+         }
 	        var qte = parseFloat(  $('#qte').val()) ;
  			  $('#amount').html('');
 
@@ -279,48 +280,8 @@ function prix()
 						
  				
  }			
- 
- function verif(div)
- {
-	if(div=='au') 
-	{
-		if( $('#titrage_au').is(':checked')){
-			$('#divor').show('slow');
-		}else{
-		$('#divor').hide('slow');	
-		}
-	}
-		if(div=='ag') 
-	{
-		if( $('#titrage_ag').is(':checked')){
-			$('#divsilv').show('slow');
-		}else{
-		$('#divsilv').hide('slow');	
-		}
-	}
-	
-		if(div=='pt') 
-	{
-		if( $('#titrage_pt').is(':checked')){
-			$('#divplat').show('slow');
-		}else{
-		$('#divplat').hide('slow');	
-		}
-	}
-	
-		if(div=='pd') 
-	{
-		if( $('#titrage_pd').is(':checked')){
-			$('#divpall').show('slow');
-		}else{
-		$('#divpall').hide('slow');	
-		}
-	}
-
-	
- }
- 
-  // prix();
+  
+   prix();
  
 </script>					
 					

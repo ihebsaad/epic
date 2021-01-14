@@ -370,7 +370,8 @@ function prix()
 						
  				
  }					 
-		 
+	
+	prix();
 </script>					
 					
 @endsection
