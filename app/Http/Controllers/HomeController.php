@@ -10,6 +10,12 @@ use App\Product ;
 use App\Modele_affinage ;
 use App\Modele_lab ;
 use App\Modele_rmp ;
+use App\Cmde_aff_e ;
+use App\Cmde_aff_l ;
+use App\Cmde_lab_e ;
+use App\Cmde_lab_l ;
+use App\Cmde_rmp_e ;
+use App\Cmde_rmp_l ;
 
 use Illuminate\Support\Facades\App;
 
@@ -332,11 +338,13 @@ $cl_ident  = intval($request->get('cl_ident'));
 $modele_nom   = $request->get('modele_nom');	
 $nature_lot_ident = intval($request->get('nature_lot_ident'));	
 $pds_lot  = floatval($request->get('pds_lot'));	
+$pds_cdr  = floatval($request->get('pds_cdr'));	
 $estim_titre_au  = floatval($request->get('estim_titre_au'));	
 $estim_titre_ag  = floatval($request->get('estim_titre_ag'));	
 $estim_titre_pt  = floatval($request->get('estim_titre_pt'));	
 $estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
 $assiste   =  $request->get('assiste') ;	
+$update   =  $request->get('update') ;	
  
  		if($assiste=="on" || $assiste==1 ){
 			$assiste=1;
@@ -344,7 +352,9 @@ $assiste   =  $request->get('assiste') ;
 			$assiste=0;			
 		}
  
-   	 
+   if ($update !=null){
+	   
+  	 
     
 	    Modele_affinage::where('modele_affinage_ident',$id)->update(
 		array(
@@ -361,7 +371,42 @@ $assiste   =  $request->get('assiste') ;
 			)
 		);
  
-		  return redirect('/affinage/')->with('success', ' Modifié avec succès');
+ 		  return redirect('/affinage/')->with('success', ' Modèele enregsitré modifié avec succès');
+
+		}else{
+			
+ 
+ 
+			$Cmde_aff_e  = new Cmde_aff_e([
+              'cl_ident' => $cl_ident,
+              'cmde_aff_date' => date('Y-m-d H:i:s'),
+              'cmde_aff_canal' => 0, // doit être WEB pourquoi dans la base int ?
+              'cmde_aff_poids_brut' => $pds_cdr,
+              'cmde_aff_poids_lot' => $pds_lot,
+			  
+			  ]);
+			if($Cmde_aff_e->save()){
+				$id=$Cmde_aff_e->cmde_aff_ident;
+				
+			$Cmde_aff_l  = new Cmde_aff_l([
+               'cmde_aff_e_ident' => $id,
+               'nature_ident' => $nature_lot_ident,
+               'cmde_aff_poids_lot' => $pds_lot,
+               'cmde_estim_titre_au' => $estim_titre_au,
+               'cmde_estim_titre_ag' => $estim_titre_ag,
+               'cmde_estim_titre_pt' => $estim_titre_pt,
+               'cmde_estim_titre_pd' => $estim_titre_pd,
+               'assiste' => $assiste,
+			  
+			     
+			  ]);	
+				$Cmde_aff_l->save();
+			}
+			
+		  return redirect('/affinage/')->with('success', ' Commande enregistrée avec succès');
+			
+		}			
+			
 		 
 		 
  }
@@ -375,6 +420,7 @@ $cl_ident  = intval($request->get('cl_ident'));
 $modele_nom   = $request->get('modele_nom');	
 $nature_lot_ident = intval($request->get('nature_lot_ident'));	
 $pds_lot  = floatval($request->get('pds_lot'));	
+$pds_cdr  = floatval($request->get('pds_cdr'));	
 $estim_titre_au  = floatval($request->get('estim_titre_au'));	
 $estim_titre_ag  = floatval($request->get('estim_titre_ag'));	
 $estim_titre_pt  = floatval($request->get('estim_titre_pt'));	
@@ -382,6 +428,7 @@ $estim_titre_pd  = floatval($request->get('estim_titre_pd'));
 $assiste   =  $request->get('assiste') ;	
 $choix_couv_ident   =  $request->get('choix_couv_ident') ;	
 $demande_acompte   =  $request->get('acompte') ;	
+$update   =  $request->get('update') ;	
  
  		if($assiste=="on" || $assiste==1 ){
 			$assiste=1;
@@ -396,7 +443,7 @@ $demande_acompte   =  $request->get('acompte') ;
 		}		
  
    	 
-    
+    if ($update !=null){  
 	    Modele_rmp::where('modele_rmp_ident',$id)->update(
 		array(
 			'cl_ident' => $cl_ident,
@@ -417,6 +464,48 @@ $demande_acompte   =  $request->get('acompte') ;
 		  return redirect('/rachat/')->with('success', ' Modifié avec succès');
 		 
 		 
+		}else{
+			
+  
+			$Cmde_rmp_e  = new Cmde_rmp_e([
+              'cl_ident' => $cl_ident,
+              'cmde_rmp_date' => date('Y-m-d H:i:s'),
+              'cmde_rmp_canal' => 0, // doit être WEB pourquoi dans la base int ?
+              'cmde_rmp_poids_brut' => $pds_cdr,
+              'cmde_rmp_poids_lot' => $pds_lot,
+              'estim_au' => $estim_titre_au,
+              'estim_ag' => $estim_titre_ag,
+              'estim_pt' => $estim_titre_pt,
+              'estim_pd' => $estim_titre_pd,
+              'assiste' => $estim_titre_pd,
+              'demande_acompte' => $demande_acompte,
+              'choix_couv_ident' => $choix_couv_ident,
+         
+			  
+			  ]);
+			if($Cmde_rmp_e->save()){
+				$id=$Cmde_rmp_e->cmde_rmp_ident;
+ 
+			$Cmde_rmp_l  = new Cmde_rmp_l([
+               'cmde_rmp_e_ident' => $id,
+               'nature_ident' => $nature_lot_ident,
+               'cmde_rmp_poids' => $pds_lot,
+               'cmde_estim_titre_au' => $estim_titre_au,
+               'cmde_estim_titre_ag' => $estim_titre_ag,
+               'cmde_estim_titre_pt' => $estim_titre_pt,
+               'cmde_estim_titre_pd' => $estim_titre_pd,
+               'assiste' => $assiste,
+			  
+			     
+			  ]);	
+				$Cmde_rmp_l->save();
+			}
+			
+		  return redirect('/rachat/')->with('success', ' Commande enregistrée avec succès');
+			
+		}			 
+		 
+		 
  }
  
  public function updatemodelelab(Request $request)
@@ -435,10 +524,13 @@ $qte   =  $request->get('qte') ;
 $valeur   =  $request->get('valeur') ;	
 $type_lab_ident   =  $request->get('type_lab_ident') ;	
 $choix_lab_ident   =  $request->get('choix_lab_ident') ;	
+$update   =  $request->get('update') ;	
  
  
    	 
-    
+     if ($update !=null){  
+
+	 
 	    Modele_lab::where('modele_lab_ident',$id)->update(
 		array(
                'cl_ident' => $cl_ident,
@@ -459,7 +551,42 @@ $choix_lab_ident   =  $request->get('choix_lab_ident') ;
  
 		  return redirect('/laboratoire/')->with('success', ' Modifié avec succès');
 		 
-		 
+	}else{
+  
+			$Cmde_lab_e  = new Cmde_lab_e([
+              'cl_ident' => $cl_ident,
+              'cmde_lab_date' => date('Y-m-d H:i:s'),
+              'cmde_lab_canal' => 0, // doit être WEB pourquoi dans la base int ?
+              'cmde_lab_qte' => $qte,
+              'cmde_lab_poids' => $poids
+             
+			  
+			  ]);
+			if($Cmde_lab_e->save()){
+				$id=$Cmde_lab_e->cmde_lab_ident;
+ 
+  
+			$Cmde_lab_l  = new Cmde_lab_l([
+               'cmde_lab_e_ident' => $id,
+               'type_lab_ident' => $type_lab_ident,
+               'nature_ident' => $nature_lot_ident,
+               'choix_lab_ident' => $choix_lab_ident,
+               'qte' => $qte,
+               'poids' => $poids,
+               'titrage_au' => $titrage_au,
+               'titrage_ag' => $titrage_ag,
+               'titrage_pt' => $titrage_pt,
+               'titrage_pd' => $titrage_pd,
+ 			  
+			     
+			  ]);	
+				$Cmde_lab_l->save();
+			}
+			
+		  return redirect('/laboratoire/')->with('success', ' Commande enregistrée avec succès');
+			
+		}			 
+		 	 
  }
 
  

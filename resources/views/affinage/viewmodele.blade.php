@@ -129,7 +129,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 									    </div>										
 									      
 									 </div>										 
-									 
+									  
 <br><br>
 		  <div class="row "  >
 				<div class="col-xs-12 col-sm-6 "  >
