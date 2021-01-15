@@ -11,7 +11,6 @@ $prestations=HomeController::listeprestations($user['client_id'] );
 $PrestLibs=array();
 $PrestTypes=array();
 $PrestTypes2=array();
- 
  foreach($prestations as $prest)
 {
 	$PrestLibs[$prest->id]=$prest->lib;
@@ -27,7 +26,7 @@ foreach($natures as $nature)
 	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
 	}
 }
-
+ 
 $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
 /* $tarif=HomeController::tariflabo(10099,2,100,0,0,0);
@@ -216,7 +215,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
  	var type= $( "#choix_lab_ident option:selected" ).text();
  	  toggle('types','none');
 	 toggle('type-'+type,'block');
-	  $( "#type_lab_ident").val('');
+	//  $( "#type_lab_ident").val('');
  }
  
   
@@ -279,7 +278,7 @@ function prix()
 						
  				
  }			
-  
+  types();
    prix();
  
 </script>					
