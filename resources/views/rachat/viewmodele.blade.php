@@ -107,10 +107,10 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 											<?php  
 											
 											foreach( $covers as $cover)
-											  {  if($modele->choix_couv_ident==$cover->choix_couv_ident) {//$check="selected='selected'"; 
-											   echo ' <option   selected="selected" value="'.$cover->choix_couv_ident.'">'.$cover->choix_ident_lib.'</option> ';
+											  {  if($modele->choix_couv_ident==$cover->choix_couv_ident) { $check="selected='selected'"; }else{$check='';}
+											   echo ' <option   '.$check.' value="'.$cover->choix_couv_ident.'">'.$cover->choix_ident_lib.'</option> ';
 
-											  }
+											  
  											  }
 											?>
 												</select>
@@ -139,7 +139,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 <br><br>
 		  <div class="row "  >
 				<div class="col-xs-12 col-sm-5 "  >
-								<button    type="submit"  name="update" class="pull-right btn btn-primary btn-icon-split   ml-30 mt-10 mb-20">
+								<button    type="submit"  name="update" value="update" class="pull-right btn btn-primary btn-icon-split   ml-30 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -149,7 +149,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 				
 				<div class="col-xs-12 col-sm-7 "  >
 				
-		                     	<button    name="order" type="submit"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
+		                     	<button    name="order" type="submit" value="order"  class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>

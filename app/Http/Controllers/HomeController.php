@@ -344,7 +344,7 @@ $estim_titre_ag  = floatval($request->get('estim_titre_ag'));
 $estim_titre_pt  = floatval($request->get('estim_titre_pt'));	
 $estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
 $assiste   =  $request->get('assiste') ;	
-$update   =  $request->get('update') ;	
+$update   =  $request->input('update') ;	
  
  		if($assiste=="on" || $assiste==1 ){
 			$assiste=1;
@@ -428,8 +428,8 @@ $estim_titre_pd  = floatval($request->get('estim_titre_pd'));
 $assiste   =  $request->get('assiste') ;	
 $choix_couv_ident   =  $request->get('choix_couv_ident') ;	
 $demande_acompte   =  $request->get('acompte') ;	
-$update   =  $request->get('update') ;	
- 
+$update   =  $request->input('update') ;	
+  
  		if($assiste=="on" || $assiste==1 ){
 			$assiste=1;
 		}else{
@@ -524,7 +524,7 @@ $qte   =  $request->get('qte') ;
 $valeur   =  $request->get('valeur') ;	
 $type_lab_ident   =  $request->get('type_lab_ident') ;	
 $choix_lab_ident   =  $request->get('choix_lab_ident') ;	
-$update   =  $request->get('update') ;	
+$update   =  $request->input('update') ;	
  
  
    	 
