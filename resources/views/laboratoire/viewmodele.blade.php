@@ -216,11 +216,10 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
  	var type= $( "#choix_lab_ident option:selected" ).text();
  	  toggle('types','none');
 	 toggle('type-'+type,'block');
+	  $( "#type_lab_ident").val('');
  }
  
- 
- 
- 	
+  
  	
 function prix()
 { 
