@@ -224,7 +224,7 @@ function prix()
 { 
 	        var _token = $('input[name="_token"]').val();
 	          var client =  $('#cl_ident').val() ;
-	        var choix =  $('#choix_lab_ident').val() ;
+	        var choix =  $('#type_lab_ident').val() ;
 	     var  estim_or=0;
          if ($('#titrage_au').is(':checked'))
          {

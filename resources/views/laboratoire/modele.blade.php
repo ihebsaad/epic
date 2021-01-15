@@ -205,6 +205,8 @@ foreach($natures as $nature)
  	  toggle('types','none');
 	 toggle('type-'+type,'block');
  }
+ 
+ types();
 </script>					
 					
 @endsection
