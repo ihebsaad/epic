@@ -135,8 +135,8 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 									 
 <br><br>
 		  <div class="row "  >
-				<div class="col-xs-12 col-sm-6 "  >
-								<button    type="submit"  name="update" class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+				<div class="col-xs-12 col-sm-5 "  >
+								<button    type="submit"  name="update" class="pull-right btn btn-primary btn-icon-split   ml-30 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -144,7 +144,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
                                     </button>
 				</div>
 				
-				<div class="col-xs-12 col-sm-6 "  >
+				<div class="col-xs-12 col-sm-7 "  >
 				
 		                     	<button  disabled name="order" type="submit"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
