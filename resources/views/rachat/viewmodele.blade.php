@@ -134,16 +134,31 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 									 </div>										 
 									 
 <br><br>
-				 	      <div class="row  "  >
-								<button    type="submit"   class="pull-right btn btn-primary btn-icon-split   ml-50   mb-20">
+		  <div class="row "  >
+				<div class="col-xs-12 col-sm-6 "  >
+								<button    type="submit"  name="update" class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
                                         <span class="text" >{{__('msg.Update Model')}}</span>
                                     </button>
-                                </div>		 					 
+				</div>
+				
+				<div class="col-xs-12 col-sm-6 "  >
+				
+		                     	<button  disabled name="order" type="submit"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-save"></i>
+                                        </span>
+                                        <span class="text" >{{__('msg.Save as an order')}}</span>
+                                    </button>
+ 							</div>		 
 									 
-</form>									 
+		  
+		  </div>
+ 
+ 					
+</form>								 
 									 
 									</div>
                               </div>

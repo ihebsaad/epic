@@ -154,7 +154,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 		 
 				 	      <div class="row " style=" ">
 				 	      <div class="col-xs-12 col-sm-6 " style=" ">
-								<button     type="submit"  class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+								<button  name="update"   type="submit"  class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -164,7 +164,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
 
 				 	          <div class="col-xs-12 col-sm-6" style=" " >
-								<button   disabled  type="submit"   class="pull-right btn btn-primary btn-icon-split   mt-10 mb-20">
+								<button name="order"  disabled  type="submit"   class="pull-right btn btn-primary btn-icon-split   mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
