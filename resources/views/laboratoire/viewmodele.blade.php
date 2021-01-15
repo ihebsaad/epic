@@ -60,7 +60,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Model name')}}: </label>
 									 
-											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>" style="width:350px" onchange="prix()"/>
+											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>" style="width:350px" onchange="prix()"  required/>
 											  
  									   
 									 </div>	
@@ -68,7 +68,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                                    <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Type of service')}}: </label>
 									 
-											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" onchange="types();prix()" style="width:350px" />
+											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" onchange="types();prix()" style="width:350px"  required />
 											<option></option>
 												<?php $i=0; foreach($PrestTypes as $key => $val)
 												{ $i++; 
@@ -83,7 +83,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of work')}}: </label>
 										 
-											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" style="width:350px"  onchange="prix()" />
+											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" style="width:350px"  onchange="prix()" required />
 											<option></option>
 												<?php $i=0; foreach($PrestLibs   as $key => $val)
 												{ $i++; 
@@ -98,7 +98,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of products')}}: </label>
 										 
-											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" style="width:350px" onchange="prix()" />
+											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" style="width:350px" onchange="prix()" required />
 											<option></option>
 												<?php foreach($Natures as $key => $val)
 												{  

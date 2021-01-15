@@ -52,14 +52,14 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:130px" class="ml-10 mt-10 mr-10" >{{__('msg.Model name')}}: </label>
- 											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  style="width:350px"  onchange="prix()" />
+ 											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  style="width:350px"  onchange="prix()"  required />
 											  
  									   
 									 </div>	
 									 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:130px" class="ml-10 mt-10 mr-10" >{{__('msg.Nature of the lot')}}: </label>
- 											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" style="width:350px" onchange="prix()" >
+ 											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" style="width:350px" onchange="prix()"  required >
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
@@ -75,7 +75,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
   
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:130px" class="ml-10 mt-10 mr-10">{{__('msg.Weight')}} <small>{{__('msg.in grams')}}</small>: </label>
-										 	 <input  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"  onchange="prix()"   />
+										 	 <input  class="form-control"   id="pds_lot" name="pds_lot"  type="number" step="0.01" min="0" style="width:130px" value="<?php echo $modele->pds_lot; ?>"  onchange="prix()"  required />
 											  
  									   
 									 </div>		
@@ -119,16 +119,16 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 											<label>{{__('msg.My estimates in thousandths')}}: </label>
 										</div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" onchange="prix();checkt(this);" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
+											 <input class="form-control"   value="<?php echo $modele->estim_titre_au; ?>" id="estim_titre_au" name="estim_titre_au"  type="number" step="0.01" min="0" onchange="prix();checkt(this);" required /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-warning btn-circle btn-sm">Or</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"    value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" onchange="prix();checkt(this);" /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
+											 <input class="form-control"    value="<?php echo $modele->estim_titre_ag; ?>" id="estim_titre_ag" name="estim_titre_ag" type="number" step="0.01" min="0" onchange="prix();checkt(this);" required /> <span class="ml-20 mt-10 btn text-center text-dark bg-gradient-light btn-circle btn-sm">Arg</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"   value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" onchange="prix();checkt(this);" /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
+											 <input class="form-control"   value="<?php echo $modele->estim_titre_pt; ?>" id="estim_titre_pt" name="estim_titre_pt" type="number" step="0.01" min="0" onchange="prix();checkt(this);" required /> <span class="ml-20 mt-10 btn text-center text-white bg-gradient-secondary btn-circle btn-sm">Plat</span>
 									    </div>
 									    <div class="col-lg-3"  >
-											 <input class="form-control"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" onchange="prix();checkt(this);" /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
+											 <input class="form-control"  value="<?php echo $modele->estim_titre_pd; ?>" id="estim_titre_pd" name="estim_titre_pd" type="number" step="0.01" min="0" onchange="prix();checkt(this);" required /> <span class="ml-20 mt-10 btn text-center text-white bg-gray-500 btn-circle btn-sm">Pall</span>
 									    </div>										
 									      
 									 </div>										 
