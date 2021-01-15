@@ -118,12 +118,12 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
   
 										<div class="col-lg-4">
 											<label>{{__('msg.Weight')}}   </label>
-									        <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:120px"  required  value="<?php echo $modele->poids;?>"   /> g
+									        <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:120px"  required  value="<?php echo $modele->poids;?>" onchange="prix()"     /> g
 
 										</div>
 									  <div class="col-lg-4">
 											<label>{{__('msg.Value')}}: </label>
-										     <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:120px"  value="<?php echo $modele->valeur;?>"     />
+										     <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:120px"  value="<?php echo $modele->valeur;?>"  onchange="prix()"    />
 
 									   </div>
 											  
@@ -164,7 +164,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
 
 				 	          <div class="col-xs-12 col-sm-6" style=" " >
-								<button name="order"  disabled  type="submit"   class="pull-right btn btn-primary btn-icon-split   mt-10 mb-20">
+								<button name="order"     type="submit"   class="pull-right btn btn-primary btn-icon-split   mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>

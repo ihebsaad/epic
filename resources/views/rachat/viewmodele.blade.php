@@ -146,7 +146,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 				
 				<div class="col-xs-12 col-sm-7 "  >
 				
-		                     	<button  disabled name="order" type="submit"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
+		                     	<button    name="order" type="submit"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
