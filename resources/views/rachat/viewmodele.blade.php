@@ -104,11 +104,14 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
  											</label>
 											  <select  class="form-control" name="choix_couv_ident" id="choix_couv_ident" style="width:300px" required onchange="check2();prix()"> 
 											  <option></option>
-											<?php $check='';
+											<?php  
+											
 											foreach( $covers as $cover)
-											  {  if($modele->choix_couv_ident==$cover->choix_couv_ident) {$check="selected='selected'"; }
-												echo ' <option  '.$check.'  value="'.$cover->choix_couv_ident.'">'.$cover->choix_ident_lib.'</option> ';
+											  {  if($modele->choix_couv_ident==$cover->choix_couv_ident) {//$check="selected='selected'"; 
+											   echo ' <option   selected="selected" value="'.$cover->choix_couv_ident.'">'.$cover->choix_ident_lib.'</option> ';
+
 											  }
+ 											  }
 											?>
 												</select>
 
