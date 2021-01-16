@@ -344,7 +344,7 @@ $estim_titre_ag  = floatval($request->get('estim_titre_ag'));
 $estim_titre_pt  = floatval($request->get('estim_titre_pt'));	
 $estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
 $assiste   =  $request->get('assiste') ;	
-$update   =  $request->input('update') ;	
+$update   =  $request->get('update') ;	
  
  		if($assiste=="on" || $assiste==1 ){
 			$assiste=1;
@@ -383,7 +383,8 @@ $update   =  $request->input('update') ;
               'cmde_aff_canal' => 0, // doit être WEB pourquoi dans la base int ?
               'cmde_aff_poids_brut' => $pds_cdr,
               'cmde_aff_poids_lot' => $pds_lot,
-			  
+			  'statut' => 'panier', 			 
+
 			  ]);
 			if($Cmde_aff_e->save()){
 				$id=$Cmde_aff_e->cmde_aff_ident;
@@ -397,13 +398,14 @@ $update   =  $request->input('update') ;
                'cmde_estim_titre_pt' => $estim_titre_pt,
                'cmde_estim_titre_pd' => $estim_titre_pd,
                'assiste' => $assiste,
-			  
+			   'statut' => 'panier', 			 
+
 			     
 			  ]);	
 				$Cmde_aff_l->save();
 			}
 			
-		  return redirect('/affinage/')->with('success', ' Commande enregistrée avec succès');
+		  return back()->with('success', 'Modèle ajouté au panier');
 			
 		}			
 			
@@ -480,7 +482,8 @@ $update   =  $request->input('update') ;
               'assiste' => $estim_titre_pd,
               'demande_acompte' => $demande_acompte,
               'choix_couv_ident' => $choix_couv_ident,
-         
+ 			  'statut' => 'panier', 			 
+        
 			  
 			  ]);
 			if($Cmde_rmp_e->save()){
@@ -495,13 +498,14 @@ $update   =  $request->input('update') ;
                'cmde_estim_titre_pt' => $estim_titre_pt,
                'cmde_estim_titre_pd' => $estim_titre_pd,
                'assiste' => $assiste,
+			  'statut' => 'panier', 			 
 			  
 			     
 			  ]);	
 				$Cmde_rmp_l->save();
 			}
 			
-		  return redirect('/rachat/')->with('success', ' Commande enregistrée avec succès');
+		  return back()->with('success', 'Modèle ajouté au panier');
 			
 		}			 
 		 
@@ -558,7 +562,8 @@ $update   =  $request->input('update') ;
               'cmde_lab_date' => date('Y-m-d H:i:s'),
               'cmde_lab_canal' => 0, // doit être WEB pourquoi dans la base int ?
               'cmde_lab_qte' => $qte,
-              'cmde_lab_poids' => $poids
+              'cmde_lab_poids' => $poids,
+			  'statut' => 'panier', 			 
              
 			  
 			  ]);
@@ -577,13 +582,14 @@ $update   =  $request->input('update') ;
                'titrage_ag' => $titrage_ag,
                'titrage_pt' => $titrage_pt,
                'titrage_pd' => $titrage_pd,
+			   'statut' => 'panier', 			 
  			  
 			     
 			  ]);	
 				$Cmde_lab_l->save();
 			}
 			
-		  return redirect('/laboratoire/')->with('success', ' Commande enregistrée avec succès');
+		  return back()->with('success', 'Modèle ajouté au panier');
 			
 		}			 
 		 	 

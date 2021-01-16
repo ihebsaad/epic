@@ -167,7 +167,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
-                                        <span class="text" >{{__('msg.Save as an order')}}</span>
+                                        <span class="text" >{{__('msg.Add to cart')}}</span>
                                     </button>
                                 </div>									
 									 
