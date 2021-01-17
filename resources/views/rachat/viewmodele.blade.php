@@ -21,9 +21,9 @@ $modele=DB::table('modele_rmp')->where('modele_rmp_ident',$id)->first();
 
 $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
-$E_CmdesAff=DB::table('Cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
-$E_CmdesLab=DB::table('Cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
-$E_CmdesRMP=DB::table('Cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesLab=DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesRMP=DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
 
 $count_aff =count($E_CmdesAff);
 $count_lab =count($E_CmdesLab);
@@ -202,7 +202,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 								<?php foreach ($E_CmdesAff as $cmd)
 								{								
 								$cmdid=$cmd->cmde_aff_ident;
-								$lignes=DB::table('Cmde_aff_l')->where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->get();
+								$lignes=DB::table('cmde_aff_l')->where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->get();
 								$poidsAff= $or= $argent= $platine= $palladium = 0;
 								foreach ($lignes as $ligne)
 								{
@@ -233,7 +233,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 								$cmdid=$cmd->cmde_lab_ident;
 								$poids=$cmd->cmde_lab_poids;
 								$qte=$cmd->cmde_lab_qte;
- 								$lignes=DB::table('Cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->get();
+ 								$lignes=DB::table('cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->get();
 								 $or= $argent= $platine= $palladium = 0;
 								foreach ($lignes as $ligne)
 								{  
