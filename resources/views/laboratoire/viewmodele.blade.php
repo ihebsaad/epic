@@ -153,7 +153,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 		 
 				 	      <div class="row " style=" ">
 				 	      <div class="col-xs-12 col-sm-6 " style=" ">
-								<button  name="update"   type="submit"  class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+								<button  name="update" value="update"  type="submit"  class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -163,9 +163,9 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
 
 				 	          <div class="col-xs-12 col-sm-6" style=" " >
-								<button name="order"     type="submit"   class="pull-right btn btn-primary btn-icon-split   mt-10 mb-20">
+								<button name="order"  value="order"   type="submit"   class="pull-right btn btn-success btn-icon-split   mt-10 mb-20">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-save"></i>
+                                            <i class="fas fa-shopping-cart"></i>
                                         </span>
                                         <span class="text" >{{__('msg.Add to cart')}}</span>
                                     </button>
@@ -187,7 +187,7 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
                              <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Estimations  </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Cart')}}  </h6>
                                 </div>
                                 <div class="card-body" style="min-height:200px">
 								<div class="pl-20">{{__('msg.Amount')}} : <span style="font-weight:bold" id="amount"></span></div>

@@ -138,8 +138,8 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 									 
 <br><br>
 		  <div class="row "  >
-				<div class="col-xs-12 col-sm-5 "  >
-								<button    type="submit"  name="update" value="update" class="pull-right btn btn-primary btn-icon-split   ml-30 mt-10 mb-20">
+				<div class="col-xs-12 col-sm-6 "  >
+								<button    type="submit"  name="update" value="update" class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -147,11 +147,11 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
                                     </button>
 				</div>
 				
-				<div class="col-xs-12 col-sm-7 "  >
+				<div class="col-xs-12 col-sm-6 "  >
 				
-		                     	<button    name="order" type="submit" value="order"  class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
+		                     	<button    name="order" type="submit" value="order"  class="pull-right btn btn-success btn-icon-split ml-10 mt-10 mb-20">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-save"></i>
+                                            <i class="fas fa-shopping-cart"></i>
                                         </span>
                                         <span class="text" >{{__('msg.Add to cart')}}</span>
                                     </button>
@@ -174,7 +174,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
                              <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Estimations  </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Cart')}}  </h6>
                                 </div>
                                 <div class="card-body" style="min-height:200px">
 								<div class=" ">{{__('msg.Value')}} : <span style="font-weight:bold" id="amount"></span></div>

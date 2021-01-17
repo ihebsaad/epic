@@ -60,7 +60,19 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 											</select>
  									  
 									 </div>
-  
+  								<?php 
+								$textassiste= __('msg.I wish to attend preparation operations (melting)') ;
+								$displaycdr='';
+								if	( $modele->nature_lot_ident  == 1 || $modele->nature_lot_ident == 2 || $modele->nature_lot_ident == 3 || $modele->nature_lot_ident ==4 || $modele->nature_lot_ident == 5 || $modele->nature_lot_ident ==6 || $modele->nature_lot_ident == 7 || $modele->nature_lot_ident == 8 || $modele->nature_lot_ident == 12 || $modele->nature_lot_ident ==16 || $modele->nature_lot_ident ==30 || $modele->nature_lot_ident ==31 || $modele->nature_lot_ident ==32 || $modele->nature_lot_ident == 33 || $modele->nature_lot_ident == 34 || $modele->nature_lot_ident == 36  ){
+								$display='';	
+								}else{
+								$display='display:none';
+								}
+								if( $modele->nature_lot_ident == 34 || $modele->nature_lot_ident == 36){
+								$textassiste=__('msg.I wish to attend the burning') ;
+								$displaycdr='display:block';								
+								}
+								?>
                                      <div class="row pl-20 pr-20 mb-10">
 										<div  >
 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Weight')}}: </label>
@@ -68,7 +80,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 
 										</div>
 	
-									    <div class=" " style="display:none" id="cendre" >
+									    <div class=" " style="<?php echo $displaycdr; ?>" id="cendre" >
 										   <label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Weight')}} Cendre: </label>
 	  									    <input  onchange="prix()"  class="form-control"   id="pds_cdr" name="pds_cdr"  type="number" step="0.01" min="0" style="width:130px" value="0"   /> g
 
@@ -77,12 +89,12 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 									   
 									 </div>		
 									  	 									 
-									 
-                                     <div class="row pl-20 pr-20 mb-10" id="divassiste" style="display:none" >
+
+                                     <div class="row pl-20 pr-20 mb-10" id="divassiste" style="<?php echo $display;?>" >
 										<div class="col-lg-12">
 											<label for="assiste">
 											<?php $check='' ; if($modele->assiste==1){$check='checked';} ?>
-												<input type="checkbox" name="assiste" id="assiste" <?php echo $check; ?> onchange="prix()" /> <span id="assistetxt"></span>
+												<input type="checkbox" name="assiste" id="assiste" <?php echo $check; ?> onchange="prix()" /> <span id="assistetxt"><?php echo $textassiste; ?></span>
 											</label>
 										</div>									 
 									 </div>
@@ -133,7 +145,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 <br><br>
 		  <div class="row "  >
 				<div class="col-xs-12 col-sm-6 "  >
-								<button value="update"   type="submit"  class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+								<button value="update"  name="update"   type="submit"  class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -143,9 +155,9 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 				
 				<div class="col-xs-12 col-sm-6 "  >
 				
-		                     	<button value="order"    type="submit"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
+		                     	<button value="order" name="order"    type="submit"   class="pull-right btn btn-success btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-save"></i>
+                                            <i class="fas fa-shopping-cart"></i>
                                         </span>
                                         <span class="text" >{{__('msg.Add to cart')}}</span>
                                     </button>
@@ -168,7 +180,7 @@ $modele=DB::table('modele_affinage')->where('modele_affinage_ident',$id)->first(
 
     <div class="card shadow mb-4">
      <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-primary"> {{__('msg.Estimation')}} </h6>
+       <h6 class="m-0 font-weight-bold text-primary"> {{__('msg.Cart')}} </h6>
     </div>
     <div class="card-body  ">
 	
