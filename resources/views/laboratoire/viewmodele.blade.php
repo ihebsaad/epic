@@ -224,7 +224,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 								}
 								} 
  								?>
-								Poids : <?php echo $poidsAff; ?><br>
+								Poids : <?php echo $poidsAff; ?> g<br>
  								Total Métaux :<br>
 								<?php if ($or>0){echo 'Or : '.$or .' g<br>'; }?> 
 								<?php if ($argent>0){echo 'Argent : '.$argent.' g<br>'; }?>
@@ -238,11 +238,12 @@ $count= $count_aff + $count_lab + $count_rmp;
 								if($count_lab>0) {?>
 								<b>Laboratoire: <?php echo '('.$count_lab.')'; ?></b><br>
 								<div class="pl-30" >
+								<?php $poids=0; $qte=0; ?>
 								<?php foreach ($E_CmdesLab as $cmd) 
 								{
 								$cmdid=$cmd->cmde_lab_ident;
-								$poids=$cmd->cmde_lab_poids;
-								$qte=$cmd->cmde_lab_qte;
+								$poids=$poids+$cmd->cmde_lab_poids;
+								$qte=$qte+$cmd->cmde_lab_qte;
  								$lignes=DB::table('cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->get();
 								 $or= $argent= $platine= $palladium = 0;
 								foreach ($lignes as $ligne)
@@ -254,8 +255,8 @@ $count= $count_aff + $count_lab + $count_rmp;
 								}
 								}
 								?>
- 								Qté : <?php echo $qte; ?><br>
-								Poids : <?php echo $poids; ?><br>
+ 								Qté totale : <?php echo $qte; ?><br>
+								Poids total : <?php echo $poids; ?> g<br>
 								Métaux :<br>
 								<?php if ($or>0){echo 'Or<br>'; }?> 
 								<?php if ($argent>0){echo 'Argent<br>'; }?> 
