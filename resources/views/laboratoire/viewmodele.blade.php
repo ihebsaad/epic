@@ -29,6 +29,15 @@ foreach($natures as $nature)
  
 $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
+
+$E_CmdesAff=DB::table('Cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesLab=DB::table('Cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesRMP=DB::table('Cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+
+$count_aff =count($E_CmdesAff);
+$count_lab =count($E_CmdesLab);
+$count_rmp =count($E_CmdesRMP);
+$count= $count_aff + $count_lab + $count_rmp;
 /* $tarif=HomeController::tariflabo(10099,2,100,0,0,0);
  dd($tarif);*/
  ?>
@@ -187,12 +196,103 @@ $modele=DB::table('modele_lab')->where('modele_lab_ident',$id)->first();
 
                              <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Cart')}}  </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.My Models')}}  </h6>
                                 </div>
                                 <div class="card-body" style="min-height:200px">
-								<div class="pl-20">{{__('msg.Amount')}} : <span style="font-weight:bold" id="amount"></span></div>
- 
-                                </div>
+								<b>{{__('msg.Model')}} <?php echo $modele->modele_nom; ?> - Estimation</b>
+								<div class="pl-20">{{__('msg.Amount')}} : <span style="font-weight:bold" id="amount"></span></div><br>
+ 								
+								<?php  if($count>0) {?> 
+								<b class="mb-10" style="font-size:20px">Modèles dans le panier <?php echo '('.$count.')'; ?></b><br>
+								<div class="pl-40">
+								
+								<?php	if($count_aff>0) {?>
+								<b>Affinage: <?php echo '('.$count_aff.')'; ?> </b><br>
+								<div class="pl-30" >
+								<?php foreach ($E_CmdesAff as $cmd)
+								{								
+								$cmdid=$cmd->cmde_aff_ident;
+								$lignes=DB::table('Cmde_aff_l')->where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->get();
+								$poidsAff= $or= $argent= $platine= $palladium = 0;
+								foreach ($lignes as $ligne)
+								{
+									$poidsAff=$poidsAff+$ligne->cmde_aff_poids_lot;	
+									$or=$or+$ligne->cmde_estim_titre_au;	
+									$argent=$argent+$ligne->cmde_estim_titre_ag;	
+									$platine=$platine+$ligne->cmde_estim_titre_pt;	
+									$palladium=$palladium+$ligne->cmde_estim_titre_pd;	
+								}
+								} 
+ 								?>
+								Poids : <?php echo $poidsAff; ?><br>
+ 								Total Métaux :<br>
+								<?php if ($or>0){echo 'Or : '.$or .' g<br>'; }?> 
+								<?php if ($argent>0){echo 'Argent : '.$argent.' g<br>'; }?>
+								<?php if ($platine>0){echo 'Platine : '.$platine.' g<br>'; }?>
+								<?php if ($palladium>0){echo 'Palladium : '.$palladium.' g<br>'; }?>		
+								</div>
+								<hr>
+								<?php  
+								 }
+								 
+								if($count_lab>0) {?>
+								<b>Laboratoire: <?php echo '('.$count_lab.')'; ?></b><br>
+								<div class="pl-30" >
+								<?php foreach ($E_CmdesLab as $cmd) 
+								{
+								$cmdid=$cmd->cmde_lab_ident;
+								$poids=$cmd->cmde_lab_poids;
+								$qte=$cmd->cmde_lab_qte;
+ 								$lignes=DB::table('Cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->get();
+								 $or= $argent= $platine= $palladium = 0;
+								foreach ($lignes as $ligne)
+								{  
+ 									$or=$or+$ligne->titrage_au;	
+									$argent=$argent+$ligne->titrage_ag;	
+									$platine=$platine+$ligne->titrage_pt;	
+									$palladium=$palladium+$ligne->titrage_pd;	
+								}
+								}
+								?>
+ 								Qté : <?php echo $qte; ?><br>
+								Poids : <?php echo $poids; ?><br>
+								Métaux :<br>
+								<?php if ($or>0){echo 'Or<br>'; }?> 
+								<?php if ($argent>0){echo 'Argent<br>'; }?> 
+								<?php if ($platine>0){echo 'Platine<br> '; }?>
+								<?php if ($palladium>0){echo 'Palladium<br>'; }?> 
+								</div>
+								<hr>
+								<?php }
+								
+								
+								if($count_rmp>0) {?>								
+								<b>Rachat Métaux Précieux: <?php echo '('.$count_rmp.')'; ?></b><br>
+								<div class="pl-30" >
+								<?php foreach ($E_CmdesRMP as $cmd) 
+								{
+ 								$poids=$cmd->cmde_rmp_poids_lot;
+  								 $or= $argent= $platine= $palladium = 0;
+ 								 $or=$or+$cmd->estim_au;	
+								 $argent=$argent+$cmd->estim_ag;	
+								 $platine=$platine+$cmd->estim_pt;	
+								 $palladium=$palladium+$cmd->estim_pd;	
+								 }
+								?>
+ 								Poids : <?php echo $poids ; ?> g<br>
+								Total Métaux :<br>
+								<?php if ($or>0){echo 'Or : '.$or .' g<br>'; }?> 
+								<?php if ($argent>0){echo 'Argent : '.$argent.' g<br>'; }?>
+								<?php if ($platine>0){echo 'Platine : '.$platine.' g<br>'; }?>
+								<?php if ($palladium>0){echo 'Palladium : '.$palladium.' g<br>'; }?>								
+								</div>
+								<hr>
+								<?php } ?>
+								
+								</div>
+								<?php } //count total ?>
+								
+                                </div><!-- card body -->
                             </div>
 
                
