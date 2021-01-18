@@ -57,6 +57,7 @@ Route::get('/viewmodele/{id}', 'PagesController@viewmodele')->name('viewmodele')
 Route::get('/commande/{id}', 'PagesController@commande')->name('commande');
 Route::post('/addmodele', 'HomeController@addmodele')->name('addmodele');
 Route::post('/updatemodele', 'HomeController@updatemodele')->name('updatemodele');
+Route::post('/validatemodels', 'HomeController@validatemodels')->name('validatemodels');
 
 
 Route::get('/laboratoire', 'PagesController@laboratoire')->name('laboratoire');

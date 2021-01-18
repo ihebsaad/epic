@@ -131,7 +131,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 
 							 </div>							 
 
-								<button  disabled  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-10 mb-20" >
+								<button   onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-10 mb-20" >
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -343,7 +343,36 @@ function setadresse	(){
 
         }
 */
+  function valider() {
+             var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{ route('validatemodels') }}",
+                method: "POST",
+                data: {   _token: _token},
+                success: function (data) {
+				
+				
+				
+	                    $.notify({
+                        message: 'Commande passée avec succès',
+                        icon: 'glyphicon glyphicon-check'
+                    },{
+                        type: 'success',
+                        delay: 3000,
+                        timer: 1000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    });
+							setTimeout(function(){
+				location.href="{{ route('home')}}";
+							   }, 3000);  //3 secds				
+				
+                }
+            });
 
+        }
 
 
 <?php if($agence_defaut>0){?>
