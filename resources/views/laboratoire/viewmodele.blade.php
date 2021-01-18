@@ -291,6 +291,13 @@ $count= $count_aff + $count_lab + $count_rmp;
 								<?php } ?>
 								
 								</div>
+								
+								<center><a href="{{ route('livraisonmod') }}" style="color:white;text-decoration:none"> <button    type="button"   class="pull-right btn btn-success btn-icon-split  mt-10 mb-20">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-truck-moving"></i>
+                                        </span>
+                                        <span style="width:120px"  class="text" >{{__('msg.Delivery')}}</span>
+                                    </button> </a></center>								
 								<?php } //count total ?>
 								
                                 </div><!-- card body -->
