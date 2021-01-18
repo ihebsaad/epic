@@ -323,5 +323,10 @@ return [
 	'I want to receive a deposit as soon as possible'=>'I want to receive a deposit as soon as possible',	
   	'Cover'=>'Cover',	 
   	'Deposit'=>'Cover',	 
+  	'Products'=>'Products',	 
+  	'Models'=>'Models',	 
+	'Validate'=>'Validate',	
+	'Gross weight'=>'Gross weight',	
+
 	
  ];

@@ -338,7 +338,10 @@ return [
 	'I want to receive a deposit as soon as possible'=>'Je souhaite recevoir un acompte dès que possible',	
   	'Cover'=>'Couverture',	 
   	'Deposit'=>'Acompte',	 
-	
+  	'Produts'=>'Produits',	 
+  	'Models'=>'Modèles',	
+	'Validate'=>'Valider',	
+	'Gross weight'=>'Poids brut',	
 	
 
  ];

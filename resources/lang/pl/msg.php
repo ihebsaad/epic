@@ -323,5 +323,9 @@ return [
 	'I want to receive a deposit as soon as possible'=>'Chcę jak najszybciej otrzymać depozyt',	
   	'Cover'=>'Pokrywa',	 
   	'Deposit'=>'Kaucja',	 
+  	'Products'=>'Produkty',	 
+  	'Models'=>'Modele',	 
+	'Validate'=>'Uprawomocnić',	
+	'Gross weight'=>'Waga brutto',	
 	
  ];

@@ -76,7 +76,10 @@ class PagesController extends Controller
          return view('livraison');
     }
 	
- 	
+ 	 public function livraisonmod()
+    { 
+         return view('livraisonmod');
+    } 	
 
 
 

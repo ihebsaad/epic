@@ -43,6 +43,7 @@ Route::get('/catalog/{type}/{famille1}', 'PagesController@catalog')->name('catal
 
 Route::get('/panier', 'PagesController@panier')->name('panier');
 Route::get('/livraison', 'PagesController@livraison')->name('livraison');
+Route::get('/livraisonmod', 'PagesController@livraisonmod')->name('livraisonmod');
 Route::get('/trading', 'PagesController@trading')->name('trading');
 Route::get('/virement', 'PagesController@virement')->name('virement');
 Route::get('/orders', 'PagesController@orders')->name('orders');
