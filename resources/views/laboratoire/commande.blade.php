@@ -50,99 +50,99 @@ foreach($natures as $nature)
                                 </div>
                                 <div class="card-body">
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.order')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->id; ?></b>
 										</div>
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Nature of the lot')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php   echo $Natures[$commande[0]->nature_ident];?></b>
 										</div>
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Weight')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->poids; ?> g</b>
 										</div>
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Type of laboratory')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->type_lab_lib; ?> </b>
 										</div>
 									</div>									
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Choice of laboratory')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->choix_lab_lib; ?> </b>
 										</div>
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Amount')}}: </label>
 										</div>
-									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->montant; ?> </b>
+									    <div class="col-lg-6">
+										<b><?php echo $commande[0]->montant; ?> €</b>
 										</div>
 									</div>									
 									<?php    ?>									
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Title')}} {{__('msg.Gold')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titrage_or; ?></b>
 										</div>
 									</div>
 									<?php    ?>									
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Title')}} {{__('msg.Silver')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titrage_argent; ?></b>
 										</div>
 									</div>
 									<?php   ?>									
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Title')}} {{__('msg.Platinum')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titrage_platine; ?></b>
 										</div>
 									</div>
 									<?php    ?>
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Title')}} {{__('msg.Palladium')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titrage_palladium; ?></b>
 										</div>
 									</div>
-									<?php   ?>
+									<?php if(strlen($commande[0]->cmde_lab_comment) >1) {  ?>
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Comment')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->cmde_lab_comment; ?></b>
 										</div>
 									</div>									
-									
+									<?php } ?>
 								</div>
                               </div>
 

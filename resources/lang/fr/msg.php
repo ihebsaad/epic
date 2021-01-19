@@ -342,6 +342,9 @@ return [
   	'Models'=>'Modèles',	
 	'Validate'=>'Valider',	
 	'Gross weight'=>'Poids brut',	
+	'Removal of address'=>"Adresse d'enlèvement",	
+	'Self-Delivery'=>"Auto-Livraison",	
+	
 	
 
  ];

@@ -327,5 +327,8 @@ return [
   	'Models'=>'Modele',	 
 	'Validate'=>'Uprawomocnić',	
 	'Gross weight'=>'Waga brutto',	
+	'Removal of address'=>'Usunięcie adresu',	
+	'Self-Delivery'=>'Dostawa-własna',	
+	
 	
  ];

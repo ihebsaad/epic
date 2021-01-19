@@ -37,18 +37,18 @@ $agence_defaut= $liste[0]->agence_defaut  ;
                                 <div class="card-body">
  							 <h5>{{__('msg.Choose your delivery mode')}}</h5>
 							 <div class="row pt-10 pb-20">
-							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');details()">
-								<center>  Click & Collect 
+							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');details();mode='collect'">
+								<center>  {{__('msg.Self-Delivery')}} 
 								<img src="{{ URL::asset('public/img/box.png')}}" style="width:80px" class="mt-20"/></center>
 							 </div>
-							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10" onclick="$('#agency1').hide('slow');$('#agency2').show('slow');">
+							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10" onclick="$('#agency1').hide('slow');$('#agency2').show('slow');mode='trans'">
 								<center>  {{__('msg.Transporter')}} 
 								<img src="{{ URL::asset('public/img/truck.png')}}" style="width:100px"/></center>
 								
 							 </div>
 							 </div>
 							 <div id="agency1">
- 							 <h5>{{__('msg.Direct debit address')}}</h5>
+ 							 <h5>{{__('msg.Delivery address')}}</h5>
 							 <div class="row pt-10 pb-20">
 							 
 							 <div class="col-md-8">
@@ -81,17 +81,17 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </div>		<!-- agency 1-->					 
 
 							 <div id="agency2"  style="display:none"  >
- 							 <h5>{{__('msg.Delivery address')}}</h5>
+ 							 <h5>{{__('msg.Removal of address')}}</h5>
 							 <div class="row pt-10 pb-20">
 							 
 							 <div class="col-md-8">
 							 
 							 <select class="form-control mb-20"  id="adresse_id" onchange="setadresse();changing(this)">
 							 <option></option>
-							 <?php
+							 <?php $i=0;
 							  foreach($adresses as $adresse)
-							 {
-								 echo '<option value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
+							 { $i++; if($i==1){$selected="selected='selected'";}else{$selected='';}
+								 echo '<option  '.$selected.'  value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
 								 
 							 } 
 							 ?>
@@ -293,7 +293,7 @@ function details()
        method: "POST",
        data: {id: agence  , _token: _token } ,
        success: function (data) {
- data=JSON.parse(data);
+		data=JSON.parse(data);
 		 $('#lib').html( data.agence_lib);
 		 $('#adresse').html( data.adresse1);
 		 $('#ville').html( data.ville);
@@ -343,12 +343,23 @@ function setadresse	(){
 
         }
 */
+
+var mode="collect";
   function valider() {
              var _token = $('input[name="_token"]').val();
+			 var agence =null;
+			 var adresse =null;
+			 if(mode=='collect'){
+			  agence = $('#agence_id').val();
+			 }else{
+			  adresse = $('#adresse_id').val();	 
+			 }
+	 
+              var _token = $('input[name="_token"]').val();
             $.ajax({
                 url: "{{ route('validatemodels') }}",
                 method: "POST",
-                data: {   _token: _token},
+                data: { agence:agence,adresse:adresse,  _token: _token},
                 success: function (data) {
 				
 				

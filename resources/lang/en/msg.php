@@ -327,6 +327,8 @@ return [
   	'Models'=>'Models',	 
 	'Validate'=>'Validate',	
 	'Gross weight'=>'Gross weight',	
+	'Removal of address'=>'Removal of address',	
+	'Self-Delivery'=>'Self-Delivery',	
 
 	
  ];

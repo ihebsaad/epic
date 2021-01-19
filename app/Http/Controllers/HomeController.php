@@ -598,14 +598,16 @@ $update   =  $request->input('update') ;
   public function validatemodels(Request $request)
 {
  $user = auth()->user();  
- 
+ $adresse   = $request->get('adresse');	
+ $agence   = $request->get('agence');	
+
 $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
  foreach ($E_CmdesAff as $cmd)
  {								
   $cmdid=$cmd->cmde_aff_ident;
   $lignes=DB::table('cmde_aff_l')->where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
  }
- DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+ DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
 
  $E_CmdesLab=DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
   foreach ($E_CmdesLab as $cmd)
@@ -613,7 +615,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   $cmdid=$cmd->cmde_lab_ident;
   $lignes=DB::table('cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
  }
-  DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+  DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
 
  $E_CmdesRMP=DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
   foreach ($E_CmdesRMP as $cmd)
@@ -621,7 +623,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   $cmdid=$cmd->cmde_rmp_ident;
   $lignes=DB::table('cmde_rmp_l')->where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
  }	
-  DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+  DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
 
   
  

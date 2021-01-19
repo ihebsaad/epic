@@ -37,78 +37,82 @@ foreach($natures as $nature)
                                 </div>
                                 <div class="card-body">
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.order')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->cmde_aff_lg; ?></b>
 										</div>
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Nature of the lot')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php   echo $Natures[$commande[0]->nature_ident];?></b>
 										</div>
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Announcement weight')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->poids_annonce; ?> g</b>
 										</div>
 									</div>
+								<?php if (floatval($commande[0]->poids_recu)>0){?>								
+									
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Weight received')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->poids_recu; ?> g</b>
 										</div>
-									</div>									
+									</div>	
+								<?php } if (floatval($commande[0]->poids_apres_fonte)>0){?>								
+									
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Weight after casting')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->poids_apres_fonte; ?> g</b>
 										</div>
 									</div>
-									<?php   if($commande[0]->titre_or !='') { ?>									
+								<?php } if(strlen($commande[0]->titre_or) >1) {  ?>									
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Title')}} {{__('msg.Gold')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titre_or; ?></b>
 										</div>
 									</div>
-									<?php } if($commande[0]->titre_ag !='') { ?>									
+									<?php } if(strlen($commande[0]->titre_ag) >1) {   ?>									
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Title')}} {{__('msg.Silver')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titre_ag; ?></b>
 										</div>
 									</div>
-									<?php } if($commande[0]->titre_pt !='') { ?>									
+									<?php } if(strlen($commande[0]->titre_pt) >1) {   ?>									
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Title')}} {{__('msg.Platinum')}}: </label>
 										</div>
-									    <div class="col-lg-9">
-										<b><?php echo $commande[0]->titre_pt; ?></b>
+									    <div class="col-lg-6">
+										<b><?php echo $commande[0]->titre_pd; ?></b>
 										</div>
 									</div>
-									<?php } if($commande[0]->titre_pd !='') { ?>
+									<?php } if(strlen($commande[0]->titre_pd) >1) {   ?>
 									<div class="row pl-20 pr-20 pb-10">
-										<div class="col-lg-9">
+										<div class="col-lg-4">
 											<label>{{__('msg.Title')}} {{__('msg.Palladium')}}: </label>
 										</div>
-									    <div class="col-lg-9">
+									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titre_pd; ?></b>
 										</div>
 									</div>
