@@ -44,7 +44,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
                                      <div class="row pl-20 pr-20 mb-10">
 										 
-											<label style="width:130px" class="ml-10 mt-10 mr-10">{{__('msg.Model name')}}: </label>
+											<label style="width:130px" class="ml-10 mt-10 mr-10">{{__('msg.Name')}}: </label>
 										 
 									   
 											 <input  class="form-control"  id="nom"  type="text" required name="modele_nom" style="width:350px" />

@@ -39,7 +39,7 @@ foreach($natures as $nature)
 									  <input  class="form-control"  id="cl_ident"  type="hidden"  name="cl_ident" value="<?php echo $user['client_id']; ?>" />
 
                                      <div class="row pl-20 pr-20 mb-10">
- 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Model name')}}: </label>
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Name')}}: </label>
 										 	 <input  class="form-control"  id="nom"  type="text" required name="modele_nom" style="width:350px" />
 											  
  									   

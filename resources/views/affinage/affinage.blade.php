@@ -18,10 +18,7 @@ foreach($natures as $nature)
 }
 
 ?>
-<style>
- .btn-default{ border:1px solid lightgrey!important;}
- .dt-buttons{background-color:#f8f9fc;margin-bottom:10px;}
-</style>
+ 
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
@@ -45,25 +42,25 @@ foreach($natures as $nature)
                     <a   class="btn btn-md btn-success"    href="{{route('modele')}} " ><b><i class="fas fa-plus"></i>  {{__('msg.New Model')}}</b></a>
                 </div>
             </div>                                      
-						<style>	
-						.pagination{
-						 position: absolute; 
-						 right: 5px; margin-bottom:50px;bottom:5px}
-						</style>			 
+			 		 
         <table id="mytable" class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
                 <th style="width:15%">{{__('msg.Name')}}</th>
+                <th style="width:25%">{{__('msg.Nature of the lot')}}</th>
                  <th style="width:25%">{{__('msg.Metals')}}</th>
-                <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.attend the melting')}}</th>
+                <th style="width:20%;font-size:12px;padding-right:5px;">{{__('msg.To prepare in my presence')}}</th>
                </tr>
             </thead>
             <tbody>
             @foreach($modeles as $modele)
 				<tr>
-				<td style="font-size:12px;"><a href="<?php echo URL("viewmodele/".$modele->id);?>"><?php echo $modele->nom; ?></a><br><?php echo $Natures[$modele->nature_lot_ident];?></td>
-                 <td>
-				<?php echo $modele->poids;?> g <br>
+				<td style="font-size:14px;text-align:center "><a href="<?php echo URL("viewmodele/".$modele->id);?>"><?php echo $modele->nom; ?></a></td>
+                 <td style="font-size:12px;">
+				 <?php echo $Natures[$modele->nature_lot_ident]; ?>
+                 </td>
+                 <td style="font-size:12px;">
+				<span><?php echo $modele->poids;?> g</span> 
                 <?php $w1=0; if ($modele->or > 0){ $w1=intval($modele->or / 10 ) ;?>
                 <span class="mr-10 btn text-center text-white bg-gradient-warning   btn-sm" style="width:<?php echo $w1;?>px;max-width:100px!important" >
                   Or 
@@ -84,7 +81,7 @@ foreach($natures as $nature)
                  <?php }   ?>    
                 </td>
 
-				<td style="font-size:13px;"><?php if($modele->assiste){echo __('msg.Yes') ;}?></td>
+				<td style="font-size:12px;text-align:center"><?php if($modele->assiste){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
  				</tr>
 			@endforeach
             </tbody>
@@ -200,123 +197,6 @@ foreach($natures as $nature)
 
 
 @section('footer_scripts')
-
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/jquery.dataTables.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/dataTables.bootstrap.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/dataTables.rowReorder.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/dataTables.scroller.js') }}" ></script>
-
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/dataTables.buttons.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/dataTables.responsive.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/buttons.colVis.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/buttons.html5.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/buttons.print.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/buttons.bootstrap.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/buttons.print.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/pdfmake.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('resources/assets/datatables/js/vfs_fonts.js') }}" ></script>
  
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-
-            $('#mytable thead tr:eq(1) th').each( function () {
-                var title = $('#mytable thead tr:eq(0) th').eq( $(this).index() ).text();
-                $(this).html( '<input class="searchfield" type="text"   />' );
-            } );
-
-            var table = $('#mytable').DataTable({
-                orderCellsTop: true,
-                dom : '<fl<"clear">>rt<"bottom"ip<"clear">>',
-  				//dom : 'lrtip',
-				
-				//  dom: 'Blfrtip',
-				
-                responsive:true,
-				 aaSorting : [],               
-                
-                "columnDefs": [ {
-                    "targets": 'no-sort',
-                    "orderable": false,
-                } ]
-                ,
-                "language":
-                    {
-                        "decimal":        "",
-                        "emptyTable":     "Pas de données",
-                        "info":           "Affichage de  _START_ à _END_ de _TOTAL_ entrées",
-                        "infoEmpty":      "Affichage 0 à 0 de 0 entrées",
-                        "infoFiltered":   "(Filtrer de _MAX_ total d`entrées)",
-                        "infoPostFix":    "",
-                        "thousands":      ",",
-                        "lengthMenu":     "Affichage de _MENU_ entrées",
-                        "loadingRecords": "chargement...",
-                        "processing":     "chargement ...",
-                        "search":         "Recherche:",
-                        "zeroRecords":    "Pas de résultats",
-                        "paginate": {
-                            "first":      "Premier",
-                            "last":       "Dernier",
-                            "next":       "Suivant",
-                            "previous":   "Précédent"
-                        },
-                        "aria": {
-                            "sortAscending":  ": activer pour un tri ascendant",
-                            "sortDescending": ": activer pour un tri descendant"
-                        }
-                    }
-
-            });
-
-            // Restore state
-       /*     var state = table.state.loaded();
-            if ( state ) {
-                table.columns().eq( 0 ).each( function ( colIdx ) {
-                    var colSearch = state.columns[colIdx].search;
-
-                    if ( colSearch.search ) {
-                        $( '#mytable thead tr:eq(1) th:eq(' + index + ') input', table.column( colIdx ).footer() ).val( colSearch.search );
-
-                    }
-                } );
-
-                table.draw();
-            }
-
-*/
-
-            function delay(callback, ms) {
-                var timer = 0;
-                return function() {
-                    var context = this, args = arguments;
-                    clearTimeout(timer);
-                    timer = setTimeout(function () {
-                        callback.apply(context, args);
-                    }, ms || 0);
-                };
-            }
-// Apply the search
-            table.columns().every(function (index) {
-                $('#mytable thead tr:eq(1) th:eq(' + index + ') input').on('keyup change', function () {
-                    table.column($(this).parent().index() + ':visible')
-                        .search(this.value)
-                        .draw();
-
-
-                });
-
-                $('#mytable thead tr:eq(1) th:eq(' + index + ') input').keyup(delay(function (e) {
-                    console.log('Time elapsed!', this.value);
-                    $(this).blur();
-
-                }, 2000));
-            });
-
-
- 
-        });
-
-    </script>
 @stop
  	  

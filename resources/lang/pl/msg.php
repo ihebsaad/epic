@@ -273,6 +273,7 @@ return [
   	'attend the melting'=>'uczestniczyć w topieniu',
   	'order'=>'Kolejność',
   	'Yes'=>'Tak',
+  	'No'=>'Nie',
   	'Date'=>'Data',
   	'Metals'=>'Metale',
   	'Add a new Model'=>'Dodaj nowy model',
@@ -322,6 +323,7 @@ return [
    	'Credit weight account'=>'Kredyt konto wagi',	
 	'I want to receive a deposit as soon as possible'=>'Chcę jak najszybciej otrzymać depozyt',	
   	'Cover'=>'Pokrywa',	 
+  	'Details'=>'Detale',	 
   	'Deposit'=>'Kaucja',	 
   	'Products'=>'Produkty',	 
   	'Models'=>'Modele',	 
@@ -329,6 +331,8 @@ return [
 	'Gross weight'=>'Waga brutto',	
 	'Removal of address'=>'Usunięcie adresu',	
 	'Self-Delivery'=>'Dostawa-własna',	
+	'To prepare in my presence'=>'Aby przygotować się w mojej obecności',	
+	'Estimated weight after burning'=>'Szacunkowa waga po spaleniu',	
 	
 	
  ];

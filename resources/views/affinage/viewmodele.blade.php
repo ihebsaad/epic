@@ -41,7 +41,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Model details')}}</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Details')}}</h6>
                                 </div>
                                 <div class="card-body">
 								   <form method="post" action="{{ route('updatemodele') }}"  enctype="multipart/form-data">
@@ -50,7 +50,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									  <input  class="form-control"  id="id"  type="hidden"  name="id" value="<?php echo $modele->modele_affinage_ident; ?>" />
 
                                      <div class="row pl-20 pr-20 mb-10">
- 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Model name')}}: </label>
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Name')}}: </label>
 									 	 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  style="width:350px"  required />
 											  
  									   
@@ -58,7 +58,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of the lot')}}: </label>
-										 	<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" onchange="check()" style="width:350px"  required />
+										 	<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" onchange="tooltip();check();" style="width:350px"  required  >
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
@@ -67,17 +67,19 @@ $count= $count_aff + $count_lab + $count_rmp;
 									 
 												}  ?>
 											</select>
+											
+											<span data-toggle="modal" data-target="#natureModal"  onmouseover="tooltip()" id="help" class="btn btn-sm btn-circle btn-primary " style="margin-left:6px;margin-top:4px " data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-question"></i></span>
  									  
 									 </div>
   								<?php 
 								$textassiste= __('msg.I wish to attend preparation operations (melting)') ;
 								$displaycdr='';
-								if	( $modele->nature_lot_ident  == 1 || $modele->nature_lot_ident == 2 || $modele->nature_lot_ident == 3 || $modele->nature_lot_ident ==4 || $modele->nature_lot_ident == 5 || $modele->nature_lot_ident ==6 || $modele->nature_lot_ident == 7 || $modele->nature_lot_ident == 8 || $modele->nature_lot_ident == 12 || $modele->nature_lot_ident ==16 || $modele->nature_lot_ident ==30 || $modele->nature_lot_ident ==31 || $modele->nature_lot_ident ==32 || $modele->nature_lot_ident == 33 || $modele->nature_lot_ident == 34 || $modele->nature_lot_ident == 36  ){
+								if	( $modele->nature_lot_ident  == 1 || $modele->nature_lot_ident == 2 || $modele->nature_lot_ident == 3 || $modele->nature_lot_ident ==4 || $modele->nature_lot_ident == 5 || $modele->nature_lot_ident ==6 || $modele->nature_lot_ident == 7 || $modele->nature_lot_ident == 8 || $modele->nature_lot_ident == 12 || $modele->nature_lot_ident ==16 || $modele->nature_lot_ident ==30 || $modele->nature_lot_ident ==31 || $modele->nature_lot_ident ==32 || $modele->nature_lot_ident == 33 || $modele->nature_lot_ident == 36  ){
 								$display='';	
 								}else{
 								$display='display:none';
 								}
-								if( $modele->nature_lot_ident == 34 || $modele->nature_lot_ident == 36){
+								if(   $modele->nature_lot_ident == 36){
 								$textassiste=__('msg.I wish to attend the burning') ;
 								$displaycdr='display:block';								
 								}
@@ -92,7 +94,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									    <div class=" " style="<?php echo $displaycdr; ?>" id="cendre" >
 										   <label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Weight')}} Cendre: </label>
 	  									    <input  onchange="prix()"  class="form-control"   id="pds_cdr" name="pds_cdr"  type="number" step="0.01" min="0" style="width:130px" value="0"   /> g
-
+											<small><span class="pl-10">({{__('msg.Estimated weight after burning')}})</span></small>
 									   </div>
 									 
 									   
@@ -336,19 +338,40 @@ $count= $count_aff + $count_lab + $count_rmp;
     </div> 
 	
 	
-	
-	 
-	 
-	 
-	 
 	 
 	 
  </div>
 
-
+					
+ <!--   Modal-->
+  <div class="modal fade" id="natureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{__('msg.Nature of the lot')}}</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body"> <span id="helptext"></span></div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">OK</button>
+         </div>
+      </div>
+    </div>
+  </div>
 					
 <script>
-
+ 
+ function init_cdr()
+ {
+ var poids= $('#pds_lot').val();
+ var poids_cdr=0;
+ poids_cdr= (poids *0.2).toFixed(2);
+ $('#pds_cdr').val(poids_cdr);
+ }
+ init_cdr();
+ 
 	function updatemodele (){
 			var _token = $('input[name="_token"]').val();
  	        var nom = $('#nom').text() ;
@@ -556,10 +579,22 @@ function prix()
 						
  }			
 			
+function tooltip()	
+{ 
+ var comment= $('#nature_lot_ident').find('option:selected').attr('title');
+  
+$('#help').prop('title', comment);
+$('#helptext').html(comment);
+
+// $('#help').tooltip('show');
+
+
+}
 			
 function check()	
-{
-  var nature =  parseInt($('#nature_lot_ident').val()) ;
+{ 
+ 
+ var nature =  parseInt($('#nature_lot_ident').val()) ;
  	if (nature == 1 || nature == 2 || nature == 3 || nature ==4 || nature == 5 || nature ==6 || nature == 7 || nature == 8 || nature == 12 || nature ==16 || nature ==30 || nature ==31 || nature ==32 || nature == 33 )
 	{
 		$('#assistetxt').html("{{__('msg.I wish to attend preparation operations (melting)')}}") ;
@@ -568,7 +603,7 @@ function check()
 
 	}else{
 		
-		if (nature == 34 || nature == 36  )
+		if (  nature == 36  )
 		{
 			$('#assistetxt').html("{{__('msg.I wish to attend the burning')}}") ;
 		    $('#divassiste').show('slow');

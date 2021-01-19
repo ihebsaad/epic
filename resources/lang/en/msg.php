@@ -262,6 +262,7 @@ return [
   	'attend the melting'=>'attend the melting',
   	'order'=>'Order',
   	'Yes'=>'Yes',
+  	'No'=>'No',
   	'Date'=>'Date',
   	'Metals'=>'Metals',
   	'Add a new Model'=>'Add a new Model',
@@ -322,6 +323,7 @@ return [
    	'Credit weight account'=>'Crédit compte poids',		
 	'I want to receive a deposit as soon as possible'=>'I want to receive a deposit as soon as possible',	
   	'Cover'=>'Cover',	 
+  	'Details'=>'Détails',	 
   	'Deposit'=>'Cover',	 
   	'Products'=>'Products',	 
   	'Models'=>'Models',	 
@@ -329,6 +331,8 @@ return [
 	'Gross weight'=>'Gross weight',	
 	'Removal of address'=>'Removal of address',	
 	'Self-Delivery'=>'Self-Delivery',	
+	'To prepare in my presence'=>'To prepare in my presence',	
+	'Estimated weight after burning'=>'Estimated weight after burning',	
 
 	
  ];

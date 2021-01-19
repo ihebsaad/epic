@@ -20,10 +20,12 @@ $PrestTypes2=array();
 // dd($PrestLibs);
   $natures=HomeController::natures2( );
  $Natures=array();
+ $NaturesC=array();
 foreach($natures as $nature)
 {
 	if($nature->metier_CODE=='LAB'){
 	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
+	$NaturesC[$nature->nature_lot_ident]=$nature->nature_lot_commentaire;
 	}
 }
  
@@ -57,7 +59,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Model details')}}</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Details')}}</h6>
                                 </div>
                                 <div class="card-body">
 								   <form method="post" action="{{ route('updatemodelelab') }}"    >
@@ -66,7 +68,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									  <input  class="form-control"  id="id"  type="hidden"  name="id" value="<?php echo $id; ?>" />
 
                                      <div class="row pl-20 pr-20 mb-10">
- 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Model name')}}: </label>
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Name')}}: </label>
 									 
 											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>" style="width:350px" onchange="prix()"  required/>
 											  
@@ -106,16 +108,16 @@ $count= $count_aff + $count_lab + $count_rmp;
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of products')}}: </label>
 										 
-											<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" style="width:350px" onchange="prix()" required />
+											<select   id="nature_lot_ident"  name="nature_lot_ident" class="form-control" style="width:350px" onchange="tooltip();prix()" required />
 											<option></option>
 												<?php foreach($Natures as $key => $val)
 												{  
 										 	if(  intval($modele->nature_lot_ident)== intval($key) ){$selected='selected="selected"';}else{$selected=''; }
-												echo '<option '.$selected.' value="'.$key.'"   >'.$val.'</option>';
+												echo '<option '.$selected.' value="'.$key.'" title="'.$NaturesC[$key].'"  >'.$val.'</option>';
 									 
 												}  ?>
 											</select>
- 									  
+											<span data-toggle="modal" data-target="#natureModal"  onmouseover="tooltip()" id="help" class="btn btn-sm btn-circle btn-primary " style="margin-left:6px;margin-top:4px " data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-question"></i></span> 									  
 									 </div>								 
 									
                                       <div class="row pl-20 pr-20 mb-10">
@@ -309,7 +311,34 @@ $count= $count_aff + $count_lab + $count_rmp;
                     </div>
 
 					
+					
+ <!--   Modal-->
+  <div class="modal fade" id="natureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{__('msg.Nature of the lot')}}</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body"> <span id="helptext"></span></div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">OK</button>
+         </div>
+      </div>
+    </div>
+  </div>
+					
 <script>
+function tooltip()	
+{ 
+ var comment= $('#nature_lot_ident').find('option:selected').attr('title');
+  
+$('#help').prop('title', comment);
+$('#helptext').html(comment);
+ 
+}
 
 	   function toggle(className, displayState){
             var elements = document.getElementsByClassName(className);
