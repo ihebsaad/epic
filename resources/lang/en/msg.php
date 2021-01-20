@@ -327,7 +327,7 @@ return [
   	'Products'=>'Products',	 
   	'Models'=>'Models',	 
   	'Estimation'=>'Estimation',	 
-  	'Refining'=>'Refining',	 
+  	'Refining'=>'Refining',	 	
 	'Validate'=>'Validate',	
 	'Gross weight'=>'Gross weight',	
 	'Removal of address'=>'Removal of address',	
@@ -337,6 +337,10 @@ return [
 	'Valuation - Results'=>'Valuation - Results',	
 	'Estimation of the results of the service following my titration'=>'Estimation of the results of the service following my titration',	
 	'Service Cart'=>'Service Cart',	
-
+	'Sample'=>'Sample',	
+	'Work requested'=>'Work requested',
+	'Melting in my presence'=>'Melting in my presence',
+	'Estimate of the value according to my titles'=>'Estimate of the value according to my titles',
+	'My Cart'=>'My Cart',	
 	
  ];

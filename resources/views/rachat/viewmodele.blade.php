@@ -147,7 +147,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 <br><br>
 		  <div class="row "  >
 				<div class="col-xs-12 col-sm-5 "  >
-								<button    type="submit"  name="update" value="update" class="pull-right btn btn-success btn-icon-split   ml-50 mt-10 mb-20">
+								<button    type="submit"  name="update" value="update" class="pull-right btn btn-success btn-icon-split  ml-20  mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>

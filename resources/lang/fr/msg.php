@@ -334,7 +334,7 @@ return [
   	'Cover'=>'Couverture',	 
   	'Details'=>'Détails',	 
   	'Deposit'=>'Acompte',	 
-  	'Produts'=>'Produits',	 
+  	'Products'=>'Produits',	 
   	'Models'=>'Modèles',	
   	'Refining'=>'Affinage',	
   	'Estimation'=>'Estimation',	 	
@@ -347,7 +347,11 @@ return [
 	'Valuation - Results'=>'Valorisation – Résultats',	
 	'Estimation of the results of the service following my titration'=>'Estimation des résultats de la prestation suivant mon titrage',	
 	'Service Cart'=>'Panier Prestation',	
-	
+	'Sample'=>'Echantillon',	
+	'Work requested'=>'Travaux demandés',	
+	'Melting in my presence'=>'Fonte en ma présence',
+	'Estimate of the value according to my titles'=>'Estimation de la valeur suivant mes titres',
+	'My Cart'=>'Mon Panier',	
 	
 
  ];

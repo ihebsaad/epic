@@ -28,7 +28,9 @@ foreach($natures as $nature)
 	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
 }
 ?>
- 
+  <style>
+ th,td{height:45px;}
+ </style>
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
@@ -55,20 +57,23 @@ foreach($natures as $nature)
  		 
         <table id="mytable" class="table table-striped mb-40"  style="width:100%">
             <thead>
+ 
             <tr id="headtable">
                 <th style="width:12%">{{__('msg.Name')}}</th>
-                 <th style="width:10%">{{__('msg.Laboratory')}}</th>
-                 <th style="width:5%">{{__('msg.Qty')}}</th>
+                 <th style="width:10%">{{__('msg.Sample')}}</th>
+                 <th style="width:12%">{{__('msg.Work requested')}}</th>
+                 <th style="width:5%; ">{{__('msg.Quantity')}}</th>
                  <th style="width:15%">{{__('msg.Metals')}}</th>
                </tr>
             </thead>
             <tbody>
             @foreach($modeles as $modele)
-				<tr>
-				<td><a href="<?php echo URL("viewmodelelab/".$modele->id);?>"><?php echo $modele->nom; ?></a><br><?php echo $Natures[$modele->nature_id];?></td>
- 				<td><?php echo $PrestLibs[$modele->type_lab_ident];?></td>
- 				<td><?php echo $modele->qte;?></td>
- 				<td><?php echo $modele->poids;?> g<br>
+  <tr>
+				<td style="font-size:14px"><a href="<?php echo URL("viewmodelelab/".$modele->id);?>"><?php echo $modele->nom; ?></a></td>
+				<td style="font-size:12px"><?php echo $Natures[$modele->nature_id];?></td>
+ 				<td style="font-size:12px"><?php echo $PrestLibs[$modele->type_lab_ident];?></td>
+ 				<td class="text-center"><?php echo $modele->qte;?></td>
+ 				<td style="font-size:12px"><?php echo $modele->poids;?> g 
 				<?php $w1=0; if ($modele->or > 0){ $w1=intval($modele->or / 10 ) ;?>
                 <span class="mr-10 btn text-center text-white bg-gradient-warning   btn-sm" style="width:<?php echo $w1;?>px;max-width:100px!important" >
                   Or 

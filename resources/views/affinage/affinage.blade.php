@@ -18,7 +18,9 @@ foreach($natures as $nature)
 }
 
 ?>
- 
+ <style>
+ th,td{height:45px;}
+ </style>
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
@@ -47,9 +49,9 @@ foreach($natures as $nature)
             <thead>
             <tr id="headtable">
                 <th style="width:15%">{{__('msg.Name')}}</th>
-                <th style="width:25%">{{__('msg.Nature of the lot')}}</th>
+                <th style="width:20%">{{__('msg.Nature of the lot')}}</th>
                  <th style="width:25%">{{__('msg.Metals')}}</th>
-                <th style="width:20%;font-size:12px;padding-right:5px;">{{__('msg.To prepare in my presence')}}</th>
+                <th style="width:25%;font-size:12px;padding-right:5px;;padding-bottom:15px">{{__('msg.To prepare in my presence')}}</th>
                </tr>
             </thead>
             <tbody>

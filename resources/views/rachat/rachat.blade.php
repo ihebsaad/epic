@@ -22,9 +22,10 @@ foreach($natures as $nature)
 $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
 ?>
-<style>
+ <style>
+ th,td{height:45px;}
  
- select::-ms-expand {
+  select::-ms-expand {
     display: none!important;
 }
 select{
@@ -61,19 +62,19 @@ select{
             <thead>
             <tr id="headtable">
                 <th style="width:15%">{{__('msg.Name')}}</th>
+                 <th style="width:18%">{{__('msg.Nature of the lot')}}</th>
                  <th style="width:20%">{{__('msg.Metals')}}</th>
-                <th style="width:12%;font-size:10px;padding-right:5px;">{{__('msg.attend the melting')}}</th>
-                <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.Deposit')}}</th>
-                <th style="width:8%;font-size:11px;padding-right:5px;">{{__('msg.Cover')}}</th>
-				 
+                <th style="width:8%; ;padding-right:5px;">{{__('msg.Deposit')}}</th>				 
+				<th style="width:14%;font-size:10px;padding-right:5px;padding-bottom:15px">{{__('msg.Melting in my presence')}}</th>
                 </tr>
             </thead>
             <tbody>
             @foreach($modeles as $modele)
 				<tr>
-				<td style="font-size:12px;"><a href="<?php echo URL("viewmodelermp/".$modele->modele_rmp);?>"><?php echo $modele->nom; ?></a><br><?php echo $Natures[$modele->nature_lot_ident];?></td>
-                 <td>
-				<?php echo $modele->poids;?> g <br>
+				<td style="font-size:14px;"><a href="<?php echo URL("viewmodelermp/".$modele->modele_rmp);?>"><?php echo $modele->nom; ?></a></td>
+				<td style="font-size:12px;"><?php echo $Natures[$modele->nature_lot_ident];?></td>
+                 <td style="font-size:12px;">
+				<?php echo $modele->poids;?> g  
                 <?php $w1=0; if ($modele->or > 0){ $w1=intval($modele->or / 10 ) ;?>
                 <span class="mr-10 btn text-center text-white bg-gradient-warning   btn-sm" style="width:<?php echo $w1;?>px;max-width:100px!important" >
                   Or 
@@ -93,21 +94,22 @@ select{
                  </span>
                  <?php }   ?>    
                 </td>
-				<td style="font-size:13px;text-align:center"><?php if($modele->assiste){echo __('msg.Yes') ;}?></td>
-				<td style="font-size:13px;text-align:center"><?php if($modele->acompte){echo __('msg.Yes') ;}?></td>
-				<td style="font-size:13px;">  										
+				<td style=" text-align:center"><?php if($modele->acompte){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
+				<td style=" text-align:center"><?php if($modele->assiste){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
+				
+				<!--<td style="font-size:13px;">  										
 			    <small><select     style="background-color:transparent;border:none;color:black; "  > 
 											  <option></option> 
 											<?php  
-											foreach( $covers as $cover)
+										/*	foreach( $covers as $cover)
 											  {  if($modele->choix_couv_id==$cover->choix_couv_ident) {//$check="selected='selected'"; 
 											   echo ' <option   selected="selected" value="'.$cover->choix_couv_ident.'">'.$cover->choix_ident_lib.'</option> ';
 
 											  }
- 											  }
+ 											  } */
 											?>
 			     </select></small>											 
-				</td>
+				</td>-->
 
   				</tr>
 			@endforeach

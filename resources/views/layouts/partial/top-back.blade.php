@@ -168,13 +168,33 @@ $prods= DB::table('products')->where('orderid',$Orderid)->count();
 	$prods=0;
 }
 ?>
+<?php
+
+$E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesLab=DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesRMP=DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+
+$count_aff =count($E_CmdesAff);
+$count_lab =count($E_CmdesLab);
+$count_rmp =count($E_CmdesRMP);
+$count= $count_aff + $count_lab + $count_rmp;
+?>
             <!-- Nav Item - Messages --> 
  			<li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="{{route('panier')}}"  >
+	              <a class="nav-link dropdown-toggle" href="{{route('panier')}}"  >
                 <i class="fas fa-shopping-cart fa-fw"></i>
                 <!-- Counter - Messages --> 
-                <span class="badge badge-danger badge-counter"><?php if($prods>0){echo $prods;}?></span>
+                <span class="badge badge-danger badge-counter" data-toggle="tooltip" data-placement="bottom"  title="{{__('msg.Products')}}" ><?php if($prods>0){echo $prods;}?></span>
+              </a>	
+			</li>
+ 			<li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="{{route('livraisonmod')}}"  >
+                <i class="fas fa-shopping-bag fa-fw"></i>
+                <!-- Counter - Messages --> 
+                <span  data-toggle="tooltip" data-placement="bottom" title="{{__('msg.My Models')}}" class="badge badge-danger badge-counter"><?php if($count>0){echo $count;}?></span>
               </a>
+	  
+			  
               <!-- Dropdown - Messages  
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                 <h6 class="dropdown-header">

@@ -90,8 +90,8 @@ $count= $count_aff + $count_lab + $count_rmp;
 											</select>
  									  
 								    </div>
-									
-                                     <div class="row pl-20 pr-20 mb-10">
+
+                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of work')}}: </label>
 										 
 											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" style="width:350px"  onchange="prix()" required />
@@ -165,7 +165,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 		 
 				 	      <div class="row " style=" ">
 				 	      <div class="col-xs-12 col-sm-5 " style=" ">
-								<button  name="update" value="update"  type="submit"  class="pull-right btn btn-success btn-icon-split   ml-50 mt-10 mb-20">
+								<button  name="update" value="update"  type="submit"  class="pull-right btn btn-success btn-icon-split   ml-20 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -207,7 +207,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									</a>
                                 </div>
                                 <div id="div2" class="card-body"  style="padding-bottom:0px">
- 								<span style="font-size:11px" class="mb-10" >{{__('msg.Estimation of the results of the service following my titration')}}</span>
+ 								<span style="font-size:11px" class="mb-10" >{{__('msg.Estimate of the value according to my titles')}}</span>
 								<div class="pl-20">{{__('msg.Amount')}} : <span style="font-weight:bold" id="amount"></span></div><br>
  								
  

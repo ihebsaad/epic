@@ -334,6 +334,10 @@ return [
 	'Valuation - Results'=>'Wycena - Wyniki',	
 	'Estimation of the results of the service following my titration'=>'Oszacowanie wyników usługi po miareczkowaniu',	
 	'Service Cart'=>'kosz Serwisowy',	
-	
+	'Sample'=>'Próba',	
+	'Work requested'=>'Wymagana praca',	
+	'Melting in my presence'=>'Rozpływa się w mojej obecności',
+	'Estimate of the value according to my titles'=>'Oszacowanie wartości według moich tytułów',
+	'My Cart'=>'Mój wózek',	
 	
  ];

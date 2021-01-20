@@ -198,7 +198,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 					
 					
 <script>
-
+setadresse();
  $(document).ready(function () {
     $('.box').click(function(e) {
 
