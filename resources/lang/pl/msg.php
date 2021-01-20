@@ -323,6 +323,8 @@ return [
   	'Deposit'=>'Kaucja',	 
   	'Products'=>'Produkty',	 
   	'Models'=>'Modele',	 
+  	'Refining'=>'Rafinacja',
+  	'Estimation'=>'Oszacowanie',	 	
 	'Validate'=>'Uprawomocnić',	
 	'Gross weight'=>'Waga brutto',	
 	'Removal of address'=>'Usunięcie adresu',	

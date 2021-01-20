@@ -336,6 +336,8 @@ return [
   	'Deposit'=>'Acompte',	 
   	'Produts'=>'Produits',	 
   	'Models'=>'Modèles',	
+  	'Refining'=>'Affinage',	
+  	'Estimation'=>'Estimation',	 	
 	'Validate'=>'Valider',	
 	'Gross weight'=>'Poids brut',	
 	'Removal of address'=>"Adresse d'enlèvement",	

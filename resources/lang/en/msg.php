@@ -326,6 +326,8 @@ return [
   	'Deposit'=>'Cover',	 
   	'Products'=>'Products',	 
   	'Models'=>'Models',	 
+  	'Estimation'=>'Estimation',	 
+  	'Refining'=>'Refining',	 
 	'Validate'=>'Validate',	
 	'Gross weight'=>'Gross weight',	
 	'Removal of address'=>'Removal of address',	

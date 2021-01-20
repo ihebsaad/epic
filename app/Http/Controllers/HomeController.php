@@ -345,7 +345,8 @@ $estim_titre_pt  = floatval($request->get('estim_titre_pt'));
 $estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
 $assiste   =  $request->get('assiste') ;	
 $update   =  $request->get('update') ;	
- 
+ $estimation_prix   =  $request->get('estimation_prix') ;	
+
  		if($assiste=="on" || $assiste==1 ){
 			$assiste=1;
 		}else{
@@ -399,6 +400,8 @@ $update   =  $request->get('update') ;
                'cmde_estim_titre_pd' => $estim_titre_pd,
                'assiste' => $assiste,
 			   'statut' => 'panier', 			 
+               'nom_modele' => $modele_nom,
+               'estimation_prix' => $estimation_prix,
 
 			     
 			  ]);	
@@ -431,6 +434,7 @@ $assiste   =  $request->get('assiste') ;
 $choix_couv_ident   =  $request->get('choix_couv_ident') ;	
 $demande_acompte   =  $request->get('acompte') ;	
 $update   =  $request->input('update') ;	
+ $estimation_prix   =   ($request->get('estimation_prix')) ;	
   
  		if($assiste=="on" || $assiste==1 ){
 			$assiste=1;
@@ -498,7 +502,9 @@ $update   =  $request->input('update') ;
                'cmde_estim_titre_pt' => $estim_titre_pt,
                'cmde_estim_titre_pd' => $estim_titre_pd,
                'assiste' => $assiste,
-			  'statut' => 'panier', 			 
+			   'statut' => 'panier', 			 
+               'nom_modele' => $modele_nom,
+               'estimation_prix' => $estimation_prix,
 			  
 			     
 			  ]);	
@@ -529,6 +535,7 @@ $valeur   =  $request->get('valeur') ;
 $type_lab_ident   =  $request->get('type_lab_ident') ;	
 $choix_lab_ident   =  $request->get('choix_lab_ident') ;	
 $update   =  $request->input('update') ;	
+$estimation_prix   =  $request->get('estimation_prix') ;	
  
  
    	 
@@ -583,7 +590,9 @@ $update   =  $request->input('update') ;
                'titrage_pt' => $titrage_pt,
                'titrage_pd' => $titrage_pd,
 			   'statut' => 'panier', 			 
- 			  
+                'nom_modele' => $modele_nom,
+               'estimation_prix' => $estimation_prix,
+			  
 			     
 			  ]);	
 				$Cmde_lab_l->save();

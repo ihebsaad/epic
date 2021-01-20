@@ -48,6 +48,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 										{{ csrf_field() }}
 									  <input  class="form-control"  id="cl_ident"  type="hidden"  name="cl_ident" value="<?php echo $user['client_id']; ?>" />
 									  <input  class="form-control"  id="id"  type="hidden"  name="id" value="<?php echo $modele->modele_affinage_ident; ?>" />
+									  <input  class="form-control"  id="estimation_prix"  type="hidden"  name="estimation_prix" value="" />
 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Name')}}: </label>
@@ -241,48 +242,51 @@ $count= $count_aff + $count_lab + $count_rmp;
 									</a>
                                 </div>
                                 <div id="div3" class="card-body">
-		<?php  if($count>0) {?> 
-								<b class="mb-10" style="font-size:20px">Modèles dans le panier <?php echo '('.$count.')'; ?></b><br>
-								<div class="pl-40">
-								
+								<?php  if($count>0) {?> 
+  								
 								<?php	if($count_aff>0) {?>
-								<b>Affinage: <?php echo '('.$count_aff.')'; ?> </b><br>
-								<div class="pl-30" >
+								<b >{{__('msg.Refining')}}: <?php echo '('.$count_aff.')'; ?> </b> 
+ 								<div class="mt-10" style="font-size:12px;list-style-type: none; ">
 								<?php foreach ($E_CmdesAff as $cmd)
 								{								
 								$cmdid=$cmd->cmde_aff_ident;
 								$lignes=DB::table('cmde_aff_l')->where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->get();
-								$poidsAff= $or= $argent= $platine= $palladium = 0;
+								$poids = $or= $argent= $platine= $palladium = 0;
+								
 								foreach ($lignes as $ligne)
 								{
-									$poidsAff=$poidsAff+$ligne->cmde_aff_poids_lot;	
+									$poids=$ligne->cmde_aff_poids_lot.'g';	
 									$or=$or+$ligne->cmde_estim_titre_au;	
-									$argent=$argent+$ligne->cmde_estim_titre_ag;	
-									$platine=$platine+$ligne->cmde_estim_titre_pt;	
-									$palladium=$palladium+$ligne->cmde_estim_titre_pd;	
+									$argent= $ligne->cmde_estim_titre_ag;	
+									$platine= $ligne->cmde_estim_titre_pt;	
+									$palladium= $ligne->cmde_estim_titre_pd;	
+									$nom_modele= $ligne->nom_modele;	
+									$estimation_prix= $ligne->estimation_prix;	
+									if($or >0){$or=  __('msg.Gold') .': '. number_format ( $or , 2).'g';}else{$or='';}
+									if($argent >0){$argent= __('msg.Silver') .': '.  number_format ( $argent , 2).'g';}else{$argent='';}
+									if($platine >0){$platine= __('msg.Platinum') .': '. number_format ( $platine , 2).'g';}else{$platine='';}
+									if($palladium >0){$palladium= __('msg.Palladium') .': '.  number_format ( $palladium , 2).'g';}else{$palladium='';}
+								echo '<li>'.$nom_modele.'      '.$poids.'      '.number_format($estimation_prix,2,'.',',').'€  </li>';
+								echo '<li> '.$or.'      '.$argent.'      '.$platine.'      '.$palladium.'</li>';
+								echo ' <hr style=" margin-bottom:10px;margin-top:10px"> ';
 								}
-								} 
- 								?>
-								Poids : <?php echo $poidsAff; ?> g<br>
- 								Total Métaux :<br>
-								<?php if ($or>0){echo 'Or : '.$or .' g<br>'; }?> 
-								<?php if ($argent>0){echo 'Argent : '.$argent.' g<br>'; }?>
-								<?php if ($platine>0){echo 'Platine : '.$platine.' g<br>'; }?>
-								<?php if ($palladium>0){echo 'Palladium : '.$palladium.' g<br>'; }?>		
+								
+								}
+  								?>
 								</div>
-								<hr>
+								 
+								 	
+ 								
 								<?php  
 								 }
 								 
 								if($count_lab>0) {?>
-								<b>Laboratoire: <?php echo '('.$count_lab.')'; ?></b><br>
-								<div class="pl-30" >
+								<b>{{__('msg.Laboratory')}}: <?php echo '('.$count_lab.')'; ?></b><br>
+ 								<div class="mt-10" style="font-size:12px;list-style-type: none;   ">
 								<?php $poids=0; $qte=0; ?>
 								<?php foreach ($E_CmdesLab as $cmd) 
 								{
-								$cmdid=$cmd->cmde_lab_ident;
-								$poids=$poids+$cmd->cmde_lab_poids;
-								$qte=$qte+$cmd->cmde_lab_qte;
+								$cmdid=$cmd->cmde_lab_ident;						 
  								$lignes=DB::table('cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->get();
 								 $or= $argent= $platine= $palladium = 0;
 								foreach ($lignes as $ligne)
@@ -291,46 +295,53 @@ $count= $count_aff + $count_lab + $count_rmp;
 									$argent=$argent+$ligne->titrage_ag;	
 									$platine=$platine+$ligne->titrage_pt;	
 									$palladium=$palladium+$ligne->titrage_pd;	
+									$nom_modele= $ligne->nom_modele;	
+									$qte= $ligne->qte;	
+									$poids= $ligne->poids;	
+									$estimation_prix= $ligne->estimation_prix;	
+									
+									if($or >0){$or=  __('msg.Gold');}else{$or='';}
+									if($argent >0){$argent= __('msg.Silver')  ;}else{$argent='';}
+									if($platine >0){$platine= __('msg.Platinum') ;}else{$platine='';}
+									if($palladium >0){$palladium= __('msg.Palladium') ;}else{$palladium='';}
+								echo '<li>'.$nom_modele.'        '.$qte.'p        '.number_format($estimation_prix,2,'.',',').'€  </li>';
+								//echo '<li> '.$or.'      '.$argent.'      '.$platine.'      '.$palladium.'</li>';
+								echo '<center><hr style=" margin-bottom:10px;margin-top:10px">';
+									
 								}
 								}
 								?>
- 								Qté totale : <?php echo $qte; ?><br>
-								Poids total : <?php echo $poids; ?> g<br>
-								Métaux :<br>
-								<?php if ($or>0){echo 'Or<br>'; }?> 
-								<?php if ($argent>0){echo 'Argent<br>'; }?> 
-								<?php if ($platine>0){echo 'Platine<br> '; }?>
-								<?php if ($palladium>0){echo 'Palladium<br>'; }?> 
+ 					 
 								</div>
-								<hr>
-								<?php }
+ 								<?php }
 								
 								
 								if($count_rmp>0) {?>								
-								<b>Rachat Métaux Précieux: <?php echo '('.$count_rmp.')'; ?></b><br>
-								<div class="pl-30" >
+								<b>{{__('msg.Buyback of precious metals')}}: <?php echo '('.$count_rmp.')'; ?></b><br>
+ 								<div class="mt-10" style="font-size:12px;    list-style-type: none;">
 								<?php foreach ($E_CmdesRMP as $cmd) 
 								{
- 								$poids=$cmd->cmde_rmp_poids_lot;
-  								 $or= $argent= $platine= $palladium = 0;
- 								 $or=$or+$cmd->estim_au;	
-								 $argent=$argent+$cmd->estim_ag;	
-								 $platine=$platine+$cmd->estim_pt;	
-								 $palladium=$palladium+$cmd->estim_pd;	
+								$cmdid=$cmd->cmde_rmp_ident;						 									
+ 								$lignes=DB::table('cmde_rmp_l')->where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->get();
+								foreach ($lignes as $ligne)
+								{  									
+ 								 $poids=$ligne->cmde_rmp_poids;
+								 $estimation_prix= $ligne->estimation_prix;	
+  								  	
+								 $nom_modele= $ligne->nom_modele;	
+								 echo '<li>'.$nom_modele.'         '.$poids.'g </li>';
+								echo '<li> '.__('msg.Estimation').':  '.number_format($estimation_prix,2,'.',',').'€ </li>';
+								echo '<hr style=" margin-bottom:10px;margin-top:10px">';
+
+								 }
+								 
 								 }
 								?>
- 								Poids : <?php echo $poids ; ?> g<br>
-								Total Métaux :<br>
-								<?php if ($or>0){echo 'Or : '.$or .' g<br>'; }?> 
-								<?php if ($argent>0){echo 'Argent : '.$argent.' g<br>'; }?>
-								<?php if ($platine>0){echo 'Platine : '.$platine.' g<br>'; }?>
-								<?php if ($palladium>0){echo 'Palladium : '.$palladium.' g<br>'; }?>								
+ 								 							
 								</div>
-								<hr>
-								<?php } ?>
+ 								<?php } ?>
 								
-								</div>
-								
+ 								
  								
 								<center><a href="{{ route('livraisonmod') }}" style="color:white;text-decoration:none"> <button    type="button"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
@@ -535,6 +546,8 @@ function prix()
 				  
  
 				 $('#amount').html(data[0].montant  );
+				 $('#estimation_prix').val(data[0].montant  );
+				 
 				 $('#gold').html( data[0].credit_au );
 				 $('#silver').html( data[0].credit_ag );
 				 $('#platinum').html( data[0].credit_pt );
@@ -576,6 +589,12 @@ function prix()
 				 $('#affinageval').html( data[0].Affinage);
 				 $('#fonteval').html( data[0].Fonte);
 				 $('#analyseval').html( data[0].Analyse);
+				 
+				 if(fonte==1){
+				 $('#estimation_prix').val(data[0].Fonte  );
+				 }else{
+				 $('#estimation_prix').val(data[0].Analyse  );					 
+				 }
 				 
 			 	}
 						});		 
