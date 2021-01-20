@@ -290,7 +290,6 @@ return [
   	'Activity'=>'Activity',
   	'Register'=>'Register',	
   	'One of our staff will call you to finalize your file'=>'One of our staff will call you to finalize your file',
-  
     'Delivery'=>'Delivery',	 
   	'Choose your delivery mode'=>'Choose your delivery mode',	 
   	'Agency'=>'Agency',	 
@@ -333,6 +332,9 @@ return [
 	'Self-Delivery'=>'Self-Delivery',	
 	'To prepare in my presence'=>'To prepare in my presence',	
 	'Estimated weight after burning'=>'Estimated weight after burning',	
+	'Valuation - Results'=>'Valuation - Results',	
+	'Estimation of the results of the service following my titration'=>'Estimation of the results of the service following my titration',	
+	'Service Cart'=>'Service Cart',	
 
 	
  ];

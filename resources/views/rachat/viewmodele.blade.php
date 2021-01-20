@@ -145,8 +145,8 @@ $count= $count_aff + $count_lab + $count_rmp;
 									 
 <br><br>
 		  <div class="row "  >
-				<div class="col-xs-12 col-sm-6 "  >
-								<button    type="submit"  name="update" value="update" class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+				<div class="col-xs-12 col-sm-5 "  >
+								<button    type="submit"  name="update" value="update" class="pull-right btn btn-success btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -156,7 +156,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 				
 				<div class="col-xs-12 col-sm-6 "  >
 				
-		                     	<button    name="order" type="submit" value="order"  class="pull-right btn btn-success btn-icon-split ml-10 mt-10 mb-20">
+		                     	<button    name="order" type="submit" value="order"  class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
@@ -179,19 +179,35 @@ $count= $count_aff + $count_lab + $count_rmp;
 
                       <div class="col-lg-5 mb-4">
 
-                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.My Models')}}  </h6>
+   
+
+               
+                             <div class="card shadow mb-4"  style="margin-bottom:0px!important">
+                                <div class="  ">
+                                    <a href="#div2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">								
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Valuation - Results')}}</h6>
+									</a>
                                 </div>
-                                <div class="card-body" style="min-height:200px">
-								<b>{{__('msg.Model')}} <?php echo $modele->modele_nom; ?> - Estimation</b>
+                                <div id="div2" class="card-body" style="padding-bottom:0px">
+ 								<span style="font-size:11px" class="mb-10" >{{__('msg.Estimation of the results of the service following my titration')}}</span>
+								
 								<div class=" ">{{__('msg.Value')}} : <span style="font-weight:bold" id="amount"></span></div>
 								<div id="div_au"  style="display:none"   >{{__('msg.Gold')}} : <span style="font-weight:bold" id="cours_au"></span></div>
 								<div id="div_ag"  style="display:none"   >{{__('msg.Silver')}} : <span style="font-weight:bold" id="cours_ag"></span></div>
 								<div id="div_pt"  style="display:none"  >{{__('msg.Platinum')}} : <span style="font-weight:bold" id="cours_pt"></span></div>
 								<div id="div_pd" style="display:none"    >{{__('msg.Palladium')}} : <span style="font-weight:bold" id="cours_pd"></span></div>
-  <br>
-  
+   
+ 
+                                </div>
+                            </div>
+
+                             <div class="card shadow mb-4">
+                                <div class=" ">
+                                    <a href="#div3" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+										<h6 class="m-0 font-weight-bold text-primary">{{__('msg.Service Cart')}}</h6>
+									</a>
+                                </div>
+                                <div id="div3" class="card-body">
 								<?php  if($count>0) {?> 
 								<b class="mb-10" style="font-size:20px">Modèles dans le panier <?php echo '('.$count.')'; ?></b><br>
 								<div class="pl-40">
@@ -281,21 +297,16 @@ $count= $count_aff + $count_lab + $count_rmp;
 								
 								</div>
 								
-								<center><a href="{{ route('livraisonmod') }}" style="color:white;text-decoration:none"> <button    type="button"   class="pull-right btn btn-success btn-icon-split  mt-10 mb-20">
+								<center><a href="{{ route('livraisonmod') }}" style="color:white;text-decoration:none"> <button    type="button"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-truck-moving"></i>
                                         </span>
                                         <span style="width:120px"  class="text" >{{__('msg.Delivery')}}</span>
                                     </button> </a></center>								
 								<?php } //count total ?>
-
-                                </div><!-- card body -->
-
-
-                             </div>
-
-               
-
+								
+                                </div>
+                            </div>
                         </div> 
                     </div>
 

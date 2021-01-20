@@ -11,8 +11,7 @@
     </title>
 	
 <style>
-.card-body {min-height:350px!important;}
-.form-control {display:inline!important;}
+ .form-control {display:inline!important;}
 .select2-container--default .select2-selection--single {    
     height: 38px!important;
     padding-top: 5px!important;

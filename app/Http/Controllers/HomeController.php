@@ -371,7 +371,7 @@ $update   =  $request->get('update') ;
 			)
 		);
  
- 		  return redirect('/affinage/')->with('success', ' Modèele enregsitré modifié avec succès');
+ 		  return redirect('/affinage/')->with('success', ' Modèle modifié avec succès');
 
 		}else{
 			
@@ -463,7 +463,7 @@ $update   =  $request->input('update') ;
 			)
 		);
  
-		  return redirect('/rachat/')->with('success', ' Modifié avec succès');
+		  return redirect('/rachat/')->with('success', ' Modèle modifié avec succès');
 		 
 		 
 		}else{
@@ -553,7 +553,7 @@ $update   =  $request->input('update') ;
 			)
 		);
  
-		  return redirect('/laboratoire/')->with('success', ' Modifié avec succès');
+		  return redirect('/laboratoire/')->with('success', ' Modèle modifié avec succès');
 		 
 	}else{
   

@@ -204,7 +204,6 @@ return [
 	'My Models'=>'Mes Modèles',
 	'My Weight Account'=>'Mon Compte Poids',
 	'My Profile'=>'Mon Profil',
-	
 	'Home'=>'Accueil',
 	'Do you really want to log out?'=>'Vous voulez vraiment fermer votre session ?',
 	'Add to cart'=>'Ajouter au panier ',
@@ -241,8 +240,7 @@ return [
  	'Complement'=>'Complément',
  	'Value'=>'Valeur',
  	'Product'=>'Produit',
- 	'Unit weight'=>'Poids unitaire',	
-
+ 	'Unit weight'=>'Poids unitaire',
 	'Option'=>'Option',
  	'Price'=>'Prix',
  	'Total way'=>'Total option',
@@ -256,7 +254,6 @@ return [
  	'Product details'=>'Détails du produit',
  	'Add Model'=>'Ajouter le modèle',
  	'Update Model'=>'Modifier le modèle',
-	
 	'New Model'=>'Nouveau Modèle',
  	'Model details'=>'Détails du Modèle',
  	'Items'=>'Pièces',
@@ -275,11 +272,10 @@ return [
   	'attend the melting'=>'assister à la fonte',
   	'order'=>'Commande',
   	'Yes'=>'Oui',
-  	'No'=>'No',
+  	'No'=>'Non',
   	'Date'=>'Date',
   	'Metals'=>'Métaux',
   	'Add a new Model'=>'Ajouter un nouveau Modèle', 
-	
   	'Artisan'=>'Artisan',
   	'Maker'=>'Fabricant',
   	'Industrial'=>'Industriel',
@@ -292,7 +288,6 @@ return [
   	'Password'=>'Mot de passe',
   	'Password confirmation'=>'Confirmation de mot de passe',
   	'Email address'=>'Adresse email',
-
   	'Your username or email address'=>"Nom d'utilisateur ou adresse email",
   	'Remember me'=>'Se souvenir de moi',
   	'Login'=>'connexion',
@@ -305,7 +300,6 @@ return [
   	'Activity'=>'Activité',
   	'Register'=>'Inscription',
   	'One of our staff will call you to finalize your file'=>"L'un de nos collaborateurs vous appeleras pour finaliser votre dossier",	
-	 
     'Delivery'=>'Livraison',	 
   	'Choose your delivery mode'=>'Chosissez votre mode de livraison',	 
   	'Agency'=>'Agence',	 
@@ -348,6 +342,9 @@ return [
 	'Self-Delivery'=>"Auto-Livraison",	
 	'To prepare in my presence'=>'A préparer en ma présence',	
 	'Estimated weight after burning'=>'Estimation du poids après brulage',	
+	'Valuation - Results'=>'Valorisation – Résultats',	
+	'Estimation of the results of the service following my titration'=>'Estimation des résultats de la prestation suivant mon titrage',	
+	'Service Cart'=>'Panier Prestation',	
 	
 	
 

@@ -156,7 +156,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 <br><br>
 		  <div class="row "  >
 				<div class="col-xs-12 col-sm-6 "  >
-								<button value="update"  name="update"   type="submit"  class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+								<button value="update"  name="update"   type="submit"  class="pull-right btn btn-success btn-icon-split   ml-50 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -166,7 +166,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 				
 				<div class="col-xs-12 col-sm-6 "  >
 				
-		                     	<button value="order" name="order"    type="submit"   class="pull-right btn btn-success btn-icon-split  mt-10 mb-20">
+		                     	<button value="order" name="order"    type="submit"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
@@ -188,14 +188,17 @@ $count= $count_aff + $count_lab + $count_rmp;
                         </div>
 
    <div class="col-lg-4 mb-4">
-
-    <div class="card shadow mb-4">
-     <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-primary"> {{__('msg.My Models')}} </h6>
-    </div>
-                                <div class="card-body" style="min-height:200px">
-<b>{{__('msg.Model')}} <?php echo $modele->modele_nom; ?> - Estimation</b>
-<div class="row pl-10" id="divmont" style="display:none" >
+ 
+               
+                             <div class="card shadow mb-4" style="margin-bottom:0px!important">
+                                <div class="  ">
+                                    <a href="#div2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">								
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Valuation - Results')}}</h6>
+									</a>
+                                </div>
+                                <div id="div2" class="card-body"  style="padding-bottom:0px">
+  <div class="row pl-10" id="divmont" style="display:none" >
+ <span style="font-size:11px" class="mb-10" >{{__('msg.Estimation of the results of the service following my titration')}}</span>
 	{{__('msg.Amount')}}:  <b><span class="ml-10  " style=" min-width:30px" id="amount"></span> €</b> 
  </div>
   <div class="row  mb-20">
@@ -226,9 +229,19 @@ $count= $count_aff + $count_lab + $count_rmp;
   <div class="col-sm-6"  id="divpall"   style="display:none">
 	Pall :  <b><span class="ml-10  "  style=" min-width:30px" id="palladium"></span> g</b>
  </div>
- </div> <br>								
-								
-								<?php  if($count>0) {?> 
+ </div>
+ 
+                                </div>
+                            </div>
+
+                             <div class="card shadow mb-4">
+                                <div class=" ">
+                                    <a href="#div3" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+										<h6 class="m-0 font-weight-bold text-primary">{{__('msg.Service Cart')}}</h6>
+									</a>
+                                </div>
+                                <div id="div3" class="card-body">
+		<?php  if($count>0) {?> 
 								<b class="mb-10" style="font-size:20px">Modèles dans le panier <?php echo '('.$count.')'; ?></b><br>
 								<div class="pl-40">
 								
@@ -319,7 +332,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 								</div>
 								
  								
-								<center><a href="{{ route('livraisonmod') }}" style="color:white;text-decoration:none"> <button    type="button"   class="pull-right btn btn-success btn-icon-split  mt-10 mb-20">
+								<center><a href="{{ route('livraisonmod') }}" style="color:white;text-decoration:none"> <button    type="button"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-truck-moving"></i>
                                         </span>
@@ -327,14 +340,10 @@ $count= $count_aff + $count_lab + $count_rmp;
                                     </button> </a></center>
 								<?php } //count total ?>
  
-                                </div><!-- card body -->	
  
- 
- 
-     </div>
-
-               
-
+								
+                                </div>
+                            </div>
     </div> 
 	
 	

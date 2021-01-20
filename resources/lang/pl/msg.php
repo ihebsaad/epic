@@ -185,7 +185,6 @@ return [
     "You may not delete your personal team." => "Nie możesz usunąć swojego osobistego zespołu.",
     "You may not leave a team that you created." => "Nie możesz opuścić zespołu, które stworzyłeś",
     "Your email address is not verified." => "Twój adres email nie jest zweryfikowany.",
-
     'welcome to your saamp space'   => 'Witamy w Twojej przestrzeni Saamp',
  	'Craftsmen, Manufacturers, Industrialists' =>'Rzemieślnicy, producenci, przemysłowcy',
 	'Half Products'=>'Półprodukty',
@@ -203,7 +202,6 @@ return [
 	'My Models'=>'Moje modele',
 	'My Weight Account'=>'Moje konto wagi',
 	'My Profile'=>'Mój profil',	
-	
 	'Do you really want to log out?'=>'Czy na pewno chcesz się wylogować?',
 	'Add to cart'=>'Dodaj do koszyka',
 	'View product'=>'Zobacz produkt',
@@ -277,7 +275,6 @@ return [
   	'Date'=>'Data',
   	'Metals'=>'Metale',
   	'Add a new Model'=>'Dodaj nowy model',
-
 	'Artisan'=>'Rzemieślnik',
   	'Maker'=>'Fabrykant',
   	'Industrial'=>'przemysłowy',
@@ -290,7 +287,6 @@ return [
   	'Password'=>'Hasło',
   	'Password confirmation'=>'Potwierdzenie hasła',
   	'Email address'=>'Adres e-mail',
-   
     'Delivery'=>'Dostawa',	 
   	'Choose your delivery mode'=>'Wybierz sposób dostawy',	 
   	'Agency'=>'Agencja',	 
@@ -333,6 +329,9 @@ return [
 	'Self-Delivery'=>'Dostawa-własna',	
 	'To prepare in my presence'=>'Aby przygotować się w mojej obecności',	
 	'Estimated weight after burning'=>'Szacunkowa waga po spaleniu',	
+	'Valuation - Results'=>'Wycena - Wyniki',	
+	'Estimation of the results of the service following my titration'=>'Oszacowanie wyników usługi po miareczkowaniu',	
+	'Service Cart'=>'kosz Serwisowy',	
 	
 	
  ];
