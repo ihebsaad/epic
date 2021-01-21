@@ -137,7 +137,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 
 							 <div  class="col-md-8 pl-20 pt-10">
 							<label onclick="showsize()" > 
-							<input type="checkbox"     id="size" name="size" ></input>  {{__('msg.Standard size package')}}  </label>
+							<input type="checkbox"   checked  id="size" name="size" ></input>  {{__('msg.Standard size package')}}  </label>
 							</div>	
 							<div class="row col-md-10"  id="sizes"  style="display:none">
 							
@@ -336,10 +336,10 @@ $count= $count_aff + $count_lab + $count_rmp;
 function showsize(){
    if ($('#size').is(':checked'))
 	{ 
-	$('#sizes').show('slow') ;  
+	$('#sizes').hide('slow') ;  
 	}
 	else{
-	$('#sizes').hide('slow') ;
+	$('#sizes').show('slow') ;
 	}
 	 
 }
