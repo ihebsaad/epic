@@ -62,8 +62,8 @@ select{
             <thead>
             <tr id="headtable">
                 <th style="width:15%">{{__('msg.Name')}}</th>
-                 <th style="width:18%">{{__('msg.Nature of the lot')}}</th>
-                 <th style="width:20%">{{__('msg.Metals')}}</th>
+                 <th style="width:17%">{{__('msg.Nature of the lot')}}</th>
+                 <th style="width:22%">{{__('msg.Metals')}}</th>
                 <th style="width:8%; ;padding-right:5px;">{{__('msg.Deposit')}}</th>				 
 				<th style="width:14%;font-size:10px;padding-right:5px;padding-bottom:15px">{{__('msg.Melting in my presence')}}</th>
                 </tr>

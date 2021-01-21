@@ -74,13 +74,13 @@ $count= $count_aff + $count_lab + $count_rmp;
 									 </div>
   								<?php 
 								$textassiste= __('msg.I wish to attend preparation operations (melting)') ;
-								$displaycdr='';
+								$displaycdr='display:none';
 								if	( $modele->nature_lot_ident  == 1 || $modele->nature_lot_ident == 2 || $modele->nature_lot_ident == 3 || $modele->nature_lot_ident ==4 || $modele->nature_lot_ident == 5 || $modele->nature_lot_ident ==6 || $modele->nature_lot_ident == 7 || $modele->nature_lot_ident == 8 || $modele->nature_lot_ident == 12 || $modele->nature_lot_ident ==16 || $modele->nature_lot_ident ==30 || $modele->nature_lot_ident ==31 || $modele->nature_lot_ident ==32 || $modele->nature_lot_ident == 33 || $modele->nature_lot_ident == 36  ){
 								$display='';	
 								}else{
 								$display='display:none';
 								}
-								if(   $modele->nature_lot_ident == 36){
+								if(   $modele->nature_lot_ident == 34){
 								$textassiste=__('msg.I wish to attend the burning') ;
 								$displaycdr='display:block';								
 								}

@@ -193,7 +193,8 @@ $count= $count_aff + $count_lab + $count_rmp;
 									if($argent >0){$argent= __('msg.Silver') .': '.  number_format ( $argent , 2).'g';}else{$argent='';}
 									if($platine >0){$platine= __('msg.Platinum') .': '. number_format ( $platine , 2).'g';}else{$platine='';}
 									if($palladium >0){$palladium= __('msg.Palladium') .': '.  number_format ( $palladium , 2).'g';}else{$palladium='';}
-								echo '<li>'.$nom_modele.'      '.$poids.'      '.number_format($estimation_prix,2,'.',',').'€  </li>';
+								echo '<li>'.$nom_modele.'      '.$poids.'      '.number_format($estimation_prix,2,'.',',').'€     <a  style="position:absolute;right:50px;bottom:50px" class="delete fm-close"  onclick="return confirm(`Êtes-vous sûrs de vouloir supprimer ce modèle ?`)"  href="{{action(`ProductsController@deletemodel`, '.$cmdid.')}}"><span class="fa  fa-times-circle"></i></a>
+</li>';
 								echo '<li> '.$or.'      '.$argent.'      '.$platine.'      '.$palladium.'</li>';
 								echo ' <hr style=" margin-bottom:10px;margin-top:10px"> ';
 								}
@@ -231,7 +232,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									if($argent >0){$argent= __('msg.Silver')  ;}else{$argent='';}
 									if($platine >0){$platine= __('msg.Platinum') ;}else{$platine='';}
 									if($palladium >0){$palladium= __('msg.Palladium') ;}else{$palladium='';}
-								echo '<li>'.$nom_modele.'        '.$qte.'p        '.number_format($estimation_prix,2,'.',',').'€  </li>';
+								echo '<li>'.$nom_modele.'        '.$qte.'p        '.number_format($estimation_prix,2,'.',',').'€  ';?><a  style="position:absolute;right:50px;bottom:50px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce modèle ?')"  href="{{action('ProductsController@deletemodellab', <?php echo $cmdid;?> )}}"><span class="fa  fa-times-circle"></i></a> <?php echo '</li>'; 
 								//echo '<li> '.$or.'      '.$argent.'      '.$platine.'      '.$palladium.'</li>';
 								echo '<center><hr style=" margin-bottom:10px;margin-top:10px">';
 									
@@ -257,7 +258,7 @@ $count= $count_aff + $count_lab + $count_rmp;
   								  	
 								 $nom_modele= $ligne->nom_modele;	
 								 echo '<li>'.$nom_modele.'         '.$poids.'g </li>';
-								echo '<li> '.__('msg.Estimation').':  '.number_format($estimation_prix,2,'.',',').'€ </li>';
+								echo '<li> '.__('msg.Estimation').':  '.number_format($estimation_prix,2,'.',',').'€ ';?>  <a  style="position:absolute;right:50px;bottom:50px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce modèle ?')"  href="route('deletemodelrmp', ['id'=><?php echo $cmdid; ?>])"><span class="fa  fa-times-circle"></i></a> <?php echo '</li>';
 								echo '<hr style=" margin-bottom:10px;margin-top:10px">';
 
 								 }

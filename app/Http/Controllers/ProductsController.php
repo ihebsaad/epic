@@ -300,8 +300,32 @@ class ProductsController extends Controller
 	}
 	 
 	 
+	 	 	
+     public function deletemodel($id)
+    {	 
+	 DB::table('cmde_aff_e')->where('cmde_aff_ident',$id)->where('statut','panier')->delete();
+	 DB::table('cmde_aff_l')->where('cmde_aff_e_ident',$id)->where('statut','panier')->delete();  	
+	return back();
+
+	}
 	 
-	 
+	 public function deletemodellab($id)
+    { 	 
+	 DB::table('cmde_lab_e')->where('cmde_lab_ident',$id)->where('statut','panier')->delete();
+	 DB::table('cmde_lab_l')->where('cmde_lab_e_ident',$id)->where('statut','panier')->delete();  	
+	return back();
+
+	} 
+
+	 public function deletemodelrmp($id)
+    {
+	 DB::table('cmde_rmp_e')->where('cmde_rmp_ident',$id)->where('statut','panier')->delete();
+	 DB::table('cmde_rmp_l')->where('cmde_rmp_e_ident',$id)->where('statut','panier')->delete();  	
+	 return back();
+
+	} 
+	
+	
 	 function details(Request $request) { 	
 			 $user = auth()->user();  
 		   
