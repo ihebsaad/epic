@@ -183,7 +183,7 @@ $count= $count_aff + $count_lab + $count_rmp;
    
 
                
-                             <div class="card shadow mb-4"  style="margin-bottom:0px!important">
+                             <div class="card shadow mb-4"  style="margin-bottom:15px!important">
                                 <div class="  ">
                                     <a href="#div2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">								
                                     <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Valuation - Results')}}</h6>
