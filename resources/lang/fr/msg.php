@@ -352,6 +352,10 @@ return [
 	'Melting in my presence'=>'Fonte en ma présence',
 	'Estimate of the value according to my titles'=>'Estimation de la valeur suivant mes titres',
 	'My Cart'=>'Mon Panier',	
+	'Number of packages'=>'Nombre de colis',	
+	'Standard size package'=>'Colis de taille standard',
+	'Order submitted successfully'=>'Commande envoyée avec succès',
+	
 	
 
  ];

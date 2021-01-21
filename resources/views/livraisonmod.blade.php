@@ -49,11 +49,11 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </div>
 							 <div id="agency1">
  							 <h5>{{__('msg.Delivery address')}}</h5>
-							 <div class="row pt-10 pb-20">
+							 <div class="row pt-10 pb-10">
 							 
 							 <div class="col-md-8">
 							 
-							 <select class="form-control mb-20" style="" id="agence_id" onchange="details();changing(this)">
+							 <select class="form-control mb-10" style="" id="agence_id" onchange="details();changing(this)">
 							 <option></option>
 							 <?php
 							 foreach($agences as $agence)
@@ -67,7 +67,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 
 							 </select>
 							 
-							 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:120px" >
+							 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:100px" >
  							 <b>{{__('msg.Agency')}} :</b>  <span id="lib"></span><br>
 							 <b>{{__('msg.Address')}} :</b> <span id="adresse"></span><br>
 							  <span id="zip"></span> <span id="ville"></span><br>
@@ -82,11 +82,11 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 
 							 <div id="agency2"  style="display:none"  >
  							 <h5>{{__('msg.Removal of address')}}</h5>
-							 <div class="row pt-10 pb-20">
+							 <div class="row pt-10 pb-10">
 							 
 							 <div class="col-md-8">
 							 
-							 <select class="form-control mb-20"  id="adresse_id" onchange="setadresse();changing(this)">
+							 <select class="form-control mb-10"  id="adresse_id" onchange="setadresse();changing(this)">
 							 <option></option>
 							 <?php $i=0;
 							 
@@ -99,7 +99,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 ?>
 							 
 							 </select>
-							 <div style="min-height:120px">
+							 <div style="min-height:100px">
 							<?php  
 							foreach($adresses as $adresse)
 							 { ?>
@@ -123,17 +123,47 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							<?php } ?>
 							 </div>	
 							
-							<div  class="col-md-8 pl-20 pt-10">
-							<label><b> {{__('msg.Gross weight')}}</b></label>
-							<input type="number" step="0.01" min="0.01" class="form-control" style="width:110px" ></input> g
-							</div>
-							 
+ 
 							 </div>		
 
 							 
 							 </div>							 
 
-								<button   onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-10 mb-20" >
+							 
+							 <div  class="col-md-8 pl-20 pt-10">
+							<label><b> {{__('msg.Number of packages')}}</b></label>
+							<input type="number" step="1" min="1" class="form-control" style="width:110px" value="1" id="colis" name="colis" ></input> 
+							</div>						 
+
+							 <div  class="col-md-8 pl-20 pt-10">
+							<label onclick="showsize()" > 
+							<input type="checkbox"     id="size" name="size" ></input>  {{__('msg.Standard size package')}}  </label>
+							</div>	
+							<div class="row col-md-10"  id="sizes"  style="display:none">
+							
+							<div class="col-md-4">
+							<label>Longeur en cm</label>
+							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="0" id="longeur" name="longeur" ></input> 
+							</div>
+							<div class="col-md-4">
+							<label>Largeur  en cm</label>
+							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="0" id="largeur" name="largeur" ></input> 							
+							</div>
+							<div class="col-md-4">
+							<label>Hauteur  en cm</label>
+							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="0" id="hauteur" name="hauteur" ></input> 
+														
+							</div>
+							
+							</div>
+
+							<div  class="col-md-8 pl-20 pt-10">
+							<label><b> {{__('msg.Gross weight')}}</b></label>
+							<input type="number" step="0.01" min="0.01" class="form-control" style="width:110px" value="0" ></input> g
+							</div>
+
+							
+								<button   onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -193,8 +223,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									if($argent >0){$argent= __('msg.Silver') .': '.  number_format ( $argent , 2).'g';}else{$argent='';}
 									if($platine >0){$platine= __('msg.Platinum') .': '. number_format ( $platine , 2).'g';}else{$platine='';}
 									if($palladium >0){$palladium= __('msg.Palladium') .': '.  number_format ( $palladium , 2).'g';}else{$palladium='';}
-								echo '<li>'.$nom_modele.'      '.$poids.'      '.number_format($estimation_prix,2,'.',',').'€     <a  style="position:absolute;right:50px;bottom:50px" class="delete fm-close"  onclick="return confirm(`Êtes-vous sûrs de vouloir supprimer ce modèle ?`)"  href="{{action(`ProductsController@deletemodel`, '.$cmdid.')}}"><span class="fa  fa-times-circle"></i></a>
-</li>';
+								echo '<li>'.$nom_modele.'      '.$poids.'      '.number_format($estimation_prix,2,'.',',').'€  ';?>  <a  style="margin-left:20px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce modèle ?')"  href="<?php echo url('/deletemodel/'.$cmdid);?>"><span class="fa  fa-times-circle"></i></a> <?php echo '</li>';
 								echo '<li> '.$or.'      '.$argent.'      '.$platine.'      '.$palladium.'</li>';
 								echo ' <hr style=" margin-bottom:10px;margin-top:10px"> ';
 								}
@@ -232,7 +261,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									if($argent >0){$argent= __('msg.Silver')  ;}else{$argent='';}
 									if($platine >0){$platine= __('msg.Platinum') ;}else{$platine='';}
 									if($palladium >0){$palladium= __('msg.Palladium') ;}else{$palladium='';}
-								echo '<li>'.$nom_modele.'        '.$qte.'p        '.number_format($estimation_prix,2,'.',',').'€  ';?><a  style="position:absolute;right:50px;bottom:50px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce modèle ?')"  href="{{action('ProductsController@deletemodellab', <?php echo $cmdid;?> )}}"><span class="fa  fa-times-circle"></i></a> <?php echo '</li>'; 
+								echo '<li>'.$nom_modele.'        '.$qte.'p        '.number_format($estimation_prix,2,'.',',').'€  ';?>  <a  style="margin-left:20px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce modèle ?')"  href="<?php echo url('/deletemodellab/'.$cmdid);?>"><span class="fa  fa-times-circle"></i></a> <?php echo '</li>';
 								//echo '<li> '.$or.'      '.$argent.'      '.$platine.'      '.$palladium.'</li>';
 								echo '<center><hr style=" margin-bottom:10px;margin-top:10px">';
 									
@@ -257,8 +286,8 @@ $count= $count_aff + $count_lab + $count_rmp;
 								 $estimation_prix= $ligne->estimation_prix;	
   								  	
 								 $nom_modele= $ligne->nom_modele;	
-								 echo '<li>'.$nom_modele.'         '.$poids.'g </li>';
-								echo '<li> '.__('msg.Estimation').':  '.number_format($estimation_prix,2,'.',',').'€ ';?>  <a  style="position:absolute;right:50px;bottom:50px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce modèle ?')"  href="route('deletemodelrmp', ['id'=><?php echo $cmdid; ?>])"><span class="fa  fa-times-circle"></i></a> <?php echo '</li>';
+								 echo '<li>'.$nom_modele.'         '.$poids.'g ';?>  <a  style="margin-left:20px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce modèle ?')"  href="<?php echo url('/deletemodelrmp/'.$cmdid);?>"><span class="fa  fa-times-circle"></i></a> <?php echo '</li>';
+								echo '<li> '.__('msg.Estimation').':  '.number_format($estimation_prix,2,'.',',').'€  </li>';
 								echo '<hr style=" margin-bottom:10px;margin-top:10px">';
 
 								 }
@@ -280,9 +309,40 @@ $count= $count_aff + $count_lab + $count_rmp;
 
                         </div>
                     </div>
-					
+	
+
+ <!--   Modal-->
+  <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{__('msg.Order submitted successfully')}}</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+		<b>Votre demande à bien était transmise.<br>Un email de confirmation sera envoyé dans les plus brefs délais.</b>
+		</div>
+        <div class="modal-footer">
+          <button   class="btn btn-secondary" type="button" data-dismiss="modal">{{__('msg.Close')}}</button>
+          <a href="{{route('home')}}" class="btn btn-success" type="button"  >{{__('msg.Home')}}</a>
+         </div>
+      </div>
+    </div>
+  </div>	
 					
 <script>
+function showsize(){
+   if ($('#size').is(':checked'))
+	{ 
+	$('#sizes').show('slow') ;  
+	}
+	else{
+	$('#sizes').hide('slow') ;
+	}
+	 
+}
 setadresse();
  $(document).ready(function () {
     $('.box').click(function(e) {
@@ -380,6 +440,10 @@ var mode="collect";
 				
 				
 				
+				$('#successModal').modal('show') ;
+
+				/*
+				
 	                    $.notify({
                         message: 'Commande passée avec succès',
                         icon: 'glyphicon glyphicon-check'
@@ -395,7 +459,7 @@ var mode="collect";
 							setTimeout(function(){
 				location.href="{{ route('home')}}";
 							   }, 3000);  //3 secds				
-				
+				*/
                 }
             });
 

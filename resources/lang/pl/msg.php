@@ -339,5 +339,8 @@ return [
 	'Melting in my presence'=>'Rozpływa się w mojej obecności',
 	'Estimate of the value according to my titles'=>'Oszacowanie wartości według moich tytułów',
 	'My Cart'=>'Mój wózek',	
+	'Number of packages'=>'Liczba opakowań',	
+	'Standard size package'=>'pakiet o standardowym rozmiarze',	
+	'Order submitted successfully'=>'Polecenie wysłane pomyślnie',
 	
  ];

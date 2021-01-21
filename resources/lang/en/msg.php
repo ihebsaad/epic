@@ -342,5 +342,8 @@ return [
 	'Melting in my presence'=>'Melting in my presence',
 	'Estimate of the value according to my titles'=>'Estimate of the value according to my titles',
 	'My Cart'=>'My Cart',	
+	'Number of packages'=>'Number of packages',	
+	'Standard size package'=>'Standard size package',	
+	'Order submitted successfully'=>'Order submitted successfully',	
 	
  ];

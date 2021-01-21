@@ -21,9 +21,9 @@ Route::get('/single/{type}/{famille1}/{famille2}/{famille3}', 'ProductsControlle
 Route::post('/modelabel', 'ProductsController@modelabel')->name('modelabel');
 Route::post('/addproduct', 'ProductsController@addproduct')->name('addproduct');
 Route::get('/deleteproduct/{id}', 'ProductsController@deleteproduct')->name('deleteproduct');
-Route::get('/deletemodel/{id}', 'ProductsController@deleteproductmodel')->name('deleteproductmodel');
-Route::get('/deletemodellab/{id}', 'ProductsController@deleteproductmodellab')->name('deleteproductmodellab');
-Route::get('/deletemodelrmp/{id}', 'ProductsController@deleteproductmodelrmp')->name('deleteproductmodelrmp');
+Route::get('/deletemodel/{id}', 'ProductsController@deletemodel')->name('deletemodel');
+Route::get('/deletemodellab/{id}', 'ProductsController@deletemodellab')->name('deletemodellab');
+Route::get('/deletemodelrmp/{id}', 'ProductsController@deletemodelrmp')->name('deletemodelrmp');
 Route::post('/details', 'ProductsController@details')->name('details');
 Route::post('/forfait', 'ProductsController@forfait')->name('forfait');
 Route::post('/tarifcmd', 'ProductsController@tarifcmd')->name('tarifcmd');
