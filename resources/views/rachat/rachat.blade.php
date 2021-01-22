@@ -64,8 +64,8 @@ select{
                 <th style="width:15%">{{__('msg.Name')}}</th>
                  <th style="width:17%">{{__('msg.Nature of the lot')}}</th>
                  <th style="width:22%">{{__('msg.Metals')}}</th>
-                <th style="width:8%; ;padding-right:5px;">{{__('msg.Deposit')}}</th>				 
-				<th style="width:14%;font-size:10px;padding-right:5px;padding-bottom:15px">{{__('msg.Melting in my presence')}}</th>
+                <th style="width:7%; ;padding-right:5px;">{{__('msg.Deposit')}}</th>				 
+				<th style="width:15%;font-size:10px;padding-right:5px;padding-bottom:15px">{{__('msg.Melting in my presence')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -154,7 +154,7 @@ select{
 								{{__('msg.Date')}}:<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
 								</div>
 								<div class="col-md-6">
-								{{__('msg.Total weight')}}: <b><?php echo $commande->poids  ;?> g</b>
+								{{__('msg.Total weight')}}: <b><?php echo $commande->poids  ;?>g</b>
 								</div>								
 								
 								</div>
@@ -165,7 +165,7 @@ select{
 								{{__('msg.order')}}: <b><a href="<?php echo URL("commandermp/".$commande->id);?>"><?php echo   $commande->id ;?></a></b><br>																
 								</div>
 								<div class="col-md-6">
-								{{__('msg.Net value')}}: <b><?php echo $commande->valeur_nette  ;?> </b>								
+								{{__('msg.Net value')}}: <b><?php echo $commande->valeur_nette  ;?>€</b>								
 								</div>								
 								
 								</div>								
@@ -194,7 +194,7 @@ select{
 								{{__('msg.Date')}}:<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
 								</div>
 								<div class="col-md-6">
-								{{__('msg.Total weight')}}: <b><?php echo $commande->poids  ;?> g</b>
+								{{__('msg.Total weight')}}: <b><?php echo $commande->poids  ;?>g</b>
 								</div>								
 								
 								</div>
@@ -205,7 +205,7 @@ select{
 								{{__('msg.order')}}: <b><a href="<?php echo URL("commandermp/".$commande->id);?>"><?php echo   $commande->id ;?></a></b><br>																
 								</div>
 								<div class="col-md-6">
-								{{__('msg.Net value')}}: <b><?php echo $commande->valeur_nette  ;?> €</b>
+								{{__('msg.Net value')}}: <b><?php echo $commande->valeur_nette  ;?>€</b>
 								
 								</div>								
 								

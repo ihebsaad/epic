@@ -144,10 +144,10 @@ foreach($natures as $nature)
 								<div class="row pb-15" >
 								
 								<div class="col-md-6">
-								{{__('msg.Qty')}}: <b><?php echo  $commande->cmde_lab_qte ; ?></b>
+								{{__('msg.Qty')}}: <b><?php echo  $commande->cmde_lab_qte ; ?>p</b>
 								</div>
 								<div class="col-md-6">								
-								{{__('msg.Total weight')}}: <b><?php echo $commande->cmde_lab_poids  ;?> g</b>
+								{{__('msg.Total weight')}}: <b><?php echo $commande->cmde_lab_poids  ;?>g</b>
 								</div>								
 								
 								</div>								
@@ -184,10 +184,10 @@ foreach($natures as $nature)
 								<div class="row pb-15" >
 								
 								<div class="col-md-6">
-								{{__('msg.Qty')}}: <b><?php echo  $commande->cmde_lab_qte ; ?></b>
+								{{__('msg.Qty')}}: <b><?php echo  $commande->cmde_lab_qte ; ?>p</b>
 								</div>
 								<div class="col-md-6">								
-								{{__('msg.Total weight')}}: <b><?php echo $commande->cmde_lab_poids  ;?> g</b>
+								{{__('msg.Total weight')}}: <b><?php echo $commande->cmde_lab_poids  ;?>g</b>
 								</div>								
 								
 								</div>								

@@ -127,7 +127,7 @@ foreach($natures as $nature)
 								{{__('msg.Date')}} :<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
 								</div>
 								<div class="col-md-6">
-								{{__('msg.Total weight')}} : <b><?php echo $commande->poids  ;?> g</b>
+								{{__('msg.Total weight')}} : <b><?php echo $commande->poids  ;?>g</b>
 								</div>								
 								
 								</div>
@@ -167,7 +167,7 @@ foreach($natures as $nature)
 								{{__('msg.Date')}} :<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
 								</div>
 								<div class="col-md-6">
-								{{__('msg.Total weight')}} : <b><?php echo $commande->poids  ;?> g</b>
+								{{__('msg.Total weight')}} : <b><?php echo $commande->poids  ;?>g</b>
 								</div>								
 								
 								</div>
