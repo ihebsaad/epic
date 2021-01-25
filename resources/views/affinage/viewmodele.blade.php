@@ -199,7 +199,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                                 </div>
                                 <div id="div2" class="card-body"  style="padding-bottom:0px">
   <div class="row pl-10" id="divmont" style="display:none" >
- <span style="font-size:11px" class="mb-10" >{{__('msg.Estimation of the results of the service following my titration')}}</span>
+ <span   class="mb-10" >{{__('msg.Estimation of the results of the service following my titration')}}</span>
 	{{__('msg.Amount')}}:  <b><span class="ml-10  " style=" min-width:30px" id="amount"></span> €</b> 
  </div>
   <div class="row  mb-20">
