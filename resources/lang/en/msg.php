@@ -329,6 +329,8 @@ return [
   	'Estimation'=>'Estimation',	 
   	'Refining'=>'Refining',	 	
 	'Validate'=>'Validate',	
+	'Way'=>'Way',	
+	'Go to cart'=>'Go to cart',	
 	'Validate order'=>'Validate order',	
 	'Gross weight'=>'Gross weight',	
 	'Removal of address'=>'Removal of address',	

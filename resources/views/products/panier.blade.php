@@ -53,13 +53,15 @@ $products=array();
  <?php 
  $i=0;
  foreach($products as $product){ $i++; ?>
-	  <div class="row pt-20" style="border-bottom:1px solid lightgrey">  
+	  <div class="row pb-10 pt-10 " style="border-bottom:1px solid lightgrey">  
 <?php
  $prod=app('App\Http\Controllers\HomeController')->produit($product->type,$product->famille1,$product->famille2,$product->famille3);
   $produit=  DB::table('type_famille')->where('type_id',$product->type)->where('fam1_id',$product->famille1)->where('fam2_id',$product->famille2)->where('fam3_id',$product->famille3)->first();
 
  $img=''; $image=DB::table('photo')->where('photo_id',$produit->photo_id )->first();
+ 
 	 if(isset($image)){ $img=$image->url;}
+	 
 	 if($product->type==101){$Type=  __('msg.Half Products') ; $link=route('products');}
  if($product->type==102){$Type=  __('msg.Galvano') ; $link=route('galvano');}
  if($product->type==103){$Type=  __('msg.Findings') ; $link=route('findings');}
@@ -67,6 +69,9 @@ $products=array();
 
  $id_unite= $prod[0]['UNIT_IDENT'];
  $unite=DB::table('unite')->where('UNIT_IDENT',$id_unite)->first();
+ 
+ $Product=app('App\Http\Controllers\HomeController')->produit($product->type,$product->famille1,$product->famille2,$product->famille3);
+
 ?>
 
 <input type="hidden" value="<?php echo $product->id ;?>"  id="prod-<?php echo $i;?>">
@@ -81,11 +86,12 @@ $products=array();
 <input type="hidden" value="<?php echo $product->comp_val ;?>"  id="comp_val-<?php echo $i;?>">
 
 <div class="col-md-3  pl-10">
- <center><img style="min-height:150px;max-height:180px" src="<?php echo $img; ?>" class="img-fluid " alt=""></center>
+ <center><img style="min-height:150px;max-height:180px" src="<?php echo URL::asset('images/'.$img);?>" class="img-fluid " alt=""></center>
 </div>
 <div class="col-md-5  pl-10 pb-10">
-<h5 ><a class="text-info"  title="<?php echo __("msg.View product");?>" href="<?php echo route("single",['type'=>$product->type,'fam1'=>$product->famille1,'fam2'=>$product->famille2,'fam3'=>$product->famille3]);?>"><?php echo $product->libelle; ?></a></h5>
-<a  href="<?php echo route('catalog',['type'=>$product->type,'famille1'=>$product->famille1]);?>" ><?php echo  $produit->LIBFAM1; ?></a><br>
+<!--<h5 ><a class="text-info"  title="<?php // echo __("msg.View product");?>" href="<?php // echo route("single",['type'=>$product->type,'fam1'=>$product->famille1,'fam2'=>$product->famille2,'fam3'=>$product->famille3]);?>"><?php // echo $product->libelle; ?></a></h5>-->
+<h5 ><span class="text-info"   ><?php echo $product->libelle; ?></span></h5>
+<span   ><?php echo  $produit->LIBFAM1; ?></span><br>
 <?php
 if($product->alliage >0){
  foreach ($alliages as $alliage)
@@ -96,7 +102,12 @@ if($product->alliage >0){
  }
   	?>
 	<div class="row pt-15"><input type="number"  onchange="details(<?php echo $i;?>)"  <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    min="0.01"  step="0.01"  <?php }else{ ?> min="1"  step="1"  <?php  } ?>  id="qte-<?php echo $i;?>" value="<?php echo $product->qte;?>" class="ml-10 mr-10 form-control" style="width:80px"></input> <span class="pt-10"><?php echo $unite->UNIT_LIB_LONG ; ?></span> </div>
-
+<?php if($product->mesure1 > 0){  ?> 	<div class="row pt-15">Mesure<?php if($product->mesure2 > 0){echo's';}?>: <b class="pl-10"><?php echo $product->mesure1 ;?><?php if(isset($Product[0]['unite1'])){ echo ' '.$Product[0]['unite1']; } ?> <?php if($product->mesure2 > 0){  ?> <?php echo ' , '. $product->mesure2 ;?><?php if(isset($Product[0]['unite1'])){ echo ' '.$Product[0]['unite1']; } ?></b></div> <?php }  } ?>
+<?php if( $product->comp_id	> 0){
+	
+$Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)->first();
+			 echo '<div class="row"><span class="weight-bold">'. __("msg.Way") .': <b>'.$Comp->COMPLEMENT_LIB .'  ('. $product->comp_val.' mm)</b> </span></div>' ; 
+}  ?>
 </div>
 <div class="col-md-4"  >
   <div class="pb-40  pl-10 pt-15" style="border-left:1px solid lightgrey">
@@ -145,6 +156,15 @@ if($product->alliage >0){
 									<tr style="height:20px"><td     style="height:20px">{{__('msg.Platinum')}} : </span></td><td><span><?php echo floatval($platine) ;?> g</span></td></tr>
 									</table>	
  
+ 
+ 								<center><a href="{{ route('livraison') }}" style="color:white;text-decoration:none"> <button    type="button"   class="pull-right btn btn-primary btn-icon-split  mt-30 mb-20">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-truck-moving"></i>
+                                        </span>
+                                        <span  style="width:200px" class="text" >{{__('msg.Validate order')}}</span>
+                                    </button> </a></center>	
+									
+									
                                 </div>
                             </div>
 

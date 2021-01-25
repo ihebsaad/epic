@@ -127,8 +127,6 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </div>		
 
 							 
-							 </div>							 
-
 							 
 							 <div  class="col-md-8 pl-20 pt-10">
 							<label><b> {{__('msg.Number of packages')}}</b></label>
@@ -137,7 +135,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 
 							 <div  class="col-md-8 pl-20 pt-10">
 							<label onclick="showsize()" > 
-							<input type="checkbox"   checked  id="size" name="size" ></input>  {{__('msg.Standard size package')}}  </label>
+							<input type="checkbox"   checked  id="size" name="size" ></input>  {{__('msg.Standard size package')}} <small>(L + l + H < 100cm)</small> </label>
 							</div>	
 							<div class="row col-md-10"  id="sizes"  style="display:none">
 							
@@ -155,7 +153,13 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 														
 							</div>
 							
-							</div>
+							</div>							 
+							 
+							 
+							 </div>							 
+
+							 
+
 
 							<div  class="col-md-8 pl-20 pt-10">
 							<label><b> {{__('msg.Gross weight')}}</b></label>

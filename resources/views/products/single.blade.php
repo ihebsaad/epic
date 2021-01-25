@@ -41,6 +41,7 @@ $platine=$order->platine   ;
  $products= DB::table('products')->where('orderid',$orderid)->orderBy('id','asc')->get();
 		$count=DB::table('products')->where('orderid',$orderid)->where('libelle',trim($titre))->count();
 		if($count==1){$disabled='disabled';}
+		// type produit, produit id, alliage id, complément id, complément valeur.
 }else{
 $orderid=0;
 $amount=0;
@@ -246,7 +247,7 @@ $products=array();
 <hr>							
 							  <div id="infos"  >		
  							  
-							  <input type="hidden" id="article" ></input>
+							  <input type="hidden" id="article" value="0"></input>
 							<label class="ml-10 mr-10">{{__('msg.Price')}} :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €			  
 							  
 							  <div class="row pl-10  ">
@@ -255,18 +256,22 @@ $products=array();
 				   							 
 
 							  <div class="row   "  >
- 							  <div class=" " id="debits"><label id='labelm1' style="width:100px;display:none" class="metal text-center bg-gradient-warning">{{__('msg.Gold')}} : </label><span class="ml-10 mr-10 " style="font-weight:bold" id="debit_1"></span><label id='labelm2' style="width:100px;display:none" class="metal text-center bg-gradient-light"> {{__('msg.Silver')}} : </label><span class="ml-10 mr-10 " id="debit_2" style="font-weight:bold" ></span><label id='labelm3' style="width:100px;display:none" class="metal text-center bg-gradient-secondary"> {{__('msg.Platinum')}} : </label><span class="ml-10 mr-10 " id="debit_3" style="font-weight:bold" ></span><label id='labelm4' style="width:100px;display:none" class="metal text-center  bg-gray-500">  {{__('msg.Palladium')}} :  </label><span class="ml-10 mr-10 " id="debit_4" style="font-weight:bold"></span> </div>
-							  </div>
-							  	 </div>						 
-					 
-						      <div class="row mt-30" style=" height:60px">
-								<button <?php echo $disabled ;?>  type="button" style="position:absolute;right:50px " class="pull-right btn btn-primary btn-icon-split   ml-50 mt-10 mb-20">
+ 							  <div class="col-sm-8 " id="debits"><label id='labelm1' style="width:100px;display:none" class="metal text-center bg-gradient-warning">{{__('msg.Gold')}} : </label><span class="ml-10 mr-10 " style="font-weight:bold" id="debit_1"></span><label id='labelm2' style="width:100px;display:none" class="metal text-center bg-gradient-light"> {{__('msg.Silver')}} : </label><span class="ml-10 mr-10 " id="debit_2" style="font-weight:bold" ></span><label id='labelm3' style="width:100px;display:none" class="metal text-center bg-gradient-secondary"> {{__('msg.Platinum')}} : </label><span class="ml-10 mr-10 " id="debit_3" style="font-weight:bold" ></span><label id='labelm4' style="width:100px;display:none" class="metal text-center  bg-gray-500">  {{__('msg.Palladium')}} :  </label><span class="ml-10 mr-10 " id="debit_4" style="font-weight:bold"></span> </div>
+							 
+
+						      <div class="col-sm-4  " style=" height:60px">
+								<button  id="cart"  type="button" style="position:absolute;right:30px " class="pull-right btn btn-primary btn-icon-split   ml-50   mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
                                         <span class="text" onclick="addproduct()">{{__('msg.Add to cart')}}</span>
                                     </button>
                                 </div>
+
+							 </div>
+							  	 </div>						 
+					 
+
 								
 								
 								
@@ -301,8 +306,8 @@ $products=array();
 	
 									}?>
  									 <tr style="height:40px"><td></td><td></td><td></td><td></td></tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Way option')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
 									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Total weight')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  number_format($weight, 2) ;?> g</b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Way option')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>									
 									<tr ><td><b class="pl-10 text-info">{{__('msg.Total way')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>
@@ -317,9 +322,9 @@ $products=array();
 								
 								<center><a href="{{ route('panier') }}" style="color:white;text-decoration:none"> <button    type="button"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-truck-moving"></i>
+                                            <i class="fas fa-shopping-cart"></i>
                                         </span>
-                                        <span  style="width:200px" class="text" >{{__('msg.Validate order')}}</span>
+                                        <span  style="width:200px" class="text" >{{__('msg.Go to cart')}}</span>
                                     </button> </a></center>								
 								
                             </div>
@@ -333,7 +338,7 @@ $products=array();
 
    <script>
    
-
+ 
    function changing() {
            val=$('#alliage_id').val();
              //if ( (val != '')) {
@@ -385,6 +390,7 @@ function details()
 	        var qte = parseFloat($('#qte').val());
 	        var comp_id = parseInt($('#comp_id').val());
 	        var comp_val = $('#comp_val').val() ;
+	        var article = $('#article').val() ;
 			var debit1=0;var debit2=0;var debit3=0;	var debit4=0;
 			var mini=0;	var minit=0;
 			var montant=0;var montantt=0;
@@ -470,11 +476,47 @@ function details()
 				}				
 	
 			
-	
+
+
+				checkproduct();
+				 	
+
+
+			
 	
 			}
 		 });
 }
+
+
+
+function checkproduct()
+{
+   // vérifier si le produit existe
+   
+    var _token = $('input[name="_token"]').val();
+ 	        var alliage_id = parseInt($('#alliage_id').val());
+ 	        var comp_id = parseInt($('#comp_id').val());
+	        var comp_val = $('#comp_val').val() ;
+	        var article = $('#article').val() ;
+				if(comp_val!=''){comp_val = parseFloat(comp_val);}else{comp_val=0;}
+			if(comp_id!=''){comp_id = parseInt(comp_id);}else{comp_id=0;}
+	//	alert(  "libelle : <?php echo $titre;?>"+'article : '+article+'alliage_id : '+alliage_id+'comp_id : '+comp_id+'comp_val : '+comp_val);
+ 
+   $.ajax({
+  url: "{{ route('checkproduct') }}",
+  method: "POST",
+  data: { label:"<?php echo $titre;?>", article:article , alliage_id : alliage_id, comp_id:comp_id, comp_val:comp_val   , _token: _token } ,
+  success: function (data) {	
+    if (parseInt(data)>0)
+   {
+ 		$("#cart").prop("disabled", true);
+   } 
+    }
+ });	
+}
+
+
 
 		function addproduct (){
 			var _token = $('input[name="_token"]').val();

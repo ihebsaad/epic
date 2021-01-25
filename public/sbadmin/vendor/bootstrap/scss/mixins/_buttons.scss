@@ -32,7 +32,7 @@
   &.disabled,
   &:disabled {
     color: color-yiq($background);
-    background-color: $background;
+  //  background-color: $background;
     border-color: $border;
     // Remove CSS gradients if they're enabled
     @if $enable-gradients {

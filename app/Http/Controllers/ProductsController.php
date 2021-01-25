@@ -511,6 +511,30 @@ class ProductsController extends Controller
 	
 	
 	
+ public function checkproduct(Request $request)
+ {
+ 
+ $label= trim($request->get('label'));
+ $article= intval($request->get('article'));
+ $alliage= intval($request->get('alliage_id'));
+ $comp_id= intval($request->get('comp_id'));
+ $comp_val= floatval($request->get('comp_val'));	 
 	
+		$count=DB::table('products')
+		//->where('status','cart')
+		->where('libelle',$label)
+		->where('article',$article)
+		->where('alliage',$alliage)
+		->where('comp_id',$comp_id)
+		->where('comp_val',$comp_val)
+		->count();
+
+	return $count ;
+ }
+
+
+
+
+ 
    
 }
