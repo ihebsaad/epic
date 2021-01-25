@@ -83,7 +83,7 @@ $products=array();
 <div class="col-md-3  pl-10">
  <center><img style="min-height:150px;max-height:180px" src="<?php echo $img; ?>" class="img-fluid " alt=""></center>
 </div>
-<div class="col-md-5  pl-10">
+<div class="col-md-5  pl-10 pb-10">
 <h5 ><a class="text-info"  title="<?php echo __("msg.View product");?>" href="<?php echo route("single",['type'=>$product->type,'fam1'=>$product->famille1,'fam2'=>$product->famille2,'fam3'=>$product->famille3]);?>"><?php echo $product->libelle; ?></a></h5>
 <a  href="<?php echo route('catalog',['type'=>$product->type,'famille1'=>$product->famille1]);?>" ><?php echo  $produit->LIBFAM1; ?></a><br>
 <?php

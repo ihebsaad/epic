@@ -114,7 +114,7 @@ $products=array();
 									 <div class="row pl-10">									
 									 <label style="width:120px" class="  pt-10"><b><?php   echo $product[0]['NAT_MESURE2'] ; ?></b></label>
  									<?php if($product[0]['NAT_MESURE2']!=''){?>
-                                      <select onmouseover="showmesure2()"  id="mesure2" class="form-control ml-20" required style="max-width:80px;" onchange=" $('#infos').show('slow');details();" >
+                                      <select    id="mesure2" class="form-control ml-20" required style="max-width:80px;" onchange=" $('#infos').show('slow');details();" >
 									  <option></option>
   									   <?php $i=0; $selected='';$j=-1;
  									   foreach ($mesures as $mesure) {
@@ -227,23 +227,30 @@ $products=array();
 								
 <hr>
 	
-									 <div class="row mb-10 mt-20 pl-10">
-									 <label class="pt-10 pr-10">{{__('msg.Quantity')}} :</label><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    step="0.01"  <?php }else{ ?>   step="1"  <?php  } ?> value="<?php echo $product[0]['valeur_defaut']; ?>" onchange="details()" id="qte" type="number"  style="width:95px" value="0"    class="form-control" placeholder=""   /></input><label class="pt-10 pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label><label class="  ml-50 pt-10">{{__('msg.Total weight')}} :</label><label class="ml-10 mr-10 pt-10" id='poidst' style="font-weight:bold;"></label> 
+									 <div class="row mb-10 mt-10  ">
+<div class="col-md-5">									 
+									 <label class="  ">{{__('msg.Quantity')}}</label><br><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    step="0.01"  <?php }else{ ?>   step="1"  <?php  } ?> value="<?php echo $product[0]['valeur_defaut']; ?>" onchange="details()" id="qte" type="number"  style="width:95px" value="0"    class="form-control" placeholder=""   /></input>
+									 <label class="  pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label>
+</div>
 
+							  <div class="col-md-4    ">
+							  <label class="  ">{{__('msg.Unit weight')}}</label><br>
+							  <label class="pl-10 mr-10 " style="font-weight:bold" id="poids_u"> </label> 
+
+							  </div>
+
+<div class="col-md-3" >									 
+  <label class="  ">{{__('msg.Total weight')}}</label><br><label class="ml-10 mr-10  " id='poidst' style="font-weight:bold;"></label> 
+</div>
 									</div>	
 <hr>							
 							  <div id="infos"  >		
-
-							  <div class="row pl-10   ">
-							  <label class=" ">{{__('msg.Unit weight')}} :</label>
-							  <label class="pl-10 mr-10 " style="font-weight:bold" id="poids_u"> </label> <label class="ml-10 mr-10">{{__('msg.Price')}} :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €
-							  <div class="col-md-2" id="prix"></div>
+ 							  
 							  <input type="hidden" id="article" ></input>
-							  </div>
-							  
+							<label class="ml-10 mr-10">{{__('msg.Price')}} :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €			  
 							  
 							  <div class="row pl-10  ">
-							  <label class="   " >{{__('msg.Total way')}}:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
+							  <label class=" pl-10  " >{{__('msg.Total way')}}:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
 							  </div>							
 				   							 
 
@@ -307,6 +314,14 @@ $products=array();
 									<tr style="height:20px"><td     style="height:20px">{{__('msg.Platinum')}} : </span></td><td><span><?php echo floatval($platine) ;?> g</span></td></tr>
 									</table>									
                                 </div>
+								
+								<center><a href="{{ route('panier') }}" style="color:white;text-decoration:none"> <button    type="button"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-truck-moving"></i>
+                                        </span>
+                                        <span  style="width:200px" class="text" >{{__('msg.Validate order')}}</span>
+                                    </button> </a></center>								
+								
                             </div>
 
            
@@ -387,7 +402,7 @@ function details()
                 success: function (data) {
 				console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif) ;
 				console.log(data);				
-				
+				//comp_val
 				poids=parseFloat(data.poids_u);
  				$('#poids_u').html( poids+' g' );
 				poidst= poids * qte;
@@ -401,7 +416,8 @@ function details()
 				 $('#prix').html(  prix);
 				 //$('#modeid').html( data.prix[0].modeid);
 				 montant=parseFloat(data.prix[0].montant *qte);
-				 montantt=parseFloat(data.tarif[0].montant);
+				
+				 montantt=parseFloat(data.tarif[0].montant  * comp_val);
 				 minit=parseFloat(data.tarif[0].mini);
 				 mini=parseFloat(data.prix[0].mini);
 
@@ -409,6 +425,7 @@ function details()
 				 if(montant< mini){montant=mini;}
 				 if(montantt>0){montant=montant+montantt;}
 				 montant= montant.toFixed(2);
+				 montantt= montantt.toFixed(2);
 				 montant= parseFloat(montant);
 				 $('#montant').html(  montant);
 				 $('#mini').html(mini );

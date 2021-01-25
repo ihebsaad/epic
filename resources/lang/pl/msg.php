@@ -326,6 +326,7 @@ return [
   	'Refining'=>'Rafinacja',
   	'Estimation'=>'Oszacowanie',	 	
 	'Validate'=>'Uprawomocnić',	
+	'Validate order'=>'Potwierdź zamówienie',			
 	'Gross weight'=>'Waga brutto',	
 	'Removal of address'=>'Usunięcie adresu',	
 	'Self-Delivery'=>'Dostawa-własna',	
@@ -342,5 +343,6 @@ return [
 	'Number of packages'=>'Liczba opakowań',	
 	'Standard size package'=>'pakiet o standardowym rozmiarze',	
 	'Order submitted successfully'=>'Polecenie wysłane pomyślnie',
-	
+	'Option price'=>'Tarif',	
+
  ];

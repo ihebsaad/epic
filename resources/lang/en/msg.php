@@ -329,6 +329,7 @@ return [
   	'Estimation'=>'Estimation',	 
   	'Refining'=>'Refining',	 	
 	'Validate'=>'Validate',	
+	'Validate order'=>'Validate order',	
 	'Gross weight'=>'Gross weight',	
 	'Removal of address'=>'Removal of address',	
 	'Self-Delivery'=>'Self-Delivery',	
@@ -345,5 +346,6 @@ return [
 	'Number of packages'=>'Number of packages',	
 	'Standard size package'=>'Standard size package',	
 	'Order submitted successfully'=>'Order submitted successfully',	
+	'Option price'=>'Option price',	
 	
  ];

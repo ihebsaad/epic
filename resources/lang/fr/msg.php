@@ -243,8 +243,9 @@ return [
  	'Unit weight'=>'Poids unitaire',
 	'Option'=>'Option',
  	'Price'=>'Prix',
- 	'Total way'=>'Total option',
- 	'Way option'=>'Façon option',
+ 	'Total way'=>'Total façon',
+ 	'Way option'=>'Option',
+	'Validate order'=>'Valider la commande',		
  	'Total weight'=>'Poids total ',
  	'FINE METALS'=>'MÉTAUX FINS',
  	'Article'=>'Article',
@@ -355,6 +356,8 @@ return [
 	'Number of packages'=>'Nombre de colis',	
 	'Standard size package'=>'Colis de taille standard',
 	'Order submitted successfully'=>'Commande envoyée avec succès',
+	'Option price'=>'Tarif',	
+
 	
 	
 
