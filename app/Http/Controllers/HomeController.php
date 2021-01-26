@@ -3978,4 +3978,19 @@ $cmd_id    = intval($request->get('cmd_id'));
 	
 
 	
+	
+  public static function virements($client,$lang,$metal,$debut,$fin  )
+    { 
+//	try {
+   	   DB::select("SET @p0='$client' ;");
+       DB::select("SET @p1='$lang' ;");
+   	   DB::select("SET @p2='$metal' ;");
+   	   DB::select("SET @p3='$debut' ;");
+   	   DB::select("SET @p4='$fin' ;");
+     
+ 	  $result=  DB::select ("  CALL `sp_vir_cp_date`(@p0,@p1,@p2,@p3,@p4); ");
+		return $result;
+ 
+	}	
+	
 } // end class

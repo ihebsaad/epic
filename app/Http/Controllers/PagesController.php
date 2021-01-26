@@ -88,9 +88,13 @@ class PagesController extends Controller
          return view('trading');
     }
 
- 	 public function virement()
+ 	 public function virement(Request $request)
     { 
-         return view('virement');
+	 $debut = $request->get('debut');
+ 	 $fin = $request->get('fin');
+ 	 $metal = $request->get('metal');
+ 
+         return view('virement',[ 'debut'=>$debut,'fin'=>$fin ,'metal'=>$metal]);
     }
 	
   	 public function euros()

@@ -327,7 +327,8 @@ return [
   	'Estimation'=>'Oszacowanie',	 	
 	'Validate'=>'Uprawomocnić',	
 	'Validate order'=>'Potwierdź zamówienie',
-	'Way'=>'Sposób',		
+	'Way'=>'Sposób',	
+	'View'=>'Zobacz',	
 	'Go to cart'=>'Idź do wózka',		
 	'Gross weight'=>'Waga brutto',	
 	'Removal of address'=>'Usunięcie adresu',	
@@ -347,4 +348,10 @@ return [
 	'Order submitted successfully'=>'Polecenie wysłane pomyślnie',
 	'Option price'=>'Tarif',	
 
+	'Piece'=>'Kawałek',	
+	'Label'=>'Etykieta',	
+	'Debit'=>'Obciążyć',	
+	'Credit'=>'Kredyt',	
+	'Balance'=>'Saldo',	
+ 
  ];

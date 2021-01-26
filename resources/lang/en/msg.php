@@ -329,6 +329,7 @@ return [
   	'Estimation'=>'Estimation',	 
   	'Refining'=>'Refining',	 	
 	'Validate'=>'Validate',	
+	'View'=>'View',	
 	'Way'=>'Way',	
 	'Go to cart'=>'Go to cart',	
 	'Validate order'=>'Validate order',	
@@ -349,5 +350,11 @@ return [
 	'Standard size package'=>'Standard size package',	
 	'Order submitted successfully'=>'Order submitted successfully',	
 	'Option price'=>'Option price',	
+
+	'Piece'=>'Piece',	
+	'Label'=>'Label',	
+	'Debit'=>'Debit',	
+	'Credit'=>'Credit',	
+	'Balance'=>'Balance',	
 	
  ];

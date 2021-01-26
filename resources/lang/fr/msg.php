@@ -247,6 +247,7 @@ return [
  	'Way option'=>'Option',
 	'Validate order'=>'Valider la commande',
 	'Way'=>'Façon',		
+	'View'=>'Voir',		
 	'Go to cart'=>'Passer au panier',		
  	'Total weight'=>'Poids total ',
  	'FINE METALS'=>'MÉTAUX FINS',
@@ -360,7 +361,11 @@ return [
 	'Order submitted successfully'=>'Commande envoyée avec succès',
 	'Option price'=>'Tarif',	
 
-	
+	'Piece'=>'Pièce',	
+	'Label'=>'Libellé',	
+	'Debit'=>'Débit',	
+	'Credit'=>'Crédit',	
+	'Balance'=>'Solde',	
 	
 
  ];
