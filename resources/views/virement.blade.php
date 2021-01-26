@@ -13,17 +13,20 @@ use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
  //$virements=HomeController::virements($user['client_id'],'fr_FR',1,date('Y-m-01'),date('Y-m-d'));
    if (isset($debut) && isset($fin)) {
-	   $debut=$_GET['debut'];
-		$fin=$_GET['fin'];
-		$metal=$_GET['metal'];
-		
+	 
+		 
+		echo 'Début  : '.$debut.'<br>';
+		echo 'Fin  : '.$fin;
+		echo 'Métal  : '.$metal;
  $virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
 		
 	  }else{
 	 	$metal=1;
-   $debut='2020-08-01';
-	 $fin='2020-10-01';
- $virements=HomeController::virements($user['client_id'],'fr_FR',1,'2020-08-01','2020-10-01');
+  // $debut='2020-08-01';
+   $debut=date('Y-m-01');
+	// $fin='2020-10-01';
+	 $fin=date('Y-m-d');
+ $virements=HomeController::virements($user['client_id'],'fr_FR',1,$debut,$fin);
 		  
 	  }
  
@@ -48,9 +51,9 @@ use App\Http\Controllers\HomeController ;
 								
 								<div class="col-sm-5 pt-10">					
 								<span>Période</span>
-								<input style="width:230px" type="text"   value="<?php echo $debut.' - '.$fin; ?>" class="form-control" />
+								<input style="width:230px" type="text" id="periode"  value="<?php echo $debut.' - '.$fin; ?>" class="form-control" />
 								</div>
-								<input  type="hidden" name="debut" id="debut">
+								<input  type="hidden" name="debut" id="debut"   >
 								<input  type="hidden" name="fin" id="fin"  >
 								<div class="col-sm-4 pt-10">													
 								<span>Métal</span>
@@ -128,7 +131,7 @@ use App\Http\Controllers\HomeController ;
                         </div>-->
                     </div>
 <script>
-$('input[name="dates"]').daterangepicker({
+$('#periode').daterangepicker({
 "locale": {
     //    "format": "DD/MM/YYYY",
         "format": "YYYY-MM-DD",
@@ -174,7 +177,7 @@ $('input[name="dates"]').daterangepicker({
   
 	<?php } ?>
 
-},
+} ,
        function(start, end) {
         console.log("Callback has been called!");
      //   $('#reportrange span').html(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'));
@@ -182,9 +185,8 @@ $('input[name="dates"]').daterangepicker({
 		$('#fin').val(end.format('YYYY-MM-DD'));
 
        }
-
-)
- ;
+ 
+);
 </script>
 
 @endsection
