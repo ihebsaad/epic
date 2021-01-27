@@ -10,7 +10,7 @@ use App\Http\Controllers\HomeController ;
    
  $beneficiaires=HomeController::beneficiaires($user['client_id'],$user['lg'] );
 
-  
+  $metals=DB::table('metal')->get();
  
  ?>
 						<div class="row">
@@ -56,16 +56,18 @@ use App\Http\Controllers\HomeController ;
 				 
 				 </select></div>
 				</div><div class="row mb-10">
-                <div class="col-md-3">{{__('msg.Metal')}}:</div><div class="col-md-8"> <select class="form-control" style="width:130px" required name="metal" id="metal"  onchange="check()"  >
-				<option value="1">{{__('msg.Gold')}}</option> 
-				<option value="2">{{__('msg.Silver')}}</option> 
-				<option value="3">{{__('msg.Platinum')}}</option> 
-				<option value="4">{{__('msg.Palladium')}}</option> 
+                <div class="col-md-3">{{__('msg.Metal')}}:</div><div class="col-md-8"> <select class="form-control" style="width:170px" required name="metal" id="metal"  onchange="check()"  >
+				<option ></option> 
+				<?php foreach($metals as $metal)
+				{
+				echo '<option value="'.$metal->metal_ident.'" >'.$metal->metal_lib.'</option>';	
+				}
+				?>
 				</select></div>
                 </div><div class="row mb-10">
 				<div class="col-md-3">{{__('msg.Weight')}}:</div><div class="col-md-8"> <input type="number" step="0.01" min="0.01" class="form-control" style="width:130px"  required name="poids"  id="poids" onchange="check()"  /></input>g</div>
                 </div><div class="row mb-10">
-				<div class="col-md-3">{{__('msg.Date')}}:</div><div class="col-md-8"> <input class="form-control datepicker" style="width:130px"  required name="date"  onchange="check()"  id="date" /></input></div>
+				<div class="col-md-3">{{__('msg.Date')}}:</div><div class="col-md-8"> <input class="form-control datepicker" autocomplete="off" style="width:130px"  required name="date"  onchange="check()"  id="date" /></input></div>
                 </div><div class="row mb-10">
 				<div class="col-md-3">Commentaire:</div><div class="col-md-8"> <textarea class="form-control" cols="20" rows="2"   name="commentaire" id="commentaire" onchange="check()"  ></textarea></div>
 				</div> 
