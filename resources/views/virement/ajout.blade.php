@@ -65,7 +65,7 @@ use App\Http\Controllers\HomeController ;
                 </div><div class="row mb-10">
 				<div class="col-md-3">{{__('msg.Weight')}}:</div><div class="col-md-8"> <input type="number" step="0.01" min="0.01" class="form-control" style="width:130px"  required name="poids"  id="poids" onchange="check()"  /></input>g</div>
                 </div><div class="row mb-10">
-				<div class="col-md-3">{{__('msg.Date')}}:</div><div class="col-md-8"> <input class="form-control datepicker" style="width:130px"  required name="date"  onchange="check()"  id="date" /></input></div>
+				<div class="col-md-3">{{__('msg.Date')}}:</div><div class="col-md-8"> <input autocomplete="off" class="form-control datepicker" style="width:130px"  required name="date"  onchange="check()"  id="date" /></input></div>
                 </div><div class="row mb-10">
 				<div class="col-md-3">Commentaire:</div><div class="col-md-8"> <textarea class="form-control" cols="20" rows="2"   name="commentaire" id="commentaire" onchange="check()"  ></textarea></div>
 				</div> 
