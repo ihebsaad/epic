@@ -92,7 +92,7 @@ $user_type=$user->user_type;
         <a class="nav-link" href="{{route('rachat')}}"   <?php if( strpos($view_name  ,'rachat') !== false )  {echo 'style="font-weight:800"'; } ?> >
            <span> {{__('msg.Buyback of precious metals')}} </span></a>
       </li>	 
-	  <li class="nav-item   <?php if( strpos($view_name  ,'virement') !== false )  {echo 'style="font-weight:800"'; }   ?>">
+	  <li class="nav-item"   <?php if( strpos($view_name  ,'virement') !== false )  {echo 'style="font-weight:800"'; }   ?> >
         <a class="nav-link"  href="{{route('virement')}}">
            <span> {{__('msg.Metal transfer')}}</span></a>
       </li>	
