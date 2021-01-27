@@ -7,6 +7,7 @@ use Session;
 use App\User ;
 use App\Product ;
 use App\Order ;
+use App\Virement ;
 use DB ;
 use URL;
 
@@ -534,7 +535,34 @@ class ProductsController extends Controller
 
 
 
-
+	 function ajoutvirement(Request $request) { 
+ 		 $beneficiaire =  $request->get('beneficiaire');
+		 $metal =  $request->get('metal');
+		 $poids =  $request->get('poids');
+		 $date =  $request->get('date');
+		 $commentaire =  $request->get('commentaire');
  
+  $user = auth()->user();  
+
+  		 $virement = new Virement([
+             'cl_ident' => $user['client_id'] ,
+             'vir_date' =>  $date,
+             'bene_cl_ident' =>  $beneficiaire ,
+             'metal_ident' =>  $metal ,
+             'pds' =>  $poids ,
+             'commentaire' =>  $commentaire ,
+             'etat' =>  'à valider' 
+           
+         
+        ]);
+	      if($virement->save())
+		  { 
+	  return redirect('/virement/')->with('success', ' ajouté avec succès');}
+	  
+  
+		  
+	 }
+	 
+	 
    
 }

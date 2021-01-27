@@ -94,7 +94,13 @@ class PagesController extends Controller
  	 $fin = $request->get('fin');
  	 $metal = $request->get('metal');
  
-         return view('virement',[ 'debut'=>$debut,'fin'=>$fin ,'metal'=>$metal]);
+         return view('virement.virement',[ 'debut'=>$debut,'fin'=>$fin ,'metal'=>$metal]);
+    }
+	
+	 	 public function ajout( )
+    { 
+ 
+         return view('virement.ajout',[ ]);
     }
 	
   	 public function euros()

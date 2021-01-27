@@ -3993,4 +3993,25 @@ $cmd_id    = intval($request->get('cmd_id'));
  
 	}	
 	
+	
+	
+	
+  public static function beneficiaires($client,$lang  )
+    { 
+//	try {
+   	   DB::select("SET @p0='$client' ;");
+       DB::select("SET @p1='$lang' ;");
+   	  
+     
+ 	  $result=  DB::select ("  CALL `sp_vir_liste_beneficiaire`(@p0,@p1); ");
+		return $result;
+ 
+	}	
+	
+	
+	
+	
+	
+	
+	
 } // end class

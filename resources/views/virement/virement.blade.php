@@ -14,10 +14,7 @@ use App\Http\Controllers\HomeController ;
  //$virements=HomeController::virements($user['client_id'],'fr_FR',1,date('Y-m-01'),date('Y-m-d'));
    if (isset($debut) && isset($fin)) {
 	 
-		 
-		echo 'Début  : '.$debut.'<br>';
-		echo 'Fin  : '.$fin;
-		echo 'Métal  : '.$metal;
+	 
  $virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
 		
 	  }else{
@@ -37,7 +34,7 @@ use App\Http\Controllers\HomeController ;
 						<div class="row">
 
                         <!-- Content Column -->
-                        <div class="col-lg-10 mb-4">
+                        <div class="col-lg-9 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -45,6 +42,22 @@ use App\Http\Controllers\HomeController ;
                                     <h6 class="m-0 font-weight-bold text-primary">Mes virements</h6>
                                 </div>
                             <div class="card-body">
+							
+							
+ 				
+
+ 				
+				
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							 <form    action="{{action('PagesController@virement')}}" >
 							
 							 <div class="row" style="max-width:650px">
@@ -113,22 +126,25 @@ use App\Http\Controllers\HomeController ;
 
                         </div>
 
-                  <!--      <div class="col-lg-4 mb-4">
+                     <div class="col-lg-3 mb-4">
 
                              <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Dates</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Liens</h6>
                                 </div>
                                 <div class="card-body">
 
-							    
+							  <a   class="btn btn-md btn-success mb-10"    href="{{route('ajout')}} " ><b><i class="fas fa-plus"></i>  Ajouter un virement</b></a>
+							  <a   class="btn btn-md btn-success mb-10"    href="#" ><b><i class="fas fa-plus"></i>  Ajouter un bénéficiaire</b></a>
+							  <a   class="btn btn-md btn-primary mb-10"    href="#" ><b><i class="fas fa-user"></i>  Liste des bénéficiaires</b></a>
+
 									
                                 </div>
                             </div>
 
                
 
-                        </div>-->
+                        </div> 
                     </div>
 <script>
 $('#periode').daterangepicker({
