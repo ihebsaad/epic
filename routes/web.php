@@ -82,6 +82,7 @@ Route::get('/viewmodelermp/{id}', 'PagesController@viewmodelermp')->name('viewmo
 
 
 Route::post('/ajoutvirement', 'ProductsController@ajoutvirement')->name('ajoutvirement');
+Route::post('/ajoutbenefic', 'ProductsController@ajoutbenefic')->name('ajoutbenefic');
 
 
 

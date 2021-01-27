@@ -565,4 +565,42 @@ class ProductsController extends Controller
 	 
 	 
    
+   
+   
+   
+	 function ajoutbenefic(Request $request) { 
+ 		 $ordre =  $request->get('ordre');
+		 $etabliss =  $request->get('etabliss');
+		 $compte =  $request->get('compte');
+		 $nom =  $request->get('nom');
+		 $ville =  $request->get('ville');
+		 $commentaire =  $request->get('commentaire');
+ 
+         $user = auth()->user();  
+         $client_id=$user['client_id'] ;
+          
+ DB::select("SET @p0='$client_id' ;");
+ DB::select("SET @p1='$ordre' ;");
+ DB::select("SET @p2='$etabliss' ;");
+ DB::select("SET @p3='$compte' ;");
+ DB::select("SET @p4='$nom' ;");
+ DB::select("SET @p5='$ville' ;");
+ DB::select("SET @p6='$commentaire' ;");
+ 
+ DB::select ("  CALL `sp_vir_beneficiaire_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7  ); ");
+   
+ $bene_id = null;
+ $selectResult = DB::select(DB::raw("SELECT @p7 AS `bene_id`  ;"));
+
+if (!empty($selectResult) && isset($selectResult[0]->bene_id)) {
+    // we have a result
+    $bene_id = $selectResult[0]->bene_id;
+	//return $bene_id;
+    return redirect('/virement/')->with('success', ' ajouté avec succès');
+	}
+
+}  
+	  
+
+	  
 }

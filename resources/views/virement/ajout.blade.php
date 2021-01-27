@@ -9,11 +9,20 @@ use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
    
  $beneficiaires=HomeController::beneficiaires($user['client_id'],$user['lg'] );
+  $metals=DB::table('METAL')->get();
 
   
  
  ?>
-						<div class="row">
+ <nav aria-label="breadcrumb" style="width:100%">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('virement')}}">{{__('msg.Metal transfer')}}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('ajout')}}">{{__('msg.Add a transfer')}}</a></li>
+	</ol>
+ </nav>
+
+ <div class="row">
 
                         <!-- Content Column -->
                         <div class="col-lg-10 mb-4">
@@ -21,7 +30,7 @@ use App\Http\Controllers\HomeController ;
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Ajouter un virement</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Add a transfer')}}</h6>
                                 </div>
                             <div class="card-body"  style="width:100%;min-height:600px">
 							
@@ -34,16 +43,17 @@ use App\Http\Controllers\HomeController ;
 
             <!-- progressbar -->
             <ul id="progressbar" style="width:100%;text-align: center;" >
-                <li  style="color:#5a5c69;text-align: center; " class="active">Détails du virement</li>
-                 <li style="color:#5a5c69;text-align: center; ">Confirmation</li>
+                <li  style="color:#5a5c69;text-align: center; " class="active">{{__('msg.Transfer details')}}</li>
+                 <li style="color:#5a5c69;text-align: center; ">{{__('msg.Confirmation')}}</li>
             </ul>
             <!-- fieldsets -->
             <fieldset style="width:80%">
-                <h2 class="fs-title text-center">Détails du virement</h2>
+                <h2 class="fs-title text-center">{{__('msg.Transfer details')}}</h2>
                 <h3 class="fs-subtitle"> </h3>
 				
                 <div class="row mb-10">
-				 <div class="col-md-3">Bénéficiaire:</div><div class="col-md-8">
+				 <div class="col-md-3">{{__('msg.Beneficiary')}}:</div>
+				 <div class="col-md-8">
 				 <select class="form-control" style="width:300px"  required name="beneficiaire"  id="beneficiaire"  onchange="check()"  >
 				 <option value=""></option>
 				 <?php foreach($beneficiaires as $ben){
@@ -54,32 +64,36 @@ use App\Http\Controllers\HomeController ;
 				 }
 				 ?>
 				 
-				 </select></div>
+				 </select>
+				 </div>
 				</div><div class="row mb-10">
-                <div class="col-md-3">{{__('msg.Metal')}}:</div><div class="col-md-8"> <select class="form-control" style="width:130px" required name="metal" id="metal"  onchange="check()"  >
-				<option value="1">{{__('msg.Gold')}}</option> 
-				<option value="2">{{__('msg.Silver')}}</option> 
-				<option value="3">{{__('msg.Platinum')}}</option> 
-				<option value="4">{{__('msg.Palladium')}}</option> 
+                <div class="col-md-3">{{__('msg.Metal')}}:</div><div class="col-md-8"> <select class="form-control" style="width:170px" required name="metal" id="metal"  onchange="check()"  >
+                <option value="" ></option> 
+                <?php foreach($metals as $metal)
+                {
+                echo '<option value="'.$metal->metal_ident.'" >'.$metal->metal_lib.'</option>';    
+                }
+                ?>
+
 				</select></div>
                 </div><div class="row mb-10">
 				<div class="col-md-3">{{__('msg.Weight')}}:</div><div class="col-md-8"> <input type="number" step="0.01" min="0.01" class="form-control" style="width:130px"  required name="poids"  id="poids" onchange="check()"  /></input>g</div>
                 </div><div class="row mb-10">
 				<div class="col-md-3">{{__('msg.Date')}}:</div><div class="col-md-8"> <input autocomplete="off" class="form-control datepicker" style="width:130px"  required name="date"  onchange="check()"  id="date" /></input></div>
                 </div><div class="row mb-10">
-				<div class="col-md-3">Commentaire:</div><div class="col-md-8"> <textarea class="form-control" cols="20" rows="2"   name="commentaire" id="commentaire" onchange="check()"  ></textarea></div>
+				<div class="col-md-3">{{__('msg.Comment')}}:</div><div class="col-md-8"> <textarea class="form-control" cols="20" rows="2"   name="commentaire" id="commentaire" onchange="check()"  ></textarea></div>
 				</div> 
-                <input  id="submit" type="button" name="next" class="next action-button" value="Suivant" disabled style="float:right"/> 
+                <input  id="submit" type="button" name="next" class="next action-button" value="{{__('msg.Next')}}" disabled style="float:right"/> 
              </fieldset>
             <fieldset style="width:80%">
-                <h2 class="fs-title text-center">Confirmation</h2>
+                <h2 class="fs-title text-center">{{__('msg.Confirmation')}}</h2>
                 <h3 class="fs-subtitle"> </h3>
-					<span class="text-primary"> Bénéficiaire:</span> <span class="infos mb-10" id="infos-beneficiaire"></span><br>
+					<span class="text-primary">{{__('msg.Beneficiary')}}:</span> <span class="infos mb-10" id="infos-beneficiaire"></span><br>
 					<span class="text-primary">{{__('msg.Metal')}}:</span><span class="infos mb-10" id="infos-metal"></span><br>
 					<span class="text-primary">{{__('msg.Date')}}:</span><span class="infos mb-10" id="infos-date"></span><br>
-					<span class="text-primary">Commentaire:</span><span class="infos mb-30" id="infos-commentaire"></span><br><br><br>
- 			   <input type="button" name="previous" class="previous action-button-previous" value="Précédent"/>
-                <input type="submit" name="submit" class="submit action-button" value="Confirmer"  style="float:right"/>
+					<span class="text-primary">{{__('msg.Comment')}}:</span><span class="infos mb-30" id="infos-commentaire"></span><br><br><br>
+ 			   <input type="button" name="previous" class="previous action-button-previous" value="{{__('msg.Previous')}}"/>
+                <input type="submit" name="submit" class="submit action-button" value="{{__('msg.Confirm')}}"  style="float:right"/>
              </fieldset>
         </form>
  

@@ -353,5 +353,23 @@ return [
 	'Debit'=>'Obciążyć',	
 	'Credit'=>'Kredyt',	
 	'Balance'=>'Saldo',	
- 
+ 	'My transfers'=>'Moje transfery',	
+	'Add a transfer'=>'Dodaj transfer',	
+	'Beneficiary'=>'Beneficjant',	
+	'Transfer details'=>'Szczegóły przelewu',	
+	'Confirmation'=>'Potwierdzenie',	
+	'Comment'=>'Komentarz',	
+	'Next'=>'Kolejny',	
+	'Previous'=>'Poprzedni',	
+	'Add a beneficiary'=>'Dodaj beneficjenta',	
+	'List of beneficiaries'=>'Lista beneficjentów',	
+	'Links'=>'Linki',	
+	'Menu'=>'Menu',		
+	'Period'=>'Kropka',		
+	'Establishment'=>'Ustanowienie',		
+	'Order number'=>"Kolejność numerów",
+	'City'=>'Miasto',
+	'Account'=>'Konto',		
+	
+
  ];
