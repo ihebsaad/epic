@@ -56,12 +56,13 @@ $et=array();
             <tbody>
             @foreach($beneficiaires as $ben)
  				<tr>
+				<?php if(trim($ben->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
 				<td style=" text-align:center "><?php echo  $ben->bene_cl_ident   ;?></td>						
 				<td style=" text-align:center "><?php echo $et[$ben->etablissement_ident]  ;?></td>						
 				<td style=" text-align:center "><?php echo $ben->compte  ;?></td>						
 				<td style=" text-align:center "><?php echo $ben->Nom  ;?></td>						
 				<td style=" text-align:center "><?php echo $ben->Ville  ;?></td>						
-				<td class=" text-align:center "><?php echo $ben->etat  ;?></td>						
+				<td style=" text-align:center;<?php echo $style;?> "><?php echo $ben->etat  ;?></td>						
 				<td class="   "><?php echo $ben->commentaire  ;?></td>						
 
 				</tr>				
