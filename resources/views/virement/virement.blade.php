@@ -48,7 +48,7 @@ use App\Http\Controllers\HomeController ;
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">{{__('msg.My transfers')}}</h6>
                                 </div>
-                            <div class="card-body">
+                            <div class="card-body" style="min-height:400px">
 							
 							 
 							
@@ -128,9 +128,9 @@ use App\Http\Controllers\HomeController ;
                                 </div>
                                 <div class="card-body">
 
-							  <a   class="btn btn-md btn-success mb-10"    href="{{route('ajout')}} " ><b><i class="fas fa-plus"></i>  {{__('msg.Add a transfer')}}</b></a>
-							  <a   class="btn btn-md btn-success mb-10"    href="#"  data-toggle="modal" data-target="#addModal" ><b><i class="fas fa-plus"></i>  {{__('msg.Add a beneficiary')}}</b></a>
-							  <a   class="btn btn-md btn-primary mb-10"    href="#" ><b><i class="fas fa-user"></i>  {{__('msg.List of beneficiaries')}}</b></a>
+							  <a   class="btn btn-md btn-success mb-10"  style="width:210px"   href="{{route('ajout')}} " ><b><i class="fas fa-plus"></i>  {{__('msg.Add a transfer')}}</b></a>
+							  <a   class="btn btn-md btn-success mb-10"  style="width:210px"   href="#"  data-toggle="modal" data-target="#addModal" ><b><i class="fas fa-plus"></i>  {{__('msg.Add a beneficiary')}}</b></a>
+							  <a   class="btn btn-md btn-primary mb-10"  style="width:210px"   href="#" ><b><i class="fas fa-user"></i>  {{__('msg.List of beneficiaries')}}</b></a>
 
 
 									
