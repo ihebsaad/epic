@@ -51,6 +51,7 @@ Route::get('/livraisonmod', 'PagesController@livraisonmod')->name('livraisonmod'
 Route::get('/trading', 'PagesController@trading')->name('trading');
 Route::get('/virement', 'PagesController@virement')->name('virement');
 Route::get('/ajout', 'PagesController@ajout')->name('ajout');
+Route::get('/beneficiaires', 'PagesController@beneficiaires')->name('beneficiaires');
 Route::get('/orders', 'PagesController@orders')->name('orders');
 Route::get('/euros', 'PagesController@euros')->name('euros');
 Route::get('/poids', 'PagesController@poids')->name('poids');

@@ -97,10 +97,14 @@ class PagesController extends Controller
          return view('virement.virement',[ 'debut'=>$debut,'fin'=>$fin ,'metal'=>$metal]);
     }
 	
-	 	 public function ajout( )
+	 public function ajout( )
     { 
- 
          return view('virement.ajout',[ ]);
+    }
+
+	 public function beneficiaires( )
+    { 
+         return view('virement.beneficiaires',[ ]);
     }
 	
   	 public function euros()
@@ -179,7 +183,7 @@ class PagesController extends Controller
 	
 	public function commandelab($id)
     { 
-         return view('laboratoire.commande',['id'=>$id]);
+       return view('laboratoire.commande',['id'=>$id]);
     }	
 	
 	
