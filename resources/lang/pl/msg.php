@@ -362,14 +362,19 @@ return [
 	'Next'=>'Kolejny',	
 	'Previous'=>'Poprzedni',	
 	'Add a beneficiary'=>'Dodaj beneficjenta',	
-	'List of beneficiaries'=>'Lista beneficjentów',	
+	'List of beneficiaries'=>'Lista beneficjentów',
+	'My beneficiaries'=>'Moje beneficjentów',		
 	'Links'=>'Linki',	
 	'Menu'=>'Menu',		
 	'Period'=>'Kropka',		
 	'Establishment'=>'Ustanowienie',		
 	'Order number'=>"Kolejność numerów",
 	'City'=>'Miasto',
-	'Account'=>'Konto',		
+	'Account'=>'Konto',	
+	'Ranking'=>'Zaszeregowanie',		
+	'In'=>'U',		
+	'Account number'=>'Numer konta',		
+	'Account num'=>'Num konta',		
 	
 
  ];

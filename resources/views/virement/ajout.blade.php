@@ -70,16 +70,18 @@ use App\Http\Controllers\HomeController ;
                 <div class="col-md-3">{{__('msg.Metal')}}:</div><div class="col-md-8"> <select class="form-control" style="width:170px" required name="metal" id="metal"  onchange="check()"  >
                 <option value="" ></option> 
                 <?php foreach($metals as $metal)
-                {
+                { if($metal->metal_ident<9){
                 echo '<option value="'.$metal->metal_ident.'" >'.$metal->metal_lib.'</option>';    
                 }
+				}
+				
                 ?>
 
 				</select></div>
                 </div><div class="row mb-10">
 				<div class="col-md-3">{{__('msg.Weight')}}:</div><div class="col-md-8"> <input type="number" step="0.01" min="0.01" class="form-control" style="width:130px"  required name="poids"  id="poids" onchange="check()"  /></input>g</div>
                 </div><div class="row mb-10">
-				<div class="col-md-3">{{__('msg.Date')}}:</div><div class="col-md-8"> <input autocomplete="off" class="form-control datepicker" style="width:130px"  required name="date"  onchange="check()"  id="date" /></input></div>
+				<div class="col-md-3">{{__('msg.Date')}}:</div><div class="col-md-8"> <input autocomplete="off" class="form-control datepicker" style="width:130px"  required name="date"  onchange="check()"  id="date"  value="<?php echo date('Y-m-d');?>" /></input></div>
                 </div><div class="row mb-10">
 				<div class="col-md-3">{{__('msg.Comment')}}:</div><div class="col-md-8"> <textarea class="form-control" cols="20" rows="2"   name="commentaire" id="commentaire" onchange="check()"  ></textarea></div>
 				</div> 
@@ -89,7 +91,7 @@ use App\Http\Controllers\HomeController ;
                 <h2 class="fs-title text-center">{{__('msg.Confirmation')}}</h2>
                 <h3 class="fs-subtitle"> </h3>
 					<span class="text-primary">{{__('msg.Beneficiary')}}:</span> <span class="infos mb-10" id="infos-beneficiaire"></span><br>
-					<span class="text-primary">{{__('msg.Metal')}}:</span><span class="infos mb-10" id="infos-metal"></span><br>
+					<span class="text-primary">{{__('msg.Metal')}}:</span><span class="infos mb-10" id="infos-metal"></span><span class="text-primary">{{__('msg.Weight')}}:</span><span class="infos mb-10" id="infos-weight"></span><br>
 					<span class="text-primary">{{__('msg.Date')}}:</span><span class="infos mb-10" id="infos-date"></span><br>
 					<span class="text-primary">{{__('msg.Comment')}}:</span><span class="infos mb-30" id="infos-commentaire"></span><br><br><br>
  			   <input type="button" name="previous" class="previous action-button-previous" value="{{__('msg.Previous')}}"/>
@@ -304,7 +306,8 @@ function check()
  	if( ben !='' && metal!='' && poids!='' && date!=''  ){
 	$('#submit').prop('disabled', false);
 	$('#infos-beneficiaire').html($('#beneficiaire option:selected').text());
-	$('#infos-metal').html($('#metal option:selected').text() +' ('+poids+')g');
+	$('#infos-metal').html($('#metal option:selected').text())  ;
+	$('#infos-weight').html( poids+'g');
 	$('#infos-date').html(date);
 	$('#infos-commentaire').html(commentaire);
 	
@@ -423,8 +426,8 @@ $(function () {
 
             firstDay: 1,
           //  dateFormat: "dd/mm/yy"
-             dateFormat: "yy-mm-dd"
-
+             dateFormat: "yy-mm-dd",
+			minDate:0
         });
          });
 		 

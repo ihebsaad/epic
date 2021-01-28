@@ -6,15 +6,27 @@
  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
+<style>
+ </style>
 <?php
 
 use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
+ 
+ $userid=$user['client_id'];
+   DB::select ("SET @p0='$userid'; ");
+ $movements=  DB::select ("CALL `sp_vir_liste_vir`(@p0) ");
+ 
  //$virements=HomeController::virements($user['client_id'],'fr_FR',1,date('Y-m-01'),date('Y-m-d'));
    $etablissements=DB::table('etablissement')->get();
 
-   if (isset($debut) && isset($fin)) {
+   $beneficiaires=DB::table('beneficiaire')->where('cl_ident',$user['client_id'])->orderBy('bene_cl_ident')->get();
+	$et=array(); 
+  foreach( $etablissements as $e)
+{	 
+	$et[$e->etablissement_ident]=$e->etablissement_nom.'('.$e->etablissement_pays.')' ;
+}
+    if (isset($debut) && isset($fin)) {
 	 
 	 
  $virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
@@ -41,17 +53,32 @@ use App\Http\Controllers\HomeController ;
 						<div class="row">
 
                         <!-- Content Column -->
-                        <div class="col-lg-9 mb-4">
+                        <div class="col-lg-12 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
+                               <!-- <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">{{__('msg.My transfers')}}</h6>
-                                </div>
-                            <div class="card-body" style="min-height:400px">
+                                </div>-->
+  <div class="card-body" style="min-height:400px;padding-top:0px;padding-right:0px;padding-left:0px">
 							
-							 
-							
+<ul class="nav nav-tabs card-header" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="weight-tab" data-toggle="tab" href="#weight" role="tab" aria-controls="weight" aria-selected="true" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-balance-scale-left "></i>  {{__('msg.My Weight Account')}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="transfer-tab" data-toggle="tab" href="#transfer" role="tab" aria-controls="transfer" aria-selected="false" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-donate "></i>  {{__('msg.My transfers')}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="beneficiaries-tab" data-toggle="tab" href="#beneficiaries" role="tab" aria-controls="beneficiaries" aria-selected="false" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-users "></i>   {{__('msg.My beneficiaries')}}</a>
+  </li>
+ 
+</ul>
+
+ 
+<div class="tab-content" style="padding-left:15px;padding-right:15px">
+
+  <div class="tab-pane active" id="weight" role="tabpanel" aria-labelledby="weight-tab">
 							 <form    action="{{action('PagesController@virement')}}" >
 							
 							 <div class="row" style="max-width:650px">
@@ -60,8 +87,8 @@ use App\Http\Controllers\HomeController ;
 								<span>{{__('msg.Period')}}</span>
 								<input style="width:230px" type="text" id="periode"  value="<?php echo $debut.' - '.$fin; ?>" class="form-control" />
 								</div>
-								<input  type="hidden" name="debut" id="debut"   >
-								<input  type="hidden" name="fin" id="fin"  >
+								<input  type="hidden" name="debut" id="debut" value="<?php echo $debut;?>"  >
+								<input  type="hidden" name="fin" id="fin"  value="<?php echo $fin;?>"  >
 								<div class="col-sm-4 pt-10">													
 								<span>{{__('msg.Metal')}}</span>
 								<select style="width:150px" id="metal" name="metal" class="form-control">
@@ -102,14 +129,107 @@ use App\Http\Controllers\HomeController ;
 				<td style=" text-align:center "><?php echo date('d/m/Y', strtotime( $virement->ecriture_date )) ;?></td>						
 				<td style=" text-align:center "><?php echo $virement->num_piece  ;?></td>						
 				<td style=" text-align:center "><?php echo $virement->libelle  ;?></td>						
-				<td style=" text-align:center "><?php echo $virement->debit  ;?>€</td>						
-				<td style=" text-align:center "><?php echo $virement->credit  ;?>€</td>						
-				<td class="font-weight-bold" style="<?php echo $style;?> ;text-align:center "><?php echo $virement->solde  ;?>€</td>						
+				<td style=" text-align:center "><?php if($virement->debit > 0){echo $virement->debit.'g';}?></td>						
+				<td style=" text-align:center "><?php if($virement->credit > 0){echo $virement->credit.'g';}  ;?></td>						
+				<td class="font-weight-bold" style="<?php echo $style;?> ;text-align:center "><?php  if($virement->solde > 0){echo $virement->solde.'g';}?></td>						
 
 				</tr>				
 			@endforeach
             </tbody>
-			</table>			
+			</table>	  
+  
+  
+  
+  </div>
+  
+  <div class="tab-pane" id="transfer" role="tabpanel" aria-labelledby="transfer-tab">
+  
+      <a   class="btn btn-md btn-success mb-10"  style="width:210px;float:right;right:50px;margin-top:20px;margin-bottom:20px"   href="{{route('ajout')}}"  ><b><i class="fas fa-plus"></i>  {{__('msg.Add a transfer')}}</b></a>
+
+  		  <table id="mytable" class="table table-striped mb-40"  style="width:100%">
+            <thead>
+            <tr id="headtable">
+                <th style="text-align:center;width:7%;">{{__('msg.Date')}}</th>
+                <th style="text-align:center;width:7%;">{{__('msg.Weight')}}</th>
+                <th style="text-align:center;width:7%;">{{__('msg.Metal')}}</th>
+                <th style="text-align:center;width:10%;">{{__('msg.Name')}}</th>
+                <th style="text-align:center;width:10%">{{__('msg.In')}}</th>
+                <th style="text-align:center;width:10%;">{{__('msg.City')}}</th>								
+                 <th style="text-align:center;width:10%;font-size:13px">{{__('msg.Account num')}}</th>
+                <th style="text-align:center;width:13%;">{{__('msg.Comment')}}</th>				 
+                <th style="text-align:center;width:10%;">{{__('msg.State')}}</th>
+               </tr>
+            </thead>
+            <tbody>
+            @foreach($movements as $mv)
+ 				<tr>
+				<?php if(trim($mv->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
+				<td style=" text-align:center "><?php echo  date('d/m/Y', strtotime( $mv->datevir ))  ;?></td>	
+				<td style=" text-align:center "><?php echo  $mv->poids   ;?>g</td>	
+				<td style=" text-align:center "><?php echo  $mv->metal   ;?></td>	
+				<td style=" text-align:center "><?php echo $mv->nom  ;?></td>	
+				<td style=" text-align:center "><?php echo   $mv->etablissement   ;?></td>						
+				<td style=" text-align:center "><?php echo $mv->ville.' <small>('. $mv->pays.')</small>'  ;?></td>				
+				<td style=" text-align:center "><?php echo $mv->compte  ;?></td>						
+				<td class="   "><?php echo $mv->commentaire  ;?></td>	
+				<td style=" text-align:center;<?php echo $style;?> "><?php echo $mv->etat  ;?></td>						
+				
+
+				</tr>				
+			@endforeach
+            </tbody>
+			</table> 
+  
+  
+  
+  </div>
+  
+  
+  <div class="tab-pane" id="beneficiaries" role="tabpanel" aria-labelledby="beneficiaries-tab">
+    <a   class="btn btn-md btn-success mb-10"  style="width:210px;float:right;right:50px;margin-top:20px;margin-bottom:20px"   href="#"  data-toggle="modal" data-target="#addModal" ><b><i class="fas fa-plus"></i>  {{__('msg.Add a beneficiary')}}</b></a>
+
+
+		  <table id="mytable" class="table table-striped mb-40"  style="width:100%">
+            <thead>
+            <tr id="headtable">
+                <th style="text-align:center;width:6%;">{{__('msg.Ranking')}}</th>
+                <th style="text-align:center;width:15%;">{{__('msg.Name')}}</th>
+                <th style="text-align:center;width:10%;">{{__('msg.City')}}</th>				
+                <th style="text-align:center;width:15%">{{__('msg.In')}}</th>
+                 <th style="text-align:center;width:14%;">{{__('msg.Account num')}}</th>
+                <th style="text-align:center;width:18%;">{{__('msg.Comment')}}</th>				 
+                <th style="text-align:center;width:12%;">{{__('msg.State')}}</th>
+               </tr>
+            </thead>
+            <tbody>
+            @foreach($beneficiaires as $ben)
+ 				<tr>
+				<?php if(trim($ben->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
+				<td style=" text-align:center "><?php echo  $ben->bene_cl_ident   ;?></td>	
+				<td style=" text-align:center "><?php echo $ben->Nom  ;?></td>						
+				<td style=" text-align:center "><?php echo $ben->Ville  ;?></td>				
+				<td style=" text-align:center "><?php echo $et[$ben->etablissement_ident]  ;?></td>						
+				<td style=" text-align:center "><?php echo $ben->compte  ;?></td>						
+				<td class="   "><?php echo $ben->commentaire  ;?></td>	
+				<td style=" text-align:center;<?php echo $style;?> "><?php echo $ben->etat  ;?></td>						
+				
+
+				</tr>				
+			@endforeach
+            </tbody>
+			</table>  
+  
+  
+  </div>
+ </div>
+
+<script>
+/*  $(function () {
+    $('#myTab li:last-child a').tab('show')
+  })*/
+</script>							 
+							
+		
 								
                             </div><!--card body-->
 							
@@ -120,7 +240,7 @@ use App\Http\Controllers\HomeController ;
 
                         </div>
 
-                     <div class="col-lg-3 mb-4">
+                 <!--    <div class="col-lg-3 mb-4">
 
                              <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -129,7 +249,6 @@ use App\Http\Controllers\HomeController ;
                                 <div class="card-body">
 
 							  <a   class="btn btn-md btn-success mb-10"  style="width:210px"   href="{{route('ajout')}}" ><b><i class="fas fa-plus"></i>  {{__('msg.Add a transfer')}}</b></a>
-							  <a   class="btn btn-md btn-success mb-10"  style="width:210px"   href="#"  data-toggle="modal" data-target="#addModal" ><b><i class="fas fa-plus"></i>  {{__('msg.Add a beneficiary')}}</b></a>
 							  <a   class="btn btn-md btn-primary mb-10"  style="width:210px"    href="{{route('beneficiaires')}}" ><b><i class="fas fa-user"></i>  {{__('msg.List of beneficiaries')}}</b></a>
 
 
@@ -139,7 +258,7 @@ use App\Http\Controllers\HomeController ;
 
                
 
-                        </div> 
+                        </div> -->
                     </div>
 					
 					

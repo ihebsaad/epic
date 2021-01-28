@@ -376,11 +376,17 @@ return [
 	'Previous'=>'Précédent',	
 	'Add a beneficiary'=>'Ajouter un bénéficiaire',	
 	'List of beneficiaries'=>'Liste des bénéficiaires',	
+	'My beneficiaries'=>'Mes bénéficiaires',		
 	'Links'=>'Liens',	
 	'Menu'=>'Menu',	
 	'Period'=>'Période',		
 	'Establishment'=>'Établissement',		
 	'Order number'=>"Numéro d'ordre",		
 	'City'=>'Ville',		
-	'Account'=>'Compte',		
+	'Account'=>'Compte',
+	'Ranking'=>'Classement',		
+	'In'=>'Chez',		
+	'Account number'=>'Numéro de compte',		
+	'Account num'=>'N° de compte',	
+	
  ];

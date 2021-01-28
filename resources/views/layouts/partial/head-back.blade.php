@@ -11,6 +11,8 @@
     </title>
 	
 <style>
+#headtable th{color:black;}
+
  .form-control {display:inline!important;}
 .select2-container--default .select2-selection--single {    
     height: 38px!important;

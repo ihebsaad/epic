@@ -407,7 +407,8 @@ function details()
 				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val, _token: _token},
                 success: function (data) {
 				console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif) ;
-				console.log(data);				
+				console.log(data);	
+// != 'undefined'				
 				//comp_val
 				poids=parseFloat(data.poids_u);
  				$('#poids_u').html( poids+' g' );

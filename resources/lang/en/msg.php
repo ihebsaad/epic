@@ -367,6 +367,7 @@ return [
 	'Previous'=>'Previous',	
 	'Add a beneficiary'=>'Add a beneficiary',	
 	'List of beneficiaries'=>'List of beneficiaries',	
+	'My beneficiaries'=>'My beneficiaries',	
 	'Links'=>'Links',	
 	'Menu'=>'Menu',	
 	'Period'=>'Period',		
@@ -374,6 +375,10 @@ return [
 	'Order number'=>'Order number',		
 	'City'=>'City',	
 	'Account'=>'Account',		
+	'Ranking'=>'Ranking',		
+	'In'=>'In',		
+	'Account number'=>'Account number',		
+	'Account num'=>'Account num',		
 	
 	
  ];
