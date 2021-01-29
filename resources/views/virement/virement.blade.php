@@ -22,6 +22,9 @@ use App\Http\Controllers\HomeController ;
 
    $beneficiaires=DB::table('beneficiaire')->where('cl_ident',$user['client_id'])->orderBy('bene_cl_ident')->get();
 	$et=array(); 
+	
+
+
   foreach( $etablissements as $e)
 {	 
 	$et[$e->etablissement_ident]=$e->etablissement_nom.'('.$e->etablissement_pays.')' ;
@@ -35,9 +38,25 @@ use App\Http\Controllers\HomeController ;
 	 	$metal=1;
   // $debut='2020-08-01';
    $debut=date('Y-m-01');
+   
+   	$date1 = DB::table('mouvement_cp')->where('cl_origine',$user['client_id'])->max('date_doc') ;
+// dd($date1);
+	
+if (isset($date1) && ($date1> $debut) ) 
+{ 
+	
+  }else{
+$debut=$date1;
+
+ $mv= DB::table('mouvement_cp')->where('cl_origine',$user['client_id'])->where('date_doc',$date1)->first();
+$metal=intval($mv->metal_id);
+	 
+ }
+   
+   
 	// $fin='2020-10-01';
 	 $fin=date('Y-m-d');
- $virements=HomeController::virements($user['client_id'],'fr_FR',1,$debut,$fin);
+ $virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
 		  
 	  }
  
