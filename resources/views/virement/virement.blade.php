@@ -297,7 +297,7 @@ echo '<option value="'.$etab->etablissement_ident.'">'.$etab->etablissement_nom 
 </div>
 </div>
 <div class="row mb-10">
-<div class="col-md-4">{{__('msg.Account')}}</div><div class="col-md-8"><input class="form-control" type="text"  style="width:250px" name="compte" /></div>
+<div class="col-md-4">{{__('msg.Account number')}}</div><div class="col-md-8"><input class="form-control" type="text"  style="width:250px" name="compte" /></div>
 </div>
 <div class="row mb-10">
 <div class="col-md-4">{{__('msg.Name')}} *</div><div class="col-md-8"><input class="form-control" type="text"  style="width:250px" name="nom" required /></div>

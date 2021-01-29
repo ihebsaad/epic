@@ -547,7 +547,7 @@ class ProductsController extends Controller
   		 $virement = new Virement([
              'cl_ident' => $user['client_id'] ,
              'vir_date' =>  $date,
-             'bene_cl_ident' =>  $beneficiaire ,
+             'bene_ident' =>  $beneficiaire ,
              'metal_ident' =>  $metal ,
              'pds' =>  $poids ,
              'commentaire' =>  $commentaire ,
