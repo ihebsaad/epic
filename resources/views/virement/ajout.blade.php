@@ -8,9 +8,16 @@
 use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
    
- $beneficiaires=HomeController::beneficiaires($user['client_id'],$user['lg'] );
+// $beneficiaires=HomeController::beneficiaires($user['client_id'],$user['lg'] );
+   $beneficiaires=DB::table('beneficiaire')->where('cl_ident',$user['client_id'])->orderBy('bene_cl_ident')->get();
   $metals=DB::table('METAL')->get();
+  $etablissements=DB::table('etablissement')->get();
 
+$et=array(); 
+  foreach( $etablissements as $e)
+{	 
+	$et[$e->etablissement_ident]=$e->etablissement_nom.'('.$e->etablissement_pays.')' ;
+}
   
  
  ?>
@@ -54,17 +61,20 @@ use App\Http\Controllers\HomeController ;
                 <div class="row mb-10">
 				 <div class="col-md-3">{{__('msg.Beneficiary')}}:</div>
 				 <div class="col-md-8">
-				 <select class="form-control" style="width:300px"  required name="beneficiaire"  id="beneficiaire"  onchange="check()"  >
+				 <select class="form-control"    required name="beneficiaire"  id="beneficiaire"  onchange="tooltip();check()" style="font-size:12px;width:350px"  >
 				 <option value=""></option>
 				 <?php foreach($beneficiaires as $ben){
 					 if($ben->etat=='validé'){
-				 echo '<option  value="'.$ben->id.'">'.$ben->nom.' | '.$ben->compte.' ('.$ben->ville.')</option>';		
+				 echo '<option title="'.$ben->commentaire.'" value="'.$ben->bene_ident.'">'.$ben->Nom.', '.$ben->Ville .' '. __('msg.In').': '.$et[$ben->etablissement_ident].' '. __('msg.Account').': '.$ben->compte.' </option>';		
 					}
 					 
-				 }
+				 } //<Nom>, <ville> chez <établissement> compte <compte>
 				 ?>
 				 
 				 </select>
+				 
+				 <button  disabled type="button" data-toggle="modal" data-target="#commentModal"  onmouseover="tooltip()" id="help" class="btn btn-sm btn-circle btn-primary " style="margin-left:6px;margin-top:4px " data-toggle="tooltip" data-placement="top" title=" "><i class="fas fa-comment"></i></button>
+
 				 </div>
 				</div><div class="row mb-10">
                 <div class="col-md-3">{{__('msg.Metal')}}:</div><div class="col-md-8"> <select class="form-control" style="width:170px" required name="metal" id="metal"  onchange="check()"  >
@@ -292,7 +302,18 @@ use App\Http\Controllers\HomeController ;
 </style>
 
 <script>
+function tooltip()	
+{ 
+ var comment= $('#beneficiaire').find('option:selected').attr('title');
+  
+$('#help').prop('disabled', false);
+$('#help').prop('title', comment);
+$('#helptext').html(comment);
 
+// $('#help').tooltip('show');
+
+
+}
 
 function check()
 {
@@ -432,7 +453,42 @@ $(function () {
          });
 		 
 		 
-		 
+	  function changing( ) {
+        var bene_ident = $('#beneficiaire').val();
+        var val = document.getElementById('helptext').value;
+
+             //if ( (val != '')) {
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{ route('updateben') }}",
+                method: "POST",
+                data: {bene_ident: bene_ident,  val: val, _token: _token},
+                success: function (data) {
+                    $('#helptext').animate({
+                        opacity: '0.1',
+                    });
+                    $('#helptext').animate({
+                        opacity: '1',
+                    });
+
+                    $.notify({
+                        message: 'Modifié avec succès',
+                        icon: 'glyphicon glyphicon-check'
+                    },{
+                        type: 'success',
+                        delay: 3000,
+                        timer: 1000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    });
+
+                }
+            });
+
+        }
+				 
 		 
  </script>
 							
@@ -465,4 +521,27 @@ $(function () {
 
                         </div>-->
                     </div> 
+					
+					
+					
+ <!--   Modal-->
+  <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{__('msg.Comment')}}</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body"> <textarea id="helptext" style="width:100%" class="form-control" rows="3" ></textarea></div>
+        <div class="modal-footer">
+          <button class="btn btn-primary mr-20" type="button" id="update" onclick="changing()" style="margin-right:30px" ><i class="fa fa-edit"></i>    {{__('msg.Update')}}</button>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">{{__('msg.Close')}}</button>
+         </div>
+      </div>
+    </div>
+  </div>
+								
+					
 @endsection

@@ -145,7 +145,12 @@ use App\Http\Controllers\HomeController ;
   <div class="tab-pane" id="transfer" role="tabpanel" aria-labelledby="transfer-tab">
   
       <a   class="btn btn-md btn-success mb-10"  style="width:210px;float:right;right:50px;margin-top:20px;margin-bottom:20px"   href="{{route('ajout')}}"  ><b><i class="fas fa-plus"></i>  {{__('msg.Add a transfer')}}</b></a>
-
+<div class="clearfix"></div>
+	  
+	  <?php if( count($movements)==0){?>
+		 <center><span class="  mt-40 mb-20 font-weight-bold">{{__('msg.You have no pending transfer')}}</span></center> 
+	 <?php  }
+	  else { ?>
   		  <table id="mytable" class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
@@ -180,13 +185,14 @@ use App\Http\Controllers\HomeController ;
             </tbody>
 			</table> 
   
-  
+	  <?php } ?>
   
   </div>
   
   
   <div class="tab-pane" id="beneficiaries" role="tabpanel" aria-labelledby="beneficiaries-tab">
     <a   class="btn btn-md btn-success mb-10"  style="width:210px;float:right;right:50px;margin-top:20px;margin-bottom:20px"   href="#"  data-toggle="modal" data-target="#addModal" ><b><i class="fas fa-plus"></i>  {{__('msg.Add a beneficiary')}}</b></a>
+<div class="clearfix"></div>
 
 
 		  <table id="mytable" class="table table-striped mb-40"  style="width:100%">
@@ -277,7 +283,7 @@ use App\Http\Controllers\HomeController ;
 <form action="{{ route('ajoutbenefic') }}" method="post"  >
 {{ csrf_field() }}
 <div class="row mb-10">
-<div class="col-md-4">{{__('msg.Order number')}}</div><div class="col-md-8"><input class="form-control" type="number" step="1" min="0" value="0" max="20" style="width:80px"  name="ordre" /></div>
+<div class="col-md-4">{{__('msg.Order number in my lists')}}</div><div class="col-md-8"><input class="form-control" type="number" step="1" min="0" value="0" max="20" style="width:80px"  name="ordre" /></div>
 </div>
 <div class="row mb-10">
 <div class="col-md-4">{{__('msg.Establishment')}} *</div><div class="col-md-8"><select class="form-control"  style="width:250px"  name="etabliss" required>
@@ -300,10 +306,10 @@ echo '<option value="'.$etab->etablissement_ident.'">'.$etab->etablissement_nom 
 <div class="col-md-4">{{__('msg.City')}} *</div><div class="col-md-8"><input class="form-control" type="text"  style="width:250px" name="ville" required /></div>
 </div>
 <div class="row mb-10">
-<div class="col-md-4">{{__('msg.Comment')}}</div><div class="col-md-8"><textarea  class="form-control" style="width:250px" rows="3" name="commentaire" ></textarea></div>
+<div class="col-md-4">{{__('msg.Comment to report on transfers')}}</div><div class="col-md-8"><textarea  class="form-control" style="width:250px" rows="3" name="commentaire" ></textarea></div>
 </div>
 
-
+<small><span class="text-danger">*  {{__('msg.Required fields')}}</span></small>
 
 
 

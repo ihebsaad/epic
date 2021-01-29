@@ -202,7 +202,7 @@ return [
 	'My Orders'=>'Mes Commandes',
 	'My Euros Account'=>'Mon Compte Euros',
 	'My Models'=>'Mes Modèles',
-	'My Weight Account'=>'Mon Compte Poids',
+	'My Weight Account'=>'Mes compte-poids',
 	'My Profile'=>'Mon Profil',
 	'Home'=>'Accueil',
 	'Do you really want to log out?'=>'Vous voulez vraiment fermer votre session ?',
@@ -388,5 +388,10 @@ return [
 	'In'=>'Chez',		
 	'Account number'=>'Numéro de compte',		
 	'Account num'=>'N° de compte',	
+	'You have no pending transfer'=>"Vous n'avez aucun virement en attente",		
+	'Update'=>'Modifier',		
+	'Required fields'=>'Zone obligatoire',		
+	'Order number in my lists'=>"Numéro d’ordre dans mes listes",		
+	'Comment to report on transfers'=>'Commentaire à reporter sur les virements ',		
 	
  ];

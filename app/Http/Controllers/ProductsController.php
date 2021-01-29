@@ -603,4 +603,19 @@ if (!empty($selectResult) && isset($selectResult[0]->bene_id)) {
 	  
 
 	  
+	
+ public function updateben(Request $request)
+    {
+        $bene_ident= $request->get('bene_ident');
+        $val= $request->get('val');
+
+        
+         DB::table('beneficiaire')->where('bene_ident', $bene_ident)->update(array('commentaire' => $val));
+
+    }		  
+	  
+	  
+	  
+	  
+	  
 }

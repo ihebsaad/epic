@@ -375,6 +375,11 @@ return [
 	'In'=>'U',		
 	'Account number'=>'Numer konta',		
 	'Account num'=>'Num konta',		
-	
+	'You have no pending transfer'=>"Nie masz oczekującego transferu",		
+	'Update'=>'Aktualizacja',		
+	'Required fields'=>'Wymagane pola',
+	'Order number in my lists'=>'Numer zamówienia na moich listach',		
+	'Comment to report on transfers'=>'Komentarz do zgłoszenia transferów',		
+	 
 
  ];

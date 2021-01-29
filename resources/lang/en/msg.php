@@ -379,6 +379,11 @@ return [
 	'In'=>'In',		
 	'Account number'=>'Account number',		
 	'Account num'=>'Account num',		
+	'You have no pending transfer'=>'You have no pending transfer',		
+	'Update'=>'Update',		
+	'Required fields'=>'Required fields',		
+	'Order number in my lists'=>'Order number in my lists',		
+	'Comment to report on transfers'=>'Comment to report on transfers',		
 	
 	
  ];

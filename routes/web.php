@@ -31,6 +31,7 @@ Route::post('/tarifcmd', 'ProductsController@tarifcmd')->name('tarifcmd');
 Route::post('/tariflabo', 'ProductsController@tariflabo')->name('tariflabo');
 Route::post('/tarifrmp', 'ProductsController@tarifrmp')->name('tarifrmp');
 Route::post('/updatecart', 'ProductsController@updatecart')->name('updatecart');
+Route::post('/updateben', 'ProductsController@updateben')->name('updateben');
 
 
 Route::get('/orders', 'PagesController@orders')->name('orders');
