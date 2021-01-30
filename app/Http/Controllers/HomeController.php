@@ -655,7 +655,12 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
  $Order=DB::table('orders')->where('user',$user->id)->where('status','cart')->first( );
  $produits=DB::table('products')->where('orderid',$Order->id)->get();
 
-  
+ 
+ // update order table  
+  DB::table('orders')->where('user',$user->id)->where('status','cart')->update( array( 'status'=>'valide','gross_weight'=>$gross_weight,'mode'=>$mode )  );
+	
+	
+ /*
 $quantite= count($produits); // nombre de produits ???
 $poids=$Order->weight;
 $or=$Order->gold;
@@ -684,8 +689,7 @@ $facon=$Order->comp_amount;    // montant du complément ???
  DB::select("SET @p8='$facon' ;");
  DB::select("SET @p10='$adresse' ;");
  DB::select("SET @p11='$agence' ;");
- DB::select("SET @p9='$agence' ;");
-
+ 
 
    DB::select ("  CALL `SP_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11 ); ");
    DB::select("SELECT @p9 AS `cmde_id`  ;");
@@ -738,7 +742,7 @@ $mode_facturation    = 0;  // à ajouter
 } //foreach
 } //cmd_id>0
 
-
+*/
 
 
 
