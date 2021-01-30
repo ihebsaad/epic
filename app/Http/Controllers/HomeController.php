@@ -641,7 +641,119 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
 }	
 
 
- 	
+ 
+ public function validateproducts(Request $request)
+{
+ $user = auth()->user();  
+ $adresse   = $request->get('adresse');	
+ $agence   = $request->get('agence');
+ $gross_weight   = $request->get('gross');
+ $mode   = $request->get('mode');
+ $client_id=$user['client_id'];
+ $langue=$user['lg'];
+ 
+ $Order=DB::table('orders')->where('user',$user->id)->where('status','cart')->first( );
+ $produits=DB::table('products')->where('orderid',$Order->id)->get();
+
+  
+$quantite= count($produits); // nombre de produits ???
+$poids=$Order->weight;
+$or=$Order->gold;
+$argent=$Order->silver;
+$platine=$Order->platine;
+$palladium=$Order->palladium;
+if($Order->adresse_id!=null)
+{$adresse=$Order->adresse_id;}else{$adresse=0;}
+if($Order->agence_id!=null)
+{$agence=$Order->agence_id;}else{$agence=0;}
+
+$facon=$Order->comp_amount;    // montant du complément ???
+  
+ 
+ //dd($client_id.'-'. $langue.'-'. $quantite.'-'. $poids.'-'. $or.'-'. $argent.'-'. $platine.'-'. $palladium.'-'. $facon.'-'. $adresse.'-'. $agence) ; 
+ 
+ 
+ DB::select("SET @p0='$client_id' ;");
+ DB::select("SET @p1='$langue' ;");
+ DB::select("SET @p2='$quantite' ;");
+ DB::select("SET @p3='$poids' ;");
+ DB::select("SET @p4='$or' ;");
+ DB::select("SET @p5='$argent' ;");
+ DB::select("SET @p6='$platine' ;");
+ DB::select("SET @p7='$palladium' ;");
+ DB::select("SET @p8='$facon' ;");
+ DB::select("SET @p10='$adresse' ;");
+ DB::select("SET @p11='$agence' ;");
+ DB::select("SET @p9='$agence' ;");
+
+
+   DB::select ("  CALL `SP_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11 ); ");
+   DB::select("SELECT @p9 AS `cmde_id`  ;");
+
+ 	 $cmde_id = null;
+$selectResult = DB::select(DB::raw("SELECT @p9 AS `cmde_id`  ;"));
+
+if (!empty($selectResult) && isset($selectResult[0]->cmde_id)) {
+    // we have a result
+    $cmde_id = $selectResult[0]->cmde_id;
+	
+
+ // update order table  
+  DB::table('orders')->where('user',$user->id)->where('status','cart')->update( array( 'status'=>'valide','gross_weight'=>$gross_weight,'mode'=>$mode )  );
+	
+	
+}  
+	  
+	  if (intval($cmde_id) > 0) {
+ 	  $i=0;
+ 	  foreach ($produits as $produit)
+	  {
+  $i++;
+$produit_id  = intval($produit->article);	
+$type_id   = intval($produit->type_id );
+$alliage_id   = intval($produit->alliage_id );
+$etat_id   = intval($produit['etat_id']);
+$comp_id   = intval($produit->comp_id );
+$comp_val   = floatval($produit->comp_val );
+$quantite = floatval($produit->qte );
+$poids  = floatval($produit->poids );
+$tarif   = 0;	// à ajouter
+$mode_facturation    = 0;  // à ajouter
+  
+
+ DB::select("SET @p0='$produit_id' ;");
+ DB::select("SET @p1='$type_id' ;");
+ DB::select("SET @p2='$alliage_id' ;");
+ DB::select("SET @p3='$etat_id' ;");
+ DB::select("SET @p4='$comp_id' ;");
+ DB::select("SET @p5='$comp_val' ;");
+ DB::select("SET @p6='$quantite' ;");
+ DB::select("SET @p7='$poids' ;");
+ DB::select("SET @p8='$tarif' ;");
+ DB::select("SET @p9='$mode_facturation' ;");
+ DB::select("SET @p10='$cmde_id' ;");
+
+  $result=  DB::select ("  CALL `SP_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10 ); ");
+	  
+} //foreach
+} //cmd_id>0
+
+
+
+
+
+
+
+
+
+  
+ 
+}
+
+
+
+
+ 
 	
 	
  public function addmodelePS(Request $request)
@@ -2605,7 +2717,7 @@ $agence    = intval($request->get('agence'));
  DB::select("SET @p11='$agence' ;");
 
    DB::select ("  CALL `SP_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11 ); ");
-	$result=   DB::select(DB::raw("SELECT @p9 AS `cmde_id`  ;"));
+	//$result=   DB::select(DB::raw("SELECT @p9 AS `cmde_id`  ;"));
  
 	   
 	   

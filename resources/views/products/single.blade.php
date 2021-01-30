@@ -102,7 +102,7 @@ $products=array();
 									 <div class="row pl-10 pb-10">
 									 <label style="width:120px" class=" pt-10"><b><?php   echo $product[0]['NAT_MESURE1'] ; ?></b></label>
  
-                                      <select onchange=";details();showmesure2();$('#infos').show('slow');"  id="mesure1" class="form-control ml-20" style="max-width:80px;"  >
+                                      <select onchange="showmesure2();details();$('#infos').show('slow');"  id="mesure1" class="form-control ml-20" style="max-width:80px;"  >
   									   <?php
  									   foreach ($mesures as $mesure) {
 									    //dd($mesure->MESURE2[0]->MESURE2 );
@@ -307,8 +307,8 @@ $products=array();
 									}?>
  									 <tr style="height:40px"><td></td><td></td><td></td><td></td></tr>
 									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Total weight')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  number_format($weight, 2) ;?> g</b></td>	</tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Way option')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>									
-									<tr ><td><b class="pl-10 text-info">{{__('msg.Total way')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Way option')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo number_format($comp_amount,2) .' € HT';?></b></td>	</tr>									
+									<tr ><td><b class="pl-10 text-info">{{__('msg.Total way')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo number_format($amount,2) ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>
 									<span class="mt-10 text-success " style="font-weight:bold" >{{__('msg.FINE METALS')}}</span><br>
@@ -400,6 +400,9 @@ function details()
 				if(comp_val==0   ){
 					$('#option').hide();
 				}
+				
+				/*data=  'type:'+<?php echo $type; ?>+',famille1:'+<?php echo $famille1;?> +',famille2:'+ <?php echo $famille2;?>+', famille3:'+ <?php echo $famille3;?>+',mesure1:'+ mesure1+',mesure2:'+ mesure2+',alliage_id:'+ alliage_id+',qte:'+ qte+',comp_id:'+ comp_id+',comp_val:'+ comp_val ;
+				alert(data);*/
             $.ajax({
                 url: "{{ route('details') }}",
                 method: "POST",
@@ -417,7 +420,8 @@ function details()
 				poidst= parseFloat(poidst);
  				$('#poidst').html(poidst +' g');
 				 $('#produit').html( data.produit);
-				 prix=parseFloat(data.prix[0].prix);
+				 if( typeof (data.prix)   !== 'undefined' )
+				 {  prix=parseFloat(data.prix[0].prix);
 				 console.log(data.prix[0].prix);
 				console.log(data.prix[0].tarif);
 				 $('#prix').html(  prix);
@@ -427,15 +431,15 @@ function details()
 				 montantt=parseFloat(data.tarif[0].montant  * comp_val);
 				 minit=parseFloat(data.tarif[0].mini);
 				 mini=parseFloat(data.prix[0].mini);
-
+				
 			     if(montantt< minit){montantt=minit;}				 
 				 if(montant< mini){montant=mini;}
 				 if(montantt>0){montant=montant+montantt;}
 				 montant= montant.toFixed(2);
 				 montantt= montantt.toFixed(2);
 				 montant= parseFloat(montant);
-				 $('#montant').html(  montant);
-				 $('#mini').html(mini );
+				 $('#montant').html(  montant.toFixed(2));
+				 $('#mini').html(mini.toFixed(2) );
 				 debit1=(data.prix[0].debit_1 *qte).toFixed(2);
 				 debit2=(data.prix[0].debit_2 *qte).toFixed(2);
 				 debit3=(data.prix[0].debit_3 *qte).toFixed(2);
@@ -447,13 +451,14 @@ function details()
 				if(parseFloat( debit2)>0){ $('#labelm2').show(); $('#debit_2').html( debit2+' g'); } 
 				if(parseFloat( debit3)>0){ $('#labelm3').show(); $('#debit_3').html( debit3+' g'); } 
 				if(parseFloat( debit4)>0){ $('#labelm4').show(); $('#debit_4').html( debit4+' g'); } 
- 				 prixt=parseFloat(data.tarif[0].prix);
+ 				 prixt=parseFloat(data.tarif[0].prix );
+ 				 prixt=prixt.toFixed(2);
  				 $('#tprix').html(prixt );
 				// $('#tmodeid').html( data.tarif[0].modeid);
 				
-				 $('#tmontant').html(montantt );
-				 $('#tmini').html(minit);			
-
+				 $('#tmontant').html(montantt  );
+				 $('#tmini').html(minit.toFixed(2));			
+				 
 				if(parseFloat(data.prix[0].modeid) > 0){
 				$.ajax({
                 url: "{{ route('modelabel') }}",
@@ -476,6 +481,7 @@ function details()
 				});	
 				}				
 	
+				} // prix defined
 			
 
 

@@ -93,7 +93,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 
 							 </select>
 							 
-							 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:200px" >
+							 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:120px" >
  							 <b>{{__('msg.Agency')}} :</b>  <span id="lib"></span><br>
 							 <b>{{__('msg.Address')}} :</b> <span id="adresse"></span><br>
 							  <span id="zip"></span> <span id="ville"></span><br>
@@ -123,7 +123,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 ?>
 							 
 							 </select>
-							 <div style="min-height:200px">
+							 <div style="min-height:120px">
 							<?php  
 							foreach($adresses as $adresse)
 							 { ?>
@@ -155,8 +155,20 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 
 
 
+							<div  class="col-md-8 pl-20 pt-10">
+							<label><b> {{__('msg.Gross weight')}}</b></label>
+							<input type="number" step="0.01" min="<?php echo number_format($weight,2) ;?>"  value="<?php echo number_format($weight,2) ;?>" class="form-control" style="width:110px"  id="gross" ></input> g
+							</div>
+
+							
+								<button   onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-save"></i>
+                                        </span>
+                                        <span  style="width:120px" class="text" >{{__('msg.Validate')}}</span>
+                                    </button> 
 									
-                                </div>
+                                </div><!--card body -->
                             </div>
 
                        
@@ -275,6 +287,54 @@ function setadresse	(){
         }
 
 
+
+		
+		
+var mode="collect";
+  function valider() {
+             var _token = $('input[name="_token"]').val();
+			 var agence =null;
+			 var adresse =null;
+			  var gross = $('#gross').val();
+			 
+			 if(mode=='collect'){
+			  agence = $('#agence_id').val();
+			 }else{
+			  adresse = $('#adresse_id').val();	 
+			 }
+	 
+              var _token = $('input[name="_token"]').val();
+            $.ajax({
+                 url: "{{ route('validateproducts') }}",
+                method: "POST",
+                data: { agence:agence,adresse:adresse,mode:mode,gross:gross,  _token: _token},
+                success: function (data) {
+				
+				
+				
+				//$('#successModal').modal('show') ;
+
+			  
+	                    $.notify({
+                        message: 'Commande passée avec succès',
+                        icon: 'glyphicon glyphicon-check'
+                    },{
+                        type: 'success',
+                        delay: 3000,
+                        timer: 1000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    });
+							setTimeout(function(){
+				location.href="{{ route('home')}}";
+							   }, 3000);  //3 secds				
+				 
+                }
+            });
+
+        }
 
 
 <?php if($agence_defaut>0){?>
