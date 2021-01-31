@@ -102,7 +102,7 @@ if($product->alliage >0){
  }
   	?>
 	<div class="row pt-15"><input type="number"  onchange="details(<?php echo $i;?>)"  <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    min="0.01"  step="0.01"  <?php }else{ ?> min="1"  step="1"  <?php  } ?>  id="qte-<?php echo $i;?>" value="<?php echo $product->qte;?>" class="ml-10 mr-10 form-control" style="width:80px"></input> <span class="pt-10"><?php echo $unite->UNIT_LIB_LONG ; ?></span> </div>
-<?php if($product->mesure1 > 0){  ?> 	<div class="row pt-15">Mesure<?php if($product->mesure2 > 0){echo's';}?>: <b class="pl-10"><?php echo $product->mesure1 ;?><?php if(isset($Product[0]['unite1'])){ echo ' '.$Product[0]['unite1']; } ?> <?php if($product->mesure2 > 0){  ?> <?php echo ' , '. $product->mesure2 ;?><?php if(isset($Product[0]['unite1'])){ echo ' '.$Product[0]['unite1']; } ?></b></div> <?php }  } ?>
+<?php if($product->mesure1 > 0){  ?> 	<div class="row pt-15">Mesure<?php if($product->mesure2 > 0){echo's';}?>: <b class="pl-10"><?php echo $product->mesure1 ;?><?php if(isset($Product[0]['unite1'])){ echo ' '.$Product[0]['unite1']; } ?> <?php if($product->mesure2 > 0){  ?> <?php echo ' , '. $product->mesure2 ;?><?php if(isset($Product[0]['unite1'])){ echo ' '.$Product[0]['unite1']; } ?><?php } ?></b></div><?php  } ?>
 <?php if( $product->comp_id	> 0){
 	
 $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)->first();
@@ -111,8 +111,8 @@ $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)
 </div>
 <div class="col-md-4"  >
   <div class="pb-40  pl-10 pt-15" style="border-left:1px solid lightgrey">
-   <b>{{__('msg.Total weight')}} :  <span id="poidst-<?php echo $i;?>"><?php echo $product->poids ; ?></span> g<br>
-   {{__('msg.Way option')}} : <span id="tmontant-<?php echo $i;?>"><?php echo $product->montant_compl ; ?></span>  €</b>
+   <b>{{__('msg.Total weight')}} :  <span id="poidst-<?php echo $i;?>"><?php echo number_format($product->poids,2) ; ?></span> g<br>
+   {{__('msg.Way option')}} : <span id="tmontant-<?php echo $i;?>"><?php   echo number_format($product->montant_compl,2) ; ?></span>  €</b>
    <br>
    <a  style="position:absolute;right:25px;bottom:25px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce produit ?')"  href="{{action('ProductsController@deleteproduct', $product->id)}}"><span class="fa  fa-times-circle"></i></a>
   </div>
@@ -157,12 +157,14 @@ $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)
 									</table>	
  
  
- 								<center><a href="{{ route('livraison') }}" style="color:white;text-decoration:none"> <button    type="button"   class="pull-right btn btn-primary btn-icon-split  mt-30 mb-20">
+ 								<center><a href="{{ route('livraison') }}" style="color:white;text-decoration:none"> 
+								<button    type="button"   class="pull-right btn btn-primary btn-icon-split  mt-30 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-truck-moving"></i>
                                         </span>
                                         <span  style="width:200px" class="text" >{{__('msg.Validate order')}}</span>
-                                    </button> </a></center>	
+                                    </button> </a>
+									</center>	
 									
 									
                                 </div>

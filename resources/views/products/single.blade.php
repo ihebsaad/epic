@@ -53,6 +53,17 @@ $palladium=0;
 $platine =0;
 $products=array();
 }
+
+
+$compls=DB::select ("CALL `sp_referentiel_complement`();");
+$comps=array();
+foreach($compls as $c){
+	$comps[$c->id]['mini']=$c->mini;
+	$comps[$c->id]['maxi']=$c->maxi;
+	$comps[$c->id]['pas']=$c->pas;
+ }
+ 
+ dd($comps);
  ?>
  <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
