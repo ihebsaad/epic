@@ -63,7 +63,7 @@ foreach($compls as $c){
 	$comps[$c->id]['pas']=$c->pas;
  }
  
- dd($comps);
+ //dd($comps);
  ?>
  <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -195,7 +195,7 @@ foreach($compls as $c){
 									 ?>
 							        <div class="row mb-10 mt-20 pl-10 ">
 										 <label class=" pt-10 pr-10">{{__('msg.Option')}} :</label>
-										  <select class="form-control" id="comp_id"  disabled style="width:200px"  onchange="$('#option').show('slow');$('#infos').show('slow');details();">
+										  <select class="form-control" id="comp_id"  disabled style="width:200px"  onchange="$('#option').show('slow');$('#infos').show('slow');checkComp();details();">
 									<?php	
 									foreach($complements as $comp)
 										 { 
@@ -203,7 +203,7 @@ foreach($compls as $c){
 											 echo ' <option value="'.$comp->complement_id.'">'.$Comp->COMPLEMENT_LIB.'</option>';
 										 }
 										?> </select>
-										 <input onchange='$("#comp_id").prop("disabled", false);$("#option").show("slow") ;details()' type="number" min="0" class="ml-10 form-control" id="comp_val" placeholder="mm" style="width:80px;float:right;margin-bottom:20px;" onchange='$("#comp_id").prop("disabled", false);'></input>
+									 <input onchange='$("#comp_id").prop("disabled", false);$("#option").show("slow") ;details()' type="number" min="<?php echo $comps[$complements[0]->complement_id]['mini']?>"  max="<?php echo $comps[$complements[0]->complement_id]['maxi']?>"  step="<?php echo $comps[$complements[0]->complement_id]['pas']?>" class="ml-10 form-control" id="comp_val" placeholder="mm" style="width:80px;float:right;margin-bottom:20px;" onchange='$("#comp_id").prop("disabled", false);'></input>
  											
 
                                     <?php if($produit->choix_etat>0){ ?>
@@ -349,7 +349,24 @@ foreach($compls as $c){
 
    <script>
    
- 
+function checkComp(){
+	var comp=  $('#comp_id').val();
+	 if(comp==6){
+		 comp_val
+		 $('#comp_val').prop('min',40.00);
+		 $('#comp_val').prop('max',70.00);
+		 $('#comp_val').prop('step',2.00);
+	 }
+	 else{
+		 $('#comp_val').prop('min',1.00);
+		 $('#comp_val').prop('max',99.00);
+		 $('#comp_val').prop('step',1.00);		 
+	 }
+	 
+	 
+}
+
+   
    function changing() {
            val=$('#alliage_id').val();
              //if ( (val != '')) {
