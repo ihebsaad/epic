@@ -123,6 +123,9 @@ class ProductsController extends Controller
 	     $mesure2 =  $request->get('mesure2');
 	     $comp_id =  $request->get('comp_id');
 	     $comp_val =  $request->get('comp_val');
+	     $etat_id =  $request->get('etat_id');
+	     $fact_id =  $request->get('fact_id');
+	     $tarif =  $request->get('tarif');
  			
 	     $or=  $request->get('or');
 	     $argent=   $request->get('argent'); 
@@ -152,7 +155,11 @@ class ProductsController extends Controller
              'mesure1' =>  $mesure1 ,
              'mesure2' =>  $mesure2 ,
              'comp_id' =>  $comp_id ,
-             'comp_val' =>  $comp_val 
+             'comp_val' =>  $comp_val ,
+             'etat_id' =>  $etat_id ,
+             'fact_id' =>  $fact_id ,
+             'tarif' =>  $tarif ,
+             'status' =>  'cart' ,
          
         ]);
 	      $product->save();
@@ -215,7 +222,12 @@ class ProductsController extends Controller
              'mesure1' =>  $mesure1 ,
              'mesure2' =>  $mesure2 ,
              'comp_id' =>  $comp_id ,
-             'comp_val' =>  $comp_val 
+             'comp_val' =>  $comp_val ,
+             'etat_id' =>  $etat_id ,
+             'fact_id' =>  $fact_id ,
+             'tarif' =>  $tarif ,
+             'status' =>  'cart' ,
+			 
         ]);		
 		 $product->save();
 		 
@@ -522,7 +534,7 @@ class ProductsController extends Controller
  $comp_val= floatval($request->get('comp_val'));	 
 	
 		$count=DB::table('products')
-		//->where('status','cart')
+		 ->where('status','cart')
 		->where('libelle',$label)
 		->where('article',$article)
 		->where('alliage',$alliage)

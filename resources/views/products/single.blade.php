@@ -225,7 +225,7 @@ foreach($compls as $c){
 										 </div>	
 							 <div id="option" style="display:none;">
  							  <div class="row pl-10   ">
-							  <label class="  ">{{__('msg.Option price')}} :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
+							  <label class="  ">{{__('msg.Option price')}} :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><input id="fact_id" type="hidden" value="0"><input id="tarif" type="hidden" value="0"><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
 							  </div>
 							  <div class="row pl-10   ">							  
  							  <label class="  ">{{__('msg.Way option')}} :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
@@ -419,6 +419,9 @@ function details()
 	        var comp_id = parseInt($('#comp_id').val());
 	        var comp_val = $('#comp_val').val() ;
 	        var article = $('#article').val() ;
+	        var etat_id = $('#etat_id').val() ;
+	        var fact_id = $('#fact_id').val() ;
+			var tarif=$('#tprix').text();
 			var debit1=0;var debit2=0;var debit3=0;	var debit4=0;
 			var mini=0;	var minit=0;
 			var montant=0;var montantt=0;
@@ -435,7 +438,7 @@ function details()
                 url: "{{ route('details') }}",
                 method: "POST",
                 data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,
-				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val, _token: _token},
+				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val,etat_id:etat_id,fact_id:fact_id/*,tarif:tarif*/, _token: _token},
                 success: function (data) {
 				console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif) ;
 				console.log(data);	
@@ -488,6 +491,7 @@ function details()
 				 $('#tmini').html(minit.toFixed(2));			
 				 
 				if(parseFloat(data.prix[0].modeid) > 0){
+					$('#fact_id').val(data.prix[0].modeid);
 				$.ajax({
                 url: "{{ route('modelabel') }}",
                 method: "POST",
@@ -499,6 +503,8 @@ function details()
 				}
 				
 				if(parseFloat(data.tarif[0].modeid) > 0){
+				 $('#fact_id').val(data.prix[0].modeid);
+
 				$.ajax({
                 url: "{{ route('modelabel') }}",
                 method: "POST",

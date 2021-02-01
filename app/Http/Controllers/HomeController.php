@@ -685,15 +685,15 @@ $facon=$Order->comp_amount;    // montant du complément ???
  DB::select("SET @p6='$platine' ;");
  DB::select("SET @p7='$palladium' ;");
  DB::select("SET @p8='$facon' ;");
- DB::select("SET @p10='$adresse' ;");
- DB::select("SET @p11='$agence' ;");
+ DB::select("SET @p9='$adresse' ;");
+ DB::select("SET @p10='$agence' ;");
  
 
    DB::select ("  CALL `SP_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11 ); ");
-   DB::select("SELECT @p9 AS `cmde_id`  ;");
+   DB::select("SELECT @p11 AS `cmde_id`  ;");
 
  	 $cmde_id = null;
-$selectResult = DB::select(DB::raw("SELECT @p9 AS `cmde_id`  ;"));
+$selectResult = DB::select(DB::raw("SELECT @p11 AS `cmde_id`  ;"));
 
 if (!empty($selectResult) && isset($selectResult[0]->cmde_id)) {
     // we have a result
@@ -712,15 +712,15 @@ if (!empty($selectResult) && isset($selectResult[0]->cmde_id)) {
 	  {
   $i++;
 $produit_id  = intval($produit->article);	
-$type_id   = intval($produit->type_id );
-$alliage_id   = intval($produit->alliage_id );
-$etat_id   = intval($produit['etat_id']);
+$type_id   = intval($produit->type );
+$alliage_id   = intval($produit->alliage );
+$etat_id   = intval($produit->etat_id); 
 $comp_id   = intval($produit->comp_id );
 $comp_val   = floatval($produit->comp_val );
 $quantite = floatval($produit->qte );
 $poids  = floatval($produit->poids );
-$tarif   = 0;	// à ajouter
-$mode_facturation    = 0;  // à ajouter
+$tarif   = floatval($produit->tarif );	 
+$mode_facturation    = intval($produit->fact_id );   
   
 
  DB::select("SET @p0='$produit_id' ;");
@@ -738,6 +738,9 @@ $mode_facturation    = 0;  // à ajouter
   $result=  DB::select ("  CALL `SP_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10 ); ");
 	  
 } //foreach
+
+
+DB::table('products')->where('orderid',$Order->id)->update( array( 'status'=>'valide' ));
 } //cmd_id>0
 
  

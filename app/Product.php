@@ -35,6 +35,10 @@ class Product extends Model
 		'mesure2',
 		'comp_id',
 		'comp_val',
+		'etat_id',
+		'fact_id',
+		'tarif',
+		'status',
 
     ];
 
