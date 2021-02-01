@@ -60,7 +60,7 @@ $metal=intval($mv->metal_id);
 		  
 	  }
  
-	  
+	//  dd( $virements);
  ?>
 	
  <nav aria-label="breadcrumb" style="width:100%">
@@ -150,7 +150,7 @@ $metal=intval($mv->metal_id);
 				<td style=" text-align:center "><?php echo $virement->libelle  ;?></td>						
 				<td style=" text-align:center "><?php if($virement->debit > 0){echo $virement->debit.'g';}?></td>						
 				<td style=" text-align:center "><?php if($virement->credit > 0){echo $virement->credit.'g';}  ;?></td>						
-				<td class="font-weight-bold" style="<?php echo $style;?> ;text-align:center "><?php  if($virement->solde > 0){echo $virement->solde.'g';}?></td>						
+				<td class="font-weight-bold" style="<?php echo $style;?> ;text-align:center "><?php echo $virement->solde;  if($virement->solde > 0){echo 'g';}?></td>						
 
 				</tr>				
 			@endforeach
