@@ -302,10 +302,10 @@ $metal=intval($mv->metal_id);
 <form action="{{ route('ajoutbenefic') }}" method="post"  >
 {{ csrf_field() }}
 <div class="row mb-10">
-<div class="col-md-4">{{__('msg.Order number in my lists')}}</div><div class="col-md-8"><input class="form-control" type="number" step="1" min="0" value="0" max="20" style="width:80px"  name="ordre" /></div>
+<div class="col-md-4">{{__('msg.Sequence number in my lists')}}</div><div class="col-md-8"><input class="form-control" type="number" step="1" min="0" value="0" max="20" style="width:80px"  name="ordre" /></div>
 </div>
 <div class="row mb-10">
-<div class="col-md-4">{{__('msg.Establishment')}} *</div><div class="col-md-8"><select class="form-control"  style="width:250px"  name="etabliss" required>
+<div class="col-md-4">{{__('msg.Bank of metal')}} *</div><div class="col-md-8"><select class="form-control"  style="width:250px"  name="etabliss" required>
 <option value=""></option>
 <?php foreach ($etablissements as $etab)
 {

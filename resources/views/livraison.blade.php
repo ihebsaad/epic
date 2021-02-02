@@ -68,13 +68,13 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 								<img src="{{ URL::asset('public/img/box.png')}}" style="width:80px" class="mt-20"/></center>
 							 </div>
 							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10" onclick="$('#agency1').hide('slow');$('#agency2').show('slow');">
-								<center>  {{__('msg.Transporter')}} 
+								<center>  {{__('msg.Carrier')}} 
 								<img src="{{ URL::asset('public/img/truck.png')}}" style="width:100px"/></center>
 								
 							 </div>
 							 </div>
 							 <div id="agency1">
- 							 <h5>{{__('msg.Direct debit address')}}</h5>
+ 							 <h5>{{__('msg.Pick up address')}}</h5>
 							 <div class="row pt-10 pb-20">
 							 
 							 <div class="col-md-8">
@@ -94,7 +94,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </select>
 							 
 							 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:120px" >
- 							 <b>{{__('msg.Agency')}} :</b>  <span id="lib"></span><br>
+ 							 <b>{{__('msg.Sales office')}} :</b>  <span id="lib"></span><br>
 							 <b>{{__('msg.Address')}} :</b> <span id="adresse"></span><br>
 							  <span id="zip"></span> <span id="ville"></span><br>
 							 <b>{{__('msg.Country')}} :</b> <span id="country"></span>
@@ -128,7 +128,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							foreach($adresses as $adresse)
 							 { ?>
 							 <div class="pl-10 pr-10 pt-10 pt-10 adresses" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
- 							 <b>{{__('msg.Agency')}} :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
+ 							 <b>{{__('msg.Sales office')}} :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
 							 <b>{{__('msg.Address')}} :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
 							  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
 							 <b>{{__('msg.Country')}} :</b> <span  >
@@ -188,11 +188,11 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 								 
  									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Items')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $pieces ;?></b></td>	</tr>
  									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Total weight')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo number_format($weight,2) ;?> g</b></td>	</tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Way option')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
-									<tr ><td><b class="pl-10 text-info">{{__('msg.Total way')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Optional Labour cost')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo $comp_amount .' € HT';?></b></td>	</tr>
+									<tr ><td><b class="pl-10 text-info">{{__('msg.Total Labour cost')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo $amount ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>
-									<span class="mt-10 text-success " style="font-weight:bold" >{{__('msg.FINE METALS')}}</span><br>
+									<span class="mt-10 text-success " style="font-weight:bold" >{{__('msg.PURE METALS')}}</span><br>
 									<table class="pt-20 pm-20 pl-20 pr-20" style="border:none">
 								    <tr style="height:20px; "><td    style="height:20px">{{__('msg.Gold')}}: </span></td><td><span><?php echo floatval($gold) ;?> g</span></td></tr>
 									<tr style="height:20px"><td   style="height:20px">{{__('msg.Silver')}} : </span></td><td><span><?php echo floatval($silver) ;?> g</span></td></tr>

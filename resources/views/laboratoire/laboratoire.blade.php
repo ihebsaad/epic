@@ -45,13 +45,13 @@ foreach($natures as $nature)
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.My saved laboratory models')}}</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.My saved laboratory models templates')}}</h6>
                                 </div>
                                 <div class="card-body">
 			<div class="row mb-15">
                 <div class="col-lg-8"></div>
                 <div class="col-lg-4">
-                    <a   class="btn btn-md btn-success"    href="{{route('modelelab')}} " ><b><i class="fas fa-plus"></i>  {{__('msg.New Model')}}</b></a>
+                    <a   class="btn btn-md btn-success"    href="{{route('modelelab')}} " ><b><i class="fas fa-plus"></i>  {{__('msg.New Template')}}</b></a>
                 </div>
             </div>                                      
  		 
@@ -61,7 +61,7 @@ foreach($natures as $nature)
             <tr id="headtable">
                 <th style="width:12%">{{__('msg.Name')}}</th>
                  <th style="width:10%">{{__('msg.Sample')}}</th>
-                 <th style="width:12%">{{__('msg.Work requested')}}</th>
+                 <th style="width:12%">{{__('msg.Requested works')}}</th>
                  <th style="width:5%; ">{{__('msg.Quantity')}}</th>
                  <th style="width:15%">{{__('msg.Metals')}}</th>
                </tr>

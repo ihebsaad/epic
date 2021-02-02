@@ -9,7 +9,7 @@ use App\Http\Controllers\HomeController ;
  $referentiels=  HomeController::referentiel1() ;
    ?>
   
-<h2> {{__('msg.Half Products')}}</h2> 
+<h2> {{__('msg.Semi finished Products')}}</h2> 
 
 <div class="card shadow mb-4 pt-10 pl-10 pr-10 pb-20">
  {{__('msg.Select a category')}}<br><br>
@@ -21,7 +21,7 @@ use App\Http\Controllers\HomeController ;
 { 
   $img=''; $image=DB::table('photo')->where('photo_id',$famille1->photo_id)->first();
 	 if(isset($image)){ $img=trim($image->url);}
-// 101 = half products
+// 101 = Semi finished Products
  	if($famille1->type_id==101){
 		
 $i++; 

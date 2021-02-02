@@ -9,7 +9,7 @@ use App\Http\Controllers\HomeController ;
 $referentiels=  HomeController::referentiel1() ;
   ?>
  
-<h2> {{__('msg.Galvano')}}</h2> 
+<h2> {{__('msg.Electroplating')}}</h2> 
 
 <div class="card shadow mb-4 pt-10 pl-10 pr-10 pb-20">
  {{__('msg.Select a category')}}<br><br>
@@ -20,7 +20,7 @@ $referentiels=  HomeController::referentiel1() ;
 { 
  $img=''; $image=DB::table('photo')->where('photo_id',$famille1->photo_id)->first();
 	 if(isset($image)){ $img=trim($image->url);}
-// 102 = galvano
+// 102 = Electroplating
  	if($famille1->type_id==102){
 		
 $i++; 

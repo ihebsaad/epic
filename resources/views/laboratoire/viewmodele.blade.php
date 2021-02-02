@@ -77,7 +77,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									 </div>	
  
                                    <div class="row pl-20 pr-20 mb-10">
- 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Type of service')}}: </label>
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Service Type')}}: </label>
 									 
 											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" onchange="types();prix()" style="width:350px"  required />
 											<option></option>
@@ -92,7 +92,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 								    </div>
 
                                       <div class="row pl-20 pr-20 mb-10">
- 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of work')}}: </label>
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of jobs')}}: </label>
 										 
 											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" style="width:350px"  onchange="prix()" required />
 											<option></option>
@@ -169,7 +169,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
-                                        <span class="text" >{{__('msg.Update Model')}}</span>
+                                        <span class="text" >{{__('msg.Update the Template')}}</span>
                                     </button>
                                 </div>	
 
@@ -207,7 +207,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									</a>
                                 </div>
                                 <div id="div2" class="card-body"  style="padding-bottom:0px">
- 								<span style="font-size:11px" class="mb-10" >{{__('msg.Estimate of the value according to my titles')}}</span>
+ 								<span style="font-size:11px" class="mb-10" >{{__('msg.Estimate of the value according to my content in precious metals')}}</span>
 								<div class="pl-20">{{__('msg.Amount')}} : <span style="font-weight:bold" id="amount"></span></div><br>
  								
  
@@ -348,7 +348,7 @@ $count= $count_aff + $count_lab + $count_rmp;
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{__('msg.Nature of the lot')}}</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{__('msg.Nature of the batch')}}</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>

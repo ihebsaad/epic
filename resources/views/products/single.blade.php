@@ -5,8 +5,8 @@
  @section('content')
 <?php 
 use App\Http\Controllers\HomeController ;
- if($type==101){$Type=  __('msg.Half Products') ; $link=route('products');}
- if($type==102){$Type=  __('msg.Galvano') ; $link=route('galvano');}
+ if($type==101){$Type=  __('msg.Semi finished Products') ; $link=route('products');}
+ if($type==102){$Type=  __('msg.Electroplating') ; $link=route('galvano');}
  if($type==103){$Type=  __('msg.Findings') ; $link=route('findings');}
  if($type==104){$Type= __('msg.Jewelry') ; $link=route('jewelry');}
   $Fam1 =DB::table('type_famille')->where('fam1_id',$famille1)->where('type_id',$type)->first();
@@ -228,7 +228,7 @@ foreach($compls as $c){
 							  <label class="  ">{{__('msg.Option price')}} :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><input id="fact_id" type="hidden" value="0"><input id="tarif" type="hidden" value="0"><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
 							  </div>
 							  <div class="row pl-10   ">							  
- 							  <label class="  ">{{__('msg.Way option')}} :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
+ 							  <label class="  ">{{__('msg.Optional Labour cost')}} :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
 							  </div>
 							  </div>								 
 								<?php }
@@ -262,7 +262,7 @@ foreach($compls as $c){
 							<label class="ml-10 mr-10">{{__('msg.Price')}} :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €			  
 							  
 							  <div class="row pl-10  ">
-							  <label class=" pl-10  " >{{__('msg.Total way')}}:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
+							  <label class=" pl-10  " >{{__('msg.Total Labour cost')}}:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
 							  </div>							
 				   							 
 
@@ -318,11 +318,11 @@ foreach($compls as $c){
 									}?>
  									 <tr style="height:40px"><td></td><td></td><td></td><td></td></tr>
 									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Total weight')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  number_format($weight, 2) ;?> g</b></td>	</tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Way option')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo number_format($comp_amount,2) .' € HT';?></b></td>	</tr>									
-									<tr ><td><b class="pl-10 text-info">{{__('msg.Total way')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo number_format($amount,2) ;?> € HT</b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Optional Labour cost')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo number_format($comp_amount,2) .' € HT';?></b></td>	</tr>									
+									<tr ><td><b class="pl-10 text-info">{{__('msg.Total Labour cost')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo number_format($amount,2) ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>
-									<span class="mt-10 text-success " style="font-weight:bold" >{{__('msg.FINE METALS')}}</span><br>
+									<span class="mt-10 text-success " style="font-weight:bold" >{{__('msg.PURE METALS')}}</span><br>
 									<table class="pt-20 pm-20 pl-20 pr-20" style="border:none">
 								    <tr style="height:20px; "><td    style="height:20px">{{__('msg.Gold')}}: </span></td><td><span><?php echo floatval($gold ) ;?> g</span></td></tr>
 									<tr style="height:20px"><td   style="height:20px">{{__('msg.Silver')}} : </span></td><td><span><?php echo floatval($silver) ;?> g</span></td></tr>
@@ -562,7 +562,7 @@ function checkproduct()
 		function addproduct (){
 			var _token = $('input[name="_token"]').val();
 	        var alliage = parseInt(  $('#alliage_id').val()) ;
-	        var libelle = $('#title').text() ;
+	        var libelle = $('#Content').text() ;
 			var qte = parseFloat($('#qte').val());
 			var unite =  $('#unite').val() ;
 			var article =  $('#article').val() ;

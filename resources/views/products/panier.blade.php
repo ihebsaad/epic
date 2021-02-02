@@ -62,8 +62,8 @@ $products=array();
  
 	 if(isset($image)){ $img=$image->url;}
 	 
-	 if($product->type==101){$Type=  __('msg.Half Products') ; $link=route('products');}
- if($product->type==102){$Type=  __('msg.Galvano') ; $link=route('galvano');}
+	 if($product->type==101){$Type=  __('msg.Semi finished Products') ; $link=route('products');}
+ if($product->type==102){$Type=  __('msg.Electroplating') ; $link=route('galvano');}
  if($product->type==103){$Type=  __('msg.Findings') ; $link=route('findings');}
  if($product->type==104){$Type= __('msg.Jewelry') ; $link=route('jewelry');}
 
@@ -106,13 +106,13 @@ if($product->alliage >0){
 <?php if( $product->comp_id	> 0){
 	
 $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)->first();
-			 echo '<div class="row"><span class="weight-bold">'. __("msg.Way") .': <b>'.$Comp->COMPLEMENT_LIB .'  ('. $product->comp_val.' mm)</b> </span></div>' ; 
+			 echo '<div class="row"><span class="weight-bold">'. __("msg.Labour cost") .': <b>'.$Comp->COMPLEMENT_LIB .'  ('. $product->comp_val.' mm)</b> </span></div>' ; 
 }  ?>
 </div>
 <div class="col-md-4"  >
   <div class="pb-40  pl-10 pt-15" style="border-left:1px solid lightgrey">
    <b>{{__('msg.Total weight')}} :  <span id="poidst-<?php echo $i;?>"><?php echo number_format($product->poids,2) ; ?></span> g<br>
-   {{__('msg.Way option')}} : <span id="tmontant-<?php echo $i;?>"><?php   echo number_format($product->montant_compl,2) ; ?></span>  €</b>
+   {{__('msg.Optional Labour cost')}} : <span id="tmontant-<?php echo $i;?>"><?php   echo number_format($product->montant_compl,2) ; ?></span>  €</b>
    <br>
    <a  style="position:absolute;right:25px;bottom:25px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce produit ?')"  href="{{action('ProductsController@deleteproduct', $product->id)}}"><span class="fa  fa-times-circle"></i></a>
   </div>
@@ -144,11 +144,11 @@ $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)
 								 
  									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Items')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $pieces ;?></b></td>	</tr>
  									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Total weight')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  number_format($weight,2) ;?> g</b></td>	</tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Way option')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo number_format($comp_amount,2) .' € HT';?></b></td>	</tr>
-									<tr ><td><b class="pl-10 text-info">{{__('msg.Total way')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo number_format($amount,2) ;?> € HT</b></td>	</tr>
+									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Optional Labour cost')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo number_format($comp_amount,2) .' € HT';?></b></td>	</tr>
+									<tr ><td><b class="pl-10 text-info">{{__('msg.Total Labour cost')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo number_format($amount,2) ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>
-									<span class="mt-10 text-success " style="font-weight:bold" >{{__('msg.FINE METALS')}}</span><br>
+									<span class="mt-10 text-success " style="font-weight:bold" >{{__('msg.PURE METALS')}}</span><br>
 									<table class="pt-20 pm-20 pl-20 pr-20" style="border:none">
 								    <tr style="height:20px; "><td    style="height:20px">{{__('msg.Gold')}}: </span></td><td><span><?php echo floatval($gold) ;?> g</span></td></tr>
 									<tr style="height:20px"><td   style="height:20px">{{__('msg.Silver')}} : </span></td><td><span><?php echo floatval($silver) ;?> g</span></td></tr>
@@ -162,7 +162,7 @@ $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)
                                         <span class="icon text-white-50">
                                             <i class="fas fa-truck-moving"></i>
                                         </span>
-                                        <span  style="width:200px" class="text" >{{__('msg.Validate order')}}</span>
+                                        <span  style="width:200px" class="text" >{{__('msg.Confirm the order')}}</span>
                                     </button> </a>
 									</center>	
 									

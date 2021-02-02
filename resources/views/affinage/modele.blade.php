@@ -22,7 +22,7 @@ foreach($natures as $nature)
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
     <li class="breadcrumb-item"><a href="{{route('affinage')}}">{{__('msg.Industrial refining')}}</a></li>
-    <li class="breadcrumb-item"><a href="#">{{__('msg.New Model')}}</a></li>
+    <li class="breadcrumb-item"><a href="#">{{__('msg.New Template')}}</a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->
@@ -46,7 +46,7 @@ foreach($natures as $nature)
 									 </div>	
 									 
                                      <div class="row pl-20 pr-20 mb-10">
- 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of the lot')}}: </label>
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of the batch')}}: </label>
  											<select id="nature" class="form-control"  onchange="check()" name="nature_lot_ident" required style="width:350px" />
 											<option></option>
 												<?php foreach($natures as $nature)
@@ -104,7 +104,7 @@ foreach($natures as $nature)
                                         <span class="icon text-white-50">
                                             <i class="fas fa-plus"></i>
                                         </span>
-                                        <span class="text"  >{{__('msg.Add Model')}}</span>
+                                        <span class="text"  >{{__('msg.Add the Template')}}</span>
                                     </button>
                                 </div>									 
 									 

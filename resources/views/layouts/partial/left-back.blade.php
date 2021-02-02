@@ -43,14 +43,14 @@ $user_type=$user->user_type;
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        {{__('msg.Craftsmen, Manufacturers, Industrialists')}}
+        {{__('msg.Artisans, Manufacturers, Industrialists')}}
       </div>
       <hr class="sidebar-divider">
 
       <li class="nav-item   "  <?php if(isset($type)){if($type==101){echo 'style="font-weight:800"'; }}   if($view_name=='products-products' ){echo 'style="font-weight:800"'; } ?>>
         <a class="nav-link" href="{{route('products')}}">
           <!--<i class="fas fa-fw fa-folder-open"></i>-->
-          <span>{{__('msg.Half Products')}}</span></a>
+          <span>{{__('msg.Semi finished Products')}}</span></a>
       </li>
 	  
 	  <li class="nav-item   <?php  ?>">
@@ -65,7 +65,7 @@ $user_type=$user->user_type;
       </li>
 	  <li class="nav-item   <?php  ?>">
         <a class="nav-link" href="{{route('galvano')}}"  <?php if(isset($type)){if($type==102){echo 'style="font-weight:800"'; }} if($view_name=='products-galvano' ){echo 'style="font-weight:800"'; } ?>>
-           <span> {{__('msg.Galvano')}}</span></a>
+           <span> {{__('msg.Electroplating')}}</span></a>
       </li>	
 	  
  	  <li class="nav-item   <?php  ?>">
@@ -84,7 +84,7 @@ $user_type=$user->user_type;
        <!-- Heading -->
 	   
       <div class="sidebar-heading">
-         {{__('msg.Collectors, Investors')}}
+         {{__('msg.Scrap Gold Buyers')}}
       </div>
 	  <hr class="sidebar-divider">
 	  

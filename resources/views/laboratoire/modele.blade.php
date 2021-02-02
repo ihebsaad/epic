@@ -37,7 +37,7 @@ foreach($natures as $nature)
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
     <li class="breadcrumb-item"><a href="{{route('laboratoire')}}">{{__('msg.Laboratory')}}</a></li>
-    <li class="breadcrumb-item"><a href="#">{{__('msg.New Model')}}</a></li>
+    <li class="breadcrumb-item"><a href="#">{{__('msg.New Template')}}</a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->
@@ -61,7 +61,7 @@ foreach($natures as $nature)
 									 </div>	
 									 
                                    <div class="row pl-20 pr-20 mb-10">
- 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Type of service')}}: </label>
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Service Type')}}: </label>
 									 
 											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom"   required style="width:350px"   onchange="types()">
 											<option></option>
@@ -76,7 +76,7 @@ foreach($natures as $nature)
 								    </div>
 									
                                    <div class="row pl-20 pr-20 mb-10">
- 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of work')}}: </label>
+ 											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of jobs')}}: </label>
 								 
 											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" style="width:350px"  required >
 											<option></option>
@@ -156,7 +156,7 @@ foreach($natures as $nature)
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
-                                        <span class="text" >{{__('msg.Add Model')}}</span>
+                                        <span class="text" >{{__('msg.Add the Template')}}</span>
                                     </button>
                               </div>		
 

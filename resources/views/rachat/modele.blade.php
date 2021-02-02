@@ -26,7 +26,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
     <li class="breadcrumb-item"><a href="{{route('rachat')}}">{{__('msg.Buyback of precious metals')}}</a></li>
-    <li class="breadcrumb-item"><a href="#">{{__('msg.New Model')}}</a></li>
+    <li class="breadcrumb-item"><a href="#">{{__('msg.New Template')}}</a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->
@@ -54,7 +54,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 									 </div>	
 									 
                                      <div class="row pl-20 pr-20 mb-10">
- 											<label style="width:130px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of the lot')}}: </label>
+ 											<label style="width:130px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of the batch')}}: </label>
  											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" name="nature_lot_ident" required style="width:350px" >
 											<option></option>
 												<?php foreach($natures as $nature)
@@ -94,7 +94,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
                                      <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-12">
 											<label style="width:130px" for="">
-											{{__('msg.Cover')}}:
+											{{__('msg.Hedge')}}:
  											</label>
 											  <select  class="form-control" name="choix_couv_ident" id="choix_couv_ident" style="width:300px" required onchange="check2()" > 
 											  <option></option>
@@ -135,7 +135,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
                                         <span class="icon text-white-50">
                                             <i class="fas fa-plus"></i>
                                         </span>
-                                        <span class="text"  >{{__('msg.Add Model')}}</span>
+                                        <span class="text"  >{{__('msg.Add the Template')}}</span>
                                     </button>
                                 </div>									 
 									 

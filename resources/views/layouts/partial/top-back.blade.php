@@ -141,7 +141,7 @@ app()->setLocale($lg);
                   </div>
                   <div>
                    <!-- <div class="small text-gray-500">December 2, 2019</div>-->
-                  <span class="font-weight-bold">{{__('msg.My Models')}}</span>
+                  <span class="font-weight-bold">{{__('msg.My templates')}}</span>
                   </div>
                 </a>
 				<a class="dropdown-item d-flex align-items-center" href="#">
@@ -191,7 +191,7 @@ $count= $count_aff + $count_lab + $count_rmp;
               <a class="nav-link dropdown-toggle" href="{{route('livraisonmod')}}"  >
                 <i class="fas fa-shopping-bag fa-fw"></i>
                 <!-- Counter - Messages --> 
-                <span  data-toggle="tooltip" data-placement="bottom" title="{{__('msg.My Models')}}" class="badge badge-danger badge-counter"><?php if($count>0){echo $count;}?></span>
+                <span  data-toggle="tooltip" data-placement="bottom" title="{{__('msg.My templates')}}" class="badge badge-danger badge-counter"><?php if($count>0){echo $count;}?></span>
               </a>
 	  
 			  

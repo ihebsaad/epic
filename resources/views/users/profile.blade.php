@@ -41,10 +41,10 @@
                                                 <select class="form-control  " id="activity" name="activity"  placeholder="Sélectionnez votre activité*"    onchange="changing(this)"
                                                         style="font-size: 0.8rem;border-radius: 10rem;padding-left:15px;padding-top:10px;height:50px;font-family:Nunito">
                                                      <option value="artisan" <?php if($user->activity=='artisan'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Artisan');?></option>
-                                                    <option value="fabricant" <?php if($user->activity=='fabricant'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Maker');?></option>
+                                                    <option value="fabricant" <?php if($user->activity=='fabricant'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Manufacturer');?></option>
                                                     <option value="industriel" <?php if($user->activity=='industriel'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Industrial');?></option>
                                                     <option value="laboratoire" <?php if($user->activity=='laboratoire'){echo 'selected="selected"';}  ?> ><?php echo __('msg.laboratory');?></option>
-                                                    <option value="recuperateur" <?php if($user->activity=='recuperateur'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Recuperator');?></option>
+                                                    <option value="recuperateur" <?php if($user->activity=='recuperateur'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Scraps buyer');?></option>
                                                     <option value="investisseur" <?php if($user->activity=='investisseur'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Investor');?></option>
                                                 </select>
                                             </div>
@@ -68,7 +68,7 @@
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="text" class="form-control form-control-user" id="username" name="username" readonly value="{{ $user->username }}"
-                                                       placeholder="<?php echo __('msg.Identifier');?>*">
+                                                       placeholder="<?php echo __('msg.Username');?>*">
                                             </div>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="email" class="form-control form-control-user" id="email" name="email"  readonly value="{{ $user->email }}"

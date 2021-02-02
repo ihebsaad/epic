@@ -47,10 +47,10 @@
 									style="font-size: 0.8rem;border-radius: 10rem;padding-left:15px;padding-top:10px;height:50px;font-family:Nunito">
 									<option value="">{{__('msg.Select your activity')}}*</option>
 									<option value="artisan">{{__('msg.Artisan')}}</option>
-									<option value="fabricant" >{{__('msg.Maker')}}</option>
+									<option value="fabricant" >{{__('msg.Manufacturer')}}</option>
 									<option value="industriel" >{{__('msg.Industrial')}}</option>
 									<option value="laboratoire" >{{__('msg.Laboratory')}}</option>
-									<option value="recuperateur" >{{__('msg.Recuperator')}}</option>
+									<option value="recuperateur" >{{__('msg.Scraps buyer')}}</option>
 									<option value="investisseur" >{{__('msg.Investor')}}</option>
 									</select>
 									</div>	

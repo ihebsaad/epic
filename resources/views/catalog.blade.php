@@ -15,8 +15,8 @@ $referentiels=  DB::table('type_famille')->where('type_id',$type)->where('fam1_i
 
  $Fam1 =DB::table('type_famille')->where('fam1_id',$famille1)->where('type_id',$type)->first();
  $libelle=$Fam1->LIBFAM1;
- if($type==101){$Type=  __('msg.Half Products') ;}
- if($type==102){$Type=  __('msg.Galvano') ;}
+ if($type==101){$Type=  __('msg.Semi finished Products') ;}
+ if($type==102){$Type=  __('msg.Electroplating') ;}
  if($type==103){$Type=  __('msg.Findings') ;}
  if($type==104){$Type= __('msg.Jewelry') ;}
 

@@ -46,7 +46,7 @@ foreach($natures as $nature)
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-4">
-											<label>{{__('msg.Nature of the lot')}}: </label>
+											<label>{{__('msg.Nature of the batch')}}: </label>
 										</div>
 									    <div class="col-lg-6">
 										<b><?php   echo $Natures[$commande[0]->nature_ident];?></b>
@@ -54,7 +54,7 @@ foreach($natures as $nature)
 									</div>
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-4">
-											<label>{{__('msg.Announcement weight')}}: </label>
+											<label>{{__('msg.Claimed weight')}}: </label>
 										</div>
 									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->poids_annonce; ?> g</b>
@@ -64,7 +64,7 @@ foreach($natures as $nature)
 									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-4">
-											<label>{{__('msg.Weight received')}}: </label>
+											<label>{{__('msg.Received weight')}}: </label>
 										</div>
 									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->poids_recu; ?> g</b>
@@ -83,7 +83,7 @@ foreach($natures as $nature)
 								<?php } if(strlen($commande[0]->titre_or) >1) {  ?>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-4">
-											<label>{{__('msg.Title')}} {{__('msg.Gold')}}: </label>
+											<label>{{__('msg.Content')}} {{__('msg.Gold')}}: </label>
 										</div>
 									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titre_or; ?></b>
@@ -92,7 +92,7 @@ foreach($natures as $nature)
 									<?php } if(strlen($commande[0]->titre_ag) >1) {   ?>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-4">
-											<label>{{__('msg.Title')}} {{__('msg.Silver')}}: </label>
+											<label>{{__('msg.Content')}} {{__('msg.Silver')}}: </label>
 										</div>
 									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titre_ag; ?></b>
@@ -101,7 +101,7 @@ foreach($natures as $nature)
 									<?php } if(strlen($commande[0]->titre_pt) >1) {   ?>									
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-4">
-											<label>{{__('msg.Title')}} {{__('msg.Platinum')}}: </label>
+											<label>{{__('msg.Content')}} {{__('msg.Platinum')}}: </label>
 										</div>
 									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titre_pd; ?></b>
@@ -110,7 +110,7 @@ foreach($natures as $nature)
 									<?php } if(strlen($commande[0]->titre_pd) >1) {   ?>
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-4">
-											<label>{{__('msg.Title')}} {{__('msg.Palladium')}}: </label>
+											<label>{{__('msg.Content')}} {{__('msg.Palladium')}}: </label>
 										</div>
 									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->titre_pd; ?></b>
