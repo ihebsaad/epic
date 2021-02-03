@@ -308,7 +308,7 @@ foreach($compls as $c){
                                 <div id="div2" class="card-body">
 									<table class="mb-10">
 									<tr class="bg-info text-white mb-20  " style="height:40px;border:1px solid lightgrey;">
-									<th class="pl-10 " >{{__('msg.Article')}}</th><th style="text-align:center"class="pl-10 pr-10" >{{__('msg.Qty')}}</th><th style="text-align:center" class="pl-10 pr-10">{{__('msg.Weight')}}</th><th class="pl-10 pr-10" style="text-align:center"><span class="fa fa-trash-alt"></th>
+									<th class="pl-10 " >{{__('msg.Item')}}</th><th style="text-align:center"class="pl-10 pr-10" >{{__('msg.Qty')}}</th><th style="text-align:center" class="pl-10 pr-10">{{__('msg.Weight')}}</th><th class="pl-10 pr-10" style="text-align:center"><span class="fa fa-trash-alt"></th>
 									<?php foreach($products as $product){
 									echo '<tr><td class="pl-10" style="font-size:12px">'.$product->libelle.'</td><td style="text-align:center;font-size:13px">'.$product->qte.' '.$product->unite.'</td><td style="text-align:center;font-size:13px">'.number_format($product->poids, 2).' g</td><td class="text-black" style="text-align:center;font-size:13px">';?>
 									<a  class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce produit ?')"  href="{{action('ProductsController@deleteproduct', $product->id)}}"><span class="fa  fa-times-circle"></i></a>

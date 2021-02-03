@@ -11,6 +11,8 @@
     </title>
 	
 <style>
+.btn-primary{background-color:#e29d09;}
+.brn-success{background-color:#0054f3;}
 #headtable th{color:black;}
 
  .form-control {display:inline!important;}
