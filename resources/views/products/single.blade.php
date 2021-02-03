@@ -187,7 +187,9 @@ foreach($compls as $c){
 					
 								
 								<?php 
-									$complements= $product[0]['complements'];
+								if (isset($product[0]['complements'])){
+								$complements= $product[0]['complements'];
+								
 									 //dd($complements[0]->complement_id);
 									 if($complements[0]->complement_id!=null){ 
 									 // echo json_encode($complements);
@@ -231,18 +233,30 @@ foreach($compls as $c){
  							  <label class="  ">{{__('msg.Optional Labour cost')}} :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
 							  </div>
 							  </div>								 
-								<?php }
+								<?php 
+								}else{ ?>
+										<input type="hidden" id="comp_id" value="0" />
+										<input type="hidden" id="comp_val" value="0" />
+								<?php	
+								}
+								
+								
+								}
 									else{ ?>
 										<input type="hidden" id="comp_id" value="0" />
 										<input type="hidden" id="comp_val" value="0" />
-								<?php	} ?>
+								<?php	
+								}
+								 
+
+								?>
 								
 <hr>
 	
 									 <div class="row mb-10 mt-10  ">
 <div class="col-md-5">									 
-									 <label class="  ">{{__('msg.Quantity')}}</label><br><input <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    step="0.01"  <?php }else{ ?>   step="1"  <?php  } ?> value="<?php echo $product[0]['valeur_defaut']; ?>" onchange="details()" id="qte" type="number"  style="width:95px" value="0"    class="form-control" placeholder=""   /></input>
-									 <label class="  pr-10 pl-10"><b><?php  echo $unite->UNIT_LIB_LONG; ?></b></label>
+									 <label class="  ">{{__('msg.Quantity')}}</label><br><input <?php if(isset($unite)&& $unite->UNIT_LIB_LONG=='METRE'){?>    step="0.01"  <?php }else{ ?>   step="1"  <?php  } ?> value="<?php if(isset ($product[0]['valeur_defaut'])){echo $product[0]['valeur_defaut'];} ?>" onchange="details()" id="qte" type="number"  style="width:95px" value="0"    class="form-control" placeholder=""   /></input>
+									 <label class="  pr-10 pl-10"><b><?php if(isset( $unite)){ echo $unite->UNIT_LIB_LONG;} ?></b></label>
 </div>
 
 							  <div class="col-md-4    ">

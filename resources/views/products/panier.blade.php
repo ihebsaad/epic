@@ -102,7 +102,7 @@ if($product->alliage >0){
  }
   	?>
 	<div class="row pt-15"><input type="number"  onchange="details(<?php echo $i;?>)"  <?php if($unite->UNIT_LIB_LONG=='METRE'){?>    min="0.01"  step="0.01"  <?php }else{ ?> min="1"  step="1"  <?php  } ?>  id="qte-<?php echo $i;?>" value="<?php echo $product->qte;?>" class="ml-10 mr-10 form-control" style="width:80px"></input> <span class="pt-10"><?php echo $unite->UNIT_LIB_LONG ; ?></span> </div>
-<?php if($product->mesure1 > 0){  ?> 	<div class="row pt-15">Mesure<?php if($product->mesure2 > 0){echo's';}?>: <b class="pl-10"><?php echo $product->mesure1 ;?><?php if(isset($Product[0]['unite1'])){ echo ' '.$Product[0]['unite1']; } ?> <?php if($product->mesure2 > 0){  ?> <?php echo ' , '. $product->mesure2 ;?><?php if(isset($Product[0]['unite1'])){ echo ' '.$Product[0]['unite1']; } ?><?php } ?></b></div><?php  } ?>
+<?php if($product->mesure1 > 0){  ?> 	<div class="row pt-15">{{__('msg.Measures')}}: <b class="pl-10"><?php echo $product->mesure1 ;?><?php if(isset($Product[0]['unite1'])){ echo ' '.$Product[0]['unite1']; } ?> <?php if($product->mesure2 > 0){  ?> <?php echo ' , '. $product->mesure2 ;?><?php if(isset($Product[0]['unite1'])){ echo ' '.$Product[0]['unite1']; } ?><?php } ?></b></div><?php  } ?>
 <?php if( $product->comp_id	> 0){
 	
 $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)->first();

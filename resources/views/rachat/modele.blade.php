@@ -35,7 +35,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Add a new Model')}}</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.New Template')}}</h6>
                                 </div>
                                 <div class="card-body">
 								   <form method="post" action="{{ route('addmodelermp') }}"  enctype="multipart/form-data">

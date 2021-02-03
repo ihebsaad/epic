@@ -84,7 +84,7 @@ $user_type=$user->user_type;
        <!-- Heading -->
 	   
       <div class="sidebar-heading">
-         {{__('msg.Scrap Gold Buyers')}}
+         {{__('msg.Scrap Gold Buyers, Investors')}}
       </div>
 	  <hr class="sidebar-divider">
 	  
