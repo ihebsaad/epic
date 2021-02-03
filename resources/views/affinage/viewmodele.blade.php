@@ -216,7 +216,7 @@ $count= $count_aff + $count_lab + $count_rmp;
  
  </div>
  
- <div style="display:none" id="credit" >{{__('msg.Credit weight account')}}</div>
+ <div style="display:none" id="credit" >{{__('msg.Credit Metal account')}}</div>
   <div class="row mb-30">
   <div class="col-sm-6" id="divor"  style="display:none">
 	{{__('msg.Gold')}}:  <b><span class="ml-10  " style="min-width:30px" id="gold"></span> g</b>

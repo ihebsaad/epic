@@ -94,7 +94,7 @@ $user_type=$user->user_type;
                              <div class="card shadow mb-4">
                                 <div class=" ">
                                     <a href="#div4" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-										<h6 class="m-0 font-weight-bold text-primary">{{__('msg.My Weight Account')}}</h6>
+										<h6 class="m-0 font-weight-bold text-primary">{{__('msg.My Metal Account')}}</h6>
 									</a>
                                 </div>
 								<style>

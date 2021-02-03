@@ -50,7 +50,7 @@
 									<option value="fabricant" >{{__('msg.Manufacturer')}}</option>
 									<option value="industriel" >{{__('msg.Industrial')}}</option>
 									<option value="laboratoire" >{{__('msg.Laboratory')}}</option>
-									<option value="recuperateur" >{{__('msg.Scraps buyer')}}</option>
+									<option value="recuperateur" >{{__('msg.Gold Scraps Buyer')}}</option>
 									<option value="investisseur" >{{__('msg.Investor')}}</option>
 									</select>
 									</div>	

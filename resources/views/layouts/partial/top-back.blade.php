@@ -152,7 +152,7 @@ app()->setLocale($lg);
                   </div>
                   <div>
                    <!-- <div class="small text-gray-500">December 2, 2019</div>-->                   
-                  <span class="font-weight-bold">{{__('msg.My Weight Account')}}</span>
+                  <span class="font-weight-bold">{{__('msg.My Metal Account')}}</span>
 					
                   </div>
                 </a>

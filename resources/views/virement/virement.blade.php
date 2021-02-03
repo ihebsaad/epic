@@ -83,7 +83,7 @@ $metal=intval($mv->metal_id);
 							
 <ul class="nav nav-tabs card-header" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="weight-tab" data-toggle="tab" href="#weight" role="tab" aria-controls="weight" aria-selected="true" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-balance-scale-left "></i>  {{__('msg.My Weight Account')}}</a>
+    <a class="nav-link active" id="weight-tab" data-toggle="tab" href="#weight" role="tab" aria-controls="weight" aria-selected="true" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-balance-scale-left "></i>  {{__('msg.My Metal Account')}}</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="transfer-tab" data-toggle="tab" href="#transfer" role="tab" aria-controls="transfer" aria-selected="false" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-donate "></i>  {{__('msg.My transfers')}}</a>
