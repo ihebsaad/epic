@@ -84,7 +84,7 @@ function decimal($val, $precision = 0) {
 ?>
 <table id="thetable" cellpadding="1" cellspacing="0" border="0" class="form" style="position:relative;top:-30px;background-color:white">
 <tr>
-  <th class="libelles" align="center" colspan="2">
+  <th class="libelles" align="center"  >
   </th>
 	<th class="libelles" align="center"  nowrap>Paris Time</th>
 	<th class="libelles" align="center" nowrap ><table border="0" cellpadding="0" cellspacing="0"><tr><td><!-- <img src="images/drapeuro.gif"          border=0/>--></td> <td><table border="0" cellpadding="10px" cellspacing="0"><tr><td width="200px"><b style="font-size:18px">Quantite: </br><1000g</b></font></td></tr><tr><td colspan="2" align="center">Prix net Eur/g (*)</td></tr></table></td></tr></table></th>
@@ -153,10 +153,10 @@ function decimal($val, $precision = 0) {
 ?>
 
 
+
 <tr <?if ($strName == "EUR/USD") echo 'style="display:none"';?>>
 	<TD class="separation0" align="left" style="border-left:#000 2px dashed" >Cotation Or 24K - SPOT SAAMP<?php //print($strName);?></TD>
-  <td   width="15px"  ></td>  	
-	<? if ($poids == "gram" and ($quote["f25"] == "Gold")) {  ?>
+ 	<? if ($poids == "gram" and ($quote["f25"] == "Gold")) {  ?>
   <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
 	<TD colspan=3 class="separation" align="center"><div><? if ($quote["f25"] == "Gold"){ ?><b><?php print(number_format  ( $strBid/$eurAsk *1000,0,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></div></TD>
  	
@@ -167,8 +167,7 @@ function decimal($val, $precision = 0) {
 <!-- ajout cotation particulier -->
 <tr>
 <TD class="separation0" align="left">OR 18KT MASSIF </TD>
-<td   width="15px"></td>  
-<TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
+ <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">72%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.72 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">72,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.725 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">73,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.735 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
@@ -177,8 +176,7 @@ function decimal($val, $precision = 0) {
 
 <tr>
 <TD class="separation0" align="left">OR 18KT MELE</TD>
-<td   width="15px"></td>  
-<TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
+ <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">70,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.705 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">71%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.71 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">71,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.715 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
@@ -186,8 +184,7 @@ function decimal($val, $precision = 0) {
 
 <tr>
 <TD class="separation0" align="left">PIECE OR 900</TD>
-<td   width="15px"></td>  
-<TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
+ <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">88%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.88 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">88,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.885 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">89%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.89 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
@@ -195,8 +192,7 @@ function decimal($val, $precision = 0) {
 
 <tr>
 <TD class="separation0" align="left">PIECE OR 916</TD>
-<td   width="15px"></td>  
-<TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
+ <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">89,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.895 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">90%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.90 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">90,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.905 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
@@ -205,8 +201,7 @@ function decimal($val, $precision = 0) {
 
 <tr>
 <TD class="separation0" align="left">OR DENTAIRE RICHE</TD>
-<td   width="15px"></td>  
-<TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
+ <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">76,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.765 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">77%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.77 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">77,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.775 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
@@ -214,8 +209,7 @@ function decimal($val, $precision = 0) {
 
 <tr>
 <TD class="separation0" align="left">OR 14KT</TD>
-<td   width="15px"></td>  
-<TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
+ <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">51%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.51 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">51,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.515 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">52%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.52 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
@@ -223,8 +217,7 @@ function decimal($val, $precision = 0) {
 
 <tr>
 <TD class="separation0" align="left">OR 9KT</TD>
-<td   width="15px"></td>  
-<TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
+ <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">31%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.31 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">31,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.315 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">32%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.32 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
@@ -232,8 +225,7 @@ function decimal($val, $precision = 0) {
 
 <tr>
 <TD class="separation0" align="left">OR FIN NON CERTIFIE</TD>
-<td   width="15px"></td>  
-<TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
+ <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">98%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.98 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">98,5%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.985 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>
 <TD class="separation" align="right"><span style="float:left; padding-top: 10px; font-size:small;">99%</span><?php print(number_format  ( ($strBid/$eurAsk)*0.99 ,2,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></TD>

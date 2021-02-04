@@ -15,9 +15,10 @@
                                 <div class="card-body">
 <style>	
 table{border:none;
-color:black;}
+color:black;font-weight:bold;}
 td {padding:8px 8px 8px 8px;} 
 .libelles {
+	color:white;
  font-weight:bold;
  background-color:#E4D186;
  border:#000 1px solid;
@@ -28,6 +29,7 @@ td {padding:8px 8px 8px 8px;}
  border-right:#000 2px dashed;
  border-left:#000 2px dashed;
 } 
+.separation0{background-color:darkgrey;color:white;}
  
 </style>								
 								
@@ -468,7 +470,7 @@ xmlhttp.send();
   //"EURUSD|XAUUSD|XAGUSD"
   
   showNetDania();
-  //setTimeout("showNetDania()",4000);
+   setTimeout("showNetDania()",4000);
   
   
   
