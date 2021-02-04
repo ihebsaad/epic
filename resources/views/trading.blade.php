@@ -2,6 +2,7 @@
 @extends('layouts.back')
  
  @section('content')
+<!--
  <style TYPE="text/css">  
 
 #gradient-style2 {font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;font-size:11px;width:480px;text-align:left;border-collapse:collapse;margin:20px;}
@@ -156,7 +157,7 @@ overflow-y: hidden;
 
 
 
-</style>
+</style>-->
   
 <script type="text/javascript">
 
@@ -393,7 +394,7 @@ xmlhttp.send();
 
 
 
-setTimeout("showNetDania()",5000);
+//setTimeout("showNetDania()",5000);
 
 //alert (document.getElementById("test_ok").value)
    
@@ -430,8 +431,8 @@ setTimeout("showNetDania()",5000);
   
    <div id="txtHint" name="txtHint">
   <table align='center' width='600px' height="50%"><tr><td align='center' valign="middle">
-  <img height="50px"  src="{{ URL::asset('public/img/progress.gif')}}" ><br></td></tr><tr><td align='center' >
-  <font color=c7D6E9><b>chargement des cours saamp.com ... merci de patienter</b></font></td></tr></table></div>
+  <img height="50px"  src="{{ URL::asset('public/img/loader.gif')}}" ><br></td></tr><tr><td align='center' >
+  <b>chargement des cours saamp.com ... merci de patienter</b> </td></tr></table></div>
   
     
   
