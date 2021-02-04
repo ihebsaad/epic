@@ -88,29 +88,29 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 
                 <div class="">
                     <!-- Grid row -->
-                    <div class="row card pl-30 pt-20">
+                    <div class="row card pl-20 pt-15">
                       <div class="col-md-6 col-lg-12 mb-5">
 				        <h5 class="font-weight-bold  text-primary"> <?php echo $Type;?></strong></h3>
-						<hr style="width:120px" class="ml-20 mb-30 mt-20">
-						<h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Category')}} </strong></h3>
- 						<div class="pl-30">
+						<hr style="width:120px" class="ml-20 mb-20 mt-20">
+						<h5 class="font-weight-bold" style="color:black"><strong>{{__('msg.Category')}} </strong></h3>
+ 						<div class="pl-20">
 						<?php  
 						 	foreach($referentiels as $fam) 
 							{
 								if($fam->fam1_id==$famille1){$selected="checked";}else{ $selected="";}
 							// echo '<option value="'.$fam->fam1_id.'" '.$selected.'  > '.$fam->LIBFAM1.' </option>'	;
 							  echo '
-								<div class="form-group "  onclick="reset('.$fam->fam1_id.')"   >
+								<div style="padding-bottom:8px"  onclick="reset('.$fam->fam1_id.')"   >
                                 <input class="form-check-input" name="groupfam2" type="radio" id="radio'.$fam->fam1_id.'"   '.$selected.' >
                                 <label for="radio'.$fam->fam1_id.'" class="form-check-label dark-grey-text">'.$fam->LIBFAM1.'</label>
                                 </div>		';					 
 							}
 						?>	
 						</div>
- 						<hr style="width:120px" class="ml-20 mb-30">
+ 						<hr style="width:120px" class="ml-20 mb-20">
  
-                            <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Sub category')}} </strong></h3>
-                                 <div class="pl-30">
+                            <h5 class="font-weight-bold  " style="color:black"><strong>{{__('msg.Sub category')}} </strong></h3>
+                                 <div class="pl-20">
 					 
 								
                                 <?php
@@ -126,7 +126,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 									}
 								}
                                echo 
-							   '<div class="form-group "  onclick="Famille2('.$fam2.')">
+							   '<div style="padding-bottom:8px"  onclick="Famille2('.$fam2.')">
                                 <input class="form-check-input" name="groupfam2" type="radio" id="radio'.$fam2.'"   >
                                 <label for="radio'.$fam2.'" class="form-check-label dark-grey-text">'.$Fam->LIBFAM2.'</label>
                                 </div>';
@@ -135,40 +135,17 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 								</div>
 
 
-                      <!--
-						<hr style="width:120px" class="ml-20 mb-30 mt-20">
-
-                              <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Family')}} 3</strong></h3>
-                                <div class="divider"></div>
-                              <div class="pl-30">
-							  <div class="form-group ">
-                                    <input class="form-check-input" name="groupfam3" type="radio" id="radiofam3" onclick="Famille3(null)" checked > 
-                                    <label for="radiofam3" class="form-check-label dark-grey-text">{{__('msg.All')}}</label>
-                                </div>	
-								<?php /*
-								foreach ($fams3 as $fam3)
-                                {  
-								  $Fam3=  DB::table('type_famille')->where('fam3_id',$fam3)->first();
-								echo '<div class="form-group "  onclick="Famille3('.$fam3.')">
-                                <input class="form-check-input" name="groupfam3" type="radio" id="radio'.$fam3.'">
-                                <label for="radio'.$fam3.'" class="form-check-label dark-grey-text">'.$fam3.' - '.$Fam3->LIBFAM3.'</label>
-                                </div>';
-								}
- 								*/
-								?>
-                        
-                              </div>
-								--->
+                      
                                 
                          <!-- /Filter by category-->
-						<hr style="width:120px" class="ml-20 mb-30 mt-20">
+						<hr style="width:120px" class="ml-10 mb-30 mt-10">
 
-                             <h5 class="font-weight-bold dark-grey-text"><strong>{{__('msg.Metal')}}</strong></h3>
+                             <h5 class="font-weight-bold" style="color:black"><strong>{{__('msg.Metal')}}</strong></h3>
                                 <div class="divider"></div>
                                  <div class="">
 
 								 
-								 <select class="form-control" id="alliage_id"  onchange="changing()"  >
+								 <select class="form-control" id="alliage_id"  onchange="changing()" style="width:200px"  >
 									 <option value="0"></option>
 										<?php
 										
@@ -193,75 +170,15 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 									 </select>
 						 					
                                 
-								<!--			
-								<div class="form-group ">
-                                    <input class="form-check-input" name="group100" type="radio" id="radio100" onclick="Metal(1)"  > 
-                                    <label for="radio100" class="form-check-label dark-grey-text">{{__('msg.Gold')}}</label>
-                                </div>
-								
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radiom1" onclick="Metal(2)"  >
-                                    <label for="radiom1" class="form-check-label dark-grey-text">{{__('msg.Silver')}}</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radiom2"  onclick="Metal(3)" >
-                                    <label for="radiom2" class="form-check-label dark-grey-text">{{__('msg.Platinum')}}</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radiom3"  onclick="Metal(4)" >
-                                    <label for="radiom3" class="form-check-label dark-grey-text">{{__('msg.Palladium')}}</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radiom4"  onclick="Metal(5)" >
-                                    <label for="radiom4" class="form-check-label dark-grey-text">{{__('msg.Rhodium')}}</label>
-                                </div>
-								
-                                <div class="form-group">
-                                    <input class="form-check-input" name="group100" type="radio" id="radiom5"  onclick="Metal(9)" >
-                                    <label for="radiom5" class="form-check-label dark-grey-text">{{__('msg.Rhodium')}}</label>
-                                </div>-->							
+						 							
                                  </div>
 								 
                      </div>
                     <!-- /Grid row -->
 					</div>
                     <!-- Grid row -->
-                    <div class="row">
-
-                        <!-- Filter by price  -- 
-                        <div class="col-md-6 col-lg-12 mb-5">
-                            <h5 class="font-weight-bold dark-grey-text"><strong>Price</strong></h3>
-                                <div class="divider"></div>
-
-                                <form class="range-field mt-3">
-                                    <input id="calculatorSlider" class="no-border" type="range" value="0" min="0" max="30" />
-                                </form>
-
-                                <!-- Grid row -- 
-                                <div class="row justify-content-center">
-
-                                    <!-- Grid column -- 
-                                    <div class="col-md-6 text-left">
-                                        <p class="dark-grey-text"><strong id="resellerEarnings">0$</strong></p>
-                                    </div>
- 
-                                     <div class="col-md-6 text-right">
-                                        <p class="dark-grey-text"><strong id="clientPrice">319$</strong></p>
-                                    </div>
-                                    <!-- Grid column -- 
-                                </div>
-                                <!-- Grid row -- 
-
-                        </div>-->
-                        <!-- /Filter by price -->
-
-         
-                     </div>
-                    <!-- /Grid row -->
-                </div>
+                
+                 </div>
 
             </div>
             <!-- /.Sidebar -->
@@ -269,17 +186,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
             <!-- Content -->
             <div class="col-lg-9">
 
-                <!-- Filter Area -->
-              <!--  <div class="row">
-
-                    <div class="col-md-4 mt-3">
-                    </div>
-                    <div class="col-md-8 text-right">
-
-                    </div>
-
-                </div>-->
-                <!-- /.Filter Area -->
+             
 
                 <!-- Products Grid -->
                 <section class="section ">
