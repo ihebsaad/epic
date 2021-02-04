@@ -318,7 +318,7 @@ return [
             'Save as an order'=>'Zapisz jako zamówienie',              
             'Credit Metal account'=>'Kredyt konto wagi', 
             'I want to receive a deposit as soon as possible'=>'Chcę jak najszybciej otrzymać depozyt',     
-            'Hedge'=>'Pokrywa',
+            'Hedge'=>'Hedge',
             'Details'=>'Detale',   
             'Deposit'=>'Kaucja', 
             'Products'=>'Produkty',       
