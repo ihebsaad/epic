@@ -1,5 +1,6 @@
 <?php
  // include("../../configuration.inc.php");
+error_reporting(0);
 
 	$provider = "netdania_fxa";
 	$username = "saamp";
@@ -80,29 +81,16 @@ function decimal($val, $precision = 0) {
         return $val; 
     endif; 
 } 
-
-
-	
-	
 ?>
-
-
-<table border="0"  >
-
-
-
-<tr><td colspan="2" style="border:none">
-<TABLE  cellpadding="1" cellspacing="0" border="0" class="form">
+<table id="thetable" cellpadding="1" cellspacing="0" border="0" class="form" style="top:-30px">
 <tr>
   <th class="libelles" align="center" colspan="2">
   </th>
-	<th class="libelles" align="center"  nowrap><font size=2>Paris Time</font></th>
-	<th class="libelles" align="center" nowrap ><table border="0" cellpadding="0" cellspacing="0"><tr><td><!-- <img src="images/drapeuro.gif"          border=0/>--></td> <td><table border="0" cellpadding="10px" cellspacing="0"><tr><td width="200px"><font size=5><b>Quantite: </br><1000g</b></font></td></tr><tr><td colspan="2" align="center">Prix net Eur/g (*)</td></tr></table></td></tr></table></th>
-  <th class="libelles" align="center" nowrap ><table border="0" cellpadding="0" cellspacing="0"><tr><td><!-- <img src="images/drapeuro.gif"          border=0/>--></td> <td><table border="0" cellpadding="10px" cellspacing="0"><tr><td width="200px"><font size=5><b>Quantite: </br>>2000 g</b></font></td></tr><tr><td colspan="2" align="center">Prix net Eur/g (*)</td></tr></table></td></tr></table></th>
-  <th class="libelles" align="center" nowrap ><table border="0" cellpadding="0" cellspacing="0"><tr><td><!-- <img src="images/drapeuro.gif"          border=0/>--></td> <td><table border="0" cellpadding="10px" cellspacing="0"><tr><td width="200px"><font size=5><b>Quantite: </br>>5000g</b></font></td></tr><tr><td colspan="2" align="center">Prix net Eur/g (*)</td></tr></table></td></tr></table></th>
- 
+	<th class="libelles" align="center"  nowrap>Paris Time</th>
+	<th class="libelles" align="center" nowrap ><table border="0" cellpadding="0" cellspacing="0"><tr><td><!-- <img src="images/drapeuro.gif"          border=0/>--></td> <td><table border="0" cellpadding="10px" cellspacing="0"><tr><td width="200px"><b style="font-size:18px">Quantite: </br><1000g</b></font></td></tr><tr><td colspan="2" align="center">Prix net Eur/g (*)</td></tr></table></td></tr></table></th>
+  <th class="libelles" align="center" nowrap ><table border="0" cellpadding="0" cellspacing="0"><tr><td><!-- <img src="images/drapeuro.gif"          border=0/>--></td> <td><table border="0" cellpadding="10px" cellspacing="0"><tr><td width="200px"><b style="font-size:18px">Quantite: </br>>2000 g</b></font></td></tr><tr><td colspan="2" align="center">Prix net Eur/g (*)</td></tr></table></td></tr></table></th>
+  <th class="libelles" align="center" nowrap ><table border="0" cellpadding="0" cellspacing="0"><tr><td><!-- <img src="images/drapeuro.gif"          border=0/>--></td> <td><table border="0" cellpadding="10px" cellspacing="0"><tr><td width="200px"><b style="font-size:18px">Quantite: </br>>5000g</b></font></td></tr><tr><td colspan="2" align="center">Prix net Eur/g (*)</td></tr></table></td></tr></table></th>
 </tr>
- 
 <tbody>
 
 
@@ -172,11 +160,9 @@ function decimal($val, $precision = 0) {
 	<? if ($poids == "gram" and ($quote["f25"] == "Gold")) {  ?>
   <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    
 	<TD colspan=3 class="separation" align="center"><div><? if ($quote["f25"] == "Gold"){ ?><b><?php print(number_format  ( $strBid/$eurAsk *1000,0,'.',' ' )); ?></b><?//print (" ".$dev."/".$poids)?></div></TD>
-
-	
+ 	
 	<? } ?>
-	
-
+ 
 </tr>
 
 <!-- ajout cotation particulier -->
@@ -317,16 +303,9 @@ $date_insert = date('Y-m-d H:i:s', time());
 
 //insere_cours();
 ?>
-
 </tbody>
-
-
-
-</td></tr></table>
 </td></tr>
 </table>
- 
- 
 <div style="display:none;">
 <form class="entryform" method="post" action=""  enctype="multipart/form-data">
   <!-- XAU/USD_bid --><input type="hidden" name="Gold_bid" id="Gold_bid" value="<? print $_SESSION['XAU/USD_bid'] ?>" />
