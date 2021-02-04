@@ -14,7 +14,21 @@
                                 </div>
                                 <div class="card-body">
 <style>	
-table{border:none;}							
+table{border:none;}	
+.libelles {
+ font-weight:bold;
+ background-color:#E4D186;
+ border:#000 1px solid;
+}				
+
+.separationTime ,.separation{
+ border-bottom:#000 2px dashed;
+ border-right:#000 2px dashed;
+} 
+
+.separation0 {
+ border-bottom:#000 2px dashed;
+ }
 </style>								
 								
 <!--
@@ -35,11 +49,7 @@ table{border:none;}
  background_: url("lingot.jpg");
 }
 
-.libelles {
- font-weight:bold;
- background-color:#E4D186;
- border:#000 1px solid;
-}
+
 
 
 .libelles2 {
