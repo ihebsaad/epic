@@ -97,8 +97,8 @@ $user_type=$user->user_type;
            <span> {{__('msg.Metal transfer')}}</span></a>
       </li>	
 	  
-	  <li class="nav-item   <?php  ?>">
-        <a class="nav-link" href="">
+	  <li class="nav-item ""  <?php if( strpos($view_name  ,'trading') !== false )  {echo 'style="font-weight:800"'; }   ?> >
+        <a class="nav-link" href="{{route('trading')}}">
            <span> {{__('msg.Trading')}}</span></a>
       </li>		  
       <!-- Divider -->
