@@ -1,5 +1,9 @@
 <?php
  // include("../../configuration.inc.php");
+ 
+
+
+
 error_reporting(0);
 
 	$provider = "netdania_fxa";

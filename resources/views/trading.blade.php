@@ -465,7 +465,18 @@ xmlhttp.send();
   <b>chargement des cours saamp.com ... merci de patienter</b> </td></tr></table>
   </div>
    
-  
+  <div style="display:none;">
+<form class="entryform" method="post" action=""  enctype="multipart/form-data">
+  <!-- XAU/USD_bid --><input type="hidden" name="Gold_bid" id="Gold_bid" value="0" />
+  <!-- XAU/USD_ask --> <input type="hidden" name="Gold_ask" id="Gold_ask" value="0" /><br>
+  <!-- XAG/USD_bid  --><input type="hidden" name="Silver_bid" id="Silver_bid" value="0" />
+  <!-- XAG/USD_ask  --><input type="hidden" name="Silver_ask" id="Silver_ask" value="0" /><br>
+  <!-- XPT/USD_bid  --><input type="hidden" name="XPT_USD_bid" id="XPT_USD_bid" value="0" />
+  <!-- XPT/USD_ask  --><input type="hidden" name="XPT_USD_ask" id="XPT_USD_ask" value="0" /><br>  
+  <!-- XPTG/USD_bid --><input type="hidden" name="XPTG_USD_bid" id="XPTG_USD_bid" value="0" />
+  <!-- XPTG/USD_ask --><input type="hidden" name="XPTG_USD_ask" id="XPTG_USD_ask" value="0" /><br>
+</form>
+</div>
   <script>
   //"EURUSD|XAUUSD|XAGUSD"
   
