@@ -421,7 +421,7 @@ xmlhttp.send();
 
 
 
-//setTimeout("showNetDania()",5000);
+setTimeout("showNetDania()",5000);
 
 //alert (document.getElementById("test_ok").value)
    
@@ -481,7 +481,7 @@ xmlhttp.send();
   //"EURUSD|XAUUSD|XAGUSD"
   
   showNetDania();
-   setTimeout("showNetDania()",4000);
+ //  setTimeout("showNetDania()",4000);
   
   
   
