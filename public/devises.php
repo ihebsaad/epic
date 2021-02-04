@@ -91,37 +91,18 @@ function decimal($val, $precision = 0) {
 
 
 
-<tr><td colspan=2>
-
+<tr><td colspan="2" style="border:none">
 <TABLE  cellpadding="1" cellspacing="0" border="0" class="form">
-<tr><th class="bijouxpieces" colspan="30"><table class="form" border="0" cellpadding="0" cellspacing="0"><tr><td class="bijouxpieces" <!--width="1050px" -->SAAMP Rachat aux Professionnels</td><td align="left"><img height="30px" src="images/france_logo.png" border=0/></td></tr></table></th></tr>
-
 <tr>
-  <th class="libelles" align="center" colspan=2>
-  <!--<SELECT id="poids" NAME="poids"
-       onChange="changeVar('<?echo $devise?>', this.options[selectedIndex].text);">
-          <OPTION <?if ($poids=='gram') echo 'selected="selected"';?> >gram</OPTION>
-          <OPTION <?if ($poids=='kilogram') echo 'selected="selected"';?> >kilogram</OPTION>
-          <OPTION <?if ($poids=='once') echo 'selected="selected"';?> >once</OPTION>                    
-  </SELECT>-->
+  <th class="libelles" align="center" colspan="2">
   </th>
 	<th class="libelles" align="center"  nowrap><font size=2>Paris Time</font></th>
 	<th class="libelles" align="center" nowrap ><table border="0" cellpadding="0" cellspacing="0"><tr><td><!-- <img src="images/drapeuro.gif"          border=0/>--></td> <td><table border="0" cellpadding="10px" cellspacing="0"><tr><td width="200px"><font size=5><b>Quantite: </br><1000g</b></font></td></tr><tr><td colspan="2" align="center">Prix net Eur/g (*)</td></tr></table></td></tr></table></th>
   <th class="libelles" align="center" nowrap ><table border="0" cellpadding="0" cellspacing="0"><tr><td><!-- <img src="images/drapeuro.gif"          border=0/>--></td> <td><table border="0" cellpadding="10px" cellspacing="0"><tr><td width="200px"><font size=5><b>Quantite: </br>>2000 g</b></font></td></tr><tr><td colspan="2" align="center">Prix net Eur/g (*)</td></tr></table></td></tr></table></th>
   <th class="libelles" align="center" nowrap ><table border="0" cellpadding="0" cellspacing="0"><tr><td><!-- <img src="images/drapeuro.gif"          border=0/>--></td> <td><table border="0" cellpadding="10px" cellspacing="0"><tr><td width="200px"><font size=5><b>Quantite: </br>>5000g</b></font></td></tr><tr><td colspan="2" align="center">Prix net Eur/g (*)</td></tr></table></td></tr></table></th>
-	
-
-	
-	
-
-	<!--
-  <th class="libelles" align="center" nowrap colspan=2 width=40><img src="dr/uah.png" border=0/> UAH</th>     -->
-
+ 
 </tr>
-
-
-
-
+ 
 <tbody>
 
 
@@ -344,25 +325,8 @@ $date_insert = date('Y-m-d H:i:s', time());
 </td></tr></table>
 </td></tr>
 </table>
-
-<p>
-*Une décote sur le poids constaté sur la balance peut être appliquée	
-En cas de présence d’autres matières, autre que de l’or, sur les produits pesés.	
-	
-IMPORTANT	
-	
-Dans le cadre de la lutte contre les vols et le recèle	
-nous demandons une copie d'une pièce d'identité.	
-Tous les lots sont photographiés.	
-Les photos sont conservées sans limite durant 5 ans.	
-Une description détaillée des lots est également inscrite	
-Dans le livre de police de l’agence.	
-	
-ATTENTION	
-	
-Nous valorisons uniquement l'or contenu dans vos bijoux.	
-Si vous désirez conserver les pierres et autres ornements,	
-il vous appartient de les enlever avant, sans dénaturer vos bijoux
+ 
+ 
 <div style="display:none;">
 <form class="entryform" method="post" action=""  enctype="multipart/form-data">
   <!-- XAU/USD_bid --><input type="hidden" name="Gold_bid" id="Gold_bid" value="<? print $_SESSION['XAU/USD_bid'] ?>" />
