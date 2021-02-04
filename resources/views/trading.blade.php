@@ -18,7 +18,7 @@ table{border:none;
 color:black;font-weight:bold;}
 td {padding:8px 8px 8px 8px;} 
 .libelles {
-	color:white;
+ 
  font-weight:bold;
  background-color:#E4D186;
  border:#000 1px solid;
