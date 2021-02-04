@@ -17,7 +17,7 @@
 table{border:none;}							
 </style>								
 								
- 
+<!--
  <style TYPE="text/css">  
 
 #gradient-style2 {font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;font-size:11px;width:480px;text-align:left;border-collapse:collapse;margin:20px;}
@@ -31,13 +31,13 @@ table{border:none;}
 .bijouxpieces {
  text-align:left;
  color:#FFF;
-/* background-color:#000000;*/
+ background-color:#000000;
  background_: url("lingot.jpg");
 }
 
 .libelles {
  font-weight:bold;
-/* background-color:#E4D186;*/
+ background-color:#E4D186;
  border:#000 1px solid;
 }
 
@@ -46,13 +46,13 @@ table{border:none;}
  font-size:9px;
  font-weight:normal;
  text-align:center;
-/* background-color:#E4D186;*/
+ background-color:#E4D186;
  border:#000 1px solid;
 }
 
 .libelles_ {
  font-weight:bold;
- /*background-color:#E5AA39;*/
+ background-color:#E5AA39;
  border:#000 1px solid;
 }
 
@@ -61,7 +61,7 @@ table{border:none;}
  font-size:12px;
  font-weight:normal;
  text-align:center;
- /*background-color:#E5AA39;*/
+ background-color:#E5AA39;
  border:#000 1px solid;
 }
 
@@ -71,7 +71,7 @@ table{border:none;}
  PADDING-right:5px;
  border-bottom:#000 2px dashed;
  border-right:#000 2px dashed;
- /*background-color:#FFF;*/
+ background-color:#FFF;
 }
 
 .separationTime {
@@ -81,12 +81,12 @@ table{border:none;}
  PADDING-right:5px;
  border-bottom:#000 2px dashed;
  border-right:#000 2px dashed;
- /*background-color:#FFF;*/
+ background-color:#FFF;
 }
 
 .separation0 {
  border-bottom:#000 2px dashed;
- /*background-color:#FFF;*/
+ background-color:#FFF;
 }
 
 .form {
@@ -172,7 +172,7 @@ overflow-y: hidden;
 
 
 
-</style>
+</style>-->
   
 <script type="text/javascript">
 
@@ -443,15 +443,16 @@ xmlhttp.send();
 	 -->
 
   </HEAD>
-  
-   <div id="txtHint" name="txtHint">
-  <table align='center' width='600px' height="50%"><tr><td align='center' valign="middle">
-  <img height="50px"  src="{{ URL::asset('public/img/loader.gif')}}" ><br></td></tr><tr><td align='center' >
-  <b>chargement des cours saamp.com ... merci de patienter</b> </td></tr></table></div>
-  
-    
-  
-  
+  <div id="txtHint" name="txtHint">
+  <table align='center' width='600px' height="50%">
+  <tr><td align='center' valign="middle">
+  <img height="50px"  src="{{ URL::asset('public/img/loader.gif')}}" ><br>
+  </td>
+  </tr>
+  <tr><td align='center' >
+  <b>chargement des cours saamp.com ... merci de patienter</b> </td></tr></table>
+  </div>
+   
   
   <script>
   //"EURUSD|XAUUSD|XAGUSD"

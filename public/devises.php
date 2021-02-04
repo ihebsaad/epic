@@ -82,7 +82,7 @@ function decimal($val, $precision = 0) {
     endif; 
 } 
 ?>
-<table id="thetable" cellpadding="1" cellspacing="0" border="0" class="form" style="top:-30px">
+<table id="thetable" cellpadding="1" cellspacing="0" border="0" class="form" style="position:relative;top:-30px;background-color:white">
 <tr>
   <th class="libelles" align="center" colspan="2">
   </th>
