@@ -14,7 +14,9 @@
                                 </div>
                                 <div class="card-body">
 <style>	
-table{border:none;}	
+table{border:none;
+color:black;}
+td {padding:8px 8px 8px 8px;} 
 .libelles {
  font-weight:bold;
  background-color:#E4D186;
