@@ -155,7 +155,7 @@ function decimal($val, $precision = 0) {
 
 
 <tr <?if ($strName == "EUR/USD") echo 'style="display:none"';?>>
-	<TD class="separation0" align="left" >Cotation Or 24K - SPOT SAAMP<?php //print($strName);?></TD>
+	<TD class="separation0" align="left" style="border-left:#000 2px dashed" >Cotation Or 24K - SPOT SAAMP<?php //print($strName);?></TD>
   <td class="separation0" width="15px"  ></td>  	
 	<? if ($poids == "gram" and ($quote["f25"] == "Gold")) {  ?>
   <TD class="separationTime" align="left" nowrap><?php print($strDateTime);?></TD>    

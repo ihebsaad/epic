@@ -24,12 +24,12 @@ td {padding:8px 8px 8px 8px;}
 }				
 
 .separationTime ,.separation{
- border-bottom:#000 2px dashed;
- border-right:#000 2px dashed;
-} 
+  border-right:#000 2px dashed;
+ } 
 
-.separation0 {
+.separation0,.separationTime  {
  border-bottom:#000 2px dashed;
+ border-left:#000 2px dashed;
  }
 </style>								
 								
