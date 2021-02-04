@@ -30,7 +30,7 @@ td {padding:8px 8px 8px 8px;}
  border-left:#000 2px dashed;
 } 
 .separation0{background-color:darkgrey;color:white;}
- 
+ .separation{font-size:18px;}
 </style>								
 								
 <!--
