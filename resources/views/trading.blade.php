@@ -235,7 +235,7 @@ else
 
 
 counter++; 
-//xmlhttp.open("GET","http://mysaamp.com/devises.php?q="+devise+"&p="+poids+"&counter="+counter, true);
+xmlhttp.open("GET","http://mysaamp.com/devises.php?q="+devise+"&p="+poids+"&counter="+counter, true);
 
 
 

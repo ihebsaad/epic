@@ -11,8 +11,7 @@ use App\Http\Controllers\HomeController ;
   $modeles=HomeController::modeles_ac($user['client_id'] );
  $euros=HomeController::compte_euro($user['client_id'] );
    $poids=HomeController::compte_poids($user['client_id'] );
- 
-  $natures=HomeController::natures2( );
+   $natures=HomeController::natures2( );
  $Natures=array();
  $NaturesC=array();
 foreach($natures as $nature)
@@ -222,16 +221,16 @@ foreach($natures as $nature)
 								.metal{height:50px;padding-top:15px;margin-bottom:10px;color:white;}
 								</style>
                                  <div id="div4" class="card-body"> 
-								 <?php
-								 if($poids->solde_au >= 0){$style1="color:#54ba1d";}else{$style1="color:#d03132";}
-								 if($poids->solde_ag >= 0){$style2="color:#54ba1d";}else{$style2="color:#d03132";} 
-								 if($poids->solde_pt >= 0){$style3="color:#54ba1d";}else{$style3="color:#d03132";}   
-								 if($poids->solde_pd >= 0){$style4="color:#54ba1d";}else{$style4="color:#d03132";}  
-								 ?>
-									<div style="width:120px;" class="metal text-center bg-gradient-warning"> OR </div> <b style="<?php echo $style1;?>"><?php echo  poids->solde_au; ?> g</b>
-									<div style="width:120px; " class="metal text-center bg-gradient-light"> ARGENT </div> <b style="<?php echo $style2;?>"><?php echo  poids->solde_ag; ?> g</b>
-									<div style="width:120px;" class="metal text-center bg-gradient-secondary"> PLATINE </div> <b style="<?php echo $style3;?>"><?php echo  poids->solde_pt; ?> g</b>
-									<div style="width:120px;" class="metal text-center bg-gray-500"> PALLADIUM </div> <b style="<?php echo $style4;?>"><?php echo  poids->solde_pd; ?> g</b>
+								 <?php  
+								 if($poids[0]->solde_au >= 0){$style1="color:#54ba1d";}else{$style1="color:#d03132";}
+								 if($poids[0]->solde_ag >= 0){$style2="color:#54ba1d";}else{$style2="color:#d03132";} 
+								 if($poids[0]->solde_pt >= 0){$style3="color:#54ba1d";}else{$style3="color:#d03132";}   
+								 if($poids[0]->solde_pd >= 0){$style4="color:#54ba1d";}else{$style4="color:#d03132";}  
+								  ?>
+									<div style="width:120px;" class="metal text-center bg-gradient-warning"> {{__('msg.Gold')}} </div> <b style="<?php echo $style1;?>"><?php echo  $poids[0]->solde_au; ?> g</b>
+									<div style="width:120px; " class="metal text-center bg-gradient-light"> {{__('msg.Silver')}} </div> <b style="<?php echo $style2;?>"><?php echo  $poids[0]->solde_ag; ?> g</b>
+									<div style="width:120px;" class="metal text-center bg-gradient-secondary"> {{__('msg.Platine')}} </div> <b style="<?php echo $style3;?>"><?php echo  $poids[0]->solde_pt; ?> g</b>
+									<div style="width:120px;" class="metal text-center bg-gray-500"> {{__('msg.Palladium')}} </div> <b style="<?php echo $style4;?>"><?php echo  $poids[0]->solde_pd; ?> g</b>
 								
                                 </div>
                             </div>
