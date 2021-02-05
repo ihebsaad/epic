@@ -393,5 +393,5 @@ return [
 	'Required fields'=>'Zone obligatoire',		
 	'Sequence number in my lists'=>"Numéro d’ordre dans mes listes",		
 	'Comment to report on transfers'=>'Commentaire à reporter sur les virements ',		
-	
+	'Type'=>'Type',
  ];

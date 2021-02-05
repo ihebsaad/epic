@@ -384,5 +384,6 @@ return [
 	'Required fields'=>'Required fields',		
 	'Sequence number in my lists'=>'Sequence number in my lists',		
 	'Comment to report on transfers'=>'Comment to report on transfers',		
+	'Type'=>'Type',
  	
  ];

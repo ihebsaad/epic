@@ -147,6 +147,65 @@ class HomeController extends Controller
  
     }	
 	
+		  public static function modeles_ac($cl)
+    { 
+  	   DB::select("SET @p0='$cl' ;");
+
+ 	  $result=  DB::select (" CALL `sp_accueil_liste_modele`(@p0); ");
+ 
+		if ($result!= null){
+		return  $result ;
+			} else{
+	 	 return 'Error';
+				} 
+ 
+    }
+	
+	
+	  public static function commandes_ac($cl)
+    { 
+  	   DB::select("SET @p0='$cl' ;");
+
+ 	  $result=  DB::select (" CALL `sp_accueil_liste_commandes`(@p0); ");
+ 
+		if ($result!= null){
+		return  $result ;
+			} else{
+	 	 return 'Error';
+				} 
+ 
+    }
+
+	  public static function compte_euro($cl)
+    { 
+  	   DB::select("SET @p0='$cl' ;");
+
+ 	  $result=  DB::select (" CALL `sp_accueil_compta`(@p0); ");
+ 
+		if ($result!= null){
+		return  $result ;
+			} else{
+	 	 return 'Error';
+				} 
+ 
+    }
+	
+
+	  public static function compte_poids($cl)
+    { 
+  	   DB::select("SET @p0='$cl' ;");
+
+ 	  $result=  DB::select (" CALL `sp_accueil_CP_solde`(@p0); ");
+ 
+		if ($result!= null){
+		return  $result ;
+			} else{
+	 	 return 'Error';
+				} 
+ 
+    }
+
+	
 		  public static function natures()
     { 
  

@@ -4,18 +4,28 @@
  @section('content')
 
 <?php
-/*
-$user_type='';
-if (Auth::check()) {
+use App\Http\Controllers\HomeController ;
+ $user = auth()->user();  
 
-$user = auth()->user();
- $iduser=$user->id;
-$user_type=$user->user_type;
-} 
+ $commandes=HomeController::commandes_ac($user['client_id'] );
+ $countc=count( $commandes);
+ echo  $countc;
+ $modeles=HomeController::modeles_ac($user['client_id'] );
+ $euro=HomeController::compte_euro($user['client_id'] );
+ //$poids=HomeController::compte_poids($user['client_id'] );
  
-*/ 
-  
-   ?>
+$natures=HomeController::natures( );
+//dd($natures );
+$Natures=array();
+foreach($natures as $nature)
+{
+	$Natures[$nature->nature_lot]=$nature->libelle;
+}
+ 
+?>
+<style>
+/*#div0,#div1,#div2,#div3{max-height:300px;}*/
+</style>
 <b>{{__('msg.welcome to your saamp page')}}</b><br>
 
 <br>
@@ -23,7 +33,7 @@ $user_type=$user->user_type;
 	<div class="row">
 
                         <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
+                        <div class="col-lg-9 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -40,8 +50,34 @@ $user_type=$user->user_type;
 										<h6 class="m-0 font-weight-bold text-dark">{{__('msg.In Progress')}}</h6>
 									</a>
                                 </div>
-                                <div id="div0" class="card-body">
-                                     
+                                <div id="div0" class="card-body collapse">
+        <table   class="table table-striped mb-40"  style="width:100%">
+            <thead>
+            <tr id="headtable">
+                <th class="text-center">{{__('msg.Date')}}</th>
+                <th class="text-center">{{__('msg.Qty')}}</th>
+                <th class="text-center">{{__('msg.Weight')}}</th>
+                <th class="text-center">{{__('msg.Labour cost')}}</th>
+                <th class="text-center">{{__('msg.Type')}}</th>
+               </tr>
+            </thead>
+            <tbody>
+            @foreach($commandes as $cmd)                                     
+			<?php 
+			$etat=(strtoupper($cmd->etat));
+			if($etat=='ENCOURS' ||$etat=='EN COURS'  ){ ?>	
+			<tr>
+				<td class="text-center"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></td>	
+				<td class="text-center"><?php echo $cmd->qte; ?></td>	
+				<td class="text-center"><?php echo $cmd->poids; ?>g</td>	
+				<td class="text-center"><?php if($cmd->facon>0){echo $cmd->facon.' €';} ?></td>	
+				<td class="text-center"><?php echo $cmd->type_cmde; ?></td>	
+			</tr>	
+			<?php }  ?>	
+			@endforeach
+			</tbody>
+			</table>
+									 
                                 </div>
 								
 								
@@ -50,17 +86,41 @@ $user_type=$user->user_type;
 										<h6 class="m-0 font-weight-bold text-dark">{{__('msg.Finished')}}</h6>
 									</a>
                                 </div>
-                                <div id="div1" class="card-body">
-                                     
+                                <div id="div1" class="card-body collapse">
+   
+        <table   class="table table-striped mb-40"  style="width:100%">
+            <thead>
+            <tr id="headtable">
+                <th class="text-center">{{__('msg.Date')}}</th>
+                <th class="text-center">{{__('msg.Qty')}}</th>
+                <th class="text-center">{{__('msg.Weight')}}</th>
+                <th class="text-center">{{__('msg.Labour cost')}}</th>
+                <th class="text-center">{{__('msg.Type')}}</th>
+               </tr>
+            </thead>
+            <tbody>
+            @foreach($commandes as $cmd)                                     
+			<?php 
+			$etat=(strtoupper($cmd->etat));
+			if($etat=='TERMINEE'    ){ ?>	
+			<tr>
+				<td class="text-center"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></td>	
+				<td class="text-center"><?php echo $cmd->qte; ?></td>	
+				<td class="text-center"><?php echo $cmd->poids; ?> g</td>	
+				<td class="text-center"><?php if($cmd->facon>0){echo $cmd->facon.' €';} ?></td>	
+				<td class="text-center"><?php echo $cmd->type_cmde; ?></td>	
+			</tr>	
+			<?php }  ?>	
+			@endforeach
+			</tbody>
+			</table>
+
+   
                                 </div>								
                             </div>
 
                        
-
-                        </div>
-
-                        <div class="col-lg-6 mb-4">
-
+					   
                              <div class="card shadow mb-4">
                                 <div class="  ">
                                     <a href="#div2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">								
@@ -85,12 +145,16 @@ $user_type=$user->user_type;
                                 </div>
                             </div>
 
+							
+
                         </div>
-						
-                       <div class="col-lg-6 mb-4">
 
-        
+                        <div class="col-lg-3 mb-4">
 
+
+							
+							
+							
                              <div class="card shadow mb-4">
                                 <div class=" ">
                                     <a href="#div4" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
@@ -108,6 +172,13 @@ $user_type=$user->user_type;
 								
                                 </div>
                             </div>
+							
+							
+							
+                        </div>
+						
+                       <div class="col-lg-6 mb-4">
+ 
 
                         </div>						
    </div>

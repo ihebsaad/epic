@@ -327,7 +327,7 @@ return [
             'Estimation'=>'Oszacowanie',                   
             'Validate'=>'Uprawomocnić',       
             'Validate order'=>'Potwierdź zamówienie',
-            'Labour'=>'Robocizna',
+            'Labour cost'=>'Robocizna',
             'View'=>'Zobacz',     
             'Go to cart'=>'Idź do wózka',    
 			'Confirm the order'=>'Potwierdzić zamówienie',				
@@ -380,7 +380,7 @@ return [
             'Required fields'=>'Wymagane pola',
             'Sequence number in my lists'=>'Numer kolejny zamówienia na mojej liście',              
             'Comment to report on transfers'=>'Komentarz do zgłoszenia transferów',             
-		
+			'Type'=>'Rodzaj',
 	 
 
  ];
