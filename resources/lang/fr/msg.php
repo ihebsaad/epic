@@ -266,6 +266,7 @@ return [
  	'Template name'=>'Nom du modèle',
  	'Service Type'=>'Type de prestation',
  	'Nature of jobs'=>'Nature de travaux',
+ 	'Nature'=>'Nature',
  	'Nature of products'=>'Nature des produits',
  	'Nature of the batch'=>'Nature du lot',
  	'Template'=>'Modèle',	

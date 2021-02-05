@@ -252,6 +252,7 @@ return [
  	'Template name'=>'Template name',
  	'Service Type'=>'Service Type',
  	'Nature of jobs'=>'Nature of jobs',
+ 	'Nature'=>'Nature',
  	'Nature of products'=>'Nature of products',
  	'Nature of the batch'=>'Nature of the batch',
  	'Template'=>'Template',

@@ -8,18 +8,19 @@ use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
 
  $commandes=HomeController::commandes_ac($user['client_id'] );
- $countc=count( $commandes);
- echo  $countc;
- $modeles=HomeController::modeles_ac($user['client_id'] );
+  $modeles=HomeController::modeles_ac($user['client_id'] );
  $euro=HomeController::compte_euro($user['client_id'] );
- //$poids=HomeController::compte_poids($user['client_id'] );
+ // $poids=HomeController::compte_poids($user['client_id'] );
  
-$natures=HomeController::natures( );
-//dd($natures );
-$Natures=array();
+  $natures=HomeController::natures2( );
+ $Natures=array();
+ $NaturesC=array();
 foreach($natures as $nature)
 {
-	$Natures[$nature->nature_lot]=$nature->libelle;
+	//if($nature->metier_CODE=='LAB'){
+	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
+	$NaturesC[$nature->nature_lot_ident]=$nature->nature_lot_commentaire;
+	//}
 }
  
 ?>
@@ -129,7 +130,34 @@ foreach($natures as $nature)
                                 </div>
                                 <div id="div2" class="card-body">
  
- 
+         <table   class="table table-striped mb-40"  style="width:100%">
+            <thead>
+            <tr id="headtable">
+                <th class="text-center">{{__('msg.Type')}}</th>
+                <th class="text-center">{{__('msg.Name')}}</th>
+                <th class="text-center"  >{{__('msg.Nature')}}</th>
+                <th class="text-center">{{__('msg.Weight')}}</th>
+                <th class="text-center"><small>{{__('msg.Gold')}}</small></th>
+                <th class="text-center"><small>{{__('msg.Silver')}}</small></th>
+                <th class="text-center"><small>{{__('msg.Platinum')}}</small></th>
+                <th class="text-center"><small>{{__('msg.Palladium')}}</small></th>
+               </tr>
+            </thead>
+            <tbody>
+            @foreach($modeles as $modele)                                     
+			<tr>
+				<td class="text-center"><small><?php echo  $modele->metier ; ?></small></td>	
+				<td class="text-center"><small><?php echo $modele->nom; ?></small></td>	
+ 				<td class="text-center"><small><?php   echo $Natures[$modele->nature]; ?></small></td>	
+ 				<td class="text-center"><small><?php echo  $modele->poids.'g' ; ?></small></td>	
+ 				<td class="text-center"><small><?php if($modele->AU>0) {echo  $modele->AU.'g';} ?></small></td>	
+ 				<td class="text-center"><small><?php if($modele->AG>0) {echo  $modele->AG.'g';} ?></small></td>	
+ 				<td class="text-center"><small><?php if($modele->PT>0) {echo  $modele->PT.'g';} ?></small></td>	
+ 				<td class="text-center"><small><?php if($modele->PD>0) {echo  $modele->PD.'g';} ?></small></td>	
+			</tr>	
+ 			@endforeach
+			</tbody>
+			</table> 
                                 </div>
                             </div>
 
