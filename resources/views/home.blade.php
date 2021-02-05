@@ -172,14 +172,14 @@ foreach($natures as $nature)
         <table   class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
-                <th class="text-center;" style="font-size: 13px;">{{__('msg.Date')}}</th>
-                <th class="text-center;" style="font-size: 13px;">{{__('msg.Piece')}}</th>
-                <th class="text-center:" style="font-size: 13px;">{{__('msg.Label')}}</th>
-                <th class="text-center;" style="font-size: 13px;">Lettrage</th>
-				<th class="text-center;" style="font-size: 13px;">Echéance</th>	
-                <th class="text-center;" style="font-size: 13px;">{{__('msg.Debit')}}</th>
-                <th class="text-center;" style="font-size: 13px;">{{__('msg.Credit')}}</th>
-                <th class="text-center;" style="font-size: 13px;">{{__('msg.Balance')}}</th>
+                <th class="text-center;" style="text-align:center;font-size: 13px;">{{__('msg.Date')}}</th>
+                <th class="text-center;" style="text-align:center;font-size: 13px;">{{__('msg.Piece')}}</th>
+                <th class="text-center:" style="text-align:center;font-size: 13px;">{{__('msg.Label')}}</th>
+                <th class="text-center;" style="text-align:center;font-size: 13px;">Lettrage</th>
+				<th class="text-center;" style="text-align:center;font-size: 13px;">Echéance</th>	
+                <th class="text-center;" style="text-align:center;font-size: 13px;">{{__('msg.Debit')}}</th>
+                <th class="text-center;" style="text-align:center;font-size: 13px;">{{__('msg.Credit')}}</th>
+                <th class="text-center;" style="text-align:center;font-size: 13px;">{{__('msg.Balance')}}</th>
                </tr>
             </thead>
             <tbody>
@@ -187,14 +187,14 @@ foreach($natures as $nature)
 			<tr style="font-size:12px;">
 			<?php if($euro->solde >= 0){$style="color:#54ba1d";}else{$style="color:#d03132";} ?>
 			
-				<td class="text-center" style=""><small><?php echo  date('d/m/Y', strtotime($euro->ecrit_date)); ?></small></td>	
-				<td class="text-center"><small><?php echo $euro->num_piece; ?></small></td>	
-				<td class="text-center" style=""><small ><?php echo $euro->libelle; ?></small></td>	
-				<td class="text-center;"><small><?php echo $euro->lettrage; ?></small></td>				
-				<td class="text-center" style=""><small><?php echo date('d/m/Y', strtotime($euro->echeance)); ?></small></td>	
-				<td class="text-center"><small><?php if($euro->debit > 0){ echo $euro->debit.'€'; }?></small></td>	
-				<td class="text-center"><small><?php  if($euro->credit > 0){ echo $euro->credit.'€';} ?></small></td>	
-				<td class="text-center" style="<?php echo $style; ?>"><small><?php echo $euro->solde.'€'; ?></small></td>	
+				<td class="text-center" style="text-align:center;"><small><?php echo  date('d/m/Y', strtotime($euro->ecrit_date)); ?></small></td>	
+				<td class="text-center" style="text-align:center;"><small><?php echo $euro->num_piece; ?></small></td>	
+				<td class="text-center" style="text-align:center;"><small ><?php echo $euro->libelle; ?></small></td>	
+				<td class="text-center;" style="text-align:center;"><small><?php echo $euro->lettrage; ?></small></td>				
+				<td class="text-center" style="text-align:center;"><small><?php echo date('d/m/Y', strtotime($euro->echeance)); ?></small></td>	
+				<td class="text-center" style="text-align:center;"><small><?php if($euro->debit > 0){ echo $euro->debit.'€'; }?></small></td>	
+				<td class="text-center" style="text-align:center;"><small><?php  if($euro->credit > 0){ echo $euro->credit.'€';} ?></small></td>	
+				<td class="text-center" style="text-align:center;<?php echo $style; ?>"><small><?php echo $euro->solde.'€'; ?></small></td>	
 			</tr>	
  			@endforeach
 			</tbody>
@@ -221,11 +221,17 @@ foreach($natures as $nature)
 								<style>
 								.metal{height:50px;padding-top:15px;margin-bottom:10px;color:white;}
 								</style>
-                                <div id="div4" class="card-body">
-									<div style="width:150px;" class="metal text-center bg-gradient-warning"> OR </div>
-									<div style="width:125px; " class="metal text-center bg-gradient-light"> ARGENT </div>
-									<div style="width:80px;" class="metal text-center bg-gradient-secondary"> PLATINE </div>
-									<div style="width:100px;" class="metal text-center bg-gray-500"> PALLADIUM </div>
+                                 <div id="div4" class="card-body"> 
+								 <?php
+								 if($poids->solde_au >= 0){$style1="color:#54ba1d";}else{$style1="color:#d03132";}
+								 if($poids->solde_ag >= 0){$style2="color:#54ba1d";}else{$style2="color:#d03132";} 
+								 if($poids->solde_pt >= 0){$style3="color:#54ba1d";}else{$style3="color:#d03132";}   
+								 if($poids->solde_pd >= 0){$style4="color:#54ba1d";}else{$style4="color:#d03132";}  
+								 ?>
+									<div style="width:120px;" class="metal text-center bg-gradient-warning"> OR </div> <b style="<?php echo $style1;?>"><?php echo  poids->solde_au; ?> g</b>
+									<div style="width:120px; " class="metal text-center bg-gradient-light"> ARGENT </div> <b style="<?php echo $style2;?>"><?php echo  poids->solde_ag; ?> g</b>
+									<div style="width:120px;" class="metal text-center bg-gradient-secondary"> PLATINE </div> <b style="<?php echo $style3;?>"><?php echo  poids->solde_pt; ?> g</b>
+									<div style="width:120px;" class="metal text-center bg-gray-500"> PALLADIUM </div> <b style="<?php echo $style4;?>"><?php echo  poids->solde_pd; ?> g</b>
 								
                                 </div>
                             </div>
