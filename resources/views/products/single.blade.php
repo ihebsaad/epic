@@ -576,7 +576,7 @@ function checkproduct()
 		function addproduct (){
 			var _token = $('input[name="_token"]').val();
 	        var alliage = parseInt(  $('#alliage_id').val()) ;
-	        var libelle = $('#Content').text() ;
+	        var libelle = $('#title').text() ;
 			var qte = parseFloat($('#qte').val());
 			var unite =  $('#unite').val() ;
 			var article =  $('#article').val() ;
