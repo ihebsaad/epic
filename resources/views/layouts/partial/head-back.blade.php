@@ -103,10 +103,16 @@
  
 <script>
  if(parseInt(window.screen.availWidth) < 1024 ) 
- { alert('mobile');
-	 $('#sidebarToggleTop').trigger('click');
+ { //alert('mobile');
+	// $('#sidebarToggleTop').trigger('click');
+	
+    $("body").toggleClass("sidebar-toggled");
+    $(".sidebar").toggleClass("toggled");
+    if ($(".sidebar").hasClass("toggled")) {
+      $('.sidebar .collapse').collapse('hide');
+    };	
  }else{
-	 alert('desktop');
+	// alert('desktop');
  }
   /*  $(document).ready(function(){
 
