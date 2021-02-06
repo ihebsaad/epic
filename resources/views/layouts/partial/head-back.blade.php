@@ -102,23 +102,32 @@
 
  
 <script>
- if(parseInt(window.screen.availWidth) < 1024 ) 
+/* if(parseInt(window.screen.availWidth) < 1024 ) 
  { //alert('mobile');
 	// $('#sidebarToggleTop').trigger('click');
-	//  $("#sidebarToggleTop").trigger('click');
-    $("#sidebarToggleTop").trigger('touchstart');
-	/*
+	
  //   $("body").toggleClass("sidebar-toggled");
     $("body").addClass("sidebar-toggled");
  //   $(".sidebar").toggleClass("toggled");
     $(".sidebar").addClass("toggled");
- 	*/
+ 	
  }else{
 	// alert('desktop');
  }
-  /*  $(document).ready(function(){
-
-	});*/
+ */
+  $(document).ready(function(){
+ if(parseInt(window.screen.availWidth) < 1024 ) 
+ {   
+ // $('#sidebarToggleTop').trigger('click');
+ $("body").toggleClass("sidebar-toggled");
+  //  $("body").addClass("sidebar-toggled");
+ $(".sidebar").toggleClass("toggled");
+  //  $(".sidebar").addClass("toggled");
+ 	
+ }else{
+	 
+  }
+	}); 
 </script>
  
   <!-- Custom fonts for this template-->
