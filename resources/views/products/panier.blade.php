@@ -11,6 +11,7 @@
  $alliages=HomeController::referentielalliage();			  
   
 $order = DB::table('orders')->where('status','cart')->where('user',$user->id)->first();
+dd($order);
 if ($order!=null){
  $orderid=$order->id;
 $amount=$order->amount   ;
@@ -22,8 +23,7 @@ $palladium=$order->palladium   ;
 $platine=$order->platine   ;
 	
  $products= DB::table('products')->where('orderid',$orderid)->orderBy('id','asc')->get();
- dd($products);
- $pieces=count( $products);
+  $pieces=count( $products);
 }else{
 $orderid=0;
 $amount=0;
