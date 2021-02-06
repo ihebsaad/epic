@@ -52,6 +52,10 @@ td,th{
 	padding-right:5px!important; 
 }
 
+.sidebar .sidebar-brand .sidebar-brand-text img {
+   width:70px!important; 
+}
+
 #field-confirmation {
 	font-size:13px;
 }
@@ -66,6 +70,10 @@ td,th{
 @media (min-width: 481px) and (max-width: 767px) {
   
 .hidemobile{display:none!important;}  
+
+.sidebar .sidebar-brand .sidebar-brand-text img {
+   width:60px!important; 
+}
 
 td,th{
 	padding-left:3px!important;
@@ -85,6 +93,9 @@ td,th{
 td,th{
 	padding-left:3px!important;
 	padding-right:3px!important; 
+}
+.sidebar .sidebar-brand .sidebar-brand-text img {
+   width:50px!important; 
 }
   
 }
