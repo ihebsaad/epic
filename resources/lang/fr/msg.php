@@ -252,6 +252,7 @@ return [
  	'Total weight'=>'Poids total ',
  	'PURE METALS'=>'MÉTAUX FINS',
  	'Item'=>'Article',
+ 	'Items'=>'Articles',
  	'Qty'=>'Qté',
  	'Weight'=>'Poids',
 	'My order'=>'Ma commande',

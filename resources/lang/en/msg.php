@@ -238,6 +238,7 @@ return [
  	'Total weight'=>'Total weight',
  	'PURE METALS'=>'PURE METALS',
  	'Item'=>'Item',
+ 	'Items'=>'Items',
  	'Qty'=>'Qty',
  	'Weight'=>'Weight',
  	'Product details'=>'Product details',
