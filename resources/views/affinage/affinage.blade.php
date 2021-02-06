@@ -49,9 +49,9 @@ foreach($natures as $nature)
             <thead>
             <tr id="headtable">
                 <th style="width:15%">{{__('msg.Name')}}</th>
-                <th style="width:20%">{{__('msg.Nature of the batch')}}</th>
-                 <th style="width:25%">{{__('msg.Metals')}}</th>
-                <th style="width:25%;font-size:12px;padding-right:5px;;padding-bottom:15px">{{__('msg.To prepare in my presence')}}</th>
+                <th style="width:20%"  >{{__('msg.Nature of the batch')}}</th>
+                 <th style="width:25%" class="hidemobile">{{__('msg.Metals')}}</th>
+                <th style="width:25%;font-size:12px;padding-right:5px;;padding-bottom:15px" class="hidemobile">{{__('msg.To prepare in my presence')}}</th>
                </tr>
             </thead>
             <tbody>
@@ -61,7 +61,7 @@ foreach($natures as $nature)
                  <td style="font-size:12px;">
 				 <?php echo $Natures[$modele->nature_lot_ident]; ?>
                  </td>
-                 <td style="font-size:12px;">
+                 <td style="font-size:12px;" class="hidemobile">
 				<span><?php echo $modele->poids;?> g</span> 
                 <?php $w1=0; if ($modele->or > 0){ $w1=intval($modele->or / 10 ) ;?>
                 <span class="mr-10 btn text-center text-white bg-gradient-warning   btn-sm" style="width:<?php echo $w1;?>px;max-width:100px!important" >
@@ -83,7 +83,7 @@ foreach($natures as $nature)
                  <?php }   ?>    
                 </td>
 
-				<td style="font-size:12px;text-align:center"><?php if($modele->assiste){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
+				<td style="font-size:12px;text-align:center" class="hidemobile"><?php if($modele->assiste){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
  				</tr>
 			@endforeach
             </tbody>

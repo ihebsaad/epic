@@ -63,9 +63,9 @@ select{
             <tr id="headtable">
                 <th style="width:15%">{{__('msg.Name')}}</th>
                  <th style="width:17%">{{__('msg.Nature of the batch')}}</th>
-                 <th style="width:22%">{{__('msg.Metals')}}</th>
-                <th style="width:7%; ;padding-right:5px;">{{__('msg.Deposit')}}</th>				 
-				<th style="width:15%;font-size:10px;padding-right:5px;padding-bottom:15px">{{__('msg.Melting in my presence')}}</th>
+                 <th style="width:22%" class="hidemobile">{{__('msg.Metals')}}</th>
+                <th style="width:7%; ;padding-right:5px;" class="hidemobile">{{__('msg.Deposit')}}</th>				 
+				<th style="width:15%;font-size:10px;padding-right:5px;padding-bottom:15px" class="hidemobile">{{__('msg.Melting in my presence')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,7 +73,7 @@ select{
 				<tr>
 				<td style="font-size:14px;"><a href="<?php echo URL("viewmodelermp/".$modele->modele_rmp);?>"><?php echo $modele->nom; ?></a></td>
 				<td style="font-size:12px;"><?php echo $Natures[$modele->nature_lot_ident];?></td>
-                 <td style="font-size:12px;">
+                 <td style="font-size:12px;" class="hidemobile">
 				<?php echo $modele->poids;?> g  
                 <?php $w1=0; if ($modele->or > 0){ $w1=intval($modele->or / 10 ) ;?>
                 <span class="mr-10 btn text-center text-white bg-gradient-warning   btn-sm" style="width:<?php echo $w1;?>px;max-width:100px!important" >
@@ -94,8 +94,8 @@ select{
                  </span>
                  <?php }   ?>    
                 </td>
-				<td style=" text-align:center"><?php if($modele->acompte){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
-				<td style=" text-align:center"><?php if($modele->assiste){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
+				<td style=" text-align:center" class="hidemobile"><?php if($modele->acompte){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
+				<td style=" text-align:center" class="hidemobile"><?php if($modele->assiste){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
 				
 				<!--<td style="font-size:13px;">  										
 			    <small><select     style="background-color:transparent;border:none;color:black; "  > 

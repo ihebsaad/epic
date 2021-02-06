@@ -57,8 +57,8 @@ foreach($natures as $nature)
                 <th class="text-center">{{__('msg.Date')}}</th>
                 <th class="text-center">{{__('msg.Qty')}}</th>
                 <th class="text-center">{{__('msg.Weight')}}</th>
-                <th class="text-center">{{__('msg.Labour cost')}}</th>
-                <th class="text-center">{{__('msg.Type')}}</th>
+                <th class="text-center hidemobile">{{__('msg.Labour cost')}}</th>
+                <th class="text-center hidemobile">{{__('msg.Type')}}</th>
                </tr>
             </thead>
             <tbody>
@@ -70,8 +70,8 @@ foreach($natures as $nature)
 				<td class="text-center"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></td>	
 				<td class="text-center"><?php echo $cmd->qte; ?></td>	
 				<td class="text-center"><?php echo $cmd->poids; ?>g</td>	
-				<td class="text-center"><?php if($cmd->facon>0){echo $cmd->facon.'€';} ?></td>	
-				<td class="text-center"><?php echo $cmd->type_cmde; ?></td>	
+				<td class="text-center  hidemobile"><?php if($cmd->facon>0){echo $cmd->facon.'€';} ?></td>	
+				<td class="text-center  hidemobile"><?php echo $cmd->type_cmde; ?></td>	
 			</tr>	
 			<?php }  ?>	
 			@endforeach
@@ -94,8 +94,8 @@ foreach($natures as $nature)
                 <th class="text-center">{{__('msg.Date')}}</th>
                 <th class="text-center">{{__('msg.Qty')}}</th>
                 <th class="text-center">{{__('msg.Weight')}}</th>
-                <th class="text-center">{{__('msg.Labour cost')}}</th>
-                <th class="text-center">{{__('msg.Type')}}</th>
+                <th class="text-center hidemobile">{{__('msg.Labour cost')}}</th>
+                <th class="text-center hidemobile">{{__('msg.Type')}}</th>
                </tr>
             </thead>
             <tbody>
@@ -107,8 +107,8 @@ foreach($natures as $nature)
 				<td class="text-center"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></td>	
 				<td class="text-center"><?php echo $cmd->qte; ?></td>	
 				<td class="text-center"><?php echo $cmd->poids; ?> g</td>	
-				<td class="text-center"><?php if($cmd->facon>0){echo $cmd->facon.' €';} ?></td>	
-				<td class="text-center"><?php echo $cmd->type_cmde; ?></td>	
+				<td class="text-center  hidemobile"><?php if($cmd->facon>0){echo $cmd->facon.' €';} ?></td>	
+				<td class="text-center  hidemobile"><?php echo $cmd->type_cmde; ?></td>	
 			</tr>	
 			<?php }  ?>	
 			@endforeach
@@ -134,12 +134,12 @@ foreach($natures as $nature)
             <tr id="headtable">
                 <th class="text-center" style="font-size: 13px;">{{__('msg.Type')}}</th>
                 <th class="text-center" style="font-size: 13px;">{{__('msg.Name')}}</th>
-                <th class="text-center" style="font-size: 13px;" >{{__('msg.Nature')}}</th>
+                <th class="text-center  hidemobile" style="font-size: 13px;" >{{__('msg.Nature')}}</th>
                 <th class="text-center" style="font-size: 13px;">{{__('msg.Weight')}}</th>
-                <th class="text-center"><small>{{__('msg.Gold')}}</small></th>
-                <th class="text-center"><small>{{__('msg.Silver')}}</small></th>
-                <th class="text-center"><small>{{__('msg.Platinum')}}</small></th>
-                <th class="text-center"><small>{{__('msg.Palladium')}}</small></th>
+                <th class="text-center  hidemobile"><small>{{__('msg.Gold')}}</small></th>
+                <th class="text-center  hidemobile"><small>{{__('msg.Silver')}}</small></th>
+                <th class="text-center  hidemobile"><small>{{__('msg.Platinum')}}</small></th>
+                <th class="text-center  hidemobile"><small>{{__('msg.Palladium')}}</small></th>
                </tr>
             </thead>
             <tbody>
@@ -147,12 +147,12 @@ foreach($natures as $nature)
 			<tr>
 				<td class="text-center"><small><?php echo  $modele->metier ; ?></small></td>	
 				<td class="text-center"><small><?php echo $modele->nom; ?></small></td>	
- 				<td class="text-center"><small><?php echo $Natures[$modele->nature]; ?></small></td>	
+ 				<td class="text-center hidemobile"><small><?php echo $Natures[$modele->nature]; ?></small></td>	
  				<td class="text-center"><small><?php echo  $modele->poids.'g' ; ?></small></td>	
- 				<td class="text-center"><small><?php if($modele->AU>0) {echo  $modele->AU.'g';} ?></small></td>	
- 				<td class="text-center"><small><?php if($modele->AG>0) {echo  $modele->AG.'g';} ?></small></td>	
- 				<td class="text-center"><small><?php if($modele->PT>0) {echo  $modele->PT.'g';} ?></small></td>	
- 				<td class="text-center"><small><?php if($modele->PD>0) {echo  $modele->PD.'g';} ?></small></td>	
+ 				<td class="text-center hidemobile"><small><?php if($modele->AU>0) {echo  $modele->AU.'g';} ?></small></td>	
+ 				<td class="text-center hidemobile"><small><?php if($modele->AG>0) {echo  $modele->AG.'g';} ?></small></td>	
+ 				<td class="text-center hidemobile"><small><?php if($modele->PT>0) {echo  $modele->PT.'g';} ?></small></td>	
+ 				<td class="text-center hidemobile"><small><?php if($modele->PD>0) {echo  $modele->PD.'g';} ?></small></td>	
 			</tr>	
  			@endforeach
 			</tbody>
@@ -171,14 +171,14 @@ foreach($natures as $nature)
         <table   class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
-                <th class="text-center;" style="text-align:center;font-size: 13px;">{{__('msg.Date')}}</th>
-                <th class="text-center;" style="text-align:center;font-size: 13px;">{{__('msg.Piece')}}</th>
-                <th class="text-center:" style="text-align:center;font-size: 13px;">{{__('msg.Label')}}</th>
-                <th class="text-center;" style="text-align:center;font-size: 13px;">Lettrage</th>
-				<th class="text-center;" style="text-align:center;font-size: 13px;">Echéance</th>	
-                <th class="text-center;" style="text-align:center;font-size: 13px;">{{__('msg.Debit')}}</th>
-                <th class="text-center;" style="text-align:center;font-size: 13px;">{{__('msg.Credit')}}</th>
-                <th class="text-center;" style="text-align:center;font-size: 13px;">{{__('msg.Balance')}}</th>
+                <th class="text-center " style="text-align:center;font-size: 13px;">{{__('msg.Date')}}</th>
+                <th class="text-center   hidemobile" style="text-align:center;font-size: 13px;">{{__('msg.Piece')}}</th>
+                <th class="text-center " style="text-align:center;font-size: 13px;">{{__('msg.Label')}}</th>
+                <th class="text-center  hidemobile" style="text-align:center;font-size: 13px;">Lettrage</th>
+				<th class="text-center " style="text-align:center;font-size: 13px;">Echéance</th>	
+                <th class="text-center  hidemobile" style="text-align:center;font-size: 13px;">{{__('msg.Debit')}}</th>
+                <th class="text-center  hidemobile" style="text-align:center;font-size: 13px;">{{__('msg.Credit')}}</th>
+                <th class="text-center " style="text-align:center;font-size: 13px;">{{__('msg.Balance')}}</th>
                </tr>
             </thead>
             <tbody>
@@ -187,12 +187,12 @@ foreach($natures as $nature)
 			<?php if($euro->solde >= 0){$style="color:#54ba1d";}else{$style="color:#d03132";} ?>
 			
 				<td class="text-center" style="text-align:center;"><small><?php echo  date('d/m/Y', strtotime($euro->ecrit_date)); ?></small></td>	
-				<td class="text-center" style="text-align:center;"><small><?php echo $euro->num_piece; ?></small></td>	
+				<td class="text-center  hidemobile" style="text-align:center;"><small><?php echo $euro->num_piece; ?></small></td>	
 				<td class="text-center" style="text-align:center;"><small ><?php echo $euro->libelle; ?></small></td>	
-				<td class="text-center;" style="text-align:center;"><small><?php echo $euro->lettrage; ?></small></td>				
+				<td class="text-center  hidemobile" style="text-align:center;"><small><?php echo $euro->lettrage; ?></small></td>				
 				<td class="text-center" style="text-align:center;"><small><?php echo date('d/m/Y', strtotime($euro->echeance)); ?></small></td>	
-				<td class="text-center" style="text-align:center;"><small><?php if($euro->debit > 0){ echo $euro->debit.'€'; }?></small></td>	
-				<td class="text-center" style="text-align:center;"><small><?php  if($euro->credit > 0){ echo $euro->credit.'€';} ?></small></td>	
+				<td class="text-center  hidemobile" style="text-align:center;"><small><?php if($euro->debit > 0){ echo $euro->debit.'€'; }?></small></td>	
+				<td class="text-center  hidemobile" style="text-align:center;"><small><?php  if($euro->credit > 0){ echo $euro->credit.'€';} ?></small></td>	
 				<td class="text-center" style="text-align:center;<?php echo $style; ?>"><small><?php echo $euro->solde.'€'; ?></small></td>	
 			</tr>	
  			@endforeach
