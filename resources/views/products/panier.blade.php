@@ -22,6 +22,7 @@ $palladium=$order->palladium   ;
 $platine=$order->platine   ;
 	
  $products= DB::table('products')->where('orderid',$orderid)->orderBy('id','asc')->get();
+ dd($products)
  $pieces=count( $products);
 }else{
 $orderid=0;
