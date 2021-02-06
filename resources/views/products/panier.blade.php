@@ -11,8 +11,7 @@
  $alliages=HomeController::referentielalliage();			  
   
 $order = DB::table('orders')->where('status','cart')->where('user',$user->id)->first();
-dd($order);
-if ($order!=null){
+ if ($order!=null){
  $orderid=$order->id;
 $amount=$order->amount   ;
 $comp_amount=$order->comp_amount   ;
