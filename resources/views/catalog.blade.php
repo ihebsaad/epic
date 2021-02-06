@@ -83,7 +83,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
     <div class="row pt-4">
 
             <!-- Sidebar -->
-            <div class="col-lg-3    ">
+            <div class="col-lg-3  mb-20  ">
 				
 
                 <div class="">

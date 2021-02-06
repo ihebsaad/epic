@@ -167,7 +167,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 				
 				<div class="col-xs-12 col-sm-6 "  >
 				
-		                     	<button value="order" name="order"    type="submit"   class="pull-right btn btn-primary btn-icon-split  mt-10 mb-20">
+		                     	<button value="order" name="order"    type="submit"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-10 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
