@@ -48,8 +48,8 @@
   .hidemobile{display:none!important;}
   
 td,th{
-	padding-left:3px!important;
-	padding-right:3px!important; 
+	padding-left:5px!important;
+	padding-right:5px!important; 
 }
 
 #field-confirmation {

@@ -134,10 +134,10 @@ $metal=intval($mv->metal_id);
             <thead>
             <tr id="headtable">
                 <th style="text-align:center;width:15%">{{__('msg.Date')}}</th>
-                <th style="text-align:center;width:15%">{{__('msg.Piece')}}</th>
+                <th style="text-align:center;width:15%" class="hidemobile">{{__('msg.Piece')}}</th>
                  <th style="text-align:center;width:15%">{{__('msg.Label')}}</th>
-                <th style="text-align:center;width:15%;">{{__('msg.Debit')}}</th>
-                <th style="text-align:center;width:15%;">{{__('msg.Credit')}}</th>
+                <th style="text-align:center;width:15%;" class="hidemobile">{{__('msg.Debit')}}</th>
+                <th style="text-align:center;width:15%;" class="hidemobile">{{__('msg.Credit')}}</th>
                 <th style="text-align:center;width:15%;">{{__('msg.Balance')}}</th>
                </tr>
             </thead>
@@ -146,10 +146,10 @@ $metal=intval($mv->metal_id);
 			<?php if($virement->solde >= 0){$style="color:#54ba1d";}else{$style="color:#d03132";} ?>
 				<tr>
 				<td style=" text-align:center "><?php echo date('d/m/Y', strtotime( $virement->ecriture_date )) ;?></td>						
-				<td style=" text-align:center "><?php echo $virement->num_piece  ;?></td>						
+				<td style=" text-align:center " class="hidemobile"><?php echo $virement->num_piece  ;?></td>						
 				<td style=" text-align:center "><?php echo $virement->libelle  ;?></td>						
-				<td style=" text-align:center "><?php if($virement->debit > 0){echo $virement->debit.'g';}?></td>						
-				<td style=" text-align:center "><?php if($virement->credit > 0){echo $virement->credit.'g';}  ;?></td>						
+				<td style=" text-align:center " class="hidemobile"><?php if($virement->debit > 0){echo $virement->debit.'g';}?></td>						
+				<td style=" text-align:center " class="hidemobile"><?php if($virement->credit > 0){echo $virement->credit.'g';}  ;?></td>						
 				<td class="font-weight-bold" style="<?php echo $style;?> ;text-align:center "><?php echo $virement->solde. 'g'; ?></td>						
 
 				</tr>				
@@ -175,13 +175,13 @@ $metal=intval($mv->metal_id);
             <tr id="headtable">
                 <th style="text-align:center;width:7%;">{{__('msg.Date')}}</th>
                 <th style="text-align:center;width:7%;">{{__('msg.Weight')}}</th>
-                <th style="text-align:center;width:7%;">{{__('msg.Metal')}}</th>
-                <th style="text-align:center;width:10%;">{{__('msg.Name')}}</th>
-                <th style="text-align:center;width:10%">{{__('msg.In')}}</th>
-                <th style="text-align:center;width:10%;">{{__('msg.City')}}</th>								
-                 <th style="text-align:center;width:10%;font-size:13px">{{__('msg.Account num')}}</th>
-                <th style="text-align:center;width:13%;">{{__('msg.Comment')}}</th>				 
-                <th style="text-align:center;width:10%;">{{__('msg.State')}}</th>
+                <th style="text-align:center;width:7%;"  >{{__('msg.Metal')}}</th>
+                <th style="text-align:center;width:10%; " class="hidemobile">{{__('msg.Name')}}</th>
+                <th style="text-align:center;width:10%" class="hidemobile">{{__('msg.In')}}</th>
+                <th style="text-align:center;width:10%;" class="hidemobile">{{__('msg.City')}}</th>								
+                 <th style="text-align:center;width:10%;font-size:13px" class="hidemobile">{{__('msg.Account num')}}</th>
+                <th style="text-align:center;width:13%;" class="hidemobile">{{__('msg.Comment')}}</th>				 
+                <th style="text-align:center;width:10%;"  >{{__('msg.State')}}</th>
                </tr>
             </thead>
             <tbody>
@@ -191,11 +191,11 @@ $metal=intval($mv->metal_id);
 				<td style=" text-align:center "><?php echo  date('d/m/Y', strtotime( $mv->datevir ))  ;?></td>	
 				<td style=" text-align:center "><?php echo  $mv->poids   ;?>g</td>	
 				<td style=" text-align:center "><?php echo  $mv->metal   ;?></td>	
-				<td style=" text-align:center "><?php echo $mv->nom  ;?></td>	
-				<td style=" text-align:center "><?php echo   $mv->etablissement   ;?></td>						
-				<td style=" text-align:center "><?php echo $mv->ville.' <small>('. $mv->pays.')</small>'  ;?></td>				
-				<td style=" text-align:center "><?php echo $mv->compte  ;?></td>						
-				<td class="   "><?php echo $mv->commentaire  ;?></td>	
+				<td style=" text-align:center " class="hidemobile"><?php echo $mv->nom  ;?></td>	
+				<td style=" text-align:center " class="hidemobile"><?php echo   $mv->etablissement   ;?></td>						
+				<td style=" text-align:center " class="hidemobile"><?php echo $mv->ville.' <small>('. $mv->pays.')</small>'  ;?></td>				
+				<td style=" text-align:center " class="hidemobile"><?php echo $mv->compte  ;?></td>						
+				<td class="hidemobile"><?php echo $mv->commentaire  ;?></td>	
 				<td style=" text-align:center;<?php echo $style;?> "><?php echo $mv->etat  ;?></td>						
 				
 
@@ -217,12 +217,12 @@ $metal=intval($mv->metal_id);
 		  <table id="mytable" class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
-                <th style="text-align:center;width:6%;">{{__('msg.Ranking')}}</th>
+                <th style="text-align:center;width:6%;" class="hidemobile">{{__('msg.Ranking')}}</th>
                 <th style="text-align:center;width:15%;">{{__('msg.Name')}}</th>
                 <th style="text-align:center;width:10%;">{{__('msg.City')}}</th>				
-                <th style="text-align:center;width:15%">{{__('msg.In')}}</th>
-                 <th style="text-align:center;width:14%;">{{__('msg.Account num')}}</th>
-                <th style="text-align:center;width:18%;">{{__('msg.Comment')}}</th>				 
+                <th style="text-align:center;width:15%" class="hidemobile">{{__('msg.In')}}</th>
+                 <th style="text-align:center;width:14%;" class="hidemobile">{{__('msg.Account num')}}</th>
+                <th style="text-align:center;width:18%;" class="hidemobile">{{__('msg.Comment')}}</th>				 
                 <th style="text-align:center;width:12%;">{{__('msg.State')}}</th>
                </tr>
             </thead>
@@ -230,12 +230,12 @@ $metal=intval($mv->metal_id);
             @foreach($beneficiaires as $ben)
  				<tr>
 				<?php if(trim($ben->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
-				<td style=" text-align:center "><?php echo  $ben->bene_cl_ident   ;?></td>	
+				<td style=" text-align:center " class="hidemobile"><?php echo  $ben->bene_cl_ident   ;?></td>	
 				<td style=" text-align:center "><?php echo $ben->Nom  ;?></td>						
 				<td style=" text-align:center "><?php echo $ben->Ville  ;?></td>				
-				<td style=" text-align:center "><?php echo $et[$ben->etablissement_ident]  ;?></td>						
-				<td style=" text-align:center "><?php echo $ben->compte  ;?></td>						
-				<td class="   "><?php echo $ben->commentaire  ;?></td>	
+				<td style=" text-align:center " class="hidemobile"><?php echo $et[$ben->etablissement_ident]  ;?></td>						
+				<td style=" text-align:center " class="hidemobile"><?php echo $ben->compte  ;?></td>						
+				<td class="hidemobile"><?php echo $ben->commentaire  ;?></td>	
 				<td style=" text-align:center;<?php echo $style;?> "><?php echo $ben->etat  ;?></td>						
 				
 

@@ -61,7 +61,7 @@ foreach($natures as $nature)
             <tr id="headtable">
                 <th style="width:12%">{{__('msg.Name')}}</th>
                  <th style="width:10%">{{__('msg.Sample')}}</th>
-                 <th style="width:12%">{{__('msg.Requested works')}}</th>
+                 <th style="width:12%" class="hidemobile">{{__('msg.Requested works')}}</th>
                  <th style="width:5%; ">{{__('msg.Quantity')}}</th>
                  <th style="width:15%" class="hidemobile">{{__('msg.Metals')}}</th>
                </tr>
@@ -71,7 +71,7 @@ foreach($natures as $nature)
   <tr>
 				<td style="font-size:14px"><a href="<?php echo URL("viewmodelelab/".$modele->id);?>"><?php echo $modele->nom; ?></a></td>
 				<td style="font-size:12px"><?php echo $Natures[$modele->nature_id];?></td>
- 				<td style="font-size:12px"><?php echo $PrestLibs[$modele->type_lab_ident];?></td>
+ 				<td style="font-size:12px" class="hidemobile"><?php echo $PrestLibs[$modele->type_lab_ident];?></td>
  				<td class="text-center"><?php echo $modele->qte;?></td>
  				<td style="font-size:12px" class="hidemobile"><?php echo $modele->poids;?> g 
 				<?php $w1=0; if ($modele->or > 0){ $w1=intval($modele->or / 10 ) ;?>
