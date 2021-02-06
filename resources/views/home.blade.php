@@ -170,7 +170,7 @@ foreach($natures as $nature)
 
         <table   class="table table-striped mb-40"  style="width:100%">
             <thead>
-            <tr id="headtable">
+            <tr id="eurotable">
                 <th class="text-center " style="text-align:center;font-size: 13px;">{{__('msg.Date')}}</th>
                 <th class="text-center   hidemobile" style="text-align:center;font-size: 13px;">{{__('msg.Piece')}}</th>
                 <th class="text-center " style="text-align:center;font-size: 13px;">{{__('msg.Label')}}</th>
@@ -227,10 +227,10 @@ foreach($natures as $nature)
 								 if($poids[0]->solde_pt >= 0){$style3="color:#54ba1d";}else{$style3="color:#d03132";}   
 								 if($poids[0]->solde_pd >= 0){$style4="color:#54ba1d";}else{$style4="color:#d03132";}  
 								  ?>
-									<div class="row"><div class="col-md-6 col-xs-12"><div style="width:80px;" class="metal text-center bg-gradient-warning"> {{__('msg.Gold')}} </div> </div><div class="col-md-6 col-xs-12 mt-10"><b style="<?php echo $style1;?>"><?php echo  $poids[0]->solde_au; ?> g</b></div></div>
-									<div class="row"><div class="col-md-6 col-xs-12"><div style="width:80px; " class="metal text-center bg-gradient-light"> {{__('msg.Silver')}} </div></div><div class="col-md-6 col-xs-12 mt-10"> <b style="<?php echo $style2;?>"><?php echo  $poids[0]->solde_ag; ?> g</b></div></div>
-									<div class="row"><div class="col-md-6 col-xs-12"><div style="width:80px;" class="metal text-center bg-gradient-secondary"> {{__('msg.Platinum')}} </div></div><div class="col-md-6 col-xs-12 mt-10"> <b style="<?php echo $style3;?>"><?php echo  $poids[0]->solde_pt; ?> g</b></div></div>
-									<div class="row"><div class="col-md-6 col-xs-12"><div style="width:80px;" class="metal text-center bg-gray-500"> {{__('msg.Palladium')}} </div> </div><div class="col-md-6 col-xs-12 mt-10"><b style="<?php echo $style4;?>"><?php echo  $poids[0]->solde_pd; ?> g</b></div></div>
+									<div class="row"><div class="col-md-6 col-xs-6"><div style="width:80px;" class="metal text-center bg-gradient-warning"> {{__('msg.Gold')}} </div> </div><div class="col-md-6 col-xs-6 mt-10"><b style="<?php echo $style1;?>"><?php echo  $poids[0]->solde_au; ?> g</b></div></div>
+									<div class="row"><div class="col-md-6 col-xs-6"><div style="width:80px; " class="metal text-center bg-gradient-light"> {{__('msg.Silver')}} </div></div><div class="col-md-6 col-xs-6 mt-10"> <b style="<?php echo $style2;?>"><?php echo  $poids[0]->solde_ag; ?> g</b></div></div>
+									<div class="row"><div class="col-md-6 col-xs-6"><div style="width:80px;" class="metal text-center bg-gradient-secondary"> {{__('msg.Platinum')}} </div></div><div class="col-md-6 col-xs-6 mt-10"> <b style="<?php echo $style3;?>"><?php echo  $poids[0]->solde_pt; ?> g</b></div></div>
+									<div class="row"><div class="col-md-6 col-xs-6"><div style="width:80px;" class="metal text-center bg-gray-500"> {{__('msg.Palladium')}} </div> </div><div class="col-md-6 col-xs-6 mt-10"><b style="<?php echo $style4;?>"><?php echo  $poids[0]->solde_pd; ?> g</b></div></div>
 								
                                 </div>
                             </div>

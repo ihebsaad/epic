@@ -45,11 +45,17 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  .hidemobile{display:none!important;}  
+  .hidemobile{display:none!important;}
+  
+td,th{
+	padding-left:3px!important;
+	padding-right:3px!important; 
+}
 
 #field-confirmation {
 	font-size:13px;
 }
+ 
 }
 
 /* 
@@ -60,6 +66,12 @@
 @media (min-width: 481px) and (max-width: 767px) {
   
 .hidemobile{display:none!important;}  
+
+td,th{
+	padding-left:3px!important;
+	padding-right:3px!important; 
+}
+
 }
 
 /* 
@@ -70,6 +82,9 @@
 @media (min-width: 320px) and (max-width: 480px) {
   
 .hidemobile{display:none!important;}  
-
+td,th{
+	padding-left:3px!important;
+	padding-right:3px!important; 
+}
   
 }
