@@ -136,6 +136,10 @@
 
   <!-- Custom styles for this template-->
   <link  href="{{ asset('public/sbadmin/css/sb-admin-2.css') }}"    rel="stylesheet">
+  
+    <!-- Responsive-->
+  <link  href="{{ asset('public/css/responsive.css') }}"    rel="stylesheet">
+  
  <script src="{{ URL::asset('public/sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
  <!-- Core plugin JavaScript -->
  <script src="{{ URL::asset('public/sbadmin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
