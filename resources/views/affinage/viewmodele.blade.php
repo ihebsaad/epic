@@ -32,7 +32,7 @@ $count= $count_aff + $count_lab + $count_rmp;
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
     <li class="breadcrumb-item"><a href="{{route('affinage')}}">{{__('msg.Industrial refining')}}</a></li>
-    <li class="breadcrumb-item"><a href="#">{{__('msg.Model')}} <?php echo $modele->modele_nom; ?></a></li>
+    <li class="breadcrumb-item"><a href="#">{{__('msg.Template')}} <?php echo $modele->modele_nom; ?></a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->

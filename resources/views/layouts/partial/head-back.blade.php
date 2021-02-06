@@ -103,8 +103,10 @@
  
 <script>
  if(parseInt(window.screen.availWidth) < 1024 ) 
- {
+ { alert('mobile');
 	 $('#sidebarToggleTop').trigger('click');
+ }else{
+	 alert('desktop');
  }
   /*  $(document).ready(function(){
 
