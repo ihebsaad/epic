@@ -55,7 +55,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 									 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:130px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of the batch')}}: </label>
- 											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" name="nature_lot_ident" required style="width:350px" >
+ 											<select id="nature" class="form-control" data-toggle="tooltip" data-placement="bottom" name="nature_lot_ident" required style="max-width:350px" >
 											<option></option>
 												<?php foreach($natures as $nature)
 												{ 
@@ -96,7 +96,7 @@ $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 											<label style="width:130px" for="">
 											{{__('msg.Hedge')}}:
  											</label>
-											  <select  class="form-control" name="choix_couv_ident" id="choix_couv_ident" style="width:300px" required onchange="check2()" > 
+											  <select  class="form-control" name="choix_couv_ident" id="choix_couv_ident" style="max-width:300px" required onchange="check2()" > 
 											  <option></option>
 											<?php  foreach( $covers as $cover)
 											  {

@@ -52,14 +52,14 @@ $count= $count_aff + $count_lab + $count_rmp;
 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Name')}}: </label>
-									 	 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  style="width:350px"  required />
+									 	 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>"  style="max-width:350px"  required />
 											  
  									   
 									 </div>	
 									 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of the batch')}}: </label>
-										 	<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" onchange="tooltip();check();" style="width:350px"  required  >
+										 	<select id="nature_lot_ident"  name="nature_lot_ident" class="form-control" onchange="tooltip();check();" style="max-width:350px"  required  >
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  

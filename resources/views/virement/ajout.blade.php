@@ -61,7 +61,7 @@ $et=array();
                 <div class="row mb-10">
 				 <div class="col-md-3">{{__('msg.Beneficiary')}}:</div>
 				 <div class="col-md-8">
-				 <select class="form-control"    required name="beneficiaire"  id="beneficiaire"  onchange="tooltip();check()" style="font-size:12px;width:350px"  >
+				 <select class="form-control"    required name="beneficiaire"  id="beneficiaire"  onchange="tooltip();check()" style="font-size:12px;max-width:350px"  >
 				 <option value=""></option>
 				 <?php foreach($beneficiaires as $ben){
 					 if($ben->etat=='validé'){
@@ -77,7 +77,7 @@ $et=array();
 
 				 </div>
 				</div><div class="row mb-10">
-                <div class="col-md-3">{{__('msg.Metal')}}:</div><div class="col-md-8"> <select class="form-control" style="width:170px" required name="metal" id="metal"  onchange="check()"  >
+                <div class="col-md-3">{{__('msg.Metal')}}:</div><div class="col-md-8"> <select class="form-control" style="max-width:170px" required name="metal" id="metal"  onchange="check()"  >
                 <option value="" ></option> 
                 <?php foreach($metals as $metal)
                 { if($metal->metal_ident<9){
@@ -95,15 +95,15 @@ $et=array();
                 </div><div class="row mb-10">
 				<div class="col-md-3">{{__('msg.Comment')}}:</div><div class="col-md-8"> <textarea class="form-control" cols="20" rows="2"   name="commentaire" id="commentaire" onchange="check()"  ></textarea></div>
 				</div> 
-                <input  id="submit" type="button" name="next" class="next action-button" value="{{__('msg.Next')}}" disabled style="float:right"/> 
+				<a   class="action-button-previous" href="{{route('virement')}}" style="float:left;text-align:center">{{__('msg.Cancel')}}</a>                <input  id="submit" type="button" name="next" class="next action-button" value="{{__('msg.Next')}}" disabled style="float:right"/> 
              </fieldset>
-            <fieldset style="width:80%">
+            <fieldset style="width:80%;font-size:12px;" id="field-confirmation">
                 <h2 class="fs-title text-center">{{__('msg.Confirmation')}}</h2>
                 <h3 class="fs-subtitle"> </h3>
-					<span class="text-primary">{{__('msg.Beneficiary')}}:</span> <span class="infos mb-10" id="infos-beneficiaire"></span><br>
-					<span class="text-primary">{{__('msg.Metal')}}:</span><span class="infos mb-10" id="infos-metal"></span><span class="text-primary">{{__('msg.Weight')}}:</span><span class="infos mb-10" id="infos-weight"></span><br>
-					<span class="text-primary">{{__('msg.Date')}}:</span><span class="infos mb-10" id="infos-date"></span><br>
-					<span class="text-primary">{{__('msg.Comment')}}:</span><span class="infos mb-30" id="infos-commentaire"></span><br><br><br>
+					<div class="row mb-10"><div class="col-lg-12"><span class="text-primary">{{__('msg.Beneficiary')}}:</span> <span class="infos mb-10" id="infos-beneficiaire"></span></div></div>
+					<div class="row mb-10"><div class="col-lg-4 col-xs-12"><span class="text-primary">{{__('msg.Metal')}}:</span><span class="infos mb-10" id="infos-metal"></span></div><div class="col-lg-4 col-xs-12"><span class="text-primary">{{__('msg.Weight')}}:</span><span class="infos mb-10" id="infos-weight"></span></div></div>
+					<div class="row mb-10"><div class="col-lg-12"><span class="text-primary">{{__('msg.Date')}}:</span><span class="infos mb-10" id="infos-date"></span></div></div>
+					<div class="row mb-10"><div class="col-lg-12"><span class="text-primary">{{__('msg.Comment')}}:</span><span class="infos mb-30" id="infos-commentaire"></span></div></div><br>
  			   <input type="button" name="previous" class="previous action-button-previous" value="{{__('msg.Previous')}}"/>
                 <input type="submit" name="submit" class="submit action-button" value="{{__('msg.Confirm')}}"  style="float:right"/>
              </fieldset>
@@ -115,6 +115,9 @@ $et=array();
 
 
 <style>
+.action-button-previous:hover {
+  text-decoration: none;
+}
 .infos{padding:20px 20px 20px 20px;font-weight:bold; }
  :disabled{opacity:0.3;}
 /*custom font*/

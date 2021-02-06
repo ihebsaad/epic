@@ -102,7 +102,10 @@
 
  
 <script>
-
+ if(parseInt(window.screen.availWidth) < 1024 ) 
+ {
+	 $('#sidebarToggleTop').trigger('click');
+ }
   /*  $(document).ready(function(){
 
 	});*/

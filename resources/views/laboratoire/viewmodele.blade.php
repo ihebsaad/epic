@@ -71,7 +71,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Name')}}: </label>
 									 
-											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>" style="width:350px" onchange="prix()"  required/>
+											 <input  class="form-control"  id="modele_nom"  name="modele_nom"  type="text"   value="<?php echo $modele->modele_nom; ?>" style="max-width:350px" onchange="prix()"  required/>
 											  
  									   
 									 </div>	
@@ -79,7 +79,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                                    <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Service Type')}}: </label>
 									 
-											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" onchange="types();prix()" style="width:350px"  required />
+											<select id="choix_lab_ident"  name="choix_lab_ident" class="form-control" data-toggle="tooltip" data-placement="bottom" onchange="types();prix()" style="max-width:350px"  required />
 											<option></option>
 												<?php $i=0; foreach($PrestTypes as $key => $val)
 												{ $i++; 
@@ -94,7 +94,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                                       <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of jobs')}}: </label>
 										 
-											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" style="width:350px"  onchange="prix()" required />
+											<select id="type_lab_ident"  name="type_lab_ident" class="form-control" style="max-width:350px"  onchange="prix()" required />
 											<option></option>
 												<?php $i=0; foreach($PrestLibs   as $key => $val)
 												{ $i++; 
@@ -109,7 +109,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of products')}}: </label>
 										 
-											<select   id="nature_lot_ident"  name="nature_lot_ident" class="form-control" style="width:350px" onchange="tooltip();prix()" required />
+											<select   id="nature_lot_ident"  name="nature_lot_ident" class="form-control" style="max-width:350px" onchange="tooltip();prix()" required />
 											<option></option>
 												<?php foreach($Natures as $key => $val)
 												{  
@@ -123,17 +123,17 @@ $count= $count_aff + $count_lab + $count_rmp;
 									
                                       <div class="row pl-20 pr-20 mb-10">
 										<div class="col-lg-4">
-											<label >{{__('msg.Quantity')}}: </label>
+											<label style="width:70px" >{{__('msg.Quantity')}}:</label>
  											 <input  class="form-control"   id="qte" name="qte"  type="number" step="1" min="1" style="width:120px" value="1"  required  value="<?php echo $modele->qte;?>" onchange="prix()" />
 										 </div>
   
 										<div class="col-lg-4">
-											<label>{{__('msg.Weight')}}   </label>
+											<label style="width:70px">{{__('msg.Weight')}}:</label>
 									        <input  class="form-control"   id="poids" name="poids"  type="number" step="0.01" min="0" style="width:120px"  required  value="<?php echo $modele->poids;?>" onchange="prix()"     /> g
 
 										</div>
 									  <div class="col-lg-4">
-											<label>{{__('msg.Value')}}: </label>
+											<label style="width:70px">{{__('msg.Value')}}:</label>
 										     <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:120px"  value="<?php echo $modele->valeur;?>"  onchange="prix()"    />
 
 									   </div>

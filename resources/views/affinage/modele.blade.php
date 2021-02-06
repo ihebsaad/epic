@@ -40,14 +40,14 @@ foreach($natures as $nature)
 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Name')}}: </label>
-										 	 <input  class="form-control"  id="nom"  type="text" required name="modele_nom" style="width:350px" />
+										 	 <input  class="form-control"  id="nom"  type="text" required name="modele_nom" style="max-width:350px" />
 											  
  									   
 									 </div>	
 									 
                                      <div class="row pl-20 pr-20 mb-10">
  											<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Nature of the batch')}}: </label>
- 											<select id="nature" class="form-control"  onchange="check()" name="nature_lot_ident" required style="width:350px" />
+ 											<select id="nature" class="form-control"  onchange="check()" name="nature_lot_ident" required style="max-width:350px" />
 											<option></option>
 												<?php foreach($natures as $nature)
 												{  
