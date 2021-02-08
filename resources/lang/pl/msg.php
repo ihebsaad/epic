@@ -382,6 +382,8 @@ return [
             'Sequence number in my lists'=>'Numer kolejny zamówienia na mojej liście',              
             'Comment to report on transfers'=>'Komentarz do zgłoszenia transferów',             
 			'Type'=>'Rodzaj',
+			'Complete list'=>'Pełna lista',
+			'More details'=>'Więcej szczegółów',			
 	 
 
  ];

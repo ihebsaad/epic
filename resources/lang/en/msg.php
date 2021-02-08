@@ -387,5 +387,7 @@ return [
 	'Sequence number in my lists'=>'Sequence number in my lists',		
 	'Comment to report on transfers'=>'Comment to report on transfers',		
 	'Type'=>'Type',
+	'Complete list'=>'Complete list',
+	'More details'=>'More details',
  	
  ];
