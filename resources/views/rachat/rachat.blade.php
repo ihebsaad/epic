@@ -161,7 +161,7 @@ select{
 			
  			</div>	
 			<div class="col-md-4">
-			<small><a href="<?php echo URL("commande/".$commande->id);?>">{{__('msg.More details')}}</a></small>
+			<small><a href="<?php echo URL("commandermp/".$commande->id);?>">{{__('msg.More details')}}</a></small>
 			</div>	
 			</div>
 			<hr>								
@@ -194,7 +194,7 @@ select{
 			
  			</div>	
 			<div class="col-md-4">
-			<small><a href="<?php echo URL("commande/".$commande->id);?>">{{__('msg.More details')}}</a></small>
+			<small><a href="<?php echo URL("commandermp/".$commande->id);?>">{{__('msg.More details')}}</a></small>
 			</div>	
 			</div>
 			<hr>	

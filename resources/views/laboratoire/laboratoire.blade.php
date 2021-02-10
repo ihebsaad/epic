@@ -142,7 +142,7 @@ foreach($natures as $nature)
 			
  			</div>	
 			<div class="col-md-4">
-			<small><a href="<?php echo URL("commande/".$commande->cmde_lab_ident);?>">{{__('msg.More details')}}</a></small>
+			<small><a href="<?php echo URL("commandelab/".$commande->cmde_lab_ident);?>">{{__('msg.More details')}}</a></small>
 			</div>	
 			</div>
 			<hr>									
@@ -176,7 +176,7 @@ foreach($natures as $nature)
 			
  			</div>	
 			<div class="col-md-4">
-			<small><a href="<?php echo URL("commande/".$commande->cmde_lab_ident);?>">{{__('msg.More details')}}</a></small>
+			<small><a href="<?php echo URL("commandelab/".$commande->cmde_lab_ident);?>">{{__('msg.More details')}}</a></small>
 			</div>	
 			</div>
 			<hr>
