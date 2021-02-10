@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
  
  $beneficiaires=DB::table('beneficiaire')->where('cl_ident',$user['client_id'])->orderBy('bene_cl_ident')->get();
+ $beneficiaire=DB::table('beneficiaire')->where('bene_ident',$id)->first();
  $etablissements=DB::table('etablissement')->get();
 $et=array(); 
   foreach( $etablissements as $e)
@@ -23,53 +24,73 @@ $et=array();
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
     <li class="breadcrumb-item"><a href="{{route('virement')}}">{{__('msg.Metal transfer')}}</a></li>
-    <li class="breadcrumb-item"><a href="{{route('beneficiaires')}}">{{__('msg.List of beneficiaries')}}</a></li>
+    <li class="breadcrumb-item"><a href="#">{{__('msg.Beneficiary')}}</a></li>
 	</ol>
  </nav>
 						<div class="row">
 
                         <!-- Content Column -->
-                        <div class="col-lg-9 mb-4">
+                        <div class="col-lg-10 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.List of beneficiaries')}}</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Beneficiary')}}</h6>
                                 </div>
                             <div class="card-body">
 							
-							 
-					 	
-								
-		  <table id="mytable" class="table table-striped mb-40"  style="width:100%">
-            <thead>
-            <tr id="headtable">
-                <th style="text-align:center;width:8%">Num</th>
-                <th style="text-align:center;width:15%">{{__('msg.Bank of metal')}}</th>
-                 <th style="text-align:center;width:15%">{{__('msg.Account')}}</th>
-                <th style="text-align:center;width:15%;">{{__('msg.Name')}}</th>
-                <th style="text-align:center;width:10%;">{{__('msg.City')}}</th>
-                <th style="text-align:center;width:10%;">{{__('msg.State')}}</th>
-                <th style="text-align:center;width:20%;">{{__('msg.Comment')}}</th>
-               </tr>
-            </thead>
-            <tbody>
-            @foreach($beneficiaires as $ben)
- 				<tr>
-				<?php if(trim($ben->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
-				<td style=" text-align:center "><?php echo  $ben->bene_cl_ident   ;?></td>						
-				<td style=" text-align:center "><?php echo $et[$ben->etablissement_ident]  ;?></td>						
-				<td style=" text-align:center "><?php echo $ben->compte  ;?></td>						
-				<td style=" text-align:center "><?php echo $ben->Nom  ;?></td>						
-				<td style=" text-align:center "><?php echo $ben->Ville  ;?></td>						
-				<td style=" text-align:center;<?php echo $style;?> "><?php echo $ben->etat  ;?></td>						
-				<td class="   "><?php echo $ben->commentaire  ;?></td>						
+						<!--	  <a   class="btn btn-md btn-success mb-10" style="width:210px"    href="#"  data-toggle="modal" data-target="#addModal" ><b><i class="fas fa-plus"></i>  {{__('msg.Add a beneficiary')}}</b></a>-->
 
-				</tr>				
-			@endforeach
-            </tbody>
-			</table>			
-								
+
+	   <form method="post" action="{{ route('updatebenif') }}"    >
+		 {{ csrf_field() }}
+		 <input type="hidden" name="id" value="<?php echo $id; ?>" />
+<div class="row mb-10">
+<div class="col-md-4">{{__('msg.Sequence number in my lists')}}</div><div class="col-md-8"><input readonly class="form-control" type="number" step="1" min="0" name="bene_cl_ident" value="<?php echo  $beneficiaire->bene_cl_ident; ?>" max="20" style="width:80px"  name="ordre" /></div>
+</div>
+<div class="row mb-10">
+<div class="col-md-4">{{__('msg.Bank of metal')}}</div><div class="col-md-8"><select readonly class="form-control"  style="width:250px"  name="etabliss" required>
+<option value=""></option>
+<?php foreach ($etablissements as $etab)
+{ if($beneficiaire->etablissement_ident==$etab->etablissement_ident){$selected='selected="selected"';}else{$selected='';}
+echo '<option   '.$selected.' value="'.$etab->etablissement_ident.'">'.$etab->etablissement_nom .' | '.$etab->etablissement_pays.'</option>	';
+}
+?>
+</select>
+</div>
+</div>
+<div class="row mb-10">
+<div class="col-md-4">{{__('msg.Account number')}}</div><div class="col-md-8"><input class="form-control" type="text"  style="width:250px" name="compte" value="<?php echo  $beneficiaire->compte; ?>" /></div>
+</div>
+<div class="row mb-10">
+<div class="col-md-4">{{__('msg.Name')}} </div><div class="col-md-8"><input readonly class="form-control" type="text"  style="width:250px" name="nom" required value="<?php echo  $beneficiaire->Nom; ?>" /></div>
+</div>
+<div class="row mb-10">
+<div class="col-md-4">{{__('msg.City')}} </div><div class="col-md-8"><input class="form-control" type="text"  style="width:250px" name="ville" required  value="<?php echo  $beneficiaire->Ville; ?>" /></div>
+</div>
+<div class="row mb-10">
+<div class="col-md-4">{{__('msg.Comment to report on transfers')}}</div><div class="col-md-8"><textarea  class="form-control" style="width:250px" rows="3" name="commentaire" ><?php echo  $beneficiaire->commentaire; ?></textarea></div>
+</div>
+
+ 					 	      <div class="row " style=" ">
+				 	      <div class="col-xs-12 col-md-4 " style=" ">
+						  </div>
+				 	      <div class="col-xs-12 col-md-8 " style=" ">
+								<button  name="update" value="update"  type="submit"  class="pull-right btn btn-success btn-icon-split     mt-10 mb-20">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-save"></i>
+                                        </span>
+                                        <span class="text" >{{__('msg.Update')}}</span>
+                                    </button>
+                                </div>	
+ 			
+									 
+</form>									 
+						  </div>				 	
+ 			
+						
+
+						
                             </div><!--card body-->
 							
 							
@@ -79,25 +100,7 @@ $et=array();
 
                         </div>
 
-                     <div class="col-lg-3 mb-4">
-
-                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Links')}}</h6>
-                                </div>
-                                <div class="card-body">
-							  <a   class="btn btn-md btn-primary mb-10" style="width:210px"   href="{{route('virement')}}" ><b><i class="fas fa-coins"></i>   {{__('msg.Metal transfer')}}</b></a>
-							  <a   class="btn btn-md btn-success mb-10" style="width:210px"    href="{{route('ajout')}} " ><b><i class="fas fa-plus"></i>  {{__('msg.Add a transfer')}}</b></a>
-							  <a   class="btn btn-md btn-success mb-10" style="width:210px"    href="#"  data-toggle="modal" data-target="#addModal" ><b><i class="fas fa-plus"></i>  {{__('msg.Add a beneficiary')}}</b></a>
-
-
-									
-                                </div>
-                            </div>
-
-               
-
-                        </div> 
+      
                     </div>
 					
 					

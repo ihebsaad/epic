@@ -231,7 +231,7 @@ $metal=intval($mv->metal_id);
  				<tr>
 				<?php if(trim($ben->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
 				<td style=" text-align:center " class="hidemobile"><?php echo  $ben->bene_cl_ident   ;?></td>	
-				<td style=" text-align:center "><?php echo $ben->Nom  ;?></td>						
+				<td style=" text-align:center "><a href="<?php echo URL("beneficiaire/".$ben->bene_ident);?>"><?php echo $ben->Nom  ;?></a></td>						
 				<td style=" text-align:center "><?php echo $ben->Ville  ;?></td>				
 				<td style=" text-align:center " class="hidemobile"><?php echo $et[$ben->etablissement_ident]  ;?></td>						
 				<td style=" text-align:center " class="hidemobile"><?php echo $ben->compte  ;?></td>						

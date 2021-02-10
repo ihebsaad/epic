@@ -510,6 +510,27 @@ class ProductsController extends Controller
     }
 	
 	
+	  public function updatebenif(Request $request)
+    {
+        $id= $request->get('id');
+        $compte= $request->get('compte') ;
+        $ville= $request->get('ville') ;
+         $commentaire= $request->get('commentaire') ;
+      //   $bene_cl_ident= $request->get('bene_cl_ident') ;
+        
+		
+		DB::table('beneficiaire')->where('bene_ident', $id)->update(array(
+	//	'bene_cl_ident' => $bene_cl_ident,
+		'compte' => $compte,
+		'Ville' => $ville,
+		'commentaire' => $commentaire
+		
+		));
+		 
+	    return redirect('/beneficiaire/'.$id)->with('success', ' modifié avec succès');
+
+		
+    }
 	
  public function updating(Request $request)
     {

@@ -102,6 +102,11 @@ class PagesController extends Controller
          return view('virement.ajout',[ ]);
     }
 
+	 public function beneficiaire($id )
+    { 
+         return view('virement.beneficiaire',['id'=>$id ]);
+    }
+	
 	 public function beneficiaires( )
     { 
          return view('virement.beneficiaires',[ ]);
