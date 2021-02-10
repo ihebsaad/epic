@@ -11,9 +11,11 @@
     </title>
 	
 <style>
+#headtable{background-color:#e6d685;color:white;text-shadow:1px 1px lightgrey;} 
+.table{color:black!important;}
 .btn-primary{background-color:#e29d09;}
 .brn-success{background-color:#0054f3;}
-#headtable th{color:black;}
+/*#headtable th{color:black;}*/
 
  .form-control {display:inline!important;}
 .select2-container--default .select2-selection--single {    

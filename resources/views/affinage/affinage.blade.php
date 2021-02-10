@@ -121,28 +121,20 @@ foreach($natures as $nature)
 								<?php $i++;
 								if ($i <6){    
 								if ($commande->etat!='Passée'){   ?>
-								<div class="row pb-10">
 								
-								<div class="col-md-6">
-								{{__('msg.Date')}} :<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
-								</div>
-								<div class="col-md-6">
-								{{__('msg.Total weight')}} : <b><?php echo $commande->poids  ;?>g</b>
-								</div>								
 								
-								</div>
-								
-								<div class="row pb-15" >
-								
-								<div class="col-md-6">
-								{{__('msg.order')}} : <b><a href="<?php echo URL("commande/".$commande->cmde_aff);?>"><?php echo   $commande->cmde_aff ;?></a></b><br>																
-								</div>
-								<div class="col-md-6">
-								
-								</div>								
-								
-								</div>								
-								<hr>
+			<span style="color:lightgrey;font-weight:bold;"><?php echo  date('d/m/Y', strtotime($commande->date)); ?></span>
+			<div class="row pb-10 pl-30">
+			<div class="col-md-8" style="border-left:2px solid #e6d685">
+			<b style="color:black;">{{__('msg.order')}}:</b>  <?php echo $commande->cmde_aff; ?><div class="clearfix"></div>
+ 			<b style="color:black;">{{__('msg.Weight')}}:</b>  <?php echo $commande->poids; ?> g<div class="clearfix"></div>
+ 			</div>	
+			<div class="col-md-4">
+			<small><a href="<?php echo URL("commande/".$commande->cmde_aff);?>">{{__('msg.More details')}}</a></small>
+			</div>	
+			</div>
+			<hr>								
+							 
 								<?php } ?>
 								<?php } ?>
 								@endforeach
@@ -161,28 +153,17 @@ foreach($natures as $nature)
 								<?php $i++;
 								if ($i <6){    
 								if ($commande->etat=='Passée'){   ?>
-								<div class="row pb-10 ">
-								
-								<div class="col-md-6">
-								{{__('msg.Date')}} :<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
-								</div>
-								<div class="col-md-6">
-								{{__('msg.Total weight')}} : <b><?php echo $commande->poids  ;?>g</b>
-								</div>								
-								
-								</div>
-								
-								<div class="row pb-15">
-								
-								<div class="col-md-6">
-								{{__('msg.order')}} : <b><a href="<?php echo URL("commande/".$commande->cmde_aff);?>"><?php echo   $commande->cmde_aff ;?></a></b><br>																
-								</div>
-								<div class="col-md-6">
-								
-								</div>								
-								
-								</div>								
-								<hr>
+	<span style="color:lightgrey;font-weight:bold;"><?php echo  date('d/m/Y', strtotime($commande->date)); ?></span>
+			<div class="row pb-10 pl-30">
+			<div class="col-md-8" style="border-left:2px solid #e6d685">
+			<b style="color:black;">{{__('msg.order')}}:</b>  <?php echo $commande->cmde_aff; ?><div class="clearfix"></div>
+ 			<b style="color:black;">{{__('msg.Weight')}}:</b>  <?php echo $commande->poids; ?> g<div class="clearfix"></div>
+ 			</div>	
+			<div class="col-md-4">
+			<small><a href="<?php echo URL("commande/".$commande->cmde_aff);?>">{{__('msg.More details')}}</a></small>
+			</div>	
+			</div>
+			<hr>
 								<?php } ?>
 								<?php } ?>
 								@endforeach

@@ -130,28 +130,24 @@ foreach($natures as $nature)
 								<?php $i++;
 								if ($i <6){    
 								if ($commande->etat=='En cours'){   ?>
-								<div class="row pb-10">
 								
-								<div class="col-md-6">
-								{{__('msg.Date')}}:<br><b><?php echo  date('d/m/Y', strtotime($commande->cmde_lab_date ));?></b>
-								</div>
-								<div class="col-md-6">
-								{{__('msg.order')}}: <b><a href="<?php echo URL("commandelab/".$commande->cmde_lab_ident);?>"><?php echo   $commande->cmde_lab_ident ;?></a></b><br>															
-								</div>								
 								
-								</div>
 								
-								<div class="row pb-15" >
+	<span style="color:lightgrey;font-weight:bold;"><?php echo  date('d/m/Y', strtotime($commande->cmde_lab_date)); ?></span>
+			<div class="row pb-10 pl-30">
+			<div class="col-md-8" style="border-left:2px solid #e6d685">
+			<b style="color:black;">{{__('msg.order')}}:</b>  <?php echo $commande->cmde_lab_ident; ?><div class="clearfix"></div>
+			<b style="color:black;">{{__('msg.Qty')}}: </b><?php echo $commande->cmde_lab_qte  ;?> p <div class="clearfix"></div>								
+ 			<b style="color:black;">{{__('msg.Total weight')}}:</b>  <?php echo $commande->cmde_lab_poids; ?> g<div class="clearfix"></div>
+			
+ 			</div>	
+			<div class="col-md-4">
+			<small><a href="<?php echo URL("commande/".$commande->cmde_lab_ident);?>">{{__('msg.More details')}}</a></small>
+			</div>	
+			</div>
+			<hr>									
 								
-								<div class="col-md-6">
-								{{__('msg.Qty')}}: <b><?php echo  $commande->cmde_lab_qte ; ?>p</b>
-								</div>
-								<div class="col-md-6">								
-								{{__('msg.Total weight')}}: <b><?php echo $commande->cmde_lab_poids  ;?>g</b>
-								</div>								
-								
-								</div>								
-								<hr>
+ 
 								<?php } ?>
 								<?php } ?>
 								@endforeach
@@ -170,28 +166,21 @@ foreach($natures as $nature)
 								<?php $i++;
 								if ($i <6){    
 								if ($commande->etat=='Terminée'){   ?>
-								<div class="row pb-10">
-								
-								<div class="col-md-6">
-								{{__('msg.Date')}}:<br><b><?php echo  date('d/m/Y', strtotime($commande->cmde_lab_date ));?></b>
-								</div>
-								<div class="col-md-6">
-								{{__('msg.order')}}: <b><a href="<?php echo URL("commandelab/".$commande->cmde_lab_ident);?>"><?php echo   $commande->cmde_lab_ident ;?></a></b><br>															
-								</div>								
-								
-								</div>
-								
-								<div class="row pb-15" >
-								
-								<div class="col-md-6">
-								{{__('msg.Qty')}}: <b><?php echo  $commande->cmde_lab_qte ; ?>p</b>
-								</div>
-								<div class="col-md-6">								
-								{{__('msg.Total weight')}}: <b><?php echo $commande->cmde_lab_poids  ;?>g</b>
-								</div>								
-								
-								</div>								
-								<hr>
+
+	<span style="color:lightgrey;font-weight:bold;"><?php echo  date('d/m/Y', strtotime($commande->cmde_lab_date)); ?></span>
+			<div class="row pb-10 pl-30">
+			<div class="col-md-8" style="border-left:2px solid #e6d685">
+			<b style="color:black;">{{__('msg.order')}}:</b>  <?php echo $commande->cmde_lab_ident; ?><div class="clearfix"></div>
+			<b style="color:black;">{{__('msg.Qty')}}: </b><?php echo $commande->cmde_lab_qte  ;?> p <div class="clearfix"></div>								
+ 			<b style="color:black;">{{__('msg.Total weight')}}:</b>  <?php echo $commande->cmde_lab_poids; ?> g<div class="clearfix"></div>
+			
+ 			</div>	
+			<div class="col-md-4">
+			<small><a href="<?php echo URL("commande/".$commande->cmde_lab_ident);?>">{{__('msg.More details')}}</a></small>
+			</div>	
+			</div>
+			<hr>
+			
 								<?php } ?>
 								<?php } ?>
 								@endforeach

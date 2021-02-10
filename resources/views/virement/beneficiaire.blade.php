@@ -76,11 +76,11 @@ echo '<option   '.$selected.' value="'.$etab->etablissement_ident.'">'.$etab->et
 				 	      <div class="col-xs-12 col-md-4 " style=" ">
 						  </div>
 				 	      <div class="col-xs-12 col-md-8 " style=" ">
-								<button  name="update" value="update"  type="submit"  class="pull-right btn btn-success btn-icon-split     mt-10 mb-20">
+								<button  name="update" value="update"  type="submit"  class="pull-right btn btn-success btn-icon-split     mt-10 mb-20" >
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
-                                        <span class="text" >{{__('msg.Update')}}</span>
+                                        <span class="text"  style="width:120px">{{__('msg.Update')}}</span>
                                     </button>
                                 </div>	
  			

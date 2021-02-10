@@ -146,30 +146,27 @@ select{
 								
                                 @foreach($commandes as $commande)
 								<?php $i++;
-								if ($i <6){    
+								if ($i <5){    
 								if ($commande->etat!='Passée'){   ?>
-								<div class="row pb-10">
+		 
 								
-								<div class="col-md-6">
-								{{__('msg.Date')}}:<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
-								</div>
-								<div class="col-md-6">
-								{{__('msg.Total weight')}}: <b><?php echo $commande->poids  ;?>g</b>
-								</div>								
 								
-								</div>
 								
-								<div class="row pb-15" >
+	<span style="color:lightgrey;font-weight:bold;"><?php echo  date('d/m/Y', strtotime($commande->date)); ?></span>
+			<div class="row pb-10 pl-30">
+			<div class="col-md-8" style="border-left:2px solid #e6d685">
+			<b style="color:black;">{{__('msg.order')}}:</b>  <?php echo $commande->id; ?><div class="clearfix"></div>
+ 			<b style="color:black;">{{__('msg.Weight')}}:</b>  <?php echo $commande->poids; ?> g<div class="clearfix"></div>
+			<b style="color:black;">{{__('msg.Net value')}}: </b><?php echo $commande->valeur_nette  ;?>€ 								
+			
+ 			</div>	
+			<div class="col-md-4">
+			<small><a href="<?php echo URL("commande/".$commande->id);?>">{{__('msg.More details')}}</a></small>
+			</div>	
+			</div>
+			<hr>								
 								
-								<div class="col-md-6">
-								{{__('msg.order')}}: <b><a href="<?php echo URL("commandermp/".$commande->id);?>"><?php echo   $commande->id ;?></a></b><br>																
-								</div>
-								<div class="col-md-6">
-								{{__('msg.Net value')}}: <b><?php echo $commande->valeur_nette  ;?>€</b>								
-								</div>								
 								
-								</div>								
-								<hr>
 								<?php } ?>
 								<?php } ?>
 								@endforeach
@@ -186,31 +183,21 @@ select{
                                  <?php $i=0;?>    
                                 @foreach($commandes as $commande)
 								<?php $i++;
-								if ($i <6){    
+								if ($i <5){    
 								if ($commande->etat=='Passée'){   ?>
-								<div class="row pb-10 ">
-								
-								<div class="col-md-6">
-								{{__('msg.Date')}}:<br><b><?php echo  date('d/m/Y', strtotime($commande->date ));?></b>
-								</div>
-								<div class="col-md-6">
-								{{__('msg.Total weight')}}: <b><?php echo $commande->poids  ;?>g</b>
-								</div>								
-								
-								</div>
-								
-								<div class="row pb-15">
-								
-								<div class="col-md-6">
-								{{__('msg.order')}}: <b><a href="<?php echo URL("commandermp/".$commande->id);?>"><?php echo   $commande->id ;?></a></b><br>																
-								</div>
-								<div class="col-md-6">
-								{{__('msg.Net value')}}: <b><?php echo $commande->valeur_nette  ;?>€</b>
-								
-								</div>								
-								
-								</div>								
-								<hr>
+	<span style="color:lightgrey;font-weight:bold;"><?php echo  date('d/m/Y', strtotime($commande->date)); ?></span>
+			<div class="row pb-10 pl-30">
+			<div class="col-md-8" style="border-left:2px solid #e6d685">
+			<b style="color:black;">{{__('msg.order')}}:</b>  <?php echo $commande->id; ?><div class="clearfix"></div>
+ 			<b style="color:black;">{{__('msg.Weight')}}:</b>  <?php echo $commande->poids; ?> g<div class="clearfix"></div>
+			<b style="color:black;">{{__('msg.Net value')}}: </b><?php echo $commande->valeur_nette  ;?>€ 								
+			
+ 			</div>	
+			<div class="col-md-4">
+			<small><a href="<?php echo URL("commande/".$commande->id);?>">{{__('msg.More details')}}</a></small>
+			</div>	
+			</div>
+			<hr>	
 								<?php } ?>
 								<?php } ?>
 								@endforeach
