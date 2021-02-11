@@ -59,8 +59,8 @@ foreach($natures as $nature)
 			$i++;
 			if($i<4){
 			?>	
-			<span style="color:lightgrey;font-weight:bold;margin-bottom:3px"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
-			<div class="row   pl-30" style="padding-bottom:3px;;margin-top:-8px">
+			<span style="color:lightgrey;font-weight:bold;"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
+			<div class="row   pl-30" style="padding-bottom:3px;;margin-top:-4px">
 			<div class="col-md-4" style="border-left:2px solid #e6d685">
 			<b style="color:black;">{{__('msg.Type')}}:</b>  <?php echo $cmd->type_cmde; ?><div class="clearfix"></div>
 			<b style="color:black;">{{__('msg.Qty')}}:</b>  <?php echo $cmd->qte; ?>
@@ -104,7 +104,7 @@ foreach($natures as $nature)
 			if($i<4){
 			?>	
 			<span style="color:lightgrey;font-weight:bold;margin-bottom:3px"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
-			<div class="row   pl-30" style="padding-bottom:3px;margin-top:-8px">
+			<div class="row   pl-30" style="padding-bottom:3px;margin-top:-4px">
 			<div class="col-md-4" style="border-left:2px solid #e6d685">
 			<b style="color:black;">{{__('msg.Type')}}:</b>  <?php echo $cmd->type_cmde; ?><div class="clearfix"></div>
 			<b style="color:black;">{{__('msg.Qty')}}:</b>  <?php echo $cmd->qte; ?>
@@ -146,7 +146,7 @@ foreach($natures as $nature)
                                 <div id="div3" class="card-body  ">
 							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal4" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 							   
-<h2 class="pt-10 pb-10" style="text-align:center;font-weight:bold;color:black"><span style="letter-spacing:2px">{{__('msg.Balance')}}:</span> 1496.00 €</h2>
+<h2 class=" " style="text-align:center;font-weight:bold;color:black"><span style="letter-spacing:2px">{{__('msg.Balance')}}:</span> 1496.00 €</h2>
 			<div class="pl-40">	
 		 <?php $i=0;?>   
 	  @foreach($euros as $euro)  
