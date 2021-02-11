@@ -49,7 +49,7 @@ foreach($natures as $nature)
                                 </div>
                                 <div id="div0" class="card-body  ">
 								
-								<a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px"  href="#"  data-toggle="modal" data-target="#Modal1" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
+								<a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal1" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 								
 				<?php $i=0; ?>
 				@foreach($commandes as $cmd)                                     
@@ -59,7 +59,7 @@ foreach($natures as $nature)
 			$i++;
 			if($i<4){
 			?>	
-			<span style="color:lightgrey;font-weight:bold;;margin-top:-8px"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
+			<span style="color:lightgrey;font-weight:bold;margin-bottom:3px"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
 			<div class="row   pl-30" style="padding-bottom:3px;;margin-top:-8px">
 			<div class="col-md-4" style="border-left:2px solid #e6d685">
 			<b style="color:black;">{{__('msg.Type')}}:</b>  <?php echo $cmd->type_cmde; ?><div class="clearfix"></div>
@@ -94,7 +94,7 @@ foreach($natures as $nature)
 									</a>
                                 </div>
                                 <div id="div1" class="card-body  ">
-   								<a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px"  href="#"  data-toggle="modal" data-target="#Modal2" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
+   								<a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal2" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 
 				<?php $i=0; ?>
 				@foreach($commandes as $cmd)                                     
@@ -103,7 +103,7 @@ foreach($natures as $nature)
 			if($etat=='TERMINEE'    ){  $i++;
 			if($i<4){
 			?>	
-			<span style="color:lightgrey;font-weight:bold;margin-top:-8px"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
+			<span style="color:lightgrey;font-weight:bold;margin-bottom:3px"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
 			<div class="row   pl-30" style="padding-bottom:3px;margin-top:-8px">
 			<div class="col-md-4" style="border-left:2px solid #e6d685">
 			<b style="color:black;">{{__('msg.Type')}}:</b>  <?php echo $cmd->type_cmde; ?><div class="clearfix"></div>
@@ -144,7 +144,7 @@ foreach($natures as $nature)
 									</a>
                                 </div>
                                 <div id="div3" class="card-body  ">
-							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px"  href="#"  data-toggle="modal" data-target="#Modal4" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
+							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal4" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 							   
 <h2 class="pt-10 pb-10" style="text-align:center;font-weight:bold;color:black"><span style="letter-spacing:2px">{{__('msg.Balance')}}:</span> 1496.00 €</h2>
 			<div class="pl-40">	
@@ -154,7 +154,7 @@ foreach($natures as $nature)
 			<?php $i++;
 			if($euro->solde >= 0){$style="color:#54ba1d;";}else{$style="color:#d03132";} ?>
 			<?php if($i<4){?>							
-			<span style="color:lightgrey;font-weight:bold;"><?php echo  date('d/m/Y', strtotime($euro->ecrit_date)); ?></span>
+			<span style="color:lightgrey;font-weight:bold;margin-bottom:3px"><?php echo  date('d/m/Y', strtotime($euro->ecrit_date)); ?></span>
 			<div class="row pb-10 ">
 			<div class="col-md-4 pl-30" style="border-left:2px solid #e6d685">
 			<?php echo $euro->libelle; ?><div class="clearfix"></div>
@@ -186,7 +186,7 @@ foreach($natures as $nature)
 									</a>
                                 </div>
                                 <div id="div2" class="card-body ">
-							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px"  href="#"  data-toggle="modal" data-target="#Modal3" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
+							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal3" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 
 
 			<?php $i=0;?>
