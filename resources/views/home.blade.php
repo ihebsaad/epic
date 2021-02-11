@@ -54,7 +54,7 @@ foreach($natures as $nature)
                                 </div>
                                 <div id="div0" class="card-body  ">
 								
-								<a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal1" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
+								<a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px;border-radius:10px;"  href="#"  data-toggle="modal" data-target="#Modal1" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 								
 				<?php $i=0; ?>
 				@foreach($commandes as $cmd)                                     
@@ -99,7 +99,7 @@ foreach($natures as $nature)
 									</a>
                                 </div>
                                 <div id="div1" class="card-body  ">
-   								<a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal2" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
+   								<a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px;border-radius:10px;"  href="#"  data-toggle="modal" data-target="#Modal2" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 
 				<?php $i=0; ?>
 				@foreach($commandes as $cmd)                                     
@@ -149,7 +149,7 @@ foreach($natures as $nature)
 									</a>
                                 </div>
                                 <div id="div3" class="card-body  ">
-							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal4" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>	
+							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px;border-radius:10px;"  href="#"  data-toggle="modal" data-target="#Modal4" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>	
 		<?php	if(intval($solde_euro) >= 0){$style0="color:#54ba1d;";}else{$style0="color:#d03132";} ?>
 			
 <h2 class=" " style="text-align:center;font-weight:bold;color:black; margin-top:-15px;"><span style="letter-spacing:2px;">{{__('msg.Balance')}}:</span><b style="<?php echo $style0; ?>"> <?php echo $solde_euro; ?> €</b></h2>
@@ -192,7 +192,7 @@ foreach($natures as $nature)
 									</a>
                                 </div>
                                 <div id="div2" class="card-body ">
-							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal3" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
+							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px;border-radius:10px;"  href="#"  data-toggle="modal" data-target="#Modal3" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 
 
 			<?php $i=0;?>
@@ -521,6 +521,7 @@ foreach($natures as $nature)
 */
 
 #gold {
+border-radius:20px;
 float:left;margin-right:20px;
 width:70px;
 padding-top:8px;
@@ -532,6 +533,7 @@ text-align:center;color:white;
 
 
 #silver {
+border-radius:20px;
 float:left;margin-right:20px;
 width:70px;
 color:white;
@@ -557,6 +559,7 @@ text-align:center;
 }
 
 #platine {
+border-radius:20px;	
 float:left;margin-right:20px;
 width:70px;
 padding-top:8px;
@@ -568,6 +571,7 @@ text-align:center;color:white;
  
  
 #pallad {
+border-radius:20px;
 float:left;margin-right:20px;
 width:70px;
 color:white;
