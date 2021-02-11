@@ -29,7 +29,7 @@ foreach($natures as $nature)
 	</ol>
  </nav>
                         <!-- Content Column -->
-                        <div class="col-lg-8 mb-4">
+                        <div class="col-lg-10 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -41,7 +41,7 @@ foreach($natures as $nature)
 								<div class="col-lg-8 col-sm-12">
 
 
-<div class="row pl-20 pr-20 pb-10">
+								<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-4">
 											<label>{{__('msg.order')}}: </label>
 										</div>
@@ -118,7 +118,7 @@ foreach($natures as $nature)
 								</div>
 								 
  								<div class="col-lg-4 col-sm-12">
-								 <?php if($img!=''){?><center><img style="max-height:180px"  src="<?php echo URL::asset('images/'.$img);?>" class="img-fluid pt-20" alt=""></center><?php } ?>
+								 <?php if($img!=''){?><center><img style="max-height:180px;"  src="<?php echo URL::asset('images/'.$img);?>" class="img-fluid pt-20" alt=""></center><?php } ?>
 								</div>
  									
 								</div>
