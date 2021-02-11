@@ -146,7 +146,7 @@ foreach($natures as $nature)
                                 <div id="div3" class="card-body  ">
 							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal4" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 							   
-<h2 class=" " style="text-align:center;font-weight:bold;color:black"><span style="letter-spacing:2px">{{__('msg.Balance')}}:</span> 1496.00 €</h2>
+<h2 class=" " style="text-align:center;font-weight:bold;color:black;margin-top:-15px"><span style="letter-spacing:2px">{{__('msg.Balance')}}:</span> 1496.00 €</h2>
 			<div class="pl-40">	
 		 <?php $i=0;?>   
 	  @foreach($euros as $euro)  
@@ -230,10 +230,10 @@ foreach($natures as $nature)
 								 if($poids[0]->solde_pt >= 0){$style3="color:#54ba1d";}else{$style3="color:#d03132";}   
 								 if($poids[0]->solde_pd >= 0){$style4="color:#54ba1d";}else{$style4="color:#d03132";}   
 								  ?>
-									<div class="row pb-10"><div class="col-md-5 col-sm-5" style="max-width:200px;color:black;"> <img src="{{ URL::asset('public/img/gold.png')}}" />  </div><div class="col-md-5 col-sm-5 mt-10 pl-20" style="max-width:120px;"><B style="color:black">{{__('msg.Gold')}}</B><br><b style="<?php  echo $style1;?>"><?php echo  $poids[0]->solde_au; ?> g</b></div></div>
-									<div class="row pb-10"><div class="col-md-5 col-sm-5" style="max-width:200px;color:black;"> <img src="{{ URL::asset('public/img/silver.png')}}" /></div><div class="col-md-5 col-sm-5 mt-10 pl-20" style="max-width:120px;"><B style="color:black"> {{__('msg.Silver')}}</B><br><b style="<?php  echo $style2;?>"><?php echo  $poids[0]->solde_ag; ?> g</b></div></div>
-									<div class="row pb-10"><div class="col-md-5 col-sm-5" style="max-width:200px;color:black;"> <img src="{{ URL::asset('public/img/platin.png')}}" /></div><div class="col-md-5 col-sm-5 mt-10 pl-20" style="max-width:120px;"> <B style="color:black"> {{__('msg.Platinum')}}</B><br><b style="<?php  echo $style3;?>"><?php echo  $poids[0]->solde_pt; ?> g</b></div></div>
-									<div class="row pb-10"><div class="col-md-5 col-sm-5" style="max-width:200px;color:black;"> <img src="{{ URL::asset('public/img/palla.png')}}" />  </div><div class="col-md-5 col-sm-5 mt-10 pl-20" style="max-width:120px;"><B style="color:black"> {{__('msg.Palladium')}}</B><br><b style="<?php  echo $style4;?>"><?php echo  $poids[0]->solde_pd; ?> g</b></div></div>
+									<div class="row pb-10"><div class="col-md-5 col-sm-5" style="max-width:200px;color:black;"> <a href="<?php echo URL('virement?metal=1') ;?>"  ><img src="{{ URL::asset('public/img/gold.png')}}" /></a>  </div><div class="col-md-5 col-sm-5 mt-10 pl-20" style="max-width:120px;"><a href="<?php echo URL('virement?metal=1') ;?>"  ><B style="color:black">{{__('msg.Gold')}}</B><br><b style="<?php  echo $style1;?>"><?php echo  $poids[0]->solde_au; ?> g</b></a></div></div>
+									<div class="row pb-10"><div class="col-md-5 col-sm-5" style="max-width:200px;color:black;"> <a href="<?php echo URL('virement?metal=2') ;?>"  ><img src="{{ URL::asset('public/img/silver.png')}}" /></a></div><div class="col-md-5 col-sm-5 mt-10 pl-20" style="max-width:120px;"><a href="<?php echo URL('virement?metal=2') ;?>"  ><B style="color:black"> {{__('msg.Silver')}}</B><br><b style="<?php  echo $style2;?>"><?php echo  $poids[0]->solde_ag; ?> g</b></a></div></div>
+									<div class="row pb-10"><div class="col-md-5 col-sm-5" style="max-width:200px;color:black;"> <a href="<?php echo URL('virement?metal=3') ;?>"  ><img src="{{ URL::asset('public/img/platin.png')}}" /></a></div><div class="col-md-5 col-sm-5 mt-10 pl-20" style="max-width:120px;"> <a href="<?php echo URL('virement?metal=3') ;?>"  ><B style="color:black"> {{__('msg.Platinum')}}</B><br><b style="<?php  echo $style3;?>"><?php echo  $poids[0]->solde_pt; ?> g</b></a></div></div>
+									<div class="row pb-10"><div class="col-md-5 col-sm-5" style="max-width:200px;color:black;"> <a href="<?php echo URL('virement?metal=4') ;?>"  ><img src="{{ URL::asset('public/img/palla.png')}}" /> </a> </div><div class="col-md-5 col-sm-5 mt-10 pl-20" style="max-width:120px;"><a href="<?php echo URL('virement?metal=4') ;?>"  ><B style="color:black"> {{__('msg.Palladium')}}</B><br><b style="<?php  echo $style4;?>"><?php echo  $poids[0]->solde_pd; ?> g</b></a></div></div>
 								 <?php   ?>
                                 </div>
                             </div>

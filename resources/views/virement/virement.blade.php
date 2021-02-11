@@ -29,14 +29,18 @@ use App\Http\Controllers\HomeController ;
 {	 
 	$et[$e->etablissement_ident]=$e->etablissement_nom.'('.$e->etablissement_pays.')' ;
 }
+if (! isset($metal)  ) {
+	$metal=1;
+}
+	
+ 
     if (isset($debut) && isset($fin)) {
 	 
 	 
  $virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
 		
 	  }else{
-	 	$metal=1;
-  // $debut='2020-08-01';
+   // $debut='2020-08-01';
    $debut=date('Y-m-01');
    
    	$date1 = DB::table('mouvement_cp')->where('cl_origine',$user['client_id'])->max('date_doc') ;
@@ -49,8 +53,9 @@ if (isset($date1) && ($date1> $debut) )
 $debut=$date1;
 
  $mv= DB::table('mouvement_cp')->where('cl_origine',$user['client_id'])->where('date_doc',$date1)->first();
+ if (! isset($metal)  ) {
 $metal=intval($mv->metal_id);
-	 
+ } 
  }
    
    
