@@ -28,6 +28,8 @@ foreach($natures as $nature)
     <li class="breadcrumb-item"><a href="#">{{__('msg.order')}} <?php echo $id; ?></a></li>
 	</ol>
  </nav>
+  <style>label{font-weight:bold;color:black;}
+ </style>
                         <!-- Content Column -->
                         <div class="col-lg-10 mb-4">
 
@@ -41,7 +43,7 @@ foreach($natures as $nature)
 								<div class="col-lg-8 col-sm-12">
 
 
-								<div class="row pl-20 pr-20 pb-10">
+								<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.order')}}: </label>
 										</div>
@@ -50,7 +52,7 @@ foreach($natures as $nature)
 										</div>
 									</div>
 									<?php if($commande[0]->ref!=''){?>
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Reference')}}: </label>
 										</div>
@@ -59,7 +61,7 @@ foreach($natures as $nature)
 										</div>
 									</div>
 									<?php } ?>
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Design')}}: </label>
 										</div>
@@ -68,7 +70,7 @@ foreach($natures as $nature)
 										</div>
 									</div>
  									
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Measures')}}: </label>
 										</div>
@@ -78,7 +80,7 @@ foreach($natures as $nature)
 										</div>
 									</div>	
  									
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Alloy')}}: </label>
 										</div>
@@ -86,7 +88,7 @@ foreach($natures as $nature)
 										<b><?php echo $commande[0]->alliage; ?></b>
 										</div>
 									</div>
- 									<div class="row pl-20 pr-20 pb-10">
+ 									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Ordered quantity')}}: </label>
 										</div>
@@ -94,7 +96,7 @@ foreach($natures as $nature)
 										<b><?php echo $commande[0]->qte_com; ?></b>
 										</div>
 									</div>
- 									<div class="row pl-20 pr-20 pb-10">
+ 									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Delivered quantity')}}</label>
 										</div>
@@ -104,7 +106,7 @@ foreach($natures as $nature)
 									</div>
 									<?php  if(strlen($commande[0]->compl) >1) {   ?>
 									
- 									<div class="row pl-20 pr-20 pb-10">
+ 									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Optional Labour')}}: </label>
 										</div>

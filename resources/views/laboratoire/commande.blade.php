@@ -38,7 +38,8 @@ foreach($natures as $nature)
     <li class="breadcrumb-item"><a href="#">{{__('msg.order')}} <?php echo $commande[0]->id; ?></a></li>
 	</ol>
  </nav>
-						<div class="row">
+ <style>label{font-weight:bold;color:black;}
+ </style>						<div class="row">
 
                         <!-- Content Column -->
                         <div class="col-lg-7 mb-4">
@@ -49,7 +50,7 @@ foreach($natures as $nature)
                                     <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Order details')}} </h6>
                                 </div>
                                 <div class="card-body">
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.order')}}: </label>
 										</div>
@@ -57,7 +58,7 @@ foreach($natures as $nature)
 										<b><?php echo $commande[0]->id; ?></b>
 										</div>
 									</div>
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Nature of the batch')}}: </label>
 										</div>
@@ -65,7 +66,7 @@ foreach($natures as $nature)
 										<b><?php   echo $Natures[$commande[0]->nature_ident];?></b>
 										</div>
 									</div>
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Weight')}}: </label>
 										</div>
@@ -73,7 +74,7 @@ foreach($natures as $nature)
 										<b><?php echo $commande[0]->poids; ?> g</b>
 										</div>
 									</div>
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Type of laboratory')}}: </label>
 										</div>
@@ -81,7 +82,7 @@ foreach($natures as $nature)
 										<b><?php echo $commande[0]->type_lab_lib; ?> </b>
 										</div>
 									</div>									
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Choice of laboratory')}}: </label>
 										</div>
@@ -89,7 +90,7 @@ foreach($natures as $nature)
 										<b><?php echo $commande[0]->choix_lab_lib; ?> </b>
 										</div>
 									</div>
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Amount')}}: </label>
 										</div>
@@ -98,7 +99,7 @@ foreach($natures as $nature)
 										</div>
 									</div>									
 									<?php    ?>									
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Content')}} {{__('msg.Gold')}}: </label>
 										</div>
@@ -107,7 +108,7 @@ foreach($natures as $nature)
 										</div>
 									</div>
 									<?php    ?>									
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Content')}} {{__('msg.Silver')}}: </label>
 										</div>
@@ -116,7 +117,7 @@ foreach($natures as $nature)
 										</div>
 									</div>
 									<?php   ?>									
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Content')}} {{__('msg.Platinum')}}: </label>
 										</div>
@@ -125,7 +126,7 @@ foreach($natures as $nature)
 										</div>
 									</div>
 									<?php    ?>
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Content')}} {{__('msg.Palladium')}}: </label>
 										</div>
@@ -134,7 +135,7 @@ foreach($natures as $nature)
 										</div>
 									</div>
 									<?php if(strlen($commande[0]->cmde_lab_comment) >1) {  ?>
-									<div class="row pl-20 pr-20 pb-10">
+									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
 										<div class="col-lg-4">
 											<label>{{__('msg.Comment')}}: </label>
 										</div>
