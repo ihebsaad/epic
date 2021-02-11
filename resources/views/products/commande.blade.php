@@ -87,7 +87,7 @@ foreach($natures as $nature)
 											<label>{{__('msg.Ordered quantity')}}: </label>
 										</div>
 									    <div class="col-lg-6">
-										<b><?php echo $commande[0]->qty_com; ?></b>
+										<b><?php echo $commande[0]->qte_com; ?></b>
 										</div>
 									</div>
  									<div class="row pl-20 pr-20 pb-10">
@@ -95,7 +95,7 @@ foreach($natures as $nature)
 											<label>{{__('msg.Delivered quantity')}}</label>
 										</div>
 									    <div class="col-lg-6">
-										<b><?php echo $commande[0]->qty_liv; ?></b>
+										<b><?php echo $commande[0]->qte_liv; ?></b>
 										</div>
 									</div>
 									<?php  if(strlen($commande[0]->compl) >1) {   ?>
