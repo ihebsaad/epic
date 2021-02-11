@@ -79,7 +79,7 @@ foreach($natures as $nature)
 			<small><a href="<?php echo $lien; ?>">{{__('msg.More details')}}</a></small>
 			</div>	
 			</div>
-			<hr>
+			 
 	 
 			<?php }
 			}  ?>	
@@ -123,7 +123,7 @@ foreach($natures as $nature)
 			<small><a href="<?php echo $lien; ?>">{{__('msg.More details')}}</a></small>
 			</div>	
 			</div>
-			<hr>
+			 
 	 
 			<?php }
 			}  ?>	
