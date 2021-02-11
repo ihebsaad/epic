@@ -153,9 +153,9 @@ foreach($natures as $nature)
 										
 			<?php $i++;
 			if($euro->solde >= 0){$style="color:#54ba1d;";}else{$style="color:#d03132";} ?>
-			<?php if($i<4){?>							
-			<span style="color:lightgrey;font-weight:bold;margin-bottom:3px"><?php echo  date('d/m/Y', strtotime($euro->ecrit_date)); ?></span>
-			<div class="row pb-10 ">
+			<?php if($i<5){?>							
+			<span style="color:lightgrey;font-weight:bold; "><?php echo  date('d/m/Y', strtotime($euro->ecrit_date)); ?></span>
+			<div class="row   ">
 			<div class="col-md-4 pl-30" style="border-left:2px solid #e6d685">
 			<?php echo $euro->libelle; ?><div class="clearfix"></div>
  			</div>
