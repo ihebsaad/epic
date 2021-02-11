@@ -156,7 +156,7 @@ foreach($natures as $nature)
 			<?php if($i<5){?>							
 			<span style="color:lightgrey;font-weight:bold; "><?php echo  date('d/m/Y', strtotime($euro->ecrit_date)); ?></span>
 			<div class="row   ">
-			<div class="col-md-4 pl-30" style="border-left:2px solid #e6d685">
+			<div class="col-md-6 pl-30" style="border-left:2px solid #e6d685">
 			<?php echo $euro->libelle; ?><div class="clearfix"></div>
  			</div>
 			<div class="col-md-4" style=""  >
