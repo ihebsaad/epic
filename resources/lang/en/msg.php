@@ -391,5 +391,7 @@ return [
 	'More details'=>'More details',
 	'Ordered quantity'=>'Ordered quantity',	
 	'Delivered quantity'=>'Delivered quantity',	
+	'Reference'=>'Reference',
+	'Design'=>'Design',
  	
  ];

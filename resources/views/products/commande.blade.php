@@ -61,7 +61,7 @@ foreach($natures as $nature)
 									<?php } ?>
 									<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-4">
-											<label>{{__('msg.Conception')}}: </label>
+											<label>{{__('msg.Design')}}: </label>
 										</div>
 									    <div class="col-lg-6">
 										<b><?php echo $commande[0]->design; ?></b>

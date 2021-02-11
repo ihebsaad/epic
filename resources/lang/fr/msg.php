@@ -400,4 +400,6 @@ return [
 	'More details'=>'Plus de détails',	
 	'Ordered quantity'=>'Quantité commandée',	
 	'Delivered quantity'=>'Quantité Livrée',	
+	'Reference'=>'Référence',
+	'Design'=>'Conception',	
  ];

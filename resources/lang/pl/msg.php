@@ -386,6 +386,9 @@ return [
 			'More details'=>'Więcej szczegółów',
 			'Ordered quantity'=>'Zamówiona ilość',	
 			'Delivered quantity'=>'Dostarczona ilość',
+			'Reference'=>'Odniesienie',
+			'Design'=>'Koncepcja',				
+			
 	 
 
  ];
