@@ -10,7 +10,11 @@ use App\Http\Controllers\HomeController ;
  $commandes=HomeController::commandes_ac($user['client_id'] );
   $modeles=HomeController::modeles_ac($user['client_id'] );
  $euros=HomeController::compte_euro($user['client_id'] );
+ $solde_euro=HomeController::solde_euro($user['client_id'] );
     $poids=HomeController::compte_poids($user['client_id'] );
+	
+
+
    $natures=HomeController::natures2( );
  $Natures=array();
  $NaturesC=array();
@@ -144,9 +148,10 @@ foreach($natures as $nature)
 									</a>
                                 </div>
                                 <div id="div3" class="card-body  ">
-							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal4" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
-							   
-<h2 class=" " style="text-align:center;font-weight:bold;color:black;margin-top:-15px"><span style="letter-spacing:2px">{{__('msg.Balance')}}:</span> 1496.00 €</h2>
+							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal4" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>	
+		<?php	if($euro->solde_euro >= 0){$style0="color:#54ba1d;";}else{$style0="color:#d03132";} ?>
+			
+<h2 class=" " style="text-align:center;font-weight:bold; margin-top:-15px;<?php echo $style0; ?>"><span style="letter-spacing:2px">{{__('msg.Balance')}}:</span> <?php echo $solde_euro; ?> €</h2>
 			<div class="pl-40">	
 		 <?php $i=0;?>   
 	  @foreach($euros as $euro)  

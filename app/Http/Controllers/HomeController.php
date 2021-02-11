@@ -176,6 +176,20 @@ class HomeController extends Controller
  
     }
 
+		  public static function solde_euro($cl)
+    { 
+  	   DB::select("SET @p0='$cl' ;");
+
+ 	  $result=  DB::select (" CALL `sp_accueil_solde_compta`(@p0); ");
+ 
+		if ($result!= null){
+		return  $result ;
+			} else{
+	 	 return 'Error';
+				} 
+ 
+    }
+ 
 	  public static function compte_euro($cl)
     { 
   	   DB::select("SET @p0='$cl' ;");
