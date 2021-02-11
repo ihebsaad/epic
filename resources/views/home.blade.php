@@ -194,10 +194,10 @@ foreach($natures as $nature)
 			<?php $i++; if($i<5){ ?>
 			  
 			<div class="row " style="padding-bottom:5px;padding-top:5px;margin-bottom:10px;border-bottom:1px dotted #e6d685;border-left:2px solid #e6d685">
-				<div class="col-lg-5 col-xs-12" style="color:black;"> <b style="color:black"><?php echo $modele->nom; ?></b><br>
+				<div class="col-lg-6 col-xs-12" style="color:black;"> <b style="color:black"><?php echo $modele->nom; ?></b><br>
 				<small>{{__('msg.Nature')}}:  <?php echo $Natures[$modele->nature]; ?><br> {{__('msg.Weight')}}:  <?php echo  $modele->poids.'g' ; ?></small>
 				</div>
-				<div class="col-lg-7 col-xs-12"> 
+				<div class="col-lg-6 col-xs-12"> 
   				 <?php if($modele->AU>0) {?><div id="gold" class="pb-10"> {{__('msg.Gold')}} </div><?php } ?>	
  				 <?php if($modele->AG>0) {?><div id="silver" class="pb-10"> {{__('msg.Silver')}} </div><?php } ?>	
  				 <?php if($modele->PT>0) {?><div id="platine" class="pb-10"> {{__('msg.Platinum')}} </div><?php } ?>		
@@ -507,7 +507,7 @@ foreach($natures as $nature)
 
 #gold {
 float:left;margin-right:20px;
-width:80px;
+width:70px;
 padding-top:8px;
 height: 40px;
 text-align:center;color:white;
@@ -518,7 +518,7 @@ text-align:center;color:white;
 
 #silver {
 float:left;margin-right:20px;
-width:80px;
+width:70px;
 color:white;
 text-align:center;
 	padding-top:8px;
@@ -543,7 +543,7 @@ text-align:center;
 
 #platine {
 float:left;margin-right:20px;
-width:80px;
+width:70px;
 padding-top:8px;
 height: 40px;
 text-align:center;color:white;
@@ -554,7 +554,7 @@ text-align:center;color:white;
  
 #pallad {
 float:left;margin-right:20px;
-width:80px;
+width:70px;
 color:white;
 text-align:center;
 	padding-top:8px;
