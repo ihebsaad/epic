@@ -70,7 +70,13 @@ foreach($natures as $nature)
 			<b style="color:black;">{{__('msg.Labour cost')}}:</b>  <?php if($cmd->facon>0){echo $cmd->facon.' €';} ?>			
 			</div>	
 			<div class="col-md-2">
-			<small><a href="#">{{__('msg.More details')}}</a></small>
+			<?php 
+			if(trim(strtoupper($cmd->type_cmde))=='AFFINAGE'){  $lien=URL("commande/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='PRODUIT'){  $lien=URL("commandeprod/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='LABORATOIRE'){  $lien=URL("commandelab/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='RACHAT METAUX'){  $lien=URL("commandermp/".$cmd->id) ;  }
+			?>
+			<small><a href="<?php echo $lien; ?>">{{__('msg.More details')}}</a></small>
 			</div>	
 			</div>
 			<hr>
@@ -108,7 +114,13 @@ foreach($natures as $nature)
 			<b style="color:black;">{{__('msg.Labour cost')}}:</b>  <?php if($cmd->facon>0){echo $cmd->facon.' €';} ?>			
 			</div>	
 			<div class="col-md-2">
-			<small><a href="#">{{__('msg.More details')}}</a></small>
+			<?php 
+			if(trim(strtoupper($cmd->type_cmde))=='AFFINAGE'){  $lien=URL("commande/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='PRODUIT'){  $lien=URL("commandeprod/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='LABORATOIRE'){  $lien=URL("commandelab/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='RACHAT METAUX'){  $lien=URL("commandermp/".$cmd->id) ;  }
+			?>
+			<small><a href="<?php echo $lien; ?>">{{__('msg.More details')}}</a></small>
 			</div>	
 			</div>
 			<hr>
@@ -254,6 +266,7 @@ foreach($natures as $nature)
         <table   class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
+                <th class="text-center">ID</th>
                 <th class="text-center">{{__('msg.Date')}}</th>
                 <th class="text-center">{{__('msg.Qty')}}</th>
                 <th class="text-center">{{__('msg.Weight')}}</th>
@@ -266,7 +279,14 @@ foreach($natures as $nature)
 			<?php 
 			$etat=(strtoupper($cmd->etat));
 			if($etat=='ENCOURS' ||$etat=='EN COURS'  ){ ?>	
+			<?php 
+			if(trim(strtoupper($cmd->type_cmde))=='AFFINAGE'){  $lien=URL("commande/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='PRODUIT'){  $lien=URL("commandeprod/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='LABORATOIRE'){  $lien=URL("commandelab/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='RACHAT METAUX'){  $lien=URL("commandermp/".$cmd->id) ;  }
+			?>			
 			<tr>
+				<td class="text-center"><a href="<?php echo $lien;?>"><?php echo  $cmd->id ; ?></td>	
 				<td class="text-center"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></td>	
 				<td class="text-center"><?php echo $cmd->qte; ?></td>	
 				<td class="text-center"><?php echo $cmd->poids; ?>g</td>	
@@ -305,6 +325,7 @@ foreach($natures as $nature)
          <table   class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
+                <th class="text-center">ID</th>
                 <th class="text-center">{{__('msg.Date')}}</th>
                 <th class="text-center">{{__('msg.Qty')}}</th>
                 <th class="text-center">{{__('msg.Weight')}}</th>
@@ -317,7 +338,14 @@ foreach($natures as $nature)
 			<?php 
 			$etat=(strtoupper($cmd->etat));
 			if($etat=='TERMINEE'    ){ ?>	
+			<?php 
+			if(trim(strtoupper($cmd->type_cmde))=='AFFINAGE'){  $lien=URL("commande/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='PRODUIT'){  $lien=URL("commandeprod/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='LABORATOIRE'){  $lien=URL("commandelab/".$cmd->id) ;  }
+			if(trim(strtoupper($cmd->type_cmde))=='RACHAT METAUX'){  $lien=URL("commandermp/".$cmd->id) ;  }
+			?>			
 			<tr>
+				<td class="text-center"><a href="<?php echo $lien;?>"><?php echo  $cmd->id ; ?></td>				
 				<td class="text-center"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></td>	
 				<td class="text-center"><?php echo $cmd->qte; ?></td>	
 				<td class="text-center"><?php echo $cmd->poids; ?> g</td>	
