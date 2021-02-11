@@ -152,7 +152,7 @@ foreach($natures as $nature)
 							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal4" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>	
 		<?php	if(intval($solde_euro) >= 0){$style0="color:#54ba1d;";}else{$style0="color:#d03132";} ?>
 			
-<h2 class=" " style="text-align:center;font-weight:bold; margin-top:-15px;<?php echo $style0; ?>"><span style="letter-spacing:2px">{{__('msg.Balance')}}:</span> <?php echo $solde_euro; ?> €</h2>
+<h2 class=" " style="text-align:center;font-weight:bold; margin-top:-15px;"><span style="letter-spacing:2px;<?php echo $style0; ?>">{{__('msg.Balance')}}:</span> <?php echo $solde_euro; ?> €</h2>
 			<div class="pl-40">	
 		 <?php $i=0;?>   
 	  @foreach($euros as $euro)  
