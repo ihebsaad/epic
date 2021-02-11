@@ -57,10 +57,10 @@ foreach($natures as $nature)
 			$etat=(strtoupper($cmd->etat));
 			if($etat=='ENCOURS' ||$etat=='EN COURS'  ){  	
 			$i++;
-			if($i<3){
+			if($i<4){
 			?>	
-			<span style="color:lightgrey;font-weight:bold;"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
-			<div class="row pb-10 pl-30">
+			<span style="color:lightgrey;font-weight:bold;;margin-top:-8px"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
+			<div class="row   pl-30" style="padding-bottom:3px;;margin-top:-8px">
 			<div class="col-md-4" style="border-left:2px solid #e6d685">
 			<b style="color:black;">{{__('msg.Type')}}:</b>  <?php echo $cmd->type_cmde; ?><div class="clearfix"></div>
 			<b style="color:black;">{{__('msg.Qty')}}:</b>  <?php echo $cmd->qte; ?>
@@ -95,10 +95,10 @@ foreach($natures as $nature)
 			<?php  
 			$etat=(strtoupper($cmd->etat));
 			if($etat=='TERMINEE'    ){  $i++;
-			if($i<3){
+			if($i<4){
 			?>	
-			<span style="color:lightgrey;font-weight:bold;"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
-			<div class="row pb-10 pl-30">
+			<span style="color:lightgrey;font-weight:bold;margin-top:-8px"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></span>
+			<div class="row   pl-30" style="padding-bottom:3px;margin-top:-8px">
 			<div class="col-md-4" style="border-left:2px solid #e6d685">
 			<b style="color:black;">{{__('msg.Type')}}:</b>  <?php echo $cmd->type_cmde; ?><div class="clearfix"></div>
 			<b style="color:black;">{{__('msg.Qty')}}:</b>  <?php echo $cmd->qte; ?>
