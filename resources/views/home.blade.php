@@ -10,7 +10,8 @@ use App\Http\Controllers\HomeController ;
  $commandes=HomeController::commandes_ac($user['client_id'] );
   $modeles=HomeController::modeles_ac($user['client_id'] );
  $euros=HomeController::compte_euro($user['client_id'] );
- $solde_euro=HomeController::solde_euro($user['client_id'] );
+ $solde_e=HomeController::solde_euro($user['client_id'] );
+ $solde_euro= $solde_e[0]->solde;
     $poids=HomeController::compte_poids($user['client_id'] );
 	
 
