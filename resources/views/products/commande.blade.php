@@ -37,7 +37,11 @@ foreach($natures as $nature)
                                     <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Order details')}} </h6>
                                 </div>
                                 <div class="card-body">
-									<div class="row pl-20 pr-20 pb-10">
+								<div class="row">
+								<div class="col-lg-8 col-sm-12">
+
+
+<div class="row pl-20 pr-20 pb-10">
 										<div class="col-lg-4">
 											<label>{{__('msg.order')}}: </label>
 										</div>
@@ -109,16 +113,23 @@ foreach($natures as $nature)
 										</div>
 									</div>
 									<?php }  ?>
-						 
-									
-									
+						 								
+								
 								</div>
+								 
+ 								<div class="col-lg-4 col-sm-12">
+								 <?php if($img!=''){?><center><img style="max-height:180px"  src="<?php echo URL::asset('images/'.$img);?>" class="img-fluid pt-20" alt=""></center><?php } ?>
+								</div>
+ 									
+								</div>
+								
+								
                               </div>
 
                        
 
                         </div>
-
+<!--
                         <div class="col-lg-5 mb-4">
 
                              <div class="card shadow mb-4">
@@ -132,7 +143,7 @@ foreach($natures as $nature)
                             </div>
  
                         </div> 
-						
+						-->
 						
 						
                     </div>
