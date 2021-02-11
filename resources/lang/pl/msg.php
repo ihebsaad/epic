@@ -383,7 +383,9 @@ return [
             'Comment to report on transfers'=>'Komentarz do zgłoszenia transferów',             
 			'Type'=>'Rodzaj',
 			'Complete list'=>'Pełna lista',
-			'More details'=>'Więcej szczegółów',			
+			'More details'=>'Więcej szczegółów',
+			'Ordered quantity'=>'Zamówiona ilość',	
+			'Delivered quantity'=>'Dostarczona ilość',
 	 
 
  ];

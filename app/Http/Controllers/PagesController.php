@@ -143,6 +143,12 @@ class PagesController extends Controller
          return view('affinage.viewmodele',['id'=>$id]);
     }	
 	
+		public function commandeprod($id)
+    { 
+         return view('products.commande',['id'=>$id]);
+    }	
+	
+	
 	public function commande($id)
     { 
          return view('affinage.commande',['id'=>$id]);

@@ -85,6 +85,7 @@ Route::post('/updatemodelermp', 'HomeController@updatemodelermp')->name('updatem
 Route::get('/commandermp/{id}', 'PagesController@commandermp')->name('commandermp');
 Route::get('/viewmodelermp/{id}', 'PagesController@viewmodelermp')->name('viewmodelermp');
 
+Route::get('/commandeprod/{id}', 'PagesController@commandeprod')->name('commandeprod');
 
 Route::post('/ajoutvirement', 'ProductsController@ajoutvirement')->name('ajoutvirement');
 Route::post('/ajoutbenefic', 'ProductsController@ajoutbenefic')->name('ajoutbenefic');

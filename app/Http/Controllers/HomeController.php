@@ -4185,6 +4185,21 @@ $cmd_id    = intval($request->get('cmd_id'));
 	}	
 	
 	
+	  public static function detailscommandeprod($id_cmd    )
+    {
+    	   DB::select("SET @p0='$id_cmd' ;");
+
+ 	  $result=  DB::select ("  CALL `sp_produit_cmde_detail`(@p0); ");
+ 
+	  if ($result!= null){
+	 return  $result  ;
+ 	  }
+ 
+	  
+	}
+	
+	
+	
 	
 	
 	

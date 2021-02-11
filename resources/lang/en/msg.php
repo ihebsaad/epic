@@ -389,5 +389,7 @@ return [
 	'Type'=>'Type',
 	'Complete list'=>'Complete list',
 	'More details'=>'More details',
+	'Ordered quantity'=>'Ordered quantity',	
+	'Delivered quantity'=>'Delivered quantity',	
  	
  ];

@@ -398,4 +398,6 @@ return [
 	'Type'=>'Type',
 	'Complete list'=>'Liste complète',
 	'More details'=>'Plus de détails',	
+	'Ordered quantity'=>'Quantité commandée',	
+	'Delivered quantity'=>'Quantité Livrée',	
  ];
