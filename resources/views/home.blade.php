@@ -198,9 +198,13 @@ foreach($natures as $nature)
 			<?php $i=0;?>
 			  @foreach($modeles as $modele)          
 			<?php $i++; if($i<5){ ?>
-			  
+<?php 
+			if(trim(strtoupper($modele->metier))=='AFF'){  $link=URL("viewmodele/".$modele->id) ;  }
+			if(trim(strtoupper($modele->metier))=='RMP'){  $link=URL("viewmodelermp/".$modele->id) ;  }
+			if(trim(strtoupper($modele->metier))=='LAB'){  $link=URL("viewmodelelab/".$modele->id) ;  }
+ 			?>			  
 			<div class="row " style="padding-bottom:5px;padding-top:5px;margin-bottom:10px;border-bottom:1px dotted #e6d685;border-left:2px solid #e6d685">
-				<div class="col-lg-6 col-xs-12" style="color:black;"> <b style="color:black"><?php echo $modele->nom; ?></b><br>
+				<div class="col-lg-6 col-xs-12" style="color:black;"><a href="<?php echo $link;?>"> <b style="color:black"><?php echo $modele->nom; ?></a></b><br>
 				<small>{{__('msg.Nature')}}:  <?php echo $Natures[$modele->nature]; ?><br> {{__('msg.Weight')}}:  <?php echo  $modele->poids.'g' ; ?></small>
 				</div>
 				<div class="col-lg-6 col-xs-12"> 
