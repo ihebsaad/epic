@@ -152,7 +152,7 @@ foreach($natures as $nature)
 							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px"  href="#"  data-toggle="modal" data-target="#Modal4" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>	
 		<?php	if(intval($solde_euro) >= 0){$style0="color:#54ba1d;";}else{$style0="color:#d03132";} ?>
 			
-<h2 class=" " style="text-align:center;font-weight:bold; margin-top:-15px;"><span style="letter-spacing:2px;<?php echo $style0; ?>">{{__('msg.Balance')}}:</span> <?php echo $solde_euro; ?> €</h2>
+<h2 class=" " style="text-align:center;font-weight:bold;color:black; margin-top:-15px;"><span style="letter-spacing:2px;">{{__('msg.Balance')}}:</span><b style="<?php echo $style0; ?>"> <?php echo $solde_euro; ?> €</b></h2>
 			<div class="pl-40">	
 		 <?php $i=0;?>   
 	  @foreach($euros as $euro)  
@@ -405,10 +405,15 @@ foreach($natures as $nature)
                </tr>
             </thead>
             <tbody>
-            @foreach($modeles as $modele)                                     
+            @foreach($modeles as $modele)
+			<?php 
+			if(trim(strtoupper($modele->metier))=='AFF'){  $link=URL("viewmodele/".$modele->id) ;  }
+			if(trim(strtoupper($modele->metier))=='RMP'){  $link=URL("viewmodelermp/".$modele->id) ;  }
+			if(trim(strtoupper($modele->metier))=='LAB'){  $link=URL("viewmodelelab/".$modele->id) ;  }
+ 			?>	
 			<tr>
 				<td class="text-center"><small><?php echo  $modele->metier ; ?></small></td>	
-				<td class="text-center"><small><?php echo $modele->nom; ?></small></td>	
+				<td class="text-center"><small><a href="<?php echo $link;?>"><?php echo $modele->nom; ?></a></small></td>	
  				<td class="text-center hidemobile"><small><?php echo $Natures[$modele->nature]; ?></small></td>	
  				<td class="text-center"><small><?php echo  $modele->poids.'g' ; ?></small></td>	
  				<td class="text-center hidemobile"><small><?php if($modele->AU>0) {echo  $modele->AU.'g';} ?></small></td>	
