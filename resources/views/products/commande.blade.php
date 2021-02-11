@@ -17,19 +17,19 @@ foreach($natures as $nature)
   $commande=HomeController::detailscommandeprod($id);
   
   
-//ref	design	photo_id	mes1	mes2	alliage	poids	qte_com	qte_liv	compl
-
+ $img=''; $image=DB::table('photo')->where('photo_id',$commande[0]->photo_id)->first();
+	 if(isset($image)){ $img=trim($image->url);}
 ?>
  
 						<div class="row">
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
-    <li class="breadcrumb-item"><a href="#">{{__('msg.order')}} <?php echo $commande[0]->cmde_aff_lg; ?></a></li>
+    <li class="breadcrumb-item"><a href="#">{{__('msg.order')}} <?php echo $id; ?></a></li>
 	</ol>
  </nav>
                         <!-- Content Column -->
-                        <div class="col-lg-7 mb-4">
+                        <div class="col-lg-8 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -119,19 +119,19 @@ foreach($natures as $nature)
 
                         </div>
 
-                        <!--<div class="col-lg-5 mb-4">
+                        <div class="col-lg-5 mb-4">
 
                              <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">  </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Image  </h6>
                                 </div>
                                 <div class="card-body">
- 
+								<?php if($img!=''){?><center><img style="max-height:180px"  src="<?php echo URL::asset('images/'.$img);?>" class="img-fluid pt-20" alt=""></center><?php } ?>
  
                                 </div>
                             </div>
  
-                        </div>-->
+                        </div> 
 						
 						
 						
