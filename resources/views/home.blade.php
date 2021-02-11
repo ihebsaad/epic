@@ -436,7 +436,7 @@ foreach($natures as $nature)
 
         <table   class="table table-striped mb-40"  style="width:100%">
             <thead>
-            <tr id="eurotable">
+            <tr id="headtable">
                 <th class="text-center " style="text-align:center;font-size: 13px;">{{__('msg.Date')}}</th>
                 <th class="text-center   hidemobile" style="text-align:center;font-size: 13px;">{{__('msg.Piece')}}</th>
                 <th class="text-center " style="text-align:center;font-size: 13px;">{{__('msg.Label')}}</th>
