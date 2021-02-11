@@ -2260,13 +2260,13 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #fcaf0a;
+  background-color: #36b9cc;
  /* background-color: #4e73df;
   border-color: #4e73df;*/
   
 }
 .btn-primary   .icon {
-  background-color: #fc4d0a!important;
+  background-color: #2a8f9e!important;
 	
 }
 .btn-success   .icon {
@@ -2276,7 +2276,7 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #e29d09;
+  background-color: #2a8f9e;
   border-color: #ffffff; 
 }
 /*
