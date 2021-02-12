@@ -107,13 +107,13 @@ $metal=intval($mv->metal_id);
 							
 							 <div class="row" style="max-width:650px">
 								
-								<div class="col-sm-5 pt-10">					
+								<div class="col-lg-5 col-sm-12 pt-10">					
 								<span>{{__('msg.Period')}}</span>
 								<input style="width:230px" type="text" id="periode"  value="<?php echo $debut.' - '.$fin; ?>" class="form-control" />
 								</div>
 								<input  type="hidden" name="debut" id="debut" value="<?php echo $debut;?>"  >
 								<input  type="hidden" name="fin" id="fin"  value="<?php echo $fin;?>"  >
-								<div class="col-sm-4 pt-10">													
+								<div class="col-lg-4 col-sm-12 pt-10">													
 								<span>{{__('msg.Metal')}}</span>
 								<select style="width:150px" id="metal" name="metal" class="form-control">
 									<option value="1" <?php if($metal==1){echo 'selected="selected"';}?>  >{{__('msg.Gold')}}</option>
@@ -123,7 +123,7 @@ $metal=intval($mv->metal_id);
 								</select>        
                                </div> 
 				 
-								<div class="col-sm-3">													
+								<div class="col-lg-3 col-sm-12">													
 		                     	<button     type="submit"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-30  mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-eye"></i>

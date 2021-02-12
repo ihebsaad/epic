@@ -403,5 +403,13 @@ return [
 	'Reference'=>'Référence',
 	'Design'=>'Conception',	
 	'Image'=>'Image',
-	
+	'Company'=>'Enrtreprise',
+	'Activity'=>'Activité',
+	'Social reason'=>'Raison social',
+	'Company type'=>"Type d'entreprise",
+	'VAT number'=>'Numéro TVA',
+	'Company sign'=>'Enseigne',
+	'Country code'=>'Code pays',
+	'Agency'=>'Agence',
+	'Default metal'=>'Métal par defaut',	
  ];

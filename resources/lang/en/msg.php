@@ -394,5 +394,14 @@ return [
 	'Reference'=>'Reference',
 	'Design'=>'Design',
 	'Image'=>'Image',
+	'Company'=>'Company',
+	'Activity'=>'Activity',
+	'Social reason'=>'Social reason',
+	'Company type'=>'Company type',
+	'VAT number'=>'VAT number',
+	'Company sign'=>'Company sign',
+	'Country code'=>'Country code',
+	'Agency'=>'Agency',
+	'Default metal'=>'Default metal',
  	
  ];
