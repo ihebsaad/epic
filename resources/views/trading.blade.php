@@ -34,7 +34,8 @@ td {padding:8px 8px 8px 8px;}
 </style>
 
 
-<?php
+<?php 
+/*
 $provider = "netdania_fxa";
 	$username = "saamp";
 	$password = "1s3wAA8m9Pw";
@@ -174,7 +175,7 @@ $provider = "ms_dla";
 <?php
 	}
 	$xml = null;
-
+ 
 
 ?>
 </TABLE>
@@ -182,7 +183,9 @@ $provider = "ms_dla";
 
 
 
-
+<?php
+*/
+?>
 								
    
 			</div>
