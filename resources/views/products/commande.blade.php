@@ -66,9 +66,9 @@ foreach($natures as $nature)
 			<tr>
 				<td class="text-center"> <?php if($img!=''){?><center><img style="max-height:120px;max-width:120px;"  src="<?php echo URL::asset('images/'.$img);?>" class="img-fluid pt-20" alt=""></center><?php } ?></td>	
 				<td class="text-center"><?php echo  $commande->ref ; ?></td>	
-				<td class="text-center"><?php echo  $commande->design ; ?></td>	
-				<td class="text-center hidemobile"><?php echo  $commande->mes1 .' '.$commande->mes2 ; ?></td>	
-				<td class="text-center hidemobile"><?php echo  $commande->alliage ; ?></td>	
+				<td class="text-center" style="font-size:12px"><?php echo  $commande->design ; ?></td>	
+				<td class="text-center hidemobile" style="font-size:12px"><?php echo  $commande->mes1 .' '.$commande->mes2 ; ?></td>	
+				<td class="text-center hidemobile" style="font-size:12px"><?php echo  $commande->alliage ; ?></td>	
 				<td class="text-center"><?php echo  $commande->poids ; ?>g</td>	
 				<td class="text-center hidemobile"><?php echo  $commande->qte_com ; ?></td>	
 				<td class="text-center "><?php echo  $commande->qte_liv ; ?></td>	
