@@ -72,7 +72,7 @@ foreach($natures as $nature)
 				<td class="text-center"><?php echo  $commande->poids ; ?>g</td>	
 				<td class="text-center hidemobile"><?php echo  $commande->qte_com ; ?></td>	
 				<td class="text-center "><?php echo  $commande->qte_liv ; ?></td>	
-				<td class="text-center hidemobile"><?php echo  $commande->compl ; ?></td>	
+				<td class="text-center hidemobile" style="font-size:12px" ><?php echo  $commande->compl ; ?></td>	
   				 
 			</tr>	
  			@endforeach
