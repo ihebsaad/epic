@@ -11,6 +11,7 @@
     </title>
 	
 <style>
+.table thead th {vertical-align:middle!important;}
 #headtable{background-color:#e6d685;color:white;text-shadow:1px 1px lightgrey;} 
 .table{color:black!important;}
 .btn-primary{background-color:#e29d09;}

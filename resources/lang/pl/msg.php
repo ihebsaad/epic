@@ -388,6 +388,7 @@ return [
 			'Delivered quantity'=>'Dostarczona ilość',
 			'Reference'=>'Odniesienie',
 			'Design'=>'Koncepcja',				
+			'Image'=>'Wizerunek',
 			
 	 
 

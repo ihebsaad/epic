@@ -393,5 +393,6 @@ return [
 	'Delivered quantity'=>'Delivered quantity',	
 	'Reference'=>'Reference',
 	'Design'=>'Design',
+	'Image'=>'Image',
  	
  ];

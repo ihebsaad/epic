@@ -15,13 +15,15 @@ foreach($natures as $nature)
 }
  
   $commande=HomeController::detailscommandeprod($id);
+  $commandes=HomeController::detailscommandeprod($id);
+ // dd($commandes);
   
-  
+/*  
  $img=''; $image=DB::table('photo')->where('photo_id',$commande[0]->photo_id)->first();
-	 if(isset($image)){ $img=trim($image->url);}
+	 if(isset($image)){ $img=trim($image->url);}*/
 ?>
  
-						<div class="row">
+ <div class="row">
  <nav aria-label="breadcrumb" style="width:100%">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
@@ -31,100 +33,56 @@ foreach($natures as $nature)
   <style>label{font-weight:bold;color:black;}
  </style>
                         <!-- Content Column -->
-                        <div class="col-lg-10 mb-4">
+                        <div class="col-lg-12 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Order details')}} </h6>
                                 </div>
-                                <div class="card-body">
-								<div class="row">
-								<div class="col-lg-8 col-sm-12">
-
-
-								<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
-										<div class="col-lg-4">
-											<label>{{__('msg.order')}}: </label>
-										</div>
-									    <div class="col-lg-6">
-										<b><?php echo $id; ?></b>
-										</div>
-									</div>
-									<?php if($commande[0]->ref!=''){?>
-									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
-										<div class="col-lg-4">
-											<label>{{__('msg.Reference')}}: </label>
-										</div>
-									    <div class="col-lg-6">
-										<b><?php   echo  $commande[0]->ref;?></b>
-										</div>
-									</div>
-									<?php } ?>
-									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
-										<div class="col-lg-4">
-											<label>{{__('msg.Design')}}: </label>
-										</div>
-									    <div class="col-lg-6">
-										<b><?php echo $commande[0]->design; ?></b>
-										</div>
-									</div>
- 									
-									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
-										<div class="col-lg-4">
-											<label>{{__('msg.Measures')}}: </label>
-										</div>
-									    <div class="col-lg-6">
-										<b><?php echo $commande[0]->mes1; ?> </b><br>
-										<b><?php echo $commande[0]->mes2; ?> </b>
-										</div>
-									</div>	
- 									
-									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
-										<div class="col-lg-4">
-											<label>{{__('msg.Alloy')}}: </label>
-										</div>
-									    <div class="col-lg-6">
-										<b><?php echo $commande[0]->alliage; ?></b>
-										</div>
-									</div>
- 									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
-										<div class="col-lg-4">
-											<label>{{__('msg.Ordered quantity')}}: </label>
-										</div>
-									    <div class="col-lg-6">
-										<b><?php echo $commande[0]->qte_com; ?></b>
-										</div>
-									</div>
- 									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
-										<div class="col-lg-4">
-											<label>{{__('msg.Delivered quantity')}}</label>
-										</div>
-									    <div class="col-lg-6">
-										<b><?php echo $commande[0]->qte_liv; ?></b>
-										</div>
-									</div>
-									<?php  if(strlen($commande[0]->compl) >1) {   ?>
-									
- 									<div class="row pl-20 pr-20 pb-10" style="border-left:2px solid #e6d685;margin-bottom:6px;">
-										<div class="col-lg-4">
-											<label>{{__('msg.Optional Labour')}}: </label>
-										</div>
-									    <div class="col-lg-6">
-										<b><?php echo $commande[0]->compl; ?></b>
-										</div>
-									</div>
-									<?php }  ?>
-						 								
+                                <div class="card-body " style="min-height:300px">
 								
-								</div>
-								 
- 								<div class="col-lg-4 col-sm-12">
-								 <?php if($img!=''){?><center><img style="max-height:180px;"  src="<?php echo URL::asset('images/'.$img);?>" class="img-fluid pt-20" alt=""></center><?php } ?>
-								</div>
- 									
-								</div>
 								
+	 <table   class="table   mb-40"  style="width:100%">
+            <thead>
+            <tr id="headtable">
+                <th class="text-center"  >{{__('msg.Image')}}</th>
+                <th class="text-center"  >{{__('msg.Reference')}}</th>
+                <th class="text-center"  >{{__('msg.Design')}}</th>
+                <th class="text-center  hidemobile"   >{{__('msg.Measures')}}</th>
+                <th class="text-center hidemobile" >{{__('msg.Alloy')}}</th>
+                <th class="text-center  " >{{__('msg.Weight')}}</th>
+                <th class="text-center  hidemobile"><small>{{__('msg.Ordered quantity')}}</small></th>
+                <th class="text-center  "><small>{{__('msg.Delivered quantity')}}</small></th>
+                <th class="text-center  hidemobile"><small>{{__('msg.Optional Labour')}}</small></th>
+               </tr>
+            </thead>
+            <tbody>
+            @foreach($commandes as $commande)
+			<?php 
+			$img=''; $image=DB::table('photo')->where('photo_id',$commande->photo_id)->first();
+			if(isset($image)){ $img=trim($image->url);}
+		 ?>	
+			<tr>
+				<td class="text-center"> <?php if($img!=''){?><center><img style="max-height:120px;max-width:120px;"  src="<?php echo URL::asset('images/'.$img);?>" class="img-fluid pt-20" alt=""></center><?php } ?></td>	
+				<td class="text-center"><?php echo  $commande->ref ; ?></td>	
+				<td class="text-center"><?php echo  $commande->design ; ?></td>	
+				<td class="text-center hidemobile"><?php echo  $commande->mes1 .' '.$commande->mes2 ; ?></td>	
+				<td class="text-center hidemobile"><?php echo  $commande->alliage ; ?></td>	
+				<td class="text-center"><?php echo  $commande->poids ; ?>g</td>	
+				<td class="text-center hidemobile"><?php echo  $commande->qte_com ; ?></td>	
+				<td class="text-center "><?php echo  $commande->qte_liv ; ?></td>	
+				<td class="text-center hidemobile"><?php echo  $commande->compl ; ?></td>	
+  				 
+			</tr>	
+ 			@endforeach
+			</tbody>
+			</table>  							
+								
+								
+								
+								
+						
 								
                               </div>
 

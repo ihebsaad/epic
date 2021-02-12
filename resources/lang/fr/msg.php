@@ -402,4 +402,6 @@ return [
 	'Delivered quantity'=>'Quantité Livrée',	
 	'Reference'=>'Référence',
 	'Design'=>'Conception',	
+	'Image'=>'Image',
+	
  ];
