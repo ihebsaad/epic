@@ -63,17 +63,17 @@ class TradingController extends Controller
 <TABLE border="0" >
 <TR>
 	<TD class="font-weight-bold trade" align="left" nowrap width="80">Name</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="60">Bid</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="60">Ask</TD>
+	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="60">Bid</TD>
+	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="60">Ask</TD>
 	<TD class="font-weight-bold trade" align="center" nowrap width="60">Purchase</TD>
 	<TD class="font-weight-bold trade" align="center" nowrap width="60">Sale</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="70">Change</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="70">% Change</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="70">Open</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="70">High</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="70">Low</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="70">Close</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="80">Time</TD>
+	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Change</TD>
+	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">% Change</TD>
+	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Open</TD>
+	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">High</TD>
+	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Low</TD>
+	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Close</TD>
+	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="80">Time</TD>
 </TR>
 ';
 
@@ -190,17 +190,17 @@ $goldbid=$silvbid=$platbid=$pallbid= $ventegold= $ventesilv= $venteplat= $ventep
 $data.='
 <TR>
 	<TD class="text strname" align="left" nowrap width="105">'.$strName.'</TD>
-	<TD class="text" align="center" width="60">'.$strBid.'</TD>
-	<TD class="text" align="center" width="60">'.$strAsk.'</TD>
+	<TD class="text hidemobile" align="center" width="60">'.$strBid.'</TD>
+	<TD class="text hidemobile" align="center" width="60">'.$strAsk.'</TD>
 	<TD class="text" align="center" width="60">'; if($strName=='Gold'){$data.= number_format($achatgold,4);}if($strName=='Silver'){$data.= number_format($achatsilv,4);}if($strName=='Platinum/USD'){$data.= number_format($achatplat,4);}if($strName=='Palladium/USD'){$data.= number_format($achatpall,4);} $data.='</TD>
 	<TD class="text" align="center" width="60">';  if($strName=='Gold'){$data.= number_format($ventegold,4);}if($strName=='Silver'){$data.= number_format($ventesilv,4);}if($strName=='Platinum/USD'){$data.= number_format($venteplat,4);}if($strName=='Palladium/USD'){$data.= number_format($ventepall,4);} $data.='</TD>
-	<TD class="text" align="center" width="70">'.$strChange.'</TD>
-	<TD class="text" align="center" width="70">'.$strPercChange.'</TD>
-	<TD class="text" align="center" width="70">'.$strOpen.'</TD>
-	<TD class="text" align="center" width="70">'.$strHigh.'</TD>
-	<TD class="text" align="center" width="70">'.$strLow.'</TD>
-	<TD class="text" align="center" width="70">'.$strClose.'</TD>
-	<TD class="text time" align="center" width="80">'.$strDateTime.'</TD>
+	<TD class="text hidemobile" align="center" width="70">'.$strChange.'</TD>
+	<TD class="text hidemobile" align="center" width="70">'.$strPercChange.'</TD>
+	<TD class="text hidemobile" align="center" width="70">'.$strOpen.'</TD>
+	<TD class="text hidemobile" align="center" width="70">'.$strHigh.'</TD>
+	<TD class="text hidemobile" align="center" width="70">'.$strLow.'</TD>
+	<TD class="text hidemobile" align="center" width="70">'.$strClose.'</TD>
+	<TD class="text hidemobile time" align="center" width="80">'.$strDateTime.'</TD>
 </TR>';
 	}
 	$xml = null;
