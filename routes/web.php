@@ -127,6 +127,12 @@ Route::post('/setlanguage', 'HomeController@setlanguage')->name('setlanguage');
 
 Route::get('/profile', 'UsersController@profile')->name('profile');
 Route::post('/users/updating','UsersController@updating')->name('users.updating');
+Route::post('/updateuser','UsersController@updateuser')->name('updateuser');
+Route::post('/updatecomp','UsersController@updatecomp')->name('updatecomp');
+
+
+
+Route::post('/listetrading','TradingController@listetrading')->name('listetrading');
 
 
 

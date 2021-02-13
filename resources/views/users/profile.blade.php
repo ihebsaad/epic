@@ -6,6 +6,7 @@
 $cl_ident=$user->client_id;
 $client=DB::table('client')->where('cl_ident',$cl_ident)->first();
   $metals=DB::table('METAL')->get();
+  $agences=DB::table('agence')->get();
   $type_clients=DB::table('type_client')->get();
 
   /*
@@ -41,19 +42,19 @@ metal_defaut_id
                                 </div>
                                 <div id="div1" class="card-body">
 
-                                    <form class="user"    >
-                                        <input type="hidden" value="{{$id}}" id="iduser">
+                                    <form class="user"   method="post" action="{{ route('updateuser') }}"    >
+                                        <input type="hidden" value="{{$id}}" id="iduser" name="user">
                                         {{ csrf_field() }}
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Name');?></label>
-                                                <input type="text" class="form-control form-control-user" id="name" name="name"  value="{{ $user->name }}"  onchange="changing(this)"
+                                                <input type="text" class="form-control form-control-user" id="name" name="name"  value="{{ $user->name }}"   
                                                        placeholder="<?php echo __('msg.Name');?>*">
 
                                             </div>
                                             <div class="col-sm-6">
 											<label><?php echo __('msg.Last name');?></label>											
-                                                <input type="text" class="form-control form-control-user" id="lastname" name="lastname"  value="{{ $user->lastname }}"  onchange="changing(this)"
+                                                <input type="text" class="form-control form-control-user" id="lastname" name="lastname"  value="{{ $user->lastname }}"   
                                                        placeholder="<?php echo __('msg.Last name');?>*">
                                             </div>
 
@@ -61,12 +62,12 @@ metal_defaut_id
                                         <style>
                                             #activity:placeholder-shown{
                                                 color: darkgrey;
-                                            }								}
+                                            }								 
                                         </style>
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Activity');?></label>											
-                                                <select class="form-control  " id="activity" name="activity"  placeholder="Sélectionnez votre activité*"    onchange="changing(this)"
+                                                <select class="form-control  " id="activity" name="activity"  placeholder="Sélectionnez votre activité*"   
                                                         style="font-size: 0.8rem;border-radius: 10rem;padding-left:15px;padding-top:10px;height:50px;font-family:Nunito">
                                                      <option value="artisan" <?php if($user->activity=='artisan'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Artisan');?></option>
                                                     <option value="fabricant" <?php if($user->activity=='fabricant'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Manufacturer');?></option>
@@ -78,7 +79,7 @@ metal_defaut_id
                                             </div>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Username');?></label>											
-                                                <input type="text" class="form-control form-control-user" id="username" name="username" readonly value="{{ $user->username }}"
+                                                <input type="text" class="form-control form-control-user" id="username"   readonly value="{{ $user->username }}"
                                                        placeholder="<?php echo __('msg.Username');?>*">
 											
                                              </div>
@@ -87,12 +88,12 @@ metal_defaut_id
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Cell phone');?></label>											
-                                                <input type="text" class="form-control form-control-user" id="mobile" name="mobile" pattern=".{10,10}" value="{{ $user->mobile }}"  onchange="changing(this)"
+                                                <input type="text" class="form-control form-control-user" id="mobile" name="mobile" pattern=".{10,10}" value="{{ $user->mobile }}"   
                                                        placeholder="<?php echo __('msg.Cell phone');?>*">
                                             </div>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Phone');?></label>											
-                                                <input type="text" class="form-control form-control-user" id="phone" name="phone"  pattern=".{0,10}" value="{{ $user->phone }}"  onchange="changing(this)"
+                                                <input type="text" class="form-control form-control-user" id="phone" name="phone"  pattern=".{0,10}" value="{{ $user->phone }}"   
                                                        placeholder="<?php echo __('msg.Phone');?>">
                                             </div>
                                         </div>
@@ -106,7 +107,7 @@ metal_defaut_id
 										</div>
                                        <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Password');?></label>											
-                                                <input type="password" class="form-control form-control-user" name="password"   pattern=".{6,30}"    onchange="changing(this)" style="width:100%"
+                                                <input type="password" class="form-control form-control-user" name="password"   pattern=".{6,30}"    style="width:100%"
                                                        id="password" placeholder="<?php echo __('msg.Password');?>*">
  										 </div>
                                         </div>
@@ -142,19 +143,22 @@ metal_defaut_id
                                 </div>
                                 <div id="div2" class="card-body">
 
-                                    <form class="user"    >
+                                    <form class="user"  method="post" action="{{ route('updatecomp') }}"    >
+							        {{ csrf_field() }}
+
+                                        <input type="hidden" value="{{$cl_ident}}" id="cl_ident" name="cl_ident">
 								
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Social reason');?></label>
-                                                <input type="text" class="form-control form-control-user" id="raison_sociale" name="raison_sociale"  value="{{ $client->raison_sociale }}"  onchange="updating(this)"
+                                                <input type="text" class="form-control form-control-user" id="raison_sociale" name="raison_sociale"  value="{{ $client->raison_sociale }}"   
                                                        placeholder="<?php echo __('msg.Social reason');?>">
 
                                             </div>
                                             <div class="col-sm-6">
 											<label><?php echo __('msg.Company type');?></label>
 											
-                                                <input type="text" class="form-control form-control-user" id="type_societe" name="type_societe"  value="{{ $client->type_societe }}"  onchange="updating(this)"
+                                                <input type="text" class="form-control form-control-user" id="type_societe" name="type_societe"  value="{{ $client->type_societe }}"   
                                                        placeholder="<?php echo __('msg.Company type');?>">
                                             </div>
 
@@ -164,14 +168,14 @@ metal_defaut_id
 										
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label>SIRET</label>											
-                                                <input type="text" class="form-control form-control-user" id="siret" name="siret"  value="{{ $client->siret }}"  onchange="updating(this)"
+                                                <input type="text" class="form-control form-control-user" id="siret" name="siret"  value="{{ $client->siret }}"   
                                                        placeholder="SIRET">
 
                                             </div>
                                             <div class="col-sm-6">
 											<label><?php echo __('msg.VAT number');?></label>
 											
-                                                <input type="text" class="form-control form-control-user" id="num_tva" name="num_tva"  value="{{ $client->num_tva }}"  onchange="updating(this)"
+                                                <input type="text" class="form-control form-control-user" id="num_tva" name="num_tva"  value="{{ $client->num_tva }}"   
                                                        placeholder="<?php echo __('msg.VAT number');?>">
                                             </div>
 
@@ -180,7 +184,7 @@ metal_defaut_id
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Company sign');?></label>											
-                                                <input type="text" class="form-control form-control-user" id="enseigne" name="enseigne"  value="{{ $client->enseigne }}"  onchange="updating(this)"
+                                                <input type="text" class="form-control form-control-user" id="enseigne" name="enseigne"  value="{{ $client->enseigne }}"   
                                                        placeholder="<?php echo __('msg.Company sign');?>">
 
                                             </div>
@@ -204,13 +208,13 @@ metal_defaut_id
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Address');?> 1</label>											
-                                                <input type="text" class="form-control form-control-user" id="adresse1" name="adresse1"  value="{{ $client->adresse1 }}"  onchange="updating(this)"
+                                                <input type="text" class="form-control form-control-user" id="adresse1" name="adresse1"  value="{{ $client->adresse1 }}"   
                                                        placeholder="<?php echo __('msg.Address');?> 1">
 
                                             </div>
                                             <div class="col-sm-6">
 											<label><?php echo __('msg.Address');?> 2</label>											
-                                                <input type="text" class="form-control form-control-user" id="adresse2" name="adresse2"  value="{{ $client->adresse2 }}"  onchange="updating(this)"
+                                                <input type="text" class="form-control form-control-user" id="adresse2" name="adresse2"  value="{{ $client->adresse2 }}"   
                                                        placeholder="<?php echo __('msg.Address');?> 2">
                                             </div>
 
@@ -220,31 +224,39 @@ metal_defaut_id
 										
                                             <div class="col-sm-3 mb-3 mb-sm-0">
 											<label>ZIP</label>											
-                                                <input type="text" class="form-control form-control-user" id="zip" name="zip"  value="{{ $client->zip }}"  onchange="updating(this)"
+                                                <input type="text" class="form-control form-control-user" id="zip" name="zip"  value="{{ $client->zip }}"   
                                                        placeholder="ZIP">
 
                                             </div>
                                             <div class="col-sm-6">
 											<label><?php echo __('msg.City');?></label>											
-                                                <input type="text" class="form-control form-control-user" id="ville" name="ville"  value="{{ $client->ville }}"  onchange="updating(this)"
+                                                <input type="text" class="form-control form-control-user" id="ville" name="ville"  value="{{ $client->ville }}"   
                                                        placeholder="<?php echo __('msg.City');?>">
                                             </div>
                                             <div class="col-sm-3">
 											<label><?php echo __('msg.Country code');?></label>																						
 											
-                                                <input type="text" class="form-control form-control-user" id="pays_code" name="pays_code"  value="{{ $client->pays_code }}"  onchange="updating(this)"
+                                                <input type="text" class="form-control form-control-user" id="pays_code" name="pays_code"  value="{{ $client->pays_code }}"   
                                                        placeholder="<?php echo __('msg.Country code');?>">
                                             </div>
                                         </div>										
 
                                         <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <div class="col-sm-8 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Agency');?></label>											
-                                                <input type="text" class="form-control form-control-user" id="name" name="name"  value="{{ $client->agence_ident }}"  onchange="updating(this)"
-                                                       placeholder="<?php echo __('msg.Agency');?>">
+ 													   
+												<select  class="form-control"  id="agence_ident" name="agence_ident" >
+												<option></option>
+												<?php foreach($agences as $agence)
+												{
+												if($agence->agence_ident==$client->agence_ident){$selected="selected='selected'";}else{$selected="";}	
+													echo '<option '.$selected.' value="'.$agence->agence_ident.'">'.$agence->agence_lib.' ('.$agence->adresse1.')</option>';
+												}
+												?>
+												</select>
 
                                             </div>
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-4">
 											<label><?php echo __('msg.Default metal');?></label>											
                                                   
 									<select class="form-control "   name="metal_defaut_id" id="metal_defaut_id"    >
@@ -290,7 +302,7 @@ metal_defaut_id
 
 
 
-        function changing(elm) {
+    /*    function changing(elm) {
             var champ = elm.id;
 
             var val = document.getElementById(champ).value;
@@ -327,6 +339,7 @@ metal_defaut_id
             });
 
         }
+		*/
 
     </script>
 @endsection
