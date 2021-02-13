@@ -100,17 +100,17 @@ $euroask= $eurobid=0;
 $data.=' 
 <TR>
 	<TD class="text strname" align="left" nowrap>'.$strName.'</TD>
-	<TD class="text" align="center">'.$strBid.'</TD>
-	<TD class="text" align="center">'.$strAsk.'</TD>
+	<TD class="text hidemobile" align="center">'.$strBid.'</TD>
+	<TD class="text hidemobile" align="center">'.$strAsk.'</TD>
 	<td></td>
 	<td></td>
-	<TD class="text" align="center">'.$strChange.'</TD>
-	<TD class="text" align="center">'.$strPercChange.'</TD>
-	<TD class="text" align="center">'.$strOpen.'</TD>
-	<TD class="text" align="center">'.$strHigh.'</TD>
-	<TD class="text" align="center">'.$strLow.'</TD>
-	<TD class="text" align="center">'.$strClose.'</TD>
-	<TD class="text time" align="center">'.$strDateTime.'</TD>
+	<TD class="text hidemobile" align="center">'.$strChange.'</TD>
+	<TD class="text hidemobile" align="center">'.$strPercChange.'</TD>
+	<TD class="text hidemobile" align="center">'.$strOpen.'</TD>
+	<TD class="text hidemobile" align="center">'.$strHigh.'</TD>
+	<TD class="text hidemobile" align="center">'.$strLow.'</TD>
+	<TD class="text hidemobile" align="center">'.$strClose.'</TD>
+	<TD class="text hidemobile time" align="center">'.$strDateTime.'</TD>
 </TR>';
  
 	}
