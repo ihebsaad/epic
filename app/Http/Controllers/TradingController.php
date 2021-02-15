@@ -167,23 +167,23 @@ $goldbid=$silvbid=$platbid=$pallbid= $ventegold= $ventesilv= $venteplat= $ventep
 			}			
 		if($euroask > 0 && $goldbid > 0)
 		{
-		 $ventegold= (( floatval($goldbid) / floatval($euroask) ) / 31.10348 )* (0.9925) ; 
+		 $ventegold= (( floatval($goldbid) / floatval($euroask) ) / 31.10348 )* (0.9975) ; 
 		 $achatgold= (( floatval($goldask) / floatval($eurobid) ) / 31.10348 )* (1.0025) ;
 		 }
 		if($euroask > 0 && $silvbid > 0)
 		{
-		 $ventesilv= (( floatval($silvbid) / floatval($euroask) ) / 31.10348 )* (0.9925) ; 
+		 $ventesilv= (( floatval($silvbid) / floatval($euroask) ) / 31.10348 )* (0.9975) ; 
 		 $achatsilv= (( floatval($silvask) / floatval($eurobid) ) / 31.10348 )* (1.0025) ;
 		 }
 		if($euroask > 0 && $platbid > 0)
 		{
-		 $venteplat= (( floatval($platbid) / floatval($euroask) ) / 31.10348 )* (0.9925) ; 
+		 $venteplat= (( floatval($platbid) / floatval($euroask) ) / 31.10348 )* (0.9975) ; 
 		 $achatplat= (( floatval($platask) / floatval($eurobid) ) / 31.10348 )* (1.0025) ;
 		 }
 
 		if($euroask > 0 && $pallbid > 0)
 		{
-		 $ventepall= (( floatval($pallbid) / floatval($euroask) ) / 31.10348 )* (0.9925) ; 
+		 $ventepall= (( floatval($pallbid) / floatval($euroask) ) / 31.10348 )* (0.9975) ; 
 		 $achatpall= (( floatval($pallask) / floatval($eurobid) ) / 31.10348 )* (1.0025) ;
 		 }		 
 		 
