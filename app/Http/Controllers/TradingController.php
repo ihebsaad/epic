@@ -209,6 +209,15 @@ $data.='
 $data.='
 </TABLE>';
  
+ 
+ $achatgold=$achatgold*1000;
+ $achatsilv=$achatsilv*1000;
+ $achatplat=$achatplat*1000;
+ $achatpall=$achatpall*1000;
+ $ventegold=$ventegold*1000;
+ $ventesilv=$ventesilv*1000;
+ $venteplat=$venteplat*1000;
+ $ventepall=$ventepall*1000;
 $data2=''; 
 $data2.=' 
  <table id="tabmetal" border="0">
@@ -219,10 +228,10 @@ $data2.='
  <td class="tleft" >'.__("msg.Time").'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td>
  </tr>
   <tr  >
- <td class="tleft" >'.__("msg.Purchase").'</td><td>'.number_format($achatgold,4).'</td><td>'.number_format($achatsilv,4).'</td><td>'.number_format($achatplat,4).'</td><td>'.number_format($achatpall,4).'</td>
+ <td class="tleft" >'.__("msg.Purchase").'</td><td>'.number_format($achatgold,0,'',' ').'</td><td>'.number_format($achatsilv,0,'',' ').'</td><td>'.number_format($achatplat,0,'',' ').'</td><td>'.number_format($achatpall,0,'',' ').'</td>
  </tr>
    <tr >
- <td class="tleft" >'.__("msg.Sale").'</td><td>'.number_format($ventegold,4).'</td><td>'.number_format($ventesilv,4).'</td><td>'.number_format($venteplat,4).'</td><td>'.number_format($ventepall,4).'</td>
+ <td class="tleft" >'.__("msg.Sale").'</td><td>'.number_format($ventegold,0,'',' ').'</td><td>'.number_format($ventesilv,0,'',' ').'</td><td>'.number_format($venteplat,0,'',' ').'</td><td>'.number_format($ventepall,0,'',' ').'</td>
  </tr>
  </table> ';
  	return $data2;	

@@ -15,10 +15,39 @@
 
                                 </div>
                                 <div class="card-body">
-								<div id="trading" style="width:100%;min-height:300px;">
-								<center>	<img height="50px"  src="{{ URL::asset('public/img/loader.gif')}}" ><br>
+								<div class="row" >
+									<div class="col-sm-12 col-lg-6" >
+									
+									
+ <table id="tabmetal" border="0">
+ <tr class="headmetal">
+ <td> </td><td><center><div id="gold" class="pb-10">{{__("msg.Gold")}}</div></center></td><td><center><div id="silver" class="pb-10">{{ __("msg.Silver")}}</div></center></td><td><center><div id="platine" class="pb-10">{{ __("msg.Platinum")}}</center></div></td><td><center><div id="pallad" class="pb-10">{{__("msg.Palladium")}}</center></div></td>
+ </tr>
+ <tr  >
+ <td class="tleft2"  >Solde antérieur</td><td>1 000</td><td>1 000</td><td>1 000</td><td>1 000</td>
+ </tr>
+  <tr  >
+ <td class="tleft2"  >Mes disponibilités</td><td>1 000</td><td>1 000</td><td>1 000</td><td>1 000</td>
+ </tr>
+   <tr >
+ <td class="tleft2"  >A venir</td><td>1 000</td><td>1 000</td><td>1 000</td><td>1 000</td>
+ </tr>
+    <tr >
+ <td  class="tleft2" >Trading en cours</td><td>1 000</td><td>1 000</td><td>1 000</td><td>1 000</td>
+ </tr>
+     <tr >
+ <td  class="tleft2" >Solde position</td><td>1 000</td><td>1 000</td><td>1 000</td><td>1 000</td>
+ </tr>
+ </table>
+
+ 
+									</div>
+									<div class="col-sm-12 col-lg-6" id="trading" style="width:100%;min-height:300px;">
+									<center>	<img height="50px"  src="{{ URL::asset('public/img/loader.gif')}}" ><br>
 									<b>chargement des cours saamp.com ... merci de patienter</b> 
-								<center>	
+									<center>	
+									</div>
+								
 								</div>
 								
 <style>	
@@ -35,6 +64,7 @@ td {padding:3px 3px 3px 3px;border:1px dotted lightgrey;}
 .headmetal{padding-top:6px!important;padding-top:6px!important;} 
 #tabmetal{font-weight:bold; text-align:center;border:1px solid lightgrey;}
 .tleft{width:100px;color:#c6a85b;font-weight:800;font-size:20px;}
+.tleft2{ color:#c6a85b;font-weight:800; }
 /*
 .libelles {
  
@@ -55,8 +85,7 @@ td {padding:3px 3px 3px 3px;border:1px dotted lightgrey;}
  
 #gold {
 border-radius:20px;
-margin-right:20px;
-width:100px;
+width:70px;
 padding-top:8px;
 height: 40px;
 text-align:center;color:white;
@@ -67,8 +96,7 @@ text-align:center;color:white;
 
 #silver {
 border-radius:20px;
-margin-right:20px;
-width:100px;
+width:70px;
 color:white;
 text-align:center;
 	padding-top:8px;
@@ -93,8 +121,8 @@ text-align:center;
 
 #platine {
 border-radius:20px;	
-margin-right:20px;
-width:100px;
+
+width:70px;
 padding-top:8px;
 height: 40px;
 text-align:center;color:white;
@@ -105,28 +133,29 @@ text-align:center;color:white;
  
 #pallad {
 border-radius:20px;
-margin-right:20px;
-width:100px;
+font-size:13px;
+width:70px;
 color:white;
 text-align:center;
-	padding-top:8px;
+	padding-top:10px;
+	text-shadow:1px 1px lightgrey;
    height: 40px;
 	background: #9f7c3c;
 	
 	/* Safari and Google Chrome */
-	background: -webkit-repeating-linear-gradient(90deg, #ffffff 0%,#ffffff 2%, #d5d5d5 23%, #c9c9c9 29%, #c9c9c9 33%, #c2c1c1 61%, #c9c7c7 66%, #c9c7c7 79%, #f0eeee 95%, #FFFFFF 100%);
+	background: -webkit-repeating-linear-gradient(90deg, #ffffff 0%,#ffffff 2%, #d5d5d5 23%, #f0eded 29%, #f0eded 33%, #c2c1c1 61%, #c9c7c7 66%, #c9c7c7 79%, #f0eeee 95%, #FFFFFF 100%);
 	
 	/* Firefox */
-	background: -moz-repeating-linear-gradient(90deg, #ffffff 0%,#ffffff 2%, #d5d5d5 23%, #c9c9c9 29%, #c9c9c9 33%, #c2c1c1 61%, #c9c7c7 66%, #c9c7c7 79%, #f0eeee 95%, #FFFFFF 100%);
+	background: -moz-repeating-linear-gradient(90deg, #ffffff 0%,#ffffff 2%, #d5d5d5 23%, #f0eded 29%, #f0eded 33%, #c2c1c1 61%, #c9c7c7 66%, #c9c7c7 79%, #f0eeee 95%, #FFFFFF 100%);
 	
 	/* Opera */
-	background: -o-repeating-linear-gradient(90deg, #ffffff 0%,#ffffff 2%, #d5d5d5 23%, #c9c9c9 29%, #c9c9c9 33%, #c2c1c1 61%, #c9c7c7 66%, #c9c7c7 79%, #f0eeee 95%, #FFFFFF 100%);
+	background: -o-repeating-linear-gradient(90deg, #ffffff 0%,#ffffff 2%, #d5d5d5 23%, #f0eded 29%, #f0eded 33%, #c2c1c1 61%, #c9c7c7 66%, #c9c7c7 79%, #f0eeee 95%, #FFFFFF 100%);
 	
 	/* Internet Explorer */
-	background: -ms-repeating-linear-gradient(90deg, #ffffff 0%,#ffffff 2%, #d5d5d5 23%, #c9c9c9 29%, #c9c9c9 33%, #c2c1c1 61%, #c9c7c7 66%, #c9c7c7 79%, #f0eeee 95%, #FFFFFF 100%);
+	background: -ms-repeating-linear-gradient(90deg, #ffffff 0%,#ffffff 2%, #d5d5d5 23%, #f0eded 29%, #f0eded 33%, #c2c1c1 61%, #c9c7c7 66%, #c9c7c7 79%, #f0eeee 95%, #FFFFFF 100%);
 	
 	/* W3C Standard */
-	background: repeating-linear-gradient(90deg, #ffffff 0%,#ffffff 2%, #d5d5d5 23%, #c9c9c9 29%, #c9c9c9 33%, #c2c1c1 61%, #c9c7c7 66%, #c9c7c7 79%, #f0eeee 95%, #FFFFFF 100%);
+	background: repeating-linear-gradient(90deg, #ffffff 0%,#ffffff 2%, #d5d5d5 23%, #f0eded 29%, #f0eded 33%, #c2c1c1 61%, #c9c7c7 66%, #c9c7c7 79%, #f0eeee 95%, #FFFFFF 100%);
 }
 </style>
 
