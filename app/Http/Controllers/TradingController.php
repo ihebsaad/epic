@@ -68,7 +68,7 @@ class TradingController extends Controller
 	<TD class="font-weight-bold trade" align="center" nowrap width="60">Purchase</TD>
 	<TD class="font-weight-bold trade" align="center" nowrap width="60">Sale</TD>
 	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Change</TD>
-	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">% Change</TD>
+	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="85">% Change</TD>
 	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Open</TD>
 	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">High</TD>
 	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Low</TD>
