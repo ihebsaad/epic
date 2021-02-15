@@ -83,7 +83,7 @@ function load_data()
                    $("#trading").html(data);
 					  setTimeout(function(){
 					     $("#trading").animate({
-                        opacity: '0.1',
+                        opacity: '0.5',
                     });
 					 $("#trading").animate({
                         opacity: '1',

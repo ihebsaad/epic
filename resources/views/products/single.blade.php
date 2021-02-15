@@ -22,7 +22,9 @@ use App\Http\Controllers\HomeController ;
   $alliages=HomeController::referentielalliage();
 				  
  $user = auth()->user();  
-$alliage_user=$user['alliage'];
+//$alliage_user=$user['alliage'];
+ $alliageuser=HomeController::alliage_defaut($type,$famille1);
+$alliage_user = $alliageuser[0]->id ;
 if($produit->choix_etat>0){
 $etats= HomeController::referentieletat();
 }

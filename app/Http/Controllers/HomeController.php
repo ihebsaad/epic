@@ -1311,7 +1311,25 @@ $i=-1;
 	 
    }
  
-    
+       public static function alliage_defaut ($type,$fam1)
+    { 
+	 $user = auth()->user();  
+	 $client_id=$user['client_id'];
+ 	   DB::select("SET @p0='$type'  ;");
+	   DB::select("SET @p1='$fam1'  ;");
+	   DB::select("SET @p2='$client_id'  ;");
+ 	  $result=  DB::select ("CALL `sp_referentiel1_alliage_defaut`(@p0, @p1, @p2); ");
+ 
+  if ($result!= null){
+	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return   $result  ;
+ } else{
+	 	 return 'Error';
+
+ } 
+ 
+    }
+	
  
     public static function referentielalliage ()
     { 

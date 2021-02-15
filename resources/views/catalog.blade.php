@@ -37,7 +37,10 @@ foreach ($familles2 as $fam2)
   //alliage1
   $alliages=HomeController::referentielalliage();			  
  $user = auth()->user();  
-$alliage_user=$user['alliage'];
+//$alliage_user=$user['alliage'];
+ $alliageuser=HomeController::alliage_defaut($type,$famille1);
+$alliage_user = $alliageuser[0]->id ;
+ 
 /*
 $data=  DB::select ("CALL `sp_referentiel2`(); ");
 
