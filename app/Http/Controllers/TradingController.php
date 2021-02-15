@@ -209,8 +209,23 @@ $data.='
 $data.='
 </TABLE>';
  
- 
- 	return $data;	
+$data2=''; 
+$data2.=' 
+ <table id="tabmetal" border="0">
+ <tr class="headmetal">
+ <td class="tleft" > €/kg </td><td  ><center><div id="gold" class="pb-10">'. __("msg.Gold").'</div></center></td><td><center><div id="silver" class="pb-10">'. __("msg.Silver").' </div></center></td><td><center><div id="platine" class="pb-10">'. __("msg.Platinum").'</center></div></td><td><center><div id="pallad" class="pb-10">'.__("msg.Palladium").'</center></div></td>
+ </tr>
+ <tr  >
+ <td class="tleft" >'.__("msg.Time").'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td>
+ </tr>
+  <tr  >
+ <td class="tleft" >'.__("msg.Purchase").'</td><td>'.number_format($achatgold,4).'</td><td>'.number_format($achatsilv,4).'</td><td>'.number_format($achatplat,4).'</td><td>'.number_format($achatpall,4).'</td>
+ </tr>
+   <tr >
+ <td class="tleft" >'.__("msg.Sale").'</td><td>'.number_format($ventegold,4).'</td><td>'.number_format($ventesilv,4).'</td><td>'.number_format($venteplat,4).'</td><td>'.number_format($ventepall,4).'</td>
+ </tr>
+ </table> ';
+ 	return $data2;	
 		
 		
 		

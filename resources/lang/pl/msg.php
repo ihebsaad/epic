@@ -398,6 +398,9 @@ return [
 			'Country code'=>'Kod pocztowy',
 			'Agency'=>'Agencja',
 			'Default metal'=>'Domyślny metal',		
-	 
-
+			'Time'=>'Czas',
+			'Sale'=>'Sprzedaż',
+			'Purchase'=>'Zakupu',
+			
+			
  ];

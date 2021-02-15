@@ -411,5 +411,8 @@ return [
 	'Company sign'=>'Enseigne',
 	'Country code'=>'Code pays',
 	'Agency'=>'Agence',
-	'Default metal'=>'Métal par defaut',	
+	'Default metal'=>'Métal par defaut',
+	'Time'=>'Heure',
+	'Sale'=>'Vente',
+	'Purchase'=>'Achat',	
  ];

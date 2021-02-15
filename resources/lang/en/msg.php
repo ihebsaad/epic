@@ -403,5 +403,8 @@ return [
 	'Country code'=>'Country code',
 	'Agency'=>'Agency',
 	'Default metal'=>'Default metal',
+	'Time'=>'Time',
+	'Sale'=>'Sale',
+	'Purchase'=>'Purchase',
  	
  ];
