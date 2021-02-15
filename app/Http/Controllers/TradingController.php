@@ -219,8 +219,9 @@ $data.='
  $venteplat=$venteplat*1000;
  $ventepall=$ventepall*1000;
 $data2=''; 
-$data2.=' 
- <table id="tabmetal" border="0">
+$data2.='
+<h3 style="text-align:center">Cours des métaux</h3> 
+ <table   id="tabmetal" border="0">
  <tr class="headmetal">
  <td class="tleft" > €/kg </td><td  ><center><div id="gold" class="pb-10">'. __("msg.Gold").'</div></center></td><td><center><div id="silver" class="pb-10">'. __("msg.Silver").' </div></center></td><td><center><div id="platine" class="pb-10">'. __("msg.Platinum").'</center></div></td><td><center><div id="pallad" class="pb-10">'.__("msg.Palladium").'</center></div></td>
  </tr>

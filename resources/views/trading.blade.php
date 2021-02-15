@@ -18,8 +18,9 @@
 								<div class="row" >
 									<div class="col-sm-12 col-lg-6" >
 									
+<h3 style="text-align:center">Mes encours</h3> 
 									
- <table id="tabmetal" border="0">
+ <table id="tabencours" class="mb-20"  border="0">
  <tr class="headmetal">
  <td> </td><td><center><div id="gold" class="pb-10">{{__("msg.Gold")}}</div></center></td><td><center><div id="silver" class="pb-10">{{ __("msg.Silver")}}</div></center></td><td><center><div id="platine" class="pb-10">{{ __("msg.Platinum")}}</center></div></td><td><center><div id="pallad" class="pb-10">{{__("msg.Palladium")}}</center></div></td>
  </tr>
@@ -62,7 +63,7 @@ td {padding:3px 3px 3px 3px;border:1px dotted lightgrey;}
 /*.contentmetal{border:1px solid black;}
 .headmetal{border:1px solid black;}*/
 .headmetal{padding-top:6px!important;padding-top:6px!important;} 
-#tabmetal{font-weight:bold; text-align:center;border:1px solid lightgrey;}
+#tabmetal, #tabencours{font-weight:bold; text-align:center;border:1px solid lightgrey;}
 .tleft{width:100px;color:#c6a85b;font-weight:800;font-size:20px;}
 .tleft2{ color:#c6a85b;font-weight:800; }
 /*
