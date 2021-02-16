@@ -142,7 +142,7 @@ foreach($compls as $c){
 									   <?php } ?>	
 									  </select> <span class="pt-10 pl-10"><?php if(isset($product[0]['unite2'])){ echo $product[0]['unite2'];}  ?></span>
 									   <?php }else{ ?>
-										<input id="mesure2"	type="hidden" class="mesure2" value="0.00"		/>						  
+										<input id="mesure2"	type="hidden" class="mesure2" value="0.00"	title=""	/>						  
 										<?php } ?>
   									</div>									
 									  <?php }else{ ?>
@@ -494,10 +494,10 @@ function details()
 				  $('#labelm1').hide(); $('#labelm2').hide(); $('#labelm3').hide(); $('#labelm4').hide();
 				  $('#debit_1').html('');$('#debit_2').html('');$('#debit_3').html('');$('#debit_4').html('');
 				  
-				if(parseFloat(debit1)>0){ $('#labelm1').show(); $('#debit_1').html( debit1+' g');  } 
-				if(parseFloat( debit2)>0){ $('#labelm2').show(); $('#debit_2').html( debit2+' g'); } 
-				if(parseFloat( debit3)>0){ $('#labelm3').show(); $('#debit_3').html( debit3+' g'); } 
-				if(parseFloat( debit4)>0){ $('#labelm4').show(); $('#debit_4').html( debit4+' g'); } 
+				if(parseFloat(debit1)>0){ $('#labelm1').show(); $('#debit_1').html( debit1+'g');  } 
+				if(parseFloat( debit2)>0){ $('#labelm2').show(); $('#debit_2').html( debit2+'g'); } 
+				if(parseFloat( debit3)>0){ $('#labelm3').show(); $('#debit_3').html( debit3+'g'); } 
+				if(parseFloat( debit4)>0){ $('#labelm4').show(); $('#debit_4').html( debit4+'g'); } 
  				 prixt=parseFloat(data.tarif[0].prix );
  				 prixt=prixt.toFixed(2);
  				 $('#tprix').html(prixt );
