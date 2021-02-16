@@ -60,6 +60,17 @@ td,th{
 	font-size:13px;
 }
  
+ 
+ #tabencours, #tabmetal{
+	 font-size:10px!important;
+	 margin-left:-15px;
+	 
+ }
+ 
+ #gold,#silver,#platine,#palladium{
+	 width:45px!important;
+ }
+ 
 }
 
 /* 
@@ -80,6 +91,17 @@ td,th{
 	padding-right:3px!important; 
 }
 
+
+ #tabencours, #tabmetal{
+	 font-size:10px!important;
+	 margin-left:-15px;
+	 
+ }
+ 
+ #gold,#silver,#platine,#palladium{
+	 width:45px!important;
+ }
+
 }
 
 /* 
@@ -98,4 +120,13 @@ td,th{
    width:50px!important; 
 }
   
+  
+ #tabencours, #tabmetal{
+	 font-size:10px!important;
+	 margin-left:-15px;
+ }
+ 
+ #gold,#silver,#platine,#pallad{
+	 width:45px!important;
+ }
 }
