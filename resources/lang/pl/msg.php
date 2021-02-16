@@ -393,7 +393,7 @@ return [
 			'Activity'=>'Czynność',
 			'Social reason'=>'Powód społeczny',
 			'Company type'=>'Typ spółki',
-			'VAT number'=>'podatek od wartości dodanej'
+			'VAT number'=>'podatek od wartości dodanej',
 			'Company sign'=>'Znak firmowy',
 			'Country code'=>'Kod pocztowy',
 			'Agency'=>'Agencja',
