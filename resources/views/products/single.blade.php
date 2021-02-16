@@ -142,7 +142,7 @@ foreach($compls as $c){
 									   <?php } ?>	
 									  </select> <span class="pt-10 pl-10"><?php if(isset($product[0]['unite2'])){ echo $product[0]['unite2'];}  ?></span>
 									   <?php }else{ ?>
-										<input id="mesure2"	type="hidden" value="0.00"		/>						  
+										<input id="mesure2"	type="hidden" class="mesure2" value="0.00"		/>						  
 										<?php } ?>
   									</div>									
 									  <?php }else{ ?>
