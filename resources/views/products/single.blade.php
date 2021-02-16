@@ -410,6 +410,8 @@ function checkComp(){
         }
 		
 	function showmesure2( ){
+		if($("#mesure2").val()!='0.00'){
+
 		 toggle('mesure2','none');
 		  mesure=$("#mesure1").val();
          $("#mesure2").prop('disabled', false);
@@ -421,6 +423,7 @@ function checkComp(){
 		 //document.getElementById("mesure2").selectedIndex = index;
 		 document.getElementById("mesure2").selectedIndex = index+1;
  
+			}	
 	}	
  	
  
