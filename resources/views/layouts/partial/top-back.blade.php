@@ -98,15 +98,13 @@ app()->setLocale($lg);
               </a>
 			</li>
  -->
-            <!-- Nav Item - Alerts -->
+            <!-- Nav Item - Alerts  
             <li class="hidemobile nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas  fa-user-cog  fa-fw"></i>  <small style="color:darkgrey">{{__('msg.My Operations')}}</small>
-                <!-- Counter - Alerts --> 
-                <span class="badge badge-danger badge-counter"></span>
+                 <span class="badge badge-danger badge-counter"></span>
               </a>
-              <!-- Dropdown - Alerts --> 
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                   {{__('msg.My Operations')}}
                 </h6>
@@ -118,8 +116,7 @@ app()->setLocale($lg);
                     </div>
                   </div>
                   <div>
-                   <!-- <div class="small text-gray-500">December 12, 2019</div>-->
-                    <span class="font-weight-bold">{{__('msg.My Orders')}}</span>
+                     <span class="font-weight-bold">{{__('msg.My Orders')}}</span>
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -129,8 +126,7 @@ app()->setLocale($lg);
                     </div>
                   </div>
                   <div>
-                  <!--  <div class="small text-gray-500">December 7, 2019</div>-->
-                    <span class="font-weight-bold">{{__('msg.My Euros Account')}}</span>
+                     <span class="font-weight-bold">{{__('msg.My Euros Account')}}</span>
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -140,8 +136,7 @@ app()->setLocale($lg);
                     </div>
                   </div>
                   <div>
-                   <!-- <div class="small text-gray-500">December 2, 2019</div>-->
-                  <span class="font-weight-bold">{{__('msg.My templates')}}</span>
+                   <span class="font-weight-bold">{{__('msg.My templates')}}</span>
                   </div>
                 </a>
 				<a class="dropdown-item d-flex align-items-center" href="#">
@@ -151,14 +146,12 @@ app()->setLocale($lg);
                     </div>
                   </div>
                   <div>
-                   <!-- <div class="small text-gray-500">December 2, 2019</div>-->                   
-                  <span class="font-weight-bold">{{__('msg.My Metal Account')}}</span>
+                   <span class="font-weight-bold">{{__('msg.My Metal Account')}}</span>
 					
                   </div>
                 </a>
-              <!--  <a class="dropdown-item text-center small text-gray-500" href="#">Show All </a>-->
-              </div>
-            </li>
+               </div>
+            </li>--->
 <?php 
 $myorder = DB::table('orders')->where('status','cart')->where('user',$user->id)->first();
 if ($myorder!=null){

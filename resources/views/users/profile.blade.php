@@ -5,7 +5,8 @@
 
 $cl_ident=$user->client_id;
 $client=DB::table('client')->where('cl_ident',$cl_ident)->first();
-  $metals=DB::table('METAL')->get();
+  $metals=DB::select('CALL `sp_referentiel_metal_defaut`();') ;
+  //dd($metals);
   $agences=DB::table('agence')->get();
   $type_clients=DB::table('type_client')->get();
 
@@ -49,13 +50,13 @@ metal_defaut_id
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Name');?></label>
                                                 <input type="text" class="form-control form-control-user" id="name" name="name"  value="{{ $user->name }}"   
-                                                       placeholder="<?php echo __('msg.Name');?>*">
+                                                       placeholder="<?php echo __('msg.Name');?>">
 
                                             </div>
                                             <div class="col-sm-6">
 											<label><?php echo __('msg.Last name');?></label>											
                                                 <input type="text" class="form-control form-control-user" id="lastname" name="lastname"  value="{{ $user->lastname }}"   
-                                                       placeholder="<?php echo __('msg.Last name');?>*">
+                                                       placeholder="<?php echo __('msg.Last name');?>">
                                             </div>
 
                                         </div>
@@ -67,7 +68,7 @@ metal_defaut_id
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Activity');?></label>											
-                                                <select class="form-control  " id="activity" name="activity"  placeholder="Sélectionnez votre activité*"   
+                                                <select class="form-control  " id="activity" name="activity"  placeholder="Sélectionnez votre activité"   
                                                         style="font-size: 0.8rem;border-radius: 10rem;padding-left:15px;padding-top:10px;height:50px;font-family:Nunito">
                                                      <option value="artisan" <?php if($user->activity=='artisan'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Artisan');?></option>
                                                     <option value="fabricant" <?php if($user->activity=='fabricant'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Manufacturer');?></option>
@@ -78,10 +79,14 @@ metal_defaut_id
                                                 </select>
                                             </div>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
-											<label><?php echo __('msg.Username');?></label>											
+											<!--<label><?php echo __('msg.Username');?></label>											
                                                 <input type="text" class="form-control form-control-user" id="username"   readonly value="{{ $user->username }}"
                                                        placeholder="<?php echo __('msg.Username');?>*">
-											
+											-->
+												<label><?php echo __('msg.Email address');?></label>											
+                                                <input type="email" class="form-control form-control-user" id="email" name="email"  readonly value="{{ $user->email }}"
+                                                       placeholder="<?php echo __('msg.Email address');?>">
+                                         											
                                              </div>
                                         </div>
 
@@ -89,7 +94,7 @@ metal_defaut_id
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Cell phone');?></label>											
                                                 <input type="text" class="form-control form-control-user" id="mobile" name="mobile" pattern=".{10,10}" value="{{ $user->mobile }}"   
-                                                       placeholder="<?php echo __('msg.Cell phone');?>*">
+                                                       placeholder="<?php echo __('msg.Cell phone');?>">
                                             </div>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Phone');?></label>											
@@ -99,17 +104,18 @@ metal_defaut_id
                                         </div>
 
                                         <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-											  <label><?php echo __('msg.Email address');?></label>											
-                                                <input type="email" class="form-control form-control-user" id="email" name="email"  readonly value="{{ $user->email }}"
-                                                       placeholder="<?php echo __('msg.Email address');?>*">
-                                         
-										</div>
+                         
                                        <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Password');?></label>											
-                                                <input type="password" class="form-control form-control-user" name="password"   pattern=".{6,30}"    style="width:100%"
-                                                       id="password" placeholder="<?php echo __('msg.Password');?>*">
+                                                <input type="password" class="form-control form-control-user" name="password"   pattern=".{6,30}"    style="width:100%"  autocomplete="off"
+                                                       id="password" placeholder="<?php echo __('msg.Password');?>">
  										 </div>
+										<div class="col-sm-6 mb-3 mb-sm-0">
+										<label><?php echo __('msg.Confirmation');?></label>											
+                                                <input type="password" class="form-control form-control-user" name="password"   pattern=".{6,30}"    style="width:100%"  autocomplete="off"
+                                                       id="password" placeholder="<?php echo __('msg.Confirmation');?>">
+										 
+                                        </div>
                                         </div>
 
                                         <div class="form-group row">
@@ -147,105 +153,12 @@ metal_defaut_id
 							        {{ csrf_field() }}
 
                                         <input type="hidden" value="{{$cl_ident}}" id="cl_ident" name="cl_ident">
-								
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-											<label><?php echo __('msg.Social reason');?></label>
-                                                <input type="text" class="form-control form-control-user" id="raison_sociale" name="raison_sociale"  value="{{ $client->raison_sociale }}"   
-                                                       placeholder="<?php echo __('msg.Social reason');?>">
-
-                                            </div>
-                                            <div class="col-sm-6">
-											<label><?php echo __('msg.Company type');?></label>
-											
-                                                <input type="text" class="form-control form-control-user" id="type_societe" name="type_societe"  value="{{ $client->type_societe }}"   
-                                                       placeholder="<?php echo __('msg.Company type');?>">
-                                            </div>
-
-                                        </div>								
-								
-                                        <div class="form-group row">
-										
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-											<label>SIRET</label>											
-                                                <input type="text" class="form-control form-control-user" id="siret" name="siret"  value="{{ $client->siret }}"   
-                                                       placeholder="SIRET">
-
-                                            </div>
-                                            <div class="col-sm-6">
-											<label><?php echo __('msg.VAT number');?></label>
-											
-                                                <input type="text" class="form-control form-control-user" id="num_tva" name="num_tva"  value="{{ $client->num_tva }}"   
-                                                       placeholder="<?php echo __('msg.VAT number');?>">
-                                            </div>
-
-                                        </div>
 
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
-											<label><?php echo __('msg.Company sign');?></label>											
-                                                <input type="text" class="form-control form-control-user" id="enseigne" name="enseigne"  value="{{ $client->enseigne }}"   
-                                                       placeholder="<?php echo __('msg.Company sign');?>">
-
-                                            </div>
-                                            <div class="col-sm-6">
-											<label><?php echo __('msg.Activity');?></label>											
-  													   
-												<select class="form-control" id="type_client_ident" name="type_client_ident"  >	
-												<option></option>
-												<?php foreach ($type_clients as $typec)
-												{
-										if($client->type_client_ident==$typec->type_client_ident){$selected="selected='selected'";}else{$selected="";}
-											echo '<option '.$selected.' value="'.$typec->type_client_ident.'"  >'.$typec->type_client_lib.'</option>';	
-													
-												}
-												?>
-												</select>	   
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-											<label><?php echo __('msg.Address');?> 1</label>											
-                                                <input type="text" class="form-control form-control-user" id="adresse1" name="adresse1"  value="{{ $client->adresse1 }}"   
-                                                       placeholder="<?php echo __('msg.Address');?> 1">
-
-                                            </div>
-                                            <div class="col-sm-6">
-											<label><?php echo __('msg.Address');?> 2</label>											
-                                                <input type="text" class="form-control form-control-user" id="adresse2" name="adresse2"  value="{{ $client->adresse2 }}"   
-                                                       placeholder="<?php echo __('msg.Address');?> 2">
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group row">
-										
-                                            <div class="col-sm-3 mb-3 mb-sm-0">
-											<label>ZIP</label>											
-                                                <input type="text" class="form-control form-control-user" id="zip" name="zip"  value="{{ $client->zip }}"   
-                                                       placeholder="ZIP">
-
-                                            </div>
-                                            <div class="col-sm-6">
-											<label><?php echo __('msg.City');?></label>											
-                                                <input type="text" class="form-control form-control-user" id="ville" name="ville"  value="{{ $client->ville }}"   
-                                                       placeholder="<?php echo __('msg.City');?>">
-                                            </div>
-                                            <div class="col-sm-3">
-											<label><?php echo __('msg.Country code');?></label>																						
-											
-                                                <input type="text" class="form-control form-control-user" id="pays_code" name="pays_code"  value="{{ $client->pays_code }}"   
-                                                       placeholder="<?php echo __('msg.Country code');?>">
-                                            </div>
-                                        </div>										
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-8 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Agency');?></label>											
  													   
-												<select  class="form-control"  id="agence_ident" name="agence_ident" >
+												<select  class="form-control"  id="agence_ident" name="agence_ident"  >
 												<option></option>
 												<?php foreach($agences as $agence)
 												{
@@ -256,16 +169,16 @@ metal_defaut_id
 												</select>
 
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-6">
 											<label><?php echo __('msg.Default metal');?></label>											
                                                   
 									<select class="form-control "   name="metal_defaut_id" id="metal_defaut_id"    >
 									<option value="" ></option> 
 									<?php foreach($metals as $metal)
-									{ if($metal->metal_ident<9){
-										if($client->metal_defaut_id==$metal->metal_ident){$selected="selected='selected'";}else{$selected="";}
-									echo '<option   '.$selected.' value="'.$metal->metal_ident.'" >'.$metal->metal_lib.'</option>';    
-										}
+									{  
+										if($client->metal_defaut_id==$metal->id){$selected="selected='selected'";}else{$selected="";}
+									echo '<option   '.$selected.' value="'.$metal->id.'" >'.$metal->libelle.'</option>';    
+										 
 										}
 				
 										?>
@@ -273,7 +186,105 @@ metal_defaut_id
 										</select>													   
                                             </div>
 
+                                        </div>	
+										
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+											<label><?php echo __('msg.Social reason');?></label>
+                                                <input type="text" class="form-control form-control-user" id="raison_sociale" name="raison_sociale"  value="{{ $client->raison_sociale }}"  readonly  
+                                                       placeholder="<?php echo __('msg.Social reason');?>">
+
+                                            </div>
+                                            <div class="col-sm-6">
+											<label><?php echo __('msg.Company type');?></label>
+											
+                                                <input type="text" class="form-control form-control-user" id="type_societe" name="type_societe"  value="{{ $client->type_societe }}"   readonly
+                                                       placeholder="<?php echo __('msg.Company type');?>">
+                                            </div>
+
+                                        </div>								
+								
+                                        <div class="form-group row">
+										
+                                            <div class="col-sm-4 mb-3 mb-sm-0">
+											<label>SIRET</label>											
+                                                <input type="text" class="form-control form-control-user" id="siret" name="siret"  value="{{ $client->siret }}"   readonly
+                                                       placeholder="SIRET">
+
+                                            </div>
+                                            <div class="col-sm-4">
+											<label><?php echo __('msg.VAT number');?></label>
+											
+                                                <input type="text" class="form-control form-control-user" id="num_tva" name="num_tva"  value="{{ $client->num_tva }}"  readonly 
+                                                       placeholder="<?php echo __('msg.VAT number');?>">
+                                            </div>
+											
+                                            <div class="col-sm-4">
+											 <label><?php echo __('msg.Company sign');?></label>											
+                                             <input type="text" class="form-control form-control-user" id="enseigne" name="enseigne"  value="{{ $client->enseigne }}" readonly  
+                                                       placeholder="<?php echo __('msg.Company sign');?>">
+                                            </div>
+
+                                        </div>
+
+                                      <!--  <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+
+                                            </div>
+                                            <div class="col-sm-6">
+											<label><?php /* echo __('msg.Activity');?></label>											
+  													   
+												<select class="form-control" id="type_client_ident" name="type_client_ident"  >	
+												<option></option>
+												<?php foreach ($type_clients as $typec)
+												{
+										if($client->type_client_ident==$typec->type_client_ident){$selected="selected='selected'";}else{$selected="";}
+											echo '<option '.$selected.' value="'.$typec->type_client_ident.'"  >'.$typec->type_client_lib.'</option>';	
+													
+												}
+											*/	?>
+												</select>	  
+                                            </div>
+
+                                        </div>-->
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+											<label><?php echo __('msg.Address');?> 1</label>											
+                                                <input type="text" class="form-control form-control-user" id="adresse1" name="adresse1"  value="{{ $client->adresse1 }}"   readonly
+                                                       placeholder="<?php echo __('msg.Address');?> 1">
+
+                                            </div>
+                                            <div class="col-sm-6">
+											<label><?php echo __('msg.Address');?> 2</label>											
+                                                <input type="text" class="form-control form-control-user" id="adresse2" name="adresse2"  value="{{ $client->adresse2 }}"   readonly
+                                                       placeholder="<?php echo __('msg.Address');?> 2">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group row">
+										
+                                            <div class="col-sm-3 mb-3 mb-sm-0">
+											<label>ZIP</label>											
+                                                <input type="text" class="form-control form-control-user" id="zip" name="zip"  value="{{ $client->zip }}"   readonly
+                                                       placeholder="ZIP">
+
+                                            </div>
+                                            <div class="col-sm-6">
+											<label><?php echo __('msg.City');?></label>											
+                                                <input type="text" class="form-control form-control-user" id="ville" name="ville"  value="{{ $client->ville }}"   readonly
+                                                       placeholder="<?php echo __('msg.City');?>">
+                                            </div>
+                                            <div class="col-sm-3">
+											<label><?php echo __('msg.Country code');?></label>																						
+											
+                                                <input type="text" class="form-control form-control-user" id="pays_code" name="pays_code"  value="{{ $client->pays_code }}"  readonly 
+                                                       placeholder="<?php echo __('msg.Country code');?>">
+                                            </div>
                                         </div>										
+
+									
 								
 					            <div class="form-group row">
 
