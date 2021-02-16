@@ -112,8 +112,8 @@ metal_defaut_id
  										 </div>
 										<div class="col-sm-6 mb-3 mb-sm-0">
 										<label><?php echo __('msg.Confirmation');?></label>											
-                                                <input type="password" class="form-control form-control-user" name="password"   pattern=".{6,30}"    style="width:100%"  autocomplete="off"
-                                                       id="password" placeholder="<?php echo __('msg.Confirmation');?>">
+                                                <input type="password" class="form-control form-control-user" name="confirmation"   pattern=".{6,30}"    style="width:100%"  autocomplete="off"
+                                                       id="confirmation" placeholder="<?php echo __('msg.Confirmation');?>">
 										 
                                         </div>
                                         </div>

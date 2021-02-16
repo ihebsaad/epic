@@ -62,8 +62,11 @@ class UsersController extends Controller
         $mobile= $request->get('mobile');
         $phone= $request->get('phone');
         $password= $request->get('password');
+        $confirmation= $request->get('confirmation');
          if($password !=''  && (strlen($password )>5) ){
-            $password= bcrypt(trim($request->get('password')));
+		
+		if($password == $confirmation )
+		{  $password= bcrypt(trim($request->get('password')));
 
 					
 		DB::table('users')->where('id', $id)->update(array(
@@ -75,6 +78,7 @@ class UsersController extends Controller
 		'password' => $password,
 		
 		));
+		 }
         }else{
 
 		 DB::table('users')->where('id', $id)->update(array(
