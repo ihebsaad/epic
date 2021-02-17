@@ -275,10 +275,11 @@ foreach($compls as $c){
 							  <div id="infos"  >		
  							  
 							  <input type="hidden" id="article" value="0"></input>
-							<label class="ml-10 mr-10">{{__('msg.Price')}} :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €			  
-							  
+							  <b id="priceb" class=" pl-20">{{__('msg.Price')}}</b>
+							<div id="price" style="display:none"><label class="ml-10 mr-10">{{__('msg.Price')}} :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €</div>
+							<div id="pricing"></div>
 							  <div class="row pl-10  ">
-							  <label class=" pl-10  " >{{__('msg.Total Labour cost')}}:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
+							  <label class=" pl-20  " >{{__('msg.Total Labour cost')}}:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €
 							  </div>							
 				   							 
 
@@ -459,8 +460,34 @@ function details()
                 data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,
 				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val,etat_id:etat_id,fact_id:fact_id/*,tarif:tarif*/, _token: _token},
                 success: function (data) {
-				console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif) ;
+				console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif+' tarif_prod : '+data.tarif_prod) ;
 				console.log(data);	
+				
+var datas='';var poids=0;var limite=0;
+if(data.tarif_prod.length>1){
+datas+='<table class="mb-10" style="border:none;text-align:center" border="0"><tr>';
+for(i=0;i< data.tarif_prod.length-1;i++)
+{
+		  limite=parseFloat(data.tarif_prod[i].limitepds);
+
+datas+='<td>Moins de '+ limite+'g</td>'
+}
+datas+='<td>Au-delà</td><td>Mini</td></tr>';
+
+for(i=0;i< data.tarif_prod.length;i++)
+{
+	  poids=parseFloat(data.tarif_prod[i].prix);
+datas+='<td>'+poids+''+data.tarif_prod[i].MODE_FACT_LIBC+'</td>';
+}
+datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+''+data.tarif_prod[0].MODE_FACT_LIBC+'</td>';
+
+ $('#pricing').html(datas );
+
+}else{
+	
+	$('#priceb').hide();
+	$('#price').show();
+}
 // != 'undefined'				
 				//comp_val
 				poids=parseFloat(data.poids_u);
@@ -469,7 +496,7 @@ function details()
 				poidst= poidst.toFixed(2);
 				poidst= parseFloat(poidst);
  				$('#poidst').html(poidst +' g');
-				 $('#produit').html( data.produit);
+				 $('#article').val( parseInt(data.produit));
 				 if( typeof (data.prix)   !== 'undefined' )
 				 {  prix=parseFloat(data.prix[0].prix);
 				 console.log(data.prix[0].prix);

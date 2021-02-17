@@ -1757,10 +1757,12 @@ if ($data!= null){
  		$results['poids_u']=$poidsu;
 		$qte=intval($qte);
 		$poids=  ($poidsu)* ($qte);
-		$results['produit']=$articleid;
+		$results['produit']=intval($articleid);
+		 
  		$results['prix']=$this->prix($typeid,$articleid,$all,$qte,$poidsu,$id_cl );
  		//dd($typeid,$articleid,$all,$qte,$poidsu,$id_cl );
 		 $results['tarif']=$this->tarif($id_comp,$val_comp,$id_cl,$qte,$poidsu) ;
+		 $results['tarif_prod']=$this->tarif_prod($typeid,$articleid,$all,$id_cl) ;
 		
 		  if ($results['prix']!= null){
 	// return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
@@ -2072,6 +2074,28 @@ if ($data!= null){
     }	
 	
 
+	   	 public function tarif_prod($typeid,$articleid,$all,$id_cl)
+    {
+ //   try {		
+ 	   DB::select("SET @p0='$typeid' ;");
+ 	   DB::select("SET @p1='$articleid' ;");
+ 	   DB::select("SET @p2='$all' ;");
+	   DB::select("SET @p3='$id_cl'  ;");
+  
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_tarif`(@p0,@p1,@p2,@p3); ");
+ 
+  if ($result!= null){
+	 return   $result  ;
+			} else{
+  $error = array(
+    "status" => "error",
+    "error_code" => 404,
+    "error_message" => "Aucun résultat trouvé",
+);
+ 		return  $result;
+ } 
+ 
+ }
 	
  
 	 public function clients( )
