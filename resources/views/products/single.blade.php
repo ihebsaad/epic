@@ -477,9 +477,9 @@ datas+='<td>Au-delà</td><td>Mini</td></tr>';
 for(i=0;i< data.tarif_prod.length;i++)
 {
 	  poids=parseFloat(data.tarif_prod[i].prix);
-datas+='<td>'+poids+''+data.tarif_prod[i].MODE_FACT_LIBC+'</td>';
+datas+='<td>'+poids+' '+data.tarif_prod[i].MODE_FACT_LIBC+'</td>';
 }
-datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+''+data.tarif_prod[0].MODE_FACT_LIBC+'</td>';
+datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' '+data.tarif_prod[0].MODE_FACT_LIBC+'</td>';
 
  $('#pricing').html(datas );
 
