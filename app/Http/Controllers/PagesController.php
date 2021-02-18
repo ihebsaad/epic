@@ -160,7 +160,10 @@ $response = $client->request('GET', $endpoint, ['query' => [
 $statusCode = $response->getStatusCode();
 $content = $response->getBody();
 
-         return view('test',['statusCode'=>$statusCode,'result'=>$content])    }
+  $result= response()->json(  $content ,200,array(),JSON_PRETTY_PRINT);
+ return view('test',['statusCode'=>$statusCode,'result'=>$result])    
+		 
+		 }
 
 	 public function findings()
     { 
