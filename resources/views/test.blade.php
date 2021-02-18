@@ -18,7 +18,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Tests</h6>
                                 </div>
                                 <div class="card-body">
-								<?php echo  json_decode( $result, JSON_PRETTY_PRINT ); ?>
+								<?php echo  $result ; ?>
                                 </div>
                             </div>
 
