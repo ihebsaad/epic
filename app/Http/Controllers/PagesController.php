@@ -71,7 +71,21 @@ $response = $client->request('GET', $endpoint, ['query' => [
 'plannedShippingDate' =>$plannedShippingDate ,
 'isCustomsDeclarable' =>$isCustomsDeclarable  ,
 'unitOfMeasurement' =>$unitOfMeasurement  ,
-]]);
+],
+	'headers' => [
+	'accept'=> 'application/json',
+	'Message-Reference'=> 'd0e7832e-5c98-11ea-bc55-0242ac13',
+	'Message-Reference-Date'=> 'Wed, 21 Oct 2015 07:28:00 GMT',
+	'Plugin-Name'=> '',
+	'Plugin-Version'=> '',
+	'Shipping-System-Platform-Name'=> '',
+	'Shipping-System-Platform-Version'=> '',
+	'Webstore-Platform-Name'=> '',
+	'Webstore-Platform-Version'=> '',
+	'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
+	 
+  	]
+]);
 
 // url will be: http://my.domain.com/test.php?key1=5&key2=ABC;
 
