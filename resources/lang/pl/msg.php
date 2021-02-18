@@ -240,6 +240,7 @@ return [
            'Product'=>'Produkt',
            'Unit weight'=>'Waga jednostkowa',
            'Option'=>'Opcja',
+           'Option price'=>'Cena opcji',
            'Price'=>'Cena',
            'Total Labour cost'=>'Całkowity koszt robocizny',
            'Optional Labour cost' =>'Koszt prac dodatkowych',

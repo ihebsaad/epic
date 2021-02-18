@@ -232,6 +232,7 @@ return [
  	'Product'=>'Product',
  	'Unit weight'=>'Unit weight',
 	'Option'=>'Option',
+	'Option price'=>'Option price',
  	'Price'=>'Price',
  	'Total Labour cost'=>'Total Labour cost',
  	'Optional Labour cost'=>'Optional Labour cost',

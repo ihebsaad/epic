@@ -479,7 +479,7 @@ for(i=0;i< data.tarif_prod.length;i++)
 	  poids=parseFloat(data.tarif_prod[i].prix);
 datas+='<td>'+poids+' '+data.tarif_prod[i].MODE_FACT_LIBC+'</td>';
 }
-datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' '+data.tarif_prod[0].MODE_FACT_LIBC+'</td>';
+datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 
  $('#pricing').html(datas );
 
@@ -503,9 +503,9 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' '+data.tarif_prod[0].MODE_F
 				console.log(data.prix[0].tarif);
 				 $('#prix').html(  prix);
 				 //$('#modeid').html( data.prix[0].modeid);
-				 montant=parseFloat(data.prix[0].montant *qte);
-				
-				 montantt=parseFloat(data.tarif[0].montant  * comp_val);
+				 montant=parseFloat(data.prix[0].montant );
+			 
+				 montantt=parseFloat(data.tarif[0].montant );
 				 minit=parseFloat(data.tarif[0].mini);
 				 mini=parseFloat(data.prix[0].mini);
 				
@@ -515,7 +515,7 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' '+data.tarif_prod[0].MODE_F
 				 montant= montant.toFixed(2);
 				 montantt= montantt.toFixed(2);
 				 montant= parseFloat(montant);
-				 $('#montant').html(  montant.toFixed(2));
+				 $('#montant').html(  montant.toFixed(2) *qte);
 				 $('#mini').html(mini.toFixed(2) );
 				 debit1=(data.prix[0].debit_1 *qte).toFixed(2);
 				 debit2=(data.prix[0].debit_2 *qte).toFixed(2);
@@ -533,7 +533,7 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' '+data.tarif_prod[0].MODE_F
  				 $('#tprix').html(prixt );
 				// $('#tmodeid').html( data.tarif[0].modeid);
 				
-				 $('#tmontant').html(montantt  );
+				 $('#tmontant').html(montantt  * comp_val );
 				 $('#tmini').html(minit.toFixed(2));			
 				 
 				if(parseFloat(data.prix[0].modeid) > 0){
