@@ -163,7 +163,7 @@ $statusCode = $response->getStatusCode();
 $content = $response->getBody();
 
   $result= response()->json(  $content ,200,array(),JSON_PRETTY_PRINT);
- return view('test',['statusCode'=>$statusCode,'result'=>$result]) ;   
+ return view('test',['statusCode'=>$statusCode,'result'=>$content]) ;   
 		 
 		 }
 
