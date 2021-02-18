@@ -98,7 +98,9 @@ $content = $response->getBody();
 	  public function test()
     { 
 
-	$endpoint = "https://express.api.dhl.com/mydhlapi/test/rates";
+//	$endpoint = "https://express.api.dhl.com/mydhlapi/test/rates";
+		$endpoint = "https://api-mock.dhl.com/mydhlapi/rates";
+
 $client = new \GuzzleHttp\Client();
 /*
 accountNumber=220136396&originCountryCode=FR&originPostalCode=75000&originCityName=Paris&destinationCountryCode=FR&
