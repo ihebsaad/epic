@@ -515,7 +515,8 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				 montant= montant.toFixed(2);
 				 montantt= montantt.toFixed(2);
 				 montant= parseFloat(montant);
-				 $('#montant').html(  montant.toFixed(2) *qte);
+		 
+				 $('#montant').html(  montant.toFixed(2) );
 				 $('#mini').html(mini.toFixed(2) );
 				 debit1=(data.prix[0].debit_1 *qte).toFixed(2);
 				 debit2=(data.prix[0].debit_2 *qte).toFixed(2);
