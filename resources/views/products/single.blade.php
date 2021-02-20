@@ -503,8 +503,9 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				console.log(data.prix[0].tarif);
 				 $('#prix').html(  prix);
 				 //$('#modeid').html( data.prix[0].modeid);
+				 
 				 montant=parseFloat(data.prix[0].montant );
-			 
+			 alert(data.prix[0].montant );
 				 montantt=parseFloat(data.tarif[0].montant );
 				 minit=parseFloat(data.tarif[0].mini);
 				 mini=parseFloat(data.prix[0].mini);
