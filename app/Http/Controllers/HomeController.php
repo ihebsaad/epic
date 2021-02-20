@@ -1755,11 +1755,11 @@ if ($data!= null){
 		}
 		
  		$results['poids_u']=$poidsu;
-		$qte=intval($qte);
+		$qte=floatval($qte);
 		$poids=  ($poidsu)* ($qte);
 		$results['produit']=intval($articleid);
 		 
- 		$results['prix']=$this->prix($typeid,$articleid,$all,$qte,$poidsu,$id_cl );
+ 		$results['prix']=$this->prix($typeid,$articleid,$all,$qte,$poids,$id_cl );
  		//dd($typeid,$articleid,$all,$qte,$poidsu,$id_cl );
 		 $results['tarif']=$this->tarif($id_comp,$val_comp,$id_cl,$qte,$poidsu) ;
 		 $results['tarif_prod']=$this->tarif_prod($typeid,$articleid,$all,$id_cl) ;
@@ -2037,6 +2037,7 @@ if ($data!= null){
    
    	 public function prix($typeid,$articleid,$alliageid,$qte,$poids,$id_cl )
     {
+	//	dd($typeid.'-'.$articleid.'-'.$alliageid.'-'.$qte.'-'.$poids.'-'.$id_cl );
  //   try {		
  	   DB::select("SET @p0='$typeid' ;");
  	   DB::select("SET @p1='$articleid' ;");

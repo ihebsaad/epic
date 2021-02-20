@@ -480,11 +480,11 @@ function details()
 				 var datass= {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,
 				 				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val,etat_id:etat_id,fact_id:fact_id/*,tarif:tarif*/, _token: _token};
 
-alert(JSON.stringify(datass));
-				console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif+' tarif_prod : '+data.tarif_prod) ;
-				console.log(data);	
+ //alert(JSON.stringify(datass));
+			//	console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif+' tarif_prod : '+data.tarif_prod) ;
+			//	console.log(data);	
 				
-var datas='';var poids=0;var limite=0;
+var datas='';var poidsx=0;var limite=0;
 if(data.tarif_prod.length>1){
 datas+='<table class="mb-10" style="border:none;text-align:center" border="0"><tr>';
 for(i=0;i< data.tarif_prod.length-1;i++)
@@ -497,8 +497,8 @@ datas+='<td>Au-delà</td><td>Mini</td></tr>';
 
 for(i=0;i< data.tarif_prod.length;i++)
 {
-	  poids=parseFloat(data.tarif_prod[i].prix);
-datas+='<td>'+poids+' '+data.tarif_prod[i].MODE_FACT_LIBC+'</td>';
+	  poidsx=parseFloat(data.tarif_prod[i].prix);
+datas+='<td>'+poidsx+' '+data.tarif_prod[i].MODE_FACT_LIBC+'</td>';
 }
 datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 
@@ -530,11 +530,11 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				 minit=parseFloat(data.tarif[0].mini);
 				 mini=parseFloat(data.prix[0].mini);
 				 //added
-				 montantt= montantt * comp_val ;
+				 //montantt= montantt * comp_val ;
 				 
 			     if(montantt< minit){montantt=minit;}				 
 				 //
-				 montant=montant*qte;
+				 montant=montant ;
 				  if(montant< mini){montant=mini;}
 
 				 if(montantt>0){montant=montant+montantt;}
@@ -544,10 +544,10 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 		 
 				 $('#montant').html(  montant.toFixed(2) );
 				 $('#mini').html(mini.toFixed(2) );
-				 debit1=(data.prix[0].debit_1 *qte).toFixed(2);
-				 debit2=(data.prix[0].debit_2 *qte).toFixed(2);
-				 debit3=(data.prix[0].debit_3 *qte).toFixed(2);
-				 debit4=(data.prix[0].debit_4 *qte).toFixed(2);
+				 debit1=(data.prix[0].debit_1 ).toFixed(2);
+				 debit2=(data.prix[0].debit_2 ).toFixed(2);
+				 debit3=(data.prix[0].debit_3 ).toFixed(2);
+				 debit4=(data.prix[0].debit_4 ).toFixed(2);
 				  $('#labelm1').hide(); $('#labelm2').hide(); $('#labelm3').hide(); $('#labelm4').hide();
 				  $('#debit_1').html('');$('#debit_2').html('');$('#debit_3').html('');$('#debit_4').html('');
 				  
