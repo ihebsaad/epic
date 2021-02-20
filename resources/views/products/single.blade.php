@@ -477,6 +477,10 @@ function details()
                 data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,
 				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val,etat_id:etat_id,fact_id:fact_id/*,tarif:tarif*/, _token: _token},
                 success: function (data) {
+				 var datass= {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,
+				 				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val,etat_id:etat_id,fact_id:fact_id/*,tarif:tarif*/, _token: _token};
+
+alert(JSON.stringify(datass));
 				console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif+' tarif_prod : '+data.tarif_prod) ;
 				console.log(data);	
 				
