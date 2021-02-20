@@ -207,7 +207,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									</a>
                                 </div>
                                 <div id="div2" class="card-body"  style="padding-bottom:0px">
- 								<span style="font-size:11px" class="mb-10" >{{__('msg.Estimate of the value according to my content in precious metals')}}</span>
+ 								<span style="font-size:12px" class="mb-10" >{{__('msg.Estimate of the value according to my content in precious metals')}}</span>
 								<div class="pl-20">{{__('msg.Amount')}} : <span style="font-weight:bold" id="amount"></span></div><br>
  								
  

@@ -503,7 +503,7 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				console.log(data.prix[0].tarif);
 				 $('#prix').html(  prix);
 				 //$('#modeid').html( data.prix[0].modeid);
-				 montant=parseFloat(data.prix[0].montant );
+				 montant=parseFloat(data.prix[0].prix );
 			 
 				 montantt=parseFloat(data.tarif[0].montant );
 				 minit=parseFloat(data.tarif[0].mini);
@@ -511,10 +511,11 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				 //added
 				 montantt= montantt * comp_val ;
 				 
-			     if(montantt< minit){montantt=minit;}				 
+			     if(montantt< minit){montantt=minit;}
+				// montant=montant*qte;
+				 
 				 if(montant< mini){montant=mini;}
 				 //
-				 montant=montant*qte;
 				 if(montantt>0){montant=montant+montantt;}
 				 montant= montant.toFixed(2);
 				 montantt= montantt.toFixed(2);

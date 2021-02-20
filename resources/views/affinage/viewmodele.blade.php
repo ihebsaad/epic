@@ -538,7 +538,8 @@ function prix()
 				 $('#analyseval').html( '');
 				 $('#affinageval').html( '');
 		
- 				 
+ 				 if(data!=0){
+					 alert('data!=0');
 				 if( parseFloat(data[0].credit_au)>0)$('#divor').show();
 				 if( parseFloat(data[0].credit_ag)>0)$('#divsilv').show();
 				 if( parseFloat(data[0].credit_pt)>0)$('#divplat').show();
@@ -552,7 +553,49 @@ function prix()
 				 $('#silver').html( data[0].credit_ag );
 				 $('#platinum').html( data[0].credit_pt );
 				 $('#palladium').html( data[0].credit_pd );
+				 
+				 }else{
+ 
+					
+	         var poids_cdr =  $('#pds_cdr').val() ;
+				
+				$.ajax({
+                url: "{{ route('tarifcmd') }}",
+                method: "POST",
+                data: {  nature: nature,estim_or: estim_or,estim_ag: estim_ag, estim_pt: estim_pt,estim_pd: estim_pd,poids:poids,poids_cdr:poids_cdr , _token: _token},
+                success: function (data) {
+				  
+							  
+				  $('#divor').hide();
+				  $('#divsilv').hide();
+				  $('#divplat').hide();
+				  $('#divpall').hide();
+				  							  
+ 				 $('#gold').html( data[0].credit_au.toFixed(2));
+				 $('#silver').html( data[0].credit_ag.toFixed(2));
+				 $('#platinum').html( data[0].credit_pt.toFixed(2));
+				 $('#palladium').html( data[0].credit_pd.toFixed(2));
+				 $('#affinageval').html( data[0].Affinage);
+				 $('#fonteval').html( data[0].Fonte);
+				 $('#analyseval').html( data[0].Analyse);
+				  
+	 			  $('#amount').html(data[0].Fonte + data[0].Affinage+ data[0].Analyse);
 
+				 
+			 	}
+						});	
+
+
+					
+					
+					
+				}
+				 
+				 
+				 
+				 
+				 
+				 
 				 
 			 	}
 						});

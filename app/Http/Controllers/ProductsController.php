@@ -386,7 +386,9 @@ class ProductsController extends Controller
 					   $poids_cdr = $request->get('poids_cdr');
 					     
 		$data= app('App\Http\Controllers\HomeController')->tarifdetails($nature,$estim_or,$estim_ag,$estim_pt,$estim_pd,$poids,$poids_cdr  );
-		return $data;
+		
+		if($data!=null){return $data;}else{return 0;}
+		
 	 }	
 
 	 
