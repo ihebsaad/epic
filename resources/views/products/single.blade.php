@@ -4,6 +4,23 @@
  
  @section('content')
 <?php 
+
+
+   $typeid =101;
+ 	 $articleid =1;
+ 	 $alliageid =34;
+	 $qte =100;
+	 $poids =100;
+	 $id_cl =10099;
+  DB::select("SET @p0='$typeid' ;");
+ 	   DB::select("SET @p1='$articleid' ;");
+ 	   DB::select("SET @p2='$alliageid' ;");
+	   DB::select("SET @p3='$qte'  ;");
+	   DB::select("SET @p4='$poids'  ;");
+	   DB::select("SET @p5='$id_cl'  ;");
+ 
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_prix`(@p0,@p1,@p2,@p3,@p4,@p5); ");
+	  dd($result);
 use App\Http\Controllers\HomeController ;
  if($type==101){$Type=  __('msg.Semi finished Products') ; $link=route('products');}
  if($type==102){$Type=  __('msg.Electroplating') ; $link=route('galvano');}
