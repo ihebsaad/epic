@@ -512,7 +512,8 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				 montantt= montantt * comp_val ;
 				 
 			     if(montantt< minit){montantt=minit;}
-				  
+				  alert(montant);
+				  alert(qte);
 				 montant= montant * qte;
 				 
 				 if(montant< mini){montant=mini;}
