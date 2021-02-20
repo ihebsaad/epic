@@ -3346,6 +3346,7 @@ $cmd_id    = intval($request->get('cmd_id'));
 		 public function tarifdetails($nature_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$poids,$poids_cendres  )
     { 
 	// try {
+	//	dd($nature_id.'-'.$titre_or.'-'.$titre_argent.'-'.$titre_platine.'-'.$titre_palladium.'-'.$poids.'-'.$poids_cendres  );
    	   DB::select("SET @p0='$nature_id' ;");
    	   DB::select("SET @p1='$titre_or' ;");
    	   DB::select("SET @p2='$titre_argent' ;");
