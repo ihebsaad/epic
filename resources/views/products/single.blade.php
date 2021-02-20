@@ -5,7 +5,7 @@
  @section('content')
 <?php 
 
-
+/*
    $typeid =101;
  	 $articleid =1;
  	 $alliageid =34;
@@ -20,7 +20,7 @@
 	   DB::select("SET @p5='$id_cl'  ;");
  
  	  $result=  DB::select ("  CALL `sp_fiche_produit_prix`(@p0,@p1,@p2,@p3,@p4,@p5); ");
-	  dd($result);
+	  dd($result);*/
 use App\Http\Controllers\HomeController ;
  if($type==101){$Type=  __('msg.Semi finished Products') ; $link=route('products');}
  if($type==102){$Type=  __('msg.Electroplating') ; $link=route('galvano');}
