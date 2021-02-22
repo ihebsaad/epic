@@ -5,9 +5,23 @@
 
 <?php
 use App\Http\Controllers\HomeController ;
- $user = auth()->user();  
+ $user = auth()->user(); 
+ 
+ function compare_func($a, $b)
+{
+    // CONVERT $a AND $b to DATE AND TIME using strtotime() function
+    $t1 = strtotime($a->date_cmde );
+    $t2 = strtotime($b->date_cmde );
+
+    return ($t2 - $t1);
+}
+
+ 
 
  $commandes=HomeController::commandes_ac($user['client_id'] );
+// tri par date  
+usort($commandes, "compare_func");
+ 
   $modeles=HomeController::modeles_ac($user['client_id'] );
  $euros=HomeController::compte_euro($user['client_id'] );
  $solde_e=HomeController::solde_euro($user['client_id'] );
@@ -296,7 +310,7 @@ foreach($natures as $nature)
 			if(trim(strtoupper($cmd->type_cmde))=='RACHAT METAUX'){  $lien=URL("commandermp/".$cmd->id) ;  }
 			?>			
 			<tr>
-				<td class="text-center"><a href="<?php echo $lien;?>"><?php echo  $cmd->id ; ?></td>	
+				<td class="text-center"><a href="<?php echo $lien;?>"><?php echo sprintf("%04d",  $cmd->id) ; ?></td>	
 				<td class="text-center"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></td>	
 				<td class="text-center"><?php echo $cmd->qte; ?></td>	
 				<td class="text-center"><?php echo $cmd->poids; ?>g</td>	
@@ -355,7 +369,7 @@ foreach($natures as $nature)
 			if(trim(strtoupper($cmd->type_cmde))=='RACHAT METAUX'){  $lien=URL("commandermp/".$cmd->id) ;  }
 			?>			
 			<tr>
-				<td class="text-center"><a href="<?php echo $lien;?>"><?php echo  $cmd->id ; ?></td>				
+				<td class="text-center"><a href="<?php echo $lien;?>"><?php echo sprintf("%04d", $cmd->id) ; ?></td>				
 				<td class="text-center"><?php echo  date('d/m/Y', strtotime($cmd->date_cmde)); ?></td>	
 				<td class="text-center"><?php echo $cmd->qte; ?></td>	
 				<td class="text-center"><?php echo $cmd->poids; ?> g</td>	
