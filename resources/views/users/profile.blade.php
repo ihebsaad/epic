@@ -2,6 +2,7 @@
  
  @section('content')
   <?php
+use App\Http\Controllers\HomeController ;
 
 $cl_ident=$user->client_id;
 $client=DB::table('client')->where('cl_ident',$cl_ident)->first();
@@ -9,8 +10,8 @@ $client=DB::table('client')->where('cl_ident',$cl_ident)->first();
   //dd($metals);
   $agences=DB::table('agence')->get();
   $type_clients=DB::table('type_client')->get();
-
-  /*
+  $adresses=HomeController::adresse($cl_ident);
+   /*
 cl_ident
 siret
 num_tva
@@ -117,6 +118,33 @@ metal_defaut_id
 										 
                                         </div>
                                         </div>
+							<h5   style="cursor:pointer" onclick="$('#lesadresses').fadeIn('slow')">Adresses de livraison  <i class="fas fa-chevron-down"></i></h5>	
+							<div id="lesadresses"  style="display:none">
+							<?php  
+							foreach($adresses as $adresse)
+							 { ?>
+							 
+							 <div class="pl-10 pr-10 pt-10 pt-10 mb-10 adresses"   id="adresse-<?php echo $adresse->id;?>" >
+ 							 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
+							 <b style="color:black">{{__('msg.Address')}} :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
+							  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
+							 <b style="color:black">{{__('msg.Country')}} :</b> <span  >
+							 <?php 
+							 if($adresse->pays_code=='FR'){echo 'France';}   
+							 if($adresse->pays_code=='PL'){echo 'Pologne';}   
+							 if($adresse->pays_code=='GF'){echo 'Guyane française';}   
+							 
+							 ?>
+							 </span>
+							 </div>
+							 
+							 <hr>
+							 <?php }?>
+							 <p><i class="fas fa-exclamation-circle"></i> Contactez notre support pour modifier ou ajouter une nouvelle adresse</p>
+							 
+							 </div>
+							 
+							 
 
                                         <div class="form-group row">
 
@@ -305,6 +333,7 @@ metal_defaut_id
 
                         </div>
 						
+ 
  				
    </div>
 

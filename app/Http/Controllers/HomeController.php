@@ -2339,14 +2339,14 @@ $i=-1;
 	
 
 
-	  public function adresse($client_id  )
+	  public static function adresse($client_id  )
     { 
    	   DB::select("SET @p0='$client_id' ;");
 
  	  $result=  DB::select ("  CALL `sp_liste_adresse_livraison`(@p0); ");
  
 	  if ($result!= null){
-	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
+	 return   $result  ;
 	  }
 	  else{
 		  

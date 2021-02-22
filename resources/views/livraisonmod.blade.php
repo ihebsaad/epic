@@ -68,10 +68,10 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </select>
 							 
 							 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:100px" >
- 							 <b>{{__('msg.Sales office')}} :</b>  <span id="lib"></span><br>
-							 <b>{{__('msg.Address')}} :</b> <span id="adresse"></span><br>
+ 							 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span id="lib"></span><br>
+							 <b style="color:black">{{__('msg.Address')}} :</b> <span id="adresse"></span><br>
 							  <span id="zip"></span> <span id="ville"></span><br>
-							 <b>{{__('msg.Country')}} :</b> <span id="country"></span>
+							 <b style="color:black">{{__('msg.Country')}} :</b> <span id="country"></span>
 							 </div>
 							 
 							 </div>	
@@ -104,10 +104,10 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							foreach($adresses as $adresse)
 							 { ?>
 							 <div class="pl-10 pr-10 pt-10 pt-10 adresses" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
- 							 <b>{{__('msg.Sales office')}} :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
-							 <b>{{__('msg.Address')}} :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
+ 							 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
+							 <b style="color:black">{{__('msg.Address')}} :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
 							  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
-							 <b>{{__('msg.Country')}} :</b> <span  >
+							 <b style="color:black">{{__('msg.Country')}} :</b> <span  >
 							 <?php 
 							 if($adresse->pays_code=='FR'){echo 'France';}   
 							 if($adresse->pays_code=='PL'){echo 'Pologne';}   
