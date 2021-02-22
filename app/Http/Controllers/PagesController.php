@@ -53,7 +53,7 @@ $isCustomsDeclarable = true;
 $unitOfMeasurement = "metric";
  
 
-$credentials = base64_encode('saampFRx' .':' . 'A@0eV^1zW!3x' ) ;
+$credentials = base64_encode('saampFR' .':' . 'A@0eV^1zW!3x' ) ;
 
 $response = $client->request('GET', $endpoint, ['query' => [
    /* 'key1' => $id, 
@@ -84,7 +84,7 @@ $response = $client->request('GET', $endpoint, ['query' => [
 	'Webstore-Platform-Name'=> '',
 	'Webstore-Platform-Version'=> '',
 	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
-	'authorization'=> 'Basic {'.$credentials.'}',
+	//'authorization'=> 'Basic {'.$credentials.'}',
 	 
   	]
 ]);
