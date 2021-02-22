@@ -29,16 +29,8 @@ class PagesController extends Controller
 	  public function orders()
     { 
 	
-	/*
 	
-$client = new GuzzleHttp\Client();
-$res = $client->request('GET', 'https://api.github.com/user', [
-    'auth' => ['user', 'pass']
-]);
-echo $res->getStatusCode();	
-	
-	*/
-	$endpoint = "https://api-mock.dhl.com/mydhlapi/rates";
+	$endpoint = "https://express.api.dhl.com/mydhlapi/test";
 $client = new \GuzzleHttp\Client();
 /*
 accountNumber=220136396&originCountryCode=FR&originPostalCode=75000&originCityName=Paris&destinationCountryCode=FR&
@@ -65,7 +57,7 @@ $unitOfMeasurement = "metric";
 $response = $client->request('GET', $endpoint, ['query' => [
    /* 'key1' => $id, 
     'key2' => $value,*/
-	
+	/*
 'originCountryCode' =>$originCountryCode ,
 'originPostalCode' =>$originPostalCode  ,
 'originCityName' =>$originCityName  ,
@@ -90,9 +82,11 @@ $response = $client->request('GET', $endpoint, ['query' => [
 	'Shipping-System-Platform-Version'=> '',
 	'Webstore-Platform-Name'=> '',
 	'Webstore-Platform-Version'=> '',
-	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
+	'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
 	 
-  	] ,'auth' => ['saampFR', 'A@0eV^1zW!3x']
+  	]*/ 
+	 'auth' => ['saampFR', 'A@0eV^1zW!3x']
+
 ]);
 
 // url will be: http://my.domain.com/test.php?key1=5&key2=ABC;
@@ -100,7 +94,7 @@ $response = $client->request('GET', $endpoint, ['query' => [
 $statusCode = $response->getStatusCode();
 $content = $response->getBody();
 
-         return view('orders',['statusCode'=>$statusCode,'result'=>$content]);
+         return view('orders',['statusCode'=>$statusCode,'result'=>$statusCode]);
     }
 	
 	  public function test()
@@ -160,9 +154,9 @@ $response = $client->request('GET', $endpoint, ['query' => [
 	'Shipping-System-Platform-Version'=> '',
 	'Webstore-Platform-Name'=> '',
 	'Webstore-Platform-Version'=> '',
-	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
+	'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
 	 
-  	],'auth' => ['saampFR', 'A@0eV^1zW!3x']
+  	]
 ]);
 
 // url will be: http://my.domain.com/test.php?key1=5&key2=ABC;
