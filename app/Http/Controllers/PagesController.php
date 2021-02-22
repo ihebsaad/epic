@@ -161,12 +161,10 @@ $data='
 $credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
 
 
-$client->setBody($data);  
 
 
-$response = $client->request('GET', $endpoint, [ 
-       'content-type' => 'application/json',
-
+$response = $client->request('GET', $endpoint, [
+        ['body' => $data],
 /*
 'query' => [
  
@@ -196,6 +194,7 @@ $response = $client->request('GET', $endpoint, [
 	'Webstore-Platform-Version'=> '',
 	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
 	'authorization'=> 'Basic {'.$credentials.'}',
+	'Content-Type' => 'application/json'
 	 
   	]
 ]);
