@@ -276,6 +276,9 @@ $response = $client->request('GET', $endpoint, [
   	]
 ]);
 
+curl_setopt($ch, CURLOPT_PORT, $_SERVER['SERVER_PORT']);
+
+
 // url will be: http://my.domain.com/test.php?key1=5&key2=ABC;
 
 $statusCode = $response->getStatusCode();
