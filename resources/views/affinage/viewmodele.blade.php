@@ -539,8 +539,7 @@ function prix()
 				 $('#affinageval').html( '');
 		
  				 if(data!=0){
-					 alert('data!=0');
-				 if( parseFloat(data[0].credit_au)>0)$('#divor').show();
+ 				 if( parseFloat(data[0].credit_au)>0)$('#divor').show();
 				 if( parseFloat(data[0].credit_ag)>0)$('#divsilv').show();
 				 if( parseFloat(data[0].credit_pt)>0)$('#divplat').show();
 				 if( parseFloat(data[0].credit_pd)>0)$('#divpall').show();
