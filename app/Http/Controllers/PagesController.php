@@ -84,8 +84,8 @@ $response = $client->request('GET', $endpoint, ['query' => [
 	'Webstore-Platform-Name'=> '',
 	'Webstore-Platform-Version'=> '',
 	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
-	//'authorization'=> 'Basic {'.$credentials.'}',
-	 'Authorization' => ['Basic'.base64_encode('saampFR'.':'.'A@0eV^1zW!3x')],         
+	'authorization'=> 'Basic {'.$credentials.'}',
+	 
   	]
 ]);
 
