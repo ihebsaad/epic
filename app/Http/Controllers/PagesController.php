@@ -86,10 +86,10 @@ $response = $client->request('GET', $endpoint, ['query' => [
 	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
 	//'authorization'=> 'Basic {'.$credentials.'}',
 	 
-  	]
-],
+  	], 'auth' => ['saampFR', 'A@0eV^1zW!3x']
 
- 'auth' => ['saampFR', 'A@0eV^1zW!3x']
+]
+
  
  );
 
