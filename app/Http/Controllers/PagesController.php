@@ -29,7 +29,15 @@ class PagesController extends Controller
 	  public function orders()
     { 
 	
+	/*
 	
+$client = new GuzzleHttp\Client();
+$res = $client->request('GET', 'https://api.github.com/user', [
+    'auth' => ['user', 'pass']
+]);
+echo $res->getStatusCode();	
+	
+	*/
 	$endpoint = "https://api-mock.dhl.com/mydhlapi/rates";
 $client = new \GuzzleHttp\Client();
 /*
@@ -82,9 +90,9 @@ $response = $client->request('GET', $endpoint, ['query' => [
 	'Shipping-System-Platform-Version'=> '',
 	'Webstore-Platform-Name'=> '',
 	'Webstore-Platform-Version'=> '',
-	'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
+	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
 	 
-  	]
+  	] ,'auth' => ['saampFR', 'A@0eV^1zW!3x']
 ]);
 
 // url will be: http://my.domain.com/test.php?key1=5&key2=ABC;
