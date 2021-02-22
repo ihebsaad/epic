@@ -54,10 +54,9 @@ $unitOfMeasurement = "metric";
  
 
 
-$response = $client->request('GET', $endpoint, ['query' => [
-   /* 'key1' => $id, 
-    'key2' => $value,*/
-	/*
+$response = $client->request('GET', $endpoint, [  /*'query' => [
+   
+	
 'originCountryCode' =>$originCountryCode ,
 'originPostalCode' =>$originPostalCode  ,
 'originCityName' =>$originCityName  ,
