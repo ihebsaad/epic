@@ -240,7 +240,7 @@ $data='
 $client->setBody($data);
 
 $response = $client->request('GET', $endpoint, [
-        'content-type' => 'application/json'
+        'content-type' => 'application/json',
 /*
 'query' => [
     
