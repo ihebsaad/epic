@@ -53,7 +53,8 @@ $isCustomsDeclarable = true;
 $unitOfMeasurement = "metric";
  
 
-$credentials = base64_encode('saampFR' .':' . 'A@0eV^1zW!3x' ) ;
+//$credentials = base64_encode('saampFR' .':' . 'A@0eV^1zW!3x' ) ;
+$credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
 
 $response = $client->request('GET', $endpoint, ['query' => [
    /* 'key1' => $id, 
