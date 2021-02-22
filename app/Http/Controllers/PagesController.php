@@ -128,24 +128,7 @@ $isCustomsDeclarable = true;
 $unitOfMeasurement = "metric";
  
 
-
-$response = $client->request('GET', $endpoint, ['query' => [
-   /* 'key1' => $id, 
-    'key2' => $value,*/
-	/*
-'originCountryCode' =>$originCountryCode ,
-'originPostalCode' =>$originPostalCode  ,
-'originCityName' =>$originCityName  ,
-'destinationCountryCode' =>$destinationCountryCode  ,
-'destinationPostalCode' =>$destinationPostalCode  ,
-'destinationCityName' =>$destinationCityName  ,
-'weight' =>$weight ,
-'length' =>$length ,
-'width' =>$width ,
-'height' =>$height ,
-'plannedShippingDate' =>$plannedShippingDate ,
-'isCustomsDeclarable' =>$isCustomsDeclarable  ,
-'unitOfMeasurement' =>$unitOfMeasurement  ,*/
+$data='
 
 {
   "plannedShippingDateAndTime": "2021-02-25T14:00:31GMT+01:00",     
@@ -248,10 +231,35 @@ $response = $client->request('GET', $endpoint, ['query' => [
     "unitOfMeasurement": "metric"
   },
  
-  
+ 
+ 
  
  }
-],
+
+';
+$client->setBody($data);
+
+$response = $client->request('GET', $endpoint, [
+        'content-type' => 'application/json'
+/*
+'query' => [
+    
+	/*
+'originCountryCode' =>$originCountryCode ,
+'originPostalCode' =>$originPostalCode  ,
+'originCityName' =>$originCityName  ,
+'destinationCountryCode' =>$destinationCountryCode  ,
+'destinationPostalCode' =>$destinationPostalCode  ,
+'destinationCityName' =>$destinationCityName  ,
+'weight' =>$weight ,
+'length' =>$length ,
+'width' =>$width ,
+'height' =>$height ,
+'plannedShippingDate' =>$plannedShippingDate ,
+'isCustomsDeclarable' =>$isCustomsDeclarable  ,
+'unitOfMeasurement' =>$unitOfMeasurement  , 
+
+],*/
 	'headers' => [
 	'accept'=> 'application/json',
 	'Content-Type'=> 'application/json',
