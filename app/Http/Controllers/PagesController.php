@@ -84,10 +84,14 @@ $response = $client->request('GET', $endpoint, ['query' => [
 	'Webstore-Platform-Name'=> '',
 	'Webstore-Platform-Version'=> '',
 	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
-	'authorization'=> 'Basic {'.$credentials.'}',
+	//'authorization'=> 'Basic {'.$credentials.'}',
 	 
   	]
-]);
+],
+
+ 'auth' => ['saampFR', 'A@0eV^1zW!3x']
+ 
+ );
 
 // url will be: http://my.domain.com/test.php?key1=5&key2=ABC;
 
