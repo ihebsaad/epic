@@ -1761,7 +1761,7 @@ if ($data!= null){
 		 
  		$results['prix']=$this->prix($typeid,$articleid,$all,$qte,$poids,$id_cl );
  		//dd($typeid,$articleid,$all,$qte,$poidsu,$id_cl );
-		 $results['tarif']=$this->tarif($id_comp,$val_comp,$id_cl,$qte,$poidsu) ;
+		 $results['tarif']=$this->tarif($id_comp,$val_comp,$id_cl,$qte,$poids) ;
 		 $results['tarif_prod']=$this->tarif_prod($typeid,$articleid,$all,$id_cl) ;
 		
 		  if ($results['prix']!= null){
