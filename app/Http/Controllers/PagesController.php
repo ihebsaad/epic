@@ -419,7 +419,7 @@ $content = $response->getBody();
 	*/	 
 	
 	
-	$content = DHLController::shipment()
+	$content = DHLController::shipment();
 	 return view('test',[ 'result'=>$content]) ;   
 
 		 }
