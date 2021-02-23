@@ -118,7 +118,7 @@ metal_defaut_id
 										 
                                         </div>
                                         </div>
-							<h5  class="mt-20" style="cursor:pointer;color:black" onclick="showing()"><i class="fas fa-chevron-down"></i> Adresses de livraison</h5>	
+							<h5  class="mt-20" style="cursor:pointer;color:black" onclick="showing()"><i class="fas fa-chevron-down"></i> Mes adresses de livraison</h5>	
 							<div id="lesadresses"  style="display:none">
 							<?php  
 							foreach($adresses as $adresse)
