@@ -374,8 +374,8 @@ $plannedShippingDate = 2020-02-26;
 $isCustomsDeclarable = true;
 $unitOfMeasurement = "metric";
  
-$credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
-//$credentials = base64_encode('saampFR' .':' . 'A@0eV^1zW!3x' ) ;
+//$credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
+ $credentials = base64_encode('saampFR' .':' . 'A@0eV^1zW!3x' ) ;
 
 
 
