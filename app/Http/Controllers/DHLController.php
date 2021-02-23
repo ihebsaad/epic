@@ -30,7 +30,7 @@ class DHLController extends Controller
 	 
 	 
 	 
-	public function shipment() 
+	public static function shipment() 
 	 {
 		 
   
