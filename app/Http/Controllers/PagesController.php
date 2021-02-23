@@ -350,6 +350,7 @@ $content = $response->getBody();
     { 
 
  	$endpoint = "https://express.api.dhl.com/mydhlapi/test/rates";
+ 		$endpoint = "https://api-mock.dhl.com/mydhlapi/rates";
 //		$endpoint = "https://api-mock.dhl.com/mydhlapi/shipments";
 
 $client = new \GuzzleHttp\Client();
