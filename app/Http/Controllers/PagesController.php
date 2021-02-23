@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use App\User ;
 use GuzzleHttp\Client;
+use App\Http\Controllers\DHLController ;
 
 class PagesController extends Controller
 {
@@ -348,16 +349,12 @@ $content = $response->getBody();
 	
 	  public function test()
     { 
-
+/*
   	 	$endpoint = "https://api-mock.dhl.com/mydhlapi/rates";
   //$endpoint = "https://api-mock.dhl.com/mydhlapi/shipments";
 
 $client = new \GuzzleHttp\Client();
-/*
-accountNumber=220136396&originCountryCode=FR&originPostalCode=75000&originCityName=Paris&destinationCountryCode=FR&
-destinationPostalCode=75001&destinationCityName=Paris&weight=5&length=15&width=10&height=5&plannedShippingDate=2020-02-26&isCustomsDeclarable=true&unitOfMeasurement=metric" -H  "accept: application/json" -H  "Message-Reference: d0e7832e-5c98-11ea-bc55-0242ac13" -H  "Message-Reference-Date: Wed, 21 Oct 2015 07:28:00 GMT" -H  "Plugin-Name:  " -H  "Plugin-Version:  " -H  "Shipping-System-Platform-Name:  " -H  "Shipping-System-Platform-Version:  " -H  "Webstore-Platform-Name:  " -H  "Webstore-Platform-Version:  " -H  "authorization: Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ="
-*/
-
+ 
 $accountNumber = 220136396;
 
  
@@ -379,8 +376,7 @@ $credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
 
 
 $response = $client->request('GET', $endpoint, ['query' => [
-   /* 'key1' => $id, 
-    'key2' => $value,*/
+    
 	
 'accountNumber' =>$accountNumber ,
 'originCountryCode' =>$originCountryCode ,
@@ -420,7 +416,12 @@ $content = $response->getBody();
 
   $result= response()->json(  $content ,200,array(),JSON_PRETTY_PRINT);
  return view('test',['statusCode'=>$statusCode,'result'=>$content]) ;   
-		 
+	*/	 
+	
+	
+	$content = DHLController::shipment()
+	 return view('test',[ 'result'=>$content]) ;   
+
 		 }
 
 	 public function findings()
