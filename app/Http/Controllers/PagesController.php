@@ -349,8 +349,8 @@ $content = $response->getBody();
 	  public function test()
     { 
 
-//	$endpoint = "https://express.api.dhl.com/mydhlapi/test/rates";
-		$endpoint = "https://api-mock.dhl.com/mydhlapi/shipments";
+ 	$endpoint = "https://express.api.dhl.com/mydhlapi/test/rates";
+//		$endpoint = "https://api-mock.dhl.com/mydhlapi/shipments";
 
 $client = new \GuzzleHttp\Client();
 /*
@@ -373,6 +373,7 @@ $plannedShippingDate = 2020-02-26;
 $isCustomsDeclarable = true;
 $unitOfMeasurement = "metric";
  
+$credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
 
 
 $response = $client->request('GET', $endpoint, ['query' => [
@@ -403,7 +404,8 @@ $response = $client->request('GET', $endpoint, ['query' => [
 	'Shipping-System-Platform-Version'=> '',
 	'Webstore-Platform-Name'=> '',
 	'Webstore-Platform-Version'=> '',
-	'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
+	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
+	 'authorization'=> 'Basic {'.$credentials.'}',
 	 
   	]
 ]);
