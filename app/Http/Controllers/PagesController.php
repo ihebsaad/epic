@@ -51,111 +51,250 @@ $unitOfMeasurement = "metric";
 $data='
 
 {
-  "plannedShippingDateAndTime": "2021-02-25T14:00:31GMT+01:00",     
+  "plannedShippingDateAndTime": "2021-02-25T14:00:31GMT+01:00",
   "pickup": {
     "isRequested": false,
     "closeTime": "18:00",
     "location": "reception",
     "specialInstructions": [
       {
-        "value": "please ring door bell",    
+        "value": "please ring door bell",
         "typeCode": "TBD"
       }
-    ],
- 
+    ]
  
   },
-  "productCode": "D",				 
-   "accounts": [
+  "productCode": "D",
+  "localProductCode": "D",
+  "getRateEstimates": false,
+  "accounts": [
     {
       "typeCode": "shipper",
-      "number": "123456789"   
+      "number": "123456789"
     }
   ],
  
  
+ 
   "customerDetails": {
     "shipperDetails": {
-      "postalAddress": {         
-        "postalCode": "14800",    
-        "cityName": "Prague",   
-        "countryCode": "CZ",   
-        "provinceCode": "CZ",     
-        "addressLine1": "V Parku 2308/10",    
-        "addressLine2": "addres2",
-        "addressLine3": "addres3",
-        "countyName": "Central Bohemia"
-      },
-      "contactInformation": {            
-        "email": "that@before.de",
-        "phone": "+1123456789",
-        "mobilePhone": "+60112345678",
-        "companyName": "Company Name",
-        "fullName": "John Brew"
-      },
- 
-    },
-    "receiverDetails": {
-      "postalAddress": {      
-        "postalCode": "14800",   
-        "cityName": "Prague",     
-        "countryCode": "CZ",     
-        "provinceCode": "CZ",   
+      "postalAddress": {
+        "postalCode": "14800",
+        "cityName": "Prague",
+        "countryCode": "CZ",
+        "provinceCode": "CZ",
         "addressLine1": "V Parku 2308/10",
         "addressLine2": "addres2",
         "addressLine3": "addres3",
         "countyName": "Central Bohemia"
       },
-      "contactInformation": {      
+      "contactInformation": {
         "email": "that@before.de",
         "phone": "+1123456789",
         "mobilePhone": "+60112345678",
         "companyName": "Company Name",
         "fullName": "John Brew"
       },
- 
- 
+      "registrationNumbers": [
+        {
+          "typeCode": "VAT",
+          "number": "CZ123456789",
+          "issuerCountryCode": "CZ"
+        }
+      ],
+      "bankDetails": [
+        {
+          "name": "Russian Bank Name",
+          "settlementLocalCurrency": "RUB",
+          "settlementForeignCurrency": "USD"
+        }
+      ]
+    },
+    "receiverDetails": {
+      "postalAddress": {
+        "postalCode": "14800",
+        "cityName": "Prague",
+        "countryCode": "CZ",
+        "provinceCode": "CZ",
+        "addressLine1": "V Parku 2308/10",
+        "addressLine2": "addres2",
+        "addressLine3": "addres3",
+        "countyName": "Central Bohemia"
+      },
+      "contactInformation": {
+        "email": "that@before.de",
+        "phone": "+1123456789",
+        "mobilePhone": "+60112345678",
+        "companyName": "Company Name",
+        "fullName": "John Brew"
+      },
+      "registrationNumbers": [
+        {
+          "typeCode": "VAT",
+          "number": "CZ123456789",
+          "issuerCountryCode": "CZ"
+        }
+      ],
+      "bankDetails": [
+        {
+          "name": "Russian Bank Name",
+          "settlementLocalCurrency": "RUB",
+          "settlementForeignCurrency": "USD"
+        }
+      ]
+    },
+    "buyerDetails": {
+      "postalAddress": {
+        "postalCode": "14800",
+        "cityName": "Prague",
+        "countryCode": "CZ",
+        "provinceCode": "CZ",
+        "addressLine1": "V Parku 2308/10",
+        "addressLine2": "addres2",
+        "addressLine3": "addres3",
+        "countyName": "Central Bohemia"
+      },
+      "contactInformation": {
+        "email": "buyer@domain.com",
+        "phone": "+44123456789",
+        "mobilePhone": "+42123456789",
+        "companyName": "Customer Company Name",
+        "fullName": "Mark Companer"
+      },
+      "registrationNumbers": [
+        {
+          "typeCode": "VAT",
+          "number": "CZ123456789",
+          "issuerCountryCode": "CZ"
+        }
+      ],
+      "bankDetails": [
+        {
+          "name": "Russian Bank Name",
+          "settlementLocalCurrency": "RUB",
+          "settlementForeignCurrency": "USD"
+        }
+      ]
     }
- 
   },
   "content": {
     "packages": [
       {
         "typeCode": "2BP",
-        "weight": 22.5,   
-        "dimensions": {    
+        "weight": 22.5,
+        "dimensions": {
           "length": 15,
           "width": 15,
           "height": 40
         },
         "customerReferences": [
           {
-            "value": "Customer reference",   
+            "value": "Customer reference",
             "typeCode": "CU"
           }
         ],
         "identifiers": [
           {
-            "typeCode": "shipmentId", 
-            "value": "1111111111"  
+            "typeCode": "shipmentId",
+            "value": "1111111111"
           }
         ],
-        "description": "Modèles SAAMP",
-         
-    
-       }
+        "description": "Piece content description",
+        "labelBarcodes": [
+          {
+            "position": "left",
+            "symbologyCode": "93",
+            "content": "string",
+            "textBelowBarcode": "text below left barcode"
+          }
+        ],
+        "labelText": [
+          {
+            "position": "left",
+            "caption": "text caption",
+            "value": "text value"
+          }
+        ],
+        "labelDescription": "bespkoe label description"
+      }
     ],
     "isCustomsDeclarable": true,
-    "description": "Livraion des modèles SAAMP",
-     "incoterm": "DAP",
+    "declaredValue": 150,
+    "declaredValueCurrency": "CZK",
+    "exportDeclaration": {
+      "lineItems": [
+        {
+          "number": 1,
+          "description": "line item description",
+          "price": 150,
+          "priceCurrency": "CZK",
+          "quantity": {
+            "value": 1,
+            "unitOfMeasurement": "BOX"
+          },
+          "commodityCodes": [
+            {
+              "typeCode": "outbound",
+              "value": "HS1111111111"
+            }
+          ],
+          "exportReasonType": "permanent",
+          "manufacturerCountry": "CZ",
+          "exportControlClassificationNumber": "US123456789",
+          "weight": {
+            "netValue": 10,
+            "grossValue": 10
+          }
+        }
+      ],
+      "invoice": {
+        "number": "12345-ABC",
+        "date": "2020-03-18",
+        "signatureName": "Brewer",
+        "signatureTitle": "Mr.",
+        "signatureImage": "Base64 encoded image"
+      },
+      "remarks": [
+        {
+          "value": "declaration remark"
+        }
+      ],
+      "additionalCharges": [
+        {
+          "value": 10,
+          "caption": "fee"
+        }
+      ],
+      "destinationPortName": "port details",
+      "payerVATNumber": "12345ED",
+      "recipientReference": "recipient reference",
+      "exporter": {
+        "id": "123",
+        "code": "EXPCZ"
+      },
+      "packageMarks": "marks",
+      "declarationNotes": [
+        {
+          "value": "up to three declaration notes"
+        }
+      ],
+      "exportReference": "export reference",
+      "exportReason": "export reason",
+      "licenses": [
+        {
+          "typeCode": "export",
+          "value": "license"
+        }
+      ]
+    },
+    "description": "shipment description",
+    "USFilingTypeValue": "12345",
+    "incoterm": "DAP",
     "unitOfMeasurement": "metric"
-  },
+  }
  
- 
- 
- 
- }
- 
+  
+}
  ';
 //$credentials = base64_encode('saampFR' .':' . 'A@0eV^1zW!3x' ) ;
 $credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
