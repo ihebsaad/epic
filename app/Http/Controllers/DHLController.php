@@ -115,7 +115,7 @@ $internationalDetail
     ->setCommodities($commodities)
     ->setContent(InternationalDetail::CONTENT_DOCUMENTS);
 
-$timestamp = new \DateTime("now", new DateTimeZone("Europe/Paris"));
+$timestamp = new \DateTime("now", new \DateTimeZone("Europe/Paris"));
 $timestamp->modify('+3 days');
 
 $requestedShipment = new RequestedShipment();
