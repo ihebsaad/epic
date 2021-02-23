@@ -331,8 +331,8 @@ $response = $client->request('GET', $endpoint, [
 	'Shipping-System-Platform-Version'=> '',
 	'Webstore-Platform-Name'=> '',
 	'Webstore-Platform-Version'=> '',
-	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
-	'authorization'=> 'Basic {'.$credentials.'}',
+	 'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
+	//'authorization'=> 'Basic {'.$credentials.'}',
 	'Content-Type' => 'application/json'
 	 
   	]
