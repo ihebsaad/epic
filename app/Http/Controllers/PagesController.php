@@ -348,11 +348,10 @@ $content = $response->getBody();
 	
 	  public function test()
     { 
- 	
+
   		$endpoint = "https://api-mock.dhl.com/mydhlapi/rates";
-		$endpoint ="https://express.api.dhl.com/mydhlapi/rates";
-  		 	
- 
+//		$endpoint = "https://api-mock.dhl.com/mydhlapi/shipments";
+
 $client = new \GuzzleHttp\Client();
 /*
 accountNumber=220136396&originCountryCode=FR&originPostalCode=75000&originCityName=Paris&destinationCountryCode=FR&
@@ -374,9 +373,7 @@ $plannedShippingDate = 2020-02-26;
 $isCustomsDeclarable = true;
 $unitOfMeasurement = "metric";
  
-//$credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
- $credentials = base64_encode('saampFR' .':' . 'A@0eV^1zW!3x' ) ;
-
+$credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
 
 
 $response = $client->request('GET', $endpoint, ['query' => [
