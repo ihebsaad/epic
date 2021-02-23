@@ -348,11 +348,10 @@ $content = $response->getBody();
 	
 	  public function test()
     { 
-
- 	$endpoint = "https://express.api.dhl.com/mydhlapi/test/rates";
- 		$endpoint = "https://api-mock.dhl.com/mydhlapi/rates";
-//		$endpoint = "https://api-mock.dhl.com/mydhlapi/shipments";
-
+ 	
+  		$endpoint = "https://api-mock.dhl.com/mydhlapi/rates";
+  		$endpoint = "https://express.api.dhl.com/mydhlapi/test/rates";
+ 
 $client = new \GuzzleHttp\Client();
 /*
 accountNumber=220136396&originCountryCode=FR&originPostalCode=75000&originCityName=Paris&destinationCountryCode=FR&
@@ -375,6 +374,8 @@ $isCustomsDeclarable = true;
 $unitOfMeasurement = "metric";
  
 $credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
+$credentials = base64_encode('saampFR' .':' . 'A@0eV^1zW!3x' ) ;
+
 
 
 $response = $client->request('GET', $endpoint, ['query' => [
@@ -406,7 +407,7 @@ $response = $client->request('GET', $endpoint, ['query' => [
 	'Webstore-Platform-Name'=> '',
 	'Webstore-Platform-Version'=> '',
 	//'authorization'=> 'Basic ZGVtby1rZXk6ZGVtby1zZWNyZXQ=',
-	// 'authorization'=> 'Basic {'.$credentials.'}',
+	 'authorization'=> 'Basic {'.$credentials.'}',
 	 
   	]
 ]);
