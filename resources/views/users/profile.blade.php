@@ -118,7 +118,7 @@ metal_defaut_id
 										 
                                         </div>
                                         </div>
-							<h5   style="cursor:pointer" onclick="$('#lesadresses').fadeIn('slow')">Adresses de livraison  <i class="fas fa-chevron-down"></i></h5>	
+							<h5  class="mt-20" style="cursor:pointer;color:black" onclick="showing()"><i class="fas fa-chevron-down"></i> Adresses de livraison</h5>	
 							<div id="lesadresses"  style="display:none">
 							<?php  
 							foreach($adresses as $adresse)
@@ -140,7 +140,7 @@ metal_defaut_id
 							 
 							 <hr>
 							 <?php }?>
-							 <p><i class="fas fa-exclamation-circle"></i> Contactez notre support pour modifier ou ajouter une nouvelle adresse</p>
+							 <p><i style="color:#0054f3" class="fas fa-exclamation-circle"></i> Contactez notre support pour modifier ou ajouter une nouvelle adresse</p>
 							 
 							 </div>
 							 
@@ -340,8 +340,19 @@ metal_defaut_id
 
     <script>
 
+ function showing(elm) {
+  var div  = document.getElementById('lesadresses');
+ 
+  if ( div.style.display == 'none'){
+	  $('#lesadresses').fadeIn('slow');
+ }else{ 
+ 	  $('#lesadresses').fadeOut('slow');
 
+ }
 
+ }
+ 
+ 
     /*    function changing(elm) {
             var champ = elm.id;
 
