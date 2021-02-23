@@ -350,9 +350,7 @@ $content = $response->getBody();
     { 
  	
   		$endpoint = "https://api-mock.dhl.com/mydhlapi/rates";
-  		$endpoint = "https://express.api.dhl.com/mydhlapi/test/rates";
-  		$endpoint = "https://express.api.dhl.com/mydhlapi/rates";
-			
+  		 	
  
 $client = new \GuzzleHttp\Client();
 /*
@@ -376,7 +374,7 @@ $isCustomsDeclarable = true;
 $unitOfMeasurement = "metric";
  
 $credentials = base64_encode('demo-key' .':' . 'demo-secret' ) ;
-$credentials = base64_encode('saampFR' .':' . 'A@0eV^1zW!3x' ) ;
+//$credentials = base64_encode('saampFR' .':' . 'A@0eV^1zW!3x' ) ;
 
 
 
