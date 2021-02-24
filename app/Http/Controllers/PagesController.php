@@ -18,6 +18,15 @@ class PagesController extends Controller
     } 
 	 
  
+ 
+ 	  public function test()
+    { 	
+	 $content = DHLController::shipment(true,'saampFR','A@0eV^1zW!3x','220136396','Metafont','AVENUE DE LYON','BOURG LES VALENCES','26500','','',2520,1,2,3) ;
+	 return view('test',[ 'result'=>$content]) ;   
+
+	 }
+	 
+	 
       public function index()
     { 
          return view('home');
@@ -348,9 +357,9 @@ $content = $response->getBody();
          return view('orders',['statusCode'=>$statusCode,'result'=>$content]);
     }
 	
-	  public function test()
-    { 
-/*
+/*	  public function test()
+    {  
+ 
   	 	$endpoint = "https://api-mock.dhl.com/mydhlapi/rates";
   //$endpoint = "https://api-mock.dhl.com/mydhlapi/shipments";
 
@@ -417,7 +426,7 @@ $content = $response->getBody();
 
   $result= response()->json(  $content ,200,array(),JSON_PRETTY_PRINT);
  return view('test',['statusCode'=>$statusCode,'result'=>$content]) ;   
-	*/	 
+	  
 	
  //	 shipment($testmode,$username,$password,$account,$company,$adresse,$ville,$codep,$phone,$email,$poids,$longeur,$largeur,$hauteur) 
 	
@@ -425,7 +434,7 @@ $content = $response->getBody();
 	 return view('test',[ 'result'=>$content]) ;   
 
 		 }
-
+*/
 	 public function findings()
     { 
          return view('products.findings');
