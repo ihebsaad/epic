@@ -44,8 +44,8 @@ class DHLController extends Controller
 	// poids de g vers KG
 	$poids=floatval($poids/1000);
 	if($email==''){$email= $user['email'];}
-	if($phone==''){$email= $user['phone'];}
-	if($company==''){$company=$client->raison_sociale;}
+	if($phone==''){$phone= $user['phone'];}
+ 	if($company==''){$company=$client->raison_sociale;}
 	
    
 $credentials = new Credentials($testmode);
