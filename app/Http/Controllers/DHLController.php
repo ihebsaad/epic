@@ -39,7 +39,7 @@ class DHLController extends Controller
 
  $client=DB::table('client')->where('cl_ident',$cl_ident)->first();
 	$company= 
-	$name= $client->name .' '.$client->lastname;
+	$name= $user['name'] .' '.$user['lastname'] ;
 	
 	// poids de g vers KG
 	$poids=floatval($poids/1000);
