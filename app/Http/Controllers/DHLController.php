@@ -149,7 +149,8 @@ if ($response->isSuccessful()) {
     return($response->getTrackingNumber());
    // file_put_contents('label_1.pdf', base64_decode($response->getLabel()));
 } else {
-    return($response->getErrors());
+    dd($response->getErrors());
+   // return($response->getErrors());
 }		 
 		 
 		 
