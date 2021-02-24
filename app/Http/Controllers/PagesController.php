@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use DB;
 use App\User ;
 use GuzzleHttp\Client;
 use App\Http\Controllers\DHLController ;
