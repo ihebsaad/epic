@@ -2,7 +2,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Session;
+use App\User ;
 
 use alexLE\DHLExpress\Ship;
 use alexLE\DHLExpress\Address;
@@ -30,14 +31,26 @@ class DHLController extends Controller
 	 
 	 
 	 
-	public static function shipment() 
+	public static function shipment($testmode,$username,$password,$account,$company,$adresse,$ville,$codep,$phone,$email,$poids,$longeur,$largeur,$hauteur) 
 	 {
-		 
-  
-$credentials = new Credentials(true);
+ $user = auth()->user();  
+ $cl_ident=$user['cl_ident'];	
+
+ $client=DB::table('client')->where('cl_ident',$cl_ident)->first();
+	$company= 
+	$name= $client->name .' '.$client->lastname;
+	
+	// poids de g vers KG
+	$poids=floatval($poids/1000);
+	if($email==''){$email= $user['email'];}
+	if($phone==''){$email= $user['phone'];}
+	if($company==''){$company=$client->raison_sociale;}
+	
+   
+$credentials = new Credentials($testmode);
 $credentials
-            ->setUsername('saampFR')
-            ->setPassword('A@0eV^1zW!3x');
+            ->setUsername($username)
+            ->setPassword($password);
 
 $specialService = new SpecialService();
 $specialService->setServiceType(SpecialService::SATURDAY_DELIVERY);
@@ -46,7 +59,7 @@ $shipmentInfo = new ShipmentInfo();
 $shipmentInfo
     ->setDropOffType(ShipmentInfo::DROP_OFF_TYPE_REGULAR_PICKUP)
     ->setServiceType(ShipmentInfo::SERVICE_TYPE_DOMESTIC_EXPRESS)
-    ->setAccount('220136396')
+    ->setAccount($account)
     ->setCurrency('EUR')
     ->setUnitOfMeasurement(ShipmentInfo::UNIT_OF_MEASRUREMENTS_KG_CM)
     ->setLabelType(ShipmentInfo::LABEL_TYPE_PDF)
@@ -55,16 +68,16 @@ $shipmentInfo
 
 $shipperContact = new Contact();
 $shipperContact
-    ->setPersonName('Max Mustermann')
-    ->setCompanyName('Acme Inc.')
-    ->setPhoneNumber('0123456789')
-    ->setEmailAddress('max.mustermann@example.com');
+    ->setPersonName('Saamp Paris')
+    ->setCompanyName('SAAMP')
+    ->setPhoneNumber('+33(0)1 44 61 80 32')
+    ->setEmailAddress('contact@saamp.com');
 
 $shipperAddress = new Address();
 $shipperAddress
-    ->setStreetLines('Hauptstrasse 1')
+    ->setStreetLines('145 rue de temple')
     ->setCity('Paris')
-    ->setPostalCode('75000')
+    ->setPostalCode('75003')
     ->setCountryCode('FR');
 
 $shipper = new Shipper();
@@ -74,16 +87,16 @@ $shipper
 
 $recipientContact = new Contact();
 $recipientContact
-    ->setPersonName('Max Mustermann')
-    ->setCompanyName('Acme Inc.')
-    ->setPhoneNumber('0123456789')
-    ->setEmailAddress('max.mustermann@example.com');
+    ->setPersonName($name)
+    ->setCompanyName($company)
+    ->setPhoneNumber($phone)
+    ->setEmailAddress($email);
 
 $recipientAddress = new Address();
 $recipientAddress
-    ->setStreetLines('Hauptstrasse 1')
-    ->setCity('Paris')
-    ->setPostalCode('75001')
+    ->setStreetLines($adresse)
+    ->setCity($ville)
+    ->setPostalCode($codep)
     ->setCountryCode('FR');
 
 $recipient = new Recipient();
@@ -98,9 +111,9 @@ $ship
 
 $package1 = new RequestedPackage();
 $package1
-    ->setWeight(2)
-    ->setDimensions(1, 2, 3)
-    ->setCustomerReferences('test 1');
+    ->setWeight($poids)  // in KG
+    ->setDimensions($longeur, $largeur, $hauteur)   // in CM
+    ->setCustomerReferences( 'ID CLient : '.$cl_ident);
 
 $packages = new Packages();
 $packages
