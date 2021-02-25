@@ -338,7 +338,7 @@ $count= $count_aff + $count_lab + $count_rmp;
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body"  id="result">
 		<b>Votre demande à bien était transmise.<br>Un email de confirmation sera envoyé dans les plus brefs délais.</b>
 		</div>
         <div class="modal-footer">
@@ -514,7 +514,7 @@ var mode="collect";
                 success: function (data) {
 				
 				
-				
+				$('#result').html(data);
 				$('#successModal').modal('show') ;
 
 				/*
