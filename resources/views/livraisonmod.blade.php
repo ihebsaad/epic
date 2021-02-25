@@ -37,11 +37,11 @@ $agence_defaut= $liste[0]->agence_defaut  ;
                                 <div class="card-body">
  							 <h5>{{__('msg.Choose your delivery mode')}}</h5>
 							 <div class="row pt-10 pb-20">
-							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 mb-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');details();mode='collect'">
+							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 mb-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');$('#valid1').show();$('#valid2').hide();details();mode='collect'">
 								<center>  {{__('msg.Self-Delivery')}} <div class="clearfix"></div>
 								<img src="{{ URL::asset('public/img/box.png')}}" style="width:80px" class="mt-20"/></center>
 							 </div>
-							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 mb-10" onclick="$('#agency1').hide('slow');$('#agency2').show('slow');mode='trans'">
+							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 mb-10" onclick="$('#agency1').hide('slow');$('#agency2').show('slow');$('#valid1').hide();$('#valid2').show();mode='trans'">
 								<center>  {{__('msg.Carrier')}} <div class="clearfix"></div>
 								<img src="{{ URL::asset('public/img/truck.png')}}" style="width:100px"/></center>
 								
@@ -126,7 +126,15 @@ $agence_defaut= $liste[0]->agence_defaut  ;
  
 							 </div>		
 
-							 
+							<div  class="col-md-8 pl-20 pt-10">
+							<label><b> {{__('msg.Recipient Phone')}}</b></label>
+							<input type="number"   class="form-control" style="width:250px" pattern=".{10,10}" value="{{ $user->mobile }}"  id="phone"  ></input>
+							</div>
+							
+							<div  class="col-md-8 pl-20 pt-10">
+							<label><b> {{__('msg.Recipient Email')}}</b></label>
+							<input type="email"   class="form-control" style="width:250px"   value="{{ $user->email }}" id="email"   ></input>
+							</div>								 
 							 
 							 <div  class="col-md-8 pl-20 pt-10">
 							<label><b> {{__('msg.Number of packages')}}</b></label>
@@ -164,24 +172,22 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							<input type="number" step="0.01" min="0.01" class="form-control" style="width:110px" value="0" id="poids" ></input> g
 							</div>
 
-							<div  class="col-md-8 pl-20 pt-10">
-							<label><b> {{__('msg.Recipient Phone')}}</b></label>
-							<input type="number"   class="form-control" style="width:250px" pattern=".{10,10}" value="{{ $user->mobile }}"  id="phone"  ></input>
-							</div>
+						
 							
-							<div  class="col-md-8 pl-20 pt-10">
-							<label><b> {{__('msg.Recipient Email')}}</b></label>
-							<input type="email"   class="form-control" style="width:250px"   value="{{ $user->email }}" id="email"   ></input>
-							</div>							
-							
-								<button   onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
+								<button  id="valid1" onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
                                         <span  style="width:120px" class="text" >{{__('msg.Validate')}}</span>
                                     </button> 
 
-									
+
+								<button  id="valid2" onclick="validerliv()"  style="display:none" type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-save"></i>
+                                        </span>
+                                        <span  style="width:120px" class="text" >{{__('msg.Validate')}}</span>
+                                    </button> 									
                                 </div>
                             </div>
 
