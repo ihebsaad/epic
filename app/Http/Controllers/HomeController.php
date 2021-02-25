@@ -726,12 +726,26 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   $adresse1= $agenceliv->adresse1;
   $ville= $agenceliv->ville;
   $codep= $agenceliv->zip;
-*/
- $adresseliv=DB::table('adresse_livraison')->where('adresse_liv_ident',$adresse)->get();
+ 
+ $adresseliv=DB::table('adresse_livraison')->where('adresse_liv_ident',$adresse)->first();
  $nomagence= $adresseliv->adresse_liv_nom;
   $adresse1= $adresseliv->adresse1;
   $ville= $adresseliv->ville;
   $codep= $adresseliv->zip;
+  */
+  $client_id=$user['client_id']
+  $adresses=  DB::select (" CALL `sp_liste_adresse_livraison`(@p0);");
+	foreach($adresses as $address)
+	{
+		if($adresse==$address->id)
+		{
+			 $nomagence= $address->nom;
+			$adresse1= $address->adresse1;
+			$ville= $address->ville;
+			$codep= $address->zip;
+		}
+	}
+
   
  $phone   = $request->get('phone');	
  $email   = $request->get('email');	
