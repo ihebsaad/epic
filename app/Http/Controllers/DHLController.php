@@ -144,16 +144,22 @@ $requestedShipment
 $shipment = new ShipmentRequest($credentials);
 $shipment->setRequestedShipment($requestedShipment);
 $response = $shipment->send();
-/*
+$result=array();
+
+ 
 if ($response->isSuccessful()) {
-    return($response->getTrackingNumber());
+	$result['truck_number']=$response->getTrackingNumber();
+	$result['errors']='';
+  //  return($response->getTrackingNumber());
    // file_put_contents('label_1.pdf', base64_decode($response->getLabel()));
 } else {
-    dd($response->getErrors());
+	$result['truck_number']=0;
+	$result['errors']=$response->getErrors();
+   // dd($response->getErrors());
    // return($response->getErrors());
 }		 
-*/
-return json_encode($response);		 
+
+return $result;		 
 		 
 	 }
 	 
