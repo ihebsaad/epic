@@ -153,7 +153,7 @@ if ($response->isSuccessful()) {
    // return($response->getErrors());
 }		 
 */
-return $response;		 
+return json_encode($response);		 
 		 
 	 }
 	 
