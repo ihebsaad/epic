@@ -765,7 +765,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
 	}*/
   
   // si pas d'erreurs enregistrer track_number  et l'afficher, sinon afficher erreur et ne pas continuer + vérifier poids +tel + email avant d'envoyer
- return $result['truck_number'];
+ return json_encode($result);
  
  
 $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();

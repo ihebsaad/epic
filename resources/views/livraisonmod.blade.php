@@ -512,10 +512,17 @@ var mode="collect";
                 method: "POST",
                 data: { agence:agence,adresse:adresse,poids:poids ,  phone:phone, email:email, longeur:longeur, largeur:largeur, hauteur:hauteur, _token: _token},
                 success: function (data) {
-				
-				alert(data);
-				$('#result').html(data);
-				$('#successModal').modal('show') ;
+				 data=JSON.parse(data);
+
+				if(data.truck_number!=0){
+				$('#result').html('<b>Votre demande à bien était transmise.<br>Un email de confirmation sera envoyé dans les plus brefs délais.</b><br> Vous pouvez suivre votre colis DHL Express avec le numéro :<b>'+data.truck_number+'</b>';
+				$('#successModal').modal('show') ;	
+				}else{
+			    $('#result').html('<b>Votre demande à bien était transmise.<br>Un email de confirmation sera envoyé dans les plus brefs délais.</b><br> Vous pouvez suivre votre colis DHL Express avec le numéro :<b>'+data.errors+'</b>';
+			    $('#successModal').modal('show') ;	
+
+				}
+
 
 				/*
 				
