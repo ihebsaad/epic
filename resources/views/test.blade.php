@@ -18,7 +18,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Tests</h6>
                                 </div>
                                 <div class="card-body">
-								<?php echo  $result ; ?>
+								<?php var_dump($result ) ; ?>
                                 </div>
                             </div>
 
