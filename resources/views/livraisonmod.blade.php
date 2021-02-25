@@ -35,7 +35,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
                                     <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Delivery')}}</h6>
                                 </div>
                                 <div class="card-body">
- 							 <h5>{{__('msg.Choose your delivery mode')}}</h5>
+ 							 <h5 style="color:black">{{__('msg.Choose your delivery mode')}}</h5>
 							 <div class="row pt-10 pb-20">
 							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 mb-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');$('#valid1').show();$('#valid2').hide();details();mode='collect'">
 								<center>  {{__('msg.Self-Delivery')}} <div class="clearfix"></div>
@@ -48,7 +48,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </div>
 							 </div>
 							 <div id="agency1">
- 							 <h5>{{__('msg.Delivery address')}}</h5>
+ 							 <h5 style="color:black">{{__('msg.Delivery address')}}</h5>
 							 <div class="row pt-10 pb-10">
 							 
 							 <div class="col-md-8">
@@ -81,7 +81,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </div>		<!-- agency 1-->					 
 
 							 <div id="agency2"  style="display:none"  >
- 							 <h5>{{__('msg.Pick-up address')}}</h5>
+ 							 <h5 style="color:black">{{__('msg.Pick-up address')}}</h5>
 							 <div class="row pt-10 pb-10">
 							 
 							 <div class="col-md-8">
@@ -127,18 +127,18 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </div>		
 
 							<div  class="col-md-8 pl-20 pt-10">
-							<label><b> {{__('msg.Recipient Phone')}}</b></label>
-							<input type="number"   class="form-control" style="width:250px" pattern=".{10,10}" value="{{ $user->mobile }}"  id="phone"  ></input>
+							<label><b> {{__('msg.Recipient Phone')}}*</b></label>
+							<input type="number"   class="form-control" style="width:250px" pattern=".{10,10}" value="{{ $user->mobile }}"  id="phone" onchange="verif2();" ></input>
 							</div>
 							
 							<div  class="col-md-8 pl-20 pt-10">
-							<label><b> {{__('msg.Recipient Email')}}</b></label>
-							<input type="email"   class="form-control" style="width:250px"   value="{{ $user->email }}" id="email"   ></input>
+							<label><b> {{__('msg.Recipient Email')}}*</b></label>
+							<input type="email"   class="form-control" style="width:250px"   value="{{ $user->email }}" id="email" onchange="verif2();"  ></input>
 							</div>								 
 							 
 							 <div  class="col-md-8 pl-20 pt-10">
 							<label><b> {{__('msg.Number of packages')}}</b></label>
-							<input type="number" step="1" min="1" class="form-control" style="width:110px" value="1" id="colis" name="colis" ></input> 
+							<input type="number" step="1" min="1" class="form-control" style="width:110px" value="1" id="colis" name="colis" onchange="verif2();" ></input> 
 							</div>						 
 
 							 <div  class="col-md-8 pl-20 pt-10">
@@ -148,16 +148,16 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							<div class="row col-md-10"  id="sizes"  style="display:none">
 							
 							<div class="col-md-4">
-							<label>Longeur en cm</label>
-							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="longeur" name="longeur" ></input> 
+							<label>Longeur en cm*</label>
+							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="longeur" name="longeur" onchange="verif2();" ></input> 
 							</div>
 							<div class="col-md-4">
-							<label>Largeur  en cm</label>
-							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="largeur" name="largeur" ></input> 							
+							<label>Largeur  en cm*</label>
+							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="largeur" name="largeur" onchange="verif2();" ></input> 							
 							</div>
 							<div class="col-md-4">
-							<label>Hauteur  en cm</label>
-							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="hauteur" name="hauteur" ></input> 
+							<label>Hauteur  en cm*</label>
+							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="hauteur" name="hauteur" onchange="verif2();" ></input> 
 														
 							</div>
 							
@@ -168,13 +168,13 @@ $agence_defaut= $liste[0]->agence_defaut  ;
  
 
 							<div  class="col-md-8 pl-20 pt-10">
-							<label><b> {{__('msg.Gross weight')}}</b></label>
-							<input type="number" step="0.01" min="0.01" class="form-control" style="width:110px" value="0" id="poids" ></input> g
+							<label><b> {{__('msg.Gross weight')}}*</b></label>
+							<input onchange="verif1();verif2();" type="number" step="0.01" min="0.01" class="form-control" style="width:110px" value="0" id="poids" ></input> g
 							</div>
 
 						
 							
-								<button  id="valid1" onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
+								<button  id="valid1" onclick="valider()" disabled type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -182,7 +182,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
                                     </button> 
 
 
-								<button  id="valid2" onclick="validerliv()"  style="display:none" type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
+								<button  id="valid2" onclick="validerliv()" disabled style="display:none" type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
                                         <span class="icon text-white-50">
                                             <i class="fas fa-save"></i>
                                         </span>
@@ -333,7 +333,7 @@ $count= $count_aff + $count_lab + $count_rmp;
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{__('msg.Order submitted successfully')}}</h5>
+          <h5 class="modal-title" id="exampleModalLabel" style="color:#0054f3">{{__('msg.Order submitted successfully')}}</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -348,8 +348,39 @@ $count= $count_aff + $count_lab + $count_rmp;
       </div>
     </div>
   </div>	
-					
+<style>
+</style>
 <script>
+
+function verif1()
+{
+  var poids = $('#poids').val();
+	if(poids>0   ){
+	  $("#valid1").prop('disabled', false);
+	
+	}else{
+	   $("#valid1").prop('disabled', true);
+
+	}
+}
+
+function verif2()
+{
+	var poids = $('#poids').val();
+    var phone = $('#phone').val();
+	var email = $('#email').val();
+	var longeur = $('#longeur').val();
+	var largeur = $('#largeur').val();
+	var hauteur = $('#hauteur').val();
+	
+	if(poids>0 && phone.length==10  && email!= '' && longeur!= 0 && largeur!= 0 && hauteur!=0 ){
+	  $("#valid2").prop('disabled', false);
+	
+	}else{
+	   $("#valid2").prop('disabled', true);
+
+	}
+}
 function showsize(){
    if ($('#size').is(':checked'))
 	{ 
@@ -515,7 +546,7 @@ var mode="collect";
 				 data=JSON.parse(data);
 
 				if(data.truck_number!=0){
-				$('#result').html('<b>Votre demande à bien était transmise.<br>Un email de confirmation sera envoyé dans les plus brefs délais.</b><br> Vous pouvez suivre votre colis DHL Express avec la référence:<b style="color:#0054f3">'+data.truck_number+'</b>');
+				$('#result').html('<b>Votre demande à bien était transmise.<br>Un email de confirmation sera envoyé dans les plus brefs délais.</b><br> Vous pouvez suivre votre colis DHL Express avec la référence:<b style="color:#36b9cc;margin-left:20px;">'+data.truck_number+'</b>');
 				$('#successModal').modal('show') ;	
 				}else{
 			    $('#result').html("<b>Problème lors de la demande de Livraison.</b><br><small>'+data.errors+'</small>");
