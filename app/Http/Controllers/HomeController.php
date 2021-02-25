@@ -734,8 +734,9 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   $codep= $adresseliv->zip;
   */
   $client_id=$user['client_id'];
+   DB::select("SET @p0='$client_id' ;");
   $adresses=  DB::select (" CALL `sp_liste_adresse_livraison`(@p0);");
-	foreach($adresses as $address)
+ 	foreach($adresses as $address)
 	{
 		if($adresse==$address->id)
 		{
@@ -746,7 +747,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
 		}
 	}
 
-  
+  dd($nomagence);
  $phone   = $request->get('phone');	
  $email   = $request->get('email');	
  $poids   = $request->get('poids');	
