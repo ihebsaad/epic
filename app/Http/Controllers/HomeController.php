@@ -758,13 +758,15 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   //	 shipment($testmode,$username,$password,$account,$company,$adresse,$ville,$codep,$phone,$email,$poids,$longeur,$largeur,$hauteur) 
  // $track_number=
   $result = DHLController::shipment(true,'saampFR','A@0eV^1zW!3x','220136396',$nomagence,$adresse1,$ville,$codep, $phone,$email,$poids,$longeur,$largeur,$hauteur) ;
-	if($result['truck_number']!=0){
+	/*if($result['truck_number']!=0){
 		return $result['truck_number'];
 	}else{
 		return  json_decode($result['errors']);
-	}
+	}*/
   
   // si pas d'erreurs enregistrer track_number  et l'afficher, sinon afficher erreur et ne pas continuer + vérifier poids +tel + email avant d'envoyer
+ return $result['truck_number'];
+ 
  
 $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
  foreach ($E_CmdesAff as $cmd)

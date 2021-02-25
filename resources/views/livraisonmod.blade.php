@@ -513,7 +513,7 @@ var mode="collect";
                 data: { agence:agence,adresse:adresse,poids:poids ,  phone:phone, email:email, longeur:longeur, largeur:largeur, hauteur:hauteur, _token: _token},
                 success: function (data) {
 				
-				
+				alert(data);
 				$('#result').html(data);
 				$('#successModal').modal('show') ;
 
