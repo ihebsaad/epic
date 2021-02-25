@@ -747,7 +747,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
 		}
 	}
 
-  dd($nomagence);
+  
  $phone   = $request->get('phone');	
  $email   = $request->get('email');	
  $poids   = $request->get('poids');	
