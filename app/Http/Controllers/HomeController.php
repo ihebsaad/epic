@@ -727,7 +727,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   $ville= $agenceliv->ville;
   $codep= $agenceliv->zip;
 */
- $adresseliv=DB::table('adresse_livraison')->where('adresse_liv_ident',$adresse)->first();
+ $adresseliv=DB::table('adresse_livraison')->where('adresse_liv_ident',$adresse)->get();
  $nomagence= $adresseliv->adresse_liv_nom;
   $adresse1= $adresseliv->adresse1;
   $ville= $adresseliv->ville;
