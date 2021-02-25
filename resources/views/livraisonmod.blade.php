@@ -515,10 +515,10 @@ var mode="collect";
 				 data=JSON.parse(data);
 
 				if(data.truck_number!=0){
-				$('#result').html('<b>Votre demande à bien était transmise.<br>Un email de confirmation sera envoyé dans les plus brefs délais.</b><br> Vous pouvez suivre votre colis DHL Express avec le numéro :<b>'+data.truck_number+'</b>');
+				$('#result').html('<b>Votre demande à bien était transmise.<br>Un email de confirmation sera envoyé dans les plus brefs délais.</b><br> Vous pouvez suivre votre colis DHL Express avec la référence :<b>'+data.truck_number+'</b>');
 				$('#successModal').modal('show') ;	
 				}else{
-			    $('#result').html('<b>Votre demande à bien était transmise.<br>Un email de confirmation sera envoyé dans les plus brefs délais.</b><br> Vous pouvez suivre votre colis DHL Express avec le numéro :<b>'+data.errors+'</b>');
+			    $('#result').html("<b>Problème lors de la demande de Livraison.</b><br><small>'+data.errors+'</small>");
 			    $('#successModal').modal('show') ;	
 
 				}

@@ -758,15 +758,8 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   //	 shipment($testmode,$username,$password,$account,$company,$adresse,$ville,$codep,$phone,$email,$poids,$longeur,$largeur,$hauteur) 
  // $track_number=
   $result = DHLController::shipment(true,'saampFR','A@0eV^1zW!3x','220136396',$nomagence,$adresse1,$ville,$codep, $phone,$email,$poids,$longeur,$largeur,$hauteur) ;
-	/*if($result['truck_number']!=0){
-		return $result['truck_number'];
-	}else{
-		return  json_decode($result['errors']);
-	}*/
+	 if($result['truck_number']!=0){
   
-  // si pas d'erreurs enregistrer track_number  et l'afficher, sinon afficher erreur et ne pas continuer + vérifier poids +tel + email avant d'envoyer
- return json_encode($result);
- 
  
 $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
  foreach ($E_CmdesAff as $cmd)
@@ -774,7 +767,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   $cmdid=$cmd->cmde_aff_ident;
   $lignes=DB::table('cmde_aff_l')->where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
  }
- DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+ DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence ,'truck_number'=> $result['truck_number']) )  );
 
  $E_CmdesLab=DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
   foreach ($E_CmdesLab as $cmd)
@@ -782,7 +775,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   $cmdid=$cmd->cmde_lab_ident;
   $lignes=DB::table('cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
  }
-  DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+  DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence,'truck_number'=> $result['truck_number']) )  );
 
  $E_CmdesRMP=DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
   foreach ($E_CmdesRMP as $cmd)
@@ -790,11 +783,19 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   $cmdid=$cmd->cmde_rmp_ident;
   $lignes=DB::table('cmde_rmp_l')->where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
  }	
-  DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+  DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence  ,'truck_number'=> $result['truck_number']) )  );
 
   
+
+ }else{
+
+	} 
+  
+  return json_encode($result);
  
- return redirect('/home')->with('success', ' Commande passée avec succès');
+ 
+ 
+ //return redirect('/home')->with('success', ' Commande passée avec succès');
 	
 }	
  
