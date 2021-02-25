@@ -416,4 +416,6 @@ return [
 	'Time'=>'Heure',
 	'Sale'=>'Vente',
 	'Purchase'=>'Achat',	
+	'Recipient Phone'=>'N° Tel du destinataire',
+	'Recipient Email'=>'Email du destinataire',	
  ];

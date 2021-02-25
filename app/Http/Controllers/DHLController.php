@@ -69,16 +69,15 @@ $shipmentInfo
 
 $shipperContact = new Contact();
 $shipperContact
-    ->setPersonName('Saamp Paris')
-    ->setCompanyName('SAAMP')
-    ->setPhoneNumber('+33(0)1 44 61 80 32')
-    ->setEmailAddress('contact@saamp.com');
-
+    ->setPersonName($name)
+    ->setCompanyName($company)
+    ->setPhoneNumber($phone)
+    ->setEmailAddress($email);
 $shipperAddress = new Address();
 $shipperAddress
-    ->setStreetLines('145 rue de temple')
-    ->setCity('Paris')
-    ->setPostalCode('75003')
+	->setStreetLines($adresse)
+    ->setCity($ville)
+    ->setPostalCode($codep)
     ->setCountryCode('FR');
 
 $shipper = new Shipper();
@@ -88,16 +87,16 @@ $shipper
 
 $recipientContact = new Contact();
 $recipientContact
-    ->setPersonName($name)
-    ->setCompanyName($company)
-    ->setPhoneNumber($phone)
-    ->setEmailAddress($email);
+    ->setPersonName('Saamp Paris')
+    ->setCompanyName('SAAMP')
+    ->setPhoneNumber('+33(0)1 44 61 80 32')
+    ->setEmailAddress('contact@saamp.com');
 
 $recipientAddress = new Address();
 $recipientAddress
-    ->setStreetLines($adresse)
-    ->setCity($ville)
-    ->setPostalCode($codep)
+    ->setStreetLines('145 rue de temple')
+    ->setCity('Paris')
+    ->setPostalCode('75003')
     ->setCountryCode('FR');
 
 $recipient = new Recipient();

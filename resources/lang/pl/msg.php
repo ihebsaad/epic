@@ -402,6 +402,7 @@ return [
 			'Time'=>'Czas',
 			'Sale'=>'Sprzedaż',
 			'Purchase'=>'Zakupu',
-			
+			'Recipient Phone'=>'Telefon odbiorcy',
+			'Recipient Email'=>'Email odbiorcy',			
 			
  ];

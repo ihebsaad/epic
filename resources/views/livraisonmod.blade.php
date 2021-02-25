@@ -104,8 +104,8 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							foreach($adresses as $adresse)
 							 { ?>
 							 <div class="pl-10 pr-10 pt-10 pt-10 adresses" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
- 							 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
-							 <b style="color:black">{{__('msg.Address')}} :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
+ 							 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span   ><?php echo $adresse->nom; ?></span><br>
+							 <b style="color:black">{{__('msg.Address')}} :</b> <span   ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
 							  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
 							 <b style="color:black">{{__('msg.Country')}} :</b> <span  >
 							 <?php 
@@ -141,15 +141,15 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							
 							<div class="col-md-4">
 							<label>Longeur en cm</label>
-							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="0" id="longeur" name="longeur" ></input> 
+							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="longeur" name="longeur" ></input> 
 							</div>
 							<div class="col-md-4">
 							<label>Largeur  en cm</label>
-							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="0" id="largeur" name="largeur" ></input> 							
+							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="largeur" name="largeur" ></input> 							
 							</div>
 							<div class="col-md-4">
 							<label>Hauteur  en cm</label>
-							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="0" id="hauteur" name="hauteur" ></input> 
+							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="hauteur" name="hauteur" ></input> 
 														
 							</div>
 							
@@ -157,15 +157,22 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 
 							 
 							 </div>							 
-
-							 
-
+ 
 
 							<div  class="col-md-8 pl-20 pt-10">
 							<label><b> {{__('msg.Gross weight')}}</b></label>
-							<input type="number" step="0.01" min="0.01" class="form-control" style="width:110px" value="0" ></input> g
+							<input type="number" step="0.01" min="0.01" class="form-control" style="width:110px" value="0" id="poids" ></input> g
 							</div>
 
+							<div  class="col-md-8 pl-20 pt-10">
+							<label><b> {{__('msg.Recipient Phone')}}</b></label>
+							<input type="number"   class="form-control" style="width:250px" pattern=".{10,10}" value="{{ $user->mobile }}"  id="phone"  ></input>
+							</div>
+							
+							<div  class="col-md-8 pl-20 pt-10">
+							<label><b> {{__('msg.Recipient Email')}}</b></label>
+							<input type="email"   class="form-control" style="width:250px"   value="{{ $user->email }}" id="email"   ></input>
+							</div>							
 							
 								<button   onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
                                         <span class="icon text-white-50">
@@ -361,6 +368,11 @@ setadresse();
 
 function details()
 	{ 
+	
+	/* var tel= $('#agence_id').find('option:selected').attr('title');
+	 var email= $('#agence_id').find('option:selected').attr('target');
+		$('#phone').val(tel);
+		$('#email').val(email);*/
 	var agence = $('#agence_id').val() ;
 	var _token = $('input[name="_token"]').val();
 		 $('#lib').html( '');
@@ -469,7 +481,58 @@ var mode="collect";
 
         }
 
+  function validerliv() {
+             var _token = $('input[name="_token"]').val();
+			 var agence =null;
+			 var adresse =null;
+			 if(mode=='collect'){
+			  agence = $('#agence_id').val();
+			 }else{
+			  adresse = $('#adresse_id').val();	 
+			 }
+	 
+              var _token = $('input[name="_token"]').val();
+			  
+			  var poids = $('#poids').val();
+			  var phone = $('#phone').val();
+			  var email = $('#email').val();
+			  var longeur = $('#longeur').val();
+			  var largeur = $('#largeur').val();
+			  var hauteur = $('#hauteur').val();
+ 
+			  
+            $.ajax({
+                url: "{{ route('validatemodelsliv') }}",
+                method: "POST",
+                data: { agence:agence,adresse:adresse,poids:poids ,  phone:phone, email:email, longeur:longeur, largeur:largeur, hauteur:hauteur, _token: _token},
+                success: function (data) {
+				
+				
+				
+				$('#successModal').modal('show') ;
 
+				/*
+				
+	                    $.notify({
+                        message: 'Commande passée avec succès',
+                        icon: 'glyphicon glyphicon-check'
+                    },{
+                        type: 'success',
+                        delay: 3000,
+                        timer: 1000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    });
+							setTimeout(function(){
+				location.href="{{ route('home')}}";
+							   }, 3000);  //3 secds				
+				*/
+                }
+            });
+
+        }
 <?php if($agence_defaut>0){?>
 //init default
 details();

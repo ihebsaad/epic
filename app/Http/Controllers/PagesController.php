@@ -21,6 +21,8 @@ class PagesController extends Controller
  
  	  public function test()
     { 	
+	 //	 shipment($testmode,$username,$password,$account,$company,$adresse,$ville,$codep,$phone,$email,$poids,$longeur,$largeur,$hauteur) 
+
 	  $content = DHLController::shipment(true,'saampFR','A@0eV^1zW!3x','220136396','Metafont','AVENUE DE LYON','BOURG LES VALENCES','26500','','',2520,1,2,3) ;
 	 return view('test',[ 'result'=>$content]) ;   
 

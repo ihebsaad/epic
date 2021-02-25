@@ -17,6 +17,8 @@ use App\Cmde_lab_l ;
 use App\Cmde_rmp_e ;
 use App\Cmde_rmp_l ;
 
+use App\Http\Controllers\DHLController ;
+
 use Illuminate\Support\Facades\App;
 
 
@@ -713,7 +715,65 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
 	
 }	
 
+  public function validatemodelsliv(Request $request)
+{
+ $user = auth()->user();  
+ $adresse   = $request->get('adresse');	
+ $agence   = $request->get('agence');	
+ /*
+ $agenceliv=DB::table('agence')->where('agence_ident',$agence)->first();
+ $nomagence= $agenceliv->agence_lib;
+  $adresse1= $agenceliv->adresse1;
+  $ville= $agenceliv->ville;
+  $codep= $agenceliv->zip;
+*/
+ $adresseliv=DB::table('adresse_livraison')->where('adresse_liv_ident',$adresse)->first();
+ $nomagence= $adresseliv->adresse_liv_nom;
+  $adresse1= $adresseliv->adresse1;
+  $ville= $adresseliv->ville;
+  $codep= $adresseliv->zip;
+  
+ $phone   = $request->get('phone');	
+ $email   = $request->get('email');	
+ $poids   = $request->get('poids');	
+ $longeur   = $request->get('longeur');	
+ $largeur   = $request->get('largeur');	
+ $hauteur   = $request->get('hauteur');	
 
+  //	 shipment($testmode,$username,$password,$account,$company,$adresse,$ville,$codep,$phone,$email,$poids,$longeur,$largeur,$hauteur) 
+ // $track_number=
+  $track_number = DHLController::shipment(true,'saampFR','A@0eV^1zW!3x','220136396',$nomagence,$adresse1,$ville,$codep, $phone,$email,$poids,$longeur,$largeur,$hauteur) ;
+dd($track_number);
+ 
+$E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+ foreach ($E_CmdesAff as $cmd)
+ {								
+  $cmdid=$cmd->cmde_aff_ident;
+  $lignes=DB::table('cmde_aff_l')->where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+ }
+ DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+
+ $E_CmdesLab=DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+  foreach ($E_CmdesLab as $cmd)
+ {								
+  $cmdid=$cmd->cmde_lab_ident;
+  $lignes=DB::table('cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+ }
+  DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+
+ $E_CmdesRMP=DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+  foreach ($E_CmdesRMP as $cmd)
+ {								
+  $cmdid=$cmd->cmde_rmp_ident;
+  $lignes=DB::table('cmde_rmp_l')->where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+ }	
+  DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+
+  
+ 
+ return redirect('/home')->with('success', ' Commande passée avec succès');
+	
+}	
  
  public function validateproducts(Request $request)
 {

@@ -407,5 +407,7 @@ return [
 	'Time'=>'Time',
 	'Sale'=>'Sale',
 	'Purchase'=>'Purchase',
+	'Recipient Phone'=>'Recipient Phone',
+	'Recipient Email'=>'Recipient Email',odbiorcy
  	
  ];
