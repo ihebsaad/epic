@@ -758,7 +758,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
   //	 shipment($testmode,$username,$password,$account,$company,$adresse,$ville,$codep,$phone,$email,$poids,$longeur,$largeur,$hauteur) 
  // $track_number=
   $track_number = DHLController::shipment(true,'saampFR','A@0eV^1zW!3x','220136396',$nomagence,$adresse1,$ville,$codep, $phone,$email,$poids,$longeur,$largeur,$hauteur) ;
-dd($track_number);
+// si pas d'erreurs enregistrer track_number  et l'afficher, sinon afficher erreur et ne pas continuer + vérifier poids +tel + email avant d'envoyer
  
 $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
  foreach ($E_CmdesAff as $cmd)

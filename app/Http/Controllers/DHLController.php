@@ -129,7 +129,8 @@ $internationalDetail
     ->setContent(InternationalDetail::CONTENT_DOCUMENTS);
 
 $timestamp = new \DateTime("now", new \DateTimeZone("Europe/Paris"));
-$timestamp->modify('+3 days');
+//$timestamp->modify('+3 days');
+$timestamp->modify('+3 Weekday');
 
 $requestedShipment = new RequestedShipment();
 $requestedShipment
@@ -143,7 +144,7 @@ $requestedShipment
 $shipment = new ShipmentRequest($credentials);
 $shipment->setRequestedShipment($requestedShipment);
 $response = $shipment->send();
-
+/*
 if ($response->isSuccessful()) {
     return($response->getTrackingNumber());
    // file_put_contents('label_1.pdf', base64_decode($response->getLabel()));
@@ -151,7 +152,8 @@ if ($response->isSuccessful()) {
     dd($response->getErrors());
    // return($response->getErrors());
 }		 
-		 
+*/
+return $response;		 
 		 
 	 }
 	 
