@@ -1,4 +1,5 @@
-
+<script async src="//book.timify.com/widget/widget.min.js" id="timify-widget" data-position="flexible" >
+</script>
 @extends('layouts.back')
  
  @section('content')
@@ -172,6 +173,10 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							<input onchange="verif1();verif2();" type="number" step="0.01" min="0.01" class="form-control" style="width:110px" value="0" id="poids" ></input> g
 							</div>
 
+						
+						
+					<center><div class="timify-button" data-account-id="5ec78f0496771d12228df890"   >Réserver</div></center>			
+						
 						
 							
 								<button  id="valid1" onclick="valider()" disabled type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
