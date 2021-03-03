@@ -5,6 +5,24 @@
  @section('content')
 <style>
 .card-body{min-height:300px;}
+.timify-button{
+	text-align:center;
+	background-color:#cb3b43;
+	color:white;
+	font-weight:600;
+	width:120px;
+	height:40px;
+	line-height:40px;
+	border-radius:10px;
+	cursor:pointer;
+ }
+ .timify-button:hover{
+ background-color:#b1343b;
+  
+  border:1px solid black;
+
+ }
+ 
 </style>
 <?php
  $user = auth()->user();  
@@ -174,9 +192,9 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							</div>
 
 						
-						
-					<center><div class="timify-button" data-account-id="5ec78f0496771d12228df890"   >Réserver</div></center>			
-						
+							<div  class="col-md-8 pl-20 pt-10 mb-20">
+								<div class="timify-button" data-account-id="5ec78f0496771d12228df890"   >Réserver</div> 			
+							</div>
 						
 							
 								<button  id="valid1" onclick="valider()" disabled type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
