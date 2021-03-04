@@ -408,6 +408,6 @@ return [
 	'Sale'=>'Sale',
 	'Purchase'=>'Purchase',
 	'Recipient Phone'=>'Recipient Phone',
-	'Recipient Email'=>'Recipient Email',odbiorcy
+	'Recipient Email'=>'Recipient Email',
  	
  ];
