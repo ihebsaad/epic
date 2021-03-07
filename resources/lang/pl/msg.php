@@ -404,5 +404,11 @@ return [
 			'Purchase'=>'Zakupu',
 			'Recipient Phone'=>'Telefon odbiorcy',
 			'Recipient Email'=>'Email odbiorcy',			
-			
+			'Access Information'=>'Dostęp do informacji',
+			'Add user'=>'Dodaj użytkownika',	
+			'Add a new user'=>'dodać nowego użytkownika',	
+			"Client ID"=>"ID klienta",
+			"List of users"=>"Lista użytkowników",	
+			"View user"=>"Wyświetl użytkownika",			
+
  ];

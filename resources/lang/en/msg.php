@@ -409,5 +409,12 @@ return [
 	'Purchase'=>'Purchase',
 	'Recipient Phone'=>'Recipient Phone',
 	'Recipient Email'=>'Recipient Email',
+	'Access Information'=>'Access Information',
+	'Add user'=>'Add user',
+	'Add a new user'=>'Add a new user',
+	"Client ID"=>"Client ID",	
+	"List of users"=>"List of users",	
+	"View user"=>"View user",	
+
  	
  ];

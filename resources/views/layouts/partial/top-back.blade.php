@@ -205,11 +205,13 @@ $count= $count_aff + $count_lab + $count_rmp;
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   {{__('msg.My Profile')}} 
                 </a>
-             <!--   <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
+				<?php if ($user['user_type']=='admin'){?>
+               <a class="dropdown-item" href="{{route('users')}}">
+                  <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
+                  {{__('msg.List of users')}}
                 </a>
-                <a class="dropdown-item" href="#">
+				<?php } ?>
+               <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
                 </a> -->

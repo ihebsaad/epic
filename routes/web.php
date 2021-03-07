@@ -127,6 +127,11 @@ Route::post('/setlanguage', 'HomeController@setlanguage')->name('setlanguage');
 
 
 Route::get('/profile', 'UsersController@profile')->name('profile');
+Route::get('/adduser', 'UsersController@adduser')->name('adduser');
+Route::get('/users', 'UsersController@index')->name('users');
+Route::get('/view/{id}', 'UsersController@view')->name('view');
+Route::post('/adding','UsersController@adding')->name('adding');
+Route::get('/users/destroy/{id}','UsersController@destroy')->name('users.destroy');
 Route::post('/users/updating','UsersController@updating')->name('users.updating');
 Route::post('/updateuser','UsersController@updateuser')->name('updateuser');
 Route::post('/updatecomp','UsersController@updatecomp')->name('updatecomp');

@@ -17,6 +17,14 @@ class UsersController extends Controller
 	 
 	 public function index()
 	{
+		 $users= User::orderBy('name','asc')->get();
+        return view('users.index',[ 'users'=>$users]);
+ 	}
+	
+		public function view($id  )
+	{
+        $user= User::where('id',$id)->first();
+        return view('users.view',['id'=>$id,'user'=>$user]);
  	}
 	
 	public function profile(  )
@@ -52,6 +60,11 @@ class UsersController extends Controller
 
     }
 	
+	    public static function  adduser()
+    {
+		   return view('users.add');
+
+	}
 	
 	    public function updateuser(Request $request)
     {
@@ -97,6 +110,49 @@ class UsersController extends Controller
  
     }
 
+	
+	 public function adding(Request $request)
+    {
+         $siret= $request->get('siret');
+         $email= $request->get('email');
+         $name= $request->get('name');
+        $lastname= $request->get('lastname');
+        $activity= $request->get('activity');
+        $mobile= $request->get('mobile');
+        $phone= $request->get('phone');
+        $password= $request->get('password');
+        $confirmation= $request->get('confirmation');
+        $client_id= $request->get('client_id');
+         if($password !=''  && (strlen($password )>5) ){
+		
+		if($password == $confirmation )
+		{  $password= bcrypt(trim($request->get('password')));
+
+					
+	 $user = new User([
+ 		'username' => $email,
+ 		'email' => $email,
+ 		'siret' => $siret,
+ 		'name' => $name,
+		'lastname' => $lastname,
+		'activity' => $activity,
+		'mobile' => $mobile,
+		'phone' => $phone,
+		'password' => $password,
+		'client_id' => $client_id,
+		]
+		);
+		
+		if($user->save()) {
+	    return redirect('/users')->with('success', ' ajouté avec succès');
+		
+		}else{
+			return back();
+		}
+		
+		 }
+		 }
+	 }
 
 	
 		    public function updatecomp(Request $request)
@@ -139,4 +195,16 @@ class UsersController extends Controller
 
  
     }
+	
+	
+	
+	    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/users')->with('success', '  supprimé avec succès');
+    }
+	
+	
 }

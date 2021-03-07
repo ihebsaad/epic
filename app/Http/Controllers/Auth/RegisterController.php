@@ -66,10 +66,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'lastname' => $data['lastname'],
             'activity' => $data['activity'],
+            'client_id' => $data['client_id'],
             'siret' => $data['siret'],
             'mobile' => $data['mobile'],
             'phone' => $data['phone'],
-            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
