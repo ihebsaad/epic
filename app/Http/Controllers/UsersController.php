@@ -154,7 +154,53 @@ class UsersController extends Controller
 		 }
 	 }
 
-	
+		 public function updatinguser(Request $request)
+    {
+ 
+        $user= $request->get('user');
+        $activity= $request->get('activity');
+        $mobile= $request->get('mobile');
+        $phone= $request->get('phone');
+        $password= $request->get('password');
+        $confirmation= $request->get('confirmation');
+          if($password !=''  && (strlen($password )>5) ){
+		
+		if($password == $confirmation )
+		{  $password= bcrypt(trim($request->get('password')));
+
+					
+ DB::table('users')->where('id', $user)->update(array( 	
+		 
+		'activity' => $activity,
+		'mobile' => $mobile,
+		'phone' => $phone,
+		'password' => $password,
+ 		)
+		);
+		
+ 	    return redirect('/users')->with('success', ' modifié avec succès');
+		
+		 
+		
+		 }
+		 }else{
+			 
+					
+ DB::table('users')->where('id', $user)->update(array( 	
+		 
+		'activity' => $activity,
+		'mobile' => $mobile,
+		'phone' => $phone,
+  		)
+		);
+		
+ 	    return redirect('/users')->with('success', ' modifié avec succès');
+		
+	 	 
+			 
+			 
+		 }
+	 }
 		    public function updatecomp(Request $request)
     {
         $id= $request->get('cl_ident');

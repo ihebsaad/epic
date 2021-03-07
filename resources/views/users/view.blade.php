@@ -30,8 +30,9 @@ label{color:black;}
 								
                             <div class="text-center">
                              </div>
-                            <form class="user"  method="POST" action="{{ route('adding') }}">
+                            <form class="user"  method="POST" action="{{ route('updatinguser') }}">
 								{{ csrf_field() }}
+								<input type="hidden" name="user"   value="<?php echo $user->id; ?>"   />
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 									<label>{{__('msg.Client ID')}}*</label>
@@ -94,8 +95,8 @@ label{color:black;}
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">		
 									<label>{{__('msg.Cell phone')}}</label>									
-                                    <input type="text" class="form-control  " id="mobile" name="mobile" pattern=".{10,10}" required  value="<?php echo $user->mobile;?>"
-                                        placeholder="{{__('msg.Cell phone')}}*"    oninvalid="this.setCustomValidity('Le format doit être 10 chiffres')"
+                                    <input type="text" class="form-control  " id="mobile" name="mobile" pattern=".{10,10}"    value="<?php echo $user->mobile;?>"
+                                        placeholder="{{__('msg.Cell phone')}}"    oninvalid="this.setCustomValidity('Le format doit être 10 chiffres')"
   oninput="this.setCustomValidity('')">
 									</div>	
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -111,16 +112,16 @@ label{color:black;}
 								<div class="form-group row">
 
 			                     <div class="col-sm-6 mb-3 mb-sm-0">
-								 <label>{{__('msg.Password')}}</label>
-                                        <input type="password" class="form-control  " name="password" id="password"   pattern=".{6,30}" autocomplete="new-password"   required
-                                            id="exampleInputPassword" placeholder="{{__('msg.Password')}}*"  oninvalid="this.setCustomValidity('La taille minimale est 6 caractères')"
+								 <label>{{__('msg.Password')}}<small> (6 caractères au minimum)</small></label>
+                                        <input type="password" class="form-control  " name="password" id="password"   pattern=".{6,30}" autocomplete="new-password"    
+                                            id="exampleInputPassword" placeholder="{{__('msg.Password')}}"  oninvalid="this.setCustomValidity('La taille minimale est 6 caractères')"
   oninput="this.setCustomValidity('')" >
                                     </div>							
 								
                                     <div class="col-sm-6">
 									<label>{{__('msg.Password confirmation')}}</label>
-                                        <input type="password" class="form-control  " name="confirmation" id="password_confirmation"   pattern=".{6,30}"  autocomplete="new-password"   required
-                                            id="exampleRepeatPassword" placeholder="{{__('msg.Password confirmation')}}*" oninvalid="this.setCustomValidity('La taille minimale est 6 caractères')"  onchange=""
+                                        <input type="password" class="form-control  " name="confirmation" id="password_confirmation"   pattern=".{6,30}"  autocomplete="new-password"    
+                                            id="exampleRepeatPassword" placeholder="{{__('msg.Password confirmation')}}" oninvalid="this.setCustomValidity('La taille minimale est 6 caractères')"  onchange=""
   oninput="this.setCustomValidity('')"  >
                                     </div>
   									

@@ -129,7 +129,7 @@ label{color:black;}
 								<div class="form-group row">
 
 			                     <div class="col-sm-6 mb-3 mb-sm-0">
-								 <label>{{__('msg.Password')}}*</label>
+								 <label>{{__('msg.Password')}}* <small> (6 caractères au minimum)</small></label>
                                         <input type="password" class="form-control  " name="password" id="password"   pattern=".{6,30}" autocomplete="new-password"   required
                                             id="exampleInputPassword" placeholder="{{__('msg.Password')}}*"  oninvalid="this.setCustomValidity('La taille minimale est 6 caractères')"
   oninput="this.setCustomValidity('')" >

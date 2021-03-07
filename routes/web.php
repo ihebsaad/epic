@@ -131,6 +131,7 @@ Route::get('/adduser', 'UsersController@adduser')->name('adduser');
 Route::get('/users', 'UsersController@index')->name('users');
 Route::get('/view/{id}', 'UsersController@view')->name('view');
 Route::post('/adding','UsersController@adding')->name('adding');
+Route::post('/updatinguser','UsersController@updatinguser')->name('updatinguser');
 Route::get('/users/destroy/{id}','UsersController@destroy')->name('users.destroy');
 Route::post('/users/updating','UsersController@updating')->name('users.updating');
 Route::post('/updateuser','UsersController@updateuser')->name('updateuser');
