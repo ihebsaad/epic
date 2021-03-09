@@ -16,6 +16,23 @@
                             </div>
                             <form class="user"  method="POST" action="{{ route('registration') }}">
 								{{ csrf_field() }}
+								
+ @if ($errors->any())
+             <div class="alert alert-danger">
+                 <ul>
+                     @foreach ($errors->all() as $error)
+                         <li>{{ $error }}</li>
+                     @endforeach
+                 </ul>
+             </div><br />
+         @endif
+
+    @if (!empty( Session::get('success') ))
+        <div class="alert alert-success">
+
+        {{ Session::get('success') }}
+        </div>
+    @endif								
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName" name="name" required  oninvalid="this.setCustomValidity('Champ Obligatoire')"
@@ -118,7 +135,7 @@
                                 @endif									
                                 </div>
 								<div class="row pl-20 pb-10">
-								<small class="mb-10">Si votre <b>SIREN</b> ou <b>Email</b> ne sont pas acceptés, contactez nous à l'adresse : <b><i>contact@mysaamp.com</i></b>.</small> 
+								<small class="mb-10">Si votre <b>SIREN</b> ou <b>Email</b> ne sont pas acceptés, contactez nous à l'adresse : <b><i>contact@saamp.com</i></b>.</small> 
 								<div class="clearfix"></div>
 								<small>L'un de nos collaborateurs vous appeleras pour finaliser votre dossier.</small>
 								</div>
