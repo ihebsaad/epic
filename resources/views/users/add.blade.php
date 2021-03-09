@@ -49,7 +49,7 @@ label{color:black;}
                                      <div class="col-sm-6 mb-3 mb-sm-0">
 									 <label>SIRET</label>
                                     <input type="text" class="form-control  " id="siret" name="siret"  required  pattern=".{7,14}"
-                                        placeholder="SIRET* (ex : 7362 521 879 00034)"   oninvalid="this.setCustomValidity('Le format doit être 14 chiffres')"
+                                        placeholder="SIREN*  "   oninvalid="this.setCustomValidity('Le format doit être 9 chiffres')"
   oninput="this.setCustomValidity('')">									
 									</div>
 					 

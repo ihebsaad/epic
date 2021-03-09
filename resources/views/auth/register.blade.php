@@ -14,12 +14,12 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Créer mon compte</h1>
                             </div>
-                            <form class="user"  method="POST" action="{{ route('register') }}">
+                            <form class="user"  method="POST" action="{{ route('registration') }}">
 								{{ csrf_field() }}
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" name="name" required
-                                            placeholder="Prénom*">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" name="name" required  oninvalid="this.setCustomValidity('Champ Obligatoire')"
+  oninput="this.setCustomValidity('')"     placeholder="Prénom*">
 								@if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -27,8 +27,8 @@
                                 @endif
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName" name="lastname" required
-                                            placeholder="Nom*">
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName" name="lastname" required   oninvalid="this.setCustomValidity('Champ Obligatoire')"
+  oninput="this.setCustomValidity('')"      placeholder="Nom*">
                                     </div>
                                 @if ($errors->has('lastname'))
                                     <span class="help-block">
@@ -43,7 +43,8 @@
 								</style>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">								
-                                    <select class="form-control  " id="activity" name="activity"  placeholder="Sélectionnez votre activité*"  required
+                                    <select class="form-control  " id="activity" name="activity"  placeholder="Sélectionnez votre activité*"  required   oninvalid="this.setCustomValidity('Champ Obligatoire')"
+  oninput="this.setCustomValidity('')"
 									style="font-size: 0.8rem;border-radius: 10rem;padding-left:15px;padding-top:10px;height:50px;font-family:Nunito">
 									<option value="">Sélectionnez votre activité*</option>
 									<option value="artisan">Artisan</option>
@@ -55,14 +56,16 @@
 									</select>
 									</div>	
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="siret" name="siret"  required  pattern=".{14,14}"
-                                        placeholder="SIRET* (ex : 7362 521 879 00034)">									
+                                    <input type="text" class="form-control form-control-user" id="siret" name="siret"  required  pattern=".{8,9}"   oninvalid="this.setCustomValidity('9 caractères')"
+  oninput="this.setCustomValidity('')"
+                                        placeholder="SIREN*"   onchange="checkexiste( this,'siret')">									
 									</div>
                                 </div>
 								
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">								
-                                    <input type="text" class="form-control form-control-user" id="mobile" name="mobile" pattern=".{10,10}" required
+                                    <input type="text" class="form-control form-control-user" id="mobile" name="mobile" pattern=".{10,10}" required   oninvalid="this.setCustomValidity('10 Chiffres')"
+  oninput="this.setCustomValidity('')"
                                         placeholder="Téléphone portable*">
 									</div>	
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -72,13 +75,11 @@
                                 </div>	
 								
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">								
-                                    <input type="text" class="form-control form-control-user" id="username" name="username" required  pattern=".{4,20}"  autocomplete="off"
-                                        placeholder="Identifiant*">
-									</div>	
+ 
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email"  required
-                                        placeholder="Adresse Email*">									
+                                    <input type="email" class="form-control form-control-user" id="email" name="email"  required   Autocomplete="NoAutocomplete"
+                                        placeholder="Adresse Email*"  onchange="checkexiste( this,'email')"  oninvalid="this.setCustomValidity('Insérez une adresse email valide')"
+  oninput="this.setCustomValidity('')">									
 									</div>
                                 </div>
                                 @if ($errors->has('username'))
@@ -94,13 +95,14 @@
                                 @endif
 								<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" name="password"   pattern=".{6,30}"
-                                            id="exampleInputPassword" placeholder="Mot de passe*">
+                                        <input type="password" class="form-control form-control-user" name="password" id="password"  required  autocomplete="new-password"  pattern=".{8,30}"
+                                            id="exampleInputPassword" placeholder="Mot de passe*"   oninvalid="this.setCustomValidity('La taille minimale est 8 caractères')"
+  oninput="this.setCustomValidity('')"  >
                                     </div>
 									
 								
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" name="password_confirmation"   pattern=".{6,30}"
+                                        <input type="password" class="form-control form-control-user" name="confirmation"  required id="password_confirmation"   autocomplete="new-password"   pattern=".{8,30}"
                                             id="exampleRepeatPassword" placeholder="Confirmation du mot de passe*">
                                     </div>
 							   @if ($errors->has('password') )
@@ -116,13 +118,17 @@
                                 @endif									
                                 </div>
 								<div class="row pl-20 pb-10">
+								<small class="mb-10">Si votre <b>SIREN</b> ou <b>Email</b> ne sont pas acceptés, contactez nous à l'adresse : <b><i>contact@mysaamp.com</i></b>.</small> 
+								<div class="clearfix"></div>
 								<small>L'un de nos collaborateurs vous appeleras pour finaliser votre dossier.</small>
 								</div>
 								<div class="row pl-20 pb-10">
 								<label><input type="checkbox"  required > J'accepte les conditions générales de ventes.</input>
 								</label>
-								</div>								
-                                <button type="submit" class="btn btn-primary btn-user btn-block">
+								</div>	
+								<input type="hidden"  name="client_id"  id="client_id"  />
+								<input type="hidden"  name="client_id2"  id="client_id2"  />
+                                <button type="submit" class="btn btn-primary btn-user btn-block"  id="register" disabled>
                                     Inscription
                                 </button>
                                  
@@ -141,9 +147,91 @@
         </div>
 
     </div>
-	
+	  <script src="//bootstrap-notify.remabledesigns.com/js/bootstrap-notify.min.js"></script>
+
+	<style>
+	.btn:disabled{opacity:0.5;}
+	</style>
 	<script>
+	   
+	   function checkexiste( elm,type) {
+        var id=elm.id;
+        var val =document.getElementById(id).value;
+        //  var type = $('#type').val();
+
+        //if ( (val != '')) {
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: "{{ route('checkexiste') }}",
+            method: "POST",
+            data: {   val:val,type:type, _token: _token},
+            success: function (data) {
+				
+				if(type=="siret"){
+				if(data==0){
+		           $.notify({
+                        message: 'SIREN inexistant !',
+                        icon: 'glyphicon glyphicon-remove'
+                    },{
+                        type: 'danger',
+                        delay: 1000,
+                        timer: 3000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    });
+					$('#siret').css('border','2px solid #f1592a');
+					//$('#siret').val('');
+					$('#siret').focus();					
+						}else{
+					$('#siret').css('border','1px solid #18aa76');																	
+					 $('#client_id').val(data);
+						if( $('#client_id2').val() >0 ){
+						 $("#register").prop('disabled', false);
 	
+						}
+						}
+						 
+					
+				}
+				
+				if(type=="email"){
+				if(data==0){
+		           $.notify({
+                        message: 'Email inexistant !',
+                        icon: 'glyphicon glyphicon-remove'
+                    },{
+                        type: 'danger',
+                        delay: 1000,
+                        timer: 3000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    });
+					$('#email').css('border','2px solid #f1592a');					
+					//$('#email').val('');
+					$('#email').focus();					
+						}
+				else{
+					$('#email').css('border','1px solid #18aa76');										
+ 				  $('#client_id2').val(data);					
+				  $("#register").prop('disabled', false);
+
+				}		
+						 
+					
+				}				
+				
+				
+				
+			}
+		});
+		
+		} ;
+		
+		
 		$( "#siret" ).keypress(function( evt ) {
 		
      var ASCIICode = (evt.which) ? evt.which : evt.keyCode 
@@ -183,6 +271,30 @@
             event.preventDefault(); 
         }
     });*/
+	
+	
+	$( "#password_confirmation" ).change(function() {
+		password=$('#password').val();
+		confirm=$('#password_confirmation').val();
+					if(password!=confirm ){
+		                    $.notify({
+                        message: 'Les mots de passes sont différents !',
+                        icon: 'glyphicon glyphicon-remove'
+                    },{
+                        type: 'danger',
+                        delay: 1000,
+                        timer: 3000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    });
+					$('#password_confirmation').val('');
+					$('#password_confirmation').focus();
+					}
+			});		
+	
+	
 	
 	</script>
 @endsection

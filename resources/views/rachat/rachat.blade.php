@@ -69,6 +69,7 @@ select{
                 </tr>
             </thead>
             <tbody>
+			<?php  if (is_array($modeles) || is_object($modeles)){ 	?>			
             @foreach($modeles as $modele)
 				<tr>
 				<td style="font-size:14px;"><a href="<?php echo URL("viewmodelermp/".$modele->modele_rmp);?>"><?php echo $modele->nom; ?></a></td>
@@ -113,6 +114,7 @@ select{
 
   				</tr>
 			@endforeach
+			<?php } ?>			
             </tbody>
         </table><br>
 		
@@ -143,7 +145,7 @@ select{
                                 </div>
                                 <div id="div0" class="card-body">
                                  <?php $i=0;?>    
-								
+								<?php  if (is_array($commandes) || is_object($commandes)){ 	?>								
                                 @foreach($commandes as $commande)
 								<?php $i++;
 								if ($i <5){    
@@ -170,7 +172,7 @@ select{
 								<?php } ?>
 								<?php } ?>
 								@endforeach
-
+								<?php } ?>
                                 </div>
 								
 								
@@ -181,6 +183,7 @@ select{
                                 </div>
                                 <div id="div1" class="card-body">
                                  <?php $i=0;?>    
+								 <?php  if (is_array($commandes) || is_object($commandes)){ 	?>
                                 @foreach($commandes as $commande)
 								<?php $i++;
 								if ($i <5){    
@@ -201,7 +204,7 @@ select{
 								<?php } ?>
 								<?php } ?>
 								@endforeach
-									 
+								 <?php } ?> 
                                 </div>								
                             </div>
 

@@ -190,6 +190,7 @@ $metal=intval($mv->metal_id);
                </tr>
             </thead>
             <tbody>
+			<?php  if (is_array($movements) || is_object($movements)){ 	?>
             @foreach($movements as $mv)
  				<tr>
 				<?php if(trim($mv->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
@@ -206,6 +207,7 @@ $metal=intval($mv->metal_id);
 
 				</tr>				
 			@endforeach
+			<?php } ?>
             </tbody>
 			</table> 
   
@@ -232,6 +234,7 @@ $metal=intval($mv->metal_id);
                </tr>
             </thead>
             <tbody>
+			<?php  if (is_array($beneficiaires) || is_object($beneficiaires)){ 	?>
             @foreach($beneficiaires as $ben)
  				<tr>
 				<?php if(trim($ben->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
@@ -246,6 +249,7 @@ $metal=intval($mv->metal_id);
 
 				</tr>				
 			@endforeach
+			<?php } ?>
             </tbody>
 			</table>  
   

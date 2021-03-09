@@ -31,7 +31,7 @@ class HomeController extends Controller
      */
    public function __construct()
     {
-         $this->middleware('auth');
+         $this->middleware('auth', ['except' => ['checkexiste' ]]);
     }
  
     /**
@@ -40,7 +40,31 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-	 
+	     public function checkexiste(Request $request)
+	 {
+ 
+		$val= trim($request->get('val'));
+        $type= $request->get('type');
+		
+		if(trim($type)=='email'){
+		$contact=DB::table('contact')->where('email', $val)->first();
+		if($contact!= null)	{
+			return $contact->cl_ident ;
+		}else{
+			return 0;
+		}
+		}
+		
+		if(trim($type)=='siret'){
+		$client=DB::table('client')->where('siret', $val)->first();
+		if($client!= null)	{
+			return $client->cl_ident ;
+		}else{
+			return 0;
+		}	
+		}
+ 
+	 } 
 	
 	    public function setlanguage(Request $request)
     {
@@ -3154,13 +3178,8 @@ $cmd_id    = intval($request->get('cmd_id'));
 	 
 	  }
 	  else{
-		  
-  $error = array(
-    "status" => "error",
-    "error_code" => 404,
-    "error_message" => "Aucun résultat trouvé",
-);
-	 return response()->json(  $error ,404,array(),JSON_PRETTY_PRINT);
+ 
+	 return  null;
 		
 
 		  }
@@ -3233,12 +3252,8 @@ $cmd_id    = intval($request->get('cmd_id'));
 	  }
 	  else{
 		  
-  $error = array(
-    "status" => "error",
-    "error_code" => 404,
-    "error_message" => "Aucun résultat trouvé",
-);
-		return response()->json(  $error ,404,array(),JSON_PRETTY_PRINT);
+ 
+		return null ;
 
 		}
 	
@@ -3697,12 +3712,8 @@ $cmd_id    = intval($request->get('cmd_id'));
 	  }
 	  else{
 		  
-  $error = array(
-    "status" => "error",
-    "error_code" => 404,
-    "error_message" => "Aucun résultat trouvé",
-);
-		return response()->json(  $error ,404,array(),JSON_PRETTY_PRINT);
+ 
+		return null;
 
 		}
 	
@@ -3770,12 +3781,8 @@ $cmd_id    = intval($request->get('cmd_id'));
 	  }
 	  else{
 		  
-  $error = array(
-    "status" => "error",
-    "error_code" => 404,
-    "error_message" => "Aucun résultat trouvé",
-);
-		return response()->json(  $error ,404,array(),JSON_PRETTY_PRINT);
+ 
+		return null;
 
 		}
 	
@@ -4017,12 +4024,8 @@ $cmd_id    = intval($request->get('cmd_id'));
 	  }
 	  else{
 		  
-  $error = array(
-    "status" => "error",
-    "error_code" => 404,
-    "error_message" => "Aucun résultat trouvé",
-);
-		return response()->json(  $error ,404,array(),JSON_PRETTY_PRINT);
+ 
+		return null;
 
 		}
 	
@@ -4089,12 +4092,8 @@ $cmd_id    = intval($request->get('cmd_id'));
 	  }
 	  else{
 		  
-  $error = array(
-    "status" => "error",
-    "error_code" => 404,
-    "error_message" => "Aucun résultat trouvé",
-);
-		return response()->json(  $error ,404,array(),JSON_PRETTY_PRINT);
+ 
+		return  null;
 
 		}
 	

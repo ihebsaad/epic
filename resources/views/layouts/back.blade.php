@@ -87,7 +87,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">{{__('msg.Do you really want to log out?') }}</div>
+        <div class="modal-body text-center"  style="height:80px!important"><b style="font-size:18px:color:black">{{__('msg.Do you really want to log out?') }}</b></div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">{{__('msg.Cancel')}}</button>
           <a class="btn btn-primary" href="{{route('logout')}}">{{__('msg.Logout')}}</a>

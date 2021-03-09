@@ -55,6 +55,7 @@ foreach($natures as $nature)
                </tr>
             </thead>
             <tbody>
+		 <?php  if (is_array($modeles) || is_object($modeles)){ 	?>	
             @foreach($modeles as $modele)
 				<tr>
 				<td style="font-size:14px; "><a href="<?php echo URL("viewmodele/".$modele->id);?>"><?php echo $modele->nom; ?></a></td>
@@ -86,6 +87,7 @@ foreach($natures as $nature)
 				<td style="font-size:12px;text-align:center" class="hidemobile"><?php if($modele->assiste){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
  				</tr>
 			@endforeach
+				<?php } ?>
             </tbody>
         </table><br>
 		
@@ -116,7 +118,7 @@ foreach($natures as $nature)
                                 </div>
                                 <div id="div0" class="card-body">
                                  <?php $i=0;?>    
-								
+							<?php  if (is_array($commandes) || is_object($commandes)){ 	?>				
                                 @foreach($commandes as $commande)
 								<?php $i++;
 								if ($i <6){    
@@ -138,6 +140,7 @@ foreach($natures as $nature)
 								<?php } ?>
 								<?php } ?>
 								@endforeach
+							<?php } ?>
 
                                 </div>
 								
@@ -149,6 +152,7 @@ foreach($natures as $nature)
                                 </div>
                                 <div id="div1" class="card-body">
                                  <?php $i=0;?>    
+					            <?php  if (is_array($commandes) || is_object($commandes)){ 	?>
                                 @foreach($commandes as $commande)
 								<?php $i++;
 								if ($i <6){    
@@ -167,7 +171,7 @@ foreach($natures as $nature)
 								<?php } ?>
 								<?php } ?>
 								@endforeach
-									 
+								<?php } ?>	 
                                 </div>								
                             </div>
 

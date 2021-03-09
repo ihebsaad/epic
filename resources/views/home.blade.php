@@ -20,12 +20,13 @@ use App\Http\Controllers\HomeController ;
 
  $commandes=HomeController::commandes_ac($user['client_id'] );
 // tri par date  
+ if (is_array($commandes) || is_object($commandes)){  
 usort($commandes, "compare_func");
- 
+ }
   $modeles=HomeController::modeles_ac($user['client_id'] );
  $euros=HomeController::compte_euro($user['client_id'] );
  $solde_e=HomeController::solde_euro($user['client_id'] );
- $solde_euro= $solde_e[0]->solde;
+ if (isset($solde_e[0]->solde )){$solde_euro= $solde_e[0]->solde;}else{$solde_euro=0;}
     $poids=HomeController::compte_poids($user['client_id'] );
 	
 
@@ -70,7 +71,8 @@ foreach($natures as $nature)
 								
 								<a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px;border-radius:10px;"  href="#"  data-toggle="modal" data-target="#Modal1" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 								
-				<?php $i=0; ?>
+				<?php $i=0;  
+ if (is_array($commandes) || is_object($commandes)){  ?>
 				@foreach($commandes as $cmd)                                     
 			<?php  
 			$etat=(strtoupper($cmd->etat));
@@ -103,7 +105,7 @@ foreach($natures as $nature)
 			<?php }
 			}  ?>	
 			@endforeach								
-      								 
+		<?php } ?>					 
            </div>
 								
 								
@@ -115,7 +117,8 @@ foreach($natures as $nature)
                                 <div id="div1" class="card-body  ">
    								<a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px;border-radius:10px;"  href="#"  data-toggle="modal" data-target="#Modal2" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 
-				<?php $i=0; ?>
+				<?php $i=0;  
+ if (is_array($commandes) || is_object($commandes)){  ?>  				
 				@foreach($commandes as $cmd)                                     
 			<?php  
 			$etat=(strtoupper($cmd->etat));
@@ -147,7 +150,7 @@ foreach($natures as $nature)
 			<?php }
 			}  ?>	
 			@endforeach
-    
+ <?php } ?>
    
                                 </div>								
                             </div>
@@ -168,7 +171,7 @@ foreach($natures as $nature)
 			
 <h2 class=" " style="text-align:center;font-weight:bold;color:black; margin-top:-15px;"><span style="letter-spacing:2px;">{{__('msg.Balance')}}:</span><b style="<?php echo $style0; ?>"> <?php echo $solde_euro; ?> €</b></h2>
 			<div class="pl-40">	
-		 <?php $i=0;?>   
+		 <?php $i=0;  if (is_array($euros) || is_object($euros)){ ?>   
 	  @foreach($euros as $euro)  
 										
 			<?php $i++;
@@ -187,6 +190,7 @@ foreach($natures as $nature)
 			<?php } ?>							
 
 	 @endforeach
+		 <?php   } ?>
 			</div>					
                                 </div>
                             </div>
@@ -209,7 +213,8 @@ foreach($natures as $nature)
 							 <a style="float:right;right:20px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px;border-radius:10px;"  href="#"  data-toggle="modal" data-target="#Modal3" >{{__('msg.Complete list')}}</a><div class="clearfix"></div>
 
 
-			<?php $i=0;?>
+			<?php $i=0; 
+			if (is_array($modeles) || is_object($modeles)){ ?>
 			  @foreach($modeles as $modele)          
 			<?php $i++; if($i<5){ ?>
 <?php 
@@ -232,7 +237,7 @@ foreach($natures as $nature)
 			</div>
 			<?php } ?>
  			@endforeach
-			
+			<?php } ?>
 			
 			
                                 </div>
@@ -299,6 +304,7 @@ foreach($natures as $nature)
                </tr>
             </thead>
             <tbody>
+			<?php  if (is_array($commandes) || is_object($commandes)){ 	?>
             @foreach($commandes as $cmd)                                     
 			<?php 
 			$etat=(strtoupper($cmd->etat));
@@ -319,6 +325,7 @@ foreach($natures as $nature)
 			</tr>	
 			<?php }  ?>	
 			@endforeach
+			<?php }  ?>				
 			</tbody>
 			</table>
 			
@@ -358,6 +365,8 @@ foreach($natures as $nature)
                </tr>
             </thead>
             <tbody>
+			<?php  if (is_array($commandes) || is_object($commandes)){ 	?>
+			
             @foreach($commandes as $cmd)                                     
 			<?php 
 			$etat=(strtoupper($cmd->etat));
@@ -378,6 +387,7 @@ foreach($natures as $nature)
 			</tr>	
 			<?php }  ?>	
 			@endforeach
+			<?php  } 	?>
 			</tbody>
 			</table>
 
@@ -419,6 +429,8 @@ foreach($natures as $nature)
                </tr>
             </thead>
             <tbody>
+		<?php	if (is_array($modeles) || is_object($modeles)){ ?>
+			
             @foreach($modeles as $modele)
 			<?php 
 			if(trim(strtoupper($modele->metier))=='AFF'){  $link=URL("viewmodele/".$modele->id) ;  }
@@ -436,6 +448,7 @@ foreach($natures as $nature)
  				<td class="text-center hidemobile"><small><?php if($modele->PD>0) {echo  $modele->PD.'g';} ?></small></td>	
 			</tr>	
  			@endforeach
+		<?php } ?>
 			</tbody>
 			</table>  
 
@@ -477,6 +490,7 @@ foreach($natures as $nature)
                </tr>
             </thead>
             <tbody>
+		<?php if (is_array($euros) || is_object($euros)){  ?> 			
             @foreach($euros as $euro)                                     
 			<tr style="font-size:12px;">
 			<?php if($euro->solde >= 0){$style="color:#54ba1d";}else{$style="color:#d03132";} ?>
@@ -491,6 +505,7 @@ foreach($natures as $nature)
 				<td class="text-center" style="text-align:center;<?php echo $style; ?>"><small><?php echo $euro->solde.'€'; ?></small></td>	
 			</tr>	
  			@endforeach
+		<?php  } ?>
 			</tbody>
 			</table>
 					

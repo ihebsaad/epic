@@ -12,7 +12,7 @@ class UsersController extends Controller
 	
 	  public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['registration' ]]);
     } 
 	 
 	 public function index()
@@ -154,6 +154,56 @@ class UsersController extends Controller
 		 }
 	 }
 
+	 
+	 	 public function registration(Request $request)
+    {
+         $siret= $request->get('siret');
+         $email= $request->get('email');
+         $name= $request->get('name');
+        $lastname= $request->get('lastname');
+        $activity= $request->get('activity');
+        $mobile= $request->get('mobile');
+        $phone= $request->get('phone');
+        $password= $request->get('password');
+        $confirmation= $request->get('confirmation');
+        $client_id= intval($request->get('client_id'));
+        $client_id2= intval($request->get('client_id2'));
+         if($password !=''  && (strlen($password )>7) ){
+		
+		if( $client_id >0 && ($client_id==$client_id2) && $password== $confirmation )
+		{  $password= bcrypt(trim($request->get('password')));
+
+		 		
+	 $user = new User([
+ 		'username' => $email,
+ 		'email' => $email,
+ 		'siret' => $siret,
+ 		'name' => $name,
+		'lastname' => $lastname,
+		'activity' => $activity,
+		'mobile' => $mobile,
+		'phone' => $phone,
+		'password' => $password,
+		'client_id' => $client_id,
+		]
+		);
+		 
+		if($user->save()) {
+	    return redirect('/login')->with('success', ' Inscrit avec succès');
+		
+		}else{
+			return redirect('/register') ;
+		}
+		 
+		 }else{
+	    return redirect('/register')->with('error', "Problème lors de l'inscription, contactez nous pour le résoudre");
+	 
+		 }
+		 }
+	 }
+
+	 
+	 
 		 public function updatinguser(Request $request)
     {
  
@@ -251,6 +301,15 @@ class UsersController extends Controller
 
         return redirect('/users')->with('success', '  supprimé avec succès');
     }
+	
+	
+	
+
+	
+	
+	
+	
+	
 	
 	
 }
