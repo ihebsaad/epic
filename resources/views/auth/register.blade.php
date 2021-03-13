@@ -110,17 +110,21 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
+								<div class="row pl-20 pr-20">
+								<label><small>Le mot de passe doit contenir 8 caractères, une majuscule, un chiffre et un caractère spécial au minimum.</small></label>
+								</div>
 								<div class="form-group row">
+
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user" name="password" id="password"  required  autocomplete="new-password"  pattern=".{8,30}"
-                                            id="exampleInputPassword" placeholder="Mot de passe*"   oninvalid="this.setCustomValidity('La taille minimale est 8 caractères')"
+                                            id="exampleInputPassword" placeholder="Mot de passe*"  onchange="CheckPassword()" oninvalid="this.setCustomValidity('La taille minimale est 8 caractères')"
   oninput="this.setCustomValidity('')"  >
                                     </div>
 									
 								
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" name="confirmation"  required id="password_confirmation"   autocomplete="new-password"   pattern=".{8,30}"
-                                            id="exampleRepeatPassword" placeholder="Confirmation du mot de passe*">
+                                         <input type="password" class="form-control form-control-user" name="confirmation"  required id="password_confirmation"   autocomplete="new-password"   pattern=".{8,30}"
+                                            id="exampleRepeatPassword" placeholder="Confirmation du mot de passe*"  disabled>
                                     </div>
 							   @if ($errors->has('password') )
                                     <span class="help-block">
@@ -170,7 +174,50 @@
 	.btn:disabled{opacity:0.5;}
 	</style>
 	<script>
-	   
+ function CheckPassword() 
+{ 
+var inputtxt=document.getElementById('password').value;
+//var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+ var passw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+//if(inputtxt.value.match(passw)) 
+ if( passw.test(inputtxt))  
+{ 
+ $.notify({
+                        message: 'Mot de passe valide  !',
+                        icon: 'glyphicon glyphicon-remove'
+                    },{
+                        type: 'success',
+                        delay: 1000,
+                        timer: 3000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    }); 
+  	 $('#password').css('border','1px solid #18aa76');																	
+  	 $("#password_confirmation").prop('disabled', false);
+	 
+}
+else
+{ 
+		           $.notify({
+                        message: 'Mot de passe faible  !',
+                        icon: 'glyphicon glyphicon-remove'
+                    },{
+                        type: 'danger',
+                        delay: 1000,
+                        timer: 3000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    }); 
+					 $('#password').css('border','2px solid #f1592a');					
+ 					$('#password').focus();
+					 $("#password_confirmation").prop('disabled', true);
+
+}
+}
 	   function checkexiste( elm,type) {
         var id=elm.id;
         var val =document.getElementById(id).value;
