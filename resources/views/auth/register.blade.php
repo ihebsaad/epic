@@ -141,7 +141,7 @@
 								<div class="row pl-20 pb-10">
 								<small class="mb-10">Si votre <b>SIREN</b> ou <b>Email</b> ne sont pas acceptés, contactez nous à l'adresse : <b><i>contact@saamp.com</i></b>.</small> 
 								<div class="clearfix"></div>
-								<small>L'un de nos collaborateurs vous appelera pour finaliser votre dossier.</small>
+								<small>L'un de nos collaborateurs vous appelera pour finaliser votre inscription.</small>
 								</div>
 								<div class="row pl-20 pb-10">
 								<label><input type="checkbox"  required > J'accepte les conditions générales de ventes.</input>
