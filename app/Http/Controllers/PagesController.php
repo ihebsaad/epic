@@ -600,5 +600,10 @@ $content = $response->getBody();
     }	
 	
 	
+	
+	public function spot( )
+    { 
+       return view('trading.spot' );
+    }		
 
 }

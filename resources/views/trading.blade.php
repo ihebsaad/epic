@@ -50,9 +50,187 @@
 									</div>
 								
 								</div>
+</div>								
+</div>								
+	
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Opérations</h6>
+							        {{ csrf_field() }}
+
+                                </div>
+                                <div class="card-body">	
+<div class="row">
+
+<ul class="nav nav-tabs card-header" id="myTab" role="tablist"  style="border :1px solid lightgrey">
+  <li class="nav-item">
+    <a class="nav-link active" id="spot-tab" data-toggle="tab" href="#spot" role="tab" aria-controls="spot" aria-selected="true" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-calendar "></i> Demande d'opération spot</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="fixing-tab" data-toggle="tab" href="#fixing" role="tab" aria-controls="fixing" aria-selected="false" style="color:#4e73df;width:250px;text-align:center"><i class="fa  fa-calendar-alt"></i>  Demande d'opération sur fixing</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="limite-tab" data-toggle="tab" href="#limite" role="tab" aria-controls="limite" aria-selected="false" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-cart-arrow-down "></i> Demande d'ordre limite</a>
+  </li>
+ 
+   <li class="nav-item">
+    <a class="nav-link" id="actif-tab" data-toggle="tab" href="#actif" role="tab" aria-controls="actif" aria-selected="false" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-cart-plus "></i> Demande d'ordres actifs</a>
+  </li>
+</ul>
+
+ 
+</div>								
+								
+								
+	
+<div class="row">
+<div class="tab-content" style="padding-left:15px;padding-right:15px;padding-top:20px;min-height:350px;">
+
+
+
+	<div class="tab-pane active" id="spot" role="tabpanel" aria-labelledby="spot-tab" style="">								
+		
+		
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Date')}}: </label>
+				<input  class="form-control datepicker"  id="date"  type="text" required name="date"  autocomplete="off"   style="max-width:200px" />				   
+				</div>	
+				
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">Heure: </label>
+				<input  class="form-control"  id="heure"  type="time" required name="heure"  autocomplete="off"   style="max-width:200px" />				   
+				</div>					
+ 
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Cell phone')}}: </label>
+				<input  class="form-control"  id="tel"  type="number" required name="tel"  autocomplete="off"   style="max-width:200px" />				   
+				</div>	 
+				
+	</div>
+
+	<div class="tab-pane" id="fixing" role="tabpanel" aria-labelledby="fixing-tab">								
+
+	<div class="row pl-20 pr-20 mb-10">
+	<label style="width:160px" class="ml-10 mt-10 mr-10">Je Souhaite: </label>
+	<input type="radio" id="Choice1"  class="ml-10 mt-15 mr-10"      name="type" value="vendre">
+    <label for="Choice1"  class="ml-10 mt-10 mr-10">Vendre</label>
+
+    <input type="radio" id="Choice2"  class="ml-10 mt-15 mr-10"      name="type" value="acheter">
+    <label for="Choice2" class="ml-10 mt-10 mr-10">Acherter</label>
+
+				</div>	
+
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Metal')}}: </label>
+					<select style="width:200px" id="metal" name="metal" class="form-control">
+						<option value="gold"    >{{__('msg.Gold')}}</option>
+						<option value="silver"   >{{__('msg.Silver')}}</option>
+						<option value="platinum"   >{{__('msg.Platinum')}}</option>
+						<option value="palladium"   >{{__('msg.Palladium')}}</option>
+					</select>
+
+				</div>								
+								
+		        <div class="row pl-20 pr-20 mb-10">
+				<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Quantity')}} <small>{{__('msg.in grams')}}</small>: </label>
+				<input  class="form-control"   type="number" step="0.1" min="0.1" required name="qty"    style="max-width:150px" />				   
+				</div>
+				
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Date')}}: </label>
+				<input  class="form-control datepicker"   type="text" required name="date"  autocomplete="off"   style="max-width:200px" />				   
+				</div>	
+				
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">Heure: </label>
+				<input  class="form-control"   type="time" required name="heure"  autocomplete="off"   style="max-width:200px" />				   
+				</div>					
+ 
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Email')}}: </label>
+				<input  class="form-control"  id="email"  type="number" required name="tel"  autocomplete="off"   style="max-width:200px" />				   
+				</div>	
+
+				<div class="row pl-20 pr-20 mb-10">
+				<label><input type="checkbox"  required > J'accepte les conditions générales de ventes.</input>
+
+  				</div>
+				
+	</div>
+
+	<div class="tab-pane" id="limite" role="tabpanel" aria-labelledby="limite-tab">								
+
+	<div class="row pl-20 pr-20 mb-10">
+	<label style="width:160px" class="ml-10 mt-10 mr-10">Je Souhaite: </label>
+	<input type="radio" id="Choice1"  class="ml-10 mt-15 mr-10"      name="type" value="vendre">
+    <label for="Choice1"  class="ml-10 mt-10 mr-10">Vendre</label>
+
+    <input type="radio" id="Choice2"  class="ml-10 mt-15 mr-10"      name="type" value="acheter">
+    <label for="Choice2" class="ml-10 mt-10 mr-10">Acherter</label>
+
+				</div>	
+
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Metal')}}: </label>
+					<select style="width:200px" id="metal" name="metal" class="form-control">
+						<option value="gold"    >{{__('msg.Gold')}}</option>
+						<option value="silver"   >{{__('msg.Silver')}}</option>
+						<option value="platinum"   >{{__('msg.Platinum')}}</option>
+						<option value="palladium"   >{{__('msg.Palladium')}}</option>
+					</select>
+
+				</div>								
+								
+		        <div class="row pl-20 pr-20 mb-10">
+				<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Quantity')}} <small>{{__('msg.in grams')}}</small>: </label>
+				<input  class="form-control"   type="number" step="0.1" min="0.1" required name="qty"    style="max-width:150px" />				   
+				</div>
+
+		        <div class="row pl-20 pr-20 mb-10">
+				<label style="width:160px" class="ml-10 mt-10 mr-10">Cours limite </label>
+				<input  class="form-control"   type="number" step="0.1" min="0.1" required name="cours"    style="max-width:150px" />				   
+				</div>
+				
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Date')}}: </label>
+				<input  class="form-control datepicker"   type="text" required name="date"  autocomplete="off"   style="max-width:200px" />				   
+				</div>	
+				
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">Heure: </label>
+				<input  class="form-control"   type="time" required name="heure"  autocomplete="off"   style="max-width:200px" />				   
+				</div>					
+ 
+		        <div class="row pl-20 pr-20 mb-10">
+ 				<label style="width:160px" class="ml-10 mt-10 mr-10">{{__('msg.Email')}}: </label>
+				<input  class="form-control"  id="email"  type="number" required name="tel"  autocomplete="off"   style="max-width:200px" />				   
+				</div>	
+
+				<div class="row pl-20 pr-20 mb-10">
+				<label><input type="checkbox"  required > J'accepte les conditions générales de ventes.</input>
+
+  				</div>
+
+				
+	</div>
+
+	<div class="tab-pane" id="actif" role="tabpanel" aria-labelledby="actif-tab">								
+
+	
+	</div>	
+
+</div>								
+</div>								
+								
+</div>								
+</div>									
+								
 								
 <style>	
- 
+	 .nav-link.active {font-weight:bold!important;color:#354f9b!important;}	
+
+ label{color:black;font-weight:bold;}
 table{border:none;
 color:black; }
 .strname{font-weight:bold;color:#c6a85b;}
@@ -165,6 +343,40 @@ text-align:center;
 
  
 <script>
+
+$(function () {
+	 $('.datepicker').datepicker({
+                  //  locale: 'fr',
+			closeText: 'Fermer',
+            prevText: 'Précédent',
+            nextText: 'Suivant',
+            currentText: 'Aujourd\'hui',
+            monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+            dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+            dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+            dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+            weekHeader: 'Sem.',
+            buttonImage: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAATCAYAAAB2pebxAAABGUlEQVQ4jc2UP06EQBjFfyCN3ZR2yxHwBGBCYUIhN1hqGrWj03KsiM3Y7p7AI8CeQI/ATbBgiE+gMlvsS8jM+97jy5s/mQCFszFQAQN1c2AJZzMgA3rqpgcYx5FQDAb4Ah6AFmdfNxp0QAp0OJvMUii2BDDUzS3w7s2KOcGd5+UsRDhbAo+AWfyU4GwnPAYG4XucTYOPt1PkG2SsYTbq2iT2X3ZFkVeeTChyA9wDN5uNi/x62TzaMD5t1DTdy7rsbPfnJNan0i24ejOcHUPOgLM0CSTuyY+pzAH2wFG46jugupw9mZczSORl/BZ4Fq56ArTzPYn5vUA6h/XNVX03DZe0J59Maxsk7iCeBPgWrroB4sA/LiX/R/8DOHhi5y8Apx4AAAAASUVORK5CYII=",
+
+            firstDay: 1,
+            dateFormat: "dd/mm/yy"
+
+
+                });
+				
+});
+
+
+ $( "#tel" ).keypress(function( evt ) {
+		
+     var ASCIICode = (evt.which) ? evt.which : evt.keyCode 
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+            return false; 
+        return true; 
+		});
+		
+		
 //
 function load_data()
 {

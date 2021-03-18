@@ -58,6 +58,7 @@ Route::post('/updatebenif/', 'ProductsController@updatebenif')->name('updatebeni
 Route::get('/orders', 'PagesController@orders')->name('orders');
 Route::get('/euros', 'PagesController@euros')->name('euros');
 Route::get('/poids', 'PagesController@poids')->name('poids');
+Route::get('/spot', 'PagesController@spot')->name('spot');
 
 
 Route::get('/affinage', 'PagesController@affinage')->name('affinage');
