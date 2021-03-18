@@ -312,7 +312,7 @@ class ProductsController extends Controller
 
 	}
 	 
-	 
+	 /******* Suppression de la commande *******/
 	 	 	
      public function deletemodel($id)
     {	 
@@ -337,6 +337,30 @@ class ProductsController extends Controller
 	 return back();
 
 	} 
+	
+		 /******* Suppression Réelle *******/
+
+	   public function suppmodel($id)
+    {	 
+	 DB::table('modele_affinage')->where('modele_affinage_ident',$id)->delete();
+ 	return back();
+
+	}
+	 
+	 public function suppmodellab($id)
+    { 	 
+	 DB::table('modele_lab')->where('modele_lab_ident',$id)->delete();
+ 	return back();
+
+	} 
+
+	 public function suppmodelrmp($id)
+    {
+	 DB::table('modele_rmp')->where('modele_rmp_ident',$id)->delete();
+ 	 return back();
+
+	} 
+	
 	
 	
 	 function details(Request $request) { 	

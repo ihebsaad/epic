@@ -59,11 +59,12 @@ foreach($natures as $nature)
             <thead>
  
             <tr id="headtable">
-                <th style="width:12%">{{__('msg.Name')}}</th>
-                 <th style="width:10%">{{__('msg.Sample')}}</th>
-                 <th style="width:12%" class="hidemobile">{{__('msg.Requested works')}}</th>
+                <th style="width:20%">{{__('msg.Name')}}</th>
+                 <th style="width:20%">{{__('msg.Sample')}}</th>
+                 <th style="width:20%" class="hidemobile">{{__('msg.Requested works')}}</th>
                  <th style="width:5%; ">{{__('msg.Quantity')}}</th>
-                 <th style="width:15%" class="hidemobile">{{__('msg.Metals')}}</th>
+                 <th style="width:30%" class="hidemobile">{{__('msg.Metals')}}</th>
+               <th style="width:5%; "><small>{{__('msg.Delete')}}</small></th>
                </tr>
             </thead>
             <tbody>
@@ -94,6 +95,7 @@ foreach($natures as $nature)
                  </span>
                  <?php }   ?>  
 				</td>
+ 				<td><a  style="margin-left:20px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce modèle ?')"  href="<?php echo url('/suppmodellab/'.$modele->id);?>"><span class="fa  fa-trash"></i></a></td>				
   				</tr>
 			@endforeach
 			<?php  } ?>

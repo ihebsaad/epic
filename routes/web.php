@@ -24,6 +24,9 @@ Route::get('/deleteproduct/{id}', 'ProductsController@deleteproduct')->name('del
 Route::get('/deletemodel/{id}', 'ProductsController@deletemodel')->name('deletemodel');
 Route::get('/deletemodellab/{id}', 'ProductsController@deletemodellab')->name('deletemodellab');
 Route::get('/deletemodelrmp/{id}', 'ProductsController@deletemodelrmp')->name('deletemodelrmp');
+Route::get('/suppmodel/{id}', 'ProductsController@suppmodel')->name('suppmodel');
+Route::get('/suppmodellab/{id}', 'ProductsController@suppmodellab')->name('suppmodellab');
+Route::get('/suppmodelrmp/{id}', 'ProductsController@suppmodelrmp')->name('suppmodelrmp');
 Route::post('/details', 'ProductsController@details')->name('details');
 Route::post('/checkproduct', 'ProductsController@checkproduct')->name('checkproduct');
 Route::post('/forfait', 'ProductsController@forfait')->name('forfait');

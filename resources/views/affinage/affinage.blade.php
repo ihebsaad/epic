@@ -51,8 +51,9 @@ foreach($natures as $nature)
                 <th style="width:15%">{{__('msg.Name')}}</th>
                 <th style="width:20%"  >{{__('msg.Nature of the batch')}}</th>
                  <th style="width:25%" class="hidemobile">{{__('msg.Metals')}}</th>
-                <th style="width:25%;font-size:12px;padding-right:5px;;padding-bottom:15px" class="hidemobile">{{__('msg.To prepare in my presence')}}</th>
-               </tr>
+                <th style="width:25%;font-size:12px;padding-right:5px;;padding-bottom:15px;text-align:center" class="hidemobile">{{__('msg.To prepare in my presence')}}</th>
+               <th><small>{{__('msg.Delete')}}</small></th>
+			   </tr>
             </thead>
             <tbody>
 		 <?php  if (is_array($modeles) || is_object($modeles)){ 	?>	
@@ -85,7 +86,8 @@ foreach($natures as $nature)
                 </td>
 
 				<td style="font-size:12px;text-align:center" class="hidemobile"><?php if($modele->assiste){echo __('msg.Yes') ;}else{echo __('msg.No') ;}?></td>
- 				</tr>
+ 				<td><a  style="margin-left:20px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce modèle ?')"  href="<?php echo url('/suppmodel/'.$modele->id);?>"><span class="fa  fa-trash"></i></a></td>
+				</tr>
 			@endforeach
 				<?php } ?>
             </tbody>
