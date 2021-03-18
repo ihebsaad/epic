@@ -75,7 +75,7 @@
   </li>
  
    <li class="nav-item">
-    <a class="nav-link" id="actif-tab" data-toggle="tab" href="#actif" role="tab" aria-controls="actif" aria-selected="false" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-cart-plus "></i> Demande d'ordres actifs</a>
+    <a class="nav-link" id="actif-tab" data-toggle="tab" href="#actif" role="tab" aria-controls="actif" aria-selected="false" style="color:#4e73df;width:250px;text-align:center"><i class="fas fa-list-alt "></i> Demandes d'ordres actifs</a>
   </li>
 </ul>
 
