@@ -118,9 +118,9 @@ class ProductsController extends Controller
 	     $montant = $request->get('montant'); 
 	     $montant_compl =  $request->get('montant_compl');
 	     $poids =  $request->get('poids');
-	     $alliage =  $request->get('alliage');
-	     $mesure1 =  $request->get('mesure1');
-	     $mesure2 =  $request->get('mesure2');
+	     $alliage =  intval($request->get('alliage'));
+	     $mesure1 =  floatval($request->get('mesure1'));
+	     $mesure2 =   floatval($request->get('mesure2'));
 	     $comp_id =  $request->get('comp_id');
 	     $comp_val =  $request->get('comp_val');
 	     $etat_id =  $request->get('etat_id');
@@ -134,6 +134,40 @@ class ProductsController extends Controller
 
 		 $order = Order::where('user',$user)->where('status','cart')->first();
 		 if(isset($order)){
+			 
+		 $count=DB::table('products')->where('orderid',$order->id)
+		 ->where('libelle',trim($libelle))
+		  ->where('alliage',$alliage )
+          ->where('mesure1' ,$mesure1 )
+         ->where('mesure2', $mesure2 )		 
+  		 ->count();
+	     if($count>0){
+			// existe il faut cumuler 
+			
+			// chercher produit
+			$prod= Product::where('orderid',$order->id)
+			 ->where('libelle',trim($libelle))
+			  ->where('alliage',$alliage )
+			  ->where('mesure1' ,$mesure1 )
+			  ->where('mesure2', $mesure2 )		 
+			 ->first();
+			// calcul total
+			 $totQte = $prod->poids+ $poids ;
+			 $totPoids = $prod->qte+$qte ;
+			 $totMont = $prod->montant+$montant ;
+			 $totMontComp = $prod->montant_compl+$montant_compl ;
+			
+			// mettre à jour 
+		Product::where('id', $prod->id)->update(array(
+		'poids' => $totPoids,
+		'montant' => $totMont,
+		//'montant_compl' => $totMontComp,
+		'qte' => $totQte
+		
+		));
+			 
+		 }else{	 
+			 
  		 $product = new Product([
              'orderid' =>  $order->id ,
              'libelle' =>  $libelle ,
@@ -163,6 +197,10 @@ class ProductsController extends Controller
          
         ]);
 	      $product->save();
+		  
+		 }
+		 
+		 
 		// increment order totals
 		$amount = $montant  +	$order->amount;
 		$weight = $poids  +	$order->weight;

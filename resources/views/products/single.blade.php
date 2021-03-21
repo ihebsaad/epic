@@ -58,8 +58,8 @@ $palladium=$order->palladium   ;
 $platine=$order->platine   ;
 	
  $products= DB::table('products')->where('orderid',$orderid)->orderBy('id','asc')->get();
-		$count=DB::table('products')->where('orderid',$orderid)->where('libelle',trim($titre))->count();
-		if($count==1){$disabled='disabled';}
+ 
+ 	//	if($count==1){$disabled='disabled';}
 		// type produit, produit id, alliage id, complément id, complément valeur.
 }else{
 $orderid=0;
@@ -377,8 +377,7 @@ foreach($compls as $c){
            
 
                         </div>
-						
- 				
+  
    </div>
 
    <script>
@@ -591,8 +590,8 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				} // prix defined
 			
 
-
-				checkproduct();
+			// here
+			////	checkproduct();
 				 	
 
 
