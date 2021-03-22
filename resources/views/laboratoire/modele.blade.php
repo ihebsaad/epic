@@ -118,7 +118,7 @@ foreach($natures as $nature)
 										</div>
 									  <div class="col-lg-4">
 											<label style="width:70px">{{__('msg.Value')}}: </label>
-										     <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:120px"     />
+										     <input  class="form-control"   id="valeur" name="valeur"  type="number" step="0.01" min="0" style="width:120px"  required   />
 
 									   </div>
 											  
