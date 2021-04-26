@@ -539,17 +539,17 @@ function prix()
 				 $('#affinageval').html( '');
 		
  				 if(data!=0){
- 				 if( parseFloat(data[0].credit_au)>0)$('#divor').show();
-				 if( parseFloat(data[0].credit_ag)>0)$('#divsilv').show();
-				 if( parseFloat(data[0].credit_pt)>0)$('#divplat').show();
-				 if( parseFloat(data[0].credit_pd)>0)$('#divpall').show();
+ 				 if( parseFloat(data[0].credit_au)>0){$('#divor').show();}
+				 if( parseFloat(data[0].credit_ag)>0){$('#divsilv').show();}
+				 if( parseFloat(data[0].credit_pt)>0){$('#divplat').show();}
+				 if( parseFloat(data[0].credit_pd)>0){$('#divpall').show();}
 				  
  
 				 $('#amount').html(data[0].montant  );
 				 $('#estimation_prix').val(data[0].montant  );
 				 
 				 $('#gold').html( data[0].credit_au );
-				 $('#silver').html( data[0].credit_ag );
+				 $('#silver').html( data[0].credit_ag );  
 				 $('#platinum').html( data[0].credit_pt );
 				 $('#palladium').html( data[0].credit_pd );
 				 
@@ -565,15 +565,21 @@ function prix()
                 success: function (data) {
 				  
 							  
-				  $('#divor').hide();
+				/*  $('#divor').hide();
 				  $('#divsilv').hide();
 				  $('#divplat').hide();
 				  $('#divpall').hide();
-				  							  
- 				 $('#gold').html( data[0].credit_au.toFixed(2));
-				 $('#silver').html( data[0].credit_ag.toFixed(2));
-				 $('#platinum').html( data[0].credit_pt.toFixed(2));
-				 $('#palladium').html( data[0].credit_pd.toFixed(2));
+				  			*/			
+				if(data!=0){
+ 				 if( parseFloat(data[0].credit_au)>0){$('#divor').show();}
+				 if( parseFloat(data[0].credit_ag)>0){$('#divsilv').show();}
+				 if( parseFloat(data[0].credit_pt)>0){$('#divplat').show();}
+				 if( parseFloat(data[0].credit_pd)>0){$('#divpall').show();}
+				}
+ 				 $('#gold').html( data[0].credit_au.toFixed(2)); // alert(data[0].credit_ag.toFixed(2)); 
+				 $('#silver').html( data[0].credit_ag.toFixed(2)); 
+				 $('#platinum').html( data[0].credit_pt.toFixed(2)); 
+				 $('#palladium').html( data[0].credit_pd.toFixed(2)); 
 				 $('#affinageval').html( data[0].Affinage);
 				 $('#fonteval').html( data[0].Fonte);
 				 $('#analyseval').html( data[0].Analyse);
@@ -618,10 +624,17 @@ function prix()
 				 $('#affinageval').html( '');	
 			 
 							  
-				  $('#divor').hide();
+				/*  $('#divor').hide();
 				  $('#divsilv').hide();
 				  $('#divplat').hide();
-				  $('#divpall').hide();
+				  $('#divpall').hide();*/
+				  
+				   if(data!=0){
+ 				 if( parseFloat(data[0].credit_au)>0){$('#divor').show();}
+				 if( parseFloat(data[0].credit_ag)>0){$('#divsilv').show();}
+				 if( parseFloat(data[0].credit_pt)>0){$('#divplat').show();}
+				 if( parseFloat(data[0].credit_pd)>0){$('#divpall').show();}
+				   }
 				  							  
 				// $('#amount').html(data[0].Affinage +data[0].Analyse +data[0].Fonte );
 				 $('#gold').html( data[0].credit_au.toFixed(2));
