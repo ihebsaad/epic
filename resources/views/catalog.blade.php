@@ -280,7 +280,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 </style>		
 <?php
 // $urlapp="//$_SERVER[HTTP_HOST]/epic"; 
- $urlapp=env('APP_URL');
+ $urlapp=config('app.APP_URL') ;
 
 ?>
 			
