@@ -197,7 +197,7 @@ class UsersController extends Controller
 		 
 		 }else{
 	 //   return redirect('/register')->with('error', "Problème lors de l'inscription, contactez nous pour le résoudre");
-		return redirect('/register')->withErrors([ "Problème lors de l'inscription, contactez nous à l'adresse : contact@saamp.com."]);
+		return redirect('/register')->withErrors([ "Problème lors de l'inscription, contactez nous à l'adresse : contact@saamp.com"]);
 
 	 
 		 }
