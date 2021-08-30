@@ -44,6 +44,7 @@ if (! isset($metal)  ) {
    $debut=date('Y-m-01');
    
    	$date1 = DB::table('mouvement_cp')->where('cl_origine',$user['client_id'])->max('date_doc') ;
+	$date1= date_format($date1, 'Y-m-d');
 // dd($date1);
 	
 if (isset($date1) && ($date1> $debut) ) 
