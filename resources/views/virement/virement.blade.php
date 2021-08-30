@@ -18,7 +18,6 @@ use App\Http\Controllers\HomeController ;
  $movements=  DB::select ("CALL `sp_vir_liste_vir`(@p0) ");
  
  //$virements=HomeController::virements($user['client_id'],'fr_FR',1,date('Y-m-01'),date('Y-m-d'));
- $virements=array();
    $etablissements=DB::table('etablissement')->get();
 
    $beneficiaires=DB::table('beneficiaire')->where('cl_ident',$user['client_id'])->orderBy('bene_cl_ident')->get();
@@ -38,14 +37,14 @@ if (! isset($metal)  ) {
     if (isset($debut) && isset($fin)) {
 	 
 	 
- ////$virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
+ $virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
 		
 	  }else{
    // $debut='2020-08-01';
    $debut=date('Y-m-01');
    
    	$date1 = DB::table('mouvement_cp')->where('cl_origine',$user['client_id'])->max('date_doc') ;
-	$date1= date_format($date1, 'Y-m-d H:i:s');
+		$date1= date_format($date1, 'Y-m-d H:i:s');
 
 // dd($date1);
 	
@@ -64,7 +63,7 @@ $metal=intval($mv->metal_id);
    
 	// $fin='2020-10-01';
 	 $fin=date('Y-m-d');
- ////$virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
+ $virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
 		  
 	  }
  
