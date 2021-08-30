@@ -660,9 +660,11 @@ class ProductsController extends Controller
    	   DB::select("SET @p2='$poids' ;");
    	   DB::select("SET @p3='$metal' ;");
    	   DB::select("SET @p4='$commentaire' ;");
+   	   DB::select("@p5 AS `vire_id` ;");
      
- 	  $result=  DB::select ("  CALL `sp_vir_vir_insert`(@p0,@p1,@p2,@p3,@p4,@p5); SELECT @p5 AS `vire_id`; ");
-  
+ 	   DB::select ("  CALL `sp_vir_vir_insert`(@p0,@p1,@p2,@p3,@p4,@p5);  ");
+ 	  $result=  DB::select (DB::raw("  SELECT @p5 AS `vire_id` ;"));
+ 
  
 	  return redirect('/virement/')->with('success', ' ajouté avec succès');
 	  
