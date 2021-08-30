@@ -641,7 +641,7 @@ class ProductsController extends Controller
  
   $user = auth()->user();  
 
-  		 $virement = new Virement([
+  	/*	 $virement = new Virement([
              'cl_ident' => $user['client_id'] ,
              'vir_date' =>  $date,
              'bene_ident' =>  $beneficiaire ,
@@ -651,13 +651,27 @@ class ProductsController extends Controller
              'etat' =>  'à valider' 
            
          
-        ]);
-	      if($virement->save())
-		  { 
-	  return redirect('/virement/')->with('success', ' ajouté avec succès');}
-	  
+        ]);*/
+	   	     try {
   
-		  
+	  $client=$user['client_id'];
+   	   DB::select("SET @p0='$client' ;");
+       DB::select("SET @p1='$beneficiaire' ;");
+   	   DB::select("SET @p2='$poids' ;");
+   	   DB::select("SET @p3='$metal' ;");
+   	   DB::select("SET @p4='$commentaire' ;");
+     
+ 	  $result=  DB::select ("  CALL `sp_vir_vir_insert`(@p0,@p1,@p2,@p3,@p4); ");
+  
+ 
+	  return redirect('/virement/')->with('success', ' ajouté avec succès');
+	  
+	 }
+	catch (Exception $e) 
+	 {
+ 	  return redirect('/virement/') ;
+	  }
+   
 	 }
 	 
 	 
