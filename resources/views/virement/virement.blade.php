@@ -148,6 +148,7 @@ $metal=intval($mv->metal_id);
                </tr>
             </thead>
             <tbody>
+			<?php if(isset ($virements)){?>
             @foreach($virements as $virement)
 			<?php if($virement->solde >= 0){$style="color:#54ba1d";}else{$style="color:#d03132";} ?>
 				<tr>
@@ -160,6 +161,7 @@ $metal=intval($mv->metal_id);
 
 				</tr>				
 			@endforeach
+			<?php } ?>
             </tbody>
 			</table>	  
   
