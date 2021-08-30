@@ -121,6 +121,7 @@ metal_defaut_id
 							<h5  class="mt-20" style="cursor:pointer;color:black" onclick="showing()"><i class="fas fa-chevron-down"></i> Mes adresses de livraison</h5>	
 							<div id="lesadresses"  style="display:none">
 							<?php  
+							if (isset($adresses)){
 							foreach($adresses as $adresse)
 							 { ?>
 							 
@@ -140,6 +141,7 @@ metal_defaut_id
 							 
 							 <hr>
 							 <?php }?>
+							 <?php } ?>
 							 <p><i style="color:#0054f3" class="fas fa-exclamation-circle"></i> Contactez notre support pour modifier ou ajouter une nouvelle adresse</p>
 							 
 							 </div>
