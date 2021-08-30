@@ -189,11 +189,18 @@ metal_defaut_id
 											<label><?php echo __('msg.Agency');?></label>											
  													   
 												<select  class="form-control"  id="agence_ident" name="agence_ident"  >
-												<option></option>
-												<?php foreach($agences as $agence)
+												<option></option>												
+												<?php 
+												if (is_array($agences) || is_object($agences))
+												{  
+
+												foreach($agences as $agence)
 												{
 												if($agence->agence_ident==$client->agence_ident){$selected="selected='selected'";}else{$selected="";}	
 													echo '<option '.$selected.' value="'.$agence->agence_ident.'">'.$agence->agence_lib.' ('.$agence->adresse1.')</option>';
+												}
+												
+												
 												}
 												?>
 												</select>
@@ -204,12 +211,16 @@ metal_defaut_id
                                                   
 									<select class="form-control "   name="metal_defaut_id" id="metal_defaut_id"    >
 									<option value="" ></option> 
-									<?php foreach($metals as $metal)
+									<?php
+									if (is_array($metals) || is_object($metals))
+									{
+									foreach($metals as $metal)
 									{  
 										if($client->metal_defaut_id==$metal->id){$selected="selected='selected'";}else{$selected="";}
 									echo '<option   '.$selected.' value="'.$metal->id.'" >'.$metal->libelle.'</option>';    
 										 
 										}
+									}
 				
 										?>
 
