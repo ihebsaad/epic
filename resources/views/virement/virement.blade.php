@@ -36,19 +36,16 @@ if (! isset($metal)  ) {
  
     if (isset($debut) && isset($fin)) {
 	 
-	try{ 
+	 
  $virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
-    } catch (Exception $e) {
-	$virements=null;	
-	}
-
-
+		
 	  }else{
    // $debut='2020-08-01';
    $debut=date('Y-m-01');
    
    	$date1 = DB::table('mouvement_cp')->where('cl_origine',$user['client_id'])->max('date_doc') ;
-	$date1= date_format($date1, 'Y-m-d');
+	$date1= date_format($date1, 'Y-m-d H:i:s');
+
 // dd($date1);
 	
 if (isset($date1) && ($date1> $debut) ) 
@@ -152,7 +149,6 @@ $metal=intval($mv->metal_id);
                </tr>
             </thead>
             <tbody>
-			<?php if(isset ($virements)){?>
             @foreach($virements as $virement)
 			<?php if($virement->solde >= 0){$style="color:#54ba1d";}else{$style="color:#d03132";} ?>
 				<tr>
@@ -165,7 +161,6 @@ $metal=intval($mv->metal_id);
 
 				</tr>				
 			@endforeach
-			<?php } ?>
             </tbody>
 			</table>	  
   
