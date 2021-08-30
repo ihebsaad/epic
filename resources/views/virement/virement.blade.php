@@ -17,7 +17,8 @@ use App\Http\Controllers\HomeController ;
    DB::select ("SET @p0='$userid'; ");
  $movements=  DB::select ("CALL `sp_vir_liste_vir`(@p0) ");
  
-  $virements=HomeController::virements($user['client_id'],'fr_FR',1,date('Y-m-01'),date('Y-m-d'));
+ //$virements=HomeController::virements($user['client_id'],'fr_FR',1,date('Y-m-01'),date('Y-m-d'));
+ $virements=array();
    $etablissements=DB::table('etablissement')->get();
 
    $beneficiaires=DB::table('beneficiaire')->where('cl_ident',$user['client_id'])->orderBy('bene_cl_ident')->get();
