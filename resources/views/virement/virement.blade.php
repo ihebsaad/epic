@@ -36,9 +36,13 @@ if (! isset($metal)  ) {
  
     if (isset($debut) && isset($fin)) {
 	 
-	 
+	try{ 
  $virements=HomeController::virements($user['client_id'],'fr_FR',$metal,$debut,$fin);
-		
+    } catch (Exception $e) {
+	$virements=null;	
+	}
+
+
 	  }else{
    // $debut='2020-08-01';
    $debut=date('Y-m-01');
