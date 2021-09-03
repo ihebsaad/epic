@@ -335,7 +335,7 @@ public function loginAs()
 	//	session(['hasClonedUser' => auth()->user()->id]);
 	//	Session::put('hasClonedUser', auth()->user()->id);
 		Session::put('hasClonedUser', 1);
-		Session::put('previoususer', $id);
+		Session::put('previoususer', auth()->user()->id);
          auth()->loginUsingId($id);
       //  return redirect()->back();
 		return redirect('/home');
