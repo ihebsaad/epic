@@ -46,8 +46,7 @@ foreach($natures as $nature)
 <b>{{__('msg.welcome to your saamp page')}}</b><br>
 
 <br>
-	@if (Session::get('hasClonedUser') == 1)
-
+<?php if (session('hasClonedUser')==1){ ?>
 	<div class="row">
 
     <a onclick="event.preventDefault(); document.getElementById('cloneuser-form').submit();"><span>Retourner</span></a>
@@ -56,8 +55,7 @@ foreach($natures as $nature)
     </form>
     
 	</div>
-	@endif
-
+<?php } ?>
 	<div class="row">
 
                         <!-- Content Column -->
