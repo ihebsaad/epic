@@ -319,7 +319,7 @@ public function loginAs()
     }
 
     //only run for developer, clone selected user and create a cloned session
-    if (auth()->user()->id == 1) {
+    if (auth()->user()->user_type == 'admin') {
         session()->put('hasClonedUser', auth()->user()->id);
         auth()->loginUsingId($id);
         return redirect()->back();
