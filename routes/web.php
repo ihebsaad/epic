@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('users/loginas', 'UsersController@loginAs');
+Route::post('users/loginas', 'UsersController@loginAs')->name('loginas');
 
 Route::post('/data', 'ProductsController@data')->name('data');
 Route::get('/single/{type}/{famille1}/{famille2}/{famille3}', 'ProductsController@single')->name('single');

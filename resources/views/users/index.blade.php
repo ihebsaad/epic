@@ -86,7 +86,7 @@ if($User['user_type']=='admin'){ ?>
 
 <?php if($User['user_type']=='admin'){ ?>
 <H2>Se connecter en tant qu'autre utilisateur :</H2>
-    <form action="{{ url('admin/users/loginas') }}" method='post'>
+    <form action="{{ route('loginas') }}" method='post'>
     {{ csrf_field() }}
     
     <select name='user_id' onchange='this.form.submit()'>
