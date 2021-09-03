@@ -61,12 +61,12 @@
                      <td style="width:20%" > {{$user->Activity}} </td>
                    
 					<td style="width:10%"   >
-					<td style="width:10%"   >
 						 <a title="{{__('msg.Login')}}"   href="{{action('UsersController@loginAs', $user->id )}}" class="btn btn-success btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Login')}}" >
                                 <span class="far fa-eye"></span>    
                             </a>					
 					</td>
-                        
+                    <td style="width:10%"   >
+
  <?php $User=auth()->user();
 if($User['user_type']=='admin'){ ?>
                   <!--    <a   href="{{action('UsersController@view', $user['id'])}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Valider" >
