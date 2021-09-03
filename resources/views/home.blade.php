@@ -46,6 +46,17 @@ foreach($natures as $nature)
 <b>{{__('msg.welcome to your saamp page')}}</b><br>
 
 <br>
+	@if (Session::get('hasClonedUser') == 1)
+
+	<div class="row">
+
+    <a onclick="event.preventDefault(); document.getElementById('cloneuser-form').submit();"><span>Retourner</span></a>
+    <form id="cloneuser-form" action="{{ url('admin/users/loginas') }}" method="post">
+        {{ csrf_field() }}
+    </form>
+    
+	</div>
+	@endif
 
 	<div class="row">
 

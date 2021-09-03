@@ -82,6 +82,27 @@ if($User['user_type']=='admin'){ ?>
 </div>
 </div>
 
+<div class="row">
+
+<?php if($User['user_type']=='admin'){ ?>
+<H2>Se connecter en tant qu'autre utilisateur :</H2>
+    <form action="{{ url('admin/users/loginas') }}" method='post'>
+    {{ csrf_field() }}
+    
+    <select name='user_id' onchange='this.form.submit()'>
+        <option value="">Seléctionner</option>
+        @foreach (\App\User::get() as $row)
+            <option value='{{{ $row->id }}}'>{{{ $row->name }}}</option>
+        @endforeach
+    </select>
+    
+    </form>
+    
+<?php } ?>
+</div>
+
+</div>
+
 
 
  
