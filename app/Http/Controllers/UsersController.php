@@ -315,10 +315,10 @@ class UsersController extends Controller
 	
 	
 	
-public function loginAs()
-{
+	public function loginAs($id)
+	{
     //get the id from the post
-    $id = request('user_id');
+    //$id = request('user_id');
 
     //if session exists remove it and return login to original user
     if (session()->get('hasClonedUser') == 1) {
@@ -339,8 +339,8 @@ public function loginAs()
          auth()->loginUsingId($id);
       //  return redirect()->back();
 		return redirect('/home');
-    }
-}
+		}
+	}
 	
 	
 	

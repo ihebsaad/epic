@@ -44,6 +44,7 @@
                 <th style="width:20%">{{__('msg.Client ID')}}</th>
                 <th style="width:20%">{{__('msg.Email')}}</th>
                 <th style="width:20%">{{__('msg.Activity')}}</th>
+                <th style="width:10%">{{__('msg.Login')}}</th>
                 <th style="width:10%">{{__('msg.Delete')}}</th>
               </tr>
          
@@ -60,6 +61,11 @@
                      <td style="width:20%" > {{$user->Activity}} </td>
                    
 					<td style="width:10%"   >
+					<td style="width:10%"   >
+						 <a title="{{__('msg.Login')}}"   href="{{action('UsersController@loginas', $user->id )}}" class="btn btn-success btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Login')}}" >
+                                <span class="fa fa-fw fa-eye"></span>    
+                            </a>					
+					</td>
                         
  <?php $User=auth()->user();
 if($User['user_type']=='admin'){ ?>
