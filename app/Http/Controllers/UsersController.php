@@ -322,7 +322,8 @@ public function loginAs()
     if (auth()->user()->user_type == 'admin') {
         session()->put('hasClonedUser', auth()->user()->id);
         auth()->loginUsingId($id);
-        return redirect()->back();
+      //  return redirect()->back();
+		return redirect('/home');
     }
 }
 	
