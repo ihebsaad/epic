@@ -46,7 +46,8 @@ foreach($natures as $nature)
 <b>{{__('msg.welcome to your saamp page')}}</b><br>
 
 <br>
-<?php if (session('hasClonedUser')==1){ ?>
+<?php if (session('hasClonedUser')==1){
+$id=session('previoususer');	?>
 	<div class="row">
                         <div class="col-lg-12 mb-4">
 
@@ -57,10 +58,10 @@ foreach($natures as $nature)
 								<div class="card-header py-3">
                                 
 								 
-								<a  style="cursor:pointer; color:white;left:20px;background-color:#54ba1d; font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px;border-radius:10px;cusor:pointer" onclick="event.preventDefault(); document.getElementById('cloneuser-form').submit();"><span><span class="fa fa-fw fa-arrow-left"></span> Retourner au compte Admin</span></a>
-								<form id="cloneuser-form" action="{{ route('loginas') }}" method="post">
+								<a  style="cursor:pointer; color:white;left:20px;background-color:#54ba1d; font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px;border-radius:10px;cusor:pointer" onclick="/*event.preventDefault(); document.getElementById('cloneuser-form').submit();*/"    href="{{action('UsersController@loginas', $user->id )}}" ><span><span class="fa fa-fw fa-arrow-left"></span> Retourner au compte Admin</span></a>
+								<!--<form id="cloneuser-form" action="{{ route('loginas') }}" method="post">
 								{{ csrf_field() }}
-								</form>
+								</form>-->
 								</div>
                             </div>
                         </div>
