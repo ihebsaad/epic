@@ -330,10 +330,9 @@ public function loginAs()
     //only run for developer, clone selected user and create a cloned session
     if (auth()->user()->user_type == 'admin') {
      //   session()->put('hasClonedUser', auth()->user()->id);
-		session(['hasClonedUser' => auth()->user()->id]);
+	//	session(['hasClonedUser' => auth()->user()->id]);
 		Session::put('hasClonedUser', auth()->user()->id);
-      dd(Session::get('hasClonedUser'));
-        auth()->loginUsingId($id);
+         auth()->loginUsingId($id);
       //  return redirect()->back();
 		return redirect('/home');
     }
