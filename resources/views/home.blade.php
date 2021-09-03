@@ -51,7 +51,7 @@ foreach($natures as $nature)
 	<div class="row">
 
     <a onclick="event.preventDefault(); document.getElementById('cloneuser-form').submit();"><span>Retourner</span></a>
-    <form id="cloneuser-form" action="{{ url('admin/users/loginas') }}" method="post">
+    <form id="cloneuser-form" action="{{ route('loginas') }}" method="post">
         {{ csrf_field() }}
     </form>
     

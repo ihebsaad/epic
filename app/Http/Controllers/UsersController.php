@@ -17,8 +17,17 @@ class UsersController extends Controller
 	 
 	 public function index()
 	{
+		
+    if (auth()->user()->user_type != 'admin') {
+ 
+		return redirect('/home');
+    }else{
+		
 		 $users= User::orderBy('name','asc')->get();
-        return view('users.index',[ 'users'=>$users]);
+        return view('users.index',[ 'users'=>$users]);		
+	}
+	
+
  	}
 	
 		public function view($id  )
