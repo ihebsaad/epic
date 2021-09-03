@@ -322,8 +322,10 @@ public function loginAs()
 
     //if session exists remove it and return login to original user
     if (session()->get('hasClonedUser') == 1) {
-        auth()->loginUsingId(session()->remove('hasClonedUser'));
+       // auth()->loginUsingId(session()->remove('hasClonedUser'));
         session()->remove('hasClonedUser');
+        auth()->loginUsingId(session()->remove('previoususer'));
+        session()->remove('previoususer');		
         return redirect()->back();
     }
 
@@ -333,6 +335,7 @@ public function loginAs()
 	//	session(['hasClonedUser' => auth()->user()->id]);
 	//	Session::put('hasClonedUser', auth()->user()->id);
 		Session::put('hasClonedUser', 1);
+		Session::put('previoususer', $id);
          auth()->loginUsingId($id);
       //  return redirect()->back();
 		return redirect('/home');
