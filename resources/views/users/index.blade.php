@@ -63,7 +63,7 @@
 					<td style="width:10%"   >
 					<td style="width:10%"   >
 						 <a title="{{__('msg.Login')}}"   href="{{action('UsersController@loginAs', $user->id )}}" class="btn btn-success btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Login')}}" >
-                                <span class="fa fa-fw fa-eye"></span>    
+                                <span class="far fa-eye"></span>    
                             </a>					
 					</td>
                         
@@ -88,24 +88,7 @@ if($User['user_type']=='admin'){ ?>
 </div>
 </div>
 
-<div class="row">
 
-<?php if($User['user_type']=='admin'){ ?>
-<H2>Se connecter en tant qu'autre utilisateur :</H2>
-    <form action="{{ route('loginas') }}" method='post'>
-    {{ csrf_field() }}
-    
-    <select name='user_id' onchange='this.form.submit()'>
-        <option value="">Seléctionner</option>
-        @foreach (\App\User::get() as $row)
-            <option value='{{{ $row->id }}}'>{{{ $row->name }}}</option>
-        @endforeach
-    </select>
-    
-    </form>
-    
-<?php } ?>
-</div>
 
 </div>
 
