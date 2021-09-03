@@ -59,9 +59,7 @@ $id=session('previoususer');	?>
                                 
 								 
 								<a  style="cursor:pointer; color:white;left:20px;background-color:#54ba1d; font-weight:bold;padding:5px 10px 5px 10px;margin-top:-8px;border-radius:10px;cusor:pointer" onclick="/*event.preventDefault(); document.getElementById('cloneuser-form').submit();*/"    href="{{action('UsersController@loginas', $user->id )}}" ><span><span class="fa fa-fw fa-arrow-left"></span> Retourner au compte Admin</span></a>
-								<!--<form id="cloneuser-form" action="{{ route('loginas') }}" method="post">
-								{{ csrf_field() }}
-								</form>-->
+							
 								</div>
                             </div>
                         </div>
