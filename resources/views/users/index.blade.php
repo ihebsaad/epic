@@ -62,7 +62,7 @@
                    
 					<td style="width:10%"   >
 					<td style="width:10%"   >
-						 <a title="{{__('msg.Login')}}"   href="{{action('UsersController@loginas', $user->id )}}" class="btn btn-success btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Login')}}" >
+						 <a title="{{__('msg.Login')}}"   href="{{action('UsersController@loginAs', $user->id )}}" class="btn btn-success btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Login')}}" >
                                 <span class="fa fa-fw fa-eye"></span>    
                             </a>					
 					</td>
