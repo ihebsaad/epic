@@ -345,7 +345,12 @@ class UsersController extends Controller
 	
 	
 	
-	
+	    public function verify()
+    {
+		
+      return view('auth.verify'  ); 
+		
+	}
 	
 	
 }

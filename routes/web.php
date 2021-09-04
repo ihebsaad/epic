@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/verify', 'UsersController@verify')->name('verify');
+
+
 Route::get('users/loginas/{id}', 'UsersController@loginAs')->name('loginas');
 
 Route::post('/data', 'ProductsController@data')->name('data');
@@ -126,7 +130,8 @@ $this->post('password/reset/{token}', 'Auth\ResetPasswordController@reset');
 
 
 
-Auth::routes();
+//Auth::routes();
+Auth::routes(['verify' => true] );
 
 Route::post('/setlanguage', 'HomeController@setlanguage')->name('setlanguage');
 
@@ -179,8 +184,9 @@ Route::get('/requete2', 'HomeController@requete2')->name('requete2');
 Route::get('/doc', 'SwaggerController@index');
 */
 
+//Route::get('/home', 'PagesController@index')->name('home');
+Route::get('/home', 'PagesController@index')->name('home')->middleware('verified');
 
-Route::get('/home', 'PagesController@index')->name('home');
  Route::get('api/documentation', '\L5Swagger\Http\Controllers\SwaggerController@api')->name('l5swagger.api');
 
  

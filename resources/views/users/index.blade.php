@@ -61,9 +61,9 @@
                      <td style="width:20%" > {{$user->Activity}} </td>
                    
 					<td style="width:10%"   >
-						 <a title="{{__('msg.Login')}}"   href="{{action('UsersController@loginAs', $user->id )}}" class="btn btn-success btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Login')}}" >
+						<center> <a title="{{__('msg.Login')}}"   href="{{action('UsersController@loginAs', $user->id )}}" class="btn btn-success btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Login')}}" >
                                 <span class="far fa-eye"></span>    
-                            </a>					
+                            </a></center>					
 					</td>
                     <td style="width:10%"   >
 
@@ -72,9 +72,9 @@ if($User['user_type']=='admin'){ ?>
                   <!--    <a   href="{{action('UsersController@view', $user['id'])}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Valider" >
                             <span class="far fa-eye" ></span> {{__('msg.View')}}
                         </a> -->
-						 <a title="{{__('msg.Delete')}}" onclick="return confirm('Êtes-vous sûrs ?')" href="{{action('UsersController@destroy', $user->id )}}" class="btn btn-danger btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Supprimer" >
+					<center>	 <a title="{{__('msg.Delete')}}" onclick="return confirm('Êtes-vous sûrs ?')" href="{{action('UsersController@destroy', $user->id )}}" class="btn btn-danger btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Supprimer" >
                                 <span class="fa fa-fw fa-trash-alt"></span>    
-                            </a>
+                            </a></center>
                     
 <?php } ?>
                     </td>
