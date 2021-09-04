@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -17,6 +18,11 @@
                     {{ __('Before proceeding, please check your email for a verification link.') }}
                     {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
                 </div>
+						@guest
+		
+		@else	
+          <br><br><a class="btn btn-primary" href="{{route('logout')}}">{{__('msg.Logout')}}</a>
+		@endguet
             </div>
         </div>
     </div>
