@@ -18,11 +18,11 @@
                     {{ __('Before proceeding, please check your email for a verification link.') }}
                     {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
                 </div>
-						@guest
+		@guest
 		
 		@else	
           <br><br><a class="btn btn-primary" href="{{route('logout')}}">{{__('msg.Logout')}}</a>
-		@endguet
+		@endguest
             </div>
         </div>
     </div>
