@@ -196,8 +196,11 @@ metal_defaut_id
 
 												foreach($agences as $agence)
 												{
-												if($agence->agence_ident==$client->agence_ident){$selected="selected='selected'";}else{$selected="";}	
+												if (isset($agence->agence_ident))
+												{
+													if($agence->agence_ident==$client->agence_ident){$selected="selected='selected'";}else{$selected="";}	
 													echo '<option '.$selected.' value="'.$agence->agence_ident.'">'.$agence->agence_lib.' ('.$agence->adresse1.')</option>';
+												}
 												}
 												
 												
