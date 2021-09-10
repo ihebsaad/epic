@@ -49,13 +49,13 @@
             <thead>
             <tr id="headtable">
                 <th style="text-align:center;width:6%;" class="hidemobile">{{__('msg.Ranking')}}</th>
-                <th style="text-align:center;width:15%;">{{__('msg.Name')}}</th>
+                <th style="text-align:center;width:12%;">{{__('msg.Name')}}</th>
                 <th style="text-align:center;width:10%;">{{__('msg.City')}}</th>				
-                <th style="text-align:center;width:15%" class="hidemobile">{{__('msg.In')}}</th>
+                <th style="text-align:center;width:12%" class="hidemobile">{{__('msg.In')}}</th>
                  <th style="text-align:center;width:14%;" class="hidemobile">{{__('msg.Account num')}}</th>
                 <th style="text-align:center;width:18%;" class="hidemobile">{{__('msg.Comment')}}</th>				 
-                <th style="text-align:center;width:12%;">{{__('msg.State')}}</th>
-                <th style="text-align:center;width:12%;">{{__('msg.Validate')}}</th>
+                <th style="text-align:center;width:10%;">{{__('msg.State')}}</th>
+                <th style="text-align:center;width:10%;">{{__('msg.Validate')}}</th>
                </tr>
             </thead>
             <tbody>
