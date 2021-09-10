@@ -48,7 +48,7 @@
 		  <table id="mytable" class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
-                <th style="text-align:center;width:6%;" class="hidemobile">{{__('msg.Ranking')}}</th>
+                <th style="text-align:center;width:6%;" class="hidemobile">ID</th>
                 <th style="text-align:center;width:12%;">{{__('msg.Name')}}</th>
                 <th style="text-align:center;width:10%;">{{__('msg.City')}}</th>				
                 <th style="text-align:center;width:12%" class="hidemobile">{{__('msg.In')}}</th>
@@ -63,7 +63,7 @@
             @foreach($beneficiaires as $ben)
  				<tr>
 				<?php if(trim($ben->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
-				<td style=" text-align:center " class="hidemobile"><?php echo  $ben->bene_cl_ident   ;?></td>	
+				<td style=" text-align:center " class="hidemobile"><?php echo  $ben->bene_ident   ;?></td>	
 				<td style=" text-align:center "><a href="<?php echo URL("beneficiaire/".$ben->bene_ident);?>"><?php echo $ben->Nom  ;?></a></td>						
 				<td style=" text-align:center "><?php echo $ben->Ville  ;?></td>				
 				<td style=" text-align:center " class="hidemobile"><?php   if (isset($et[$ben->etablissement_ident])){ echo $et[$ben->etablissement_ident];  }  ;?></td>						
