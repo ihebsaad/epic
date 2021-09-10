@@ -66,7 +66,7 @@
 				<td style=" text-align:center " class="hidemobile"><?php echo  $ben->bene_cl_ident   ;?></td>	
 				<td style=" text-align:center "><a href="<?php echo URL("beneficiaire/".$ben->bene_ident);?>"><?php echo $ben->Nom  ;?></a></td>						
 				<td style=" text-align:center "><?php echo $ben->Ville  ;?></td>				
-				<td style=" text-align:center " class="hidemobile"><?php echo $et[$ben->etablissement_ident]  ;?></td>						
+				<td style=" text-align:center " class="hidemobile"><?php   if (isset($et[$ben->etablissement_ident])){ echo $et[$ben->etablissement_ident];  }  ;?></td>						
 				<td style=" text-align:center " class="hidemobile"><?php echo $ben->compte  ;?></td>						
 				<td class="hidemobile"><?php echo $ben->commentaire  ;?></td>	
 				<td style=" text-align:center;<?php echo $style;?> "><?php echo $ben->etat  ;?></td>						
