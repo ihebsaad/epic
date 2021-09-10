@@ -72,7 +72,7 @@
 				<td style=" text-align:center;<?php echo $style;?> "><?php echo $ben->etat  ;?></td>						
 				<td style=" text-align:center;<?php echo $style;?> "><?php if ($ben->etat!='validé'){ ?>
 				 <a    href="{{action('UsersController@validatebenef', $ben->bene_ident )}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Validate')}}" >
-                            <span class="far fa-check" ></span> {{__('msg.Validate')}}
+                            <span class="fas fa-user-check"></span> {{__('msg.Validate')}}
                         </a>  
 				<?php }   ?></td>						
 				
