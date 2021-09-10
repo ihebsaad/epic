@@ -237,7 +237,7 @@ metal_defaut_id
                                             </div>
 
                                         </div>	
-										
+									<?php	if (isset($client)){   ?>
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label><?php echo __('msg.Social reason');?></label>
@@ -344,7 +344,9 @@ metal_defaut_id
                                         </span>
                                         <span class="text" style="width:120px" >{{__('msg.Update')}}</span>
                                     </button>
-                                        </div>			
+                                        </div>		
+
+									<?php } ?>										
 					</form>
                                
 
