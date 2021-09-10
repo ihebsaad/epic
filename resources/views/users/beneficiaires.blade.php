@@ -34,7 +34,17 @@
 	<div class="col-lg-8 col-sm-6"> </div>
  						
 	</div>							
+  <?php
   
+   $etablissements=DB::table('etablissement')->get();
+ 	$et=array(); 
+  foreach( $etablissements as $e)
+{	 
+	$et[$e->etablissement_ident]=$e->etablissement_nom.'('.$e->etablissement_pays.')' ;
+} 
+  
+  
+  ?>
 		  <table id="mytable" class="table table-striped mb-40"  style="width:100%">
             <thead>
             <tr id="headtable">
