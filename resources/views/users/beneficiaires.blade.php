@@ -71,7 +71,7 @@
 			<!--	<td class="hidemobile"><?php // echo $ben->commentaire  ;?></td>	-->
 				<td style=" text-align:center;<?php echo $style;?> "><?php echo $ben->etat  ;?></td>						
 				<td style=" text-align:center;<?php echo $style;?> "><?php if ($ben->etat!='validé'){ ?>
-				 <a   href="{{action('UsersController@validatebenef', $user['id'])}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Validate')}}" >
+				 <a   href="{{action('UsersController@validatebenef', $ben['id'])}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Validate')}}" >
                             <span class="far fa-check" ></span> {{__('msg.Validate')}}
                         </a>  
 				<?php }   ?></td>						
