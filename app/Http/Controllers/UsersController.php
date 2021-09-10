@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\User ;
+use App\Beneficiaire ;
 use DB ;
 
 class UsersController extends Controller
@@ -352,5 +353,30 @@ class UsersController extends Controller
 		
 	}
 	
+	
+	
+	
+	
+	
+	public function beneficiaires()
+	{
+		
+    if (auth()->user()->user_type != 'admin') {
+ 
+		return redirect('/home');
+    }else{
+		
+		 $beneficiaires= Beneficiaire::orderBy('name','asc')->get();
+        return view('users.beneficiaires',[ 'beneficiaires'=>$beneficiaires]);		
+	}
+	 
+ 	}
+	
+	 public function validatebenef($id)
+	{
+          Beneficiaire::where('id', $id)->update(array( 'statut' => 'validé'));
+		  return redirect('/beneficiaires')->with('success', '  validé avec succès');
+
+	}
 	
 }

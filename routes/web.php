@@ -150,6 +150,11 @@ Route::post('/updateuser','UsersController@updateuser')->name('updateuser');
 Route::post('/updatecomp','UsersController@updatecomp')->name('updatecomp');
 
 
+//beneficiaires 
+Route::get('/beneficiaires', 'UsersController@beneficiaires')->name('beneficiaires');
+Route::get('/validatebenef/{id}', 'UsersController@validatebenef');
+
+
 
 Route::post('/listetrading','TradingController@listetrading')->name('listetrading');
 
