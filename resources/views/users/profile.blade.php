@@ -220,10 +220,15 @@ metal_defaut_id
 									{
 									foreach($metals as $metal)
 									{  
-										if($client->metal_defaut_id==$metal->id){$selected="selected='selected'";}else{$selected="";}
-									echo '<option   '.$selected.' value="'.$metal->id.'" >'.$metal->libelle.'</option>';    
-										 
+									$selected="";
+										if(isset($client->metal_defaut_id))
+										{
+											if($client->metal_defaut_id==$metal->id){$selected="selected='selected'";}else{$selected="";}	
 										}
+										
+										echo '<option   '.$selected.' value="'.$metal->id.'" >'.$metal->libelle.'</option>';    
+										 
+									}
 									}
 				
 										?>
