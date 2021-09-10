@@ -374,7 +374,7 @@ class UsersController extends Controller
 	
 	 public function validatebenef($id)
 	{
-          Beneficiaire::where('bene_ident', $id)->update(array( 'statut' => 'validé'));
+          Beneficiaire::where('bene_ident', $id)->update(array( 'etat' => 'validé'));
 		  return redirect('/beneficiaires')->with('success', '  validé avec succès');
 
 	}
