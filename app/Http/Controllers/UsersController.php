@@ -366,7 +366,7 @@ class UsersController extends Controller
 		return redirect('/home');
     }else{
 		
-		 $beneficiaires= Beneficiaire::orderBy('name','asc')->get();
+		 $beneficiaires= Beneficiaire::get();
         return view('users.beneficiaires',[ 'beneficiaires'=>$beneficiaires]);		
 	}
 	 
