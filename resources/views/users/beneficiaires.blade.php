@@ -53,7 +53,7 @@
                 <th style="text-align:center;width:10%;">{{__('msg.City')}}</th>				
                 <th style="text-align:center;width:12%" class="hidemobile">{{__('msg.In')}}</th>
                  <th style="text-align:center;width:14%;" class="hidemobile">{{__('msg.Account num')}}</th>
-                <th style="text-align:center;width:18%;" class="hidemobile">{{__('msg.Comment')}}</th>				 
+            <!--    <th style="text-align:center;width:18%;" class="hidemobile">{{__('msg.Comment')}}</th>	-->			 
                 <th style="text-align:center;width:10%;">{{__('msg.State')}}</th>
                 <th style="text-align:center;width:10%;">{{__('msg.Validate')}}</th>
                </tr>
@@ -68,7 +68,7 @@
 				<td style=" text-align:center "><?php echo $ben->Ville  ;?></td>				
 				<td style=" text-align:center " class="hidemobile"><?php   if (isset($et[$ben->etablissement_ident])){ echo $et[$ben->etablissement_ident];  }  ;?></td>						
 				<td style=" text-align:center " class="hidemobile"><?php echo $ben->compte  ;?></td>						
-				<td class="hidemobile"><?php echo $ben->commentaire  ;?></td>	
+			<!--	<td class="hidemobile"><?php // echo $ben->commentaire  ;?></td>	-->
 				<td style=" text-align:center;<?php echo $style;?> "><?php echo $ben->etat  ;?></td>						
 				<td style=" text-align:center;<?php echo $style;?> "><?php if ($ben->etat!='validé'){ ?>
 				 <a   href="{{action('UsersController@validatebenef', $user['id'])}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Validate')}}" >
