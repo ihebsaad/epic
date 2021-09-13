@@ -152,7 +152,7 @@ Route::post('/updatecomp','UsersController@updatecomp')->name('updatecomp');
 
 //beneficiaires 
 Route::get('/beneficiaires', 'UsersController@beneficiaires')->name('beneficiaires');
-Route::get('/beneficiairesvalides', 'UsersController@beneficiaires')->name('beneficiairesvalides');
+Route::get('/beneficiairesvalides', 'UsersController@beneficiairesvalides')->name('beneficiairesvalides');
 Route::get('/validatebenef/{id}', 'UsersController@validatebenef');
 
 
