@@ -78,9 +78,10 @@
  						
 				
 
-				</tr>				
-			@endforeach
+				</tr>	
 				<?php } ?>
+				
+			@endforeach
 			<?php } ?>
             </tbody>
 			</table>  
