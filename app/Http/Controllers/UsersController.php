@@ -381,7 +381,7 @@ class UsersController extends Controller
 		return redirect('/home');
     }else{
 		
-		 $beneficiaires= Beneficiaire::where('etat','validé')->get();
+		 $beneficiaires= Beneficiaire::where('etat','like','validé')->get();
         return view('users.tousbeneficiaires',[ 'beneficiaires'=>$beneficiaires]);		
 	}
 	 
