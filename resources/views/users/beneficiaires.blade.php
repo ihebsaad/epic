@@ -33,7 +33,7 @@
     <div class="row"> 
 	<div class="col-lg-8 col-sm-6"> </div>
 	<div class="col-lg-4 col-sm-6">
-				 <a  style="float:right;margin-bottom:10px"   href="{{route('tousbeneficiaires')}}"    class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="" >
+				 <a  style="float:right;margin-bottom:10px"   href="{{route('beneficiairesvalides')}}"    class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="" >
                             <span class="fas fa-user-check"></span> Bénéficiaires validés
                  </a> 
 	</div>
@@ -66,6 +66,7 @@
             <tbody>
 			<?php  if (is_array($beneficiaires) || is_object($beneficiaires)){ 	?>
             @foreach($beneficiaires as $ben)
+				<?php if(trim($ben->etat)=='validé'){?>			
  				<tr>
 				<?php if(trim($ben->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
 				<td style=" text-align:center "  ><?php echo  $ben->bene_ident   ;?></td>	
@@ -84,6 +85,7 @@
 
 				</tr>				
 			@endforeach
+				<?php } ?>
 			<?php } ?>
             </tbody>
 			</table>  

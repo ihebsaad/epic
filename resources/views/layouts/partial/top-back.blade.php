@@ -210,7 +210,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                   <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
                   {{__('msg.List of users')}}
                 </a>
-               <a class="dropdown-item" href="{{route('beneficiaires')}}">
+               <a class="dropdown-item" href="{{route('beneficiairesvalides')}}">
                   <i class="fas fa-user-friends fa-sm fa-fw mr-2 text-gray-400"></i>
                   {{__('msg.List of beneficiaries')}}
                 </a>				
