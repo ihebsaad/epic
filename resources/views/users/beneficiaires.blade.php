@@ -66,7 +66,7 @@
             <tbody>
 			<?php  if (is_array($beneficiaires) || is_object($beneficiaires)){ 	?>
             @foreach($beneficiaires as $ben)
-				<?php if(trim($ben->etat)=='validé'){?>			
+				<?php if(trim($ben->etat)!='validé'){?>			
  				<tr>
 				<?php if(trim($ben->etat)=='validé'){$style="color:#54ba1d";}else{$style='';} ?>
 				<td style=" text-align:center "  ><?php echo  $ben->bene_ident   ;?></td>	
