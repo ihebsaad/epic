@@ -382,7 +382,7 @@ class UsersController extends Controller
     }else{
 		
 		 $beneficiaires= DB::table('beneficiaires')
-                ->where('etat', 'like', 'valid%')
+                ->where('etat',   'validé')
                 ->get();
         return view('users.tousbeneficiaires',[ 'beneficiaires'=>$beneficiaires]);		
 	}
