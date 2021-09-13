@@ -366,11 +366,27 @@ class UsersController extends Controller
 		return redirect('/home');
     }else{
 		
-		 $beneficiaires= Beneficiaire::get();
+		$beneficiaires= Beneficiaire::where('etat','<>','validé')->get();
         return view('users.beneficiaires',[ 'beneficiaires'=>$beneficiaires]);		
 	}
 	 
  	}
+	
+	
+	public function tousbeneficiaires()
+	{
+		
+    if (auth()->user()->user_type != 'admin') {
+ 
+		return redirect('/home');
+    }else{
+		
+		 $beneficiaires= Beneficiaire::where('etat','validé')->get();
+        return view('users.tousbeneficiaires',[ 'beneficiaires'=>$beneficiaires]);		
+	}
+	 
+ 	}	
+	
 	
 	 public function validatebenef($id)
 	{

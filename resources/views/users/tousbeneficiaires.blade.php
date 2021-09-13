@@ -25,7 +25,7 @@
 						 <div class="card shadow mb-4">
                                 <div class="  ">
                                     <a href="#div1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">								
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.List of beneficiaries')}} non validés</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.List of beneficiaries')}} validés</h6>
 									</a>
                                 </div>
                                 <div   class="card-body">
@@ -33,12 +33,12 @@
     <div class="row"> 
 	<div class="col-lg-8 col-sm-6"> </div>
 	<div class="col-lg-4 col-sm-6">
-				 <a    href="route('tousbeneficiaires')"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="" >
-                            <span class="fas fa-user-check"></span> Bénéficiaires validés
+				 <a    href="route('beneficiaires')"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="" >
+                            <span class="fas fa-user-check"></span> bénéficiaires non validés
                  </a> 
 	</div>
  						
-	</div>							
+	</div>						
   <?php
   
    $etablissements=DB::table('etablissement')->get();
@@ -60,8 +60,7 @@
                  <th style="text-align:center;width:14%;"  >{{__('msg.Account num')}}</th>
             <!--    <th style="text-align:center;width:18%;" class="hidemobile">{{__('msg.Comment')}}</th>	-->			 
                 <th style="text-align:center;width:10%;">{{__('msg.State')}}</th>
-                <th style="text-align:center;width:10%;">{{__('msg.Validate')}}</th>
-               </tr>
+                </tr>
             </thead>
             <tbody>
 			<?php  if (is_array($beneficiaires) || is_object($beneficiaires)){ 	?>
@@ -75,11 +74,7 @@
 				<td style=" text-align:center "  ><?php echo $ben->compte  ;?></td>						
 			<!--	<td class="hidemobile"><?php // echo $ben->commentaire  ;?></td>	-->
 				<td style=" text-align:center;<?php echo $style;?> "><?php echo $ben->etat  ;?></td>						
-				<td style=" text-align:center;<?php echo $style;?> "><?php if ($ben->etat!='validé'){ ?>
-				 <a    href="{{action('UsersController@validatebenef', $ben->bene_ident )}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Validate')}}" >
-                            <span class="fas fa-user-check"></span> {{__('msg.Validate')}}
-                        </a>  
-				<?php }   ?></td>						
+ 						
 				
 
 				</tr>				
