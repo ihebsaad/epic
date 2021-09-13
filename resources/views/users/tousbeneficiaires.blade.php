@@ -33,7 +33,7 @@
     <div class="row"> 
 	<div class="col-lg-8 col-sm-6"> </div>
 	<div class="col-lg-4 col-sm-6">
-				 <a    href="route('beneficiaires')"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="" >
+				 <a    href="{{route('beneficiaires')}}"    class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="" >
                             <span class="fas fa-user-check"></span> bénéficiaires non validés
                  </a> 
 	</div>
