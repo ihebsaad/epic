@@ -410,5 +410,6 @@ return [
 			"Client ID"=>"ID klienta",
 			"List of users"=>"Lista użytkowników",	
 			"View user"=>"Wyświetl użytkownika",			
-
+			"Validated beneficiaries"=>"Zweryfikowani beneficjenci",	
+			"Disabled beneficiaries"=>"Niezweryfikowani beneficjenci",
  ];

@@ -415,6 +415,7 @@ return [
 	"Client ID"=>"Client ID",	
 	"List of users"=>"List of users",	
 	"View user"=>"View user",	
-
+	"Validated beneficiaries"=>"Bénéficiaires validés",	
+	"Disabled beneficiaries"=>"Bénéficiaires invalidés",
  	
  ];

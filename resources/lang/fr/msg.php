@@ -424,4 +424,6 @@ return [
 	"Client ID"=>"ID du client",
 	"List of users"=>"Liste des utilisateurs",	
 	"View user"=>"Afficher l'utilisateur",	
+	"Validated beneficiaries"=>"Bénéficiaires validés",	
+	"Disabled beneficiaries"=>"Bénéficiaires invalidés",	
  ];
