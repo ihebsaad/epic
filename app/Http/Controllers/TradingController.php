@@ -26,9 +26,9 @@ class TradingController extends Controller
 		
 		
  
-	$provider = "netdania_fxa";
-	$username = "saamp";
-	$password = "1s3wAA8m9Pw";
+	$provider = config('trading.provider');
+	$username = config('trading.username');
+	$password = config('trading.password');
 	
 	$dateTimeFormat = "dd HH:mm:ss"; //The format for returned timestamps
 	$timezone = "CET"; //The timezone to which timestamps should be converted
@@ -151,19 +151,19 @@ $goldbid=$silvbid=$platbid=$pallbid= $ventegold= $ventesilv= $venteplat= $ventep
 		$strClose = $quote["f1"];
 		$strDateTime = $quote;
 		
-		if($strName=='Gold'){
+		if($strName==config('trading.gold_string')){
 			$goldbid=floatval($strBid); 
 		    $goldask=floatval($strAsk);
 			}
-		if($strName=='Silver'){
+		if($strName==config('trading.silver_string')){
 			$silvbid=floatval($strBid); 
 		    $silvask=floatval($strAsk);
 			}
-		if($strName=='Platinum/USD'){
+		if($strName==config('trading.platine_string')){
 			$platbid=floatval($strBid); 
 		    $platask=floatval($strAsk);
 			}
-		if($strName=='Palladium/USD'){
+		if($strName==config('trading.pallad_string')){
 			$pallbid=floatval($strBid); 
 		    $pallask=floatval($strAsk);
 			}			
@@ -172,24 +172,24 @@ $goldbid=$silvbid=$platbid=$pallbid= $ventegold= $ventesilv= $venteplat= $ventep
 			
 		if($euroask > 0 && $goldbid > 0)
 		{
-		 $ventegold= (( floatval($goldbid) / floatval($euroask) ) / config('global.div_number') )* config('global.coeff_vente');  
-		 $achatgold= (( floatval($goldask) / floatval($eurobid) ) / config('global.div_number') )* config('global.coeff_achat');
+		 $ventegold= (( floatval($goldbid) / floatval($euroask) ) / config('trading.div_number') )* config('trading.coeff_vente');  
+		 $achatgold= (( floatval($goldask) / floatval($eurobid) ) / config('trading.div_number') )* config('trading.coeff_achat');
 		 }
 		if($euroask > 0 && $silvbid > 0)
 		{
-		 $ventesilv= (( floatval($silvbid) / floatval($euroask) ) / config('global.div_number') )*  config('global.coeff_vente') ; 
-		 $achatsilv= (( floatval($silvask) / floatval($eurobid) ) / config('global.div_number') )*  config('global.coeff_achat');
+		 $ventesilv= (( floatval($silvbid) / floatval($euroask) ) / config('trading.div_number') )*  config('trading.coeff_vente') ; 
+		 $achatsilv= (( floatval($silvask) / floatval($eurobid) ) / config('trading.div_number') )*  config('trading.coeff_achat');
 		 }
 		if($euroask > 0 && $platbid > 0)
 		{
-		 $venteplat= (( floatval($platbid) / floatval($euroask) ) / config('global.div_number') )*  config('global.coeff_vente') ; 
-		 $achatplat= (( floatval($platask) / floatval($eurobid) ) / config('global.div_number') )*  config('global.coeff_achat');
+		 $venteplat= (( floatval($platbid) / floatval($euroask) ) / config('trading.div_number') )*  config('trading.coeff_vente') ; 
+		 $achatplat= (( floatval($platask) / floatval($eurobid) ) / config('trading.div_number') )*  config('trading.coeff_achat');
 		 }
 
 		if($euroask > 0 && $pallbid > 0)
 		{
-		 $ventepall= (( floatval($pallbid) / floatval($euroask) ) / config('global.div_number') )*  config('global.coeff_vente') ; 
-		 $achatpall= (( floatval($pallask) / floatval($eurobid) ) / config('global.div_number') )*  config('global.coeff_achat');
+		 $ventepall= (( floatval($pallbid) / floatval($euroask) ) / config('trading.div_number') )*  config('trading.coeff_vente') ; 
+		 $achatpall= (( floatval($pallask) / floatval($eurobid) ) / config('trading.div_number') )*  config('trading.coeff_achat');
 		 }		 
 		 
 $data.='
@@ -197,8 +197,8 @@ $data.='
 	<TD class="text strname" align="left" nowrap width="105">'.$strName.'</TD>
 	<TD class="text hidemobile" align="center" width="60">'.$strBid.'</TD>
 	<TD class="text hidemobile" align="center" width="60">'.$strAsk.'</TD>
-	<TD class="text" align="center" width="60">'; if($strName=='Gold'){$data.= number_format($achatgold,4);}if($strName=='Silver'){$data.= number_format($achatsilv,4);}if($strName=='Platinum/USD'){$data.= number_format($achatplat,4);}if($strName=='Palladium/USD'){$data.= number_format($achatpall,4);} $data.='</TD>
-	<TD class="text" align="center" width="60">';  if($strName=='Gold'){$data.= number_format($ventegold,4);}if($strName=='Silver'){$data.= number_format($ventesilv,4);}if($strName=='Platinum/USD'){$data.= number_format($venteplat,4);}if($strName=='Palladium/USD'){$data.= number_format($ventepall,4);} $data.='</TD>
+	<TD class="text" align="center" width="60">'; if($strName==config('trading.gold_string')){$data.= number_format($achatgold,4);}if($strName==config('trading.silver_string')){$data.= number_format($achatsilv,4);}if($strName==config('trading.platine_string')){$data.= number_format($achatplat,4);}if($strName==config('trading.pallad_string')){$data.= number_format($achatpall,4);} $data.='</TD>
+	<TD class="text" align="center" width="60">';  if($strName==config('trading.gold_string')){$data.= number_format($ventegold,4);}if($strName==config('trading.silver_string')){$data.= number_format($ventesilv,4);}if($strName==config('trading.platine_string')){$data.= number_format($venteplat,4);}if($strName==config('trading.pallad_string')){$data.= number_format($ventepall,4);} $data.='</TD>
 	<TD class="text hidemobile" align="center" width="70">'.$strChange.'</TD>
 	<TD class="text hidemobile" align="center" width="70">'.$strPercChange.'</TD>
 	<TD class="text hidemobile" align="center" width="70">'.$strOpen.'</TD>
