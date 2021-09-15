@@ -136,9 +136,7 @@ $provider = "ms_dla";
  
 
 $goldbid=$silvbid=$platbid=$pallbid= $ventegold= $ventesilv= $venteplat= $ventepall= $achatgold=$achatsilv=$achatplat=$achatpall= 0; 
-		const  divnumber= 31.10348;
-		const  coff_vente= 0.9975;
-		const  coff_achat= 1.0025;
+ 
 
 	//Loop through and display data for each instrument
 	foreach ($objXMLDom->quote as $quote) { 
@@ -174,24 +172,24 @@ $goldbid=$silvbid=$platbid=$pallbid= $ventegold= $ventesilv= $venteplat= $ventep
 			
 		if($euroask > 0 && $goldbid > 0)
 		{
-		 $ventegold= (( floatval($goldbid) / floatval($euroask) ) / $divnumber )*  coff_vente ; 
-		 $achatgold= (( floatval($goldask) / floatval($eurobid) ) / $divnumber )*  coff_achat ;
+		 $ventegold= (( floatval($goldbid) / floatval($euroask) ) / $divnumber )* config('global.coeff_vente');  
+		 $achatgold= (( floatval($goldask) / floatval($eurobid) ) / $divnumber )* config('global.coeff_achat');
 		 }
 		if($euroask > 0 && $silvbid > 0)
 		{
-		 $ventesilv= (( floatval($silvbid) / floatval($euroask) ) / $divnumber )*  coff_vente ; 
-		 $achatsilv= (( floatval($silvask) / floatval($eurobid) ) / $divnumber )*  coff_achat ;
+		 $ventesilv= (( floatval($silvbid) / floatval($euroask) ) / $divnumber )*  config('global.coeff_vente') ; 
+		 $achatsilv= (( floatval($silvask) / floatval($eurobid) ) / $divnumber )*  config('global.coeff_achat');
 		 }
 		if($euroask > 0 && $platbid > 0)
 		{
-		 $venteplat= (( floatval($platbid) / floatval($euroask) ) / $divnumber )*  coff_vente ; 
-		 $achatplat= (( floatval($platask) / floatval($eurobid) ) / $divnumber )*  coff_achat ;
+		 $venteplat= (( floatval($platbid) / floatval($euroask) ) / $divnumber )*  config('global.coeff_vente') ; 
+		 $achatplat= (( floatval($platask) / floatval($eurobid) ) / $divnumber )*  config('global.coeff_achat');
 		 }
 
 		if($euroask > 0 && $pallbid > 0)
 		{
-		 $ventepall= (( floatval($pallbid) / floatval($euroask) ) / $divnumber )*  coff_vente ; 
-		 $achatpall= (( floatval($pallask) / floatval($eurobid) ) / $divnumber )*  coff_achat ;
+		 $ventepall= (( floatval($pallbid) / floatval($euroask) ) / $divnumber )*  config('global.coeff_vente') ; 
+		 $achatpall= (( floatval($pallask) / floatval($eurobid) ) / $divnumber )*  config('global.coeff_achat');
 		 }		 
 		 
 $data.='
