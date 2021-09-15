@@ -25,7 +25,7 @@
 						 <div class="card shadow mb-4">
                                 <div class="  ">
                                     <a href="#div1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">								
-                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.List of beneficiaries')}} non validés</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Disabled beneficiaries')}}</h6>
 									</a>
                                 </div>
                                 <div   class="card-body">
@@ -34,7 +34,7 @@
 	<div class="col-lg-8 col-sm-6"> </div>
 	<div class="col-lg-4 col-sm-6">
 				 <a  style="float:right;margin-bottom:10px"   href="{{route('beneficiairesvalides')}}"    class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="" >
-                            <span class="fas fa-user-check"></span> Bénéficiaires validés
+                            <span class="fas fa-user-check"></span> {{__('msg.Validated beneficiaries')}}   
                  </a> 
 	</div>
  						
