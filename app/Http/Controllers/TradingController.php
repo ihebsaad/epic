@@ -26,9 +26,10 @@ class TradingController extends Controller
 		
 		
  
-	$provider = "netdania_fxa";
-	$username = "saamp";
-	$password = "1s3wAA8m9Pw";
+	$provider = env('TRADING_provider');
+	$username = env('TRADING_username');
+	$password = env('TRADING_password');
+	
 	
 	$dateTimeFormat = "dd HH:mm:ss"; //The format for returned timestamps
 	$timezone = "CET"; //The timezone to which timestamps should be converted
@@ -136,6 +137,13 @@ $provider = "ms_dla";
  
 
 $goldbid=$silvbid=$platbid=$pallbid= $ventegold= $ventesilv= $venteplat= $ventepall= $achatgold=$achatsilv=$achatplat=$achatpall= 0; 
+		const $divnumber= 31.10348;
+		const $coff_vente= 0.9975;
+		const $coff_achat= 1.0025;
+		const $gold_string='Gold';
+		const $silver_string='Silver';
+		const $plat_string='Platinum/USD';
+		const $pall_string='Palladium/USD';
 	//Loop through and display data for each instrument
 	foreach ($objXMLDom->quote as $quote) { 
 		$strName = $quote["f25"];
@@ -149,42 +157,45 @@ $goldbid=$silvbid=$platbid=$pallbid= $ventegold= $ventesilv= $venteplat= $ventep
 		$strClose = $quote["f1"];
 		$strDateTime = $quote;
 		
-		if($strName=='Gold'){
+		if($strName==$gold_string){
 			$goldbid=floatval($strBid); 
 		    $goldask=floatval($strAsk);
 			}
-		if($strName=='Silver'){
+		if($strName==$silver_string){
 			$silvbid=floatval($strBid); 
 		    $silvask=floatval($strAsk);
 			}
-		if($strName=='Platinum/USD'){
+		if($strName==$plat_string){
 			$platbid=floatval($strBid); 
 		    $platask=floatval($strAsk);
 			}
-		if($strName=='Palladium/USD'){
+		if($strName==$pall_string){
 			$pallbid=floatval($strBid); 
 		    $pallask=floatval($strAsk);
 			}			
+			
+
+			
 		if($euroask > 0 && $goldbid > 0)
 		{
-		 $ventegold= (( floatval($goldbid) / floatval($euroask) ) / 31.10348 )* (0.9975) ; 
-		 $achatgold= (( floatval($goldask) / floatval($eurobid) ) / 31.10348 )* (1.0025) ;
+		 $ventegold= (( floatval($goldbid) / floatval($euroask) ) / $divnumber )* $coff_vente ; 
+		 $achatgold= (( floatval($goldask) / floatval($eurobid) ) / $divnumber )* $coff_achat ;
 		 }
 		if($euroask > 0 && $silvbid > 0)
 		{
-		 $ventesilv= (( floatval($silvbid) / floatval($euroask) ) / 31.10348 )* (0.9975) ; 
-		 $achatsilv= (( floatval($silvask) / floatval($eurobid) ) / 31.10348 )* (1.0025) ;
+		 $ventesilv= (( floatval($silvbid) / floatval($euroask) ) / $divnumber )* $coff_vente ; 
+		 $achatsilv= (( floatval($silvask) / floatval($eurobid) ) / $divnumber )* $coff_achat ;
 		 }
 		if($euroask > 0 && $platbid > 0)
 		{
-		 $venteplat= (( floatval($platbid) / floatval($euroask) ) / 31.10348 )* (0.9975) ; 
-		 $achatplat= (( floatval($platask) / floatval($eurobid) ) / 31.10348 )* (1.0025) ;
+		 $venteplat= (( floatval($platbid) / floatval($euroask) ) / $divnumber )* $coff_vente ; 
+		 $achatplat= (( floatval($platask) / floatval($eurobid) ) / $divnumber )* $coff_achat ;
 		 }
 
 		if($euroask > 0 && $pallbid > 0)
 		{
-		 $ventepall= (( floatval($pallbid) / floatval($euroask) ) / 31.10348 )* (0.9975) ; 
-		 $achatpall= (( floatval($pallask) / floatval($eurobid) ) / 31.10348 )* (1.0025) ;
+		 $ventepall= (( floatval($pallbid) / floatval($euroask) ) / $divnumber )* $coff_vente ; 
+		 $achatpall= (( floatval($pallask) / floatval($eurobid) ) / $divnumber )* $coff_achat ;
 		 }		 
 		 
 $data.='
@@ -192,8 +203,8 @@ $data.='
 	<TD class="text strname" align="left" nowrap width="105">'.$strName.'</TD>
 	<TD class="text hidemobile" align="center" width="60">'.$strBid.'</TD>
 	<TD class="text hidemobile" align="center" width="60">'.$strAsk.'</TD>
-	<TD class="text" align="center" width="60">'; if($strName=='Gold'){$data.= number_format($achatgold,4);}if($strName=='Silver'){$data.= number_format($achatsilv,4);}if($strName=='Platinum/USD'){$data.= number_format($achatplat,4);}if($strName=='Palladium/USD'){$data.= number_format($achatpall,4);} $data.='</TD>
-	<TD class="text" align="center" width="60">';  if($strName=='Gold'){$data.= number_format($ventegold,4);}if($strName=='Silver'){$data.= number_format($ventesilv,4);}if($strName=='Platinum/USD'){$data.= number_format($venteplat,4);}if($strName=='Palladium/USD'){$data.= number_format($ventepall,4);} $data.='</TD>
+	<TD class="text" align="center" width="60">'; if($strName=='Gold'){$data.= number_format($achatgold,4);}if($strName==$silver_string){$data.= number_format($achatsilv,4);}if($strName==$plat_string){$data.= number_format($achatplat,4);}if($strName==$pall_string){$data.= number_format($achatpall,4);} $data.='</TD>
+	<TD class="text" align="center" width="60">';  if($strName=='Gold'){$data.= number_format($ventegold,4);}if($strName==$silver_string){$data.= number_format($ventesilv,4);}if($strName==$plat_string){$data.= number_format($venteplat,4);}if($strName==$pall_string){$data.= number_format($ventepall,4);} $data.='</TD>
 	<TD class="text hidemobile" align="center" width="70">'.$strChange.'</TD>
 	<TD class="text hidemobile" align="center" width="70">'.$strPercChange.'</TD>
 	<TD class="text hidemobile" align="center" width="70">'.$strOpen.'</TD>
