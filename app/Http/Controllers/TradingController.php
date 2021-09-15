@@ -26,10 +26,13 @@ class TradingController extends Controller
 		
 		
  
-	$provider = env('TRADING_provider');
-	$username = env('TRADING_username');
-	$password = env('TRADING_password');
-	
+	//$provider = env('TRADING_provider');
+	$provider = 'netdania_fxa';
+	//$username = env('TRADING_username');
+	$username = 'saamp';
+	//$password = env('TRADING_password');
+	$password = '1s3wAA8m9Pw';
+
 	
 	$dateTimeFormat = "dd HH:mm:ss"; //The format for returned timestamps
 	$timezone = "CET"; //The timezone to which timestamps should be converted
