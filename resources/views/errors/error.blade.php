@@ -62,6 +62,30 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+			
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+ 
+ #errorimg{width:350px!important;}
+ 
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+ 
+ #errorimg{width:280px!important;}
+ 
+}
+			
         </style>
     </head>
     <body>
@@ -78,11 +102,11 @@
 		-->
             <div class="content">
                 <div class="title m-b-md">
-                 <center>   <img width="450" src="{{ URL::asset('public/front/images/error.jpg')}}" alt="error page"/></center>
+                 <center>   <img width="450" id="errorimg" src="{{ URL::asset('public/front/images/error.jpg')}}" alt="error page"/></center>
 
 					<?php echo json_encode($response['message']); ?><br>
-					<span style="font-size:16px"><i><?php echo 'code: <b>'.json_encode($response['status_code']); ?></b></i></span>
-					<a style="background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px; ;border-radius:10px;"  href="{{ url('/home') }}"   >{{__('msg.Home')}}</a>
+					<span style="font-size:16px"><i><?php echo 'code: <b>'.json_encode($response['status_code']); ?></b></i></span><br><br>
+					<a style="font-size:14px;background-color:#e6d685;color:black;font-weight:bold;padding:5px 20px 5px 20px; ;border-radius:10px;"  href="{{ url('/home') }}"   >{{__('msg.Home')}}</a>
                 </div>
 
          
