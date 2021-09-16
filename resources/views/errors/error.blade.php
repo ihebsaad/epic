@@ -102,7 +102,7 @@
 		-->
             <div class="content">
 			
-                 <center>   <img style="margin-top:30px" width="450" id="errorimg" src="{{ URL::asset('public/front/images/error.jpg')}}" alt="error page"/></center>
+                 <center>   <img style="margin-top:30px" width="600" id="errorimg" src="{{ URL::asset('public/front/images/error.jpg')}}" alt="error page"/></center>
 			
                 <div class="title m-b-md">
 
