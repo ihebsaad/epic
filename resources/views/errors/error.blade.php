@@ -81,7 +81,8 @@
                  <center>   <img width="450" src="{{ URL::asset('public/front/images/error.jpg')}}" alt="error page"/></center>
 
 					<?php echo json_encode($response['message']); ?><br>
-					<small><i><?php echo 'code: <b>'.json_encode($response['status_code']); ?></b></i></small>
+					<span style="font-size:16px"><i><?php echo 'code: <b>'.json_encode($response['status_code']); ?></b></i></span>
+					<a style="background-color:#e6d685;color:black;font-weight:bold;padding:5px 10px 5px 10px; ;border-radius:10px;"  href="{{ url('/home') }}"   >{{__('msg.Home'}}</a>
                 </div>
 
          
