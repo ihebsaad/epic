@@ -46,7 +46,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 34px;
             }
 
             .links > a {
@@ -78,8 +78,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    SAAMP<br>
-					<?php echo json_encode($response); ?>
+                     
+					<?php echo json_encode($response['message']); ?>
                 </div>
 
          
