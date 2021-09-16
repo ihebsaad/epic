@@ -78,8 +78,10 @@
 		-->
             <div class="content">
                 <div class="title m-b-md">
-                     
+                 <center>   <img width="450" src="{{ URL::asset('public/front/images/error.jpg')}}" alt="error page"/></center>
+
 					<?php echo json_encode($response['message']); ?>
+					<?php echo 'code: '.json_encode($response['status_code']); ?>
                 </div>
 
          
