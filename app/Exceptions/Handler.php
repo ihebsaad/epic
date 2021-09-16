@@ -51,13 +51,13 @@ class Handler extends ExceptionHandler
         switch($response['status_code'])
         {
             case 403:
-                $response['message'] = ERROR_MSG_403;
+                $response['message'] = 'You are not authorized to view that page!';
                 break;
             case 404:
-                $response['message'] = ERROR_MSG_404;
+                $response['message'] = 'Page Not Found';
                 break;
             default:
-                $response['message'] = ERROR_MSG_UNKNOWN;
+                $response['message'] = 'Something went wrong!';
                 break;
         }
 
