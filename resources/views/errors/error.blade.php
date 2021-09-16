@@ -101,8 +101,10 @@
             @endif
 		-->
             <div class="content">
+			
+                 <center>   <img style="margin-top:30px" width="450" id="errorimg" src="{{ URL::asset('public/front/images/error.jpg')}}" alt="error page"/></center>
+			
                 <div class="title m-b-md">
-                 <center>   <img width="450" id="errorimg" src="{{ URL::asset('public/front/images/error.jpg')}}" alt="error page"/></center>
 
 					<?php echo json_encode($response['message']); ?><br>
 					<span style="font-size:16px"><i><?php echo 'code: <b>'.json_encode($response['status_code']); ?></b></i></span><br><br>
