@@ -4,17 +4,17 @@
  @section('content')
 
 <?php
-use App\Http\Controllers\HomeController ;
+use App\Http\Controllers\ModelesController ;
  $user = auth()->user();  
 
-  $natures=HomeController::natures( );
+  $natures=ModelesController::natures( );
  $Natures=array();
 foreach($natures as $nature)
 {
 	$Natures[$nature->nature_lot]=$nature->libelle;
 }
  
-  $commande=HomeController::detailscommande($id);
+  $commande=ModelesController::detailscommande($id);
   
 
 ?>

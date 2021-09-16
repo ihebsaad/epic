@@ -5,6 +5,7 @@
 
 <?php
 use App\Http\Controllers\HomeController ;
+use App\Http\Controllers\ModelesController ;
  $user = auth()->user(); 
  
  function compare_func($a, $b)
@@ -31,7 +32,7 @@ usort($commandes, "compare_func");
 	
 
 
-   $natures=HomeController::natures2( );
+   $natures=ModelesController::natures2( );
  $Natures=array();
  $NaturesC=array();
 foreach($natures as $nature)

@@ -44,7 +44,26 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        $response = [];
+        $response['exception'] = get_class($exception);
+        $response['status_code'] = $exception->getStatusCode();
+
+        switch($response['status_code'])
+        {
+            case 403:
+                $response['message'] = ERROR_MSG_403;
+                break;
+            case 404:
+                $response['message'] = ERROR_MSG_404;
+                break;
+            default:
+                $response['message'] = ERROR_MSG_UNKNOWN;
+                break;
+        }
+
+        return response()->view('errors.error', compact('response'));		
+    //    return parent::render($request, $exception);
+		
     }
 
     /**

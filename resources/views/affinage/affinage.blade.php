@@ -4,12 +4,12 @@
  @section('content')
 
 <?php
-use App\Http\Controllers\HomeController ;
+use App\Http\Controllers\ModelesController ;
  $user = auth()->user();  
 
-$commandes=HomeController::listecommandes($user['client_id'],'');
-$modeles=HomeController::listemodeles($user['client_id'],'');
-$natures=HomeController::natures( );
+$commandes=ModelesController::listecommandes($user['client_id'],'');
+$modeles=ModelesController::listemodeles($user['client_id'],'');
+$natures=ModelesController::natures( );
 //dd($natures );
 $Natures=array();
 foreach($natures as $nature)

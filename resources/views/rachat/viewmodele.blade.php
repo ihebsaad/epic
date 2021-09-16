@@ -4,10 +4,10 @@
  @section('content')
 
 <?php
-use App\Http\Controllers\HomeController ;
+use App\Http\Controllers\ModelesController ;
  $user = auth()->user();  
 
-$natures=HomeController::natures2( );
+$natures=ModelesController::natures2( );
 //dd($natures );
 $Natures=array();
 foreach($natures as $nature)

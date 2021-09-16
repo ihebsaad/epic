@@ -73,25 +73,25 @@ Route::get('/affinage', 'PagesController@affinage')->name('affinage');
 Route::get('/modele', 'PagesController@modele')->name('modele');
 Route::get('/viewmodele/{id}', 'PagesController@viewmodele')->name('viewmodele');
 Route::get('/commande/{id}', 'PagesController@commande')->name('commande');
-Route::post('/addmodele', 'HomeController@addmodele')->name('addmodele');
-Route::post('/updatemodele', 'HomeController@updatemodele')->name('updatemodele');
-Route::post('/validatemodels', 'HomeController@validatemodels')->name('validatemodels');
-Route::post('/validatemodelsliv', 'HomeController@validatemodelsliv')->name('validatemodelsliv');
-Route::post('/validateproducts', 'HomeController@validateproducts')->name('validateproducts');
+Route::post('/addmodele', 'ModelesController@addmodele')->name('addmodele');
+Route::post('/updatemodele', 'ModelesController@updatemodele')->name('updatemodele');
+Route::post('/validatemodels', 'ModelesController@validatemodels')->name('validatemodels');
+Route::post('/validatemodelsliv', 'ModelesController@validatemodelsliv')->name('validatemodelsliv');
+Route::post('/validateproducts', 'ModelesController@validateproducts')->name('validateproducts');
 
 
 Route::get('/laboratoire', 'PagesController@laboratoire')->name('laboratoire');
 Route::get('/viewmodelelab/{id}', 'PagesController@viewmodelelab')->name('viewmodelelab');
 Route::get('/modelelab', 'PagesController@modelelab')->name('modelelab');
 Route::get('/commandelab/{id}', 'PagesController@commandelab')->name('commandelab');
-Route::post('/addmodelelab', 'HomeController@addmodelelab')->name('addmodelelab');
-Route::post('/updatemodelelab', 'HomeController@updatemodelelab')->name('updatemodelelab');
+Route::post('/addmodelelab', 'ModelesController@addmodelelab')->name('addmodelelab');
+Route::post('/updatemodelelab', 'ModelesController@updatemodelelab')->name('updatemodelelab');
 
 
 Route::get('/rachat', 'PagesController@rachat')->name('rachat');
 Route::get('/modelermp', 'PagesController@modelermp')->name('modelermp');
-Route::post('/addmodelermp', 'HomeController@addmodelermp')->name('addmodelermp');
-Route::post('/updatemodelermp', 'HomeController@updatemodelermp')->name('updatemodelermp');
+Route::post('/addmodelermp', 'ModelesController@addmodelermp')->name('addmodelermp');
+Route::post('/updatemodelermp', 'ModelesController@updatemodelermp')->name('updatemodelermp');
 Route::get('/commandermp/{id}', 'PagesController@commandermp')->name('commandermp');
 Route::get('/viewmodelermp/{id}', 'PagesController@viewmodelermp')->name('viewmodelermp');
 
@@ -251,8 +251,8 @@ Route::get('/detailsclient/{id_cl}/{lg}', 'HomeController@detailsclient')->name(
 Route::get('/requete1/{code}', 'HomeController@requete1')->name('requete1');
 Route::get('/requete2', 'HomeController@requete2')->name('requete2');
 
-Route::post('/entetecommande', 'HomeController@entetecommande')->name('entetecommande');
-Route::post('/lignecommande', 'HomeController@lignecommande')->name('lignecommande');
+Route::post('/entetecommande', 'ModelesController@entetecommande')->name('entetecommande');
+Route::post('/lignecommande', 'ModelesController@lignecommande')->name('lignecommande');
 
 Route::get('/listecommandes/{id_cl}/{lg}', 'HomeController@listecommandes')->name('listecommandes');
 Route::get('/listemodeles/{id_cl}/{lg}', 'HomeController@listemodeles')->name('listemodeles');
@@ -260,16 +260,16 @@ Route::get('/detailscommande/{id_cmd}/{id_cl}/{lg}', 'HomeController@detailscomm
 Route::get('/tarifdetails/{nature_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{poids}/{poids_cendres}/{id_cl}/{lg}', 'HomeController@tarifdetails')->name('tarifdetails');
 Route::get('/tarifforfait/{nature_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{poids}/{id_cl}/{lg}', 'HomeController@tarifforfait')->name('tarifforfait');
 
-Route::get('/listeprestations/{id_cl}/{lg}', 'HomeController@listeprestations')->name('listeprestations');
-Route::get('/listecommandeslabo/{id_cl}/{lg}', 'HomeController@listecommandeslabo')->name('listecommandeslabo');
-Route::get('/listemodeleslabo/{id_cl}/{lg}', 'HomeController@listemodeleslabo')->name('listemodeleslabo');
-Route::get('/detailscommandelabo/{id_cmd}/{id_cl}/{lg}', 'HomeController@detailscommandelabo')->name('detailscommandelabo');
+Route::get('/listeprestations/{id_cl}/{lg}', 'ModelesController@listeprestations')->name('listeprestations');
+Route::get('/listecommandeslabo/{id_cl}/{lg}', 'ModelesController@listecommandeslabo')->name('listecommandeslabo');
+Route::get('/listemodeleslabo/{id_cl}/{lg}', 'ModelesController@listemodeleslabo')->name('listemodeleslabo');
+Route::get('/detailscommandelabo/{id_cmd}/{id_cl}/{lg}', 'ModelesController@detailscommandelabo')->name('detailscommandelabo');
 //Route::get('/tariflabo/{id_cl}/{choix_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{lg}', 'HomeController@tariflabo')->name('tariflabo');
 
 
-Route::get('/listecommandesrmp/{id_cl}/{lg}', 'HomeController@listecommandesrmp')->name('listecommandesrmp');
-Route::get('/listemodelesrmp/{id_cl}/{lg}', 'HomeController@listemodelesrmp')->name('listemodelesrmp');
-Route::get('/detailscommandermp/{id_cmd}/{id_cl}/{lg}', 'HomeController@detailscommandermp')->name('detailscommandermp');
+Route::get('/listecommandesrmp/{id_cl}/{lg}', 'ModelesController@listecommandesrmp')->name('listecommandesrmp');
+Route::get('/listemodelesrmp/{id_cl}/{lg}', 'ModelesController@listemodelesrmp')->name('listemodelesrmp');
+Route::get('/detailscommandermp/{id_cmd}/{id_cl}/{lg}', 'ModelesController@detailscommandermp')->name('detailscommandermp');
 //Route::get('/tarifrmp/{nature_id}/{titre_or}/{titre_argent}/{titre_platine}/{titre_palladium}/{poids}/{id_cl}/{lg}', 'HomeController@tarifrmp')->name('tarifrmp');
 
 

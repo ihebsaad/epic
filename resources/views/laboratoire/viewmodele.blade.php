@@ -4,10 +4,10 @@
  @section('content')
 
 <?php
-use App\Http\Controllers\HomeController ;
+use App\Http\Controllers\ModelesController ;
   $user = auth()->user();  
  
-$prestations=HomeController::listeprestations($user['client_id'] );
+$prestations=ModelesController::listeprestations($user['client_id'] );
 $PrestLibs=array();
 $PrestTypes=array();
 $PrestTypes2=array();
@@ -18,7 +18,7 @@ $PrestTypes2=array();
 	$PrestTypes[$prest->type_id]=$prest->type_lib;
  }
 // dd($PrestLibs);
-  $natures=HomeController::natures2( );
+  $natures=ModelesController::natures2( );
  $Natures=array();
  $NaturesC=array();
 foreach($natures as $nature)

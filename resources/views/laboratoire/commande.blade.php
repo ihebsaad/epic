@@ -4,12 +4,12 @@
  @section('content')
 
 <?php
-use App\Http\Controllers\HomeController ;
+use App\Http\Controllers\ModelesController ;
  $user = auth()->user();  
 
-$commandes=HomeController::listecommandeslabo($user['client_id'] );
-$modeles=HomeController::listemodeleslabo($user['client_id'] );
-$prestations=HomeController::listeprestations($user['client_id'] );
+$commandes=ModelesController::listecommandeslabo($user['client_id'] );
+$modeles=ModelesController::listemodeleslabo($user['client_id'] );
+$prestations=ModelesController::listeprestations($user['client_id'] );
 //dd($natures );
 $PrestLibs=array();
 $PrestTypes=array();
@@ -19,7 +19,7 @@ $PrestTypes=array();
 	$PrestTypes[$prest->type_id]=$prest->type_lib;
  }
 //sp_accueil_liste_nature_lot
-$natures=HomeController::natures2( );
+$natures=ModelesController::natures2( );
 //dd($natures );
 $Natures=array();
 foreach($natures as $nature)
@@ -27,7 +27,7 @@ foreach($natures as $nature)
 	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
 }
  
-  $commande=HomeController::detailscommandelabo($id);
+  $commande=ModelesController::detailscommandelabo($id);
   
 
 ?>
