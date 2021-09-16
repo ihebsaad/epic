@@ -13,7 +13,7 @@
 
 
 
-Route::get('/', 'PagessController@welcome')->name('welcome');
+Route::get('/', 'PagesController@welcome')->name('welcome');
 Route::get('/verify', 'UsersController@verify')->name('verify');
 
 
