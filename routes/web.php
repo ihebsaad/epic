@@ -11,9 +11,11 @@
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
 
-
-Route::get('/', 'PagesController@welcome')->name('welcome');
+//Route::get('/', 'PagesController@welcome')->name('welcome');
 Route::get('/verify', 'UsersController@verify')->name('verify');
 
 
