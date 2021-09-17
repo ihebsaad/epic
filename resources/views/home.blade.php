@@ -44,7 +44,7 @@ foreach($natures as $nature)
 }
  
 ?>
-<b>{{__('msg.welcome to your saamp page')}}</b><br>
+<b>{{__('msg.welcome to your saamp page')}} ...</b><br>
 
 <br>
 <?php if (session('hasClonedUser')==1){
