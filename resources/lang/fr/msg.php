@@ -425,5 +425,9 @@ return [
 	"List of users"=>"Liste des utilisateurs",	
 	"View user"=>"Afficher l'utilisateur",	
 	"Validated beneficiaries"=>"Bénéficiaires validés",	
-	"Disabled beneficiaries"=>"Bénéficiaires invalidés",	
+	"Disabled beneficiaries"=>"Bénéficiaires invalidés",
+	"You are not authorized to view that page!"=>"Vous n'êtes pas autorisé à voir cette page !",
+	"Page Not Found"=>"Page introuvable",
+	"Something went wrong!"=>"Erreur est survenue!",
+ 		
  ];

@@ -417,5 +417,8 @@ return [
 	"View user"=>"View user",	
 	"Validated beneficiaries"=>"Bénéficiaires validés",	
 	"Disabled beneficiaries"=>"Bénéficiaires invalidés",
+	"You are not authorized to view that page!"=>"You are not authorized to view that page!",
+	"Page Not Found"=>"Page Not Found",
+	"Something went wrong!"=>"Something went wrong!",
  	
  ];
