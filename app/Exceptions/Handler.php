@@ -42,10 +42,7 @@ class Handler extends ExceptionHandler
         $this->sendEmail($exception); // sends an email
     }
 		
-		
-        parent::report($exception);
-		
-		return response()->view('errors.error', compact('response'));		
+     return   parent::report($exception);
 
     }
 
@@ -62,7 +59,7 @@ class Handler extends ExceptionHandler
 		return parent::render($request, $exception);
 		}else{		
         $response = [];
-     /*   $response['exception'] = get_class($exception);
+        $response['exception'] = get_class($exception);
         $response['status_code'] = $exception->getStatusCode();
 
          switch($response['status_code'])
@@ -77,7 +74,7 @@ class Handler extends ExceptionHandler
                 $response['message'] = 'Something went wrong!';
                 break;
         }
-	  */
+	  
          return response()->view('errors.error', compact('response'));		
         }
 		
