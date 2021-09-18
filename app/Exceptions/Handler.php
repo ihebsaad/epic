@@ -44,6 +44,9 @@ class Handler extends ExceptionHandler
 		
 		
         parent::report($exception);
+		
+		return response()->view('errors.error', compact('response'));		
+
     }
 
     /**
