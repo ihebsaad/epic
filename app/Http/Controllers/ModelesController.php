@@ -22,11 +22,7 @@ use Illuminate\Support\Facades\App;
 
 class ModelesController extends Controller
 {
-	
-	
-	
-
-	
+	 
 	public static function detailscommande($id_cmd    )
     {
    	  DB::select("SET @p0='$id_cmd' ;");
@@ -624,7 +620,6 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
  $Order=DB::table('orders')->where('user',$user->id)->where('status','cart')->first( );
  $produits=DB::table('products')->where('orderid',$Order->id)->get();
 
- 
 $quantite= count($produits); // nombre de produits ???
 $poids=$Order->weight;
 $or=$Order->gold;
@@ -794,8 +789,6 @@ DB::table('products')->where('orderid',$Order->id)->update( array( 'status'=>'va
 	}		
 			
 	
-		
-	 
 	public static function tarifrmp($nature_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$poids )
     { 
    	   DB::select("SET @p0='$nature_id' ;");
@@ -858,33 +851,33 @@ if (!empty($selectResult) && isset($selectResult[0]->cmde_id)) {
 	 
  }
 	  
-  public function lignecommande(Request $request)
-{
-$produit_id  = intval($request->get('produit_id'));	
-$type_id   = intval($request->get('type_id'));
-$alliage_id   = intval($request->get('alliage_id'));
-$etat_id   = intval($request->get('etat_id'));
-$comp_id   = intval($request->get('comp_id'));
-$comp_val   = floatval($request->get('comp_val'));
-$quantite = floatval($request->get('quantite'));
-$poids  = floatval($request->get('poids'));
-$tarif   = floatval($request->get('tarif'));	
-$mode_facturation    = intval($request->get('mode_facturation')); 
-$cmd_id    = intval($request->get('cmd_id'));
+	public function lignecommande(Request $request)
+	{
+	$produit_id  = intval($request->get('produit_id'));	
+	$type_id   = intval($request->get('type_id'));
+	$alliage_id   = intval($request->get('alliage_id'));
+	$etat_id   = intval($request->get('etat_id'));
+	$comp_id   = intval($request->get('comp_id'));
+	$comp_val   = floatval($request->get('comp_val'));
+	$quantite = floatval($request->get('quantite'));
+	$poids  = floatval($request->get('poids'));
+	$tarif   = floatval($request->get('tarif'));	
+	$mode_facturation    = intval($request->get('mode_facturation')); 
+	$cmd_id    = intval($request->get('cmd_id'));
 
- DB::select("SET @p0='$produit_id' ;");
- DB::select("SET @p1='$type_id' ;");
- DB::select("SET @p2='$alliage_id' ;");
- DB::select("SET @p3='$etat_id' ;");
- DB::select("SET @p4='$comp_id' ;");
- DB::select("SET @p5='$comp_val' ;");
- DB::select("SET @p6='$quantite' ;");
- DB::select("SET @p7='$poids' ;");
- DB::select("SET @p8='$tarif' ;");
- DB::select("SET @p9='$mode_facturation' ;");
- DB::select("SET @p10='$cmd_id' ;");
+	DB::select("SET @p0='$produit_id' ;");
+	DB::select("SET @p1='$type_id' ;");
+	DB::select("SET @p2='$alliage_id' ;");
+	DB::select("SET @p3='$etat_id' ;");
+	DB::select("SET @p4='$comp_id' ;");
+	DB::select("SET @p5='$comp_val' ;");
+	DB::select("SET @p6='$quantite' ;");
+	DB::select("SET @p7='$poids' ;");
+	DB::select("SET @p8='$tarif' ;");
+	DB::select("SET @p9='$mode_facturation' ;");
+	DB::select("SET @p10='$cmd_id' ;");
 
-  $result=  DB::select ("  CALL `SP_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10 ); ");
+	$result=  DB::select ("  CALL `SP_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10 ); ");
 	  
 	  if ($result!= null){
 	 return response()->json(  $result ,200,array(),JSON_PRETTY_PRINT);
@@ -894,7 +887,6 @@ $cmd_id    = intval($request->get('cmd_id'));
 	  }
 	 
 	}
-
 	
 	
 }

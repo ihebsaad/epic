@@ -12,9 +12,7 @@ class TradingController extends Controller
         $this->middleware('auth');
     } 
 	 
-	 
-	 
-	 
+	  
 	 public	function getXMLSource($url)
 	{
 		$str = file_get_contents($url);
@@ -22,18 +20,13 @@ class TradingController extends Controller
 	}
 	
 	public function listetrading()
-	{
-		
-		
- 
+	{ 
 	$provider = config('trading.provider');
 	$username = config('trading.username');
 	$password = config('trading.password');
 	
-	$dateTimeFormat = "dd HH:mm:ss"; //The format for returned timestamps
+	$dateTimeFormat = "HH:mm:ss"; //The format for returned timestamps
 	$timezone = "CET"; //The timezone to which timestamps should be converted
-
- 
 
 	//Returns a full text-representation of the XML document
 	//with the given URL.
@@ -55,28 +48,7 @@ class TradingController extends Controller
 	$source = $this->getXMLSource("http://balancer.netdania.com/StreamingServer/StreamingServer?xml=price&group=".$username."&pass=".$password."&source=".$provider."&symbols=".$strSymbols."&fields=10|11|14|15|25|4|2|3|1&time=".$dateTimeFormat."&tzone=".$timezone);
 	//Load XML data source
 	$objXMLDom = new \SimpleXMLElement($source);
-	
- 
- 
- $data='';
- $data.='
-<TABLE border="0" >
-<TR>
-	<TD class="font-weight-bold trade" align="left" nowrap width="80">Name</TD>
-	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="60">Bid</TD>
-	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="60">Ask</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="60">Purchase</TD>
-	<TD class="font-weight-bold trade" align="center" nowrap width="60">Sale</TD>
-	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Change</TD>
-	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="85">% Change</TD>
-	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Open</TD>
-	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">High</TD>
-	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Low</TD>
-	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="70">Close</TD>
-	<TD class="font-weight-bold trade hidemobile" align="center" nowrap width="80">Time</TD>
-</TR>
-';
-
+	 
 $euroask= $eurobid=0;
 	//Loop through and display data for each instrument
 	foreach ($objXMLDom->quote as $quote) {
@@ -96,22 +68,6 @@ $euroask= $eurobid=0;
 					$euroask=floatval($strAsk);
 					$eurobid=floatval($strBid);
 				}
-
-$data.=' 
-<TR>
-	<TD class="text strname" align="left" nowrap>'.$strName.'</TD>
-	<TD class="text hidemobile" align="center">'.$strBid.'</TD>
-	<TD class="text hidemobile" align="center">'.$strAsk.'</TD>
-	<td></td>
-	<td></td>
-	<TD class="text hidemobile" align="center">'.$strChange.'</TD>
-	<TD class="text hidemobile" align="center">'.$strPercChange.'</TD>
-	<TD class="text hidemobile" align="center">'.$strOpen.'</TD>
-	<TD class="text hidemobile" align="center">'.$strHigh.'</TD>
-	<TD class="text hidemobile" align="center">'.$strLow.'</TD>
-	<TD class="text hidemobile" align="center">'.$strClose.'</TD>
-	<TD class="text hidemobile time" align="center">'.$strDateTime.'</TD>
-</TR>';
  
 	}
 	$xml = null;
@@ -131,13 +87,9 @@ $provider = "ms_dla";
 	$objXMLDom = new \SimpleXMLElement($source);
 	//echo "http://balancer.netdania.com/StreamingServer/StreamingServer?xml=price&group=".$username."&pass=".$password."&source=".$provider."&symbols=".$strSymbols."&fields=10|11|14|15|25|4|2|3|1&time=".$dateTimeFormat."&tzone=".$timezone;
  
- 
-
- 
-
+   
 $goldbid=$silvbid=$platbid=$pallbid= $ventegold= $ventesilv= $venteplat= $ventepall= $achatgold=$achatsilv=$achatplat=$achatpall= 0; 
- 
-
+  
 	//Loop through and display data for each instrument
 	foreach ($objXMLDom->quote as $quote) { 
 		$strName = $quote["f25"];
@@ -191,30 +143,11 @@ $goldbid=$silvbid=$platbid=$pallbid= $ventegold= $ventesilv= $venteplat= $ventep
 		 $ventepall= (( floatval($pallbid) / floatval($euroask) ) / config('trading.div_number') )*  config('trading.coeff_vente') ; 
 		 $achatpall= (( floatval($pallask) / floatval($eurobid) ) / config('trading.div_number') )*  config('trading.coeff_achat');
 		 }		 
-		 
-$data.='
-<TR>
-	<TD class="text strname" align="left" nowrap width="105">'.$strName.'</TD>
-	<TD class="text hidemobile" align="center" width="60">'.$strBid.'</TD>
-	<TD class="text hidemobile" align="center" width="60">'.$strAsk.'</TD>
-	<TD class="text" align="center" width="60">'; if($strName==config('trading.gold_string')){$data.= number_format($achatgold,4);}if($strName==config('trading.silver_string')){$data.= number_format($achatsilv,4);}if($strName==config('trading.platine_string')){$data.= number_format($achatplat,4);}if($strName==config('trading.pallad_string')){$data.= number_format($achatpall,4);} $data.='</TD>
-	<TD class="text" align="center" width="60">';  if($strName==config('trading.gold_string')){$data.= number_format($ventegold,4);}if($strName==config('trading.silver_string')){$data.= number_format($ventesilv,4);}if($strName==config('trading.platine_string')){$data.= number_format($venteplat,4);}if($strName==config('trading.pallad_string')){$data.= number_format($ventepall,4);} $data.='</TD>
-	<TD class="text hidemobile" align="center" width="70">'.$strChange.'</TD>
-	<TD class="text hidemobile" align="center" width="70">'.$strPercChange.'</TD>
-	<TD class="text hidemobile" align="center" width="70">'.$strOpen.'</TD>
-	<TD class="text hidemobile" align="center" width="70">'.$strHigh.'</TD>
-	<TD class="text hidemobile" align="center" width="70">'.$strLow.'</TD>
-	<TD class="text hidemobile" align="center" width="70">'.$strClose.'</TD>
-	<TD class="text hidemobile time" align="center" width="80">'.$strDateTime.'</TD>
-</TR>';
+ 
 	}
 	$xml = null;
 
-
-$data.='
-</TABLE>';
- 
- 
+ $data2='';
  $achatgold=$achatgold*1000;
  $achatsilv=$achatsilv*1000;
  $achatplat=$achatplat*1000;
@@ -223,28 +156,12 @@ $data.='
  $ventesilv=$ventesilv*1000;
  $venteplat=$venteplat*1000;
  $ventepall=$ventepall*1000;
-$data2=''; 
+ 
 $data2.='
-<h3 style="text-align:center">Cours des métaux</h3> 
- <table   id="tabmetal" border="0">
- <tr class="headmetal">
- <td class="tleft" > €/kg </td><td  ><center><div id="gold" class="pb-10">'. __("msg.Gold").'</div></center></td><td><center><div id="silver" class="pb-10">'. __("msg.Silver").' </div></center></td><td><center><div id="platine" class="pb-10">'. __("msg.Platinum").'</center></div></td><td><center><div id="pallad" class="pb-10">'.__("msg.Palladium").'</center></div></td>
- </tr>
- <tr  >
- <td class="tleft" >'.__("msg.Time").'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td>
- </tr>
-  <tr  >
- <td class="tleft" >'.__("msg.Purchase").'</td><td>'.number_format($achatgold,0,'',' ').'</td><td>'.number_format($achatsilv,0,'',' ').'</td><td>'.number_format($achatplat,0,'',' ').'</td><td>'.number_format($achatpall,0,'',' ').'</td>
- </tr>
-   <tr >
- <td class="tleft" >'.__("msg.Sale").'</td><td>'.number_format($ventegold,0,'',' ').'</td><td>'.number_format($ventesilv,0,'',' ').'</td><td>'.number_format($venteplat,0,'',' ').'</td><td>'.number_format($ventepall,0,'',' ').'</td>
- </tr>
- </table> ';
+<tr ><td class="tleft" >'.__("msg.Time").'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td><td>'.$strDateTime.'</td> </tr>
+ <tr><td class="tleft" >'.__("msg.Purchase").'</td><td>'.number_format($achatgold,0,'',' ').'</td><td>'.number_format($achatsilv,0,'',' ').'</td><td>'.number_format($achatplat,0,'',' ').'</td><td>'.number_format($achatpall,0,'',' ').'</td></tr> 
+ <tr><td class="tleft" >'.__("msg.Sale").'</td><td>'.number_format($ventegold,0,'',' ').'</td><td>'.number_format($ventesilv,0,'',' ').'</td><td>'.number_format($venteplat,0,'',' ').'</td><td>'.number_format($ventepall,0,'',' ').'</td></tr>';
  	return $data2;	
-		
-		
-		
-		
 		
 		
 	}

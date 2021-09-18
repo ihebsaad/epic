@@ -43,10 +43,24 @@
 
  
 									</div>
-									<div class="col-sm-12 col-lg-6" id="trading" style="width:100%;min-height:300px;">
-									<center>	<img height="50px"  src="{{ URL::asset('public/img/loader.gif')}}" ><br>
+									<div class="col-sm-12 col-lg-6"   style="width:100%;min-height:300px;">
+									<h3 style="text-align:center">Cours des métaux</h3>
+									
+									<table   id="tabmetal" border="0">
+									<thead class="headmetal"  >
+									<td class="tleft" > €/kg </td><td  ><center><div id="gold" class="pb-10">{{ __("msg.Gold")}}</div></center></td><td><center><div id="silver" class="pb-10">{{ __("msg.Silver")}}</div></center></td><td><center><div id="platine" class="pb-10">{{ __("msg.Platinum") }}</center></div></td><td><center><div id="pallad" class="pb-10">{{__("msg.Palladium") }}</center></div></td>
+									</thead>
+									<tbody id="trading">
+									<tr >
+ 									<td colspan="5"> <center>	<img height="50px"  src="{{ URL::asset('public/img/loader.gif')}}" ><br>
 									<b>chargement des cours saamp.com ... merci de patienter</b> 
-									<center>	
+									</center>
+ 									</td></tr>
+									</tbody>
+									
+													
+									</table>
+									
 									</div>
 								
 								</div>
@@ -228,6 +242,8 @@
 								
 								
 <style>	
+
+#tabmetal td , #tabmetal th{width:100px!important;}
 	 .nav-link.active {font-weight:bold!important;color:#354f9b!important;}	
 
  label{color:black;font-weight:bold;}
