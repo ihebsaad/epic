@@ -41,10 +41,10 @@ foreach($natures as $nature)
 	$Natures[$nature->nature_lot_ident]=$nature->nature_lot_nom;
 	$NaturesC[$nature->nature_lot_ident]=$nature->nature_lot_commentaire;
 	//}
-}
+ 
  
 ?>
-<b>{{__('msg.welcome to your saamp page')}} ...</b><br>
+<b>{{__('msg.welcome to your saamp page')}} </b><br>
 
 <br>
 <?php if (session('hasClonedUser')==1){
