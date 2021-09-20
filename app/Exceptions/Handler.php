@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler
 		$response = [];
 		$fe = FlattenException::create($exception);
 		$code= $fe->getStatusCode();
-		$response['code']=$code;
+		$response['status_code']=$code;
      
          switch($code)
         {
