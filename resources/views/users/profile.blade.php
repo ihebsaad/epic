@@ -4,7 +4,7 @@
   <?php
 use App\Http\Controllers\HomeController ;
 
-$cl_ident=$user->client_id 
+$cl_ident=$user->client_id ;
 $client=DB::table('client')->where('cl_ident',$cl_ident)->first();
   $metals=DB::select('CALL `sp_referentiel_metal_defaut`();') ;
   //dd($metals);
