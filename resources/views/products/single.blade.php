@@ -511,12 +511,19 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 // != 'undefined'				
 				//comp_val
 				poids=parseFloat(data.poids_u);
- 				$('#poids_u').html( poids+' g' );
+				
 				poidst= poids * qte;
 				poidst= poidst.toFixed(2);
 				poidst= parseFloat(poidst);
 				
-				 if(comp_val!=0){ poidst = ( poidst/ mesure2) * comp_val ;  }
+				 if(comp_val!=0){
+					 poidst = ( poidst/ mesure2) * comp_val ;   
+				     poids = ( poids/ mesure2) * comp_val ; 
+				   }
+				
+				 $('#poids_u').html( poids+' g' );
+
+				
 				
  				$('#poidst').html(poidst +' g');
 				 $('#article').val( parseInt(data.produit));
