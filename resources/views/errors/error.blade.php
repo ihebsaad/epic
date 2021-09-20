@@ -72,6 +72,7 @@
 @media (min-width: 768px) and (max-width: 1024px) {
  
  #errorimg{width:450px!important;}
+ #logo{width:150px!important;}
  
 }
 
@@ -83,7 +84,8 @@
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
  
  #errorimg{width:450px!important;}
- 
+  #logo{width:130px!important;}
+
 }
 /*
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
@@ -92,8 +94,9 @@
 
 @media (min-width: 481px) and (max-width: 767px) {
  
- #errorimg{width:350px!important;}
- 
+ #errorimg{width:300px!important;}
+ #logo{display:none;}
+
 }
 
 /*
@@ -103,14 +106,17 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
  
- #errorimg{width:280px!important;}
- 
+ #errorimg{width:200px!important;}
+ #logo{display:none;}
+
 }
 			
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+		 <div class=" links"  style="position: absolute;left: 10px;top: 18px;">  <img id="logo" src="{{ URL::asset('public/front/images/logo.png')}}" alt="Logo"> </div>
+
          <!--   @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
