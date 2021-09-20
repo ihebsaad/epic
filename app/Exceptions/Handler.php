@@ -59,6 +59,8 @@ class Handler extends ExceptionHandler
 		return parent::render($request, $exception);
 		}else{		
         $response = [];
+		
+		if (method_exists('getStatisCode', $e) {
         $response['exception'] = get_class($exception);
         $response['status_code'] = $exception->getStatusCode();
 
@@ -75,9 +77,16 @@ class Handler extends ExceptionHandler
                 break;
         }
 	  
-         return response()->view('errors.error', compact('response'));		
-        }
+        }else{
+		$response['exception'] = get_class($exception);
+        $response['status_code'] = 500;
+		$response['message'] = __('msg.Something went wrong!');	
+			
+		}
 		
+		 return response()->view('errors.error', compact('response'));		
+
+		}
     }
 
     /**
