@@ -515,6 +515,9 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				poidst= poids * qte;
 				poidst= poidst.toFixed(2);
 				poidst= parseFloat(poidst);
+				
+				 if(comp_val!=0){ poidst = ( poidst/ mesure2) * comp_val ;  }
+				
  				$('#poidst').html(poidst +' g');
 				 $('#article').val( parseInt(data.produit));
 				 if( typeof (data.prix)   !== 'undefined' )
