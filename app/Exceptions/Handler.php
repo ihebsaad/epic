@@ -57,14 +57,14 @@ class Handler extends ExceptionHandler
     {
 		if(env('APP_DEBUG')==true){
 		return parent::render($request, $exception);
-		}else{		
-        $response = [];
-		
-		if (method_exists('getStatisCode', $e) {
-        $response['exception'] = get_class($exception);
-        $response['status_code'] = $exception->getStatusCode();
-
-         switch($response['status_code'])
+		}else{
+			
+		$response = [];
+		$fe = FlattenException::create($e);
+		$code= $fe->getStatusCode();
+		$response['code']=$code;
+     
+         switch($code)
         {
             case 403:
                 $response['message'] =  __('msg.You are not authorized to view that page!');
@@ -76,14 +76,7 @@ class Handler extends ExceptionHandler
                 $response['message'] = __('msg.Something went wrong!');
                 break;
         }
-	  
-        }else{
-		$response['exception'] = get_class($exception);
-        $response['status_code'] = 500;
-		$response['message'] = __('msg.Something went wrong!');	
-			
-		}
-		
+	  		
 		 return response()->view('errors.error', compact('response'));		
 
 		}
