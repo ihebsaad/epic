@@ -618,6 +618,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
  $langue=$user['lg'];
  
  $Order=DB::table('orders')->where('user',$user->id)->where('status','cart')->first( );
+ if (isset($Order)){
  $produits=DB::table('products')->where('orderid',$Order->id)->get();
 
 $quantite= count($produits); // nombre de produits ???
@@ -698,7 +699,7 @@ $mode_facturation    = intval($produit->fact_id );
 DB::table('products')->where('orderid',$Order->id)->update( array( 'status'=>'valide' ));
 } //cmd_id>0
 
-  
+ }// isset order
  
 }
 
