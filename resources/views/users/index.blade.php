@@ -40,38 +40,34 @@
             <thead>
             <tr id="headtable">
                 <th style="width:10%">N°</th>
-                <th style="width:20%">{{__('msg.Name')}}</th>
-                <th style="width:20%">{{__('msg.Client ID')}}</th>
-                <th style="width:20%">{{__('msg.Email')}}</th>
-                <th style="width:20%">{{__('msg.Activity')}}</th>
-                <th style="width:10%">{{__('msg.Login')}}</th>
-                <th style="width:10%">{{__('msg.Delete')}}</th>
+                <th style="width:15%">{{__('msg.Name')}}</th>
+                <th style="width:15%">{{__('msg.Client ID')}}</th>
+                <th style="width:15%">SIRET</th>
+                <th style="width:20%">TVA</th>
+                <th style="width:15%">{{__('msg.Activity')}}</th>
+                <th style="width:10%">{{__('msg.Actions')}}</th>
               </tr>
          
             </thead>
             <tbody>
             @foreach($users as $user)
    
-
+                <?php $client= \App\Client::where('cl_ident',$user->client_id)->get(); ?>
                 <tr>
                     <td style="width:10%" >{{$user->id}}</td>
-                    <td style="width:20%" ><a title="{{__('msg.View user')}}" href="{{action('UsersController@view', $user->id )}}" >{{$user->name}} {{$user->lastname}}</a></td>
-                     <td style="width:20%" >{{$user->client_id}}</td>
-                     <td style="width:20%" > {{$user->email}} </td>
-                     <td style="width:20%" > {{$user->Activity}} </td>
-                   
-					<td style="width:10%"   >
-						<center> <a title="{{__('msg.Login')}}"   href="{{action('UsersController@loginAs', $user->id )}}" class="btn btn-success btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Login')}}" >
-                                <span class="far fa-eye"></span>    
-                            </a></center>					
-					</td>
+                    <td style="width:15%" ><a title="{{__('msg.View user')}}" href="{{action('UsersController@view', $user->id )}}" >{{$user->name}} {{$user->lastname}}</a></td>
+                     <td style="width:15%" >{{$user->client_id}}</td>
+                     <td style="width:15%"   >{!!isset($client->siret)?$client->siret:''!!}</td>
+                     <td style="width:20%" >{!!isset($client->siret)?$client->siret:''!!}</td>
+                     <td style="width:15%" > {{$user->activity}} </td>
                     <td style="width:10%"   >
 
  <?php $User=auth()->user();
 if($User['user_type']=='admin'){ ?>
-                  <!--    <a   href="{{action('UsersController@view', $user['id'])}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Valider" >
-                            <span class="far fa-eye" ></span> {{__('msg.View')}}
-                        </a> -->
+						<center> <a title="{{__('msg.Login')}}"   href="{{action('UsersController@loginAs', $user->id )}}" class="btn btn-success btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="{{__('msg.Login')}}" >
+                                <span class="far fa-eye"></span>    
+                            </a></center><br>
+
 					<center>	 <a title="{{__('msg.Delete')}}" onclick="return confirm('Êtes-vous sûrs ?')" href="{{action('UsersController@destroy', $user->id )}}" class="btn btn-danger btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Supprimer" >
                                 <span class="fa fa-fw fa-trash-alt"></span>    
                             </a></center>
