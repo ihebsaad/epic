@@ -52,7 +52,7 @@
             <tbody>
             @foreach($users as $user)
    
-                <?php $client= \App\Client::where('cl_ident',$user->client_id)->get(); ?>
+                <?php $client= \App\Client::where('cl_ident',$user->client_id)->first(); ?>
                 <tr>
                     <td style="width:10%" >{{$user->id}}</td>
                     <td style="width:15%" ><a title="{{__('msg.View user')}}" href="{{action('UsersController@view', $user->id )}}" >{{$user->name}} {{$user->lastname}}</a></td>
