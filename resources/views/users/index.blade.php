@@ -42,10 +42,10 @@
                 <th style="width:10%">N°</th>
                 <th style="width:15%">{{__('msg.Name')}}</th>
                 <th style="width:15%">{{__('msg.Client ID')}}</th>
-                <th style="width:15%">SIRET</th>
-                <th style="width:20%">TVA</th>
+                <th style="width:15%">SIRET & TVA</th>
+                <th style="width:20%">{{__('msg.Sales office')}}</th>
                 <th style="width:15%">{{__('msg.Activity')}}</th>
-                <th style="width:10%">{{__('msg.Actions')}}</th>
+                <th style="width:10%">Actions</th>
               </tr>
          
             </thead>
@@ -57,8 +57,8 @@
                     <td style="width:10%" >{{$user->id}}</td>
                     <td style="width:15%" ><a title="{{__('msg.View user')}}" href="{{action('UsersController@view', $user->id )}}" >{{$user->name}} {{$user->lastname}}</a></td>
                      <td style="width:15%" >{{$user->client_id}}</td>
-                     <td style="width:15%"   >{!!isset($client->siret)?$client->siret:''!!}</td>
-                     <td style="width:20%" >{!!isset($client->siret)?$client->siret:''!!}</td>
+                     <td style="width:15%"   >SIRET: {!!isset($client->siret)?$client->siret:''!!}<br>TVA: {!!isset($client->siret)?$client->num_tva:''!!}</td>
+                     <td style="width:20%" >{!!isset($client->raison_sociale)?$client->raison_sociale:''!!}</td>
                      <td style="width:15%" > {{$user->activity}} </td>
                     <td style="width:10%"   >
 
