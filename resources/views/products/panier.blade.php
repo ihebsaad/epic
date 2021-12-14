@@ -111,8 +111,8 @@ $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)
 </div>
 <div class="col-md-4"  >
   <div class="pb-40  pl-10 pt-15" style="border-left:1px solid lightgrey">
-   <b>{{__('msg.Total weight')}} :  <span id="poidst-<?php echo $i;?>"><?php echo number_format($product->poids,2) ; ?></span> g<br>
-   {{__('msg.Optional Labour cost')}} : <span id="tmontant-<?php echo $i;?>"><?php   echo number_format($product->montant_compl,2) ; ?></span>  €</b>
+   <b>{{__('msg.Total weight')}} :  <span id="poidst-<?php echo $i;?>"><?php echo number_format($product->poids,2) ; ?></span> g<br></b>
+   <?php if($product->montant_compl!=0){?><b>{{__('msg.Optional Labour cost')}} : <span id="tmontant-<?php echo $i;?>"><?php   echo number_format($product->montant_compl,2) ; ?></span>  €</b><?php } ?>
    <br>
    <a  style="position:absolute;right:25px;bottom:25px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce produit ?')"  href="{{action('ProductsController@deleteproduct', $product->id)}}"><span class="fa  fa-times-circle"></i></a>
   </div>
@@ -144,7 +144,7 @@ $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)
 								 
  									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Items')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  $pieces ;?></b></td>	</tr>
  									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Total weight')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo  number_format($weight,2) ;?> g</b></td>	</tr>
-									<tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Optional Labour cost')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo number_format($comp_amount,2) .' € HT';?></b></td>	</tr>
+									<?php if($comp_amount!=0){?><tr style="border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;"><td><b class="text-info pl-10">{{__('msg.Optional Labour cost')}}</b></td><td style="text-align:center"></td><td colspan="2" style="text-align:center" class=" "><b> <?php echo number_format($comp_amount,2) .' € HT';?></b></td>	</tr><?php } ?>
 									<tr ><td><b class="pl-10 text-info">{{__('msg.Total Labour cost')}}</b></td><td style="text-align:center"></td><td style="text-align:center" class=" " colspan="2"><b><?php echo number_format($amount,2) ;?> € HT</b></td>	</tr>
 									 									
 									</table><br>

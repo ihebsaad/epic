@@ -415,7 +415,7 @@ function load_data()
 
  function load_data(){
   var _token = $('input[name="_token"]').val();
-
+alert(_token);
 			$.ajax({
                 url: "{{ route('listetrading') }}",
                 method: "POST",

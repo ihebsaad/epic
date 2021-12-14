@@ -516,7 +516,7 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				poidst= poidst.toFixed(2);
 				poidst= parseFloat(poidst);
 				
-				 if(comp_val!=0){
+				 if(comp_val!=0 && mesure2!=0 ){
 					 poidst = ( poidst/ mesure2) * comp_val ;   
 				     poids = ( poids/ mesure2) * comp_val ; 
 				   }
@@ -665,8 +665,8 @@ function checkproduct()
  			
 	        var or=   $('#debit_1').text()  ; if(or!=''){or = parseFloat( or.slice(0 , or.length-2));}else{or =0;}
 	        var argent=   $('#debit_2').text()  ; if(argent!=''){argent = parseFloat(  argent.slice(0 , argent.length-2));}else{argent =0;}
-	        var palladium=   $('#debit_3').text()  ; if(palladium!=''){palladium =parseFloat(  palladium.slice(0 , palladium.length-2));}else{palladium =0;}
-	        var platine=   $('#debit_4').text()  ; if(platine!=''){platine = parseFloat( platine.slice(0 , platine.length-2));}else{platine =0;}
+	        var platine=   $('#debit_3').text()  ; if(platine!=''){platine = parseFloat( platine.slice(0 , platine.length-2));}else{platine =0;}
+	        var palladium=   $('#debit_4').text()  ; if(palladium!=''){palladium =parseFloat(  palladium.slice(0 , palladium.length-2));}else{palladium =0;}
 
 	         
 		 if(qte >0 && montant>0 ){

@@ -154,12 +154,12 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </div>							 
 
 
-
+<!--
 							<div  class="col-md-8 pl-20 pt-10">
 							<label><b> {{__('msg.Gross weight')}}</b></label>
 							<input type="number" step="0.01" min="<?php echo number_format($weight,2) ;?>"  value="<?php echo number_format($weight,2) ;?>" class="form-control" style="width:110px"  id="gross" ></input> g
 							</div>
-
+-->
 							
 								<button   onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
                                         <span class="icon text-white-50">
@@ -295,7 +295,7 @@ var mode="collect";
              var _token = $('input[name="_token"]').val();
 			 var agence =null;
 			 var adresse =null;
-			  var gross = $('#gross').val();
+			  var gross = 0; //$('#gross').val();
 			 
 			 if(mode=='collect'){
 			  agence = $('#agence_id').val();
