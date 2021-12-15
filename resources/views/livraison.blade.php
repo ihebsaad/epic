@@ -242,9 +242,9 @@ function details()
 		 $('#ville').html( data.ville);
 		 $('#zip').html( data.zip);
 		 var pays="";
-		 if(data.pays_code=='GF'){pays="Guyane française";}
+		 if(data.pays_code=='FO'){pays="Guyane française";}
 		 if(data.pays_code=='PL'){pays="Pologne";}
-		 if(data.pays_code=='FR'){pays="France";}
+		 if(data.pays_code=='F'){pays="France";}
 		 $('#country').html(  pays );
 
        }
