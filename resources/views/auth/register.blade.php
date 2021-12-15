@@ -168,7 +168,8 @@
         </div>
 
     </div>
-	  <script src="//bootstrap-notify.remabledesigns.com/js/bootstrap-notify.min.js"></script>
+	  <!--<script src="//bootstrap-notify.remabledesigns.com/js/bootstrap-notify.min.js"></script>-->
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/js/bootstrap-notify.min.js"></script>
 
 	<style>
 	.btn:disabled{opacity:0.5;}
