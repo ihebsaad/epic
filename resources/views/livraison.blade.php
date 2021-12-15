@@ -133,9 +133,9 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
 							 <b style="color:black">{{__('msg.Country')}} :</b> <span  >
 							 <?php 
-							 if($adresse->pays_code=='FR'){echo 'France';}   
+							 if($adresse->pays_code=='F'){echo 'France';}   
 							 if($adresse->pays_code=='PL'){echo 'Pologne';}   
-							 if($adresse->pays_code=='GF'){echo 'Guyane française';}   
+							 if($adresse->pays_code=='FO'){echo 'Guyane française';}   
 							 
 							 ?>
 							 </span>
