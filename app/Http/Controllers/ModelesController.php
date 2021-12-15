@@ -622,17 +622,17 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
  $produits=DB::table('products')->where('orderid',$Order->id)->get();
 
 $quantite= count($produits); // nombre de produits ???
-$poids=$Order->weight;
-$or=$Order->gold;
-$argent=$Order->silver;
-$platine=$Order->platine;
-$palladium=$Order->palladium;
+$poids=floatval($Order->weight);
+$or=floatval($Order->gold);
+$argent=floatval($Order->silver);
+$platine=floatval($Order->platine);
+$palladium=floatval($Order->palladium);
 if($Order->adresse_id!=null)
 {$adresse=$Order->adresse_id;}else{$adresse=0;}
 if($Order->agence_id!=null)
 {$agence=$Order->agence_id;}else{$agence=0;}
 
-$facon=$Order->comp_amount;    // montant du complément ???
+$facon=floatval($Order->comp_amount);    // montant du complément ???
   
  DB::select("SET @p0='$client_id' ;");
  DB::select("SET @p1='$langue' ;");
