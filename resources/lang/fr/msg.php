@@ -224,7 +224,7 @@ return [
 	'Family'=>'Famille',
 	'Select a category'=>'Sélectinnez une catégorie',
 	'In Progress'=>'En Cours',
-	'Finished'=>'Terminés',	
+	'Finished'=>'Terminées',	
 	'Product details'=>'Détails du produit',
 	'My order'=>'Ma commande',
 	'Content'=>'Titre',
