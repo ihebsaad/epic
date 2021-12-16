@@ -93,7 +93,7 @@ $id=session('previoususer');	?>
  if (is_array($commandes) || is_object($commandes)){  ?>
 				@foreach($commandes as $cmd)                                     
 			<?php  
-			$etat=(strtoupper($cmd->etat));
+			$etat=trim(strtoupper($cmd->etat));
 			if($etat=='ENCOURS' ||$etat=='EN COURS'  ){  	
 			$i++;
 			if($i<4){
@@ -139,7 +139,7 @@ $id=session('previoususer');	?>
  if (is_array($commandes) || is_object($commandes)){  ?>  				
 				@foreach($commandes as $cmd)                                     
 			<?php  
-			$etat=(strtoupper($cmd->etat));
+			$etat=trim(strtoupper($cmd->etat));
 			if($etat=='TERMINEE'    ){  $i++;
 			if($i<4){
 			?>	
@@ -325,7 +325,7 @@ $id=session('previoususer');	?>
 			<?php  if (is_array($commandes) || is_object($commandes)){ 	?>
             @foreach($commandes as $cmd)                                     
 			<?php 
-			$etat=(strtoupper($cmd->etat));
+			$etat=trim(strtoupper($cmd->etat));
 			if($etat=='ENCOURS' ||$etat=='EN COURS'  ){ ?>	
 			<?php 
 			if(trim(strtoupper($cmd->type_cmde))=='AFFINAGE'){  $lien=URL("commande/".$cmd->id) ;  }
@@ -387,7 +387,7 @@ $id=session('previoususer');	?>
 			
             @foreach($commandes as $cmd)                                     
 			<?php 
-			$etat=(strtoupper($cmd->etat));
+			$etat=trim(strtoupper($cmd->etat));
 			if($etat=='TERMINEE'    ){ ?>	
 			<?php 
 			if(trim(strtoupper($cmd->type_cmde))=='AFFINAGE'){  $lien=URL("commande/".$cmd->id) ;  }
