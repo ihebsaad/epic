@@ -449,7 +449,10 @@ function details()
 { 
 	        var _token = $('input[name="_token"]').val();
 	        var mesure1 = parseFloat($('#mesure1').val());
+			mesure1 = mesure1 ? mesure1 : 0;
 	        var mesure2 = parseFloat($('#mesure2').val());
+			mesure2 = mesure2 ? mesure2 : 0;
+			console.log(mesure1);
 	        var alliage_id = parseInt($('#alliage_id').val());
 	        var qte = parseFloat($('#qte').val());
 	        var comp_id = parseInt($('#comp_id').val());
@@ -479,11 +482,12 @@ function details()
 				 var datass= {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,
 				 				mesure1: mesure1,mesure2: mesure2,alliage_id: alliage_id,qte: qte,comp_id: comp_id,comp_val: comp_val,etat_id:etat_id,fact_id:fact_id/*,tarif:tarif*/, _token: _token};
 
- //alert(JSON.stringify(datass));
+ console.log(JSON.stringify(datass));
 			//	console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif+' tarif_prod : '+data.tarif_prod) ;
-			//	console.log(data);	
+		 	console.log('success data : '+data);	
 				
 var datas='';var poidsx=0;var limite=0;
+
 if(data.tarif_prod.length>1){
 datas+='<table class="mb-10" style="border:none;text-align:center" border="0"><tr>';
 for(i=0;i< data.tarif_prod.length-1;i++)
@@ -529,8 +533,8 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				 $('#article').val( parseInt(data.produit));
 				 if( typeof (data.prix)   !== 'undefined' )
 				 {  prix=parseFloat(data.prix[0].prix);
-				 console.log(data.prix[0].prix);
-				console.log(data.prix[0].tarif);
+				 console.log('prix '+data.prix[0].prix);
+				console.log('tarif '+data.prix[0].tarif);
 				 $('#prix').html(  prix);
 				 //$('#modeid').html( data.prix[0].modeid);
 				 montant=parseFloat(data.prix[0].montant );

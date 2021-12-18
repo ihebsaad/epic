@@ -158,11 +158,11 @@ $Comp=DB::table('complement_dp')->where('COMPLEMENT_DP_IDENT',$product->comp_id)
  
  
  								<center><a href="{{ route('livraison') }}" style="color:white;text-decoration:none"> 
-								<button    type="button"   class="pull-right btn btn-primary btn-icon-split  mt-30 mb-20">
+								<button  <?php if ($pieces==0){ ?>disabled <?php } ?>  type="button"   class="pull-right btn btn-primary btn-icon-split  mt-30 mb-20">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-truck-moving"></i>
                                         </span>
-                                        <span  style="width:200px" class="text" >{{__('msg.Confirm the order')}}</span>
+                                        <span  style="width:200px" class="text"     >{{__('msg.Confirm the order')}}</span>
                                     </button> </a>
 									</center>	
 									
