@@ -84,6 +84,34 @@ foreach($compls as $c){
  
  //dd($comps);
  ?>
+ <script>
+ 
+    function toggle(className, displayState){
+            var elements = document.getElementsByClassName(className);
+            for (var i = 0; i < elements.length; i++){
+                elements[i].style.display = displayState;
+				var index=elements[i].title;
+             }
+			 return   parseInt(elements[0].title) ;
+        }
+		
+ 	function showmesure2( ){
+		if($("#mesure2").val()!='0.00'){
+
+		 toggle('mesure2','none');
+		  mesure=$("#mesure1").val();
+         $("#mesure2").prop('disabled', false);
+       //document.getElementsById('mesure2').disabled=false;
+	 	var index=toggle('mesure-'+mesure,'block');
+		console.log(index);
+		//alert(index);
+		//$("#mesure2").prop('selectedIndex', index) ;
+		 //document.getElementById("mesure2").selectedIndex = index;
+		 document.getElementById("mesure2").selectedIndex = index+1;
+ 
+			}	
+	}	
+	</script>
  <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
@@ -158,6 +186,7 @@ foreach($compls as $c){
 									   <?php } ?>	
 									   <?php } ?>	
 									  </select> <span class="pt-10 pl-10"><?php if(isset($product[0]['unite2'])){ echo $product[0]['unite2'];}  ?></span>
+									  <script>showmesure2();</script>
 									   <?php }else{ ?>
 										<input id="mesure2"	type="hidden" class="mesure2" value="0.00"	title=""	/>						  
 										<?php } ?>
@@ -417,31 +446,9 @@ function checkComp(){
 
         }   
    
-   function toggle(className, displayState){
-            var elements = document.getElementsByClassName(className);
-            for (var i = 0; i < elements.length; i++){
-                elements[i].style.display = displayState;
-				var index=elements[i].title;
-             }
-			 return   parseInt(elements[0].title) ;
-        }
-		
-	function showmesure2( ){
-		if($("#mesure2").val()!='0.00'){
 
-		 toggle('mesure2','none');
-		  mesure=$("#mesure1").val();
-         $("#mesure2").prop('disabled', false);
-       //document.getElementsById('mesure2').disabled=false;
-	 	var index=toggle('mesure-'+mesure,'block');
-		console.log(index);
-		//alert(index);
-		//$("#mesure2").prop('selectedIndex', index) ;
-		 //document.getElementById("mesure2").selectedIndex = index;
-		 document.getElementById("mesure2").selectedIndex = index+1;
- 
-			}	
-	}	
+		
+
  	
  
  
