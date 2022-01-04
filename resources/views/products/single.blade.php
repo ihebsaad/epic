@@ -275,7 +275,7 @@ foreach($compls as $c){
 										 </div>	
 							 <div id="option" style="display:none;">
  							  <div class="row pl-10   ">
-							  <label class="  ">{{__('msg.Option price')}} :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><input id="fact_id" type="hidden" value="0"><input id="tarif" type="hidden" value="0"><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
+							  <label class="  ">{{__('msg.Option price')}} :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
 							  </div>
 							  <div class="row pl-10   ">							  
  							  <label class="  ">{{__('msg.Optional Labour cost')}} :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
@@ -298,6 +298,7 @@ foreach($compls as $c){
 								 
 
 								?>
+								<input id="fact_id" type="hidden" value="0"><input id="tarif" type="hidden" value="0">
 								
 <hr>
 	
