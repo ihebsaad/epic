@@ -663,11 +663,16 @@ function checkproduct()
 			var mesure2 =  $('#mesure2').val() ;
 			var comp_id =  $('#comp_id').val() ;
 			var comp_val =  $('#comp_val').val() ;
+			var fact_id =  $('#fact_id').val() ;
+			var tarif =  $('#tarif').val() ;
 			if(article!=''){article = parseInt(article);}else{article=0;}
 			if(mesure1!=''){mesure1 = parseFloat(mesure1);}else{mesure1=0;}
 			if(mesure2!=''){mesure2 = parseFloat(mesure2);}else{mesure2=0;}
 			if(comp_val!=''){comp_val = parseFloat(comp_val);}else{comp_val=0;}
 			if(comp_id!=''){comp_id = parseInt(comp_id);}else{comp_id=0;}
+			if(fact_id!=''){fact_id = parseInt(fact_id);}else{fact_id=0;}
+			if(tarif!=''){tarif = parseFloat(tarif);}else{tarif=0;}
+
 	        var montant = parseFloat(  $('#montant').text()) ;
 	        var montant_compl =   $('#tmontant').text()  ;
 			 if(montant_compl!=''){montant_compl = parseFloat(montant_compl);}else{montant_compl=0;}
@@ -686,7 +691,7 @@ function checkproduct()
                 method: "POST",
                 data: {type:<?php echo $type; ?>,famille1:<?php echo $famille1;?> ,famille2: <?php echo $famille2;?>, famille3: <?php echo $famille3;?>,user:<?php echo $user->id; ?>, libelle: libelle,
 				qte: qte,unite:unite,article: article,montant: montant,montant_compl: montant_compl,poids: poids,or: or,argent: argent,palladium: palladium
-				,platine: platine,alliage:alliage ,mesure1:mesure1,mesure2:mesure2,comp_id:comp_id,comp_val:comp_val , _token: _token},
+				,platine: platine,alliage:alliage ,mesure1:mesure1,mesure2:mesure2,comp_id:comp_id,comp_val:comp_val ,fact_id:fact_id,tarif:tarif, _token: _token},
                 success: function (data) {
 					location.reload();
 				}

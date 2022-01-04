@@ -621,8 +621,11 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
  $Order=DB::table('orders')->where('user',$user->id)->where('status','cart')->first( );
  if (isset($Order)){
  $produits=DB::table('products')->where('orderid',$Order->id)->get();
+ // calcul qte
+ $quantite= 0;
+foreach	($produits as $p)
+{$quantite= $quantite + $p->qte;}
 
-$quantite= count($produits); // nombre de produits ???
 $poids=floatval($Order->weight);
 $or=floatval($Order->gold);
 $argent=floatval($Order->silver);
