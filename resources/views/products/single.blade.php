@@ -602,6 +602,7 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				} // prix defined
 			
 				$('#fact_id').val(data.prix[0].modeid);
+				alert(data.prix[0].modeid);
 			// here
 			////	checkproduct();
 				 	
