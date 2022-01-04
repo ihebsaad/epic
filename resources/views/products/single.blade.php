@@ -542,7 +542,7 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				 if( typeof (data.prix)   !== 'undefined' )
 				 {  prix=parseFloat(data.prix[0].prix);
 				 console.log('prix '+data.prix[0].prix);
-				console.log('tarif '+data.prix[0].tarif);
+			//	console.log('tarif '+data.prix[0].tarif);
 				 $('#prix').html(  prix);
 				 //$('#modeid').html( data.prix[0].modeid);
 				 montant=parseFloat(data.prix[0].montant );
@@ -596,22 +596,12 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				});
 				}
 				
-				if(parseFloat(data.tarif[0].modeid) > 0){
-				 $('#fact_id').val(data.prix[0].modeid);
 
-				$.ajax({
-                url: "{{ route('modelabel') }}",
-                method: "POST",
-                data: {id: data.tarif[0].modeid  , _token: _token } ,
-                success: function (data) {	
-				$('#tmodeid').html( data);				 
-                }
-				});	
-				}				
+			
 	
 				} // prix defined
 			
-
+				$('#fact_id').val(data.prix[0].modeid);
 			// here
 			////	checkproduct();
 				 	
