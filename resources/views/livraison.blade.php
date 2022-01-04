@@ -307,7 +307,7 @@ var mode="collect";
             $.ajax({
                  url: "{{ route('validateproducts') }}",
                 method: "POST",
-                data: { agence:agence,adresse:adresse,mode:mode,gross:gross,  _token: _token},
+                data: { agence:agence,adresse:adresse,mode:mode,gross:gross,amount:<?php echo $amount;?>  _token: _token},
                 success: function (data) {
 				
 				

@@ -614,6 +614,7 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
  $agence   = $request->get('agence');
  $gross_weight   = $request->get('gross');
  $mode   = $request->get('mode');
+ $amount   = $request->get('amount');
  $client_id=$user['client_id'];
  $langue=$user['lg'];
  
@@ -632,7 +633,7 @@ if($Order->adresse_id!=null)
 if($Order->agence_id!=null)
 {$agence=$Order->agence_id;}else{$agence=0;}
 
-$facon=floatval($Order->comp_amount);    // montant du complément ???
+$facon=floatval($amount);    
   
  DB::select("SET @p0='$client_id' ;");
  DB::select("SET @p1='$langue' ;");
