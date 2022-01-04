@@ -585,7 +585,10 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				 $('#tmini').html(minit.toFixed(2));			
 				 
 				if(parseFloat(data.prix[0].modeid) > 0){
-					$('#fact_id').val(data.prix[0].modeid);
+					//$('#fact_id').val(data.prix[0].modeid);
+					document.getElementById("fact_id").value=data.prix[0].modeid;
+					document.getElementById("tarif").value=prix;
+
 				$.ajax({
                 url: "{{ route('modelabel') }}",
                 method: "POST",
@@ -601,10 +604,7 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 	
 				} // prix defined
 			
-				$('#fact_id').val(data.prix[0].modeid);
-				document.getElementById("fact_id").value=data.prix[0].modeid;
-				alert(data.prix[0].modeid);
-			// here
+  			// here
 			////	checkproduct();
 				 	
 
