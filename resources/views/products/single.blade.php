@@ -491,7 +491,7 @@ function details()
 
  console.log(JSON.stringify(datass));
 			//	console.log( 'poids_u : '+data.poids_u  +'produit :  '+data.produit+' prix : '+data.prix+'  '+' tarif : '+data.tarif+' tarif_prod : '+data.tarif_prod) ;
-		 	console.log('success data : '+data);	
+		 	console.log('success data : '+JSON.stringify(data));	
 				
 var datas='';var poidsx=0;var limite=0;
 
