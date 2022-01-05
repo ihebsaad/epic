@@ -572,7 +572,7 @@ if ($data!= null){
    	 public function detailsproduit($typeid,$fam1,$fam2,$fam3,$mes1,$mes2,$all,$qte,$id_comp,$val_comp,$id_cl)
     {
  		$results=array();
-		$produit=$this->produitpoids($typeid,$fam1,$fam2,$fam3,$mes1,$mes2,$all);
+		$produit=$this->produitpoids($typeid,$fam1,$fam2,$fam3,$mes1,$mes2,$all,$id_comp,$val_comp);
  		$poidsu=0; $articleid=0;
 		
  		if (($produit!='Error')){
@@ -602,7 +602,7 @@ if ($data!= null){
 	}
    
     
-   	 public function produitpoids($typeid,$fam1,$fam2,$fam3,$mes1,$mes2,$all)
+   	 public function produitpoids($typeid,$fam1,$fam2,$fam3,$mes1,$mes2,$all,$id_comp,$val_comp)
     { 
  	   DB::select("SET @p0='$typeid' ;");
 	   DB::select("SET @p1='$fam1'  ;");
@@ -611,8 +611,10 @@ if ($data!= null){
 	   DB::select("SET @p4='$mes1'  ;");
 	   DB::select("SET @p5='$mes2'  ;");
 	   DB::select("SET @p6='$all'  ;");
+	   DB::select("SET @p7='$id_comp'  ;");
+	   DB::select("SET @p8='$val_comp'  ;");
 
- 	  $result=  DB::select ("  CALL `sp_fiche_produit_poids_id`(@p0,@p1,@p2,@p3,@p4,@p5,@p6); ");
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_poids_id`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8); ");
  
 	  if ($result!= null){ 	 return  $result  ;	  }
 	  else{	 return  'Error';	  }
