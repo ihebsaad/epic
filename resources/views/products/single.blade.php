@@ -533,11 +533,11 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				     poids = ( poids/ mesure2) * comp_val ; 
 				   }
 				
-				 $('#poids_u').html( poids+' g' );
+				 $('#poids_u').html( poids.toFixed(2)+' g' );
 
 				
 				
- 				$('#poidst').html(poidst +' g');
+ 				$('#poidst').html(poidst.toFixed(2) +' g');
 				 $('#article').val( parseInt(data.produit));
 				 if( typeof (data.prix)   !== 'undefined' )
 				 {  prix=parseFloat(data.prix[0].prix);
