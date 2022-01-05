@@ -530,7 +530,7 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 				
 				 if(comp_val!=0 && mesure2!=0 ){
 					 poidst = ( poidst/ mesure2) * comp_val ;   
-				     poids = ( poids/ mesure2) * comp_val ; 
+				 //    poids = ( poids/ mesure2) * comp_val ; 
 				   }
 				
 				 $('#poids_u').html( poids.toFixed(2)+' g' );
