@@ -11,12 +11,39 @@
 |
 */
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+
+// verify email
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-//Route::get('/', 'PagesController@welcome')->name('welcome');
-Route::get('/verify', 'UsersController@verify')->name('verify');
+//Route::get('/verify', 'UsersController@verify')->name('verify');
 
 
 Route::get('users/loginas/{id}', 'UsersController@loginAs')->name('loginas');
