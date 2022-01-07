@@ -131,7 +131,7 @@ $this->post('password/reset/{token}', 'Auth\ResetPasswordController@reset');
 
 
 //Auth::routes();
-Auth::routes(/*['verify' => true] */);
+Auth::routes(['verify' => true] );
 
 Route::post('/setlanguage', 'HomeController@setlanguage')->name('setlanguage');
 
