@@ -96,11 +96,11 @@ $user_type=$user->user_type;
         <a class="nav-link"  href="{{route('virement')}}">
            <span> {{__('msg.Metal transfer')}}</span></a>
       </li>	
-	  
-	  <li class="nav-item ""  <?php if( strpos($view_name  ,'trading') !== false )  {echo 'style="font-weight:800"'; }   ?> >
+	  <!--
+	  <li class="nav-item ""  <?php // if( strpos($view_name  ,'trading') !== false )  {echo 'style="font-weight:800"'; }   ?> >
         <a class="nav-link" href="{{route('trading')}}">
            <span> {{__('msg.Trading')}}</span></a>
-      </li>		  
+      </li>		 --> 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
