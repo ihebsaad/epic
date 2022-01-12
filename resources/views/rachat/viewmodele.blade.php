@@ -539,11 +539,11 @@ function prix()
 				 if(   cours_pt  != '' ) 
 					 {
 					 $('#cours_pt').html(cours_pt );
-					 $('#cours_pd').html(cours_pd );
 					 $('#div_pt').show( );
 					 }
 				 if(   cours_pd  != '' ) 
 					 {
+					 $('#cours_pd').html(cours_pd );
 					 $('#div_pd').show( );
 					 }
 					 
