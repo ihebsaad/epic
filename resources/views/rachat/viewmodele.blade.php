@@ -508,7 +508,7 @@ function prix()
 				success: function (data) {
 					//alert(data);
 					//console.log(data[0].valeur);
-					//console.log(data[0]);
+					console.log(data[0]);
 					//console.log(data);
 					//alert(data[0].prix);
 					var valeur= (data[0].valeur);
