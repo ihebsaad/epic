@@ -34,7 +34,8 @@ class UsersController extends Controller
 		public function view($id  )
 	{
         $user= User::where('id',$id)->first();
-        return view('users.view',['id'=>$id,'user'=>$user]);
+		$activites=DB::table('type_client')->get();
+        return view('users.view',['id'=>$id,'user'=>$user,'activites'=>$activites]);
  	}
 	
 	public function profile(  )

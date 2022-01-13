@@ -74,12 +74,8 @@ label{color:black;}
 											<label><?php echo __('msg.Activity');?></label>											
                                                 <select class="form-control  " id="activity" name="activity"  placeholder="Sélectionnez votre activité"   
                                                          style="font-size: 0.8rem; padding-left:15px;padding-top:10px; color:black" >
-                                                     <option value="artisan" <?php if($user->activity=='artisan'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Artisan');?></option>
-                                                    <option value="fabricant" <?php if($user->activity=='fabricant'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Manufacturer');?></option>
-                                                    <option value="industriel" <?php if($user->activity=='industriel'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Industrial');?></option>
-                                                    <option value="laboratoire" <?php if($user->activity=='laboratoire'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Laboratory');?></option>
-                                                    <option value="recuperateur" <?php if($user->activity=='recuperateur'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Gold Scraps Buyer');?></option>
-                                                    <option value="investisseur" <?php if($user->activity=='investisseur'){echo 'selected="selected"';}  ?> ><?php echo __('msg.Investor');?></option>
+                                                         @foreach($activites as $activite)
+                                                         <option  @if($activite->type_client_ident==$user->activity) selected="selected" @endif value="{{$activite->type_client_ident}}">{{$activite->type_client_lib}}</option>
                                                 </select>
                                             </div>
 									
