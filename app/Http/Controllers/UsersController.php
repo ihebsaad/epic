@@ -72,11 +72,11 @@ class UsersController extends Controller
     }
 
 	
-    public static function  ActiviyeById($id)
+    public static function  ActiviteById($id)
     {
         $type_client = DB::table('type_client')->where('type_client_ident',$id)->first();
     
-		return isset($type_client) ? $typ_client->type_client_lib : 0;
+		return isset($type_client) ? $type_client->type_client_lib : 0;
     }
 	
 	    public static function  adduser()
