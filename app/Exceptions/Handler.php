@@ -109,7 +109,7 @@ class Handler extends ExceptionHandler
         $e = FlattenException::create($exception);
         $handler = new SymfonyExceptionHandler();
         $html = $handler->getHtml($e);
-        Mail::to('ihebsaad@gmail.com')->send(new ExceptionOccured($html));
+      //  Mail::to('ihebsaad@gmail.com')->send(new ExceptionOccured($html));
 		} catch (Exception $ex) {
         dd($ex);
 		}
