@@ -74,9 +74,11 @@ label{color:black;}
 											<label><?php echo __('msg.Activity');?></label>											
                                                 <select class="form-control  " id="activity" name="activity"  placeholder="Sélectionnez votre activité"   
                                                          style="font-size: 0.8rem; padding-left:15px;padding-top:10px; color:black" >
-                                                         @foreach($activites as $activite)
-                                                         <option  @if($activite->type_client_ident==$user->activity) selected="selected" @endif value="{{$activite->type_client_ident}}">{{$activite->type_client_lib}}</option>
-                                                </select>
+                                                        @foreach($activites as $activite)
+                                                            <option  @if($activite->type_client_ident==$user->activity) selected="selected" @endif value="{{$activite->type_client_ident}}">{{$activite->type_client_lib}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                
                                             </div>
 									
                           <div class="col-sm-6 mb-3 mb-sm-0">
