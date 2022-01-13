@@ -70,6 +70,14 @@ class UsersController extends Controller
         }else{return '';}
 
     }
+
+	
+    public static function  ActiviyeById($id)
+    {
+        $type_client = DB::table('type_client')->where('type_client_ident',$id)->first();
+    
+		return isset($type_client) ? $typ_client->type_client_lib : 0;
+    }
 	
 	    public static function  adduser()
     {

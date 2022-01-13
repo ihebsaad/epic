@@ -7,7 +7,9 @@
  
  
 @section('content')
-
+@php
+use App\Http\Controllers\UsersController;
+@endphp
 
     <style>
         .uper {
@@ -59,7 +61,7 @@
                      <td style="width:15%" >{{$user->client_id}}</td>
                      <td style="width:15%"   >SIRET: {!!isset($client->siret)?$client->siret:''!!}<br>TVA: {!!isset($client->siret)?$client->num_tva:''!!}</td>
                      <td style="width:20%" >{!!isset($client->raison_sociale)?$client->raison_sociale:''!!}</td>
-                     <td style="width:15%" > {{$user->activity}} </td>
+                     <td style="width:15%" > {{ UsersController::ActiviyeById($user->activity)}} </td>
                     <td style="width:10%"   >
 
  <?php $User=auth()->user();
