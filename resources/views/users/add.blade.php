@@ -8,7 +8,6 @@
 
 ?>
 @php
-use DB;
 $activites=DB::table('type_client')->get();
 
 @endphp

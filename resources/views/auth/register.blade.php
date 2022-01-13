@@ -2,8 +2,7 @@
 
 @section('content')
 @php
-use DB;
-$activites=DB::table('type_client')->get();
+ activites=DB::table('type_client')->get();
 
 @endphp
     <div class="container">
