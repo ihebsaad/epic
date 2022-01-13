@@ -7,6 +7,12 @@
   $clients=DB::table('client')->get();
 
 ?>
+@php
+use DB;
+$activites=DB::table('type_client')->get();
+
+@endphp
+
 <style>
 label{color:black;}
 .select2-selection--single{border:1px solid #d1d3e2!important;}
@@ -88,15 +94,12 @@ label{color:black;}
                                     <div class="col-sm-6 mb-3 mb-sm-0">		
 									<label>{{__('msg.Activity')}}</label>									
                                     <select class="form-control  " id="activity" name="activity"     required
-									style="font-size: 0.8rem; padding-left:15px;padding-top:10px; color:black"    oninvalid="this.setCustomValidity('Champ obligatoire')"
-  oninput="this.setCustomValidity('')">
+									style="font-size: 0.8rem; padding-left:15px;padding-top:10px; color:black"    oninvalid="this.setCustomValidity('Champ obligatoire')"   oninput="this.setCustomValidity('')">
 									<option value=""></option>
-									<option value="artisan">{{__('msg.Artisan')}}</option>
-									<option value="fabricant" >{{__('msg.Manufacturer')}}</option>
-									<option value="industriel" >{{__('msg.Industrial')}}</option>
-									<option value="laboratoire" >{{__('msg.Laboratory')}}</option>
-									<option value="recuperateur" >{{__('msg.Gold Scraps Buyer')}}</option>
-									<option value="investisseur" >{{__('msg.Investor')}}</option>
+                                    @foreach($activites as $activite)
+                                        <option  value="{{$activite->type_client_ident}}">{{$activite->type_client_lib}}</option>
+                                    @endforeach
+
 									</select>
 									</div>	
 									

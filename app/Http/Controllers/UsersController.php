@@ -76,7 +76,7 @@ class UsersController extends Controller
     {
         $type_client = DB::table('type_client')->where('type_client_ident',$id)->first();
     
-		return isset($type_client) ? $type_client->type_client_lib : 0;
+		return isset($type_client) ? $type_client->type_client_lib : '';
     }
 	
 	    public static function  adduser()
@@ -257,7 +257,7 @@ class UsersController extends Controller
 		 }else{
 			 
 					
- DB::table('users')->where('id', $user)->update(array( 	
+ 		DB::table('users')->where('id', $user)->update(array( 	
 		 
 		'activity' => $activity,
 		'mobile' => $mobile,
@@ -272,8 +272,8 @@ class UsersController extends Controller
 			 
 		 }
 	 }
-		    public function updatecomp(Request $request)
-    {
+		public function updatecomp(Request $request)
+    	{
         $id= $request->get('cl_ident');
         $raison_sociale= $request->get('raison_sociale');
         $type_societe= $request->get('type_societe');

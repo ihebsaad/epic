@@ -1,7 +1,11 @@
 @extends('layouts.newlogin')
 
 @section('content')
+@php
+use DB;
+$activites=DB::table('type_client')->get();
 
+@endphp
     <div class="container">
 
         <div class="card o-hidden border-0 shadow-lg my-2">
@@ -64,12 +68,9 @@
   oninput="this.setCustomValidity('')"
 									style="font-size: 0.8rem;border-radius: 10rem;padding-left:15px;padding-top:10px;height:50px;font-family:Nunito">
 									<option value="">Sélectionnez votre activité*</option>
-									<option value="artisan">Artisan</option>
-									<option value="fabricant" >Fabricant</option>
-									<option value="industriel" >Industriel</option>
-									<option value="laboratoire" >Laboratoire</option>
-									<option value="recuperateur" >Récupérateur</option>
-									<option value="investisseur" >Investisseur</option>
+                                    @foreach($activites as $activite)
+                                        <option  value="{{$activite->type_client_ident}}">{{$activite->type_client_lib}}</option>
+                                    @endforeach
 									</select>
 									</div>	
                                     <div class="col-sm-6 mb-3 mb-sm-0">
