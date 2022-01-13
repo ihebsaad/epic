@@ -17,7 +17,7 @@ label{color:black;}
 	<div class="row">
 
                         <!-- Content Column -->
-                        <div class="col-lg-9 col-sd-12 mb-4">
+                        <div class="col-lg-9 col-sm-12 mb-4">
 
 						 <div class="card shadow mb-4">
                                 <div class="  ">
@@ -144,8 +144,42 @@ label{color:black;}
 
                         </div>
 						
- 
- 			 				 
+						<?php if (auth()->user()->user_type == 'admin') { ?>
+						<!-- Content Column -->
+                        <div class="col-lg-3 col-sm-12 mb-4">
+
+						 <div class="card shadow mb-4">
+                                <div class="  ">
+                                    <a href="#div1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">								
+                                    <h6 class="m-0 font-weight-bold text-primary">{{__('msg.User Type')}}</h6>
+									</a>
+                                </div>
+								<form class="user"  method="POST" action="{{ route('updatingusertype') }}">
+								{{ csrf_field() }}
+								<input type="hidden" name="user"   value="<?php echo $user->id; ?>"   />
+                                <div id="div3" class="card-body">
+									<label>{{__('msg.User Type')}}</label>
+									<select class="form-control  " id="user_type" name="user_type"    >
+										<option @if($user->user_type=='') selected='selected' @endif value="">Simple</option>
+										<option @if($user->user_type=='adv') selected='selected' @endif value="adv">ADV</option>
+										<option @if($user->user_type=='admin') selected='selected' @endif  value="admin">Admin</option>
+									</select>
+								
+								
+								</div>
+								
+								
+									<button       type="submit"  class="pull-right btn btn-success btn-icon-split  ml-20   mt-50 mb-30">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-save"></i>
+                                        </span>
+                                        <span class="text" style="width:200px" >{{__('msg.Update')}}</span>
+                                    </button>
+									
+								</form>
+ 			 			</div>
+						</div>
+						<?php  } ?>
 	<script>
 	
 	        $('#lastname').select2({

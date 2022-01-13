@@ -223,7 +223,20 @@ class UsersController extends Controller
 		 }
 	 }
 
-	 
+	 	 
+		 public function updatingusertype(Request $request)
+    {
+		$user= $request->get('user');
+        $user_type= $request->get('user_type');
+		
+		DB::table('users')->where('id', $user)->update(array( 			 
+		'user_type' => $user_type,
+		 		)
+		);
+		
+		return redirect('/users')->with('success', ' droits modifiés avec succès');
+
+	}
 	 
 		 public function updatinguser(Request $request)
     {
@@ -240,7 +253,7 @@ class UsersController extends Controller
 		{  $password= bcrypt(trim($request->get('password')));
 
 					
- DB::table('users')->where('id', $user)->update(array( 	
+		DB::table('users')->where('id', $user)->update(array( 	
 		 
 		'activity' => $activity,
 		'mobile' => $mobile,

@@ -420,5 +420,6 @@ return [
 	"You are not authorized to view that page!"=>"You are not authorized to view that page!",
 	"Page Not Found"=>"Page Not Found",
 	"Something went wrong!"=>"Something went wrong!",
+	"User Type"=>"User Type",
  	
  ];

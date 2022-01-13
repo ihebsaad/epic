@@ -429,5 +429,6 @@ return [
 	"You are not authorized to view that page!"=>"Vous n'êtes pas autorisé à voir cette page !",
 	"Page Not Found"=>"Page introuvable",
 	"Something went wrong!"=>"Erreur est survenue!",
- 		
+ 	"User Type"=>"Type d'utilisateur",
+
  ];

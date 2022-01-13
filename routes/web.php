@@ -144,6 +144,7 @@ Route::post('/adding','UsersController@adding')->name('adding');
 Route::post('/checkexiste','HomeController@checkexiste')->name('checkexiste');
 Route::post('/registration','UsersController@registration')->name('registration');
 Route::post('/updatinguser','UsersController@updatinguser')->name('updatinguser');
+Route::post('/updatingusertype','UsersController@updatingusertype')->name('updatingusertype');
 Route::get('/users/destroy/{id}','UsersController@destroy')->name('users.destroy');
 Route::post('/users/updating','UsersController@updating')->name('users.updating');
 Route::post('/updateuser','UsersController@updateuser')->name('updateuser');
