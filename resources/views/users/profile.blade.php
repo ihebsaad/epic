@@ -1,7 +1,15 @@
 @extends('layouts.back')
  
  @section('content')
-  <?php
+
+ <style>
+label{color:black;}
+.select2-selection--single{border:1px solid #d1d3e2!important;}
+</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+<?php
 use App\Http\Controllers\HomeController ;
 
 $cl_ident=$user->client_id ;
@@ -11,6 +19,8 @@ $client=DB::table('client')->where('cl_ident',$cl_ident)->first();
   $agences=DB::table('agence')->get();
   $type_clients=DB::table('type_client')->get();
   $adresses=HomeController::adresse($cl_ident);
+  $clients=DB::table('client')->get();
+
    /*
 cl_ident
 siret
@@ -31,6 +41,7 @@ metal_defaut_id
 
 */
   ?>
+
 	<div class="row">
 
                         <!-- Content Column -->
@@ -178,6 +189,23 @@ metal_defaut_id
 									</a>
                                 </div>
                                 <div id="div2" class="card-body">
+
+                                @if( strtolower($user->user_type)=='adv' || strtolower($user->user_type)=='admin'  )
+                                <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label>{{__('msg.Client ID')}}*</label>
+                                 <select class="form-control  " name="client_id" id="client_id"  required placeholder="ID CLient"  onchange="updateclient()" style="font-size: 0.8rem;border-radius: 10rem;padding-left:15px;padding-top:10px;height:50px;font-family:Nunito"  >
+                                    <option></option>
+                                         cl_ident 
+	                                        @foreach($clients as $ct)	                                        
+	                                            <option  @if($ct->cl_ident== $cl_ident) selected="selected" @endif   value="{{$ct->cl_ident}}" title="{{$ct->siret}}" >{{$ct->cl_ident}}</option>
+	                                       @endforeach
+                                         
+
+                                </select>
+                                </div>
+                                </div>
+                                @endif
 
                                     <form class="user"  method="post" action="{{ route('updatecomp') }}"    >
 							        {{ csrf_field() }}
@@ -363,6 +391,17 @@ metal_defaut_id
 
 
     <script>
+		
+        $('#client_id').select2({
+            filter: true,
+            language: {
+                noResults: function () {
+                    return 'Pas de résultats';
+                }
+            }
+
+        });
+
 
  function showing(elm) {
   var div  = document.getElementById('lesadresses');
@@ -377,26 +416,17 @@ metal_defaut_id
  }
  
  
-    /*    function changing(elm) {
-            var champ = elm.id;
-
-            var val = document.getElementById(champ).value;
-
+        function updateclient() {
+            var idclient = $('#client_id').val();
             var user = $('#iduser').val();
             //if ( (val != '')) {
             var _token = $('input[name="_token"]').val();
             $.ajax({
-                url: "{{ route('users.updating') }}",
+                url: "{{ route('updateclient') }}",
                 method: "POST",
-                data: {user: user, champ: champ, val: val, _token: _token},
+                data: {user: user, idclient: idclient,  _token: _token},
                 success: function (data) {
-                    $('#' + champ).animate({
-                        opacity: '0.1',
-                    });
-                    $('#' + champ).animate({
-                        opacity: '1',
-                    });
-
+  
                     $.notify({
                         message: 'Modifié avec succès',
                         icon: 'glyphicon glyphicon-check'
@@ -410,11 +440,13 @@ metal_defaut_id
                         },
                     });
 
+                    location.reload();
+
                 }
             });
 
         }
-		*/
+		
 
     </script>
 @endsection

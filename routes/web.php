@@ -149,7 +149,7 @@ Route::get('/users/destroy/{id}','UsersController@destroy')->name('users.destroy
 Route::post('/users/updating','UsersController@updating')->name('users.updating');
 Route::post('/updateuser','UsersController@updateuser')->name('updateuser');
 Route::post('/updatecomp','UsersController@updatecomp')->name('updatecomp');
-
+Route::post('/updateclient','UsersController@updateclient')->name('updateclient');
 
 //beneficiaires 
 Route::get('/beneficiaires', 'UsersController@beneficiaires')->name('beneficiaires');

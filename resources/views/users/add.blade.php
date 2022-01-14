@@ -5,13 +5,10 @@
 
   $contacts=DB::table('contact')->get();
   $clients=DB::table('client')->get();
+  $activites=DB::table('type_client')->get();
 
 ?>
-@php
-$activites=DB::table('type_client')->get();
-
-@endphp
-
+ 
 <style>
 label{color:black;}
 .select2-selection--single{border:1px solid #d1d3e2!important;}

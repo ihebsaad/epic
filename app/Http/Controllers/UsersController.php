@@ -237,6 +237,21 @@ class UsersController extends Controller
 		return redirect('/users')->with('success', ' droits modifiés avec succès');
 
 	}
+
+	public function updateclient(Request $request)
+    {
+		$user= $request->get('user');
+        $idclient= $request->get('idclient');
+		
+		DB::table('users')->where('id', $user)->update(array( 			 
+		'client_id' => $idclient,
+		 		)
+		);
+		
+	//	return redirect('/users')->with('success', ' droits modifiés avec succès');
+
+	}
+	
 	 
 		 public function updatinguser(Request $request)
     {
