@@ -192,13 +192,13 @@ metal_defaut_id
 
                                 @if( strtolower($user->user_type)=='adv' || strtolower($user->user_type)=='admin'  )
                                 <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                <div class="col-sm-12 mb-3 mb-sm-0">
                                 <label>{{__('msg.Client ID')}}*</label>
                                  <select class="form-control  " name="client_id" id="client_id"  required placeholder="ID CLient"  onchange="updateclient()" style="font-size: 0.8rem;border-radius: 10rem;padding-left:15px;padding-top:10px;height:50px;font-family:Nunito"  >
                                     <option></option>
                                          cl_ident 
 	                                        @foreach($clients as $ct)	                                        
-	                                            <option  @if($ct->cl_ident== $cl_ident) selected="selected" @endif   value="{{$ct->cl_ident}}" title="{{$ct->siret}}" >{{$ct->cl_ident}}</option>
+	                                            <option  @if($ct->cl_ident== $cl_ident) selected="selected" @endif   value="{{$ct->cl_ident}}" title="{{$ct->siret}}" >{{$ct->cl_ident}} | {{$ct->raison_sociale}}</option>
 	                                       @endforeach
                                          
 
