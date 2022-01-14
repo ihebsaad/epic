@@ -19,6 +19,7 @@ use App\Cmde_rmp_e ;
 use App\Cmde_rmp_l ;
 use App\Http\Controllers\DHLController ;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class ModelesController extends Controller
 {
@@ -112,6 +113,7 @@ class ModelesController extends Controller
  public function addmodele(Request $request)
 {
  // try{
+$user = auth()->user();  	 
 $cl_ident  = intval($request->get('cl_ident'));	
 $modele_nom   = $request->get('modele_nom');	
 $nature_lot_ident = intval($request->get('nature_lot_ident'));	
@@ -137,7 +139,8 @@ $assiste   =  $request->get('assiste') ;
              'estim_titre_ag' => $estim_titre_ag ,
              'estim_titre_pt' => $estim_titre_pt ,
              'estim_titre_pd' => $estim_titre_pd ,
-             'assiste' => $assiste  
+             'assiste' => $assiste ,
+			 'user_id'=>$user->id
               
         ]);
 
@@ -154,6 +157,7 @@ $assiste   =  $request->get('assiste') ;
   public function addmodelelab(Request $request)
 {
  // try{
+$user = auth()->user();  	 
 $cl_ident  = intval($request->get('cl_ident'));	
 $modele_nom   = $request->get('modele_nom');	
 $nature_lot_ident = intval($request->get('nature_lot_ident'));	
@@ -182,7 +186,7 @@ $choix_lab_ident   =  $request->get('choix_lab_ident') ;
              'choix_lab_ident' => $choix_lab_ident ,
              'qte' => $qte ,
              'valeur' => $valeur ,
-              
+             'user_id'=>$user->id
         ]);
 
         if($modele->save()){
@@ -196,6 +200,7 @@ $choix_lab_ident   =  $request->get('choix_lab_ident') ;
  public function addmodelermp(Request $request)
 {
  // try{
+$user = auth()->user();  	 
 $cl_ident  = intval($request->get('cl_ident'));	
 $modele_nom   = $request->get('modele_nom');	
 $nature_lot_ident = intval($request->get('nature_lot_ident'));	
@@ -231,7 +236,8 @@ $choix_couv_ident   =  $request->get('choix_couv_ident') ;
              'estim_titre_pd' => $estim_titre_pd ,
              'assiste' => $assiste ,
              'demande_acompte' => $demande_acompte , 
-             'choix_couv_ident' => $choix_couv_ident  
+             'choix_couv_ident' => $choix_couv_ident ,
+			 'user_id'=>$user->id
               
         ]);
 
@@ -245,6 +251,7 @@ $choix_couv_ident   =  $request->get('choix_couv_ident') ;
 
   public function updatemodele(Request $request)
 {
+$user = auth()->user(); 
 $id  = intval($request->get('id'));	
 $cl_ident  = intval($request->get('cl_ident'));	
 $modele_nom   = $request->get('modele_nom');	
@@ -279,8 +286,8 @@ $update   =  $request->get('update') ;
              'estim_titre_ag' => $estim_titre_ag ,
              'estim_titre_pt' => $estim_titre_pt ,
              'estim_titre_pd' => $estim_titre_pd ,
-             'assiste' => $assiste  
-              
+             'assiste' => $assiste  ,
+              'user_id'=>$user->id
 			)
 		);
  
@@ -297,7 +304,7 @@ $update   =  $request->get('update') ;
               'cmde_aff_poids_brut' => $pds_cdr,
               'cmde_aff_poids_lot' => $pds_lot,
 			  'statut' => 'panier', 			 
-
+			  'user_id'=>$user->id
 			  ]);
 			if($Cmde_aff_e->save()){
 				$id=$Cmde_aff_e->cmde_aff_ident;
@@ -330,6 +337,8 @@ $update   =  $request->get('update') ;
   public function updatemodelermp(Request $request)
 {
  // try{
+	$user = auth()->user();  	 
+
 $id  = intval($request->get('id'));	
 $cl_ident  = intval($request->get('cl_ident'));	
 $modele_nom   = $request->get('modele_nom');	
@@ -372,8 +381,8 @@ $update   =  $request->input('update') ;
              'estim_titre_pd' => $estim_titre_pd ,
              'assiste' => $assiste , 
              'demande_acompte' => $demande_acompte , 
-             'choix_couv_ident' => $choix_couv_ident 			 
-              
+             'choix_couv_ident' => $choix_couv_ident ,		 
+             'user_id'=>$user->id
 			)
 		);
  
@@ -397,7 +406,8 @@ $update   =  $request->input('update') ;
               'demande_acompte' => $demande_acompte,
               'choix_couv_ident' => $choix_couv_ident,
  			  'statut' => 'panier', 			 
-        
+			   'user_id'=>$user->id
+
 			  
 			  ]);
 			if($Cmde_rmp_e->save()){
@@ -430,6 +440,7 @@ $update   =  $request->input('update') ;
  public function updatemodelelab(Request $request)
 {
  // try{
+$user = auth()->user();  	 
 $id  = intval($request->get('id'));	
 $cl_ident  = intval($request->get('cl_ident'));	
 $modele_nom   = $request->get('modele_nom');	
@@ -461,7 +472,7 @@ $estimation_prix   =  $request->get('estimation_prix') ;
              'choix_lab_ident' => $choix_lab_ident ,
              'qte' => $qte ,
              'valeur' => $valeur ,
-              
+             'user_id'=>$user->id
 			)
 		);
  
@@ -476,7 +487,8 @@ $estimation_prix   =  $request->get('estimation_prix') ;
               'cmde_lab_qte' => $qte,
               'cmde_lab_poids' => $poids,
 			  'statut' => 'panier', 			 
-             
+			  'user_id'=>$user->id
+
 			  
 			  ]);
 			if($Cmde_lab_e->save()){
@@ -649,13 +661,14 @@ $facon=floatval($amount);
  DB::select("SET @p8='$facon' ;");
  DB::select("SET @p9='$adresse' ;");
  DB::select("SET @p10='$agence' ;");
+ DB::select("SET @p11='$user->id' ;");
  
 
-   DB::select ("  CALL `SP_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11 ); ");
-   DB::select("SELECT @p11 AS `cmde_id`  ;");
+   DB::select ("  CALL `SP_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12 ); ");
+   DB::select("SELECT @p12 AS `cmde_id`  ;");
 
  	 $cmde_id = null;
-$selectResult = DB::select(DB::raw("SELECT @p11 AS `cmde_id`  ;"));
+$selectResult = DB::select(DB::raw("SELECT @p12 AS `cmde_id`  ;"));
 
 if (!empty($selectResult) && isset($selectResult[0]->cmde_id)) {
     // we have a result
@@ -817,7 +830,7 @@ DB::table('products')->where('orderid',$Order->id)->update( array( 'status'=>'va
 	  
 	}
 	
-
+/*
   public function entetecommande(Request $request)
 {
 $client_id  = intval($request->get('client_id'));	
@@ -855,7 +868,7 @@ if (!empty($selectResult) && isset($selectResult[0]->cmde_id)) {
 	}  
 	 
  }
-	  
+	  */
 	public function lignecommande(Request $request)
 	{
 	$produit_id  = intval($request->get('produit_id'));	

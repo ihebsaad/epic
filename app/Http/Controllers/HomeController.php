@@ -840,6 +840,7 @@ if ($data!= null){
 	}
 	
 /*************************************************** Commandes ***************************************************************/
+/*
 public function commande(Request $request)
 {
 $client_id  = intval($request->get('client_id'));	
@@ -918,7 +919,7 @@ return $result ;
 		return response()->json(  $error ,500,array(),JSON_PRETTY_PRINT);
 	  }
  
-	}
+	}*/
 	 
 	public function tarifdetails($nature_id,$titre_or,$titre_argent,$titre_platine,$titre_palladium,$poids,$poids_cendres  )
     { 
