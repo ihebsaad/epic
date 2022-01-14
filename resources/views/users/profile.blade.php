@@ -198,7 +198,7 @@ metal_defaut_id
                                     <option></option>
                                          cl_ident 
 	                                        @foreach($clients as $ct)	                                        
-	                                            <option  @if($ct->cl_ident== $cl_ident) selected="selected" @endif   value="{{$ct->cl_ident}}" title="{{$ct->siret}}" >{{$ct->cl_ident}} | {{$ct->raison_sociale}}</option>
+	                                            <option  @if($ct->cl_ident== $cl_ident) selected="selected" @endif   value="{{$ct->cl_ident}}" title="siret : {{$ct->siret}}" >{{$ct->cl_ident}} | {{$ct->raison_sociale}}</option>
 	                                       @endforeach
                                          
 
