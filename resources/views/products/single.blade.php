@@ -120,7 +120,7 @@ foreach($compls as $c){
     <li class="breadcrumb-item active" aria-current="page"><?php echo $titre;?></li>
   </ol>
 </nav>
-<h2> {{__('msg.Product Page')}}</h2> 
+<h2> {{__('msg.Product Page')}} <button onclick="window.history.go(-1); return false;" style="border:none" class="btn-success btn-sm float-right"><i class="fas fa-arrow-left"></i> Retour</button></h2> 
 
  
 	<div class="row">
