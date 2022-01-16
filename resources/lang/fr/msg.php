@@ -430,5 +430,6 @@ return [
 	"Page Not Found"=>"Page introuvable",
 	"Something went wrong!"=>"Erreur est survenue!",
  	"User Type"=>"Type d'utilisateur",
+	"Back"=>"Retour",
 
  ];

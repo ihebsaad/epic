@@ -416,5 +416,6 @@ return [
 			"Page Not Found"=>"Nie znaleziono strony",
 			"Something went wrong!"=>"Coś poszło nie tak!",
  			"User Type"=>"rodzaj użytkownika",
+			"Back"=>"Powrót",
 
  ];

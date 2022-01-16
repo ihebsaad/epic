@@ -421,5 +421,6 @@ return [
 	"Page Not Found"=>"Page Not Found",
 	"Something went wrong!"=>"Something went wrong!",
 	"User Type"=>"User Type",
+	"Back"=>"Back",
  	
  ];
