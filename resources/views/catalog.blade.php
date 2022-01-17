@@ -128,9 +128,12 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 	
 									}
 								}
+                                $famille =  \Session::get('famille'); 
+                               // dd($famille);
+                                if($fam2==$famille){$check='checked';}else{$check='';}
                                echo 
-							   '<div style="padding-bottom:8px"  onclick="Famille2('.$fam2.')">
-                                <input class="form-check-input" name="groupfam2" type="radio" id="radio'.$fam2.'"   >
+							   '<div style="padding-bottom:8px"  onclick="Famille2('.$fam2.');saving()">
+                                <input class="form-check-input" name="groupfam3" type="radio" id="radio'.$fam2.'" title="'.$fam2.'"  '.$check.'  >
                                 <label for="radio'.$fam2.'" class="form-check-label dark-grey-text">'.$Fam->LIBFAM2.'</label>
                                 </div>';
 								}?>
@@ -274,7 +277,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 #loading
 {
 	text-align:center; 
-	background: url('loader.gif') no-repeat center; 
+	background: url("{{ URL::asset('public/img/loader.gif')}}") no-repeat center; 
 	height: 150px;
 }
 </style>		
@@ -285,8 +288,12 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 ?>
 			
 <script>
-var metal='';					
-var famille2='';					
+<?php if($famille!=''){ ?>
+  Famille2({!!$famille!!});
+<?php  }  ?>  
+var metal='';	
+ var famille2='';	
+
 var famille3='';		
 
 function Famille2(fam2)
@@ -334,9 +341,7 @@ function filter()
                 url: "{{ route('users.updating') }}",
                 method: "POST",
                 data: {user: <?php echo $user->id; ?>, champ: 'alliage', val: val, _token: _token},
-                success: function (data) {
-        
-
+                success: function (data) {     
 
                 }
             });
@@ -349,6 +354,23 @@ function filter()
 		//url= document.location.hostname+'/epic' 
 		document.location.href='<?php echo $urlapp;?>'+'/catalog/'+<?php echo $type;?>+'/'+fam1;
 	}	
+
+    function saving() {
+        val=  $("input[type='radio'][name='groupfam3']:checked").attr('title');
+
+           if ( (val != '')) {
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{ route('users.famille') }}",
+                method: "POST",
+                data: {  val: val, _token: _token},
+                success: function (data) {   
+                }
+            });
+
+         }
+    }
+
  </script>					
 					
 @endsection

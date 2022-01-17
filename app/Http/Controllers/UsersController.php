@@ -432,4 +432,11 @@ class UsersController extends Controller
 
 	}
 	
+	public function famille(Request $request)
+    {
+        $val= $request->get('val');
+
+		Session::put('famille',$val);
+
+	}
 }
