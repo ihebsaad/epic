@@ -210,11 +210,14 @@ $count= $count_aff + $count_lab + $count_rmp;
                   <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
                   {{__('msg.List of users')}}
                 </a>
+        <?php }
+        if ($user['user_type']=='admin' || $user['user_type']=='adv' ){?>
                <a class="dropdown-item" href="{{route('beneficiairesvalides')}}">
                   <i class="fas fa-user-friends fa-sm fa-fw mr-2 text-gray-400"></i>
                   {{__('msg.List of beneficiaries')}}
                 </a>				
 				<?php } ?>
+
                <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log

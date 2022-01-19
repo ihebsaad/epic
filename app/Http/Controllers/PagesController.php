@@ -443,21 +443,25 @@ $content = $response->getBody();
 */
 	 public function findings()
     { 
+        Session::put('famille',null);
          return view('products.findings');
     }
 	
 	 public function products()
     { 
+        Session::put('famille',null);
          return view('products.products');
     }
 	
 	 public function jewelry()
-    { 
+    {         
+      Session::put('famille',null);
          return view('products.jewelry');
     }
 	
 	 public function galvano()
-    { 
+    {        
+       Session::put('famille',null);
          return view('products.galvano');
     }
 	

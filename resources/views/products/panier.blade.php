@@ -55,7 +55,7 @@ $products=array();
  foreach($products as $product){ $i++; ?>
 	  <div class="row pb-10 pt-10 " style="border-bottom:1px solid lightgrey">  
 <?php
- $prod=app('App\Http\Controllers\HomeController')->produit($product->type,$product->famille1,$product->famille2,$product->famille3);
+ $prod=app('App\Http\Controllers\HomeController')->produit($product->type,$product->famille1,$product->famille2,$product->famille3,$product->alliage);
   $produit=  DB::table('type_famille')->where('type_id',$product->type)->where('fam1_id',$product->famille1)->where('fam2_id',$product->famille2)->where('fam3_id',$product->famille3)->first();
 
  $img=''; $image=DB::table('photo')->where('photo_id',$produit->photo_id )->first();
@@ -70,7 +70,7 @@ $products=array();
  $id_unite= $prod[0]['UNIT_IDENT'];
  $unite=DB::table('unite')->where('UNIT_IDENT',$id_unite)->first();
  
- $Product=app('App\Http\Controllers\HomeController')->produit($product->type,$product->famille1,$product->famille2,$product->famille3);
+ $Product=app('App\Http\Controllers\HomeController')->produit($product->type,$product->famille1,$product->famille2,$product->famille3,$product->alliage);
 
 ?>
 

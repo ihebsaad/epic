@@ -226,7 +226,7 @@ class ProductsController extends Controller
 		// add order
  			$Order = new Order([
              'user' =>  $user ,
-               'amount' =>  $montant ,
+             'amount' =>  $montant ,
              'comp_amount' =>  $montant_compl ,
              'weight' =>  $poids ,
              'gold' =>  $or ,
@@ -513,10 +513,14 @@ class ProductsController extends Controller
 	 
 	public function single($type,$famille1,$famille2,$famille3)
     {
+		$user = auth()->user();
+		//dd($user->alliage);
         $produit=  DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->where('fam3_id',$famille3)->first();
-
-
-        $product=app('App\Http\Controllers\HomeController')->produit($type,$famille1,$famille2,$famille3);
+		if($user->alliage >0){
+			$product=app('App\Http\Controllers\HomeController')->produit($type,$famille1,$famille2,$famille3,$user->alliage);
+		}else{
+			$product=app('App\Http\Controllers\HomeController')->produit($type,$famille1,$famille2,$famille3,$produit->alliage_defaut);	
+		}
 
         return view('products.single',['product'=>$product,'produit'=>$produit,'type'=>$type,'famille1'=>$famille1,'famille2'=>$famille2,'famille3'=>$famille3]);
     }

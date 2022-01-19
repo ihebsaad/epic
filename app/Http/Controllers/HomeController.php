@@ -199,10 +199,11 @@ class HomeController extends Controller
  
     }
 		 
-	  public static function  alliage1($code,$fam1 )
+	  public static function  alliage1($code,$fam1,$fam2 )
     {   DB::select("SET @p0='$code' ;");
-	   DB::select("SET @p1='$fam1'  ;");
-	 	$result=  DB::select('call `sp_referentiel1_alliage`(@p0,@p1 ); ');
+		DB::select("SET @p1='$fam1'  ;");
+		DB::select("SET @p2='$fam2'  ;");
+		$result=  DB::select('call `sp_referentiel1_alliage`(@p0,@p1,@p2 ); ');
 		return $result;
  
 	} 
@@ -473,7 +474,7 @@ $i=-1;
     }
    
    /*************  Produits   *************/    
-     public   function produit($typeid,$fam1,$fam2,$fam3)
+     public   function produit($typeid,$fam1,$fam2,$fam3,$alliage)
     { 
  	   DB::select("SET @p0='$typeid' ;");
 	   DB::select("SET @p1='$fam1'  ;");
@@ -503,7 +504,7 @@ $i=-1;
     $result[$i]['unite2']=$mesure2;
    $result[$i]['valeur_defaut']=$valeur_defaut;
    
-   $produitmesure1 =$this->produitmesure1($typeid,$fam1,$fam2,$fam3);
+   $produitmesure1 =$this->produitmesure1($typeid,$fam1,$fam2,$fam3,$alliage);
     $result[$i]['mesures']=$produitmesure1 ;
  
    $result[$i]['complements']=$this->produitcomplement($typeid,$fam1,$fam2,$fam3);
@@ -531,14 +532,15 @@ if ($data!= null){
     }   
     
    
-   	 public function produitmesure1($typeid,$fam1,$fam2,$fam3)
+   	 public function produitmesure1($typeid,$fam1,$fam2,$fam3,$alliage)
     { 
  	   DB::select("SET @p0='$typeid' ;");
 	   DB::select("SET @p1='$fam1'  ;");
 	   DB::select("SET @p2='$fam2'  ;");
 	   DB::select("SET @p3='$fam3'  ;");
+	   DB::select("SET @p4='$alliage'  ;");
 
- 	  $result=  DB::select ("  CALL `sp_fiche_produit_val_mesure1`(@p0,@p1,@p2,@p3); ");
+ 	  $result=  DB::select ("  CALL `sp_fiche_produit_val_mesure1`(@p0,@p1,@p2,@p3,@p4); ");
 	$c=0;
   foreach ($result as $r)
   {  

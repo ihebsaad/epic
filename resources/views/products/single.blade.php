@@ -5,22 +5,6 @@
  @section('content')
 <?php 
 
-/*
-   $typeid =101;
- 	 $articleid =1;
- 	 $alliageid =34;
-	 $qte =100;
-	 $poids =100;
-	 $id_cl =10099;
-  DB::select("SET @p0='$typeid' ;");
- 	   DB::select("SET @p1='$articleid' ;");
- 	   DB::select("SET @p2='$alliageid' ;");
-	   DB::select("SET @p3='$qte'  ;");
-	   DB::select("SET @p4='$poids'  ;");
-	   DB::select("SET @p5='$id_cl'  ;");
- 
- 	  $result=  DB::select ("  CALL `sp_fiche_produit_prix`(@p0,@p1,@p2,@p3,@p4,@p5); ");
-	  dd($result);*/
 use App\Http\Controllers\HomeController ;
  if($type==101){$Type=  __('msg.Semi finished Products') ; $link=route('products');}
  if($type==102){$Type=  __('msg.Electroplating') ; $link=route('galvano');}
@@ -34,14 +18,14 @@ use App\Http\Controllers\HomeController ;
   $img=''; $image=DB::table('photo')->where('photo_id',$produit->photo_id)->first();
 	 if(isset($image)){ $img=trim($image->url);}
   
- 	$alliagesp= HomeController::alliage1($type,$famille1);			  
+ 	$alliagesp= HomeController::alliage1($type,$famille1,$famille2);			  
   //alliage1
   $alliages=HomeController::referentielalliage();
 				  
  $user = auth()->user();  
-//$alliage_user=$user['alliage'];
+$alliage_user=$user['alliage'];
  $alliageuser=HomeController::alliage_defaut($type,$famille1);
-$alliage_user = $alliageuser[0]->id ;
+//$alliage_user = $alliageuser[0]->id ;
 if($produit->choix_etat>0){
 $etats= HomeController::referentieletat();
 }
@@ -153,7 +137,7 @@ foreach($compls as $c){
 									
 							 
 									<?php $mesures= $product[0]['mesures'];
- 									  if( $mesures[0]->MESURE1!='0.00' && $mesures[0]->MESURE2 !='0.00'    ){
+ 									  if( isset($mesures[0]->MESURE1) && $mesures[0]->MESURE1!='0.00' && $mesures[0]->MESURE2 !='0.00'    ){
 										  
  									?>
 									  
@@ -440,7 +424,7 @@ function checkComp(){
                 data: {user: <?php echo $user->id; ?>, champ: 'alliage', val: val, _token: _token},
                 success: function (data) {
         
-
+					location.reload();
 
                 }
             });

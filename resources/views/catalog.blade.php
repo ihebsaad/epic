@@ -32,14 +32,18 @@ foreach ($familles2 as $fam2)
          }
     }
 
- 
- $alliagesp= HomeController::alliage1($type,$famille1);			  
+$famille =  \Session::get('famille'); 
+if(isset($famille)&& ($famille!='')){
+    $alliagesp= HomeController::alliage1($type,$famille1,$famille);			  
+}else{
+    $alliagesp= HomeController::alliage1($type,$famille1,$fams2[0]);			  
+}
   //alliage1
   $alliages=HomeController::referentielalliage();			  
  $user = auth()->user();  
 //$alliage_user=$user['alliage'];
  $alliageuser=HomeController::alliage_defaut($type,$famille1);
-$alliage_user = $alliageuser[0]->id ;
+ $alliage_user = $alliageuser[0]->id ;
  
 /*
 $data=  DB::select ("CALL `sp_referentiel2`(); ");
@@ -128,7 +132,6 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 	
 									}
 								}
-                                $famille =  \Session::get('famille'); 
                                // dd($famille);
                                 if($fam2==$famille){$check='checked';}else{$check='';}
                                echo 
@@ -288,9 +291,9 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 ?>
 			
 <script>
-<?php if($famille!=''){ ?>
+<?php /* if($famille!=''){ ?>
   Famille2({!!$famille!!});
-<?php  }  ?>  
+<?php  } */ ?>  
 var metal='';	
  var famille2='';	
 
