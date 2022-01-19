@@ -413,7 +413,7 @@ class UsersController extends Controller
 	public function beneficiairesvalides()
 	{
 		
-    if (auth()->user()->user_type != 'admin') {
+		if (auth()->user()->user_type != 'admin' && auth()->user()->user_type != 'adv') {
  
 		return redirect('/home');
     }else{
