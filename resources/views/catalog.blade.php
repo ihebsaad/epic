@@ -204,17 +204,25 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                     <div class="row"   id="data-products">
 
                      <?php 
-					 $products = DB::table('type_famille')->where('fam1_id',$famille1)->limit(16)->get();
-					 
-					 
-					 foreach($products as $prod)
+ 					// $products = DB::table('type_famille')->where('fam1_id',$famille1)->limit(16)->get();
+                     $products =DB::select(DB::raw('select distinct LIBFAM1, LIBFAM2 , fam2_id, min(photo_id) as photo_id from type_famille WHERE type_id='.$type.' and fam1_id='.$famille1.' group by LIBFAM1, LIBFAM2 ,fam2_id '));
+                     if (isset($products))
+                        $count=count($products);
+                     else
+                        $count=0;
+                     
+					 if($famille2==0 ){
+                     if($count>1){
+
+                    
+                     $products =DB::select(DB::raw('select distinct LIBFAM1, LIBFAM2 , fam2_id, min(photo_id) as photo_id from type_famille WHERE type_id='.$type.' and fam1_id='.$famille1.' group by LIBFAM1, LIBFAM2 ,fam2_id '));
+ 					 foreach($products as $prod)
 					 { 
-					 $titre= $prod->LIBFAM1.' '.$prod->LIBFAM2 .' '.$prod->LIBFAM3;
+					 $titre= $prod->LIBFAM1.' '.$prod->LIBFAM2 ;
 					 $titre=strtolower($titre);
 					 $img=''; $image=DB::table('photo')->where('photo_id',$prod->photo_id)->first();
 					 if(isset($image)){ $img=$image->url;}
 					// $img=(substr($img,32,strlen($img)));
-					 
 						 echo
 						 '
                          <div class="col-lg-4 col-md-12 mb-4">
@@ -224,7 +232,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 
                                 <!--Card image-->
                                 <div class="view overlay" style="min-height:180px">
-                                    <center><a title="'.__("msg.View product").'" href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'"><img style="max-height:180px" src="'.   URL::asset('images/'.$img).'" class="img-fluid" alt=""></a></center>
+                                    <center><a title="'.__("msg.View product").'" href="'.route("catalog",['type'=>$type,'famille1'=>$famille1,'famille2'=>$prod->fam2_id]).'"><img style="max-height:180px" src="'.   URL::asset('images/'.$img).'" class="img-fluid" alt=""></a></center>
                                     <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
@@ -235,7 +243,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                                 <div class="card-body">
                                     <!--Category & Title-->
 
-                                    <h5 title="'.__("msg.View product").'" class="card-title mb-1" style="min-height:72px"><strong><a href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'" class="dark-grey-text">'.$titre.'</a></strong></h5>
+                                    <h5 title="'.__("msg.View product").'" class="card-title mb-1" style="min-height:72px"><strong><a href="'.route("catalog",['type'=>$type,'famille1'=>$famille1,'famille2'=>$prod->fam2_id]).'" class="dark-grey-text">'.$titre.'</a></strong></h5>
 									<!--<span class="badge badge-danger mb-2">famille2</span>-->
  
  
@@ -251,7 +259,106 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
 						 
 						 
 						 ';
-					 }
+					 } // foreach
+
+                        
+                    }else{
+
+
+                        $products = DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->get();
+
+                        foreach($products as $prod)
+                        { 
+                        $titre= $prod->LIBFAM1.' '.$prod->LIBFAM2.' '.$prod->LIBFAM3  ;
+                        $titre=strtolower($titre);
+                        $img=''; $image=DB::table('photo')->where('photo_id',$prod->photo_id)->first();
+                        if(isset($image)){ $img=$image->url;}
+                           
+                            echo
+                            '
+                            <div class="col-lg-4 col-md-12 mb-4">
+                               <!--Card-->
+                               <div class="card card-ecommerce border-bottom-primary">
+                                   <!--Card image-->
+                                   <div class="view overlay" style="min-height:180px">
+                                       <center><a title="'.__("msg.View product").'" href="'.route("single",['type'=>$type,'fam1'=>$prod->fam1_id,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'"><img style="max-height:180px" src="'.   URL::asset('images/'.$img).'" class="img-fluid" alt=""></a></center>
+                                       <a>
+                                           <div class="mask rgba-white-slight"></div>
+                                       </a>
+                                   </div>
+                                   <!--Card image-->
+   
+                                   <!--Card content-->
+                                   <div class="card-body">
+                                       <!--Category & Title-->
+   
+                                       <h5 title="'.__("msg.View product").'" class="card-title mb-1" style="min-height:72px"><strong><a href="'.route("single",['type'=>$type,'fam1'=>$prod->fam1_id,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'" class="dark-grey-text">'.$titre.'</a></strong></h5>
+                                       <!--<span class="badge badge-danger mb-2">famille2</span>-->
+                                   </div>
+                                   <!--Card content-->
+                               </div>
+                               <!--Card-->
+                           </div>            
+                            
+                            
+                            ';
+                        } // foreach
+
+
+                    }
+
+                    }else{
+                        $products = DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->limit(16)->get();
+
+                        foreach($products as $prod)
+                        { 
+                        $titre= $prod->LIBFAM1.' '.$prod->LIBFAM2.' '.$prod->LIBFAM3  ;
+                        $titre=strtolower($titre);
+                        $img=''; $image=DB::table('photo')->where('photo_id',$prod->photo_id)->first();
+                        if(isset($image)){ $img=$image->url;}
+                       // $img=(substr($img,32,strlen($img)));
+                           
+                            echo
+                            '
+                            <div class="col-lg-4 col-md-12 mb-4">
+   
+                               <!--Card-->
+                               <div class="card card-ecommerce border-bottom-primary">
+   
+                                   <!--Card image-->
+                                   <div class="view overlay" style="min-height:180px">
+                                       <center><a title="'.__("msg.View product").'" href="'.route("single",['type'=>$type,'fam1'=>$prod->fam1_id,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'"><img style="max-height:180px" src="'.   URL::asset('images/'.$img).'" class="img-fluid" alt=""></a></center>
+                                       <a>
+                                           <div class="mask rgba-white-slight"></div>
+                                       </a>
+                                   </div>
+                                   <!--Card image-->
+   
+                                   <!--Card content-->
+                                   <div class="card-body">
+                                       <!--Category & Title-->
+   
+                                       <h5 title="'.__("msg.View product").'" class="card-title mb-1" style="min-height:72px"><strong><a href="'.route("single",['type'=>$type,'fam1'=>$prod->fam1_id,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'" class="dark-grey-text">'.$titre.'</a></strong></h5>
+                                       <!--<span class="badge badge-danger mb-2">famille2</span>-->
+    
+    
+                          
+                                   </div>
+                                   <!--Card content-->
+   
+                               </div>
+                               <!--Card-->
+   
+                           </div>
+                                                     
+                            
+                            
+                            ';
+                        } // foreach
+
+                    }
+
+
 					 ?>   
 						
 						
@@ -355,7 +462,7 @@ function filter()
 		// var fam1 = $('#fam1').val();
 		//var url="{{ route('catalog',['type'=>,'<?php echo $type;?>'famille1'=>"+fam1+"]) }}";
 		//url= document.location.hostname+'/epic' 
-		document.location.href='<?php echo $urlapp;?>'+'/catalog/'+<?php echo $type;?>+'/'+fam1;
+		document.location.href='<?php echo $urlapp;?>'+'/catalog/'+<?php echo $type;?>+'/'+fam1+'/0';
 	}	
 
     function saving() {

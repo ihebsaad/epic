@@ -56,6 +56,7 @@ metal_defaut_id
                                 <div id="div1" class="card-body">
 
                                     <form class="user"   method="post" action="{{ route('updateuser') }}"    >
+                                    @honeypot
                                         <input type="hidden" value="{{$id}}" id="iduser" name="user">
                                         {{ csrf_field() }}
                                         <div class="form-group row">
@@ -208,6 +209,7 @@ metal_defaut_id
                                 @endif
 
                                     <form class="user"  method="post" action="{{ route('updatecomp') }}"    >
+                                    @honeypot
 							        {{ csrf_field() }}
 
                                         <input type="hidden" value="{{$cl_ident}}" id="cl_ident" name="cl_ident">

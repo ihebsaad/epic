@@ -33,7 +33,7 @@ if($i==5 ||$i==10 || $i== 15 ){$color='danger';}
 		//echo $famille1->id .'<br>';
 		echo '
 		 <div class="col-xl-3 col-md-6 mb-4">
-                            <a href="'. route('catalog',['type'=>101,'famille1'=>$famille1->id]).'">
+                            <a href="'. route('catalog',['type'=>101,'famille1'=>$famille1->id,'famille2'=>0]).'">
 							 <div class="card border-left-'.$color.' shadow h-100 py-2">
                                 <div class="card-body" style="min-height:200px">
                                     <div class="row no-gutters align-items-center">

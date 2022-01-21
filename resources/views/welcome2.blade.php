@@ -515,6 +515,7 @@
                         <h4 class="contact-title pb-10"><i class="lni lni-envelope"></i> <span>Laissez</span> un message.</h4>
                         
                         <form id="contact-form" action=" " method="post">
+                        @honeypot
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-input mt-25">

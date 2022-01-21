@@ -20,6 +20,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Connexion </h1>
                                     </div>
                                     <form class="user"   method="POST" action="{{ route('login') }}">
+                                    @honeypot
                         {{ csrf_field() }}
 						
                                         <div class="form-group">

@@ -31,6 +31,7 @@ label{color:black;}
                             <div class="text-center">
                              </div>
                             <form class="user"  method="POST" action="{{ route('updatinguser') }}">
+                            @honeypot
 								{{ csrf_field() }}
 								<input type="hidden" name="user"   value="<?php echo $user->id; ?>"   />
                                 <div class="form-group row">
@@ -155,6 +156,7 @@ label{color:black;}
 									</a>
                                 </div>
 								<form class="user"  method="POST" action="{{ route('updatingusertype') }}">
+                                @honeypot
 								{{ csrf_field() }}
 								<input type="hidden" name="user"   value="<?php echo $user->id; ?>"   />
                                 <div id="div3" class="card-body">

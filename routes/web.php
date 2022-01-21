@@ -50,7 +50,7 @@ Route::get('/jewelry', 'PagesController@jewelry')->name('jewelry');
 Route::get('/galvano', 'PagesController@galvano')->name('galvano');
 Route::get('/refining', 'PagesController@refining')->name('refining');
 Route::get('/laboratory', 'PagesController@laboratory')->name('laboratory');
-Route::get('/catalog/{type}/{famille1}', 'PagesController@catalog')->name('catalog');
+Route::get('/catalog/{type}/{famille1}/{famille2}', 'PagesController@catalog')->name('catalog');
 
 
 

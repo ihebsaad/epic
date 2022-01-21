@@ -21,6 +21,7 @@
                                         <p class="mb-4">Insérez votre adresse email mot de passe, et la confirmation du mot de passe</p>
                                     </div>
                                     <form class="user" method="POST" action="{{ route('password.reset', $token) }}">
+                                    @honeypot
 									{{ csrf_field() }}
 										<input type="hidden" name="token" value="{{ $token }}">
 

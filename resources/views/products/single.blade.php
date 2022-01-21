@@ -100,7 +100,7 @@ foreach($compls as $c){
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('msg.Home')}}</a></li>
     <li class="breadcrumb-item"><a href="<?php echo $link;?>"><?php echo $Type;?></a></li>
-    <li class="breadcrumb-item "  ><a href="<?php echo route('catalog',['type'=>$type,'famille1'=>$famille1]);?>"  ><?php echo $libelle;?></a></li>
+    <li class="breadcrumb-item "  ><a href="<?php echo route('catalog',['type'=>$type,'famille1'=>$famille1,'famille2'=>0]);?>"  ><?php echo $libelle;?></a></li>
     <li class="breadcrumb-item active" aria-current="page"><?php echo $titre;?></li>
   </ol>
 </nav>

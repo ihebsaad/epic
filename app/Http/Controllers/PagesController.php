@@ -38,9 +38,9 @@ class PagesController extends Controller
          return view('home');
     }
 	
-      public function catalog($type,$famille1)
+      public function catalog($type,$famille1,$famille2)
     { 
-	return view('catalog',['type'=>$type,'famille1'=>$famille1]);
+	return view('catalog',['type'=>$type,'famille1'=>$famille1,'famille2'=>$famille2]);
     }
 	
 	  public function orders()

@@ -110,7 +110,7 @@ $metal=intval($mv->metal_id);
 
   <div class="tab-pane active" id="weight" role="tabpanel" aria-labelledby="weight-tab">
 							 <form    action="{{action('PagesController@virement')}}" >
-							
+               @honeypot
 							 <div class="row" style="max-width:650px">
 								
 								<div class="col-lg-5 col-sm-12 pt-10">					
@@ -315,6 +315,7 @@ $metal=intval($mv->metal_id);
         <div class="modal-body" style="">
 
 <form action="{{ route('ajoutbenefic') }}" method="post"  >
+@honeypot
 {{ csrf_field() }}
 <div class="row mb-10">
 <div class="col-md-4">{{__('msg.Sequence number in my lists')}}</div><div class="col-md-8"><input class="form-control" type="number" step="1" min="0" value="0" max="20" style="width:80px"  name="ordre" /></div>

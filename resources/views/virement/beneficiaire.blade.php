@@ -43,6 +43,7 @@ $et=array();
 
 
 	   <form method="post" action="{{ route('updatebenif') }}"    >
+     @honeypot
 		 {{ csrf_field() }}
 		 <input type="hidden" name="id" value="<?php echo $id; ?>" />
 <div class="row mb-10">
@@ -117,6 +118,7 @@ echo '<option   '.$selected.' value="'.$etab->etablissement_ident.'">'.$etab->et
         <div class="modal-body" style="">
 
 <form action="{{ route('ajoutbenefic') }}" method="post"  >
+@honeypot
 {{ csrf_field() }}
 <div class="row mb-10">
 <div class="col-md-4">{{__('msg.Sequence number')}}</div><div class="col-md-8"><input class="form-control" type="number" step="1" min="0" value="0" max="20" style="width:80px"  name="ordre" /></div>

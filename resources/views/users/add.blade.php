@@ -33,6 +33,7 @@ label{color:black;}
                             <div class="text-center">
                              </div>
                             <form class="user"  method="POST" action="{{ route('adding') }}">
+                            @honeypot
 								{{ csrf_field() }}
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">

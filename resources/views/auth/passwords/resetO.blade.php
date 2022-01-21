@@ -11,6 +11,7 @@
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('password.reset', $token) }}">
+                    @honeypot
                         {{ csrf_field() }}
 
                         <input type="hidden" name="token" value="{{ $token }}">

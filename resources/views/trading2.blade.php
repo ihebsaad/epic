@@ -467,6 +467,7 @@ setTimeout("showNetDania()",5000);
    
   <div style="display:none;">
 <form class="entryform" method="post" action=""  enctype="multipart/form-data">
+@honeypot
   <!-- XAU/USD_bid --><input type="hidden" name="Gold_bid" id="Gold_bid" value="0" />
   <!-- XAU/USD_ask --> <input type="hidden" name="Gold_ask" id="Gold_ask" value="0" /><br>
   <!-- XAG/USD_bid  --><input type="hidden" name="Silver_bid" id="Silver_bid" value="0" />

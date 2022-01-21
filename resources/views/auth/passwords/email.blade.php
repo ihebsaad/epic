@@ -27,6 +27,7 @@
 													@endif
                                     </div>
                                     <form class="user"   method="POST" action="{{ route('password.email') }}">
+                                    @honeypot
 										{{ csrf_field() }}
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"  name="email" value="{{ old('email') }}" required

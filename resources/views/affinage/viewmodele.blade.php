@@ -45,6 +45,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                                 </div>
                                 <div class="card-body">
 								   <form method="post" action="{{ route('updatemodele') }}"  enctype="multipart/form-data">
+								   @honeypot
 										{{ csrf_field() }}
 									  <input  class="form-control"  id="cl_ident"  type="hidden"  name="cl_ident" value="<?php echo $user['client_id']; ?>" />
 									  <input  class="form-control"  id="id"  type="hidden"  name="id" value="<?php echo $modele->modele_affinage_ident; ?>" />

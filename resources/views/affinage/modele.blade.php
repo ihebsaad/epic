@@ -35,6 +35,7 @@ foreach($natures as $nature)
                                 </div>
                                 <div class="card-body">
 								   <form method="post" action="{{ route('addmodele') }}"  enctype="multipart/form-data">
+								   @honeypot
 										{{ csrf_field() }}
 									  <input  class="form-control"  id="cl_ident"  type="hidden"  name="cl_ident" value="<?php echo $user['client_id']; ?>" />
 
