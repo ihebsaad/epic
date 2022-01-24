@@ -41,9 +41,9 @@ if(isset($famille)&& ($famille!='')){
   //alliage1
   $alliages=HomeController::referentielalliage();			  
  $user = auth()->user();  
-//$alliage_user=$user['alliage'];
+$alliage_user=$user['alliage'];
  $alliageuser=HomeController::alliage_defaut($type,$famille1);
- $alliage_user = $alliageuser[0]->id ;
+ //$alliage_user = $alliageuser[0]->id ;
  
 /*
 $data=  DB::select ("CALL `sp_referentiel2`(); ");
@@ -86,7 +86,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
   </style>
 					
     <div class="filtres mb-10">
-	
+	<input type="hidden" value="<?php echo $user->id; ?>" id="cuser" />
     <div class="row pt-4">
 
             <!-- Sidebar -->
@@ -153,7 +153,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                                 <div class="divider"></div>
                                  <div class="">
 
-								 
+								 @honeypot
 								 <select class="form-control" id="alliage_id"  onchange="changing()" style="width:200px"  >
 									 <option value="0"></option>
 										<?php
@@ -444,16 +444,16 @@ function filter()
 
 
    function changing() {
-           val=$('#alliage_id').val();
+    val=$('#alliage_id').val();
+    user=$('#cuser').val();
              //if ( (val != '')) {
             var _token = $('input[name="_token"]').val();
-            $.ajax({
+             $.ajax({
                 url: "{{ route('users.updating') }}",
                 method: "POST",
-                data: {user: <?php echo $user->id; ?>, champ: 'alliage', val: val, _token: _token},
-                success: function (data) {     
-
-                }
+                data: {user: user, champ: 'alliage', val: val, _token: _token},
+                success: function (data) {    
+                 }
             });
 
         }

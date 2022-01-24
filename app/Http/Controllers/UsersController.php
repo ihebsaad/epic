@@ -55,13 +55,21 @@ class UsersController extends Controller
             $val= bcrypt(trim($request->get('val')));
 
         }else{
-            $val= $request->get('val');
+            $val= intval($request->get('val'));
 
         }
-         User::where('id', $id)->update(array($champ => $val));
+         //User::where('id', $id)->update(array($champ => $val));
+		DB::table('users')->where('id', $id)->update(array('alliage' => $val));
+     }
 
-    }
+	public function updatealliage(Request $request)
+    {
+		$id= $request->get('user');
+		$val= $request->get('val');
+ 
+		User::where('id', $id)->update(array('alliage' => $val));
 
+	}
     public static function  ChampById($champ,$id)
     {
         $user = User::find($id);

@@ -149,6 +149,8 @@ Route::get('/users/destroy/{id}','UsersController@destroy')->name('users.destroy
 Route::post('/users/updating','UsersController@updating')->name('users.updating');
 Route::post('/users/famille','UsersController@famille')->name('users.famille');
 
+Route::post('/users/updatealliage','UsersController@updatealliage')->name('users.updatealliage');
+
 Route::post('/updateuser','UsersController@updateuser')->name('updateuser');
 Route::post('/updatecomp','UsersController@updatecomp')->name('updatecomp');
 Route::post('/updateclient','UsersController@updateclient')->name('updateclient');
