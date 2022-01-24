@@ -49,7 +49,7 @@ class UsersController extends Controller
 
     public function updating(Request $request)
     {
-         $id= $request->get('user');
+        $id= $request->get('user');
         $champ= strval($request->get('champ'));
         if($champ=='password'){
             $val= bcrypt(trim($request->get('val')));
