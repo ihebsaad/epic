@@ -18,7 +18,7 @@ Route::get('/', function () {
 //Route::get('/', 'PagesController@welcome')->name('welcome');
 Route::get('/verify', 'UsersController@verify')->name('verify');
 
-
+Route::get('/refresh', 'Auth\LoginController@refresh')->name('refresh');
 Route::get('users/loginas/{id}', 'UsersController@loginAs')->name('loginas');
 
 Route::post('/data', 'ProductsController@data')->name('data');

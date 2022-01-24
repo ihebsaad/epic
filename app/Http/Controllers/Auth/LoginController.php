@@ -71,5 +71,9 @@ class LoginController extends Controller
         return $field;
     }
 	
-	
+    public function refresh()
+    {
+         return captcha_img('math');
+    }
+    
 }
