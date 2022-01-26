@@ -139,7 +139,7 @@ foreach($compls as $c){
 									
 							 
 									<?php $mesures= $product[0]['mesures'];
- 									  if( isset($mesures[0]->MESURE1) && $mesures[0]->MESURE1!='0.00' && $mesures[0]->MESURE2 !='0.00'    ){
+ 									  if( isset($mesures[0]->MESURE1) && $mesures[0]->MESURE1!='0.00'    ){
 										  
  									?>
 									  

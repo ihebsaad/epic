@@ -216,7 +216,7 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                      if($count>1){
 
                     
-                     $products =DB::select(DB::raw('select distinct LIBFAM1, LIBFAM2 , fam2_id, fam3_id, min(photo_id) as photo_id from type_famille WHERE type_id='.$type.' and fam1_id='.$famille1.' group by LIBFAM1, LIBFAM2 ,fam2_id,fam3_id '));
+                     $products =DB::select(DB::raw('select distinct LIBFAM1, LIBFAM2 , fam2_id, fam3_id, min(photo_id) as photo_id from type_famille WHERE type_id='.$type.' and fam1_id='.$famille1.' group by LIBFAM1, LIBFAM2 ,fam2_id '));
  					 foreach($products as $prod)
 					 { 
 					 $titre= $prod->LIBFAM1.' '.$prod->LIBFAM2 ;
