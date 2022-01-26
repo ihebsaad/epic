@@ -87,7 +87,10 @@ $user_type=$user->user_type;
          {{__('msg.Scrap Gold Buyers, Investors')}}
       </div>
 	  <hr class="sidebar-divider">
-	  
+	  <li class="nav-item   <?php  ?>">
+        <a class="nav-link" href="{{route('invest')}}"  <?php if(isset($type)){if($type==105){echo 'style="font-weight:800"'; }} if($view_name=='products-invest' ){echo 'style="font-weight:800"'; } ?>>
+           <span> {{__('msg.Investment metals')}}</span></a>
+      </li>		  
  	  <li class="nav-item   <?php  ?>">
         <a class="nav-link" href="{{route('rachat')}}"   <?php if( strpos($view_name  ,'rachat') !== false )  {echo 'style="font-weight:800"'; } ?> >
            <span> {{__('msg.Buyback of precious metals')}} </span></a>

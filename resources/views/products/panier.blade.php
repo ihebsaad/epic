@@ -66,6 +66,7 @@ $products=array();
  if($product->type==102){$Type=  __('msg.Electroplating') ; $link=route('galvano');}
  if($product->type==103){$Type=  __('msg.Findings') ; $link=route('findings');}
  if($product->type==104){$Type= __('msg.Jewelry') ; $link=route('jewelry');}
+ if($product->type==105){$Type= __('msg.Metal investment') ; $link=route('invest');}
 
  $id_unite= $prod[0]['UNIT_IDENT'];
  $unite=DB::table('unite')->where('UNIT_IDENT',$id_unite)->first();

@@ -465,6 +465,12 @@ $content = $response->getBody();
          return view('products.galvano');
     }
 	
+    public function invest()
+    {        
+       Session::put('famille',null);
+         return view('products.invest');
+    }
+
 	 public function refining()
     { 
          return view('products.refining');

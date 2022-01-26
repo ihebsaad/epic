@@ -195,6 +195,10 @@ class UsersController extends Controller
         $confirmation= $request->get('confirmation');
         $client_id= intval($request->get('client_id'));
         $client_id2= intval($request->get('client_id2'));
+
+		$captcha =$request->get('g-recaptcha-response');
+		if($captcha!=null){
+		
          if($password !=''  && (strlen($password )>7) ){
 		
 		if( $client_id >0 && ($client_id==$client_id2) && $password== $confirmation )
@@ -229,6 +233,7 @@ class UsersController extends Controller
 	 
 		 }
 		 }
+		}
 	 }
 
 	 	 

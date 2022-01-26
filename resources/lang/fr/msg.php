@@ -431,5 +431,6 @@ return [
 	"Something went wrong!"=>"Erreur est survenue!",
  	"User Type"=>"Type d'utilisateur",
 	"Back"=>"Retour",
+	"Investment metals"=>"Métaux investissement",
 
  ];

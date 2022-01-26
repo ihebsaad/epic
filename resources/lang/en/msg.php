@@ -422,5 +422,6 @@ return [
 	"Something went wrong!"=>"Something went wrong!",
 	"User Type"=>"User Type",
 	"Back"=>"Back",
- 	
+	"Investment metals"=>"Investment Metals",
+	
  ];

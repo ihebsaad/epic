@@ -417,5 +417,6 @@ return [
 			"Something went wrong!"=>"Coś poszło nie tak!",
  			"User Type"=>"rodzaj użytkownika",
 			"Back"=>"Powrót",
+            "Investment metals"=>"Metale inwestycyjne",
 
  ];

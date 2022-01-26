@@ -19,6 +19,7 @@ $referentiels=  DB::table('type_famille')->where('type_id',$type)->where('fam1_i
  if($type==102){$Type=  __('msg.Electroplating') ;}
  if($type==103){$Type=  __('msg.Findings') ;}
  if($type==104){$Type= __('msg.Jewelry') ;}
+ if($type==105){$Type= __('msg.Investment metals') ;}
 
 $familles2=  HomeController::req_referentiel2() ;
  $fams2=array();
@@ -43,7 +44,7 @@ if(isset($famille)&& ($famille!='')){
  $user = auth()->user();  
 $alliage_user=$user['alliage'];
  $alliageuser=HomeController::alliage_defaut($type,$famille1);
- //$alliage_user = $alliageuser[0]->id ;
+//$alliage_user = $alliageuser[0]->id ;
  
 /*
 $data=  DB::select ("CALL `sp_referentiel2`(); ");
@@ -215,15 +216,18 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                      if($count>1){
 
                     
-                     $products =DB::select(DB::raw('select distinct LIBFAM1, LIBFAM2 , fam2_id, min(photo_id) as photo_id from type_famille WHERE type_id='.$type.' and fam1_id='.$famille1.' group by LIBFAM1, LIBFAM2 ,fam2_id '));
+                     $products =DB::select(DB::raw('select distinct LIBFAM1, LIBFAM2 , fam2_id, fam3_id, min(photo_id) as photo_id from type_famille WHERE type_id='.$type.' and fam1_id='.$famille1.' group by LIBFAM1, LIBFAM2 ,fam2_id,fam3_id '));
  					 foreach($products as $prod)
 					 { 
 					 $titre= $prod->LIBFAM1.' '.$prod->LIBFAM2 ;
 					 $titre=strtolower($titre);
 					 $img=''; $image=DB::table('photo')->where('photo_id',$prod->photo_id)->first();
 					 if(isset($image)){ $img=$image->url;}
-					// $img=(substr($img,32,strlen($img)));
-						 echo
+
+                       $sousprod=    DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$prod->fam2_id)->count();
+                        if($sousprod>1){
+
+ 						 echo
 						 '
                          <div class="col-lg-4 col-md-12 mb-4">
 
@@ -255,10 +259,43 @@ $data2=  DB::table("type_famille")->where('fam2_id',$famille)->distinct('fam1_id
                             <!--Card-->
 
                         </div>
-												  
-						 
-						 
 						 ';
+                         }
+                        else{
+
+                            echo
+                            '
+                            <div class="col-lg-4 col-md-12 mb-4">
+                               <!--Card-->
+                               <div class="card card-ecommerce border-bottom-primary">
+                                   <!--Card image-->
+                                   <div class="view overlay" style="min-height:180px">
+                                       <center><a title="'.__("msg.View product").'" href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'"><img style="max-height:180px" src="'.   URL::asset('images/'.$img).'" class="img-fluid" alt=""></a></center>
+                                       <a>
+                                           <div class="mask rgba-white-slight"></div>
+                                       </a>
+                                   </div>
+                                   <!--Card image-->
+   
+                                   <!--Card content-->
+                                   <div class="card-body">
+                                       <!--Category & Title-->
+   
+                                       <h5 title="'.__("msg.View product").'" class="card-title mb-1" style="min-height:72px"><strong><a href="'.route("single",['type'=>$type,'fam1'=>$famille1,'fam2'=>$prod->fam2_id,'fam3'=>$prod->fam3_id]).'" class="dark-grey-text">'.$titre.'</a></strong></h5>
+                                       <!--<span class="badge badge-danger mb-2">famille2</span>-->
+                                   </div>
+                                   <!--Card content-->
+                               </div>
+                               <!--Card-->
+                           </div>            
+                            
+                            
+                            ';
+
+                        }
+
+
+
 					 } // foreach
 
                         

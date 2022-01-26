@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::get('/', function () {
     return view('welcome');
@@ -49,6 +50,7 @@ Route::get('/products', 'PagesController@products')->name('products');
 Route::get('/jewelry', 'PagesController@jewelry')->name('jewelry');
 Route::get('/galvano', 'PagesController@galvano')->name('galvano');
 Route::get('/refining', 'PagesController@refining')->name('refining');
+Route::get('/invest', 'PagesController@invest')->name('invest');
 Route::get('/laboratory', 'PagesController@laboratory')->name('laboratory');
 Route::get('/catalog/{type}/{famille1}/{famille2}', 'PagesController@catalog')->name('catalog');
 
@@ -109,6 +111,7 @@ Route::post('/order/updating','ProductsController@updating')->name('orders.updat
 
 
 
+Route::middleware(ProtectAgainstSpam::class)->group(function() {
 
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -129,9 +132,12 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 $this->post('password/reset/{token}', 'Auth\ResetPasswordController@reset');
 
 
+ 
+	Auth::routes(['verify' => true] );
+});
 
 //Auth::routes();
-Auth::routes(['verify' => true] );
+///Auth::routes(['verify' => true] );
 
 Route::post('/setlanguage', 'HomeController@setlanguage')->name('setlanguage');
 

@@ -416,7 +416,7 @@ $i=-1;
        public static function alliage_defaut ($type,$fam1)
     { 
 	 $user = auth()->user();  
-	 $client_id=$user['client_id'];
+	 $client_id=$user['id'];
  	   DB::select("SET @p0='$type'  ;");
 	   DB::select("SET @p1='$fam1'  ;");
 	   DB::select("SET @p2='$client_id'  ;");

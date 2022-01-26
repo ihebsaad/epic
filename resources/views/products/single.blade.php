@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController ;
  if($type==102){$Type=  __('msg.Electroplating') ; $link=route('galvano');}
  if($type==103){$Type=  __('msg.Findings') ; $link=route('findings');}
  if($type==104){$Type= __('msg.Jewelry') ; $link=route('jewelry');}
+ if($type==105){$Type= __('msg.Investment metals') ; $link=route('invest');}
   $Fam1 =DB::table('type_famille')->where('fam1_id',$famille1)->where('type_id',$type)->first();
  $libelle=$Fam1->LIBFAM1;
  //dd($produit);
@@ -23,10 +24,11 @@ use App\Http\Controllers\HomeController ;
   $alliages=HomeController::referentielalliage();
 				  
  $user = auth()->user();  
-$alliage_user=$user['alliage'];
- $alliageuser=HomeController::alliage_defaut($type,$famille1);
+ $alliage_user=$user['alliage'];
+$alliageuser=HomeController::alliage_defaut($type,$famille1);
+//dd($alliageuser);
 //$alliage_user = $alliageuser[0]->id ;
-if($produit->choix_etat>0){
+ if($produit->choix_etat>0){
 $etats= HomeController::referentieletat();
 }
 $disabled='';

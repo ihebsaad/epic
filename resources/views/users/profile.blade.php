@@ -20,7 +20,8 @@ $client=DB::table('client')->where('cl_ident',$cl_ident)->first();
   $type_clients=DB::table('type_client')->get();
   $adresses=HomeController::adresse($cl_ident);
   $clients=DB::table('client')->get();
-
+  $user = auth()->user();  
+  $alliage_user=$user['alliage'];
    /*
 cl_ident
 siret
@@ -193,21 +194,50 @@ metal_defaut_id
 
                                 @if( strtolower($user->user_type)=='adv' || strtolower($user->user_type)=='admin'  )
                                 <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label>{{__('msg.Client ID')}}*</label>
                                  <select class="form-control  " name="client_id" id="client_id"  required placeholder="ID CLient"  onchange="updateclient()" style="font-size: 0.8rem;border-radius: 10rem;padding-left:15px;padding-top:10px;height:50px;font-family:Nunito"  >
                                     <option></option>
-                                         cl_ident 
 	                                        @foreach($clients as $ct)	                                        
 	                                            <option  @if($ct->cl_ident== $cl_ident) selected="selected" @endif   value="{{$ct->cl_ident}}" title="siret : {{$ct->siret}}" >{{$ct->cl_ident}} | {{$ct->raison_sociale}}</option>
 	                                       @endforeach
                                          
-
                                 </select>
                                 </div>
+
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label><?php echo __('msg.Default metal');?></label>											
+                                                  
+                                                  <select class="form-control "   name="metal_defaut_id" id="metal_defaut_id"  onchange="updatealliage()"   >
+                                                  <option value="" ></option> 
+                                                  <?php
+                                                  if (is_array($metals) || is_object($metals))
+                                                  {
+                                                  foreach($metals as $metal)
+                                                  {  
+                                                  $selected="";
+                                                  /*	if(isset($client->metal_defaut_id))
+                                                      {
+                                                          if($client->metal_defaut_id==$metal->id){$selected="selected='selected'";}else{$selected="";}	
+                                                      }
+                                                  */
+                                                      if(isset($alliage_user))
+                                                      {
+                                                          if($alliage_user==$metal->id){$selected="selected='selected'";}else{$selected="";}	
+                                                      }
+                                                      echo '<option   '.$selected.' value="'.$metal->id.'" >'.$metal->libelle.'</option>';    
+                                                       
+                                                  }
+                                                  }
+              
+                                                  ?>
+              
+                                                      </select>							
+                                </div>
+
                                 </div>
                                 @endif
-
+                                     <br> <hr>  <br>                
                                     <form class="user"  method="post" action="{{ route('updatecomp') }}"    >
                                     @honeypot
 							        {{ csrf_field() }}
@@ -241,29 +271,7 @@ metal_defaut_id
 
                                             </div>
                                             <div class="col-sm-6">
-											<label><?php echo __('msg.Default metal');?></label>											
-                                                  
-									<select class="form-control "   name="metal_defaut_id" id="metal_defaut_id"    >
-									<option value="" ></option> 
-									<?php
-									if (is_array($metals) || is_object($metals))
-									{
-									foreach($metals as $metal)
-									{  
-									$selected="";
-										if(isset($client->metal_defaut_id))
-										{
-											if($client->metal_defaut_id==$metal->id){$selected="selected='selected'";}else{$selected="";}	
-										}
-										
-										echo '<option   '.$selected.' value="'.$metal->id.'" >'.$metal->libelle.'</option>';    
-										 
-									}
-									}
-				
-										?>
-
-										</select>													   
+															   
                                             </div>
 
                                         </div>	
@@ -449,6 +457,37 @@ metal_defaut_id
 
         }
 		
+
+        function updatealliage() {
+            var val = $('#metal_defaut_id').val();
+            var user = $('#iduser').val();
+            //if ( (val != '')) {
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{ route('users.updatealliage') }}",
+                method: "POST",
+                data: {user: user, val: val,  _token: _token},
+                success: function (data) {
+  
+                    $.notify({
+                        message: 'Modifié avec succès',
+                        icon: 'glyphicon glyphicon-check'
+                    },{
+                        type: 'success',
+                        delay: 3000,
+                        timer: 1000,
+                        placement: {
+                            from: "bottom",
+                            align: "right"
+                        },
+                    });
+
+                    location.reload();
+
+                }
+            });
+
+        }
 
     </script>
 @endsection
