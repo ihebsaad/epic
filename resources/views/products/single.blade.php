@@ -24,10 +24,7 @@ use App\Http\Controllers\HomeController ;
   $alliages=HomeController::referentielalliage();
 				  
  $user = auth()->user();  
- $alliage_user=$user['alliage'];
-$alliageuser=HomeController::alliage_defaut($type,$famille1);
-//dd($alliageuser);
-//$alliage_user = $alliageuser[0]->id ;
+ 
  if($produit->choix_etat>0){
 $etats= HomeController::referentieletat();
 }
@@ -67,7 +64,7 @@ foreach($compls as $c){
 	$comps[$c->id]['maxi']=$c->maxi;
 	$comps[$c->id]['pas']=$c->pas;
  }
- 
+
  //dd($comps);
  ?>
  <script>
@@ -139,7 +136,7 @@ foreach($compls as $c){
 									
 							 
 									<?php $mesures= $product[0]['mesures'];
- 									  if( isset($mesures[0]->MESURE1) && $mesures[0]->MESURE1!='0.00'    ){
+ 									  if( isset($mesures[0]->MESURE1) && $mesures[0]->MESURE1!='0.00' && $mesures[0]->MESURE2 !='0.00'    ){
 										  
  									?>
 									  
@@ -188,7 +185,7 @@ foreach($compls as $c){
 
  									<div class="row pl-10 mt-10">
 									 <label class="mr-10 pt-10">{{__('msg.Alloy')}} :</label>
-									 <select class="form-control" id="alliage_id" style="max-width:270px;" onchange="changing();$('#option').show('slow');$('#infos').show('slow');details();">
+									 <select class="form-control" id="alliage_id" style="max-width:270px;" onchange="$('#option').show('slow');$('#infos').show('slow');details();">
  										<?php
 										
 										

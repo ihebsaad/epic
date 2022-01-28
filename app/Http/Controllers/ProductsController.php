@@ -516,13 +516,15 @@ class ProductsController extends Controller
 		$user = auth()->user();
 		//dd($user->alliage);
         $produit=  DB::table('type_famille')->where('type_id',$type)->where('fam1_id',$famille1)->where('fam2_id',$famille2)->where('fam3_id',$famille3)->first();
-		if($user->alliage >0){
-			$product=app('App\Http\Controllers\HomeController')->produit($type,$famille1,$famille2,$famille3,$user->alliage);
-		}else{
-			$product=app('App\Http\Controllers\HomeController')->produit($type,$famille1,$famille2,$famille3,$produit->alliage_defaut);	
-		}
 
-        return view('products.single',['product'=>$product,'produit'=>$produit,'type'=>$type,'famille1'=>$famille1,'famille2'=>$famille2,'famille3'=>$famille3]);
+		$alliageuser=app('App\Http\Controllers\HomeController')->alliage_defaut($type,$famille1);
+		//dd($alliageuser);
+		$alliage_user = isset($alliageuser[0]->id) ? $alliageuser[0]->id : $produit->alliage_defaut ;
+		
+		$product=app('App\Http\Controllers\HomeController')->produit($type,$famille1,$famille2,$famille3,$alliage_user);	
+	 
+
+        return view('products.single',['product'=>$product,'produit'=>$produit,'type'=>$type,'famille1'=>$famille1,'famille2'=>$famille2,'famille3'=>$famille3 ,'alliageuser'=>$alliageuser,'alliage_user'=>$alliage_user]);
     }
 	    
     public function modelabel (Request $request)
