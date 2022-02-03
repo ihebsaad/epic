@@ -17,13 +17,13 @@ foreach($natures as $nature)
 	}
 }
 
-$modele=DB::table('modele_rmp')->where('modele_rmp_ident',$id)->first();
+$modele=\App\Modele_rmp::where('modele_rmp_ident',$id)->first();
 
 $covers=DB::table('choix_couv')->where('langue','like',$user['lg'].'%')->get();
 
-$E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
-$E_CmdesLab=DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
-$E_CmdesRMP=DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesAff=\App\Cmde_aff_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesLab=\App\Cmde_lab_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesRMP=\App\Cmde_rmp_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
 
 $count_aff =count($E_CmdesAff);
 $count_lab =count($E_CmdesLab);

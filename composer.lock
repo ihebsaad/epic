@@ -4,8 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de9fd02d91311fe93e7484675b7e51e8",
+    "content-hash": "d711dc85a1914ba8cc2d6c917caa453b",
     "packages": [
+        {
+            "name": "alex-le/dhl-express-php-sdk",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alex-LE/dhl-express-php-sdk.git",
+                "reference": "7d0866eb858d48e7fb088ca316eba52c246c3b0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alex-LE/dhl-express-php-sdk/zipball/7d0866eb858d48e7fb088ca316eba52c246c3b0a",
+                "reference": "7d0866eb858d48e7fb088ca316eba52c246c3b0a",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0",
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "alexLE\\DHLExpress\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Reichardt",
+                    "email": "mail@alexander-reichardt.de"
+                }
+            ],
+            "description": "DHL Express SDK",
+            "support": {
+                "issues": "https://github.com/alex-LE/dhl-express-php-sdk/issues",
+                "source": "https://github.com/alex-LE/dhl-express-php-sdk/tree/master"
+            },
+            "time": "2019-11-14T09:41:28+00:00"
+        },
         {
             "name": "darkaonline/l5-swagger",
             "version": "5.8.5",

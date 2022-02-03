@@ -264,7 +264,7 @@ $estim_titre_pt  = floatval($request->get('estim_titre_pt'));
 $estim_titre_pd  = floatval($request->get('estim_titre_pd'));	
 $assiste   =  $request->get('assiste') ;	
 $update   =  $request->get('update') ;	
- $estimation_prix   =  $request->get('estimation_prix') ;	
+$estimation_prix   =  $request->get('estimation_prix') ;	
 
  		if($assiste=="on" || $assiste==1 ){
 			$assiste=1;
@@ -524,34 +524,192 @@ $estimation_prix   =  $request->get('estimation_prix') ;
   public function validatemodels(Request $request)
 {
  $user = auth()->user();  
- $adresse   = $request->get('adresse');	
- $agence   = $request->get('agence');	
+ $adresse   = ($request->get('adresse')!= null) ? $request->get('adresse') : 0 ;	
+ $agence   =  ($request->get('agence')!= null) ? $request->get('agence') : 0 ;	
+ $mode   = $request->get('mode');	
+ if($mode=='collect'){
+	 $Mode='CC';
+ }else{
+	 $Mode='ENL';
+ }
+ $client_id=$user['client_id'];
 
-$E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+
+$E_CmdesAff= Cmde_aff_e::where('cl_ident', $client_id)->where('statut','panier')->get();
  foreach ($E_CmdesAff as $cmd)
  {								
   $cmdid=$cmd->cmde_aff_ident;
-  $lignes=DB::table('cmde_aff_l')->where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
- }
- DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+  $lignes=Cmde_aff_l::where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->get();
 
- $E_CmdesLab=DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$prix=floatval($cmd->estimation_prix);
+DB::select("SET @p0='$client_id' ;");
+DB::select("SET @p1='$cmd->cmde_aff_poids_brut' ;");
+DB::select("SET @p2='$cmd->cmde_aff_poids_lot' ;");
+DB::select("SET @p3='$prix' ;");
+DB::select("SET @p4='$user->id' ;");
+DB::select("SET @p5='$Mode' ;");
+DB::select("SET @p6='$cmd->num_colis' ;");
+DB::select("SET @p7='$adresse' ;");
+DB::select("SET @p8='$agence' ;");
+
+///
+
+  DB::select ("  CALL `sp_aff_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9 ); ");
+ 
+foreach( $lignes as $ligne)
+{
+$Prix=floatval($ligne->estimation_prix);
+DB::select("SET @p0='$ligne->cmde_aff_e_ident' ;");
+DB::select("SET @p1='$ligne->nature_ident' ;");
+DB::select("SET @p2='$ligne->cmde_aff_poids_lot' ;");
+DB::select("SET @p3='$ligne->cmde_estim_titre_au' ;");
+DB::select("SET @p4='$ligne->cmde_estim_titre_ag' ;");
+DB::select("SET @p5='$ligne->cmde_estim_titre_pt' ;");
+DB::select("SET @p6='$ligne->cmde_estim_titre_pd' ;");
+DB::select("SET @p7='$ligne->assiste' ;");
+DB::select("SET @p8='$ligne->nom_modele' ;");
+DB::select("SET @p9='$Prix' ;");
+
+
+///
+
+  DB::select ("  CALL `sp_aff_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10 ); ");
+
+}
+ 
+Cmde_aff_l::where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+
+ }
+
+Cmde_aff_e::where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+ 
+
+
+/*****/
+
+/*
+ $E_CmdesLab=Cmde_lab_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
   foreach ($E_CmdesLab as $cmd)
  {								
   $cmdid=$cmd->cmde_lab_ident;
-  $lignes=DB::table('cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+Cmde_lab_l::where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
  }
-  DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+Cmde_lab_e::where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+*/
 
- $E_CmdesRMP=DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+
+
+$E_CmdesLab= Cmde_lab_e::where('cl_ident', $client_id)->where('statut','panier')->get();
+ foreach ($E_CmdesLab as $cmd)
+ {								
+  $cmdid=$cmd->cmde_lab_ident;
+  $lignes=Cmde_lab_l::where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->get();
+
+DB::select("SET @p0='$client_id' ;");
+DB::select("SET @p1='$cmd->cmde_lab_qte' ;");
+DB::select("SET @p2='$cmd->cmde_lab_poids' ;");
+DB::select("SET @p3='$user->id' ;");
+DB::select("SET @p4='$Mode' ;");
+DB::select("SET @p5='$cmd->num_colis' ;");
+DB::select("SET @p6='$adresse' ;");
+DB::select("SET @p7='$agence' ;");
+
+///sp_lab_cmde_l_insert (identifiant de l’entête de la commande, type labo, choix labo,  id nature du lot, qte , poids, valeur,  titre or (booléen) , titre argent, titre platine, titre palladium, montant analyse, nom du modèle)
+
+
+  DB::select ("  CALL `sp_lab_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8); ");
+ 
+foreach( $lignes as $ligne)
+{
+	$Prix=floatval($ligne->estimation_prix);
+	$Valeur=floatval($ligne->valeur);
+DB::select("SET @p0='$ligne->cmde_lab_e_ident' ;");
+DB::select("SET @p1='$ligne->type_lab_ident' ;");
+DB::select("SET @p2='$ligne->choix_lab_ident' ;");
+DB::select("SET @p3='$ligne->nature_ident' ;");
+DB::select("SET @p4='$ligne->qte' ;");
+DB::select("SET @p5='$ligne->poids' ;");
+DB::select("SET @p6='$Valeur' ;");
+DB::select("SET @p7='$ligne->titrage_au' ;");
+DB::select("SET @p8='$ligne->titrage_ag' ;");
+DB::select("SET @p9='$ligne->titrage_pt' ;");
+DB::select("SET @p10='$ligne->titrage_pd' ;");
+DB::select("SET @p11='$Prix' ;");
+DB::select("SET @p12='$ligne->nom_modele' ;");
+ 
+ 
+  DB::select ("  CALL `sp_lab_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12,@p13 ); ");
+
+}
+ 
+Cmde_lab_l::where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+
+ }
+
+Cmde_lab_e::where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+ 
+
+ 
+
+/*
+ $E_CmdesRMP=Cmde_rmp_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
   foreach ($E_CmdesRMP as $cmd)
  {								
   $cmdid=$cmd->cmde_rmp_ident;
-  $lignes=DB::table('cmde_rmp_l')->where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+  $lignes=Cmde_rmp_l::where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
  }	
-  DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+Cmde_rmp_e::where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+ */
 
-  
+
+$E_CmdesRMP= Cmde_rmp_e::where('cl_ident', $client_id)->where('statut','panier')->get();
+foreach ($E_CmdesRMP as $cmd)
+{								
+ $cmdid=$cmd->cmde_rmp_ident;
+ $lignes=Cmde_rmp_l::where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->get();
+
+$valeur=floatval($cmd->estim_valeur);
+DB::select("SET @p0='$client_id' ;");
+DB::select("SET @p1='$cmd->cmde_rmp_poids_brut' ;");
+DB::select("SET @p2='$cmd->cmde_rmp_poids_lot' ;");
+DB::select("SET @p3='$valeur' ;"); //
+DB::select("SET @p4='$user->id' ;");
+DB::select("SET @p5='$Mode' ;");
+DB::select("SET @p6='$cmd->num_colis' ;");
+DB::select("SET @p7='$adresse' ;");
+DB::select("SET @p8='$agence' ;");
+
+ ///sp_rmp_cmde_l_insert ( identifiant de l’entête de la commande, id nature du lot, poids, titre or, titre argent, titre platine, titre palladium, assiste à la fonte (booléen), nom du modèle, valeur estimée du lot)
+
+
+ DB::select ("  CALL `sp_rmp_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9 ); ");
+
+foreach( $lignes as $ligne)
+{
+$Prix=floatval($ligne->estimation_prix);
+DB::select("SET @p0='$ligne->cmde_rmp_l_ident' ;");
+DB::select("SET @p1='$ligne->nature_ident' ;");
+DB::select("SET @p2='$ligne->cmde_rmp_poids' ;");
+DB::select("SET @p3='$ligne->cmde_estim_titre_au' ;");
+DB::select("SET @p4='$ligne->cmde_estim_titre_ag' ;");
+DB::select("SET @p5='$ligne->cmde_estim_titre_pt' ;");
+DB::select("SET @p6='$ligne->cmde_estim_titre_pd' ;");
+DB::select("SET @p7='$ligne->assiste' ;");
+DB::select("SET @p8='$ligne->nom_modele' ;");
+DB::select("SET @p9='$Prix' ;");
+
+
+ DB::select ("  CALL `sp_rmp_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10 ); ");
+
+}
+
+Cmde_rmp_l::where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+
+}
+
+Cmde_rmp_e::where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence )  );
+
+
  
  return redirect('/home')->with('success', ' Commande passée avec succès');
 	
@@ -562,7 +720,13 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
  $user = auth()->user();  
  $adresse   = $request->get('adresse');	
  $agence   = $request->get('agence');	
-
+ $mode   = $request->get('mode');	
+ if($mode=='collect'){
+	 $Mode='CC';
+ }else{
+	 $Mode='ENL';
+ }
+ 
   $client_id=$user['client_id'];
    DB::select("SET @p0='$client_id' ;");
   $adresses=  DB::select (" CALL `sp_liste_adresse_livraison`(@p0);");
@@ -584,37 +748,171 @@ $E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where
  $largeur   = $request->get('largeur');	
  $hauteur   = $request->get('hauteur');	
 
-  $result = DHLController::shipment(true,'saampFR','A@0eV^1zW!3x','220136396',$nomagence,$adresse1,$ville,$codep, $phone,$email,$poids,$longeur,$largeur,$hauteur) ;
-	 if($result['truck_number']!=0){
+ // $result = DHLController::shipment(true,'saampFR','A@0eV^1zW!3x','220136396',$nomagence,$adresse1,$ville,$codep, $phone,$email,$poids,$longeur,$largeur,$hauteur) ;
+  $result = DHLController::shipment(true,'saampFR','A@0eV^1zW!3x','220136396','Metafont','AVENUE DE LYON','BOURG LES VALENCES','26500','','',2520,1,2,3) ;
+
+  $truck_number= ($result !=null) ? $result['truck_number'] : 0;
+ // $truck_number=1;
+
+  //if($result['truck_number']!=0){
+	//if($truck_number!=0){
   
- 
-$E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
- foreach ($E_CmdesAff as $cmd)
- {								
-  $cmdid=$cmd->cmde_aff_ident;
-  $lignes=DB::table('cmde_aff_l')->where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
- }
- DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence ,'truck_number'=> $result['truck_number']  )  );
+	 
 
- $E_CmdesLab=DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
-  foreach ($E_CmdesLab as $cmd)
- {								
-  $cmdid=$cmd->cmde_lab_ident;
-  $lignes=DB::table('cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
- }
-  DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence,'truck_number'=> $result['truck_number']  )  );
-
- $E_CmdesRMP=DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
-  foreach ($E_CmdesRMP as $cmd)
- {								
-  $cmdid=$cmd->cmde_rmp_ident;
-  $lignes=DB::table('cmde_rmp_l')->where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
- }	
-  DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence  ,'truck_number'=> $result['truck_number']  )  );
-
- } 
+	$E_CmdesAff= Cmde_aff_e::where('cl_ident', $client_id)->where('statut','panier')->get();
+	foreach ($E_CmdesAff as $cmd)
+	{								
+	 $cmdid=$cmd->cmde_aff_ident;
+	 $lignes=Cmde_aff_l::where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->get();
+   
+   $prix=floatval($cmd->estimation_prix);
+   DB::select("SET @p0='$client_id' ;");
+   DB::select("SET @p1='$cmd->cmde_aff_poids_brut' ;");
+   DB::select("SET @p2='$cmd->cmde_aff_poids_lot' ;");
+   DB::select("SET @p3='$prix' ;");
+   DB::select("SET @p4='$user->id' ;");
+   DB::select("SET @p5='$Mode' ;");
+   DB::select("SET @p6='$cmd->num_colis' ;");
+   DB::select("SET @p7='$adresse' ;");
+   DB::select("SET @p8='$agence' ;");
+   
+   ///
+   
+	 DB::select ("  CALL `sp_aff_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9 ); ");
+	
+   foreach( $lignes as $ligne)
+   {
+   $Prix=floatval($ligne->estimation_prix);
+   DB::select("SET @p0='$ligne->cmde_aff_e_ident' ;");
+   DB::select("SET @p1='$ligne->nature_ident' ;");
+   DB::select("SET @p2='$ligne->cmde_aff_poids_lot' ;");
+   DB::select("SET @p3='$ligne->cmde_estim_titre_au' ;");
+   DB::select("SET @p4='$ligne->cmde_estim_titre_ag' ;");
+   DB::select("SET @p5='$ligne->cmde_estim_titre_pt' ;");
+   DB::select("SET @p6='$ligne->cmde_estim_titre_pd' ;");
+   DB::select("SET @p7='$ligne->assiste' ;");
+   DB::select("SET @p8='$ligne->nom_modele' ;");
+   DB::select("SET @p9='$Prix' ;");
+   
+   
+   ///
+   
+	 DB::select ("  CALL `sp_aff_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10 ); ");
+   
+   }
+	
+   Cmde_aff_l::where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+   
+	}
+   
+   Cmde_aff_e::where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence,'truck_number'=>$truck_number )  );
+	
+   
+    
+   $E_CmdesLab= Cmde_lab_e::where('cl_ident', $client_id)->where('statut','panier')->get();
+	foreach ($E_CmdesLab as $cmd)
+	{								
+	 $cmdid=$cmd->cmde_lab_ident;
+	 $lignes=Cmde_lab_l::where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->get();
+   
+   DB::select("SET @p0='$client_id' ;");
+   DB::select("SET @p1='$cmd->cmde_lab_qte' ;");
+   DB::select("SET @p2='$cmd->cmde_lab_poids' ;");
+   DB::select("SET @p3='$user->id' ;");
+   DB::select("SET @p4='$Mode' ;");
+   DB::select("SET @p5='$cmd->num_colis' ;");
+   DB::select("SET @p6='$adresse' ;");
+   DB::select("SET @p7='$agence' ;");
+   
+   ///sp_lab_cmde_l_insert (identifiant de l’entête de la commande, type labo, choix labo,  id nature du lot, qte , poids, valeur,  titre or (booléen) , titre argent, titre platine, titre palladium, montant analyse, nom du modèle)
+   
+   
+	 DB::select ("  CALL `sp_lab_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8); ");
+	
+   foreach( $lignes as $ligne)
+   {
+	   $Prix=floatval($ligne->estimation_prix);
+	   $Valeur=floatval($ligne->valeur);
+   DB::select("SET @p0='$ligne->cmde_lab_e_ident' ;");
+   DB::select("SET @p1='$ligne->type_lab_ident' ;");
+   DB::select("SET @p2='$ligne->choix_lab_ident' ;");
+   DB::select("SET @p3='$ligne->nature_ident' ;");
+   DB::select("SET @p4='$ligne->qte' ;");
+   DB::select("SET @p5='$ligne->poids' ;");
+   DB::select("SET @p6='$Valeur' ;");
+   DB::select("SET @p7='$ligne->titrage_au' ;");
+   DB::select("SET @p8='$ligne->titrage_ag' ;");
+   DB::select("SET @p9='$ligne->titrage_pt' ;");
+   DB::select("SET @p10='$ligne->titrage_pd' ;");
+   DB::select("SET @p11='$Prix' ;");
+   DB::select("SET @p12='$ligne->nom_modele' ;");
+	
+	
+	 DB::select ("  CALL `sp_lab_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12,@p13 ); ");
+   
+   }
+	
+   Cmde_lab_l::where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+   
+	}
+   
+   Cmde_lab_e::where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence,'truck_number'=>$truck_number  )  );
+	 
+   
+   $E_CmdesRMP= Cmde_rmp_e::where('cl_ident', $client_id)->where('statut','panier')->get();
+   foreach ($E_CmdesRMP as $cmd)
+   {								
+	$cmdid=$cmd->cmde_rmp_ident;
+	$lignes=Cmde_rmp_l::where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->get();
+   
+   $valeur=floatval($cmd->estim_valeur);
+   DB::select("SET @p0='$client_id' ;");
+   DB::select("SET @p1='$cmd->cmde_rmp_poids_brut' ;");
+   DB::select("SET @p2='$cmd->cmde_rmp_poids_lot' ;");
+   DB::select("SET @p3='$valeur' ;"); //
+   DB::select("SET @p4='$user->id' ;");
+   DB::select("SET @p5='$Mode' ;");
+   DB::select("SET @p6='$cmd->num_colis' ;");
+   DB::select("SET @p7='$adresse' ;");
+   DB::select("SET @p8='$agence' ;");
+   
+    
+   
+	DB::select ("  CALL `sp_rmp_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9 ); ");
+   
+   foreach( $lignes as $ligne)
+   {
+   $Prix=floatval($ligne->estimation_prix);
+   DB::select("SET @p0='$ligne->cmde_rmp_l_ident' ;");
+   DB::select("SET @p1='$ligne->nature_ident' ;");
+   DB::select("SET @p2='$ligne->cmde_rmp_poids' ;");
+   DB::select("SET @p3='$ligne->cmde_estim_titre_au' ;");
+   DB::select("SET @p4='$ligne->cmde_estim_titre_ag' ;");
+   DB::select("SET @p5='$ligne->cmde_estim_titre_pt' ;");
+   DB::select("SET @p6='$ligne->cmde_estim_titre_pd' ;");
+   DB::select("SET @p7='$ligne->assiste' ;");
+   DB::select("SET @p8='$ligne->nom_modele' ;");
+   DB::select("SET @p9='$Prix' ;");
+   
+   
+	DB::select ("  CALL `sp_rmp_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10 ); ");
+   
+   }
+   
+   Cmde_rmp_l::where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->update( array( 'statut'=>'valide' )  );
+   
+   }
+   
+   Cmde_rmp_e::where('cl_ident',$user['client_id'])->where('statut','panier')->update( array( 'statut'=>'valide','adresse_id'=>$adresse ,'agence_id'=>$agence ,'truck_number'=>$truck_number )  );
+   
+   
+	
+	//return redirect('/home')->with('success', ' Commande passée avec succès');
+	   
+ // } 
   
   return json_encode($result);
+  //return $truck_number;
  
 }		
 	
@@ -648,6 +946,13 @@ if($Order->adresse_id!=null)
 if($Order->agence_id!=null)
 {$agence=$Order->agence_id;}else{$agence=0;}
 
+if($mode=='collect'){
+	$Mode='CC';
+}else{
+	$Mode='ENL';
+}
+
+
 $facon=floatval($amount);    
   
  DB::select("SET @p0='$client_id' ;");
@@ -659,16 +964,17 @@ $facon=floatval($amount);
  DB::select("SET @p6='$platine' ;");
  DB::select("SET @p7='$palladium' ;");
  DB::select("SET @p8='$facon' ;");
- DB::select("SET @p9='$adresse' ;");
- DB::select("SET @p10='$agence' ;");
- DB::select("SET @p11='$user->id' ;");
+ DB::select("SET @p9='$Mode' ;");
+ DB::select("SET @p10='$adresse' ;");
+ DB::select("SET @p11='$agence' ;");
+ DB::select("SET @p12='$user->id' ;");
  
 
-   DB::select ("  CALL `SP_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12 ); ");
-   DB::select("SELECT @p12 AS `cmde_id`  ;");
+   DB::select ("  CALL `SP_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12,@p13 ); ");
+   DB::select("SELECT @p13 AS `cmde_id`  ;");
 
  	 $cmde_id = null;
-$selectResult = DB::select(DB::raw("SELECT @p12 AS `cmde_id`  ;"));
+$selectResult = DB::select(DB::raw("SELECT @p13 AS `cmde_id`  ;"));
 
 if (!empty($selectResult) && isset($selectResult[0]->cmde_id)) {
     // we have a result

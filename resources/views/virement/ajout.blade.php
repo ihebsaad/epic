@@ -94,7 +94,7 @@ $et=array();
                 </div><div class="row mb-10">
 				<div class="col-md-3">{{__('msg.Date')}}:</div><div class="col-md-8"> <input autocomplete="off" class="form-control datepicker" style="width:130px"  required name="date"  onchange="check()"  id="date"  value="<?php echo date('Y-m-d');?>" /></input></div>
                 </div><div class="row mb-10">
-				<div class="col-md-3">{{__('msg.Comment')}}:</div><div class="col-md-8"> <textarea class="form-control" cols="20" rows="2"   name="commentaire" id="commentaire" onchange="check()"  ></textarea></div>
+				<div class="col-md-3">{{__('msg.Comment')}}:</div><div class="col-md-8"> <textarea class="form-control" cols="20" rows="2"   name="commentaire" id="commentaire" onchange="check()" maxlength="15" ></textarea></div>
 				</div> 
 				<a   class="action-button-previous" href="{{route('virement')}}" style="float:left;text-align:center">{{__('msg.Cancel')}}</a>                <input  id="submit" type="button" name="next" class="next action-button" value="{{__('msg.Next')}}" disabled style="float:right"/> 
              </fieldset>

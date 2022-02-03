@@ -65,9 +65,9 @@ $prods= DB::table('products')->where('orderid',$Orderid)->count();
 ?>
 <?php
 
-$E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
-$E_CmdesLab=DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
-$E_CmdesRMP=DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesAff=\App\Cmde_aff_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesLab=\App\Cmde_lab_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesRMP=\App\Cmde_rmp_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
 
 $count_aff =count($E_CmdesAff);
 $count_lab =count($E_CmdesLab);
@@ -88,7 +88,7 @@ $count= $count_aff + $count_lab + $count_rmp;
               <a class="nav-link dropdown-toggle" href="{{route('livraisonmod')}}"  >
                 <i class="fas fa-shopping-bag fa-fw"></i>
                 <!-- Counter - Messages --> 
-                <span  data-toggle="tooltip" data-placement="bottom" title="{{__('msg.My templates')}}" class="badge badge-danger badge-counter"><?php if($count>0){echo $count;}?></span>
+                <span id="counter" data-toggle="tooltip" data-placement="bottom" title="{{__('msg.My templates')}}" class="badge badge-danger badge-counter"><?php if($count>0){echo $count;}?></span>
               </a>
 	   
             </li> 

@@ -188,7 +188,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 
 							<div  class="col-md-8 pl-20 pt-10">
 							<label><b> {{__('msg.Gross weight')}}*</b></label>
-							<input onchange="verif1();verif2();" type="number" step="0.01" min="0.01" class="form-control" style="width:110px" value="0" id="poids" ></input> g
+							<input onchange="verif1();verif2();" onmouseleave="verif1();verif2();" type="number" step="0.01" min="0.01" class="form-control" style="width:110px" value="0" id="poids" ></input> g
 							</div>
 
 						
@@ -221,9 +221,9 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 						
 <?php
 
-$E_CmdesAff=DB::table('cmde_aff_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
-$E_CmdesLab=DB::table('cmde_lab_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
-$E_CmdesRMP=DB::table('cmde_rmp_e')->where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesAff=\App\Cmde_aff_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesLab=\App\Cmde_lab_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
+$E_CmdesRMP=\App\Cmde_rmp_e::where('cl_ident',$user['client_id'])->where('statut','panier')->get();
 
 $count_aff =count($E_CmdesAff);
 $count_lab =count($E_CmdesLab);
@@ -237,7 +237,7 @@ $count= $count_aff + $count_lab + $count_rmp;
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">{{__('msg.My Cart')}}</h6>
                                 </div>
-                                <div class="card-body" style="min-height:200px">
+                                <div class="card-body" style="min-height:200px" id="panier">
  
  								<?php  if($count>0) {?> 
   								
@@ -247,7 +247,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 								<?php foreach ($E_CmdesAff as $cmd)
 								{								
 								$cmdid=$cmd->cmde_aff_ident;
-								$lignes=DB::table('cmde_aff_l')->where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->get();
+								$lignes=\App\Cmde_aff_l::where('cmde_aff_e_ident',$cmdid)->where('statut','panier')->get();
 								$poids = $or= $argent= $platine= $palladium = 0;
 								
 								foreach ($lignes as $ligne)
@@ -284,7 +284,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 								<?php foreach ($E_CmdesLab as $cmd) 
 								{
 								$cmdid=$cmd->cmde_lab_ident;						 
- 								$lignes=DB::table('cmde_lab_l')->where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->get();
+ 								$lignes=\App\Cmde_lab_l::where('cmde_lab_e_ident',$cmdid)->where('statut','panier')->get();
 								 $or= $argent= $platine= $palladium = 0;
 								foreach ($lignes as $ligne)
 								{  
@@ -303,7 +303,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 									if($palladium >0){$palladium= __('msg.Palladium') ;}else{$palladium='';}
 								echo '<li>'.$nom_modele.'        '.$qte.'p        '.number_format($estimation_prix,2,'.',',').'€  ';?>  <a  style="margin-left:20px" class="delete fm-close"  onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce modèle ?')"  href="<?php echo url('/deletemodellab/'.$cmdid);?>"><span class="fa  fa-times-circle"></i></a> <?php echo '</li>';
 								//echo '<li> '.$or.'      '.$argent.'      '.$platine.'      '.$palladium.'</li>';
-								echo '<center><hr style=" margin-bottom:10px;margin-top:10px">';
+								echo '<hr style=" margin-bottom:10px;margin-top:10px">';
 									
 								}
 								}
@@ -319,7 +319,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 								<?php foreach ($E_CmdesRMP as $cmd) 
 								{
 								$cmdid=$cmd->cmde_rmp_ident;						 									
- 								$lignes=DB::table('cmde_rmp_l')->where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->get();
+ 								$lignes=\App\Cmde_rmp_l::where('cmde_rmp_e_ident',$cmdid)->where('statut','panier')->get();
 								foreach ($lignes as $ligne)
 								{  									
  								 $poids=$ligne->cmde_rmp_poids;
@@ -499,8 +499,8 @@ function setadresse	(){
 var mode="collect";
   function valider() {
              var _token = $('input[name="_token"]').val();
-			 var agence =null;
-			 var adresse =null;
+			 var agence =0;
+			 var adresse =0;
 			 if(mode=='collect'){
 			  agence = $('#agence_id').val();
 			 }else{
@@ -511,12 +511,14 @@ var mode="collect";
             $.ajax({
                 url: "{{ route('validatemodels') }}",
                 method: "POST",
-                data: { agence:agence,adresse:adresse,  _token: _token},
+                data: { agence:agence,adresse:adresse,mode:mode,  _token: _token},
                 success: function (data) {
 				
 				
 				
 				$('#successModal').modal('show') ;
+			 	$('#counter').html('') ;
+			 	$('#panier').modal('show') ;
 
 				/*
 				
@@ -543,14 +545,20 @@ var mode="collect";
 
   function validerliv() {
              var _token = $('input[name="_token"]').val();
-			 var agence =null;
-			 var adresse =null;
+			 var agence =0;
+			 var adresse =0;
+			 if(mode=='collect'){
+			  agence = $('#agence_id').val();
+
+			 }else{
+			  adresse = $('#adresse_id').val();	 
+			 }
+	 
 			 if(mode=='collect'){
 			  agence = $('#agence_id').val();
 			 }else{
 			  adresse = $('#adresse_id').val();	 
 			 }
-	 
               var _token = $('input[name="_token"]').val();
 			  
 			  var poids = $('#poids').val();
@@ -560,15 +568,15 @@ var mode="collect";
 			  var largeur = $('#largeur').val();
 			  var hauteur = $('#hauteur').val();
  
-			  
-            $.ajax({
+	console.log('agence:'+agence+' adresse:'+adresse+' poids:'+poids+' mode:'+mode+ ' phone:'+phone+ ' email:'+email+' longeur:'+longeur+' largeur:'+largeur+ ' hauteur:'+hauteur);
+           $.ajax({
                 url: "{{ route('validatemodelsliv') }}",
                 method: "POST",
-                data: { agence:agence,adresse:adresse,poids:poids ,  phone:phone, email:email, longeur:longeur, largeur:largeur, hauteur:hauteur, _token: _token},
+                data: { agence:agence,adresse:adresse,poids:poids ,mode:mode,  phone:phone, email:email, longeur:longeur, largeur:largeur, hauteur:hauteur, _token: _token},
                 success: function (data) {
-				 data=JSON.parse(data);
-
-				if(data.truck_number!=0){
+				  data=JSON.parse(data);
+ 		 		 if(data.truck_number!=0){
+				//	if(parseInt(data)>0){
 				$('#result').html('<b>Votre demande à bien était transmise.<br>Un email de confirmation sera envoyé dans les plus brefs délais.</b><br> Vous pouvez suivre votre colis DHL Express avec la référence:<b style="color:#36b9cc;margin-left:20px;">'+data.truck_number+'</b>');
 				$('#successModal').modal('show') ;	
 				}else{
@@ -576,7 +584,7 @@ var mode="collect";
 			    $('#successModal').modal('show') ;	
 
 				}
-
+ 
 
 				/*
 				
