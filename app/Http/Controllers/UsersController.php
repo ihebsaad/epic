@@ -201,7 +201,7 @@ class UsersController extends Controller
 		
          if($password !=''  && (strlen($password )>7) ){
 		
-		if( $client_id >0 && ($client_id==$client_id2) && $password== $confirmation )
+		if( $client_id >0   && /*($client_id==$client_id2) && */ $password== $confirmation )
 		{  $password= bcrypt(trim($request->get('password')));
 
 		 		
