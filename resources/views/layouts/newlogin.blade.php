@@ -27,12 +27,20 @@
     <link  href="{{URL::asset('public/sbadmin/css/sb-admin-2.css')}}"   rel="stylesheet">
     <script src="{{ URL::asset('public/sbadmin/vendor/jquery/jquery.min.js')}}"></script>
 
+
+    <script   src="http://mysaamp.com/test/public/sbadmin/js/sb-admin-2.min.js" src="js/sb-admin-2.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.js"></script>
+ 
+  
+  
+ 
 </head>
 
 <body class="" style="font-family:Nunito">
 
         @yield('content')
 		
+        
     <!-- Bootstrap core JavaScript -->
     <script src="{{ URL::asset('public/sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
  
