@@ -40,7 +40,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName" name="name" required  oninvalid="this.setCustomValidity('Champ Obligatoire')"
-  oninput="this.setCustomValidity('')"     placeholder="Prénom*">
+  oninput="this.setCustomValidity('')"     placeholder="Prénom*"  value="{{old('name')}}">
 								@if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName" name="lastname" required   oninvalid="this.setCustomValidity('Champ Obligatoire')"
-  oninput="this.setCustomValidity('')"      placeholder="Nom*">
+  oninput="this.setCustomValidity('')"      placeholder="Nom*" value="{{old('lastname')}}">
                                     </div>
                                 @if ($errors->has('lastname'))
                                     <span class="help-block">
@@ -76,7 +76,7 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" id="siret" name="siret"  required  pattern=".{8,9}"   oninvalid="this.setCustomValidity('9 caractères')"
   oninput="this.setCustomValidity('')"
-                                        placeholder="SIREN*"   onchange="checkexiste( this,'siret')">									
+                                        placeholder="SIREN*"   onchange="checkexiste( this,'siret')"  value="{{old('siret')}}">									
 									</div>
                                 </div>
 								
@@ -84,11 +84,11 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">								
                                     <input type="text" class="form-control form-control-user" id="mobile" name="mobile" pattern=".{10,10}" required   oninvalid="this.setCustomValidity('10 Chiffres')"
   oninput="this.setCustomValidity('')"
-                                        placeholder="Téléphone portable*">
+                                        placeholder="Téléphone portable*" value="{{old('mobile')}}">
 									</div>	
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" id="phone" name="phone"  pattern=".{0,10}"
-                                        placeholder="Téléphone fixe">									
+                                        placeholder="Téléphone fixe" value="{{old('phone')}}">								
 									</div>
                                 </div>	
 								
@@ -97,7 +97,7 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="email" class="form-control form-control-user" id="email" name="email"  required   Autocomplete="NoAutocomplete"
                                         placeholder="Adresse Email*"  onchange="checkexiste( this,'email')"  oninvalid="this.setCustomValidity('Insérez une adresse email valide')"
-  oninput="this.setCustomValidity('')">									
+  oninput="this.setCustomValidity('')"  value="{{old('email')}}">									
 									</div>
                                 </div>
                                 @if ($errors->has('username'))
