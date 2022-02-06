@@ -204,6 +204,7 @@ var inputtxt=document.getElementById('password').value;
                     }); 
   	 $('#password').css('border','1px solid #18aa76');																	
   	 $("#password_confirmation").prop('disabled', false);
+  	 $("#password_confirmation").focus();
 	 
 }
 else
