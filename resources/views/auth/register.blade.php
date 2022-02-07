@@ -272,7 +272,7 @@ else
 				if(type=="email"){
 				if(data==0){
 		           $.notify({
-                        message: 'Email inexistant !',
+                        message: "Utilisateur déjà enregistré, veuillez vous connecter ou choisir l'option mot de passe oublié",
                         icon: 'glyphicon glyphicon-remove'
                     },{
                         type: 'danger',
