@@ -119,7 +119,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 								 foreach($adresses as $adresse)
 								 {$i++;
 									if($i==1){$selected="selected='selected'" ;}else{ $selected="";}
-									 echo '<option '.$selected.' value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
+									 echo '<option '.$selected.' value="'.$adresse->id.'" >'.$adresse->adresse_nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
 									 
 								 } 
 								 ?>
