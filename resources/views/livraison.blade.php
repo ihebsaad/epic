@@ -212,6 +212,8 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 					
 					
 <script>
+	var mode="collect";
+
 setadresse();
  $(document).ready(function () {
     $('.box').click(function(e) {
@@ -292,7 +294,6 @@ function setadresse	(){
 
 		
 		
-var mode="collect";
   function valider() {
              var _token = $('input[name="_token"]').val();
 			 var agence =null;
