@@ -63,11 +63,11 @@ $agence_defaut= $liste[0]->agence_defaut  ;
                             <div class="card-body">
 								 <h5>{{__('msg.Choose your delivery mode')}}</h5>
 								 <div class="row pt-10 pb-20">
-									 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');details()">
+									 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');details();mode='collect'">
 										<center>  Click & Collect <div class="clearfix"></div>
 										<img src="{{ URL::asset('public/img/box.png')}}" style="width:80px" class="mt-20"/></center>
 									 </div>
-									 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10" onclick="$('#agency1').hide('slow');$('#agency2').show('slow');">
+									 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10" onclick="$('#agency1').hide('slow');$('#agency2').show('slow');mode='trans'">
 										<center>  {{__('msg.Carrier')}} <div class="clearfix"></div>
 										<img src="{{ URL::asset('public/img/truck.png')}}" style="width:100px"/></center>
 										
