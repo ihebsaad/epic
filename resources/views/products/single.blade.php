@@ -242,7 +242,7 @@ foreach($compls as $c){
                                     <?php if($produit->choix_etat>0){ ?>
  
                                      
-                                    <select id="etat_id" class="form-control ml-10" placeholder="Etat"  style="width:120px;margin-left:80px" onchange="alert( $('etat_id').find('option:selected').val() )">
+                                    <select id="etat_id" class="form-control ml-10" placeholder="Etat"  style="width:120px;margin-left:80px" onchange="alert( $('etat_id').val() )">
 									<option value="0"></option>
 									@foreach($etats as $etat)
 										<option value="{{$etat->id}}">{{$etat->libelle}}</option>
