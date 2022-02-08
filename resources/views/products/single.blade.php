@@ -451,7 +451,7 @@ function details()
 	        var comp_id = parseInt($('#comp_id').val());
 	        var comp_val = $('#comp_val').val() ;
 	        var article = $('#article').val() ;
-	        var etat_id = $('#etat_id').val() ;alert(etat_id);
+	        var etat_id = $('#etat_id').val() ;//alert(etat_id);
 	        var fact_id = $('#fact_id').val() ;
 			var tarif=$('#tprix').text();
 			var debit1=0;var debit2=0;var debit3=0;	var debit4=0;
@@ -550,10 +550,10 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
 		 
 				 $('#montant').html(  montant.toFixed(2) );
 				 $('#mini').html(mini.toFixed(2) );
-				 debit1=(data.prix[0].debit_1 ).toFixed(2);
-				 debit2=(data.prix[0].debit_2 ).toFixed(2);
-				 debit3=(data.prix[0].debit_3 ).toFixed(2);
-				 debit4=(data.prix[0].debit_4 ).toFixed(2);
+				 debit1=(data.prix[0].debit_1 );//.toFixed(2);
+				 debit2=(data.prix[0].debit_2 );//.toFixed(2);
+				 debit3=(data.prix[0].debit_3 );//.toFixed(2);
+				 debit4=(data.prix[0].debit_4 );//.toFixed(2);
 				  $('#labelm1').hide(); $('#labelm2').hide(); $('#labelm3').hide(); $('#labelm4').hide();
 				  $('#debit_1').html('');$('#debit_2').html('');$('#debit_3').html('');$('#debit_4').html('');
 				  
