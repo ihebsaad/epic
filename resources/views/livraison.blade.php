@@ -82,15 +82,12 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 										 <select class="form-control mb-20" style="" id="agence_id" onchange="details();changing(this)">
 										 <option></option>
 										 <?php
-										 $i=0;
 										 foreach($agences as $agence)
-										 { $i++;
-											//  if($agence->pays_code ==  $pays_code ){
-											//	if($agence->agence_ident ==  $agence_defaut ){$selected="selected='selected'" ;}else{ $selected="";}
-												if($i==1 ){$selected="selected='selected'" ;}else{ $selected="";}
-												echo '<option '.$selected.' value="'.$agence->agence_ident.'" >'.$agence->agence_lib .'   |    <small>'.$agence->adresse1 .'</small></option>';
-																
-											//}
+										 {
+											  if($agence->pays_code ==  $pays_code ){
+											 if($agence->agence_ident ==  $agence_defaut ){$selected="selected='selected'" ;}else{ $selected="";}
+											 echo '<option '.$selected.' value="'.$agence->agence_ident.'" >'.$agence->agence_lib .'   |    <small>'.$agence->adresse1 .'</small></option>';
+																	}
 										 }
 										 ?>
 										 
@@ -118,9 +115,11 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 								 <select class="form-control mb-20"  id="adresse_id" onchange="setadresse();changing(this)">
 								 <option></option>
 								 <?php
-								  foreach($adresses as $adresse)
-								 {
-									 echo '<option value="'.$adresse->id.'" >'.$adresse->adresse_nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
+								 $i=0;
+								 foreach($adresses as $adresse)
+								 {$i++;
+									if($i==1){$selected="selected='selected'" ;}else{ $selected="";}
+									 echo '<option '.$selected.' value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
 									 
 								 } 
 								 ?>
