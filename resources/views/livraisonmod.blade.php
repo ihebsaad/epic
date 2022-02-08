@@ -112,7 +112,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 										  foreach($adresses as $adresse)
 										 {
 											 $i++; if($i==1){$selected="selected='selected'";}else{$selected='';}
-											 echo '<option  '.$selected.'  value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
+											 echo '<option  '.$selected.'  value="'.$adresse->id.'" >'.$adresse->adresse_nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
 											 
 										 } 
 										 ?>
@@ -123,7 +123,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 											foreach($adresses as $adresse)
 											 { ?>
 											 <div class="pl-10 pr-10 pt-10 pt-10 adresses" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
-												 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span   ><?php echo $adresse->nom; ?></span><br>
+												 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span   ><?php echo $adresse->adresse_nom; ?></span><br>
 												 <b style="color:black">{{__('msg.Address')}} :</b> <span   ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
 												  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
 												 <b style="color:black">{{__('msg.Country')}} :</b> <span  >
