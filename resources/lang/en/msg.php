@@ -424,5 +424,6 @@ return [
 	"Back"=>"Back",
 	"Investment metals"=>"Investment Metals",
 	"Indicative value with metal"=>"Indicative value with metal",
+	"Empty"=>"Empty",
 	
  ];

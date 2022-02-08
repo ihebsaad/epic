@@ -246,7 +246,7 @@ foreach($compls as $c){
 									@foreach($etats as $etat)
 										<option value="{{$etat->id}}">{{$etat->libelle}}</option>
 									@endforeach
-										<option value="0"></option>
+										<option value="0">{{__('msg.Empty')}}</option>
                                     </select>
                                       
                                  

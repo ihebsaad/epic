@@ -419,5 +419,6 @@ return [
 			"Back"=>"Powrót",
             "Investment metals"=>"Metale inwestycyjne",
 	        "Indicative value with metal"=>"Wartość orientacyjna z metalem",
+            "Empty"=>"Pusty",
 
  ];
