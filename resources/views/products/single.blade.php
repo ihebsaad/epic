@@ -311,7 +311,7 @@ foreach($compls as $c){
 							<div id="price" style="display:none"><label class="ml-10 mr-10">{{__('msg.Price')}} :</label><label class="ml-10 mr-10" id="prix" style="font-weight:bold"></label><label class="ml-10 mr-10 " id="modeid" style="font-weight:bold"></label><label class="ml-10 mr-10">MINI :</label><label  id="mini" class="ml-10 mr-10" style="font-weight:bold"></label> €</div>
 							<div id="pricing"></div>
 							  <div class="row pl-10  ">
-							  <label class=" pl-20  " >{{__('msg.Total Labour cost')}}:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €  {{__('msg.Indicative value with metal')}}:<label class="ml-10 mr-10" id="valo"  style="font-weight:bold"></label>
+							  <label class=" pl-20  " >{{__('msg.Total Labour cost')}}:</label><label class="ml-10 mr-10 " id="montant" style="font-weight:bold;min-width:20px"></label> €     {{__('msg.Indicative value with metal')}}:<label class="ml-10 mr-10" id="valo"  style="font-weight:bold"></label> €
 							  </div>							
 				   							 
 
