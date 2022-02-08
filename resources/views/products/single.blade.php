@@ -243,10 +243,10 @@ foreach($compls as $c){
  
                                      
                                     <select id="etat_id" class="form-control ml-10" placeholder="Etat"  style="width:120px;margin-left:80px" onchange="details()">
-									<option value="0"></option>
 									@foreach($etats as $etat)
 										<option value="{{$etat->id}}">{{$etat->libelle}}</option>
 									@endforeach
+										<option value="0"></option>
                                     </select>
                                       
                                  
