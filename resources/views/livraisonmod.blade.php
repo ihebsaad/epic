@@ -476,8 +476,6 @@ function setadresse	(){
  toggle('adresses','none');
  $('#adresse-'+adresse).show( );
 	
- alert(adresse);
- alert(mode);
 }
 
 /*
