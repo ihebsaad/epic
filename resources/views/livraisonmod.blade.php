@@ -72,7 +72,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 									 
 									 <div class="col-md-8">
 										 
-										 <select class="form-control mb-10" style="" id="agence_id" onchange="details();changing(this)">
+										 <select class="form-control mb-10" style="" id="agence_id" onchange="details();/*changing(this)*/">
 										 <option></option>
 										 <?php
 										 foreach($agences as $agence)
@@ -105,7 +105,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 									 
 									 <div class="col-md-8">
 									 
-										 <select class="form-control mb-10"  id="adresse_id" onchange="setadresse();changing(this)">
+										 <select class="form-control mb-10"  id="adresse_id" onchange="setadresse();/*changing(this)*/">
 										 <option></option>
 										 <?php $i=0;
 										 
@@ -475,7 +475,7 @@ function setadresse	(){
  toggle('adresses','none');
  $('#adresse-'+adresse).show( );
 	
-	
+	alert(adresse);
 }
 
 /*
