@@ -67,121 +67,121 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 							 </div>
 							 </div>
 							 <div id="agency1">
- 							 <h5 style="color:black">{{__('msg.Delivery address')}}</h5>
-							 <div class="row pt-10 pb-10">
-							 
-							 <div class="col-md-8">
-							 
-							 <select class="form-control mb-10" style="" id="agence_id" onchange="details();changing(this)">
-							 <option></option>
-							 <?php
-							 foreach($agences as $agence)
-							 {
-								  if($agence->pays_code ==  $pays_code ){
-								 if($agence->agence_ident ==  $agence_defaut ){$selected="selected='selected'" ;}else{ $selected="";}
-								 echo '<option '.$selected.' value="'.$agence->agence_ident.'" >'.$agence->agence_lib .'   |    <small>'.$agence->adresse1 .'</small></option>';
-														}
-							 }
-							 ?>
-							 
-							 </select>
-							 
-							 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:100px" >
- 							 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span id="lib"></span><br>
-							 <b style="color:black">{{__('msg.Address')}} :</b> <span id="adresse"></span><br>
-							  <span id="zip"></span> <span id="ville"></span><br>
-							 <b style="color:black">{{__('msg.Country')}} :</b> <span id="country"></span>
-							 </div>
-							 
-							 </div>	
+								 <h5 style="color:black">{{__('msg.Delivery address')}}</h5>
+								 <div class="row pt-10 pb-10">
+									 
+									 <div class="col-md-8">
+										 
+										 <select class="form-control mb-10" style="" id="agence_id" onchange="details();changing(this)">
+										 <option></option>
+										 <?php
+										 foreach($agences as $agence)
+										 {
+											  if($agence->pays_code ==  $pays_code ){
+											 if($agence->agence_ident ==  $agence_defaut ){$selected="selected='selected'" ;}else{ $selected="";}
+											 echo '<option '.$selected.' value="'.$agence->agence_ident.'" >'.$agence->agence_lib .'   |    <small>'.$agence->adresse1 .'</small></option>';
+																	}
+										 }
+										 ?>
+										 
+										 </select>
+										 
+										 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:100px" >
+											 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span id="lib"></span><br>
+											 <b style="color:black">{{__('msg.Address')}} :</b> <span id="adresse"></span><br>
+											  <span id="zip"></span> <span id="ville"></span><br>
+											 <b style="color:black">{{__('msg.Country')}} :</b> <span id="country"></span>
+										 </div>
+										 
+									 </div>	
 
-							 </div>	
-							 
+								 </div>	
+								 
 							 </div>		<!-- agency 1-->					 
 
 							 <div id="agency2"  style="display:none"  >
- 							 <h5 style="color:black">{{__('msg.Pick-up address')}}</h5>
-							 <div class="row pt-10 pb-10">
-							 
-							 <div class="col-md-8">
-							 
-							 <select class="form-control mb-10"  id="adresse_id" onchange="setadresse();changing(this)">
-							 <option></option>
-							 <?php $i=0;
-							 
-							  foreach($adresses as $adresse)
-							 {
-								 $i++; if($i==1){$selected="selected='selected'";}else{$selected='';}
-								 echo '<option  '.$selected.'  value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
+								 <h5 style="color:black">{{__('msg.Pick-up address')}}</h5>
+								 <div class="row pt-10 pb-10">
+									 
+									 <div class="col-md-8">
+									 
+										 <select class="form-control mb-10"  id="adresse_id" onchange="setadresse();changing(this)">
+										 <option></option>
+										 <?php $i=0;
+										 
+										  foreach($adresses as $adresse)
+										 {
+											 $i++; if($i==1){$selected="selected='selected'";}else{$selected='';}
+											 echo '<option  '.$selected.'  value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
+											 
+										 } 
+										 ?>
+										 
+										 </select>
+										 <div style="min-height:100px">
+											<?php  
+											foreach($adresses as $adresse)
+											 { ?>
+											 <div class="pl-10 pr-10 pt-10 pt-10 adresses" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
+												 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span   ><?php echo $adresse->nom; ?></span><br>
+												 <b style="color:black">{{__('msg.Address')}} :</b> <span   ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
+												  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
+												 <b style="color:black">{{__('msg.Country')}} :</b> <span  >
+												 <?php 
+												 if($adresse->pays_code=='F'){echo 'France';}   
+												 if($adresse->pays_code=='PL'){echo 'Pologne';}   
+												 if($adresse->pays_code=='FO'){echo 'Guyane française';}   
+												 
+												 ?>
+												 </span>
+											 </div>
+											 
+											<?php } ?>
+
+										 </div>
+										
+									 </div>	
+									
+		 
+								 </div>		
+
+								<div  class="col-md-8 pl-20 pt-10">
+								<label><b> {{__('msg.Recipient Phone')}}*</b></label>
+								<input type="number"   class="form-control" style="width:250px" pattern=".{10,10}" value="{{ $user->mobile }}"  id="phone" onchange="verif2();" ></input>
+								</div>
+								
+								<div  class="col-md-8 pl-20 pt-10">
+								<label><b> {{__('msg.Recipient Email')}}*</b></label>
+								<input type="email"   class="form-control" style="width:250px"   value="{{ $user->email }}" id="email" onchange="verif2();"  ></input>
+								</div>								 
 								 
-							 } 
-							 ?>
-							 
-							 </select>
-							 <div style="min-height:100px">
-							<?php  
-							foreach($adresses as $adresse)
-							 { ?>
-							 <div class="pl-10 pr-10 pt-10 pt-10 adresses" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
- 							 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span   ><?php echo $adresse->nom; ?></span><br>
-							 <b style="color:black">{{__('msg.Address')}} :</b> <span   ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
-							  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
-							 <b style="color:black">{{__('msg.Country')}} :</b> <span  >
-							 <?php 
-							 if($adresse->pays_code=='F'){echo 'France';}   
-							 if($adresse->pays_code=='PL'){echo 'Pologne';}   
-							 if($adresse->pays_code=='FO'){echo 'Guyane française';}   
-							 
-							 ?>
-							 </span>
-							 </div>
-							 
-							 
-							 </div>
-							
-							<?php } ?>
-							 </div>	
-							
- 
-							 </div>		
+								 <div  class="col-md-8 pl-20 pt-10">
+								<label><b> {{__('msg.Number of packages')}}</b></label>
+								<input type="number" step="1" min="1" class="form-control" style="width:110px" value="1" id="colis" name="colis" onchange="verif2();" ></input> 
+								</div>						 
 
-							<div  class="col-md-8 pl-20 pt-10">
-							<label><b> {{__('msg.Recipient Phone')}}*</b></label>
-							<input type="number"   class="form-control" style="width:250px" pattern=".{10,10}" value="{{ $user->mobile }}"  id="phone" onchange="verif2();" ></input>
-							</div>
-							
-							<div  class="col-md-8 pl-20 pt-10">
-							<label><b> {{__('msg.Recipient Email')}}*</b></label>
-							<input type="email"   class="form-control" style="width:250px"   value="{{ $user->email }}" id="email" onchange="verif2();"  ></input>
-							</div>								 
-							 
-							 <div  class="col-md-8 pl-20 pt-10">
-							<label><b> {{__('msg.Number of packages')}}</b></label>
-							<input type="number" step="1" min="1" class="form-control" style="width:110px" value="1" id="colis" name="colis" onchange="verif2();" ></input> 
-							</div>						 
-
-							 <div  class="col-md-8 pl-20 pt-10">
-							<label onclick="showsize()" > 
-							<input type="checkbox"   checked  id="size" name="size" ></input>  {{__('msg.Standard size package')}} <small>(L + l + H < 100cm)</small> </label>
-							</div>	
-							<div class="row col-md-10"  id="sizes"  style="display:none">
-							
-							<div class="col-md-4">
-							<label>Longeur en cm*</label>
-							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="longeur" name="longeur" onchange="verif2();" ></input> 
-							</div>
-							<div class="col-md-4">
-							<label>Largeur  en cm*</label>
-							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="largeur" name="largeur" onchange="verif2();" ></input> 							
-							</div>
-							<div class="col-md-4">
-							<label>Hauteur  en cm*</label>
-							<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="hauteur" name="hauteur" onchange="verif2();" ></input> 
-														
-							</div>
-							
-							</div>							 
-							 
+								 <div  class="col-md-8 pl-20 pt-10">
+								<label onclick="showsize()" > 
+								<input type="checkbox"   checked  id="size" name="size" ></input>  {{__('msg.Standard size package')}} <small>(L + l + H < 100cm)</small> </label>
+								</div>	
+								<div class="row col-md-10"  id="sizes"  style="display:none">
+								
+								<div class="col-md-4">
+								<label>Longeur en cm*</label>
+								<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="longeur" name="longeur" onchange="verif2();" ></input> 
+								</div>
+								<div class="col-md-4">
+								<label>Largeur  en cm*</label>
+								<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="largeur" name="largeur" onchange="verif2();" ></input> 							
+								</div>
+								<div class="col-md-4">
+								<label>Hauteur  en cm*</label>
+								<input type="number" step="1" min="1" class="form-control" style="width:90px" value="10" id="hauteur" name="hauteur" onchange="verif2();" ></input> 
+															
+								</div>
+								
+								</div>							 
+								 
 							 
 							 </div>							 
  
