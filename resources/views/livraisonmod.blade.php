@@ -475,7 +475,8 @@ function setadresse	(){
  toggle('adresses','none');
  $('#adresse-'+adresse).show( );
 	
-	alert(adresse);
+ alert(adresse);
+ alert(mode);
 }
 
 /*
@@ -547,12 +548,8 @@ var mode="collect";
              var _token = $('input[name="_token"]').val();
 			 var agence =0;
 			 var adresse =0;
-			 if(mode=='collect'){
-			  agence = $('#agence_id').val();
 
-			 }else{
-			  adresse = $('#adresse_id').val();	 
-			 }
+
 	 
 			 if(mode=='collect'){
 			  agence = $('#agence_id').val();
