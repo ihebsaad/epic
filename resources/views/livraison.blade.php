@@ -56,124 +56,124 @@ $agence_defaut= $liste[0]->agence_defaut  ;
                         <div class="col-lg-7 mb-4">
 
                             <!-- Project Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">{{__('msg.Delivery')}}</h6>
-                                </div>
-                                <div class="card-body">
- 							 <h5>{{__('msg.Choose your delivery mode')}}</h5>
-							 <div class="row pt-10 pb-20">
-							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');details()">
-								<center>  Click & Collect <div class="clearfix"></div>
-								<img src="{{ URL::asset('public/img/box.png')}}" style="width:80px" class="mt-20"/></center>
-							 </div>
-							 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10" onclick="$('#agency1').hide('slow');$('#agency2').show('slow');">
-								<center>  {{__('msg.Carrier')}} <div class="clearfix"></div>
-								<img src="{{ URL::asset('public/img/truck.png')}}" style="width:100px"/></center>
-								
-							 </div>
-							 </div>
-							 <div id="agency1">
- 							 <h5>{{__('msg.Pick up address')}}</h5>
-							 <div class="row pt-10 pb-20">
-							 
-							 <div class="col-md-8">
-							 
-							 <select class="form-control mb-20" style="" id="agence_id" onchange="details();changing(this)">
-							 <option></option>
-							 <?php
-							 foreach($agences as $agence)
-							 {
-								  if($agence->pays_code ==  $pays_code ){
-								 if($agence->agence_ident ==  $agence_defaut ){$selected="selected='selected'" ;}else{ $selected="";}
-								 echo '<option '.$selected.' value="'.$agence->agence_ident.'" >'.$agence->agence_lib .'   |    <small>'.$agence->adresse1 .'</small></option>';
-														}
-							 }
-							 ?>
-							 
-							 </select>
-							 
-							 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:120px" >
- 							 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span id="lib"></span><br>
-							 <b style="color:black">{{__('msg.Address')}} :</b> <span id="adresse"></span><br>
-							  <span id="zip"></span> <span id="ville"></span><br>
-							 <b style="color:black">{{__('msg.Country')}} :</b> <span id="country"></span>
-							 </div>
-							 
-							 </div>	
-
-							 </div>	
-							 
-							 </div>		<!-- agency 1-->					 
-
-							 <div id="agency2"  style="display:none"  >
- 							 <h5>{{__('msg.Delivery address')}}</h5>
-							 <div class="row pt-10 pb-20">
-							 
-							 <div class="col-md-8">
-							 
-							 <select class="form-control mb-20"  id="adresse_id" onchange="setadresse();changing(this)">
-							 <option></option>
-							 <?php
-							  foreach($adresses as $adresse)
-							 {
-								 echo '<option value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
-								 
-							 } 
-							 ?>
-							 
-							 </select>
-							 <div style="min-height:120px">
-							<?php  
-							foreach($adresses as $adresse)
-							 { ?>
-							 <div class="pl-10 pr-10 pt-10 pt-10 adresses" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
- 							 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span  ><?php echo $adresse->nom; ?></span><br>
-							 <b style="color:black">{{__('msg.Address')}} :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
-							  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
-							 <b style="color:black">{{__('msg.Country')}} :</b> <span  >
-							 <?php 
-							 if($adresse->pays_code=='F'){echo 'France';}   
-							 if($adresse->pays_code=='PL'){echo 'Pologne';}   
-							 if($adresse->pays_code=='FO'){echo 'Guyane française';}   
-							 
-							 ?>
-							 </span>
-							 </div>
-							 
-							 
-							 </div>
-							
-							<?php } ?>
-							 </div>	
-
-							 
-							 </div>		
-
-							 
-							 </div>							 
-
-
-<!--
-							<div  class="col-md-8 pl-20 pt-10">
-							<label><b> {{__('msg.Gross weight')}}</b></label>
-							<input type="number" step="0.01" min="<?php echo number_format($weight,2) ;?>"  value="<?php echo number_format($weight,2) ;?>" class="form-control" style="width:110px"  id="gross" ></input> g
-							</div>
--->
-							
-								<button   onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-save"></i>
-                                        </span>
-                                        <span  style="width:120px" class="text" >{{__('msg.Validate')}}</span>
-                                    </button> 
-									
-                                </div><!--card body -->
                             </div>
+                            <div class="card-body">
+								 <h5>{{__('msg.Choose your delivery mode')}}</h5>
+								 <div class="row pt-10 pb-20">
+									 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10 active"  onclick="$('#agency1').show('slow');$('#agency2').hide('slow');details()">
+										<center>  Click & Collect <div class="clearfix"></div>
+										<img src="{{ URL::asset('public/img/box.png')}}" style="width:80px" class="mt-20"/></center>
+									 </div>
+									 <div class="col-md-4 box pt-20 pl-20 pb-20 pr-20 ml-10" onclick="$('#agency1').hide('slow');$('#agency2').show('slow');">
+										<center>  {{__('msg.Carrier')}} <div class="clearfix"></div>
+										<img src="{{ URL::asset('public/img/truck.png')}}" style="width:100px"/></center>
+										
+									 </div>
+								 </div>
+								 <div id="agency1">
+									 <h5>{{__('msg.Pick up address')}}</h5>
+									 <div class="row pt-10 pb-20">
+									 
+										 <div class="col-md-8">
+										 
+										 <select class="form-control mb-20" style="" id="agence_id" onchange="details();changing(this)">
+										 <option></option>
+										 <?php
+										 foreach($agences as $agence)
+										 {
+											  if($agence->pays_code ==  $pays_code ){
+											 if($agence->agence_ident ==  $agence_defaut ){$selected="selected='selected'" ;}else{ $selected="";}
+											 echo '<option '.$selected.' value="'.$agence->agence_ident.'" >'.$agence->agence_lib .'   |    <small>'.$agence->adresse1 .'</small></option>';
+																	}
+										 }
+										 ?>
+										 
+										 </select>
+										 
+										 <div class="pl-10 pr-10 pt-10 pt-10" style="min-height:120px" >
+											 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span id="lib"></span><br>
+											 <b style="color:black">{{__('msg.Address')}} :</b> <span id="adresse"></span><br>
+											  <span id="zip"></span> <span id="ville"></span><br>
+											 <b style="color:black">{{__('msg.Country')}} :</b> <span id="country"></span>
+										 </div>
+										 
+										 </div>	
+
+									 </div>	
+									 
+								 </div>		<!-- agency 1-->					 
+
+								 <div id="agency2"  style="display:none"  >
+								 <h5>{{__('msg.Delivery address')}}</h5>
+								 <div class="row pt-10 pb-20">
+								 
+								 <div class="col-md-8">
+								 
+								 <select class="form-control mb-20"  id="adresse_id" onchange="setadresse();changing(this)">
+								 <option></option>
+								 <?php
+								  foreach($adresses as $adresse)
+								 {
+									 echo '<option value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
+									 
+								 } 
+								 ?>
+								 
+								 </select>
+								 <div style="min-height:120px">
+									<?php  
+									foreach($adresses as $adresse)
+									 { ?>
+										 <div class="pl-10 pr-10 pt-10 pt-10 adresses" style="display:none" id="adresse-<?php echo $adresse->id;?>" >
+										 <b style="color:black">{{__('msg.Sales office')}} :</b>  <span  ><?php echo $adresse->adresse_nom; ?></span><br>
+										 <b style="color:black">{{__('msg.Address')}} :</b> <span  ><?php echo $adresse->adresse1; ?> <?php echo $adresse->adresse2; ?></span><br>
+										  <span  ><?php echo $adresse->zip; ?></span> <span id="ville"><?php echo $adresse->ville; ?></span><br>
+										 <b style="color:black">{{__('msg.Country')}} :</b> <span  >
+										 <?php 
+										 if($adresse->pays_code=='F'){echo 'France';}   
+										 if($adresse->pays_code=='PL'){echo 'Pologne';}   
+										 if($adresse->pays_code=='FO'){echo 'Guyane française';}   
+										 
+										 ?>
+										 </span>
+										 </div>
+									 
+									 <?php } ?>
+
+								 </div>
+								
+								 </div>	
+
+								 
+								 </div>		
+
+								 
+								 </div>							 
+
+
+	<!--
+								<div  class="col-md-8 pl-20 pt-10">
+								<label><b> {{__('msg.Gross weight')}}</b></label>
+								<input type="number" step="0.01" min="<?php echo number_format($weight,2) ;?>"  value="<?php echo number_format($weight,2) ;?>" class="form-control" style="width:110px"  id="gross" ></input> g
+								</div>
+	-->
+								
+									<button   onclick="valider()"  type="button"   class="pull-right btn btn-primary btn-icon-split ml-20 mt-20 mb-20" >
+											<span class="icon text-white-50">
+												<i class="fas fa-save"></i>
+											</span>
+											<span  style="width:120px" class="text" >{{__('msg.Validate')}}</span>
+									</button> 
+										
+							</div><!--card body -->
+                        </div><!--card  -->
 
                        
 
-                        </div>
+                        </div><!--c ol -->
 
                         <div class="col-lg-5 mb-4">
 
