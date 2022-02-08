@@ -451,7 +451,7 @@ function details()
 	        var comp_id = parseInt($('#comp_id').val());
 	        var comp_val = $('#comp_val').val() ;
 	        var article = $('#article').val() ;
-	        var etat_id = $('#etat_id').val() ;
+	        var etat_id = $('#etat_id').val() ;alert(etat_id);
 	        var fact_id = $('#fact_id').val() ;
 			var tarif=$('#tprix').text();
 			var debit1=0;var debit2=0;var debit3=0;	var debit4=0;
