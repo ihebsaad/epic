@@ -374,6 +374,7 @@ $count= $count_aff + $count_lab + $count_rmp;
 <style>
 </style>
 <script>
+var mode="collect";
 
 function verif1()
 {
@@ -497,7 +498,6 @@ function setadresse	(){
         }
 */
 
-var mode="collect";
   function valider() {
              var _token = $('input[name="_token"]').val();
 			 var agence =0;
