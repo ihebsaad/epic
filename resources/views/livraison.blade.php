@@ -117,7 +117,7 @@ $agence_defaut= $liste[0]->agence_defaut  ;
 								 <?php
 								  foreach($adresses as $adresse)
 								 {
-									 echo '<option value="'.$adresse->id.'" >'.$adresse->nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
+									 echo '<option value="'.$adresse->id.'" >'.$adresse->adresse_nom .'   |    <small>'.$adresse->adresse1 .'</small></option>';
 									 
 								 } 
 								 ?>
