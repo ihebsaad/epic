@@ -423,5 +423,6 @@ return [
 	"User Type"=>"User Type",
 	"Back"=>"Back",
 	"Investment metals"=>"Investment Metals",
+	"Indicative value with metal"=>"Indicative value with metal",
 	
  ];

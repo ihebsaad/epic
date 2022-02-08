@@ -418,5 +418,6 @@ return [
  			"User Type"=>"rodzaj użytkownika",
 			"Back"=>"Powrót",
             "Investment metals"=>"Metale inwestycyjne",
+	        "Indicative value with metal"=>"Wartość orientacyjna z metalem",
 
  ];
