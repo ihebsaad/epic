@@ -242,7 +242,7 @@ foreach($compls as $c){
                                     <?php if($produit->choix_etat>0){ ?>
  
                                      
-                                    <select id="etat_id" class="form-control ml-10" placeholder="Etat"  style="width:120px;margin-left:80px" onchange="alert( $('etat_id').val() )">
+                                    <select id="etat_id" class="form-control ml-10" placeholder="Etat"  style="width:120px;margin-left:80px" onchange="">
 									<option value="0"></option>
 									@foreach($etats as $etat)
 										<option value="{{$etat->id}}">{{$etat->libelle}}</option>
@@ -451,7 +451,7 @@ function details()
 	        var comp_id = parseInt($('#comp_id').val());
 	        var comp_val = $('#comp_val').val() ;
 	        var article = $('#article').val() ;
-	        var etat_id = $('#etat_id').val() ;
+	        var etat_id = $('#etat_id').val() ;alert(etat_id);
 	        var fact_id = $('#fact_id').val() ;
 			var tarif=$('#tprix').text();
 			var debit1=0;var debit2=0;var debit3=0;	var debit4=0;
