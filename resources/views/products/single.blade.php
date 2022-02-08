@@ -242,9 +242,12 @@ foreach($compls as $c){
                                     <?php if($produit->choix_etat>0){ ?>
  
                                      
-                                    <select id="etat_id" class="form-control ml-10" placeholder="Etat"  style="width:120px;margin-left:80px">
-                                    <?php foreach($etats as $etat){?><option value="<?php echo $etat->id;?>">
-                                    <?php echo $etat->libelle;?> </option> <?php } ?> 
+                                    <select id="etat_id" class="form-control ml-10" placeholder="Etat"  style="width:120px;margin-left:80px" onchange="alert( $('etat_id').val() )">
+                                    <?php foreach($etats as $etat){?>
+									<option value="0"></option>
+									<option value="<?php echo $etat->id;?>">
+                                    <?php echo $etat->libelle;?> </option>
+									 <?php } ?> 
                                     </select>
                                       
                                  
