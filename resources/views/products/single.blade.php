@@ -263,7 +263,7 @@ foreach($compls as $c){
 							  <label class="  ">{{__('msg.Option price')}} :</label> <label class="ml-10 mr-10" id="tprix" style="font-weight:bold"></label><label class="ml-10 mr-10" id="tmodeid" style="font-weight:bold"></label><label class="ml-10 mr-10  ">Mini :</label><label class="ml-10 mr-10" id="tmini" style="font-weight:bold"></label> €
 							  </div>
 							  <div class="row pl-10   ">							  
- 							  <label class="  ">{{__('msg.Optional Labour cost')}} :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €
+ 							  <label class="  ">{{__('msg.Optional Labour cost')}} :</label><label class="ml-10 mr-10" id="tmontant"  style="font-weight:bold"></label> €  <label class="ml-10 mr-10" id="valo"  style="font-weight:bold"></label>
 							  </div>
 							  </div>								 
 								<?php 
@@ -566,7 +566,8 @@ datas+='<td>'+ parseFloat(data.tarif_prod[0].mini)+' €</td>';
  				 $('#tprix').html(prixt );
 				// $('#tmodeid').html( data.tarif[0].modeid);
 				
-				 $('#tmontant').html(montantt );
+				$('#tmontant').html(montantt );
+				$('#valo').html(data.prix[0].valo );
 				 $('#tmini').html(minit.toFixed(2));			
 				 
 				if(parseFloat(data.prix[0].modeid) > 0){
