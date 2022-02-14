@@ -188,7 +188,7 @@ $id=session('previoususer');	?>
 		<?php	if(intval($solde_euro) >= 0){$style0="color:#54ba1d;";}else{$style0="color:#d03132";} ?>
 			
 <h2 class=" " style="text-align:center;font-weight:bold;color:black; margin-top:-15px;"><span style="letter-spacing:2px;">{{__('msg.Balance')}}:</span><b style="<?php echo $style0; ?>"> <?php echo $solde_euro; ?> €</b></h2>
-			<div class="pl-40">	
+			<div class="pl-10">	
 		 <?php $i=0;  if (is_array($euros) || is_object($euros)){ ?>   
 	  @foreach($euros as $euro)  
 										
@@ -201,7 +201,7 @@ $id=session('previoususer');	?>
 			<?php echo $euro->libelle; ?><div class="clearfix"></div>
  			</div>
 			<div class="col-md-7" style="font-size:14px"  >
-			<small>{{__('msg.Balance')}}:</small> <span style="text-align:center;font-weight:bold;;padding:5px 18px 5px 0px;<?php echo $style;?>" ><?php echo $euro->solde.'€'; ?></span><small>{{__('msg.Debit')}}:</small> <span style="margin-left:5px;margin-right:5px"><?php echo $euro->debit.'€'; ?></span><small>{{__('msg.Credit')}}:</small> <span style="margin-left:5px;margin-right:5px"><?php echo $euro->credit.'€'; ?></span>
+			<small>{{__('msg.Balance')}}:</small> <span style="text-align:center;font-weight:bold;;padding:5px 18px 5px 0px;<?php echo $style;?>" ><?php echo $euro->solde.'€'; ?></span><small>{{__('msg.Debit')}}:</small> <span style="margin-right:5px"><?php echo $euro->debit.'€'; ?></span><small>{{__('msg.Credit')}}:</small> <span style="margin-right:5px"><?php echo $euro->credit.'€'; ?></span>
 			</div>
 	 
 			</div>
