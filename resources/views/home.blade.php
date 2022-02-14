@@ -201,7 +201,7 @@ $id=session('previoususer');	?>
 			<?php echo $euro->libelle; ?><div class="clearfix"></div>
  			</div>
 			<div class="col-md-7" style="font-size:14px"  >
-			<?php if(intval($debit) >= 0){?><span >(<?php echo $euro->debit.'€'; ?>)</span> <?php }  if(intval($credit) >= 0){?><span ><?php echo $euro->credit.'€'; ?></span><?php } ?>
+			<?php if(intval($euro->debit) >= 0){?><span >(<?php echo $euro->debit.'€'; ?>)</span> <?php }  if(intval($euro->credit) >= 0){?><span ><?php echo $euro->credit.'€'; ?></span><?php } ?>
 			</div>
 	 
 			</div>
