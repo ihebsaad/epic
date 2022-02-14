@@ -197,11 +197,11 @@ $id=session('previoususer');	?>
 			<?php if($i<5){?>							
 			<span style="color:lightgrey;font-weight:bold; "><?php echo  date('d/m/Y', strtotime($euro->ecrit_date)); ?></span>
 			<div class="row   ">
-			<div class="col-md-6 pl-30" style="border-left:2px solid #e6d685">
+			<div class="col-md-5 pl-30" style="border-left:2px solid #e6d685">
 			<?php echo $euro->libelle; ?><div class="clearfix"></div>
  			</div>
-			<div class="col-md-4" style=""  >
-			<span style="text-align:center;width:120px;float:right;font-weight:bold;;width:130px;padding:5px 10px 5px 10px;<?php echo $style;?>" ><?php echo $euro->solde.'€'; ?></span>
+			<div class="col-md-7" style=""  >
+			<small>{{__('msg.Balance')}}</small><br><span style="text-align:center;width:120px;float:right;font-weight:bold;;width:130px;padding:5px 10px 5px 10px;<?php echo $style;?>" ><?php echo $euro->solde.'€'; ?></span><small>{{__('msg.Debit')}}</small><br><span class="mr-10 ml-10"><?php echo $euro->debit.'€'; ?></span><small>{{__('msg.Credit')}}</small><br><span class="mr-10 ml-10"><?php echo $euro->credit.'€'; ?></span>
 			</div>
 	 
 			</div>
