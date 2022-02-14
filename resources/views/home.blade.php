@@ -201,7 +201,7 @@ $id=session('previoususer');	?>
 			<?php echo $euro->libelle; ?><div class="clearfix"></div>
  			</div>
 			<div class="col-md-7" style=""  >
-			<small>{{__('msg.Balance')}}</small><br><span style="text-align:center;width:120px;font-weight:bold;;width:130px;padding:5px 18px 5px 10px;<?php echo $style;?>" ><?php echo $euro->solde.'€'; ?></span><small>{{__('msg.Debit')}}</small><span class="mr-10 ml-10"><?php echo $euro->debit.'€'; ?></span><small>{{__('msg.Credit')}}</small><span class="mr-10 ml-10"><?php echo $euro->credit.'€'; ?></span>
+			<small>{{__('msg.Balance')}}:</small> <span style="text-align:center;width:120px;font-weight:bold;;width:130px;padding:5px 18px 5px 10px;<?php echo $style;?>" ><?php echo $euro->solde.'€'; ?></span><small>{{__('msg.Debit')}}:</small> <span class="mr-10 ml-10"><?php echo $euro->debit.'€'; ?></span><small>{{__('msg.Credit')}}:</small> <span class="mr-10 ml-10"><?php echo $euro->credit.'€'; ?></span>
 			</div>
 	 
 			</div>
