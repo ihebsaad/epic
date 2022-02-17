@@ -916,9 +916,17 @@ Cmde_rmp_e::where('cl_ident',$user['client_id'])->where('statut','panier')->upda
  
 }		
 	
- 
+ /*
+ Il faut classer les articles du panier par type_id.
+Vous envoyez la procédure SP_cmde_e_insert
+Si le premier article a un type_id=101 alors
+Vous faite une boucle sur les articles du panier , si type_id =101 alors vous envoyez la procédure SP_cmde_l_insert sinon, vous relancer SP_cmde_e_insert (pour créer une nouvelle entête de commande) et vous enregistrer tous les articles suivants avec des appels à SP_cmde_l_insert.
+Sinon
+Vous faites le traitement classique, SP_cmde_l_insert pour chaque article.
+ */
  public function validateproducts(Request $request)
 {
+ $cmde_id2 = null;
  $user = auth()->user();  
  $adresse   = $request->get('adresse');	
  $agence   = $request->get('agence');
@@ -930,11 +938,16 @@ Cmde_rmp_e::where('cl_ident',$user['client_id'])->where('statut','panier')->upda
  
  $Order=DB::table('orders')->where('user',$user->id)->where('status','cart')->first( );
  if (isset($Order)){
- $produits=DB::table('products')->where('orderid',$Order->id)->get();
+ $produits=DB::table('products')->where('orderid',$Order->id)->orderBy('type','asc')->get();
  // calcul qte
- $quantite= 0;
+ $quantite= 0;$existe=false;
 foreach	($produits as $p)
-{$quantite= $quantite + $p->qte;}
+{
+$quantite= $quantite + $p->qte;
+if(intval($p->type)!=101){
+	$existe=true;
+}
+}
 
 $poids=floatval($Order->weight);
 $or=floatval($Order->gold);
@@ -1000,7 +1013,38 @@ $quantite = floatval($produit->qte );
 $poids  = floatval($produit->poids );
 $tarif   = floatval($produit->tarif );	 
 $mode_facturation    = intval($produit->fact_id );   
-  
+
+if($type_id==101 && $i==1 && $existe){
+
+// insérer une autre commande
+
+
+DB::select("SET @p0='$client_id' ;");
+DB::select("SET @p1='$langue' ;");
+DB::select("SET @p2='$quantite' ;");
+DB::select("SET @p3='$poids' ;");
+DB::select("SET @p4='$or' ;");
+DB::select("SET @p5='$argent' ;");
+DB::select("SET @p6='$platine' ;");
+DB::select("SET @p7='$palladium' ;");
+DB::select("SET @p8='$facon' ;");
+DB::select("SET @p9='$Mode' ;");
+DB::select("SET @p10='$adresse' ;");
+DB::select("SET @p11='$agence' ;");
+DB::select("SET @p12='$user->id' ;");
+
+
+ DB::select ("  CALL `SP_cmde_e_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12,@p13 ); ");
+ DB::select("SELECT @p13 AS `cmde_id`  ;");
+
+ 
+$select = DB::select(DB::raw("SELECT @p13 AS `cmde_id`  ;"));
+
+	if (!empty($select) && isset($select[0]->cmde_id)) {
+	// we have a result
+	$cmde_id2 = $select[0]->cmde_id;
+	}
+}
 
  DB::select("SET @p0='$produit_id' ;");
  DB::select("SET @p1='$type_id' ;");
@@ -1012,7 +1056,11 @@ $mode_facturation    = intval($produit->fact_id );
  DB::select("SET @p7='$poids' ;");
  DB::select("SET @p8='$tarif' ;");
  DB::select("SET @p9='$mode_facturation' ;");
- DB::select("SET @p10='$cmde_id' ;");
+ if(intval($type_id)==101 && intval($cmde_id2)>0 ){
+  DB::select("SET @p10='$cmde_id2' ;");
+ }else{
+  DB::select("SET @p10='$cmde_id' ;");
+ }
 
   $result=  DB::select ("  CALL `SP_cmde_l_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10 ); ");
 	  

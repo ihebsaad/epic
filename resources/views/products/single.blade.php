@@ -270,6 +270,8 @@ foreach($compls as $c){
 								}else{ ?>
 										<input type="hidden" id="comp_id" value="0" />
 										<input type="hidden" id="comp_val" value="0" />
+										<input type="hidden" id="etat_id" value="0" />
+
 								<?php	
 								}
 								
@@ -278,12 +280,15 @@ foreach($compls as $c){
 									else{ ?>
 										<input type="hidden" id="comp_id" value="0" />
 										<input type="hidden" id="comp_val" value="0" />
+										<input type="hidden" id="etat_id" value="0" />
+
 								<?php	
 								}
 								 
 
 								?>
 								<input id="fact_id" type="hidden" value="0"><input id="tarif" type="hidden" value="0">
+
 								
 <hr>
 	
