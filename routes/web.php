@@ -100,6 +100,7 @@ Route::get('/viewmodelermp/{id}', 'PagesController@viewmodelermp')->name('viewmo
 Route::get('/commandeprod/{id}', 'PagesController@commandeprod')->name('commandeprod');
 
 Route::post('/ajoutvirement', 'ProductsController@ajoutvirement')->name('ajoutvirement');
+Route::get('/verifvirement', 'ProductsController@verifvirement')->name('verifvirement');
 Route::post('/ajoutbenefic', 'ProductsController@ajoutbenefic')->name('ajoutbenefic');
 
 

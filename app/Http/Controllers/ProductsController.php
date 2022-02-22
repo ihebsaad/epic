@@ -636,7 +636,32 @@ class ProductsController extends Controller
 	return $count ;
  }
 
+ 	function verifvirement(Request $request){
+		$beneficiaire =  $request->get('beneficiaire');
+		 $metal =  $request->get('metal');
+		 $poids =  $request->get('poids');
+		 $date =  $request->get('date');
+		
+  		$user = auth()->user();  
 
+	   $client=$user['client_id'];
+	  $count= DB::table('virement')->where('cl_ident', $client)
+	   						->where('vir_date','like',$date.'%')
+							->where('bene_ident',$beneficiaire)
+							->where('pds',$poids)
+							->where('metal_ident',$metal)
+							->count();
+		return $count;
+   	 /*  DB::select("SET @p0='$client' ;");
+       DB::select("SET @p1='$beneficiaire' ;");
+   	   DB::select("SET @p2='$poids' ;");
+   	   DB::select("SET @p3='$metal' ;");
+      
+
+ 	   DB::select ("  CALL `sp_vir_control`(@p0,@p1,@p2,@p3,@p4);  ");
+ 	  $result=  DB::select (DB::raw("  SELECT @p4 AS `vire_id` ;"));*/
+ 
+	}
 
 	 function ajoutvirement(Request $request) { 
  		 $beneficiaire =  $request->get('beneficiaire');
@@ -645,7 +670,7 @@ class ProductsController extends Controller
 		 $date =  $request->get('date');
 		 $commentaire =  $request->get('commentaire');
  
-  $user = auth()->user();  
+  		$user = auth()->user();  
 
   	/*	 $virement = new Virement([
              'cl_ident' => $user['client_id'] ,
@@ -668,11 +693,12 @@ class ProductsController extends Controller
    	   DB::select("SET @p4='$commentaire' ;");
    	   DB::select("SET @p5='$user->id' ;");
       
+
  	   DB::select ("  CALL `sp_vir_vir_insert`(@p0,@p1,@p2,@p3,@p4,@p5,@p6);  ");
  	  $result=  DB::select (DB::raw("  SELECT @p6 AS `vire_id` ;"));
  
  
-	  return redirect('/virement/')->with('success', ' ajouté avec succès');
+	  return redirect('/virement')->with('success', ' ajouté avec succès');
 	  
 	 }
 	catch (Exception $e) 

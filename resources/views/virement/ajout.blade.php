@@ -3,8 +3,9 @@
  
  @section('content')
 
-  
-<?php 	
+ alert {background-color:green!important;}
+ 
+ <?php 	
 use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
    
@@ -336,6 +337,30 @@ function check()
 	$('#infos-date').html(date);
 	$('#infos-commentaire').html(commentaire);
 	
+    var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{ route('verifvirement') }}",
+                method: "GET",
+                data: {beneficiaire: ben,date:date,metal:metal,poids:poids,_token: _token},
+                success: function (data) {
+                    if(parseInt(data)>0){
+                   
+                    $.notify({
+                        message: 'Attention, vous avez déjà effectué un virement identique (métal, poids, bénéficiaire, date). Etes vous sûr de vouloir le faire à nouveau ?',
+                        icon: 'glyphicon glyphicon-check'
+                    },{
+                        type: 'danger',
+                        delay: 2000,
+                        timer: 10000,
+                   /*     placement: {
+                            from: "bottom",
+                            align: "right"
+                        },*/
+                     });
+                    }
+                }
+            });
+
 	}else{
 	$('#submit').prop('disabled', true);
 		
@@ -492,8 +517,7 @@ $(function () {
             });
 
         }
-				 
-		 
+ 
  </script>
 							
  				 			
