@@ -3,8 +3,7 @@
  
  @section('content')
 
- alert {background-color:green!important;}
- 
+  
  <?php 	
 use App\Http\Controllers\HomeController ;
  $user = auth()->user();  
