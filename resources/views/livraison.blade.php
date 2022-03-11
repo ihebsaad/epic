@@ -302,8 +302,10 @@ function setadresse	(){
 			 
 			 if(mode=='collect'){
 			  agence = $('#agence_id').val();
+			  adresse =0; 
 			 }else{
 			  adresse = $('#adresse_id').val();	 
+			  agence=0;
 			 }
 
               var _token = $('input[name="_token"]').val();
