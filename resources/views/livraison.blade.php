@@ -330,9 +330,9 @@ function setadresse	(){
                             align: "right"
                         },
                     });
-							setTimeout(function(){
+					/*		setTimeout(function(){
 				location.href="{{ route('home')}}";
-							   }, 3000);  //3 secds				
+							   }, 3000);  //3 secds			*/	
 				 
                 }
             });
