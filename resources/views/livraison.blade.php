@@ -313,7 +313,7 @@ function setadresse	(){
                 data: { agence:agence,adresse:adresse,mode:mode,gross:gross,amount:<?php echo $amount;?> , _token: _token},
                 success: function (data) {
 				
-				
+				console.log(data);
 				
 				//$('#successModal').modal('show') ;
 
