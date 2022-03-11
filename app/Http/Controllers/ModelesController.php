@@ -954,10 +954,16 @@ $or=floatval($Order->gold);
 $argent=floatval($Order->silver);
 $platine=floatval($Order->platine);
 $palladium=floatval($Order->palladium);
+
+$adresse= ($adresse!=null) ? $adresse : 0 ;
+$agence= ($agence!=null) ? $agence : 0 ;
+
+/*
 if($Order->adresse_id!=null)
 {$adresse=$Order->adresse_id;}else{$adresse=0;}
 if($Order->agence_id!=null)
 {$agence=$Order->agence_id;}else{$agence=0;}
+*/
 
 if($mode=='collect'){
 	$Mode='CC';

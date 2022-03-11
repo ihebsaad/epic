@@ -305,7 +305,7 @@ function setadresse	(){
 			 }else{
 			  adresse = $('#adresse_id').val();	 
 			 }
-	 
+
               var _token = $('input[name="_token"]').val();
             $.ajax({
                  url: "{{ route('validateproducts') }}",
@@ -330,9 +330,9 @@ function setadresse	(){
                             align: "right"
                         },
                     });
-					/*		setTimeout(function(){
+						setTimeout(function(){
 				location.href="{{ route('home')}}";
-							   }, 3000);  //3 secds			*/	
+							   }, 3000);  //3 secds			
 				 
                 }
             });
