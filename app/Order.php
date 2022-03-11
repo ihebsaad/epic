@@ -22,7 +22,9 @@ class Order extends Model
 'silver',
 'palladium',
 'platine',
-'status'
+'status',
+'adresse_id',
+'agence_id',
 
     ];
 
