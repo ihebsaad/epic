@@ -969,6 +969,7 @@ if($mode=='collect'){
 	$Mode='CC';
 }else{
 	$Mode='ENL';
+	$agence=0;
 }
 
 
